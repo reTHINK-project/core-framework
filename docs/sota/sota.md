@@ -53,4 +53,22 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
 http://matrix.org/
 
+#### Jitsi
+
+https://jitsi.org/Projects/JitsiVideobridge
+
+#### Nodejs
+
+https://github.com/js-platform/node-webrtc
+
+#### SocketPeer
+
+https://github.com/cvan/socketpeer
+https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/
+
+
 ### Other (?)
+
+http://browserify.org/
+https://github.com/mojo-js/mesh.js
+
