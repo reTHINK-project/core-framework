@@ -10,7 +10,9 @@ Such analysis should report whether WP3 should reuse existing work including its
 #### W3C HTML5
 
 http://www.w3.org/TR/html5/
+
 http://dev.w3.org/html5/websockets
+
 http://dev.w3.org/html5/postmsg
 
 #### W3C WebRTC 
