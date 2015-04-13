@@ -21,7 +21,7 @@ http://dev.w3.org/html5/postmsg
 
 http://ortc.org/
 
-#### W3C System Applications Working Group
+#### W3C System Applications Working Group (PTIN)
 
 http://www.w3.org/2012/sysapps/
 
@@ -29,7 +29,7 @@ http://www.w3.org/2012/sysapps/
 
 ### Projects
 
-#### WONDER
+#### WONDER (PTIN)
 
 ### Existing Assets
 
@@ -39,11 +39,11 @@ The research, experimentation and selection will be reported here.*
 
 #### WebRTC.org (Google)
 
-#### OpenWebRTC (Ericsson)
+#### OpenWebRTC (Ericsson)(PTIN)
 
-#### Vertx.io (Redhat)
+#### Vertx.io (Redhat)(PTIN)
 
-#### V8 Javascript Engine (Google)
+#### V8 Javascript Engine (Google)(PTIN)
 
 #### Real Time Web Messaging (several)
 
@@ -53,7 +53,7 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
 http://matrix.org/
 
-#### Jitsi
+#### Jitsi (PTIN)
 
 https://jitsi.org/Projects/JitsiVideobridge
 
