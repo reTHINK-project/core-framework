@@ -52,6 +52,11 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 #### Matrix (DT)
 
 http://matrix.org/
+http://about.psyc.eu/Matrix
+
+#### PSYC
+
+http://about.psyc.eu/
 
 #### Jitsi (PTIN)
 
@@ -70,5 +75,6 @@ https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer
 ### Other (?)
 
 http://browserify.org/
+
 https://github.com/mojo-js/mesh.js
 
