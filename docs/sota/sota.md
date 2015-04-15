@@ -64,7 +64,7 @@ http://about.psyc.eu/
 
 https://jitsi.org/Projects/JitsiVideobridge
 
-#### Nodejs (APIZEE)
+#### Nodejs (Apizee)
 
 https://github.com/js-platform/node-webrtc
 
@@ -76,9 +76,9 @@ https://github.com/meetecho/janus-gateway
 
 https://code.google.com/p/coturn/ - Free open source implementation of TURN and STUN Server
 
-#### APIRTC(APIZEE)
+#### APIRTC(Apizee)
 
-#### APIRTC(APIZEE)
+#### Kurento(Apizee)
 https://www.kurento.org/
 
 #### SocketPeer
