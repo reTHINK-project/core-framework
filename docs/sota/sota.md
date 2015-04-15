@@ -15,9 +15,9 @@ http://dev.w3.org/html5/websockets
 
 http://dev.w3.org/html5/postmsg
 
-#### W3C WebRTC 
+#### W3C WebRTC (Quobis)
 
-#### Object RTC
+#### Object RTC (Quobis)
 
 http://ortc.org/
 
@@ -25,7 +25,7 @@ http://ortc.org/
 
 http://www.w3.org/2012/sysapps/
 
-#### IETF RTC-WEB
+#### IETF RTC-WEB (Quobis)
 
 https://code.google.com/p/coturn/ - Free open source implementation of TURN and STUN Server
 
