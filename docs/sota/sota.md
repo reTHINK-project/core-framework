@@ -39,7 +39,7 @@ https://code.google.com/p/coturn/ - Free open source implementation of TURN and 
 Open Source projects candidates are Chromium or Mozilla for Web runtime while node.js and vertx.io are very suitable for Messaging Node solutions.
 The research, experimentation and selection will be reported here.*
 
-#### WebRTC.org (Google)
+#### WebRTC.org (Google)(INESC-ID)
 
 #### OpenWebRTC (Ericsson)(PTIN)
 
@@ -56,7 +56,7 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 http://matrix.org/
 http://about.psyc.eu/Matrix
 
-#### PSYC
+#### PSYC (INESC-ID)
 
 http://about.psyc.eu/
 
@@ -68,7 +68,7 @@ https://jitsi.org/Projects/JitsiVideobridge
 
 https://github.com/js-platform/node-webrtc
 
-#### Janus Gateway
+#### Janus Gateway (INESC-ID)
 
 https://github.com/meetecho/janus-gateway
 
