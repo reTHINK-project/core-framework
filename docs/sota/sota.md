@@ -84,11 +84,14 @@ https://www.kurento.org/
 #### SocketPeer
 
 https://github.com/cvan/socketpeer
+
 https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/
 
 
 ### Other (?)
 
+https://github.com/primus/primus (abstracts RTC frameworks for nodejs)
+ 
 http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
