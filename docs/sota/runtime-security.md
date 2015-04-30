@@ -1,3 +1,4 @@
+## Security in Runtime
 
 **Security goals:**
 
@@ -15,6 +16,7 @@ G3 - to enforce the security policies attached to hyperty code.
 
 *Compromised hardware:* E.g., an attacker manages to gain physical access to the host computer and has the capability to extract secrets directly from the RAM memory or by probing the system bus. This attack can violate the security goals G1, G2, and G3.
 
+**possible solutions**
 
 
 
