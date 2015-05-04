@@ -58,7 +58,7 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 http://matrix.org/
 http://about.psyc.eu/Matrix
 
-#### PSYC (INESC-ID)
+#### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/
 
