@@ -8,7 +8,7 @@ Its goal is to replace the popular IRC protocol, which is currently suffering fr
 
 PSYC combines an IRC-like topology, where servers take a part in coordination and control, with the concepts of context, logical targets and packet IDs to enhance messages’ routing. Context slaves allow better routing options to be automatically discovered while multiple recipients ask to receive data from a given source (UNI/UNL), lowering the amount of traffic verified. Logical targets are the end-users to whom a given message is targeted. Finally, packet IDs allow PSYC to use redundant multicast strategies, when more than one may fit our needs. This way, duplicate packets due to multiple strategies can be caught and ignored. On a conference server, the minimalistic control module can be also used to deliver group messages in a peer to peer manner, by maintaining on each member a list of other members and how to reach them.
 
-![image](psyc_message)
+![image](psyc_message.png)
 Figure 1. PSYC message example
 
 
