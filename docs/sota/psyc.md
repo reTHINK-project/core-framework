@@ -14,12 +14,13 @@ Figure 1. PSYC message example
 
 ## PSYC and messaging node requirements
 
-* PSYC server nodes can be deployed using psyced daemon. This can be done on Linux and Windows machines, here through a Cygwin environment. There are several implementations of PSYC clients written in Java (jaPSYC), C (psycd), C++ (Dyskinesia), Python (pypsyc) and Perl (perlpsyc). Given that, PSYC clients are eligible to be deployed in Linux/Windows VMs and Raspberry Pi. For mobile environments, PSYCobile was a project started to bring PSYC to mobile phones. However, it was not concluded by now. Also, there is PsycZilla, a Firefox 3.5 (the latest version) extension which features a webchat and social network browser.
-* There is no guarantee on the documentation that PSYC supports the W3C WebRTC APIs.
-* The following PSYC applications use ECMAScript: Dyskinesia, PsycZilla, jsPSYC and symlyn X webchat.
-* PsycZilla is an extension to Firefox 3.5, which doesn’t support WebSocket.
-* Web Messaging was introduced in HTML5 draft specification, and there is no PSYC implementation supporting it.
-* As the documentation refers, libpsyc (PSYC library written in C back in 2011) has been benchamrked for speed with good results for its period. Although, the results page and which benchmarks were applied are not available.
-* The effort should high if not prohibitive, due to the fact that PSYC does not support the WebRTC APIs.
+1. PSYC server nodes can be deployed using psyced daemon. This can be done on Linux and Windows machines, here through a Cygwin environment. There are several implementations of PSYC clients written in Java (jaPSYC), C (psycd), C++ (Dyskinesia), Python (pypsyc) and Perl (perlpsyc). Given that, PSYC clients are eligible to be deployed in Linux/Windows VMs and Raspberry Pi. For mobile environments, PSYCobile was a project started to bring PSYC to mobile phones. However, it was not concluded by now. Also, there is PsycZilla, a Firefox 3.5 (the latest version) extension which features a webchat and social network browser.
+2. There is no guarantee on the documentation that PSYC supports the W3C WebRTC APIs.
+3. The following PSYC applications use ECMAScript: Dyskinesia, PsycZilla, jsPSYC and symlyn X webchat.
+4. PsycZilla is an extension to Firefox 3.5, which doesn’t support WebSocket.
+5. Web Messaging was introduced in HTML5 draft specification, and there is no PSYC implementation supporting it.
+6. TODO
+7. As the documentation refers, libpsyc (PSYC library written in C back in 2011) has been benchamrked for speed with good results for its period. Although, the results page and which benchmarks were applied are not available.
+8. The effort should high if not prohibitive, due to the fact that PSYC does not support the WebRTC APIs.
 
 
