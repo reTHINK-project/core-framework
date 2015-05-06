@@ -4,7 +4,10 @@
 
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
 
-V8 Javascript Engine is ... bla bla
+The V8 JavaScript Engine is an open source JavaScript engine developed by Google for the Google Chrome web browser.[4] It has since seen use in many other projects[citation needed]. As of 2012, the head programmer is Lars Bak.[5] The first version of the V8 engine was released at the same time as the first version of Chrome, September 2, 2008.
+
+V8 compiles JavaScript to native machine code (IA-32, x86-64, ARM, or MIPS ISAs)[3][6] before executing it, instead of more traditional techniques such as interpreting bytecode or compiling the whole program to machine code and executing it from a filesystem. The compiled code is additionally optimized (and re-optimized) dynamically at runtime, based on heuristics of the code's execution profile. Optimization techniques used include inlining, elision of expensive runtime properties, and inline caching, among many others
+
 V8 can be used to provide reTHINK Runtime features
 
 ### Architecture
@@ -44,3 +47,6 @@ This kind of optimization mirrors the beneficts of static languages and achieves
 - correct identification of objects and pointers in memory, avoiding memory leaks by wromg identification.
 
 The V8 separates the heap in two distinct parts. The new space is where new objects are created and the old space where objects surviving a garbage collection cycle are promoted. V8 actualizes references when each cycle finishes.
+
+#### [How to extend amd to introduce new Features](https://github.com/reTHINK-project/core-framework/issues/8)
+
