@@ -16,4 +16,4 @@
 
 *Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
 *The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
-In case the Requirement is not fulfilled, possible solutions should be provided including effort estimation.*
+In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
