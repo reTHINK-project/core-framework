@@ -48,5 +48,5 @@ This kind of optimization mirrors the beneficts of static languages and achieves
 
 The V8 separates the heap in two distinct parts. The new space is where new objects are created and the old space where objects surviving a garbage collection cycle are promoted. V8 actualizes references when each cycle finishes.
 
-#### [How to extend amd to introduce new Features](https://github.com/reTHINK-project/core-framework/issues/8)
+#### [How to extend and to introduce new Features](https://github.com/reTHINK-project/core-framework/issues/8)
 
