@@ -18,3 +18,7 @@ Available APIs for developers
 ### Requirements Analysis
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
+
+#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+
+
