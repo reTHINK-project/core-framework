@@ -11,6 +11,17 @@ V8 can be used to provide reTHINK Runtime features
 
 Main functional modules and interfaces. SHould be based on a picture
 
+
+### APIs
+
+Available APIs for developers
+
+### Requirements Analysis
+
+*According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
+
+#### [Runtime Performance](https://github.com/reTHINK-project/core-framework/issues/6)
+
 Its aparently clear that V8 provides a significant improvement over previously adopted JavaScript interpretation engines like:
  JScript from IExplorer;
  SpiderMonkey (in Firefox);
@@ -33,11 +44,3 @@ This kind of optimization mirrors the beneficts of static languages and achieves
 - correct identification of objects and pointers in memory, avoiding memory leaks by wromg identification.
 
 The V8 separates the heap in two distinct parts. The new space is where new objects are created and the old space where objects surviving a garbage collection cycle are promoted. V8 actualizes references when each cycle finishes.
-
-### APIs
-
-Available APIs for developers
-
-### Requirements Analysis
-
-*According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
