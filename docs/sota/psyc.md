@@ -11,7 +11,7 @@ On a top-level view, PSYC combines an IRC-like topology with the concepts of con
 
 Figure 1. PSYC message example
 
-## PSYC and runtime requirements
+## PSYC and runtime requirements *(shouldn't it be messaging node requirements?)*
 
 1. PSYC server nodes can be deployed using psyced daemon. This can be done on Linux and Windows machines, here through a Cygwin environment. There are several implementations of PSYC clients written in Java (jaPSYC), C (psycd), C++ (Dyskinesia), Python (pypsyc) and Perl (perlpsyc). Given that, PSYC clients are eligible to be deployed in Linux/Windows VMs and Raspberry Pi. For mobile environments, PSYCobile was a project started to bring PSYC to mobile phones. However, it was not concluded by now. Also, there is PsycZilla, a Firefox 3.5 (the latest version) extension which features a webchat and social network browser.
 2. There is no guarantee on the documentation that PSYC supports the W3C WebRTC APIs.
