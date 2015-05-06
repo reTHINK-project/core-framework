@@ -21,4 +21,6 @@ Available APIs for developers
 
 #### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
 
+#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+
 
