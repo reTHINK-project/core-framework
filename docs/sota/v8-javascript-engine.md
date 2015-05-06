@@ -46,7 +46,15 @@ This kind of optimization mirrors the beneficts of static languages and achieves
 - slices the object heap and only operates on part of it during a collecting cycle - lesses the time the application is stopped;
 - correct identification of objects and pointers in memory, avoiding memory leaks by wromg identification.
 
+
 The V8 separates the heap in two distinct parts. The new space is where new objects are created and the old space where objects surviving a garbage collection cycle are promoted. V8 actualizes references when each cycle finishes.
 
 #### [How to extend and to introduce new Features](https://github.com/reTHINK-project/core-framework/issues/8)
 
+#### [Runtime Security](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
+
+#### [Web Messaging Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
+
+#### [Web Sockets](https://github.com/reTHINK-project/core-framework/issues/4)
+
+#### 
