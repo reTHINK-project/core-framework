@@ -53,7 +53,7 @@ The research, experimentation and selection will be reported here.*
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
-#### Matrix (DT)
+#### [Matrix (DT)](matrix.md)
 
 http://matrix.org/
 http://about.psyc.eu/Matrix
