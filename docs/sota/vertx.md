@@ -23,4 +23,5 @@ Available APIs for developers
 
 #### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
 
+Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
