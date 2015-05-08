@@ -1,6 +1,6 @@
 ## Matrix.org
 
-From matrox.org spec:
+From matrix.org spec:
 > *The end goal of Matrix is to be a ubiquitous messaging layer for synchronising arbitrary data between sets of people, devices and services - be that for instant messages, VoIP call setups, or any other objects that need to be reliably and persistently pushed from A to B in an interoperable and federated manner.*
 
 ### Overview
