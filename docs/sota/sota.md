@@ -70,7 +70,7 @@ https://jitsi.org/Projects/JitsiVideobridge
 
 https://github.com/js-platform/node-webrtc
 
-#### Janus Gateway (INESC-ID)
+#### [Janus Gateway (INESC-ID)](janus-gateway.md)
 
 https://github.com/meetecho/janus-gateway
 
