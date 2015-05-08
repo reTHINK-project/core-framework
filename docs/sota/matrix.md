@@ -31,8 +31,8 @@ Matrix.org defines 3 types of APIs with different scope. All these APIs are REST
    * Registration and Login
    * sending and receiving of Events
    * management of communication rooms
-* well documented, easy to implement
-* version 2 is currently in development - will be backward compatible
+ * well documented, easy to implement
+ * version 2 is currently in development - will be backward compatible
 
 * [Federation API (Server-Server   API)](http://www.matrix.org/docs/spec/#id100)
   * API for the inter-domain communication between Home Servers
