@@ -6,12 +6,14 @@
 
 ### Architecture
 
-Main functional modules and interfaces. SHould be based on a picture
+*Main functional modules and interfaces. Should be based on a picture*
 
 ### APIs
 
-Available APIs for developers
+*Available APIs for developers*
 
 ### Requirements Analysis
 
-*According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
+*Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
+*The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
+In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*

@@ -18,3 +18,10 @@ Available APIs for developers
 ### Requirements Analysis
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
+
+#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+
+#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+
+Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
+

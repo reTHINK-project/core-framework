@@ -10,7 +10,7 @@ WebRTC comes with a native code package for developers to work over. This packag
 WebRTC architecture offers two different layers, one for browser developers and other for third-party application developers. The first one is a C++ API intended to enable the proposed Web API for video/audio capture and render, making it possible for application developers to make use of it. The second one is the Web API for developers to produce applications to interact with WebRTC-powered browsers. Currently, several JavaScript APIs are in process of standardization, like [WebRTC 1.0](http://w3c.github.io/webrtc-pc/) and [Media Capture and Streams](http://w3c.github.io/mediacapture-main/).
 In fact, there is another abstract layer responsible for session management and signalling, leaving the signalling protocol implementation up to the application developer, who has to choose between currently existing alternatives.
 
-![image](webrtc-org-arch)
+![image](webrtc-org-arch.png)
 
 Figure 1. WebRTC architecture scheme
 

@@ -15,15 +15,11 @@ Due to the "deprecateness" state in some key-concepts PSYC relies on, such as it
 
 Figure 1. PSYC message example
 
+
 ## PSYC and messaging node requirements
 
-1. The PSYC2 project comes with an [API for pubsub](http://secushare.org/pubsub)
-2. There is no guarantee on the documentation that PSYC supports the W3C WebRTC APIs.
-3. The following PSYC applications use ECMAScript: Dyskinesia, PsycZilla, jsPSYC and symlyn X webchat.
-4. PsycZilla is an extension to Firefox 3.5, which doesn’t support WebSocket.
-5. Web Messaging was introduced in HTML5 draft specification, and there is no PSYC implementation supporting it.
-6. As the documentation refers, libpsyc (PSYC library written in C back in 2011) has been benchamrked for speed with good results for its period. Although, the results page and which benchmarks were applied are not available.
-7. TODO
-8. The effort should high if not prohibitive, due to the fact that PSYC does not support the WebRTC APIs.
+1. The PSYC2 project implementation, Secushare, comes with an [API for pubsub](http://secushare.org/pubsub)
+2. PSYC has its own authentication method, inherited in PSYC2 specification. A request_authentication_method is used to query a UNI if a given network entity is actually a linked location of hers. This method can have different arguments (_location, _host_IP, _nonce, _password) to help the UNI to take the decision. Although, there is no evidence in the documentation that PSYC is able to accept external authentication/authorisation methods other than this.
+3. 
 
 
