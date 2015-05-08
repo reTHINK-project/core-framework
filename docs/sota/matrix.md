@@ -28,9 +28,9 @@ Matrix.org defines 3 types of APIs with different scope. All these APIs are REST
 * [Client Server API v1](http://www.matrix.org/docs/spec/#client-server-api-v1)
  * for implementation of application frontends
  * functions for:
-   * Registration and Login
-   * sending and receiving of Events
-   * management of communication rooms
+    * Registration and Login
+    * sending and receiving of Events
+    * management of communication rooms
  * well documented, easy to implement
  * version 2 is currently in development - will be backward compatible
 
