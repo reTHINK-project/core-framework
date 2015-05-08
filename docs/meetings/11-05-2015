@@ -1,0 +1,44 @@
+### Agenda
+
+1. Action Points review (5 min)
+1. [Assets Selection Criteria](../sota/selection-criteria.md)(20 min)
+1. [State of the Art ](../sota/sota.md) status (30 min)
+1. Agenda for Face to Face meeting in Berlim. (5 min) Topics:
+ 1. Approve SOTA and Evaluation Reports and Assets Short list
+ 2. Discuss input from T2.2 and T2.3 and draft initial arch and APIs
+ 3. kick-off implementation tasks
+ 4. Synchronisation with WP4 including common methodology and tools for the integration and documentation
+ 
+### Participants
+
+* Paulo Chainho, Luis Duarte (PTIN)
+* Ricardo Chaves, Ricardo Pereira (INESC-ID)
+* Simon (Orange)
+* Steffen (DT)
+* Arnaud (APIZEE)
+* Rebecca (IMT)
+
+**Missing: Quobis, Fokus**
+
+### Summary
+
+
+### Previous Action Points
+
+AP21: Review and Derive requirements and selection criteria for Runtime by using the Github issues feature and label ["Runtime Requirement"](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement). To be done by All. Paulo from PTIN lead this task. Deadline 6th May
+
+AP22: Review and Derive requirements and selection criteria for Messaging Node by using the Github issues feature and label [" Messaging Node Requirement"](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement). To be done by All. Adel from FOKUS lead this task. Deadline 6th May
+
+AP23: Review and Derive requirements and selection criteria for Network Qos by using the Github issues feature and label [" Network QoS Requirement"](https://github.com/reTHINK-project/core-framework/labels/Network%20QoS%20Requirement). To be done by All. Ewa from Orange lead this task. Deadline 6th May
+
+AP3: APIZEE and QUOBIS contribute with SOTA about their solutions including an analysis on how they could fit with the protocol-on-the-fly mechanism provided by WONDER library(APIZEE, QUOBIS, Deadline: 7 May)
+
+AP5: Volunteer to be responsible for SOTA about "Security in the runtime". 29th Apr
+
+AP6: confirmation that Orange will contribute on Firebase solution. (Simon, 29th Apr)
+
+AP7: report about SOTA status. (All, 11th May)
+
+AP8: next meeting: 11th May
+
+### New Action Points
