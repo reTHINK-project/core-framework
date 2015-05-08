@@ -25,7 +25,7 @@ This subsection highlights the main building blocks of the Vert.x architecture.
 ![image](https://cloud.githubusercontent.com/assets/3206539/7366117/3e517a0e-ed96-11e4-8ba8-be1fc0f5e9ac.png)
 
 Figure 1. Distributed Event Bus
-The section below highlights the building blocks the Vert.x architecture:
+
 ### Addressing
 Messages are sent on the event bus to an address. Vert.x instances are not bound to any addressing schemes. An address is simply a string, any string is valid. Some examples of valid addresses are europe.news.feed1, acme.games.pacman, sausages, and X.
 As a convention the names of the packages that implement certain functionalities should also be represented on the event bus and should be combined with a meaningful event/operation name, e.g. org.acme.MyPackage.MyClass.doSomething
