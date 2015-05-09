@@ -9,6 +9,8 @@ Janus Gateway splits itself into three software modules. The Core module impleme
 
 ![image](janus-arch.png)
 
+Figure 1. Janus Gateway architecture
+
 
 ## Janus Gateway and runtime requirements
 
