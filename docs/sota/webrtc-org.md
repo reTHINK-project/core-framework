@@ -14,6 +14,20 @@ In fact, there is another abstract layer responsible for session management and 
 
 Figure 1. WebRTC architecture scheme
 
+## Software stack organization
+
+As explained before, WebRTC.org comes with a software stack that splits itself into a network package, an audio package and a video package.
+
+# Packages identification
+
+The different packages can be easily identifiable on the WebRTC source code tree. The network package is under src/net and both the audio and video packages are under src/webrtc/, with some mixed up classes. Also, there is not a class diagram which helps developers to get the big picture on this code's organization.
+
+# Code documentation
+
+In the audio/video package almost every file is well-documented. However, the network package doesn't, and it even comes with a README file whose content just states that code documentation is a TODO task on the network package.
+
+# Interfaces
+
 ## WebRTC.org and messaging node requirements
 
 1. WebRTC is intended to be used on latest browser like Google Chrome, Mozilla Firefox, mobile platforms like Android and iOS and also IoT devices like Raspberry Pi.
