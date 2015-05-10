@@ -37,6 +37,6 @@ In the audio/video package almost every file is well-documented. However, the ne
 5. Yes, WebRTC 1.0 supports Web Messaging Notifications.
 6. TODO
 7. TODO
-8. Simple to perform changes in the runtime like protocols for network I/O, signalling, session management, video capture and audio capture/render, as Fig. 1 shows.
+8. The effort to perform changes in the runtime like protocols for network I/O, signalling, session management, video capture and audio capture/render depends on the package these changes are meant to be inserted. The audio and video package is well-documented, despite not having a class diagram. The network package, by its turn, is not documented, increasing the effort to understand the functionality and to perform changes in the runtime.
 
 
