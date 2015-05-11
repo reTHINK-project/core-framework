@@ -1,9 +1,10 @@
-The TURN [4] protocol is defined as an extension of the STUN [5] protocol. TURN servers act as media relays and are directly placed in the media path. TURN server gets all the media packets from an endpoint and sends them towards the remote peer or to another TURN server, if it is also used by the remote endpoint.
-At this point TURN servers are mostly used in case of hosts that are behind NATs. TURN server acts as a relay for the packets. In the most common case, a TURN server is in the public Internet and the hosts are behind NATs. 
+The TURN [4] protocol is defined as an extension of the STUN [5] protocol. 
+TURN servers act as media relays and are directly placed in the media path. TURN server gets all the media packets from one endpoint and sends them towards the remote peer (remote endpoint) or to another TURN server, if it is used by the remote endpoint.
+TURN server acts as a relay for the packets. In the most common case, a TURN server is in the public Internet and the hosts are behind NATs or restrictive firewalls. 
 The study about TURN servers is very up-to-date since there is an ongoing work on this subject in IETF. The recently formed IETF group – TRAM (TURN Revised and Modernized) focuses on improving TURN implementations and features in order to make STUN and TURN more suitable for WebRTC [6].
 
 Coturn is an open source TURN server implementation [1]. It is a separate branch of the previous implementation rfc5766-turn-server-project, and is dedicated for testing new protocols. As a result, it supports more specifications than the previous version. 
-The list of supported specs concerning based on coturn codelab [2]. Based on discussion in discuss-webrtc google forum information about support in Google Chrome is indicated [3].
+Below, the list of supported specs is given, based on coturn codelab [2]. Based on discussion in discuss-webrtc google forum, information about support in Google Chrome is indicated [3].
 
 TURN specs:
 -	RFC 5766 - base TURN specs – supported in Chrome
