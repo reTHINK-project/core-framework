@@ -120,6 +120,76 @@ In case you want to get started developing with the Vert.x framework, the follow
 
 #### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
 
+External Authentication and Authorisation are supported through the usage of an Authorisation module:
+
+```java
+container.deployModule("io.vertx~mod-auth-mgr~2.0.0-final");
+```
+
+The Authorisation module can be the front-end to interact with an external vertx service eg with restful APIs or could be attached to the vertx-io event bus.
+
+**Authorisation to Send/publish a Message**
+
+* SockJSServer, where we need a bridge configuration
+ * InboudPermitted must have: vertx.basicauthmanager.login and clients handler
+  ```java
+JsonArray inboundPermitted = new JsonArray();
+
+JsonObject inboundPermitted1 = new JsonObject().putString("address", "vertx.basicauthmanager.login");
+inboundPermitted.add(inboundPermitted1);
+JsonObject inboundPermitted2 = new JsonObject().putString("address", "aliceHandler").putBoolean("requires_auth",true);
+inboundPermitted.add(inboundPermitted2);
+  ```
+Inboundpermitted allows the use of the "requires_auth" flag. When it is true, messages will be first forwarded to the authorization module, where decisions to send or not the messages are taken.
+
+**receive a Message**
+
+ * OutboundPermitted must have: clients handler.
+  ```java
+outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));
+  ```
+```java
+sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
+```
+
+**Example: communication between two javascript clients connected via SockJS**
+
+Both client applications perform log-in on the EventBus.
+```javascript
+eb.login('alice','alice123', function(reply){console.log(reply);});
+```
+
+Then the client A(alice) wants to send messages to the client B(bob), so client B(bob) needs to register a handler. 
+Before the client A(alice) can send a message to client B(bob), B must first register himself.
+```javascript
+eb.registerHandler('bobHandler', function(reply){console.log(reply);});
+```
+After that client A (alice) can publish messages on client B (bob) handler
+```javascript 
+eb.publish('bobHandler','Hello bob from alice');
+```
+When client A publishes a message to client B handler, this message will be first forwarded to the authorization module because of inbounpermitted configuration.
+
+**subscribe / register handlers to be notified about published messages**
+
+In the SockJSServer configuration we can set a Hook (Registers functions to be called when certain events occur on an event bus bridge).
+```java
+ServerHook hook = new ServerHook(logger);
+sockJSServer.setHook(hook);
+```
+
+ServerHook takes some keyword arguments for example:
+
+* pre-register: Called before a client handler registration is processed.
+```java
+ public boolean handlePreRegister(SockJSSocket sock, String address) {
+    logger.info("handlePreRegister, sock = " + sock + ", address = " + address);
+    return true;
+  }
+```
+
+In this way handlers registration can be controlled.
+
 #### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
 
 Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
