@@ -12,7 +12,7 @@ V8 can be used to provide reTHINK Runtime features
 
 ### Architecture
 
-Main functional modules and interfaces. SHould be based on a picture
+![image](https://github.com/reTHINK-project/core-framework/edit/master/docs/sota/v8-arch.png "V8 Architecture")
 
 Handles & Garbage Collection
 
