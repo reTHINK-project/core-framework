@@ -58,6 +58,10 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 http://matrix.org/
 http://about.psyc.eu/Matrix
 
+#### [RabbitMQ (INESC-ID)](rabbitmq.md)
+
+https://www.rabbitmq.com/
+
 #### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/
