@@ -62,6 +62,29 @@ shell.cc - this code takes as argument a filename with a Javascript code inside 
 
 It is possible to extend the functionalities of V8 by adding new modules in c++. These new functionalities would be available to any programer in Javascript where this particular v8 engine resides. V8 provides functions that permit accessing c++ methods and classes, handling errors and enabling security checks. It provides full duality, in which it permits access from javascript scripts to c++ structures an vice-versa.
 
+Code to add a new Javascript code to V8
+
+Handle<Value> Include(const Arguments& args) {
+    for (int i = 0; i < args.Length(); i++) {
+        String::Utf8Value str(args[i]);
+
+        std::string js_file = load_file(*str);
+
+        if(js_file.length() > 0) {
+            Handle<String> source = String::New(js_file.c_str());
+            Handle<Script> script = Script::Compile(source);
+            return script->Run();
+        }
+    }
+    return Undefined();
+}
+
+Handle<ObjectTemplate> global = ObjectTemplate::New();
+
+global->Set(String::New("include"), FunctionTemplate::New(Include));
+
+Obviouly we also have to implement load_file(). It obtains in string format the content of a file.
+
 ### Requirements Analysis
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
