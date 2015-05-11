@@ -15,6 +15,8 @@ http://dev.w3.org/html5/websockets
 
 http://dev.w3.org/html5/postmsg
 
+http://thenewdialtone.com/webrtc-browser-push-notification/
+
 #### W3C WebRTC (Quobis)
 
 #### Object RTC (Quobis)
@@ -39,11 +41,11 @@ https://code.google.com/p/coturn/ - Free open source implementation of TURN and 
 Open Source projects candidates are Chromium or Mozilla for Web runtime while node.js and vertx.io are very suitable for Messaging Node solutions.
 The research, experimentation and selection will be reported here.*
 
-#### WebRTC.org (Google)(INESC-ID)
+#### [WebRTC.org (Google)(INESC-ID)](webrtc-org.md)
 
 #### OpenWebRTC (Ericsson)(PTIN)
 
-#### Vertx.io (Redhat)(FOKUS)
+#### [Vertx.io (Redhat)(FOKUS)](vertx.md)
 
 #### V8 Javascript Engine (Google)(PTIN)
 
@@ -51,12 +53,12 @@ The research, experimentation and selection will be reported here.*
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
-#### Matrix (DT)
+#### [Matrix (DT)](matrix.md)
 
 http://matrix.org/
 http://about.psyc.eu/Matrix
 
-#### PSYC (INESC-ID)
+#### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/
 
@@ -68,7 +70,7 @@ https://jitsi.org/Projects/JitsiVideobridge
 
 https://github.com/js-platform/node-webrtc
 
-#### Janus Gateway (INESC-ID)
+#### [Janus Gateway (INESC-ID)](janus-gateway.md)
 
 https://github.com/meetecho/janus-gateway
 
@@ -84,11 +86,14 @@ https://www.kurento.org/
 #### SocketPeer
 
 https://github.com/cvan/socketpeer
+
 https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/
 
 
 ### Other (?)
 
+https://github.com/primus/primus (abstracts RTC frameworks for nodejs)
+ 
 http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
