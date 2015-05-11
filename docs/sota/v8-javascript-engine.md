@@ -14,6 +14,49 @@ V8 can be used to provide reTHINK Runtime features
 
 Main functional modules and interfaces. SHould be based on a picture
 
+Handles & Garbage Collection
+
+Handles represent a reference for a Javascript object location on the process heap. The Garbage collector deletes any object on the heap with no valid reference on the process. The Garbage collector besides deleting objectws on the heap frequently moves objects and updates all references to those objects. Obviously the Garbage Collector does not operate often, but from time to time it deletes all obsolete objects.
+Handles may come in different flavours inside v8, ranging from local handles, which have limited scope and terminate when the scope finishes, therefore susceptible to garbage collection, to persistent and even eternal scopes.
+In fact we can look on scopes as handle containers. Each time a scope terminates the objects refered by the handlers, in it residing, are flagged for collection.
+We always have to be in mind that an handle cannot survive its default scope, unless we predetermine its scope to be a special one (EscapableHandleScope ).
+
+Contexts
+
+Contexts are different execution environments that allow separate even unrelated Javascript applications to run concurrently on v8. In fact, the context in which a Javascript code is run must be explicitly specified. This happens because Javascript provides functions and objects that may be changed globally and that may turn into unexpected results.
+One of the advantages of V8 is that it gives you an extensive cache, so in the first time a context may be expensive in time and resources, subsequente times will be substantialy less. Additionally v8 has a snapshot feature that by default has pre-compiled Javascript code on the heap, diminishing time procedures on first context initialization.
+
+Templates
+
+Templates are blueprints for Javascript functions and objects in a context. Templates may be used to wrap c++ code onto Javascript objects permiting its manipulation. One can only have one instance of a template on any given context.
+There are tw0 types of templates:
+function templates - blueprint for a function;
+object templates - each template has associated an object
+
+Accessors
+
+Accessors are c++ callbacks that obtain and return a value when an object property is accessed by Javascript. Obviously then can be used to set or read these values.
+The complexity of them depends on the data being manipulated (Static Global Variables or Dynamic Variables). 
+
+Interceptors
+
+Interceptors are callbacks used to permit access to an object property. They can be:
+named property interceptors - when accessing by string names;
+indexed property interceptors - when the access is made by index.
+
+Exceptions
+
+v8 throws exceptions when an error occurs. In fact v8 returns an empty handle on an unsuccessfull call. 
+
+Inheritance
+
+While Javascript is a class free language c++ is not it has classes and instances. It is important to take this in consideration because Javascript only has objects, it is a prototype based language. To adapt both we have to refer to templates in v8.
+
+V8 Code provided for Javascript processing 
+
+process.cc - this code provides the capability to extend the proccess of an HTTP request. The Javascript argument must provide a method named Process() for the execution to succed. This provides an interface for HTTP Javascript introduction on V8 and runtime execution.
+
+shell.cc - this code takes as argument a filename with a Javascript code inside and executes it. It extendes several functionalities to Javascript including a shell capability to run Javascript snipets and their disponibilization to other Javascript code in runtime.
 
 ### APIs
 
