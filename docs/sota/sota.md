@@ -85,7 +85,10 @@ https://code.google.com/p/coturn/ - Free open source implementation of TURN and 
 #### APIRTC(Apizee)
 
 #### Kurento(Apizee)
+
 https://www.kurento.org/
+
+#### [Sippo(QUOBIS)](SOTA%20of%20Sippo%20and%20the%20protocol-on-the-fly%20approach.md)
 
 #### SocketPeer
 
