@@ -25,6 +25,7 @@ Runtime / Framework : ApiRTC CE Client
 
 ApiRTC actual architecture is presented on following diagram :
 ![ApiRTC CE Actual Architecture](ApiRTC-ReTHINK.png)
+<img src="ApiRTC-ReTHINK.png" width="400">
 
 Components such as NodeJs, Redis or socket.io are used.
 
