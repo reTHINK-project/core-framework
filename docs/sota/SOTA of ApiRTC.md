@@ -5,6 +5,8 @@ ApiRTC solution includes a communication platform and a client JavaScript librar
 
 For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
 
+Complete version of ApiRTC is described on www.apirtc.com
+
 
 ## Asset Evaluation
 
@@ -19,21 +21,22 @@ Runtime / Framework : ApiRTC CE Client
 
 ### Architecture
 
-*Main functional modules and interfaces. Should be based on a picture*
-
 ## Actual Architecture
 
 ApiRTC actual architecture is presented on following diagram :
 <img src="ApiRTC-ReTHINK.png" width="450">
 
 Components such as NodeJs, Redis or socket.io are used.
+ApiRTC use JSON over WebSocket to manage signalization between clients and server.
 
 ## Integration in Rethink
 
 Integration of ApiRTC in Rethink can be done by adding differents connectors depending of needs :
-- Identity Mangement : connector to Identity server
+- Identity Management : connector to Identity server
 - QoS Management : connector to QoS server
-- Other Web communication platform : connector to communication platform
+- Other Web communication platform : connector to communication platform using ProtOFly
+- VoIP Platform : Connector to WebRTC GW 
+- Connector to Media Servers
 
 A Redis Cluster with Pub/Sub mecanism will be used to manage communications between connectors
 
