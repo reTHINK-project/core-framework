@@ -315,4 +315,20 @@ The "resolve(..)" function should be handled by the Runtime itself but all the o
 
 #### Javascript Framework
 
+WONDER library can provide some input for the design and implementation of reTHINK Javascript framework that should facilitate the development of Hyperties, namely:
+* Conversation
+* Participant
+* Resource
+* Identity
+* MessageFactory
+
+
 ####Javascript Shim Layer for non-compliant reTHINK Runtime
+
+WONDER library can provide some input for the design and implementation of reTHINK Javascript Shim Layer to be used in non-compliant reTHINK Runtime, namely:
+
+* MessagingStub
+* Idp
+* Identity
+* DataBroker
+* DataCodec
