@@ -146,7 +146,7 @@ Vert.x provides the different APIs which are implemented in various languages:
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
 
-#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
 
 External Authentication and Authorisation are supported through the usage of an Authorisation module:
 
@@ -218,18 +218,20 @@ ServerHook takes some keyword arguments for example:
 
 In this way handlers registration can be controlled.
 
-#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
 
 Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
-### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
+##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
 * Resilience: Vert.x provides resilience through the "automatic failover" and "HA group" options. When a module is run with HA, if the Vert.x instance where it is running fails, it will be re-started automatically on another node of the cluster. An HA group denotes a logical grouping of nodes in the cluster. Only nodes with the same HA group will failover onto one another. 
 * DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT Vert.x 3.0 provides built-in core functiionality for this core
 * Service Assurance: Modules can be deployed in clusters, and Vert.x provides an internal Load Balancer for routing messages within the cluster. Also the above mentioned "auomatic failoer" and "HA group" options contribute to enforce service assurance. 
 
-### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
 Verticle instances, except advanced multi-threaded worker verticles are almost always single threaded. what this implies is that, a single verticle instance can at most utilise one core of the server. In order to scale across cores, several verticles which are responsible for the same task can be instantiated and the runtime will distribute the workload among them (load balancing), this way taking full advantage of all SPU cores without much effort. Verticles can also be distributed between several machines. This will be transparent to the application code. The Verticles use the same mechanisms to communicate as if they would run on the same machine. This makes it very easy to scale applications.
 
-### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
-* Websockets are supported
-* SockJS also supported
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+* Websockets - Yes  supported
+* SockJS - Yes supported
+* HTTP Long-Polling - Yes 
+* HTTP Streaming - ? (Not sure what this means, clarification needed)
