@@ -76,7 +76,7 @@ The API documentation is [here](https://raw.githack.com/hypercomm/wonder/master/
 
 WONDER Library provides good input for the following WP3 implementation tasks:
 
-#### Runtime API design
+#### Runtime Messaging API
 
 The MessagingStub API is a good starting point to design the Javascript API to support Hyperty Message communication which is comprised by the following functions:
 
@@ -108,7 +108,9 @@ disconnect = function() {
 
 Check WONDER MessagingStub API documentation [here](https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html).
 
-The WONDER Message is a JSON structure comprised by the following attributes:
+#### Message Format
+
+The WONDER Message class provides good input for the design of Hyperty Messages. Wonder Message is a JSON structure comprised by the following attributes:
 
 ```
 {Identity} from // the sender of the message
@@ -117,6 +119,8 @@ body // the message body (a json struct)
 type // the type of the Message (@see MessageType)
 context // identifies a certain context for the message eg the identification of the conversation
 ```
+
+#### Runtime Identity API
 
 The Identity and IDP classes could also provide good input for the support of Identity Management functionalities by reTHINK Runtime.
 
