@@ -120,17 +120,17 @@ context         identifies a certain context for the message eg the Id of the co
 ```
 The following Message Types are defined:
 
-INVITATION	        Message to invite a peer to a conversation.
-ACCEPTED	        Answer for conversation accepted or Context subscription accepted
-CONNECTIVITY_CANDIDATE  Message contains ICE connectivity candidate
-NOT_ACCEPTED            Answer for conversation not accepted or Context subscription not accepted
-BY	                Message to finish the communication with a peer
-UPDATE          	Message to Update conversation by adding or removing a Resource
-UPDATED             	Answer to Message UPDATE
-CONTEXT			Message used to publish the context and status of an Identity.
-SUBSCRIBE		Message to request to receive CONTEXT notifications from a certain Identity
-MESSAGE			Mainly used to support Pager Mode Chat. But it can be used for other use cases instead of Data Channel eg small files.
-CRUD_OPERATION		Messages to handle data persistence in a resource tree
+* INVITATION - Message to invite a peer to a conversation.
+* ACCEPTED - Answer for conversation accepted or Context subscription accepted
+* CONNECTIVITY_CANDIDATE - Message contains ICE connectivity candidate
+* NOT_ACCEPTED - Answer for conversation not accepted or Context subscription not accepted
+* BYE - Message to finish the communication with a peer
+* UPDATE - Message to Update conversation by adding or removing a Resource
+* UPDATED - Answer to Message UPDATE
+* CONTEXT - Message used to publish the context and status of an Identity.
+* SUBSCRIBE - Message to request to receive CONTEXT notifications from a certain Identity
+* MESSAGE - Mainly used to support Pager Mode Chat. But it can be used for other use cases instead of Data Channel eg small files.
+* CRUD_OPERATION - Messages to handle data persistence in a resource tree
 
 The Message body will depend on the Message Type. Some of these messages and associated bodies are more detailed below.
 
