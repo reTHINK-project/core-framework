@@ -56,7 +56,7 @@ RabbitMQ provides the following APIs:
 * [Erlang](https://www.rabbitmq.com/devtools.html#erlang-dev)
 * [Haskell](https://www.rabbitmq.com/devtools.html#haskell-dev)
 * **[Web Messaging](https://www.rabbitmq.com/devtools.html#web-messaging)**
-  * [rabbit-socks](https://github.com/rabbitmq/rabbit-socks) Websocket and Socket.IO support for RabbitMQ
+  * [SockJS-erlang](https://github.com/sockjs/sockjs-erlang) SockJS-erlang is compatible with SockJS client
   * [rabbitmq-chat](https://github.com/videlalvaro/rabbitmq-chat) A Web chat implemented with RabbitMQ and Websockets
   * [rabbithub](https://github.com/tonyg/rabbithub) RabbitHub provides an HTTP-based interface to RabbitMQ.
   * [VorpalBunny](https://github.com/myYearbook/VorpalBunny) PHP for talking to RabbitMQ's JSON-RPC-Channel Plugin
