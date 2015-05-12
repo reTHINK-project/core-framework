@@ -56,7 +56,9 @@ eb.registerHandler("test.address", myHandler);
 ...
 //publishing a message. The message will be delivered to all handlers registered against the address
 eb.publish("test.address", "hello world");
-//point-2-point sending of message. Only one handler registered at the address receiving the message. The handler is chosen in a non strict round-robin fashion
+//point-2-point sending of message. 
+//Only one handler registered at the address receiving the message. 
+//The handler is chosen in a non strict round-robin fashion
 eb.send("test.address", "hello world");
 
 ...
@@ -124,17 +126,17 @@ As can be seen, the result of ```readData``` is not received in the functions re
 ### APIs
 Vert.x provides the different APIs which are implemented in various languages:
 
-** Core API **
+**Core API
 * TCP client/Server API
-*	HTTP client/Server API
-*	Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
-*	File System Access
-*	DNS client API
-*	Shared Data
-*	Event Bus API
-*	JSON API
+* HTTP client/Server API
+* Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
+* File System Access
+* DNS client API
+* Shared Data
+* Event Bus API
+* JSON API
 
-** Container API **
+**Container API
 * Deploy and undeploy verticles
 * Deploy and undeploy modules
 * Retrieve verticle configuration
@@ -220,3 +222,14 @@ In this way handlers registration can be controlled.
 
 Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
+### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
+* Resilience: Vert.x provides resilience through the "automatic failover" and "HA group" options. When a module is run with HA, if the Vert.x instance where it is running fails, it will be re-started automatically on another node of the cluster. An HA group denotes a logical grouping of nodes in the cluster. Only nodes with the same HA group will failover onto one another. 
+* DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT Vert.x 3.0 provides built-in core functiionality for this core
+* Service Assurance: Modules can be deployed in clusters, and Vert.x provides an internal Load Balancer for routing messages within the cluster. Also the above mentioned "auomatic failoer" and "HA group" options contribute to enforce service assurance. 
+
+### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+Verticle instances, except advanced multi-threaded worker verticles are almost always single threaded. what this implies is that, a single verticle instance can at most utilise one core of the server. In order to scale across cores, several verticles which are responsible for the same task can be instantiated and the runtime will distribute the workload among them (load balancing), this way taking full advantage of all SPU cores without much effort. Verticles can also be distributed between several machines. This will be transparent to the application code. The Verticles use the same mechanisms to communicate as if they would run on the same machine. This makes it very easy to scale applications.
+
+### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
+* Websockets are supported
+* SockJS also supported
