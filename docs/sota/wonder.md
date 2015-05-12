@@ -59,6 +59,8 @@ Further information about SigOfly and Data Codec On-the-fly is provided [here](h
 
 A JavaScript framework, the WONDER lib, was designed and implemented to validate the SigOfly and Data Codec On-the-fly concepts. 
 
+![Wonder Library Main Classes](wonderlib.png)
+
 Main WONDER library classes are:
 
 *	The Identity, representing a user and containing all information needed to support Conversation services.
