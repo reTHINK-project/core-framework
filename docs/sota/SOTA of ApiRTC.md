@@ -24,8 +24,7 @@ Runtime / Framework : ApiRTC CE Client
 ## Actual Architecture
 
 ApiRTC actual architecture is presented on following diagram :
-![ApiRTC CE Actual Architecture](ApiRTC-ReTHINK.png)
-<img src="ApiRTC-ReTHINK.png" width="400">
+<img src="ApiRTC-ReTHINK.png" width="450">
 
 Components such as NodeJs, Redis or socket.io are used.
 
@@ -38,8 +37,7 @@ Integration of ApiRTC in Rethink can be done by adding differents connectors dep
 
 A Redis Cluster with Pub/Sub mecanism will be used to manage communications between connectors
 
-![ApiRTC Integration in Rethink](ApiRTC-IntegrationInReTHINK.png)                                                                      
-                                                                            
+<img src="ApiRTC-IntegrationInReTHINK.png" width="450">                                                                     
                                                                             
 ### APIs
 
