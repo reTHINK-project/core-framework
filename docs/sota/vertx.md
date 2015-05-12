@@ -39,6 +39,32 @@ The Event Bus supports the following modes of operation:
 * *Point to point and Request-Response messaging*: Messages are routed to just one of the handlers registered at an address. They can optionally be replied to. 
 * *Remote Procedure Call (RPC)*: This mode of operation is implemented on top of the Request-Response model, basically by enforcing certain conventions on requests and responses
 
+This example shows the Event Bus can be instantiated, how a Handler can be defined and registered on the Event Bus and how the Event Bus can subsequently publish a message for the defined Handler:
+
+```
+EventBus eb = vertx.eventBus();
+
+Handler<Message> myHandler = new Handler<Message>(){
+
+	public void handle(Message message){
+		System.out.println("I just recieved a message "+ message.body);
+	}
+};
+//test.address is the address at which this handler will be registered
+eb.registerHandler("test.address", myHandler);
+
+...
+//publishing a message. The message will be delivered to all handlers registered against the address
+eb.publish("test.address", "hello world");
+//point-2-point sending of message. Only one handler registered at the address receiving the message. The handler is chosen in a non strict round-robin fashion
+eb.send("test.address", "hello world");
+
+...
+
+eb.unregisterHandler("test.address", myHandler);
+
+```
+
 ### Types of Messages
 Messages that you send on the event bus can be as simple as a string, a number or a boolean. It is also possible to send Vert.x buffers or JSON messages. 
 It's highly recommended to use JSON messages to communicate between verticles. JSON is easy to create and parse in all the languages that Vert.x supports. 
@@ -96,23 +122,23 @@ As can be seen, the result of ```readData``` is not received in the functions re
 
 
 ### APIs
+Vert.x provides the different APIs which are implemented in various languages:
 
-Vert.x provides the following developer API for the different languages:
-* Java [manual](http://vertx.io/core_manual_java.html) | [JavaDoc](http://vertx.io/api/java/index.html)
-* JavaScript [manual](http://vertx.io/core_manual_js.html) | [JSDoc](http://vertx.io/mod-lang-js/docs/1.1.0/index.html)
-* Ruby [manual](http://vertx.io/core_manual_ruby.html) | [YarDoc](http://vertx.io/api/ruby/index.html)
-* Python [manual](http://vertx.io/core_manual_python.html) | [EpyDoc](http://vertx.io/api/epydoc/index.html) | [PyDoc](http://vertx.io/api/pydoc/index.html)
-* Groovy [manual](http://vertx.io/core_manual_groovy.html) | [GroovyDoc](http://vertx.io/api/groovy/index.html)
-* Clojure [manual](http://vertx.io/core_manual_clojure.html) | [CodoxDoc](http://vertx.io/api/clojure/index.html)
-* Scala [manual](http://vertx.io/core_manual_scala.html) | [ScalaDoc](http://vertx.io/api/scala/index.html)
-* Ceylon [manual](http://vertx.io/core_manual_ceylon.html) | [CoreModuleDoc](http://modules.ceylon-lang.org/repo/1/io/vertx/ceylon/core/1.0.0/module-doc/api/index.html) | [PlatformModuleDoc](http://modules.ceylon-lang.org/repo/1/io/vertx/ceylon/platform/1.0.0/module-doc/api/index.html)
+** Core API **
+* TCP client/Server API
+*	HTTP client/Server API
+*	Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
+*	File System Access
+*	DNS client API
+*	Shared Data
+*	Event Bus API
+*	JSON API
 
-In case you want to get started developing with the Vert.x framework, the following links give you an easy start-up.
-* [Get started developing Vert.x applications with Maven](http://vertx.io/maven_dev.html)
-* [Get started develop Vert.x applications with Gradle](http://vertx.io/gradle_dev.html)
-* [Learn how to develop Vert.x applications with the standard project layout](http://vertx.io/dev_guide.html)
-* [Learn how to embed Vert.x in a Java (or Groovy) application](http://vertx.io/embedding_manual.html)
-* [Learn how to implement new language support in Vert.x](http://vertx.io/language_support.html)
+** Container API **
+* Deploy and undeploy verticles
+* Deploy and undeploy modules
+* Retrieve verticle configuration
+* Logging
 
 ### Requirements Analysis
 
