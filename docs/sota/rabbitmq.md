@@ -55,7 +55,11 @@ RabbitMQ provides the following APIs:
 * [Go](https://www.rabbitmq.com/devtools.html#go-dev)
 * [Erlang](https://www.rabbitmq.com/devtools.html#erlang-dev)
 * [Haskell](https://www.rabbitmq.com/devtools.html#haskell-dev)
-
+* **[Web Messaging](https://www.rabbitmq.com/devtools.html#web-messaging)**
+  * [rabbit-socks](https://github.com/rabbitmq/rabbit-socks) Websocket and Socket.IO support for RabbitMQ
+  * [rabbitmq-chat](https://github.com/videlalvaro/rabbitmq-chat) A Web chat implemented with RabbitMQ and Websockets
+  * [rabbithub](https://github.com/tonyg/rabbithub) RabbitHub provides an HTTP-based interface to RabbitMQ.
+  * [VorpalBunny](https://github.com/myYearbook/VorpalBunny) PHP for talking to RabbitMQ's JSON-RPC-Channel Plugin
 
 ### Requirements Analysis
 
@@ -82,7 +86,7 @@ Analysis against **Messaging Node** Requirements
 
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes
-  * RabbitMQ has a built-in tracer feature that is able to see every message that is published, and every message that is delivered on a per-node, per-vhost basis.
+  * RabbitMQ has a built-in tracer feature that is able to see every message that is published, and every message that is delivered on a per-node.
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
   * Yes
@@ -92,13 +96,14 @@ Analysis against **Messaging Node** Requirements
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
   * Yes
-  * In a RabbitMQ cluster all data/state required for the operation of a broker is replicated across all nodes, for reliability and scaling, with full ACID properties. An exception to this are message queues, which by default reside on the node that created them, though they are visible and reachable from all nodes.
+  * In a RabbitMQ cluster all data/state required for the operation of a broker is replicated across all nodes, for reliability and scaling, with full ACID properties. Queues may be located on a single node, or mirrored across multiple nodes. A client connecting to any node in a cluster can see all queues in the cluster, even if they are not located on that node.
   * Brokers tolerate the failure of individual nodes
   * 1 million messages/second was benchmarked using a cluster of 30 Nodes [[Link1]](http://blog.pivotal.io/pivotal/products/rabbitmq-hits-one-million-messages-per-second-on-google-compute-engine)[[Link2]](http://googlecloudplatform.blogspot.pt/2014/06/rabbitmq-on-google-compute-engine.html)
 
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
   * No
   * The client should use heartbeats for detecting dead TCP connections that have a timeout interval.
+  * Business logic must be implemented on the application layer in order to deal with this case.
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
   * Yes
@@ -113,8 +118,8 @@ Analysis against **Messaging Node** Requirements
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
   * Depends on the protocol used:
-    * no - AMQP, STOMP, HTTP (some computation is needed) (>256K RAM)
-    * MQTT - yes
+    * AMQP,STOMP, HTTP - depends (some computation is needed) (>256K RAM)
+    * MQTT - yes (Designed especially for IoT)
 
 * [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
   * Yes
