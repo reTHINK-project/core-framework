@@ -6,7 +6,6 @@ ApiRTC solution includes a communication platform and a client JavaScript librar
 For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
 
 
-
 ## Asset Evaluation
 
 ### Overview
@@ -14,6 +13,7 @@ For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source v
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework*
 
 Messaging Node : NodeJs + Redis Cluster
+
 Runtime / Framework : ApiRTC CE Client
 
 
@@ -66,10 +66,5 @@ Identified Tasks for Integration in Rethink :
  - [ ] Development of Connector to other Communication Platform (Protocol On the Fly)
  - [ ] Development of Connector to Kurento Server
  - [ ] Development of Connector to different Vendor WebRTC GW
-
-
-
-
-
 
 
