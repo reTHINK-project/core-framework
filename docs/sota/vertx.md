@@ -39,6 +39,34 @@ The Event Bus supports the following modes of operation:
 * *Point to point and Request-Response messaging*: Messages are routed to just one of the handlers registered at an address. They can optionally be replied to. 
 * *Remote Procedure Call (RPC)*: This mode of operation is implemented on top of the Request-Response model, basically by enforcing certain conventions on requests and responses
 
+This example shows the Event Bus can be instantiated, how a Handler can be defined and registered on the Event Bus and how the Event Bus can subsequently publish a message for the defined Handler:
+
+```
+EventBus eb = vertx.eventBus();
+
+Handler<Message> myHandler = new Handler<Message>(){
+
+	public void handle(Message message){
+		System.out.println("I just recieved a message "+ message.body);
+	}
+};
+//test.address is the address at which this handler will be registered
+eb.registerHandler("test.address", myHandler);
+
+...
+//publishing a message. The message will be delivered to all handlers registered against the address
+eb.publish("test.address", "hello world");
+//point-2-point sending of message. 
+//Only one handler registered at the address receiving the message. 
+//The handler is chosen in a non strict round-robin fashion
+eb.send("test.address", "hello world");
+
+...
+
+eb.unregisterHandler("test.address", myHandler);
+
+```
+
 ### Types of Messages
 Messages that you send on the event bus can be as simple as a string, a number or a boolean. It is also possible to send Vert.x buffers or JSON messages. 
 It's highly recommended to use JSON messages to communicate between verticles. JSON is easy to create and parse in all the languages that Vert.x supports. 
@@ -96,29 +124,29 @@ As can be seen, the result of ```readData``` is not received in the functions re
 
 
 ### APIs
+Vert.x provides the different APIs which are implemented in various languages:
 
-Vert.x provides the following developer API for the different languages:
-* Java [manual](http://vertx.io/core_manual_java.html) | [JavaDoc](http://vertx.io/api/java/index.html)
-* JavaScript [manual](http://vertx.io/core_manual_js.html) | [JSDoc](http://vertx.io/mod-lang-js/docs/1.1.0/index.html)
-* Ruby [manual](http://vertx.io/core_manual_ruby.html) | [YarDoc](http://vertx.io/api/ruby/index.html)
-* Python [manual](http://vertx.io/core_manual_python.html) | [EpyDoc](http://vertx.io/api/epydoc/index.html) | [PyDoc](http://vertx.io/api/pydoc/index.html)
-* Groovy [manual](http://vertx.io/core_manual_groovy.html) | [GroovyDoc](http://vertx.io/api/groovy/index.html)
-* Clojure [manual](http://vertx.io/core_manual_clojure.html) | [CodoxDoc](http://vertx.io/api/clojure/index.html)
-* Scala [manual](http://vertx.io/core_manual_scala.html) | [ScalaDoc](http://vertx.io/api/scala/index.html)
-* Ceylon [manual](http://vertx.io/core_manual_ceylon.html) | [CoreModuleDoc](http://modules.ceylon-lang.org/repo/1/io/vertx/ceylon/core/1.0.0/module-doc/api/index.html) | [PlatformModuleDoc](http://modules.ceylon-lang.org/repo/1/io/vertx/ceylon/platform/1.0.0/module-doc/api/index.html)
+**Core API
+* TCP client/Server API
+* HTTP client/Server API
+* Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
+* File System Access
+* DNS client API
+* Shared Data
+* Event Bus API
+* JSON API
 
-In case you want to get started developing with the Vert.x framework, the following links give you an easy start-up.
-* [Get started developing Vert.x applications with Maven](http://vertx.io/maven_dev.html)
-* [Get started develop Vert.x applications with Gradle](http://vertx.io/gradle_dev.html)
-* [Learn how to develop Vert.x applications with the standard project layout](http://vertx.io/dev_guide.html)
-* [Learn how to embed Vert.x in a Java (or Groovy) application](http://vertx.io/embedding_manual.html)
-* [Learn how to implement new language support in Vert.x](http://vertx.io/language_support.html)
+**Container API
+* Deploy and undeploy verticles
+* Deploy and undeploy modules
+* Retrieve verticle configuration
+* Logging
 
 ### Requirements Analysis
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
 
-#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
 
 External Authentication and Authorisation are supported through the usage of an Authorisation module:
 
@@ -190,7 +218,20 @@ ServerHook takes some keyword arguments for example:
 
 In this way handlers registration can be controlled.
 
-#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
 
 Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
+##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
+* Resilience: Vert.x provides resilience through the "automatic failover" and "HA group" options. When a module is run with HA, if the Vert.x instance where it is running fails, it will be re-started automatically on another node of the cluster. An HA group denotes a logical grouping of nodes in the cluster. Only nodes with the same HA group will failover onto one another. 
+* DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT Vert.x 3.0 provides built-in core functiionality for this core
+* Service Assurance: Modules can be deployed in clusters, and Vert.x provides an internal Load Balancer for routing messages within the cluster. Also the above mentioned "auomatic failoer" and "HA group" options contribute to enforce service assurance. 
+
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+Verticle instances, except advanced multi-threaded worker verticles are almost always single threaded. what this implies is that, a single verticle instance can at most utilise one core of the server. In order to scale across cores, several verticles which are responsible for the same task can be instantiated and the runtime will distribute the workload among them (load balancing), this way taking full advantage of all SPU cores without much effort. Verticles can also be distributed between several machines. This will be transparent to the application code. The Verticles use the same mechanisms to communicate as if they would run on the same machine. This makes it very easy to scale applications.
+
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+* Websockets - Yes  supported
+* SockJS - Yes supported
+* HTTP Long-Polling - Yes 
+* HTTP Streaming - ? (Not sure what this means, clarification needed)

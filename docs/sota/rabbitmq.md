@@ -7,7 +7,7 @@ From rabbitmq.com:
 
 ### Overview
 
-In the scope of the reTHINK project, matrix.org is a candidate technology for the Messaging Node
+In the scope of the reTHINK project, RabbitMQ is a candidate technology for the Messaging Node
 
 ##### Highlights:
   * **Reliability** - RabbitMQ offers a variety of features to let you trade off performance with reliability, including persistence, delivery acknowledgements, publisher confirms, and high availability.
@@ -20,18 +20,17 @@ In the scope of the reTHINK project, matrix.org is a candidate technology for th
 
 ### Architecture
 
+The core component is the **Broker** that routes the messages from the **producers** to the **consumers** as depicted in the following image.
+
 ![image](rabbitmq_arch2.png)
 
-![image](rabbitmq_arch.png)
-
-
-The core component is the **Broker** that routes the messages from the **producers** to the **consumers**.
-
+The **Broker** has two main componentes:
 * **Exchange**: accepts and routes messages from producer to clients based on the message information such as keys, bindings, filtering or broadcast.
 
 * **Queue**: a FIFO queue of messages
 
-The second image shows and example of topic / wild-card  based routing.
+Message routing can be based on topic / wild-card,  as shown in the following image.
+![image](rabbitmq_arch.png)
 
 ### APIs and Documentation
 
