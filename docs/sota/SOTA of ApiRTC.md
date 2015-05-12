@@ -13,10 +13,8 @@ For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source v
 
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework*
 
-Messaging Node :
-Runtime :
-Network Qos : Possibility to get browser QoS Statistics
-Framework
+Messaging Node : NodeJs + Redis Cluster
+Runtime / Framework : ApiRTC CE Client
 
 
 ### Architecture
@@ -29,10 +27,7 @@ Framework
 
 ## Integration in Rethink
 
-TO BE COMPLETED (apiRTC Client - socket.io -  NodeJS (CCS) - Redis Cluster - Connector ProtoColOnTheFly
-                                                                            - Connector Identity Server
-                                                                            - Connector QoS
-                                                                            - Connector Other WebRTC Platform                                                                         
+TO BE COMPLETED                                                                        
                                                                             
                                                                             
 ### APIs
@@ -46,18 +41,27 @@ ApiRTC provides a complete set of API for developers
 In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
 
 
-Tasks to be done during Project :
+
+analyse regarding WP3 requirements :
+TO BE COMPLETED
+
+
+
+Identified Tasks to fullfills requirements :
 
 Publish and document apiRTC CE
-
-Specifictaion regle utilisation des diffrent connectoeurs / routage des appesl
-    
-
-
+Specification : Connector usage rules (registration, authentication, calls routing ...)
+Developpement of Connector Manager
 Add Redis Cluster
-Add Connector to QoS Server + Managenement on apiRTC Client to manage connection to TURN Servers
-Add Connector to Identity Manager
-Add Connector to other Communication Platform (Protocol On the Fly)
-Add Connector to Kurento Server
-Add Connector to different Vendor WebRTC GW
+Development of Connector to QoS Server
+Development on apiRTC Client to manage connection to TURN Servers
+Development of Connector to Identity Server
+Development of Connector to other Communication Platform (Protocol On the Fly)
+Development of Connector to Kurento Server
+Development of Connector to different Vendor WebRTC GW
+
+
+
+
+
 
