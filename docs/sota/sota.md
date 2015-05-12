@@ -39,7 +39,7 @@ https://code.google.com/p/coturn/ - Free open source implementation of TURN and 
 
 *Existing components to be used in WP3, to develop Hyperty Runtime and Messaging Nodes.  
 Open Source projects candidates are Chromium or Mozilla for Web runtime while node.js and vertx.io are very suitable for Messaging Node solutions.
-The research, experimentation and selection will be reported here.*
+The research, experimentation and selection will be reported here following [this template](template.md).*
 
 #### [WebRTC.org (Google)(INESC-ID)](webrtc-org.md)
 
@@ -47,9 +47,9 @@ The research, experimentation and selection will be reported here.*
 
 #### [Vertx.io (Redhat)(FOKUS)](vertx.md)
 
-#### V8 Javascript Engine (Google)(PTIN)
+#### [V8 Javascript Engine (Google)(PTIN)](v8-javascript-engine.md)
 
-#### Real Time Web Messaging (several)
+#### [Real Time Backends (several)(ORANGE)](realtimebackends.md)
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
@@ -78,7 +78,7 @@ https://github.com/js-platform/node-webrtc
 
 https://github.com/meetecho/janus-gateway
 
-#### COTURN (ORANGE)
+#### [COTURN (ORANGE)](coturn.md)
 
 https://code.google.com/p/coturn/ - Free open source implementation of TURN and STUN Server
 
@@ -101,4 +101,7 @@ https://github.com/primus/primus (abstracts RTC frameworks for nodejs)
 http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
+
+
+#### [Runtime Security(INESC-ID)](runtime-security.md)
 
