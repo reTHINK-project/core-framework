@@ -14,9 +14,12 @@ Complete version of ApiRTC is described on www.apirtc.com
 
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework*
 
-Messaging Node : NodeJs + Redis Cluster
+**Messaging Node :** NodeJs + Redis Cluster
 
-Runtime / Framework : ApiRTC CE Client
+NodeJs : https://nodejs.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
+Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
+
+**Runtime / Framework :** ApiRTC CE Client
 
 
 ### Architecture
