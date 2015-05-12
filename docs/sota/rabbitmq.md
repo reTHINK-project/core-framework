@@ -86,7 +86,7 @@ Analysis against **Messaging Node** Requirements
 
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes
-  * RabbitMQ has a built-in tracer feature that is able to see every message that is published, and every message that is delivered on a per-node, per-vhost basis.
+  * RabbitMQ has a built-in tracer feature that is able to see every message that is published, and every message that is delivered on a per-node.
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
   * Yes
