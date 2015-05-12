@@ -50,24 +50,23 @@ ApiRTC provides API for developers
 In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
 
 
-
-analyse regarding WP3 requirements :
+Analyse regarding WP3 requirements :
 TO BE COMPLETED
 
 
+Identified Tasks for Integration in Rethink :
 
-Identified Tasks to fullfills requirements :
+ - [ ] Publish and document apiRTC CE
+ - [ ] Specification : Connector usage rules (registration, authentication, calls routing ...)
+ - [ ] Developpement of Connector Manager (Rules management)
+ - [ ] Add Redis Cluster
+ - [ ] Development of Connector to QoS Server
+ - [ ] Development on apiRTC Client to manage connection to TURN Servers
+ - [ ] Development of Connector to Identity Server
+ - [ ] Development of Connector to other Communication Platform (Protocol On the Fly)
+ - [ ] Development of Connector to Kurento Server
+ - [ ] Development of Connector to different Vendor WebRTC GW
 
-Publish and document apiRTC CE
-Specification : Connector usage rules (registration, authentication, calls routing ...)
-Developpement of Connector Manager
-Add Redis Cluster
-Development of Connector to QoS Server
-Development on apiRTC Client to manage connection to TURN Servers
-Development of Connector to Identity Server
-Development of Connector to other Communication Platform (Protocol On the Fly)
-Development of Connector to Kurento Server
-Development of Connector to different Vendor WebRTC GW
 
 
 
