@@ -38,32 +38,33 @@ The Event Bus supports the following modes of operation:
 * *Point to point and Request-Response messaging*: Messages are routed to just one of the handlers registered at an address. They can optionally be replied to. 
 * *Remote Procedure Call (RPC)*: This mode of operation is implemented on top of the Request-Response model, basically by enforcing certain conventions on requests and responses
 
-This example shows the Event Bus can be instantiated, how a Handler can be defined and registered on the Event Bus and how the Event Bus can subsequently publish a message for the defined Handler:
+This example shows the Event Bus (in version 3) can be instantiated, how a Handler can be defined and registered on the Event Bus and how the Event Bus can subsequently publish a message for the defined Handler:
 
-```
-EventBus eb = vertx.eventBus();
+```java
+final EventBus eb = vertx.eventBus();
 
-Handler<Message> myHandler = new Handler<Message>(){
+/*Create a message consumer against the specified address.
+The returned consumer is not yet registered at the address, registration will be effective when MessageConsumer.handler(..) is called.
+*/
+final MessageConsumer<JsonObject> msgConsumer = eb.consumer("test.address");
 
-	public void handle(Message message){
-		System.out.println("I just recieved a message "+ message.body);
-	}
-};
-//test.address is the address at which this handler will be registered
-eb.registerHandler("test.address", myHandler);
+//register handler for the MessageConsumer
+msgConsumer.handler(message -> {
+	System.out.println("I just recieved a message "+ message.body());
+});
 
 ...
 //publishing a message. The message will be delivered to all handlers registered against the address
 eb.publish("test.address", "hello world");
+
 //point-2-point sending of message. 
 //Only one handler registered at the address receiving the message. 
 //The handler is chosen in a non strict round-robin fashion
 eb.send("test.address", "hello world");
 
 ...
-
-eb.unregisterHandler("test.address", myHandler);
-
+//unregister handler for the MessageConsumer
+msgConsumer.unregister();
 ```
 
 ### Types of Messages
