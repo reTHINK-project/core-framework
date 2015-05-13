@@ -75,9 +75,9 @@ This also includes the service endpoint to retrieve the protocol stack (Messagin
 
 The API documentation is [here](https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html) and the source code [here](https://github.com/hypercomm/wonder/tree/master/src/libs).
 
-### Input to reTHINK and going beyond WONDER
+### Input to reTHINK
 
-WONDER Library provides good input for the following WP3 implementation tasks:
+WONDER Library can be used in reTHINK in different ways that are detailed in the following sections.
 
 #### Runtime Messaging API
 
@@ -111,7 +111,7 @@ disconnect = function() {
 
 Check WONDER MessagingStub API documentation [here](https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html).
 
-#### Message Format
+#### Messages Format
 
 The WONDER Message class provides good input for the design of Hyperty Messages. Wonder Message is a JSON structure and it is comprised by a Header and a Body. The following Message Header attributes are defined:
 
@@ -135,73 +135,7 @@ The following Message Types are defined:
 * MESSAGE - Mainly used to support Pager Mode Chat. But it can be used for other use cases instead of Data Channel eg small files.
 * CRUD_OPERATION - Messages to handle data persistence in a resource tree
 
-The Message body will depend on the Message Type. Some of these messages and associated bodies are more detailed below.
-
-##### Invitation Message Type
-
-Invitation for a new conversation to be hosted by the inviting identity ie to use Messaging Server of the inviting identity which is provided in the message body as well as the connection description of the inviting identity.
-
-**Invitation Message Body**
-
-```
-    conversationURL;
-    connectionDescription; // SDP
-    subject;
-    hosting; // Identity of who is hosting the conversation
-    agenda;
-    peers;
-    constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
-```
-##### Accepted Message Type
-
-To accept eg Invitations, Conversation updates or Context Subscription.
-Similar to SIP 200 OK
-
-**Accepted Message Body**
-
-```
-    connectionDescription; // SDP
-    hosting; // Identity of who is hosting the conversation
-    constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
-```
-
-##### Not Accepted
-
-Eg Busy, Reject, No_answer to:
- - Invitation requests
- - Update requests
- - Subscription requests
-
-This information will go in the message body as a String
-
-##### CONNECTIVITY_CANDIDATE Message Type
-
-Messages used to exchange ICE connectivity candidates between peers
-
-**Message Body**
-
-```
-label - The label of the candidate.
-id - The id of the candidate.
-candidate - The ICE candidate string.
-lastCandidate - Boolean indicating if the candidate is the last one. If true, include the full SDP in the candidate parameter for compatibility with domains that don't support trickling.
-```
-
-
-##### CRUD_OPERATION
-
-These Messages are used to handle data persistence in a resource tree by using the four basic functions create, read, update and delete.
-
-**Message Body**
-
-```
-operation	//  create, read, update or delete.
-syntax 		// syntax used for CRUD operation field "criteria" examples: mongoDB, SQL
-criteria 	// some filtering expression used in read and update operations
-doc		// Contains data for CREATE and UPDATE operations
-resource; 	// Resource URI where the operation is applied
-```
-
+The Message body will depend on the Message Type. Detailed description of WONDER Messages are provided [here](wonder-messages.md).
 
 #### Runtime Identity API
 
