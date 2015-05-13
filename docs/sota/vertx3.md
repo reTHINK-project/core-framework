@@ -76,24 +76,7 @@ For RPC messages, JSON is enforced.
 The unit of execution for Vert.x applications is called a Verticle. Verticles can be written in multiple languages (JavaScript, Ruby, Java, Groovy or Python). Many verticles can be executed concurrently in the same Vert.x instance. An application might be composed of multiple verticles deployed on different nodes of the network communicating by exchanging messages over the Vert.x Event Bus. For trivial applications verticles can be run directly from the command line, but more usually they are packaged up into modules.
 
 ## Module
-Applications within the framework comprise of one or more modules.  The framework allows packaging of applications or other re-usable functionality into modules, which can be deployed or used by other code. Module can also by catalogue in the Vert.x module registry so others can discover and use it. The framework offers the possibility to automatically download and install modules from any repository given the module identifier.
-Each module has a unique identifier. The identifier is a string that is composed of three parts:
-A module can contain any number of (including zero) verticles and can depend on other modules (and their verticles) in turn. Creating a module with no verticles makes sense to provide only library support for other modules.  Modules are described by a descriptor file: mod.json. A minimal descriptor looks like this: 
-
-```
-{
-  "owner": "org.acmecorp",
-  "name": "myReThinkAdapterModule",
-  "version": "0.1"
-}
-```
-Additionally, three more fields are optionally recognized:
-* ```worker```
-indicates if this is a worker module. See below under event loop. 
-* ```main```
-Indicates the startup routine for this module. 
-* ```includes```
-Additional module dependencies as a comma-separated string.
+The Vert.x 3 module system has gone.
 
 ## Event Loop
 By default, all verticles run in an asynchronous event loop. When developing a verticle, it is essential not to block the event loop. Blocking here means either doing any kind of blocking I/O or even doing any kind of computational intensive work. Modules that do either of these should indicate that they are so called ```worker``` modules by setting ```"worker": true``` in their *mod.json* file. 
