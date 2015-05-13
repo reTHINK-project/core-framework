@@ -237,3 +237,7 @@ Verticle instances, except advanced multi-threaded worker verticles are almost a
 * SockJS - Yes supported
 * HTTP Long-Polling - Yes 
 * HTTP Streaming - ? (Not sure what this means, clarification needed)
+
+##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+No.
+Vert.x uses the Event Bus to send messages through pub/sub mechanism or point-2-point mechanism. In both cases, there is no feedback to the sender if the message was recieved and processed or if it was not recieved at all. In the end reliability will boil down to the application logic service build on top of vert.x. 
