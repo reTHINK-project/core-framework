@@ -1,6 +1,6 @@
 ## Vert.x Evaluation
 
-***Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x*
+**Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x
 
 ### Overview
 
