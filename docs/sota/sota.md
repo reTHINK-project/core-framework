@@ -126,5 +126,9 @@ Meteor, or MeteorJS is an open-source real-time JavaScript web application frame
 
 realtime synchronization of the client and server. It enables one to write an application in which two users edit the same text field–live–without writing too much code yourself. Derby handles all of the synchronization of the models and views. It uses http://sharejs.org/
 
+#### [TogetherJS](https://togetherjs.com/)
+
+Nidejs based collaboration framework ready to be integrated with Web Apps using WebRTC for Audio chat
+
 #### [Runtime Security(INESC-ID)](runtime-security.md)
 
