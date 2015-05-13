@@ -49,6 +49,15 @@ The research, experimentation and selection will be reported here following [thi
 
 #### [V8 Javascript Engine (Google)(PTIN)](v8-javascript-engine.md)
 
+#### [Nashorn JVM Javascript Engine](http://openjdk.java.net/projects/nashorn/)
+
+It replaces [Rhino](https://github.com/mozilla/rhino)
+More resources:
+
+http://www.infoq.com/articles/nashorn
+http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
+http://ringojs.org/
+
 #### [Real Time Backends (several)(ORANGE)](realtimebackends.md)
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
