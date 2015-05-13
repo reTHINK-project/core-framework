@@ -84,6 +84,10 @@ WONDER Library can be used in reTHINK in different ways that are detailed in the
 The MessagingStub API is a good starting point to design the Javascript API to support Hyperty Message communication which is comprised by the following functions:
 
 ```
+connect(ownRtcIdentity, credentials, callbackFunction) {
+// connects to Msg Server
+};
+
 addListener(StubEvtHandler, URI, contextId){
 //Adds a listener for a certain context.
 };
@@ -94,10 +98,6 @@ removeListener(StubEvtHandler, URI, contextId){
 
 getListeners(){
 //Gets the list of listeners.
-};
-
-connect(ownRtcIdentity, credentials, callbackFunction) {
-// connects to Msg Server
 };
 
 sendMessage = function(message) {
