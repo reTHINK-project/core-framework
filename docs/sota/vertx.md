@@ -1,5 +1,7 @@
 ## Vert.x Evaluation
 
+***Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x*
+
 ### Overview
 
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
