@@ -1,4 +1,4 @@
-## Vert.x Evaluation
+## Vert.x 3 Evaluation (Draft)
 
 **Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x
 
@@ -6,21 +6,18 @@
 
 *Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
 
-
-Vert.x is an application framework developed by VMWare in 2011. The application framework provides possibilities to develope loosely coupled network service applications.  
+This SOTA will evidence differences between version 2 and 3 of vert.x. It will not describe all the architecture as in the version 2 evaluation.
 
 The concept of the framework is summarized as follows:
 * **Polyglot (supports several languages)**:
-Vert.x framework runs on the Java Virtual Machine. However, Java is not required to use Vert.x. 
-As well as languages based on JVM operation, such as Java or Groovy, Vert.x can be used with Ruby, Python, and even JavaScript. In addition, Scala and Closure are planned to be supported.
-* **Super Simple Concurrency model**:
-When building an application by using Vert.x, users can write code as a single thread application. That means that the multi-thread programming effect can be achieved without synchronization, lock, or volatility.
-However, Vert.x allows to create multiple threads based on the number of CPU cores whlie only one process is executed. It handle the multi-threading so users can focus on implementing business logic.
+Vert.x framework runs on the JVM. However, Java is not required to run a Verticle.
+Main languages supported in version 3 are Java, JavaScript, Groovy and Ruby.
+* **Concurrency model**:
+Concurrency model has not changed between versions.
 * **Provides Event Bus**:
-The main concept of Vert.x is not only to produce a ‘one server process DAEMON'. Vert.x aims to make a variety of Vert.x-built server programs communicate well with each other. For this, Vert.x provides Event Bus. Therefore, functions such as Point to Point or Pub/Sub can be used (to provide Event Bus function, Vert.x uses Hazelcast, an In-Memory Data Grid).
-With this Event Bus, a server application built with different languages can easily communicate with each other.
+Event bus is still available and is an essential part of vert.x engine for communication between programs, even when written in different languages. The event bus even penetrates into in-browser JavaScript allowing you to create effortless so-called real-time web applications.
 * **Module System & Public Module Repository**:
-Vert.x has a module system. This module system can be understood as a type of component. That means the Vert.x-built server application project itself is modularized. It aims at reusability. Modules can be registered to Public Module Repository. Through the Public Module Repository, the module can be shared
+It seems that this feature is dropped in version 3. There is no more methods like deployModule(..) available. Now you create your verticles and package them into standard java jars. These jars can be pushed to Maven repositories just like any Maven artifact. For static module imports this is enough, however if we need dynamic module maintenance, an OSGi container could be used instead.
 
 ### Architecture
 This subsection highlights the main building blocks of the Vert.x architecture. 
