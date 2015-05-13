@@ -21,7 +21,7 @@ It seems that this feature is dropped in version 3. There is no more methods lik
 
 ### Architecture
 This subsection highlights the main building blocks of the Vert.x architecture. 
-![image](vertx-architecture-diagram.png)
+(diagram not supplied)
 
 Figure 1. Vert.x Architecture
 
