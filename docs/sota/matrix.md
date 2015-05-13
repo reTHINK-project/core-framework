@@ -114,7 +114,5 @@ Analysis against **Messaging Node** Requirements
   * AA is performed internally
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
-  * No, only indirectly via room-IDs
-  * No direct subscription for special event-types possible on Client-Server API level
-  * only implicit subscription for all messages/events of a certain room
-  * Application Service API seems to support it
+  * Yes, via room-IDs
+  

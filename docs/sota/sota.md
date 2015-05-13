@@ -7,6 +7,10 @@ Such analysis should report whether WP3 should reuse existing work including its
 
 *Study relevant W3C standards and others that may facilitate the fulfilment of requirements derived from Task 2.1.*
 
+#### OMA (DT)
+
+[RESTful Network API for WebRTC Signaling V1.0](http://technical.openmobilealliance.org/Technical/technical-information/oma-api-program/oma-api-inventory/api-details?API_ID=141)
+
 #### W3C HTML5
 
 http://www.w3.org/TR/html5/
@@ -33,13 +37,13 @@ https://code.google.com/p/coturn/ - Free open source implementation of TURN and 
 
 ### Projects
 
-#### WONDER (PTIN)
+#### [WONDER (PTIN)](wonder.md)
 
 ### Existing Assets
 
 *Existing components to be used in WP3, to develop Hyperty Runtime and Messaging Nodes.  
 Open Source projects candidates are Chromium or Mozilla for Web runtime while node.js and vertx.io are very suitable for Messaging Node solutions.
-The research, experimentation and selection will be reported here.*
+The research, experimentation and selection will be reported here following [this template](template.md).*
 
 #### [WebRTC.org (Google)(INESC-ID)](webrtc-org.md)
 
@@ -47,9 +51,18 @@ The research, experimentation and selection will be reported here.*
 
 #### [Vertx.io (Redhat)(FOKUS)](vertx.md)
 
-#### V8 Javascript Engine (Google)(PTIN)
+#### [V8 Javascript Engine (Google)(PTIN)](v8-javascript-engine.md)
 
-#### Real Time Web Messaging (several)
+#### [Nashorn JVM Javascript Engine](http://openjdk.java.net/projects/nashorn/)
+
+It replaces [Rhino](https://github.com/mozilla/rhino)
+More resources:
+
+http://www.infoq.com/articles/nashorn
+http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
+http://ringojs.org/
+
+#### [Real Time Backends (several)(ORANGE)](realtimebackends.md)
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
@@ -57,6 +70,10 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
 http://matrix.org/
 http://about.psyc.eu/Matrix
+
+#### [RabbitMQ (INESC-ID)](rabbitmq.md)
+
+https://www.rabbitmq.com/
 
 #### [PSYC (INESC-ID)](psyc.md)
 
@@ -74,14 +91,17 @@ https://github.com/js-platform/node-webrtc
 
 https://github.com/meetecho/janus-gateway
 
-#### COTURN (ORANGE)
+#### [COTURN (ORANGE)](coturn.md)
 
 https://code.google.com/p/coturn/ - Free open source implementation of TURN and STUN Server
 
 #### APIRTC(Apizee)
 
 #### Kurento(Apizee)
+
 https://www.kurento.org/
+
+#### [Sippo(QUOBIS)](SOTA%20of%20Sippo%20and%20the%20protocol-on-the-fly%20approach.md)
 
 #### SocketPeer
 
@@ -97,4 +117,18 @@ https://github.com/primus/primus (abstracts RTC frameworks for nodejs)
 http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
+
+#### [MeteorJS](https://www.meteor.com/)
+
+Meteor, or MeteorJS is an open-source real-time JavaScript web application framework written on top of Node.js.[2] While used by a number of high-profile startups,[3] Meteor allows for very rapid prototyping[4] and produces cross-platform (web, Android, iOS) code.[5] It integrates tightly with MongoDB and uses the Distributed Data Protocol[6] and a publish–subscribe pattern to automatically propagate data changes to clients in real-time without requiring the developer to write any synchronization code. On the client, Meteor depends on jQuery and can be used with any JavaScript UI widget library.
+
+#### [DerbyJS](https://www.meteor.com/)
+
+realtime synchronization of the client and server. It enables one to write an application in which two users edit the same text field–live–without writing too much code yourself. Derby handles all of the synchronization of the models and views. It uses http://sharejs.org/
+
+#### [TogetherJS](https://togetherjs.com/)
+
+Nidejs based collaboration framework ready to be integrated with Web Apps using WebRTC for Audio chat
+
+#### [Runtime Security(INESC-ID)](runtime-security.md)
 
