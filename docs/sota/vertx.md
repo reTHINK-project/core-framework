@@ -128,7 +128,7 @@ As can be seen, the result of ```readData``` is not received in the functions re
 ### APIs
 Vert.x provides the different APIs which are implemented in various languages:
 
-**Core API
+**Core API**
 * TCP client/Server API
 * HTTP client/Server API
 * Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
@@ -138,7 +138,7 @@ Vert.x provides the different APIs which are implemented in various languages:
 * Event Bus API
 * JSON API
 
-**Container API
+**Container API**
 * Deploy and undeploy verticles
 * Deploy and undeploy modules
 * Retrieve verticle configuration
