@@ -105,6 +105,13 @@ http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
 
+#### [MeteorJS](https://www.meteor.com/)
+
+Meteor, or MeteorJS is an open-source real-time JavaScript web application framework written on top of Node.js.[2] While used by a number of high-profile startups,[3] Meteor allows for very rapid prototyping[4] and produces cross-platform (web, Android, iOS) code.[5] It integrates tightly with MongoDB and uses the Distributed Data Protocol[6] and a publish–subscribe pattern to automatically propagate data changes to clients in real-time without requiring the developer to write any synchronization code. On the client, Meteor depends on jQuery and can be used with any JavaScript UI widget library.
+
+#### [DerbyJS](https://www.meteor.com/)
+
+realtime synchronization of the client and server. It enables one to write an application in which two users edit the same text field–live–without writing too much code yourself. Derby handles all of the synchronization of the models and views. It uses http://sharejs.org/
 
 #### [Runtime Security(INESC-ID)](runtime-security.md)
 
