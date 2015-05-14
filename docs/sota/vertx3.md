@@ -179,7 +179,7 @@ AuthHandler can also be rewritten, but in this case we use simple browser authen
  ```java
  final EventBus eb = vertx.eventBus();
  eb.consumer("chat.to.server").handler(message -> {
-   //user code...
+ 	//user code...
  });
  ```
 
@@ -195,16 +195,16 @@ ServerHook takes some keyword arguments for example:
  
  ```java
  public boolean handlePreRegister(SockJSSocket sock, String address) {
-   out.println("handlePreRegister, sock = " + sock + ", address = " + address);
-   return true;
+ 	out.println("handlePreRegister, sock = " + sock + ", address = " + address);
+	return true;
  }
  ```
  * message-handler: it's possible in this version to discovery the user that has sent the message (available in apex Session)
  
  ```java
  public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {
-   msg.put("principal", sock.apexSession().getPrincipal());
-   return true;
+ 	msg.put("principal", sock.apexSession().getPrincipal());
+ 	return true;
  }
  ```
  
