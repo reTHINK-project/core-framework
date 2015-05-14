@@ -154,8 +154,8 @@ Inboundpermitted with "setRequiredPermission" or "setRequiredRole" will force an
 AuthProvider is similar to a SPI (Service Provider Interface) with 3 basic methods: login(..), hasRole(..), hasPermission(..). It's available for custom implementations, so that it's possible to interop with other parts of the system (like a database).
 AuthHandler can also be rewritten, but in this case we use simple browser authentication.
 
-**receive a Message**
- * SockJS handler is needed with bridge options
+**Receive a Message**
+ * SockJS handler is needed with bridge options.
  ```java
  final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
  sockJSHandler.bridge(options);
