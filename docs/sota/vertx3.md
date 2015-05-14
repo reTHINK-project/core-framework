@@ -131,75 +131,80 @@ Vert.x provides the different APIs which are implemented in various languages:
 
 ##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
 
-External Authentication and Authorisation are supported through the usage of an Authorisation module:
-
-```java
-container.deployModule("io.vertx~mod-auth-mgr~2.0.0-final");
-```
+External Authentication and Authorisation are supported through Maven artifacts: vertx-apex and vertx-auth-service
 
 The Authorisation module can be the front-end to interact with an external vertx service eg with restful APIs or could be attached to the vertx-io event bus.
 
 **Authorisation to Send/publish a Message**
 
-* SockJSServer, where we need a bridge configuration
- * InboudPermitted must have: vertx.basicauthmanager.login and clients handler
-  ```java
-JsonArray inboundPermitted = new JsonArray();
+* SockJSHandler, where we need a bridge configuration
+ * Inbound and outbound options have specific bridge configuration classes.
+ ```java
+ final BridgeOptions options = new BridgeOptions();
+ options.addInboundPermitted(new PermittedOptions().setAddress("chat.to.server").setRequiredPermission("tim"));
+ options.addOutboundPermitted(new PermittedOptions().setAddress("chat.to.client"));
+ ```
+Inboundpermitted with "setRequiredPermission" or "setRequiredRole" will force an authenticated session to send into that address.
 
-JsonObject inboundPermitted1 = new JsonObject().putString("address", "vertx.basicauthmanager.login");
-inboundPermitted.add(inboundPermitted1);
-JsonObject inboundPermitted2 = new JsonObject().putString("address", "aliceHandler").putBoolean("requires_auth",true);
-inboundPermitted.add(inboundPermitted2);
-  ```
-Inboundpermitted allows the use of the "requires_auth" flag. When it is true, messages will be first forwarded to the authorization module, where decisions to send or not the messages are taken.
+ * Configure authentication handler and provider
+ ```java
+ final AuthProvider authProvider = //implement this interface for authentication and authorization control
+ final AuthHandler basicAuthHandler = BasicAuthHandler.create(authProvider);
+ ```
+AuthProvider is similar to a SPI (Service Provider Interface) with 3 basic methods: login(..), hasRole(..), hasPermission(..). It's available for custom implementations, so that it's possible to interop with other parts of the system (like a database).
+AuthHandler can also be rewritten, but in this case we use simple browser authentication.
 
 **receive a Message**
+ * SockJS handler is needed with bridge options
+ ```java
+ final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
+ sockJSHandler.bridge(options);
+ ```
+ * Configure Apex Router with SockJS handler for "/eventbus/*" uri
+ ```java
+ //required  Cookie and Session handlers for every address 
+ final Router router = Router.router(vertx);
+ router.route().handler(CookieHandler.create());
+ router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)));
+ 
+ //apply AuthHandler handler to an address (order of this handler is important)
+ router.route("/eventbus/*").handler(basicAuthHandler);
+ 
+ //apply SockJS handler to an address
+ router.route("/eventbus/*").handler(sockJSHandler);
+ ```
+ * EventBus handler for "chat.to.server" address, every message sent to this address will be processed in this handler
+ ```java
+ final EventBus eb = vertx.eventBus();
+ eb.consumer("chat.to.server").handler(message -> {
+   //user code...
+ });
+ ```
 
- * OutboundPermitted must have: clients handler.
-  ```java
-outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));
-  ```
-```java
-sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
-```
-
-**Example: communication between two javascript clients connected via SockJS**
-
-Both client applications perform log-in on the EventBus.
-```javascript
-eb.login('alice','alice123', function(reply){console.log(reply);});
-```
-
-Then the client A(alice) wants to send messages to the client B(bob), so client B(bob) needs to register a handler. 
-Before the client A(alice) can send a message to client B(bob), B must first register himself.
-```javascript
-eb.registerHandler('bobHandler', function(reply){console.log(reply);});
-```
-After that client A (alice) can publish messages on client B (bob) handler
-```javascript 
-eb.publish('bobHandler','Hello bob from alice');
-```
-When client A publishes a message to client B handler, this message will be first forwarded to the authorization module because of inbounpermitted configuration.
+**Example: sipmple communication send/receive in the same client connected via SockJS**
+(not yet available)
 
 **subscribe / register handlers to be notified about published messages**
 
-In the SockJSServer configuration we can set a Hook (Registers functions to be called when certain events occur on an event bus bridge).
-```java
-ServerHook hook = new ServerHook(logger);
-sockJSServer.setHook(hook);
-```
+EventBusBridgeHook is not yet available in version 3, however it's possible to override the SockJSHandlerImpl class and bypass this limitation.
 
 ServerHook takes some keyword arguments for example:
-
-* pre-register: Called before a client handler registration is processed.
-```java
+ * pre-register: Called before a client handler registration is processed.
+ ```java
  public boolean handlePreRegister(SockJSSocket sock, String address) {
-    logger.info("handlePreRegister, sock = " + sock + ", address = " + address);
-    return true;
-  }
-```
-
-In this way handlers registration can be controlled.
+   out.println("handlePreRegister, sock = " + sock + ", address = " + address);
+   return true;
+ }
+ ```
+ * message-handler: it's possible in this version to discovery the user that has sent the message (available in apex Session)
+ ```java
+ public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {
+   msg.put("principal", sock.apexSession().getPrincipal());
+   return true;
+ }
+ ```
+ 
+In this way handlers registration can be controlled, and the user information can be sent to the EventBus.
 
 ##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
 
