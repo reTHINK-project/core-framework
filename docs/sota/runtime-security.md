@@ -122,3 +122,6 @@ application vulnerabilities. 2006 Workshop on Programming Languages and Analysis
 [10] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection Attacks with Browser-Enforced
 Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.](http://www2007.org/papers/paper595.pdf)
 
+*should we also study these references:
+http://seclab.stanford.edu/websec/jsPapers/csf09-camera-ready.pdf
+http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf?*
