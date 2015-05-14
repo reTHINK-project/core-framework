@@ -136,7 +136,6 @@ External Authentication and Authorisation are supported through Maven artifacts:
 The Authorisation module can be the front-end to interact with an external vertx service eg with restful APIs or could be attached to the vertx-io event bus.
 
 **Authorisation to Send/publish a Message**
-
 * SockJSHandler, where we need a bridge configuration
  * Inbound and outbound options have specific bridge configuration classes.
  ```java
@@ -156,11 +155,13 @@ AuthHandler can also be rewritten, but in this case we use simple browser authen
 
 **Receive a Message**
  * SockJS handler is needed with bridge options.
+ 
  ```java
  final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
  sockJSHandler.bridge(options);
  ```
  * Configure Apex Router with SockJS handler for "/eventbus/*" uri
+ 
  ```java
  //required  Cookie and Session handlers for every address 
  final Router router = Router.router(vertx);
@@ -174,6 +175,7 @@ AuthHandler can also be rewritten, but in this case we use simple browser authen
  router.route("/eventbus/*").handler(sockJSHandler);
  ```
  * EventBus handler for "chat.to.server" address, every message sent to this address will be processed in this handler
+ 
  ```java
  final EventBus eb = vertx.eventBus();
  eb.consumer("chat.to.server").handler(message -> {
@@ -190,6 +192,7 @@ EventBusBridgeHook is not yet available in version 3, however it's possible to o
 
 ServerHook takes some keyword arguments for example:
  * pre-register: Called before a client handler registration is processed.
+ 
  ```java
  public boolean handlePreRegister(SockJSSocket sock, String address) {
    out.println("handlePreRegister, sock = " + sock + ", address = " + address);
@@ -197,6 +200,7 @@ ServerHook takes some keyword arguments for example:
  }
  ```
  * message-handler: it's possible in this version to discovery the user that has sent the message (available in apex Session)
+ 
  ```java
  public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {
    msg.put("principal", sock.apexSession().getPrincipal());
