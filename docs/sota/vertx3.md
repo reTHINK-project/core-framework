@@ -76,7 +76,7 @@ For RPC messages, JSON is enforced.
 The unit of execution for Vert.x applications is called a Verticle. Verticles can be written in multiple languages (JavaScript, Ruby, Java, Groovy or Python). Many verticles can be executed concurrently in the same Vert.x instance. An application might be composed of multiple verticles deployed on different nodes of the network communicating by exchanging messages over the Vert.x Event Bus. For trivial applications verticles can be run directly from the command line, but more usually they are packaged up into modules.
 
 ## Module
-The Vert.x 3 module system has gone.
+The Vert.x 3 module system has gone. It's advisable to use already available options like Maven or Gradle
 
 ## Event Loop
 By default, all verticles run in an asynchronous event loop. When developing a verticle, it is essential not to block the event loop. Blocking here means either doing any kind of blocking I/O or even doing any kind of computational intensive work. Modules that do either of these should indicate that they are so called ```worker``` modules by setting ```"worker": true``` in their *mod.json* file. 
@@ -107,23 +107,26 @@ As can be seen, the result of ```readData``` is not received in the functions re
 
 
 ### APIs
-Vert.x provides the different APIs which are implemented in various languages:
+Vert.x provides the different APIs which are implemented in various languages. The two main modules are "Core API" and "Apex API":
 
 **Core API**
+* Deploy and undeploy verticles
+* Logging
 * TCP client/Server API
 * HTTP client/Server API
-* Transport Protocol (Websocket, SockJS(provides websocket-like API through http), UDP, TCP)
 * File System Access
 * DNS client API
 * Shared Data
 * Event Bus API
 * JSON API
 
-**Container API**
-* Deploy and undeploy verticles
-* Deploy and undeploy modules
-* Retrieve verticle configuration
-* Logging
+**Apex API**
+* Routing (based on method, path, etc)
+* Event-bus bridge
+* SockJS support
+* Session support - both local (for sticky sessions) and clustered (for non sticky)
+* Basic Authentication and Redirect based authentication
+* User/role/permission authorisation
 
 ### Requirements Analysis
 
@@ -183,10 +186,21 @@ AuthHandler can also be rewritten, but in this case we use simple browser authen
  });
  ```
 
-**Example: sipmple communication send/receive in the same client connected via SockJS**
-(not yet available)
+**Example: simple communication send/receive in the same client connected via SockJS**
+ * Register handler to receive messages in "chat.to.client" address
+ 
+ ```javascript
+ eb.registerHandler('chat.to.client', function(msg) {
+ 	console.log('Message Received: ' + msg);
+ });
+ ```
 
-**subscribe / register handlers to be notified about published messages**
+ * Send message to "chat.to.server" address
+ ```javascript
+ eb.send('chat.to.server', {name: 'tim', age: 35});
+ ```
+
+**Subscribe / register handlers to be notified about published messages**
 
 EventBusBridgeHook is not yet available in version 3, however it's possible to override the SockJSHandlerImpl class and bypass this limitation.
 
