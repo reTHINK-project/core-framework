@@ -57,8 +57,11 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 * [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/) a simple proxy server that proxies message from SockJS to a ZeroMQ.
 * [Zerogw](https://github.com/tailhook/zerogw) http to zeromq gateway
 * [XARP](http://rfc.zeromq.org/spec:40) (Draft) Extensible Resource Access Protocol (XRAP), a RESTful protocol built over ZeroMQ
+* [Zato](https://zato.io/docs/index.html)  ESB, SOA, REST, APIs and cloud integrations
 
 [ZeroMQ API Reference](http://api.zeromq.org/)
+
+[Other Projects](http://zeromq.org/docs:labs)
 
 ### Requirements Analysis
 
@@ -77,6 +80,7 @@ Analysis against **Messaging Node** Requirements
     * [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/)
     * [Zerogw](https://github.com/tailhook/zerogw)
     * [XRAP](http://rfc.zeromq.org/spec:40)
+    * [Zato](https://zato.io/docs/index.html)
    
 * [Message Caching](https://github.com/reTHINK-project/core-framework/issues/19)
   * Yes
