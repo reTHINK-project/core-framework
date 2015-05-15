@@ -105,9 +105,9 @@ Figure 5. Java Smart Card scheme [11]
 * **Software**
 
 The paucity of 8-bit assembly language courses, books and software tools led engineers to break the smart card application bottleneck by building a Java virtual machine with its runtime support into a 12-Kbyte smart card. **Java** was the obvious answer for three reasons:
-	* Java brings smart card programming into the mainstream of software development
-	* Java “safe programming” security model based on a runtime interpreter is a nontrivial side benefit, due to its processor independence. A Java card can be deployed on multiple smart card models.
-	* Java interpreters were tested to the limit, holes had been found, and fixed
+ * Java brings smart card programming into the mainstream of software development
+ * Java “safe programming” security model based on a runtime interpreter is a nontrivial side benefit, due to its processor independence. A Java card can be deployed on multiple smart card models.
+ * Java interpreters were tested to the limit, holes had been found, and fixed
 	
 With this in mind, engineers concluded that Java could preserve the required security in the smart card operation, while allowed a more friendly and well-known programming approach. However, available memory was an issue when deploying such heavy language runtime like Java. Features like garbage collection and exceptions handling were not included in Java Card because of that.
 
