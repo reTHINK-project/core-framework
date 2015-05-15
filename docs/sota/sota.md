@@ -75,6 +75,10 @@ http://about.psyc.eu/Matrix
 
 https://www.rabbitmq.com/
 
+#### [ZeroMQ (INESC-ID)](zeromq.md)
+
+http://zeromq.org/
+
 #### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/

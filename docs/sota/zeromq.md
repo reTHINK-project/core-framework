@@ -2,34 +2,43 @@
 
 ### Overview
 
-In the scope of the reTHINK project)ZeroMQ is a candidate technology for the Messaging Node
+In the scope of the reTHINK project ZeroMQ is a candidate technology for the Messaging Node.
 
-It is a low level messaging library written in C++ used as a thin layer between the application and transport layers.
+It is a  high-performance low level asynchronous messaging library originally written in C++ which now has multiple native Implementations.
+It is used as a thin layer between the application and transport layers.
 
 ##### Highlights:
 
+* Connect your code in any language, on any platform. 40+ Language Bindings
+* Carries messages across inproc, IPC, TCP, TIPC, multicast.
+* Smart patterns like pub-sub, push-pull, and router-dealer can be combined together to form powerful architectures.
+* High-speed asynchronous I/O engines, in a tiny library ((20k lines of C++)).
+* Backed by a large and active open source community.
+* Supports every modern language and platform.
+* Any architecture: centralized, distributed, small, or large.
 * Multicore Optimized
 * Automatic TCP (re)connect
-* Fast 8M msg/sec, 30usec latency
-* Small (20k lines of C++)
-* Message-passing using in-memory queues
-* Uses the [ZMTP](http://rfc.zeromq.org/spec:37) protocol for exchanging messages between two peers.
-* Works on top of TCP, IPC, in-memory and PGM/EPGM (multicast) communication protocols.
-* A few communication patters are use to communicate, that can be combined together.
-* Asynchronous messaging.
-* 40+ Language Bindings
-* Fast for development thanks to many useful abstraction layers and native languages.
+* Fast 8M msg/sec, usec latency
+* Faster than TCP, for clustered products and supercomputing
+* Fast for development thanks to many useful abstraction layers, native languages, bindings and huge open source community.
+
 
 ### Architecture
-
+The following figure represents the six basic types of communication patterns that ZeroMQ supports.
 
 ![image](zeromq_basic_patterns.png)
 
-### APIs
+These can be used as "fabric" to make very powerful architectures. The next image shows an example of this modularity. [A pub/sub multi-cluster Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
-#### Native Implementations
+![image](zeromq_clusters_example.png)
 
-* [C/C++](https://github.com/zeromq/libzmq) represent the State of the Art.
+The internal Architecture in more detail can be found [here.](http://zeromq.org/whitepapers:architecture)
+
+### APIs and Bindings
+
+#### Native Implementations of the library
+
+* [C/C++](https://github.com/zeromq/libzmq) represents the State of the Art.
 * [Java](https://github.com/zeromq/jeromq) fully compatible at both API and protocol level)sans encryption or PGM.
 * [.NET](https://github.com/zeromq/netmq) same constraints as JeroMQ
 * [Erlang](https://github.com/zeromq/ezmq)
@@ -40,10 +49,14 @@ It is a low level messaging library written in C++ used as a thin layer between 
 #### Language Bindings
  * [Ada, C, Chicken Scheme, Common Lisp, C#(.NET & Mono), C++, D, delphi binding, Eiffel, Erlang, F#, Felix, Flex (ActionScript), Fortran77, Go, Guile, Haskell, Haxe, Java binding, JavaScript (Flash), Julia, LabVIEW, Lua bindings, Nimrod, Node.js, Objective-C, Objective Caml binding, ooc, Perl s, PHP binding, Python binding, Q, Racket, R, RE, RE, Red, Ruby, Ruby(FFI), Scala, Smalltalk, Tcl, Twisted (Python), XPCOM](http://zeromq.org/bindings:_start), and more [on github.com](https://github.com/search?utf8=%E2%9C%93&q=zmq&type=Repositories&ref=searchresults)
 
-#### Clients
+#### Web Clients
+
 * [JSMQ](https://github.com/zeromq/JSMQ) Javascript client for ZeroMQ/NetMQ over WebSockets
-
-
+* [NullMQ](https://github.com/progrium/nullmq) ZeroMQ semantics in the browser [Link1](http://www.slideshare.net/progrium/nullmq-pdx) [Link2](http://avalanche123.com/blog/2012/02/25/interacting-with-zeromq-from-the-browser/)
+* [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript) talk to zmq sockets from your JavaScript code.
+* [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/) a simple proxy server that proxies message from SockJS to a ZeroMQ.
+* [Zerogw](https://github.com/tailhook/zerogw) http to zeromq gateway
+* [XARP](http://rfc.zeromq.org/spec:40) (Draft) Extensible Resource Access Protocol (XRAP), a RESTful protocol built over ZeroMQ
 
 [ZeroMQ API Reference](http://api.zeromq.org/)
 
@@ -56,30 +69,49 @@ Analysis against **Messaging Node** Requirements
   * the Client Server API could be wrapped in a protocol stub, that can be downloaded at runtime
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  * Partially
-  * Has support for :
-    * Javascript and WebSockets using [JSMQ](https://github.com/zeromq/JSMQ)
-
+  * Yes
+  * Has support for Javascript and WebSockets using:
+    * [JSMQ](https://github.com/zeromq/JSMQ)
+    * [NullMQ](https://github.com/progrium/nullmq)
+    * [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript)
+    * [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/)
+    * [Zerogw](https://github.com/tailhook/zerogw)
+    * [XRAP](http://rfc.zeromq.org/spec:40)
+   
 * [Message Caching](https://github.com/reTHINK-project/core-framework/issues/19)
   * Yes
   * Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+  * Yes
+  * Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
+  * Yes
+  * Using [Reliable Patterns](http://zguide.zeromq.org/page:all#Chapter-Reliable-Request-Reply-Patterns)
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
-  * [9,5 Million Messages / second were benchmarked on a 16 core machine](http://zeromq.org/results:0mq-tests-v03)
+  * Yes
+  * Using scalable patterns such as a [brokerless design](http://zeromq.org/whitepapers:brokerless)
+  * 9,5 Million Messages / second were benchmarked on a 16 core machine[Link1](http://zeromq.org/results:0mq-tests-v03) [Other Tests](http://zeromq.org/results:_start)
 
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
+  * Partial
+  * Business logic can be developed to deal with this issue
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
+  * Yes
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
+  * Yes
+  * Very low usec latency
 
 * [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
+  * Yes
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
+  * Yes
+  * ZeroMQ runs on everything of interest, from 32KB embedded chips to z/OS mainframes running IBM dialects of Unix. [Link](http://zeromq.org/docs:features)
 
 * [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
   * Yes
