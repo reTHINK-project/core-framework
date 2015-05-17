@@ -28,7 +28,7 @@ In the audio/video package almost every file is well-documented. However, the ne
 
 # Interfaces
 
-## WebRTC.org and messaging node requirements
+## WebRTC.org and runtime requirements
 
 1. WebRTC is intended to be used on latest browser like Google Chrome, Mozilla Firefox, mobile platforms like Android and iOS and also IoT devices like Raspberry Pi.
 2. WebRTC.org implements the W3C WebRTC APIs.
