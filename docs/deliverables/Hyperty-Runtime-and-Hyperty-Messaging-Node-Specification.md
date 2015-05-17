@@ -1,4 +1,4 @@
-# Hyperty Runtime and Hyperty Messaging Node Specification
+# D3.1 Hyperty Runtime and Hyperty Messaging Node Specification
 
 ##Introduction
 
@@ -41,5 +41,7 @@
 #### {Messaging Node 1}: to be named after the selection
 
 #### {Messaging Node 2}: to be named after the selection
+
+### Framework Specification
 
 ## Conclusions
