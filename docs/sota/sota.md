@@ -23,9 +23,7 @@ http://thenewdialtone.com/webrtc-browser-push-notification/
 
 #### W3C WebRTC (Quobis)
 
-#### Object RTC (Quobis)
-
-http://ortc.org/
+#### Object RTC (Quobis) (ORTC.md)
 
 #### W3C System Applications Working Group (PTIN)
 
@@ -66,7 +64,7 @@ http://ringojs.org/
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
-#### [Matrix (DT)](matrix.md)
+#### [Matrix (DT)](matrix.md)O
 
 http://matrix.org/
 http://about.psyc.eu/Matrix
