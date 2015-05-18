@@ -5,11 +5,13 @@ ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC Application
 
 The protocols on the wire are exactly the same so it is compatible with aaplications written using the current API.  
 <h2>Differences between ORTC and WebRTC 1.0.</h2>
+<ol>
 Those are the main differences from WebRTC 1.0:
-- ORTC specifically tailored to provide the direct control needed to enable advanced multimedia and conferencing features.
-- Limitations of the WebRTC API 1.0 have been addressed in the new version.
-- many of the parameters which are automatically handled by the browser in WebRTC 1.0 can be now modified by using native methods.
-- SDP is not the mandatory format to exchange information between browsers. 
+<li>ORTC specifically tailored to provide the direct control needed to enable advanced multimedia and conferencing features.</li>
+<li>Limitations of the WebRTC API 1.0 have been addressed in the new version.</li>
+<li>many of the parameters which are automatically handled by the browser in WebRTC 1.0 can be now modified by using native methods.</li>
+<li>SDP is not the mandatory format to exchange information between browsers.</li>
+</ol>
 
 <h2>Advantages of ORTC over WebRTC 1.0.</h2>
 An example of WebRTC 1.0 limitation it is that is not possible to modify parameters on individual media tracks since the SDPs must contain all the mediatracks of a mediastream. ORTC includes the RTCRtpSender object which associated to a sending MediaStreamTrack which provides methods to tweak its parameters. 
