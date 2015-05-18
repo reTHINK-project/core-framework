@@ -116,6 +116,31 @@ With this in mind, engineers concluded that Java could preserve the required sec
 Java Cards combine smart card’s identity-verification features with the Java “sandbox”, guaranteeing that only allowed applications run on the card and that applications are protected from each other.
 
 
+### Cloud of Secure Elements
+
+Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal is to provide trusted computing resources to mobile and cloud applications. To reach that, it relies on an infrastructure composed by multiple secure microcontrollers, named Secure Elements.
+
+CoSE, in a WEB-like paradigm, are meant to support Uniform Resource Identifiers (URIs) for users to locate the different secure elements and use their embedded resources. These resources usually target two service types: Near Field Communication (NFC) facilities for mobile applications and trusted cryptogrtaphic features for cloud applications.
+
+![image](cose.png)
+
+Figure 6. CoSE architecture
+
+* **Architecture**
+
+A Cloud of Secure Elements has the following components, as Fig. 6 shows:
+
+  * NFC kiosks, typically deliver payment facilities
+  * Users with NFC-enabled devices or terminals needing trusted cryptographic resources
+  * Grid of Secure Elements (GoSE)
+  * Secure elements, with resources identifiable by URI
+  * Remote administration entities, performing management operations over applications and secure elements
+
+* **Grid of Secure Elements (GoSE)**
+
+A grid of secure elements is an Internet server hosting multiple secure elements. Each element may be plugged in through USB readers, hardware sockets or electronic boards. Communication may be achieved with RACS protocol (works over IP/TCP/TLS stack) and performs both the association between elements and unique identifiers and data exchange with secure elements.
+
+
 ## Bibliography
 
 [1] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008. The Security Architecture of the Chromium Browser.](http://seclab.stanford.edu/websec/chromium/chromium-security-architecture.pdf)
@@ -148,6 +173,9 @@ application vulnerabilities. 2006 Workshop on Programming Languages and Analysis
 Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.](http://www2007.org/papers/paper595.pdf)
 
 [11] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas Schaeck. 1999. Smart Card Application Development Using Java (1st ed.). Springer-Verlag New York, Inc., Secaucus, NJ, USA.](http://dl.acm.org/citation.cfm?id=555354)
+
+[12] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile and Cloud 
+Applications Security. IEEE Conference on Communications and Network Security 2013 - Poster Session](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6682733)
 
 *should we also study these references:
 http://seclab.stanford.edu/websec/jsPapers/csf09-camera-ready.pdf
