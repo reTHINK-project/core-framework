@@ -6,7 +6,7 @@ ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC Application
 The protocols on the wire are exactly the same so it is compatible with aaplications written using the current API.  
 <h2>Differences between ORTC and WebRTC 1.0.</h2>
 <ol>
-Those are the main differences from WebRTC 1.0:
+Those are the main differences between ORTC and WebRTC 1.0:
 <li>ORTC specifically tailored to provide the direct control needed to enable advanced multimedia and conferencing features.</li>
 <li>Limitations of the WebRTC API 1.0 have been addressed in the new version.</li>
 <li>many of the parameters which are automatically handled by the browser in WebRTC 1.0 can be now modified by using native methods.</li>
