@@ -4,6 +4,8 @@
 ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC Applications to be executed in Web browser. 
 
 The protocols on the wire are exactly the same so it is compatible with aaplications written using the current API.  
+![WebRTC API evolution](webrtc_API_evolution.png)
+
 <h2>Differences between ORTC and WebRTC 1.0.</h2>
 <ol>
 Those are the main differences between ORTC and WebRTC 1.0:
@@ -15,7 +17,9 @@ Those are the main differences between ORTC and WebRTC 1.0:
 
 <h2>Advantages of ORTC over WebRTC 1.0.</h2>
 An example of WebRTC 1.0 limitation it is that is not possible to modify parameters on individual media tracks since the SDPs must contain all the mediatracks of a mediastream. ORTC includes the RTCRtpSender object which associated to a sending MediaStreamTrack which provides methods to tweak its parameters. 
-An example of application of this new element is the ability to change the bitrate used for a video session in -progess which is being sent over a bad-quality connection keeping the parameters of the audio mediatrack.
+
+An example of application of this new element is the ability to change the bitrate used for a video in-progess session which is being sent over a bad-quality connection keeping the parameters of the audio mediatrack.
+In WebRTC 1.0 this changes requires a SDP re-negotiation but with ORTC this is not nececesary.
 
 Although RTCRtpSender was not included in the WebRTC 1.0 definition, this element was planned to be supported by Chrome from version 39. 
 
