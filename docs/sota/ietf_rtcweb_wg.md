@@ -6,15 +6,10 @@
     work.  There is a desire to standardize the basis for such communication so that interoperable communication can be established
     between any compatible browsers. The goal is to enable innovation on top of a set of basic components.  One core component is to enable
     real-time media like audio and video, a second is to enable data transfer directly between clients.
+    
+    This work will be done in collaboration with the W3C.  The IETF WG will produce architecture and requirements for selection and profiling of the on the wire protocols. The architecture needs to be coordinated with W3C.  The IETF WG work will identify state information and events that need to be exposed in the APIs as input to W3C. The W3C will be responsible for defining APIs to ensure that application developers can control the components. We will reach out to the developer community for consultation and early feedback on implementation.
 
-    This work will be done in collaboration with the W3C.  The IETF WG will produce architecture and requirements for selection and profiling
-    of the on the wire protocols. The architecture needs to be coordinated with W3C.  The IETF WG work will identify state information and events
-    that need to be exposed in the APIs as input to W3C. The W3C will be responsible for defining APIs to ensure that application developers
-    can control the components. We will reach out to the developer community for consultation and early feedback on implementation.
-
-    The security and privacy goals and requirements will be developed by the WG. The security model needs to be coordinated with the W3C.  The
-    work will also consider where support for extensibility is needed. RTP functionalities, media formats, security algorithms are example of
-    things that commonly need extensions, additions or replacement, and thus some support for negotiation between clients is required.
+    The security and privacy goals and requirements will be developed by the WG. The security model needs to be coordinated with the W3C. The work will also consider where support for extensibility is needed. RTP functionalities, media formats, security algorithms are example of things that commonly need extensions, additions or replacement, and thus some support for negotiation between clients is required.
 
 <h2>Task of the Rtcweb Working Group</h2>
     The WG will perform the following work:
@@ -33,10 +28,7 @@
     functionalities, such work can be requested to be done in another working group with a suitable charter or by requests for chartering it
     in this WG or another WG. The following topics will be out of scope for the initial phase of the WG: RTSP, RSVP, NSIS, Location services,    Resource Priority, and IM & Presence specific features.
 
-    The products of the working group will support security and keying as required by BCP 61 and be defined for IPv4, IPv6, and dual stack
-    deployments. The Working Group will consider the possibility of defining a browser component that implements an existing session
-    negotiation and management protocol. The working group cannot explicitly rule out the possibility of adopting encumbered technologies; however, the working group will try to avoid encumbered
-    technologies that require royalties or other encumbrances that would prevent such technologies from being easy to use in web browsers.
+    The products of the working group will support security and keying as required by BCP 61 and be defined for IPv4, IPv6, and dual stack deployments. The Working Group will consider the possibility of defining a browser component that implements an existing session negotiation and management protocol. The working group cannot explicitly rule out the possibility of adopting encumbered technologies; however, the working group will try to avoid encumbered technologies that require royalties or other encumbrances that would prevent such technologies from being easy to use in web browsers.
 
 <h2>Goals and Milestones</h2>
 
