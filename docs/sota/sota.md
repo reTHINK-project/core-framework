@@ -71,6 +71,8 @@ http://www.leggetter.co.uk/real-time-web-technologies-guide/
 http://matrix.org/
 http://about.psyc.eu/Matrix
 
+#### [Firefox OS (DT)](firefox-os.md)
+
 #### [RabbitMQ (INESC-ID)](rabbitmq.md)
 
 https://www.rabbitmq.com/
