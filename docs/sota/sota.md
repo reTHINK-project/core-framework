@@ -21,7 +21,7 @@ http://dev.w3.org/html5/postmsg
 
 http://thenewdialtone.com/webrtc-browser-push-notification/
 
-#### [W3C WebRTC (Quobis)] (w3c_webrtc.md)
+#### [W3C WebRTC Working Group (Quobis)] (w3c_webrtc.md)
 
 #### [Object RTC (Quobis)] (ORTC.md)
 
@@ -29,7 +29,9 @@ http://thenewdialtone.com/webrtc-browser-push-notification/
 
 http://www.w3.org/2012/sysapps/
 
-#### IETF RTC-WEB (Quobis)
+#### [IETF Rtcweb Working Group (Quobis)] (ietf_rtcweb_wg.md)
+
+
 
 https://code.google.com/p/coturn/ - Free open source implementation of TURN and STUN Server
 
