@@ -66,7 +66,7 @@ http://ringojs.org/
 
 http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
-#### [Matrix (DT)](matrix.md)O
+#### [Matrix (DT)](matrix.md)
 
 http://matrix.org/
 http://about.psyc.eu/Matrix
