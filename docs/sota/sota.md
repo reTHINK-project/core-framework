@@ -49,7 +49,7 @@ The research, experimentation and selection will be reported here following [thi
 
 #### OpenWebRTC (Ericsson)(PTIN)
 
-#### [Vertx.io (Redhat)(FOKUS)](vertx.md)
+#### [Vertx.io (Redhat)(FOKUS)](vertx3.md)
 
 #### [V8 Javascript Engine (Google)(PTIN)](v8-javascript-engine.md)
 
