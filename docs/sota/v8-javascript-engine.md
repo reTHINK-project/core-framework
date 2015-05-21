@@ -132,7 +132,14 @@ Node.js is a platform built on Chrome's JavaScript runtime iv8 for easily buildi
 
 It is open source and specialized for server-side networking applications. Node.js operates on a single thread, using non-blocking I/O calls, allowing it to support tens of thousands of concurrent connections without incurring the cost of thread context-switching. The design of sharing a single thread between all the requests means it can be used to build highly concurrent applications. The design goal of a Node.js application is that any function performing I/O must use a callback.
 
-*to be done: check sandbox extensions to node.js like https://github.com/gf3/sandbox*
+Using Sandbox over Node.js
+
+Used to execute untrusted code. Has support for timeouts preventing infinite loops. Handles errors gracefully.
+Provides limited access to node.js methods, Supports print and console.log.
+
+Using Docker to run unsafe code on Node.js
+
+Docker has a following on its own. Obviously security over docker is a well addressed issue.
 
 #### [Web Messaging Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
 
