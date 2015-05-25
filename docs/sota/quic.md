@@ -60,7 +60,6 @@ On the other side, 91-94% of the users which had TCP connectivity with Google ca
 It is also necesary to consider NAT unbinding which does not happen to TCP. This problem has been addressed internally by QUIC designers through the use of keepalives packets. 
 
 
-
 ##Why QUIC can be a good option for ReThink project?
 
 Including the use of QUIC as a requirement or a recommendation could help to support more reliably mobility scenarios where the End-User IP may be changed during a connection with the Signaling service. Additionaly thee transport layer connectivity provided by QUIC is more suitable for wireless connections (longer RTTs, packet lost and changes at IP level) than TCP. 
@@ -68,11 +67,16 @@ QUIC has been designed bearing HTTP/2 in mind as it improves its performance a l
 
 During a media session, the change of an IP requires an SDP re-negotiation when a media sessions is ongoing, so we can't leverage QUIC features for media. However QUIC would be helpful in all the scenarios at signaling level.
 
-###Existing QUIC implementation
-The QUIC reference library is libquic (https://github.com/devsisters/libquic) 
+###Existing QUIC implementations
+The QUIC reference library is libquic (https://github.com/devsisters/libquic). It has been mainly developed by Google. This repository and its sources and dependencies were extracted from Chromium's QUIC Implementation with a few modifications and patches to minimize dependencies needed to build QUIC library. This code can be used to be integrated with HTTP Server like Apache and nginx but this has not been done so far. This library implementes  
+
+In the Chromium repository it is available a standalone client and server which can be used as a reference for ReThink project implementations. http://src.chromium.org/viewvc/chrome/trunk/src/net/tools/quic/
+
+In all the imeplementations QUIC is used with SPDY and HTTP/2 so its use separated from those protocols has to be investigated.
 
 ##Drawbakcs of using QUIC as transport protocol
-QUIC is a very new protocol so it is still not widely used. It means that many existing systems and projects does still not support it and it will make .
- using QUIC would add a technical overhead to the implementations.
+QUIC is a very new protocol so it is still not widely used. It means that many existing systems and projects does still not support it so testing and implementation which requires an additional effrot compared to TCP.
+
+On the other side, despite the fact that is a protocol likely to become an RFC darft in short-term it has not been formally specified by the IETF. This is the official definition document mantained by Google: https://docs.google.com/document/d/1RNHkx_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/edit Any implementation made today may not be completely compliant with the final protocol. 
 
 
