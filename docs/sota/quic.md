@@ -16,20 +16,20 @@ The features the new protocol must support to meet the today's Internet requirem
 *the web must be secyre by default, TCP does not secure the traffic and an optional upper layer must be added to provide this security.
 
 QUIC introduces improvement in many aspects of the TCP protocol: 
-*TCP needs a three-handshake to create a connection. If the connection is established over TLS more RTT are necessary.
-*TCP provides reliable, ordered and error-checked delivery based re-tx, acknowledgments and checksum. The cost of having this features is that any packet loss will trigger retransmissions which will normaly delay the delivery of the rest of packets.
-*TCP allows to stablish a single full duplex byte stream and all the data over that stream will be treated processed indistinctly. 
+* TCP needs a three-handshake to create a connection. If the connection is established over TLS more RTT are necessary.
+* TCP provides reliable, ordered and error-checked delivery based re-tx, acknowledgments and checksum. The cost of having this features is that any packet loss will trigger retransmissions which will normaly delay the delivery of the rest of packets.
+* TCP allows to stablish a single full duplex byte stream and all the data over that stream will be treated processed indistinctly.
 *TCP requires an extra protocol on top of it (TLS) to provide encryptin and authentication. It adds an overhead and delays in the connection setup.  
 
 ###Why not to use SCTP for this?
 SCTP can be considered as an alternative for TCP. It has two main features which could make it an atarctive choice:  
-*SCTP also provides stream multiplexing over a single connection.
-*DTLS provides SSL quality encryption and authentication over UDP in the same way as TLS over TCP. 
+* SCTP also provides stream multiplexing over a single connection.
+* DTLS provides SSL quality encryption and authentication over UDP in the same way as TLS over TCP. 
 
 These features made that SCTP had been chosen to be used internally by WebRTC Datachannels however it presents some problems which forced the QUIC developer to design a new alternative:
 
-*SCTP requires 4 roundtrips are necessary to establish a SCTP over DTLS connection. This means an unacceptable delay in many applications and degrades the user experience.
-*It was not designed to reduce latency, SCTP connections were designed to be persistent between two peers.
+* SCTP requires 4 roundtrips are necessary to establish a SCTP over DTLS connection. This means an unacceptable delay in many applications and degrades the user experience.
+* It was not designed to reduce latency, SCTP connections were designed to be persistent between two peers.
 
 In contrast the goal of QUIC is to have to perform a connection establishment with zero RTT overhead. 
 
