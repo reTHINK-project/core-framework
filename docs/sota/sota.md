@@ -81,6 +81,10 @@ https://www.rabbitmq.com/
 
 http://zeromq.org/
 
+#### [Redis (INESC-ID)](redis.md)
+
+http://redis.io/
+
 #### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/
