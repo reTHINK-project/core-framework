@@ -1,5 +1,53 @@
 ## Runtime Architecture
 
+
+<!--@startuml
+"Runtime_Architecture.png"
+
+ node "Application" as App 
+
+ node "Hyperty1" as H1
+
+ node "Hyperty2" as H2
+
+node "Runtime" as rt {
+
+ node "*       Event      BUS           *" as Bus
+
+ node "Policy\nEngine" as PEP
+
+ node "Registry" as Reg
+
+ node "ProtOfly\nEngine" as Prot
+
+ node "Identities\nContainer" as Id
+
+ App -down-> H1
+
+ App -down-> H2
+
+ H1 -down-> Bus
+
+ H2 -down-> Bus
+
+ PEP -right-> Bus
+
+ Reg -up-> Bus
+
+ Prot -up-> Bus
+
+ Id -[hidden]up-> Bus
+
+ Id -right- Prot
+
+ Id -left- Reg
+	}
+
+@enduml
+-->
+
+![Runtime Architecture](Runtime_Architecture.png)
+
 ## Runtime Types
 
 The following runtime types according to devices types are considered:
