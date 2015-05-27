@@ -93,3 +93,10 @@ The following runtime types according to devices types are considered:
 1. 
 
 For each of these runtime types we should analyse the best strategy to support Hyperty Runtime functionalities identified above.
+
+Possible Strategies:
+* Browser Extensions
+* Docker+NodeJs
+* Docker+JDK8
+* NodeJs
+* JDK8
