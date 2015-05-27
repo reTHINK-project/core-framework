@@ -18,3 +18,7 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 ### References
 
 [AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
+
+[JavaScript Frameworks: AngularJS, Meteor, Backbone, Express or plain NodeJs? When to use each one?](http://www.quora.com/JavaScript-Frameworks/AngularJS-Meteor-Backbone-Express-or-plain-NodeJs-When-to-use-each-one)
+
+[Why Meteor](http://www.meteorpedia.com/read/Why_Meteor)
