@@ -1,8 +1,7 @@
 ## Runtime Architecture
 
 <!--
-@startuml 
-"Runtime_Architecture.png"
+@startuml "Runtime_Architecture.png"
 
  node "Application" as App 
 
@@ -46,13 +45,11 @@ node "Runtime" as rt {
 
  Id -left- Reg
 
-
-
-
 	}
 
 @enduml
 -->
+
 ![Runtime Architecture](Runtime_Architecture.png)
 
 ### Event BUS
