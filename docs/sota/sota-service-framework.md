@@ -17,4 +17,4 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 
 ### References
 
-[AngularJS vs. Backbone.js vs. Ember.js](]https://www.airpair.com/js/javascript-framework-comparison)
+[AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
