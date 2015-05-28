@@ -254,3 +254,34 @@ No.
 Vert.x uses the Event Bus to send messages through pub/sub mechanism or point-2-point mechanism. In both cases, there is no feedback to the sender if the message was recieved and processed or if it was not recieved at all. In the end reliability will boil down to the application logic service build on top of vert.x. 
 
 #### Runtime Requirements Analysis
+From a runtime perspective the Vert.x is transparent to JVM8 (nashorn). Nashorn supports the full ECMAScript 5.1 specification. In that regard there are no browser API's such as: HTML5 canvas, HTML5 audio, WebWorkers, WebSockets, WebGL...
+
+Initialization of the runtime engine:
+```java
+final ClassLoader classLoader = TestClass.class.getClassLoader();
+final NashornScriptEngineFactory factory = new NashornScriptEngineFactory();
+```
+
+Nashorn is built on top of Java and takes advantage of standard Java security measures. Fine-grained security is enabled within applications. We can control the class load mechanism, effectively building a sandbox:
+```java
+final ScriptEngine engine = factory.getScriptEngine(name -> {
+	if(name.equals(TestClass.class.getName())) {
+		return true; //OK, Java TestClass available from JavaScript
+	}
+	
+	return false; //everything else fails...
+});
+ ```
+
+Binding variables to the JavaScript scope is just one line of code. We can expose the Vert.x EventBus and use it like if we were in the JVM:
+```java
+engine.getBindings(ScriptContext.ENGINE_SCOPE).put("eb", vertx.eventBus());
+```
+
+Running a JavaScript file is also just a line of code:
+```java
+engine.eval(new FileReader(classLoader.getResource("myjs.js").getFile()));
+```
+Although there are no WebSockets in the Nashorn runtime, it's possible to simulate a WS interface connecting directly through the EventBus, delegating the actual connection with the Vert.x.
+
+Found some performance measures on: http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
