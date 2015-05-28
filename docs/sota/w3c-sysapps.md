@@ -58,6 +58,36 @@ Service Workers provides features that can facilitate the development of some Ru
 
 ### Application Lifecycle and Events
 
+### Content Security Policy Level 2
+
+Defines a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced.
+
+Content Security Policy is a declarative policy that lets the authors (or server administrators) of a web application inform the client about the sources from which the application expects to load resources.
+
+To take advantage of CSP, a web application opts into using CSP by supplying a Content-Security-Policy HTTP header. Such policies apply to the current resource representation only. To supply a policy for an entire site, the server needs to supply a policy with each resource representation.
+
+A security policy is applied by a user agent to a specific resource representation, known as the protected resource. 
+
+Example:
+```script-src 'self'; object-src 'none'```
+
+Security policies contain a set of security policy directives (script-src and object-src in the example above), each responsible for declaring the restrictions for a particular resource type, or manipulating a specific aspect of the policy’s restrictions. 
+
+The server delivers a policy to the user agent via an HTTP response header or an HTML meta element.
+The Content-Security-Policy header field is the preferred mechanism for delivering a policy. The grammar is as follows:
+
+```"Content-Security-Policy:" 1#policy-token```
+
+For example, a response might include the following header field:
+```Content-Security-Policy: script-src 'self'```
+
+A Content Security Policy consists of a U+003B SEMICOLON (;) delimited list of directives. Each directive consists of a directive name and (optionally) a directive value, defined by the following ABNF:
+
+policy-token    = [ directive-token *( ";" [ directive-token ] ) ]
+directive-token = *WSP [ directive-name [ WSP directive-value ] ]
+directive-name  = 1*( ALPHA / DIGIT / "-" )
+directive-value = *( WSP / <VCHAR except ";" and ","> )
+
 
 ### References
 
@@ -66,4 +96,5 @@ Service Workers provides features that can facilitate the development of some Ru
 * https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
 * http://www.w3.org/TR/service-workers/
 * https://jakearchibald.github.io/isserviceworkerready/
+* http://www.w3.org/TR/CSP2/
 * http://www.w3.org/2012/sysapps/app-lifecycle/
