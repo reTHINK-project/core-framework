@@ -61,11 +61,9 @@ Service Workers provides features that can facilitate the development of some Ru
 
 ### References
 
-http://www.w3.org/2012/sysapps/
-
-https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
-https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
-http://www.w3.org/TR/service-workers/
-https://jakearchibald.github.io/isserviceworkerready/
-
-http://www.w3.org/2012/sysapps/app-lifecycle/
+* http://www.w3.org/2012/sysapps/
+* https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
+* https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
+* http://www.w3.org/TR/service-workers/
+* https://jakearchibald.github.io/isserviceworkerready/
+* http://www.w3.org/2012/sysapps/app-lifecycle/
