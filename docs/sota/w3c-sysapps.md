@@ -62,11 +62,16 @@ Service Workers provides features that can facilitate the development of some Ru
 
 Defines a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced.
 
-Content Security Policy is a declarative policy that lets the authors (or server administrators) of a web application inform the client about the sources from which the application expects to load resources.
+CSP provides a standard HTTP header that allows website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-To take advantage of CSP, a web application opts into using CSP by supplying a Content-Security-Policy HTTP header. Such policies apply to the current resource representation only. To supply a policy for an entire site, the server needs to supply a policy with each resource representation.
+The following header names are in use as part of an experimental CSP implementations:
 
-A security policy is applied by a user agent to a specific resource representation, known as the protected resource. 
+Content-Security-Policy — standard header name proposed by the W3C document. Google Chrome supports this as of version 25. Firefox supports this as of version 23, released on 6 August 2013.
+X-WebKit-CSP — experimental header introduced into Google Chrome and other WebKit-based browsers (Safari) in 2011.
+X-Content-Security-Policy — experimental header introduced in Gecko 2 based browsers (Firefox 4 to Firefox 22, Thunderbird 3.3, SeaMonkey 2.1).
+Support for the sandbox directive is also available in Internet Explorer 10 and Internet Explorer 11 using the experimental X-Content-Security-Policy header.
+
+There's initial support for CSP in some web frameworks such as AngularJS and Django.
 
 Example:
 ```script-src 'self'; object-src 'none'```
@@ -81,13 +86,12 @@ The Content-Security-Policy header field is the preferred mechanism for deliveri
 For example, a response might include the following header field:
 ```Content-Security-Policy: script-src 'self'```
 
-A Content Security Policy consists of a U+003B SEMICOLON (;) delimited list of directives. Each directive consists of a directive name and (optionally) a directive value, defined by the following ABNF:
+A Content Security Policy consists of a U+003B SEMICOLON (;) delimited list of directives. 
 
-policy-token    = [ directive-token *( ";" [ directive-token ] ) ]
-directive-token = *WSP [ directive-name [ WSP directive-value ] ]
-directive-name  = 1*( ALPHA / DIGIT / "-" )
-directive-value = *( WSP / <VCHAR except ";" and ","> )
 
+#### Applicability in reTHINK 
+
+In a preliminary analysis CSP seems too limited to be applied for the runtime policy engine but it may be useful to improve security in the protOfly engine.
 
 ### References
 
