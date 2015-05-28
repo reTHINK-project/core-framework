@@ -15,7 +15,9 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 
 #### Meteor - PTIN?
 
-#### ExtJS - APIZEE?
+#### StapesJS - APIZEE? 
+
+#### CanJS 
 
 ### References
 
