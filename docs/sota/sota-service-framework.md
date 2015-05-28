@@ -7,13 +7,15 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 
 ### JavaScript Frameworks
 
-#### AngularJS (Google)
+#### AngularJS (Google) - FOKUS
 
-#### BackboneJS  
+#### BackboneJS  - DTAG?
 
-#### EmberJS
+#### EmberJS - QUOBIS?
 
-#### Meteor 
+#### Meteor - PTIN?
+
+#### ExtJS - FOKUS
 
 ### References
 
@@ -22,3 +24,5 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 [JavaScript Frameworks: AngularJS, Meteor, Backbone, Express or plain NodeJs? When to use each one?](http://www.quora.com/JavaScript-Frameworks/AngularJS-Meteor-Backbone-Express-or-plain-NodeJs-When-to-use-each-one)
 
 [Why Meteor](http://www.meteorpedia.com/read/Why_Meteor)
+
+[Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
