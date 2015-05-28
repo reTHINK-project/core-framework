@@ -60,7 +60,9 @@ Service Workers provides features that can facilitate the development of some Ru
 
 ### Content Security Policy Level 2
 
-Defines a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced.
+Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware.
+
+Defines a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced. 
 
 CSP provides a standard HTTP header that allows website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
@@ -101,4 +103,7 @@ In a preliminary analysis CSP seems too limited to be applied for the runtime po
 * http://www.w3.org/TR/service-workers/
 * https://jakearchibald.github.io/isserviceworkerready/
 * http://www.w3.org/TR/CSP2/
+* https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
+* http://en.wikipedia.org/wiki/Content_Security_Policy
 * http://www.w3.org/2012/sysapps/app-lifecycle/
+* 
