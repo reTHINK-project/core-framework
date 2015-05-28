@@ -9,6 +9,20 @@ Can be installed as Openfire plugin.
 Call encryption with DTLS/SRTP.
 Support for ICE
 
+### Security
+Encrypted password storage 
+Password protection with a master password 
+Encrypted Instant Messaging with Off-the-Record Messaging (OTRv4) 
+Chat authentication with the Socialist Millionaire Protocol over OTR 
+Call encryption with SRTP and ZRTP for XMPP and SIP 
+Call encryption with SRTP and SDES for XMPP and SIP 
+DNSSEC support 
+TLS support and certificate-based client authentication for SIP and XMPP 
+
+### Codecs
+Audio: Opus, SILK, Speex, G.722, PCMU/PCMA (G.711), iLBC, GSM, G.729 Annex C (requires compilation and licenses) 
+Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
+
 ### Deploy
 **Required software**
 * JVM (select the latest version)
@@ -96,4 +110,7 @@ var config = {
 };
 ```
 
-Run NGINX and access the Meet App at http://shumybridge
+### Final Deploy Architecture
+![image](jitsi_arch.png)
+
+Run NGINX and access the Meet App at http://shumybridge and it will create a random room for anyone to join.
