@@ -49,7 +49,7 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 #### Language Bindings
  * [Ada, C, Chicken Scheme, Common Lisp, C#(.NET & Mono), C++, D, delphi binding, Eiffel, Erlang, F#, Felix, Flex (ActionScript), Fortran77, Go, Guile, Haskell, Haxe, Java binding, JavaScript (Flash), Julia, LabVIEW, Lua bindings, Nimrod, Node.js, Objective-C, Objective Caml binding, ooc, Perl s, PHP binding, Python binding, Q, Racket, R, RE, RE, Red, Ruby, Ruby(FFI), Scala, Smalltalk, Tcl, Twisted (Python), XPCOM](http://zeromq.org/bindings:_start), and more [on github.com](https://github.com/search?utf8=%E2%9C%93&q=zmq&type=Repositories&ref=searchresults)
 
-#### Web Clients
+#### Web Clients/Servers
 
 * [JSMQ](https://github.com/zeromq/JSMQ) Javascript client for ZeroMQ/NetMQ over WebSockets
 * [NullMQ](https://github.com/progrium/nullmq) ZeroMQ semantics in the browser [Link1](http://www.slideshare.net/progrium/nullmq-pdx) [Link2](http://avalanche123.com/blog/2012/02/25/interacting-with-zeromq-from-the-browser/)
@@ -58,6 +58,7 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 * [Zerogw](https://github.com/tailhook/zerogw) http to zeromq gateway
 * [XARP](http://rfc.zeromq.org/spec:40) (Draft) Extensible Resource Access Protocol (XRAP), a RESTful protocol built over ZeroMQ
 * [Zato](https://zato.io/docs/index.html)  ESB, SOA, REST, APIs and cloud integrations
+* [Malamute](https://github.com/miska/malamute) All the enterprise messaging patterns in one box.
 
 [ZeroMQ API Reference](http://api.zeromq.org/)
 
