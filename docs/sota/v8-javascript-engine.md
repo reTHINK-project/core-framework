@@ -143,6 +143,8 @@ Docker has a following on its own. Obviously security over docker is a well addr
 
 #### [Web Messaging Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
 
+Implemented on WebKit on Chromium, so not applied directly on v8. 
+
 #### [Web Sockets](https://github.com/reTHINK-project/core-framework/issues/4)
 
 V8 does not have an implementation of web sockets per si. There is am implementation of Web sockets in Chromium, and node.js seems to have an implementation also. It is not considered an issue for v8.
