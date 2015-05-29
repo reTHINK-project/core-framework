@@ -9,15 +9,15 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 
 #### AngularJS (Google) - FOKUS
 
-#### BackboneJS  - DTAG?
+#### BackboneJS  - DTAG
 
-#### EmberJS - QUOBIS?
+#### EmberJS - APIZEE
 
-#### Meteor - PTIN?
+#### Meteor - PTIN
 
-#### StapesJS - APIZEE? 
+#### StapesJS - QUOBIS? 
 
-#### CanJS 
+#### CanJS
 
 ### References
 
