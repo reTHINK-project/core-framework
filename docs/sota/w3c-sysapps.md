@@ -58,6 +58,10 @@ Service Workers provides features that can facilitate the development of some Ru
 
 ### Application Lifecycle and Events
 
+The W3C Application Lifecycle and Events draft (last version from 16 May 2014) extends the Service Worker global execution context introduced above, to allow web developers to author applications that manage the application lifecycle and react to system events e.g. email or voip application. These capabilities allow application developers to create applications that integrate closely with the underlying system.
+
+
+
 ### Content Security Policy Level 2
 
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware.
