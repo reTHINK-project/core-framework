@@ -88,7 +88,7 @@ http://redis.io/
 
 http://about.psyc.eu/
 
-#### Jitsi (PTIN)
+#### [Jitsi](jitsi.md) (PTIN)
 
 https://jitsi.org/Projects/JitsiVideobridge
 
