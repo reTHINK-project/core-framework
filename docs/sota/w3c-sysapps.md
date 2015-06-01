@@ -60,6 +60,28 @@ Service Workers provides features that can facilitate the development of some Ru
 
 The W3C Application Lifecycle and Events draft (last version from 16 May 2014) extends the Service Worker global execution context introduced above, to allow web developers to author applications that manage the application lifecycle and react to system events e.g. email or voip application. These capabilities allow application developers to create applications that integrate closely with the underlying system.
 
+The following functionalities are provided:
+* A background App or Service can run without a visible user interfaces
+* An application is able to decide when to show the user interface
+* The Application can be terminated without user’s consent, and that is able to restore to its previous state.
+* The application is able to show a different user interface given how the app was launched. For example, if launched as a photo picker, the application will not show the default application window, but instead creates a special purpose user interface.
+* The Application is only launched for  a specific set of events eg the runtime uses somekind of events pre-filtering mechanism. For example, if an application listens to a "USB plugged" event, it can additionally ask to only listen to a specific device connected or a specific port.
+* The application is able to enumerate windows associated with it, and create new windows.
+
+This API extends the ServiceWorkerGlobalScope interfaces in the following way:
+
+```
+partial interface ServiceWorkerGlobalScope {
+                attribute EventHandler  onlaunch;
+                attribute EventHandler  onterminate;
+                attribute EventHandler  onterminatecanceled;
+    readonly    attribute TaskScheduler taskScheduler;
+};
+```
+
+#### Applicability in reTHINK 
+
+Similar to Service Workers, this extension can facilitate the development of some Runtime features notably to govern the  runtime life-cycle of Hyperty instances. However, it seems this draft has not much support by the industry. However, [Chrome Packaged App lifecycle](https://developer.chrome.com/apps/app_lifecycle) looks similar. [Firefox Add-ons](https://developer.mozilla.org/en-US/Add-ons) should also support some kind of App life-cycle.
 
 
 ### Content Security Policy Level 2
