@@ -39,8 +39,46 @@ But this can be completed thanks to the different packages available on https://
 In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
 
 
-
 **[Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
 
 
-TO BE DONED
+* [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
+  * Yes
+  * ProtOFly connector can be developped
+
+* [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
+  * Yes (socket.io)
+   
+* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+  * Yes (several logging modules available : log4js, winston, bunyan ...)
+
+* [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
+  * Yes
+
+* [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
+  * 
+  * Using:
+    * Cluster Mode
+    * Redis cluster
+    
+* [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
+  * Yes (socket.io)
+
+* [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
+  * Yes (socket.io)
+
+* [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
+  * Yes 
+
+* [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
+  * Yes
+
+* [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
+  * Yes
+
+* [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
+  * Yes
+
+* [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
+  * No - Yes with Redis
+
