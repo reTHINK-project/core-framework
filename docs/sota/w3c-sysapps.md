@@ -4,11 +4,11 @@ The mission of W3C System Applications Working Group is to define a runtime envi
 
 ### Service Workers
 
-Service workers essentially act as proxy servers that sit between web applications, and the browser and network (when available.) They are intended to (amongst other things) enable the creation of effective offline experiences, intercepting network requests and taking appropriate action based on whether the network is available and updated assets reside on the server. 
+Service workers are based on previous [Web Worker](http://www.w3.org/TR/workers/) W3C work and they essentially act as proxy servers that sit between web applications, and the browser and network (when available.) They are intended to (amongst other things) enable the creation of effective offline experiences, intercepting network requests and taking appropriate action based on whether the network is available and updated assets reside on the server. 
 
 A service worker is an event-driven worker registered against an origin and a path. It takes the form of a JavaScript file that can control the web page/site it is associated with, intercepting and modifying navigation and resource requests, and caching resources in a very granular fashion to give you complete control over how your app behaves in certain situations (the most obvious one being when the network is not available.)
 
-A service worker is run in a worker context: it therefore has no DOM access, and runs on a different thread to the main JavaScript that powers your app, so it is not blocking. It is designed to be fully async;
+A service worker is run in its context: it therefore has no DOM access, and runs on a different thread to the main JavaScript that supports the web app, so it is not blocking. It is designed to be fully async;
 
 A service worker is first registered and, if successful, it will be downloaded to the client and attempt installation/activation for URLs accessed by the user inside the whole origin, or inside a subset specified by you.
 
@@ -56,6 +56,14 @@ Service Workers are still an experimental technology only supported in Desktop C
 
 Service Workers provides features that can facilitate the development of some Runtime features including Event BUS, ProtOfly engine, Policy Engine. Its usage to support the Hyperty instance itself should also be evaluated. However it seems this technology is only available in Browsers and not in server side javascript runtime like node.js.
 
+#### References
+
+* http://www.w3.org/TR/workers/
+* https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
+* https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
+* http://www.w3.org/TR/service-workers/
+* https://jakearchibald.github.io/isserviceworkerready/
+
 ### Application Lifecycle and Events
 
 The W3C Application Lifecycle and Events draft (last version from 16 May 2014) extends the Service Worker global execution context introduced above, to allow web developers to author applications that manage the application lifecycle and react to system events e.g. email or voip application. These capabilities allow application developers to create applications that integrate closely with the underlying system.
@@ -83,6 +91,9 @@ partial interface ServiceWorkerGlobalScope {
 
 Similar to Service Workers, this extension can facilitate the development of some Runtime features notably to govern the  runtime life-cycle of Hyperty instances. However, it seems this draft has not much support by the industry. However, [Chrome Packaged App lifecycle](https://developer.chrome.com/apps/app_lifecycle) looks similar. [Firefox Add-ons](https://developer.mozilla.org/en-US/Add-ons) should also support some kind of App life-cycle.
 
+#### References
+
+* http://www.w3.org/2012/sysapps/app-lifecycle/
 
 ### Content Security Policy Level 2
 
@@ -121,15 +132,9 @@ A Content Security Policy consists of a U+003B SEMICOLON (;) delimited list of d
 
 In a preliminary analysis CSP seems too limited to be applied for the runtime policy engine but it may be useful to improve security in the protOfly engine.
 
-### References
+#### References
 
-* http://www.w3.org/2012/sysapps/
-* https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
-* https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
-* http://www.w3.org/TR/service-workers/
-* https://jakearchibald.github.io/isserviceworkerready/
 * http://www.w3.org/TR/CSP2/
 * https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
 * http://en.wikipedia.org/wiki/Content_Security_Policy
-* http://www.w3.org/2012/sysapps/app-lifecycle/
 * 
