@@ -5,10 +5,19 @@ The SysApps was originally chartered to provide a runtime and security model how
 #### References
 
 https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
+https://www.w3.org/community/trustperms/
 
 ### WHATWG - Web Hypertext Application Technology Working Group
 
-The WHATWG was founded by individuals of Apple, the Mozilla Foundation, and Opera Software in 2004, after a W3C workshop. Apple, Mozilla and Opera were becoming increasingly concerned about the W3C’s direction with XHTML, lack of interest in HTML and apparent disregard for the needs of real-world authors. So, in response, these organisations set out with a mission to address these concerns and the Web Hypertext Application Technology Working Group was born.
+The WHATWG was formed by individuals of Apple, the Mozilla Foundation, and Opera Software in 2004, in response to the slow development of World Wide Web Consortium (W3C) Web standards and W3C's decision to abandon HTML in favor of XML-based technologies.
+
+On 10 April 2007, the Mozilla Foundation, Apple, and Opera Software proposed that the new HTML working group of the W3C adopt the WHATWG’s HTML5 as the starting point of its work and name its future deliverable as "HTML5". On 9 May 2007, the new HTML working group resolved to do that
+
+The WHATWG has been actively working on several specs:
+
+* Web Workers: defines an API that enables ECMAScript to use multi-core CPUs more effectively.
+* Microdata Vocabularies: defines vocabularies for use with the HTML5 Microdata feature.
+
 
 #### References
 
