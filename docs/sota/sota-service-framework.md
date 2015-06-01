@@ -15,7 +15,7 @@ of Hyperties. The Framework should be modular in nature to support different Hyp
 
 #### Meteor - PTIN
 
-#### StapesJS - QUOBIS? 
+#### StapesJS - QUOBIS 
 
 #### CanJS
 
