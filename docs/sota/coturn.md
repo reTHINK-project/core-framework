@@ -1,9 +1,21 @@
+## coturn
+
+### Overview
+
 The TURN [4] protocol is defined as an extension of the STUN [5] protocol. 
+
 TURN servers act as media relays and are directly placed in the media path. TURN server gets all the media packets from one endpoint and sends them towards the remote peer (remote endpoint) or to another TURN server, if it is used by the remote endpoint.
+
 TURN server acts as a relay for the packets. In the most common case, a TURN server is in the public Internet and the hosts are behind NATs or restrictive firewalls. 
+
 The study about TURN servers is very up-to-date since there is an ongoing work on this subject in IETF. The recently formed IETF group – TRAM (TURN Revised and Modernized) focuses on improving TURN implementations and features in order to make STUN and TURN more suitable for WebRTC [6].
 
 Coturn is an open source TURN server implementation [1]. It is a separate branch of the previous implementation rfc5766-turn-server-project, and is dedicated for testing new protocols. As a result, it supports more specifications than the previous version. 
+
+The asset can be used for network QoS.
+
+### Architecture
+
 Below, the list of supported specs is given, based on coturn codelab [2]. Based on discussion in discuss-webrtc google forum, information about support in Google Chrome is indicated [3].
 
 TURN specs:
@@ -24,13 +36,11 @@ STUN specs:
 -	RFC 5769 - test vectors for STUN protocol testing
 -	RFC 5780 - NAT behavior discovery support
 
-[1] https://webrtchacks.com/coturn/
-[2] https://code.google.com/p/coturn/ 
-[3] https://groups.google.com/forum/#!searchin/discuss-webrtc/turn/discuss-webrtc/FKwZMx_cLqs/T3dqst0Di2MJ
-[4] http://tools.ietf.org/html/rfc5766
-[5] http://tools.ietf.org/html/rfc5389
-[6] https://datatracker.ietf.org/wg/tram/documents/
+### APIs
 
+Should be implemented and launched on a server. 
 
+### Requirements Analysis
 
- 
+Download the latest official version, at least 4.4.
+TURN-based solution would allow a collaborative approach as it can be placed in a media path and be used for flow steering. It can impact different network types and segments and thanks to its compatibility with existing solutions, it can be introduces incrementally. 
