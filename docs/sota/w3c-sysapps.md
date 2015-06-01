@@ -1,7 +1,19 @@
-## W3C System Applications Working Group
+### W3C System Applications Working Group
 
-The mission of W3C System Applications Working Group is to define a runtime environment, security model, and associated APIs for building Web applications with comparable capabilities to native applications.
+The SysApps was originally chartered to provide a runtime and security model however, it has not been possible to reach such objective. In the meanwhile we may find proprietary web runtimes, FFOS and Chrome, which provide a security model for installed packaged web runtimes.
 
+#### References
+
+https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
+
+### WHATWG - Web Hypertext Application Technology Working Group
+
+The WHATWG was founded by individuals of Apple, the Mozilla Foundation, and Opera Software in 2004, after a W3C workshop. Apple, Mozilla and Opera were becoming increasingly concerned about the W3C’s direction with XHTML, lack of interest in HTML and apparent disregard for the needs of real-world authors. So, in response, these organisations set out with a mission to address these concerns and the Web Hypertext Application Technology Working Group was born.
+
+#### References
+
+https://whatwg.org/
+ 
 ### Service Workers
 
 Service workers are based on previous [Web Worker](http://www.w3.org/TR/workers/) W3C work and they essentially act as proxy servers that sit between web applications, and the browser and network (when available.) They are intended to (amongst other things) enable the creation of effective offline experiences, intercepting network requests and taking appropriate action based on whether the network is available and updated assets reside on the server. 
