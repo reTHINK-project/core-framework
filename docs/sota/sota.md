@@ -84,6 +84,10 @@ http://zeromq.org/
 
 http://redis.io/
 
+#### [XMPP (INESC-ID)](xmpp.md)
+
+http://xmpp.org/
+
 #### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/

@@ -33,7 +33,18 @@ In the scope of the reTHINK project XMPP is a candidate technology for the Messa
 
 ### Architecture
 
-![image](....png)
+A typical XMPP network consists  from several Servers/Domains connected together. The mechanism is similar to email where the servers are used as relays for the messages. Every entity on the XMPP network is addressed using a JabberID (JID). It has the form : username@domain/resource where domain is the domain name of the XMPP server, and username identifies an account on that server.
+
+
+![image](xmpp_arch.png)
+
+Server can have adapters/gateways to be able to talk to other protocols such as used by ICQ, AIM, Yahoo and others.
+
+![image](xmpp_protocols.png)
+
+Sometimes the servers are used only for signaling, in order to establish a media connection. [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol extension for initiating and managing peer-to-peer media sessions between two XMPP entities.
+
+![image](xmpp_jingle.png)
 
 ### APIs, Bindings and Extensions
 
@@ -61,7 +72,7 @@ In the scope of the reTHINK project XMPP is a candidate technology for the Messa
 | gloox                     | C                                  | [Link](http://camaya.net/gloox)                                         |
 | goexmpp                   | Go                                 | [Link](http://code.google.com/p/goexmpp/)                               |
 | headstock                 | Python                             | [Link](https://github.com/Lawouach/headstock)                           |
-| hsxmpp                    | Haskell                            | [Link](http://חנוך.se/hsxmpp/)                                          |
+| hsxmpp                    | Haskell                            | [Link](http://חנוך.se/hsxmpp/)                                           |
 | hxmpp                     | haXe                               | [Link](http://hxmpp.disktree.net/)                                      |
 | iksemel                   | C                                  | [Link](http://code.google.com/p/iksemel/)                               |
 | IP*WorksInternetToolkit   | ActiveX C C# .NET Mono Delphi Java | [Link](http://www.nsoftware.com/ipworks/)                               |
@@ -136,40 +147,52 @@ In the scope of the reTHINK project XMPP is a candidate technology for the Messa
 Analysis against **Messaging Node** Requirements
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
-  ...
+  * Yes
+  * the Client Server API could be wrapped in a protocol stub, that can be downloaded at runtime
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  ...
+  * Yes
    
 * [Message Caching](https://github.com/reTHINK-project/core-framework/issues/19)
-  ...
+  * Yes
+  * Using [XEP-0203: Delayed Delivery](http://xmpp.org/extensions/xep-0203.html)
 
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
-  ...
+  * Yes
+  * Using [XEP-0313: Message Archive Management](http://xmpp.org/extensions/xep-0313.html) and [XEP-0136: Message Archiving](http://xmpp.org/extensions/xep-0136.html)
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
-  ...
+  * Yes
+  * Using [XEP-0184: Message Delivery Receipts](http://xmpp.org/extensions/xep-0184.html) and/or [XEP-0079: Advanced Message Processing](http://xmpp.org/extensions/xep-0079.html)
+  * [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
-  ...
+  * Yes
+  * Using scalable Erlang-based servers [mongooseim](https://www.erlang-solutions.com/products/mongooseim-massively-scalable-ejabberd-platform) or [ejabberd](http://docs.ejabberd.im/architect/) clusters can handle tens of millions of users.
 
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
-  ...
+  * Yes
+  * If Using [XEP-0198: Stream Management](http://xmpp.org/extensions/xep-0198.html)
+  * [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
-  ...
+  * Yes
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
-  ...
+  * Yes
+  * [ms latency](https://www.ejabberd.im/benchmark)
 
 * [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
-  ...
+  * Yes
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
-  ...
+  * Yes
+  * Clients based on C libraries can run on embedded systems
 
 * [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
-  ...
+  * Yes
+  * Using [XEP-0178: Best Practices for Use of SASL EXTERNAL](http://xmpp.org/extensions/xep-0178.html)
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
-  ...
+  * Yes
+  * Using [XEP-0060: Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
