@@ -39,7 +39,7 @@ But this can be completed thanks to the different packages available on https://
 In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
 
 
-**[Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
+#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
 
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
@@ -81,4 +81,28 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
   * No - Yes with Redis
+
+#### [Runtime Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
+
+**Web Sockets on node.js**
+
+This suplemments the lack of implementation of Web Sockets inside v8.
+
+npm install ws
+
+IT is easy to use, fast and up-to-date against current HyBi protocol drafts.
+IT can send and receive typed arrays (ArrayBuffer, Float32Array) as binary data.
+IT passes the extensible Autobahn test suite: client report ( Autobahn WebSockets v0.4.5.), server report  ( Autobahn WebSockets v0.4.5.).
+
+It has extensive benchmarks relative to its overhall performance in node.js.
+
+
+In fact there are extensive implementations of Web Sockets over node.js:
+websocket-node 
+faye-websocket-node 
+engine.io
+socket.io 
+sockjs
+
+The most performante is claimded to be ws.
 
