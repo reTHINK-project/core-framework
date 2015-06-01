@@ -10,12 +10,12 @@ http://www.kurento.org/
 ### Overview
 
 Kurento can be used to manage media flows :
-Send / Receive
-Recording
-Transcoding
-Augmented reality
-Mixing
-broadcasting
+- Send / Receive
+- Recording
+- Transcoding
+- Augmented reality
+- Mixing
+- broadcasting
 
 It can be used to handle different type of communications applications : 1 to 1, N to N, 1 to N
 (Real time exchanges or streaming)
@@ -46,9 +46,11 @@ Several tutorial are available on the webSite : http://www.kurento.org/docs/curr
 Media server API is describe here :
 http://www.kurento.org/docs/current/mastering/kurento_API.html
 
-Kurento Clients are alaso avaialble for application developers :
+Kurento Clients are also available for application developers :
+
 JAVA :
 http://www.kurento.org/docs/current/langdoc/javadoc/index.html
+
 JavaScript :
 http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-client-js/index.html
 http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-utils-js/index.html

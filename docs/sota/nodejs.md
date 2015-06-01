@@ -4,20 +4,18 @@
 
 ### Overview
 
-*Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
-
 In the scope of the reTHINK project NodeJs is a candidate technology for the Messaging Node.
 
 From https://nodejs.org/ :
 
 Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
-Several additional package are available to be used with nodeJs : https://www.npmjs.com/
+Several additional packages are available to be used with nodeJs : https://www.npmjs.com/
 
 It can be used with component like Redis, socket.io to enhance connectivity and redundancy
 
 
-A fork of nodejs exist : iojs but a merge may happened.
+A fork of nodejs exist : iojs but a merge seems to be ongoing.
 
 NodeJs is already used in several WebRTC platform or product. (NodeJs can be used in front of Kurento) 
 
@@ -32,7 +30,7 @@ NodeJs is already used in several WebRTC platform or product. (NodeJs can be use
 
 API are described on nodejs website : https://nodejs.org/api/
 
-But this can be completed thanks to the diffrenet packages available on https://www.npmjs.com/
+But this can be completed thanks to the different packages available on https://www.npmjs.com/
 
 ### Requirements Analysis
 
@@ -45,4 +43,4 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
 **[Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
 
 
-
+TO BE DONED
