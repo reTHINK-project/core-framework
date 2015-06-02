@@ -1,22 +1,30 @@
 ## OpenWebRTC
 
 
-We want your environment to work better. Docker containers, and the work flow that comes with them, help your developers, sysadmins, QA folks, and release engineers work together to get your code into production and make it useful. It was created a standard container format that lets developers care about their applications inside containers while sysadmins and operators can work on running the container in your deployment. This separation of duties streamlines and simplifies the management and deployment of code.
-It makes it easy to build new containers, enable rapid iteration of your applications, and increase the visibility of changes. This helps everyone in your organization understand how an application works and how it is built.
-Docker containers are lightweight and fast! Containers have sub-second launch times, reducing the cycle time of development, testing, and deployment.
+With OpenWebRTC you can build native WebRTC apps that communicate with browsers that supports the WebRTC standard, such as Chrome, Firefox and Bowser. OpenWebRTC is especially focused on mobile platforms, with powerful features such as hardware accelerated video coding and OpenGL-based video rendering. 
 
-Deploy and scale more easily
+Its architecture is highly modular permiting an easily modification and possible extension. Since the WebRTC standard is still evolving, that flexibility is a very desirable trait.
 
-Docker containers run (almost) everywhere. You can deploy containers on desktops, physical servers, virtual machines, into data centers, and up to public and private clouds.
-Since Docker runs on so many platforms, it's easy to move your applications around. You can easily move an application from a testing environment into the cloud and back whenever you need.
-Docker's lightweight containers also make scaling up and down fast and easy. You can quickly launch more containers when needed and then shut them down easily when they're no longer needed.
-Get higher density and run more workloads
+It is built to support cross-platform operation, supporting IOS, Android, MAC OS and Linux. It is expected that Windows would be work with also.
 
-Docker containers don't need a hypervisor, so you can pack more of them onto your hosts. This means you get more value out of every server and can potentially reduce what you spend on equipment and licenses.
+It is built on the expectation that several browsers will be able to support its operation. The bulk of the API layer is implemented in JavaScript, making it super fast to modify and extend with new functionality. This is expecially important on mobile platforms with its rapid developping application environment.
 
-Faster deployment makes for easier management
+With support for both H.264 (OpenH264) and VP8 (libvpx) video codecs OpenWebRTC is compatible with most video communication services. 
 
-As Docker speeds up your work flow, it gets easier to make lots of small changes instead of huge, big updates. Smaller changes mean reduced risk and more uptime.
+The OpenWebRTC project is free and Open Source with a permissive BSD-2 license. 
 
-What is Docker's architecture?
-Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. Both the Docker client and the daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate via sockets or through a RESTful API.
+OpenWebRTC is built on top of widely used and powerful GStreamer multimedia framework.
+
+GStreamer
+
+GStreamer is a set of libraries and plugins that can be used to implement various multimedia applications ranging from desktop players, audio/video recorders, 
+multimedia servers, transcoders, etc. 
+
+Applications are built by constructing a pipeline composed of elements. An element is an object that performs some action on a multimedia stream such as:
+
+- read a file
+- decode or encode between formats
+- capture from a hardware device
+- render to a hardware device
+- mix or multiplex multiple streams
+
