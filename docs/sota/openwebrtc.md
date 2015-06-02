@@ -15,6 +15,8 @@ The OpenWebRTC project is free and Open Source with a permissive BSD-2 license.
 
 OpenWebRTC is built on top of widely used and powerful GStreamer multimedia framework.
 
+Unfortunatly, more information in public domain is not available.
+
 GStreamer
 
 GStreamer is a set of libraries and plugins that can be used to implement various multimedia applications ranging from desktop players, audio/video recorders, 
