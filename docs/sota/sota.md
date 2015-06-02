@@ -88,6 +88,10 @@ http://redis.io/
 
 http://xmpp.org/
 
+#### [MQTT (INESC-ID)](mqtt.md)
+
+http://mqtt.org/
+
 #### [PSYC (INESC-ID)](psyc.md)
 
 http://about.psyc.eu/
