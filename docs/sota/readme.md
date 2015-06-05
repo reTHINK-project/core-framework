@@ -7,16 +7,16 @@ The research, experimentation and selection will be reported here following [thi
 
 ### [Standards](/standards/readme.md)
 
-### Projects (/projects/readme.md)
+### [Projects](/projects/readme.md)
 
-### Runtime solutions (/runtime/readme.md)
+### [Runtime solutions](/runtime/readme.md)
 
-### Messaging solutions (/messaging/readme.md)
+### [Messaging solutions}(/messaging/readme.md)
 
-### QoS solutions (/qos/readme.md)
+### [QoS solutions](/qos/readme.md)
 
-### Web Frameworks (/web-frameworks/readme.md)
+### [Web Frameworks](/web-frameworks/readme.md)
 
-### Products (/products/readme.md)
+### [Products](/products/readme.md)
 
 
