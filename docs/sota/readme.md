@@ -11,7 +11,7 @@ The research, experimentation and selection will be reported here following [thi
 
 ### [Runtime solutions](/runtime/readme.md)
 
-### [Messaging solutions}(/messaging/readme.md)
+### [Messaging solutions](/messaging/readme.md)
 
 ### [QoS solutions](/qos/readme.md)
 
