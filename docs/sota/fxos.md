@@ -1,6 +1,6 @@
 ### Overview
 
-Firefox OS (project name: Boot to Gecko, also known as B2G) is a Linux kernel-based open-source operating system for smartphones, tablet computers[6] and smart TVs, developed by Mozilla.
+Firefox OS (project name: Boot to Gecko, also known as B2G) is a Linux kernel-based open-source operating system for smartphones, tablet computers and smart TVs, developed by Mozilla.
 
 Firefox OS is designed to provide a complete, community-based alternative system for mobile devices, using open standards and approaches such as HTML5 applications, JavaScript, a robust privilege model, open web APIs to communicate directly with cellphone hardware, and application marketplace.
 
@@ -13,8 +13,7 @@ The initial development work involves three major software layers:
 * Gaia – an HTML5 layer and user-interface system.
 
 
-This is a (little bit outdated) [FXOS Web-API status page](https://wiki.mozilla.org/WebAPI).
-
+[FXOS Web-API status page](https://wiki.mozilla.org/WebAPI) (Last Update March 2015) .
 
 ### Requirements Analysis
 
@@ -60,8 +59,7 @@ Analysis against [Runtime-Environment Requirements](https://github.com/reTHINK-p
 
 
 * [The Runtime must be secured](https://github.com/reTHINK-project/core-framework/issues/7)
-  * hmmm, what to say here?
-  * this would require much more analysis and expertise
+  * this would require much more analysis and expertise in attacking the device or the running applications
   * general assumptions is that the security is comparable to a browser
   * but because the browser IS the middle layer of the OS a potential breakout of the sandbox might have stronger consequences
 
