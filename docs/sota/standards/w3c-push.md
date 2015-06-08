@@ -25,13 +25,6 @@ In order to provide a standard way for push notification to be used on the Inter
 
 Expected clients are both web applications and field gateways that consolidate and forward messages to embedded devices.  Several models have been discussed, and there currently seems to be most interest in a publication-subscription model where each device subscribes individually, but with no requirement for a separate registration in advance.
 
-Briefly, the protocol defines:
-
-* How a user agent (browser or field gateway) contacts its configured push service for the subscription/registration information that the W3C Push API registration call returns
-* How the application server sends the subscription info to the push service
-* How the application server sends push messages to the push service
-* How the user agent receives push messages from the push service
-
 This working group will create an HTTP based protocol that will allow applications to request delivery of data to applications through a consolidated service. The working group will work in cooperation with W3C’s Web Push API. 
 
 ### Applicability to reTHINK
