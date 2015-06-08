@@ -5,18 +5,18 @@ Such analysis should report whether WP3 should reuse existing work including its
 
 The research, experimentation and selection will be reported here following [this template](template.md).*
 
-### [Standards](/standards/readme.md)
+### [Standards](standards/README.md)
 
-### [Projects](/projects/readme.md)
+### [Projects](projects/README.md)
 
-### [Runtime solutions](/runtime/readme.md)
+### [Runtime solutions](runtime/README.md)
 
-### [Messaging solutions](/messaging/readme.md)
+### [Messaging solutions](messaging/README.md)
 
-### [QoS solutions](/qos/readme.md)
+### [QoS solutions](qos/README.md)
 
-### [Web Frameworks](/web-frameworks/readme.md)
+### [Web Frameworks](web-frameworks/README.md)
 
-### [Products](/products/readme.md)
+### [Products](products/README.md)
 
 
