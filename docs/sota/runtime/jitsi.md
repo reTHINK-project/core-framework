@@ -42,18 +42,18 @@ Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
 * For the machine name and XMPP domain is important that you use "shumybridge", server certificates will be generated for the domain.
 * Select embedded SQLLite database, and an admin user account. Just enough for testing.
 * On config "Server -> Server Settings -> HTTP Binding", enable "Script Syntax -> BOSH" and "Provides support for XFF (X-Forwarded-For) headers"
-* On config "Server -> Server Settings -> External Components" enable and set the password.
+* On config "Server -> Server Settings -> External Components" enable and set the password, ex: xpassword
 
 **Jitsi VideoBridge**
 * Download and install Jitsi Videobridge from https://jitsi.org/Projects/JitsiVideobridge
-* Run videobridge with: jvb --host=shumybridge --secret=<password>
+* Run videobridge with: jvb --host=shumybridge --secret=xpassword
 * You should see an entry in XMPP components like:
 ![image](openfire_videobridge.png)
 
 **Jicofo Session**
 * Clone from "git clone https://github.com/jitsi/jicofo.git"
 * Ant build with "ant dist.{os-name}"
-* Add lines "org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false" and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file sip-communicator.properties. In Windows this is located at "C:\Users\<user>\.sip-communicator\sip-communicator.properties" or in linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
+* Add lines "org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false" and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file sip-communicator.properties. In Windows this is located at "C:\Users\"user"\\.sip-communicator\sip-communicator.properties" or in linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
 * Run videobridge with: jicofo --host=shumybridge --port=5275 --secret=xpassword
 * You should see an entry in XMPP components like:
 ![image](openfire_video_jicofo.png)
