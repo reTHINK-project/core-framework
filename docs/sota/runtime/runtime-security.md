@@ -141,7 +141,7 @@ A Cloud of Secure Elements has the following components, as Fig. 6 shows:
 A grid of secure elements is an Internet server hosting multiple secure elements. Each element may be plugged in through USB readers, hardware sockets or electronic boards. Communication may be achieved with RACS protocol (works over IP/TCP/TLS stack) and performs both the association between elements and unique identifiers and data exchange with secure elements.
 
 
-### **Malicious Code on Java Cards: Attacks and Countermeasures**
+# **Malicious Code on Java Cards: Attacks and Countermeasures**
 
 Despite all the advantages on using Java language in smart cards, such as the absence of low-level memory vulnerabilities, Java Cards still have an open door for attacks through malicious code. This attack entry is possible because an on-card bytecode verifier (BCV) is optional on Java Cards, and those who don't feature it, are more open to malicious code that might damage other applets running on the system or even the platform itself.
 
@@ -150,27 +150,27 @@ Despite all the advantages on using Java language in smart cards, such as the ab
 Here we present the different mechanisms for protection against malicious code actions present in Java Cards.
 
 
-# **Bytecode verification**
+### **Bytecode verification**
 
 Bytecode verification of Java code guarantees type safety, and thus, memory safety. On normal Java platform, bytecode verification occurs at load time. Although, since Java Cards do not support dynamic class loading, this verification must occur at the time an applet is installed to the card. However, most Java Cards do not feature an on-card BCV and rely on a digital signature
 of a third party who is trusted to have performed bytecode verification off-card.
 
-# **Applet firewall**
+### **Applet firewall**
 
 The applet firewall is an additional defense mechanism present in Java Cards. The firewall performs runtime checks to prevent applets from accessing and/or altering data of other applets (concretely, in a different security context). For every object within an applet, the firewall records its context, and for any field or method accessed this context is checked. Only the Java Card Runtime Environment (JCRE) has unlimited permission, since it executes in root-mode, on a UNIX terminology.
 
 
 ## **Getting malicious code on cards**
 
-# **CAP file manipulation**
+### **CAP file manipulation**
 
 This is the easiest way of introducing ill-typed code on a Java Card. This can be achieved by editing a CAP (Converted APplet) file to introduce a type flaw in the bytecode and install it to the card. Although, this will only work for cards without an on-card BCV and with unsigned CAP files. In example, by changing a ```baload``` (byte load) opcode onto a ```saload``` (short load) one, will make the platform treat a byte array as a short array, and can potentially lead to accessing other applet's memory space.
 
-# **Abusing Shareable Interface Objects**
+### **Abusing Shareable Interface Objects**
 
 The shareable mechanism of Java Card can be used to create type confusion between applets without any direct editing on CAP files. Shareable interfaces allow direct communication between security contexts. Using this to create type confusion is pretty simple: Let two applets communicate through a shareable interface, but compile and generate CAP files for both applets using different definitions of the shareable interface, which is possible because the applets are compiled and loaded separately. This way we can achieve an attack like the CAP file manipulation but without ever touching the CAP file directly.
 
-# **Abusing the transaction mechanism**
+### **Abusing the transaction mechanism**
 
 The Java Card transaction mechanism is probably the tricliest aspect of the Java Card platform. It allows multiple byte-code instructions to be turned into an atomic operation, offering a roll-back mechanism in case the operation is aborted, either through card tear or calling an API method. Buggy implementations of the transaction mechanism in some cards tend to make it not behave as expected. When object references are spread around the code, by assignments to instance fields and local variables, it becomes difficult for the mechanism to keep track of all the references that should be nulled out. The root cause of the problem is that stack-allocated variables, such as ```short[] localArray``` are not subject to roll-back in the event of a programatically transaction abort (through API method call).
 
