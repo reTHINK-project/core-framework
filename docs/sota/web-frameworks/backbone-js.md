@@ -38,7 +38,7 @@ A Collection helps you deal with a group of related models, handling the loading
 * well suited for creation of own frameworks
 * **no two-way data binding --> lots of boilerplate code required**
 * **views change DOM directly by looking up css class names**
-* --> changing CSS or modifications in DOM (wrapping, nesting) requires updates in Code
+* --> changing CSS or modifications in DOM (wrapping, nesting) requires updates in code
 
 
 # Requirement Analysis
@@ -63,7 +63,7 @@ Analysis against **Service Framework** Requirements
   * rather YES
   * every view is tight to its own root-DOM element and responsible for the tree below it
   * Therefore Backbone.js relies on runtimes that provide a DOM tree.
-  * But this does NOT have to be a "real" DOM tree --> can be used with e.g. Reac virtual DOM (React has implemented a browser-independent events and DOM system)
+  * But this does NOT have to be a "real" DOM tree --> can be used with e.g. React virtual DOM (React has implemented a browser-independent events and DOM system)
   * --> needs special additions in non-browser runtime environments
 
 
