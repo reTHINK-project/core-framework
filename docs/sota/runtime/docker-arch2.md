@@ -1,4 +1,4 @@
-ow to obtain security on standalone components using Docker.
+How to obtain security on standalone components using Docker.
 
 To understand how to obtain security using Docker we have to look at its architecture: 
 
