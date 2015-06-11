@@ -65,9 +65,15 @@ when we run this command:
 In order, Docker does the following:
 
 1 - Pulls the ubuntu image. Docker checks for the presence of the ubuntu image and, if it doesn't exist locally on the host, then Docker downloads it from Docker Hub. If the image already exists, then Docker uses it for the new container.
+
 2 - Creates a new container. Once Docker has the image, it uses it to create a container.
+
 3 - Allocates a filesystem and mounts a read-write layer. The container is created in the file system and a read-write layer is added to the image.
+
 4 - Allocates a network / bridge interface. Creates a network interface that allows the Docker container to talk to the local host.
+
 5 - Sets up an IP address. Finds and attaches an available IP address from a pool.
+
 6 - Executes a process that we specify. Runs our application.
+
 7 - Captures and provides application output. Connects and logs standard input, outputs and errors for we to see how our application is running.
