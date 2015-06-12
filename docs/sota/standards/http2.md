@@ -12,7 +12,7 @@ Loading a Web page is more resource intensive than ever because HTTP practically
 This problems leaded the industry to consider “Best Practices” things like: spriting, data inlining, domain sharding and concatenation which are just workarounds which improves the user experience.These hacks are indications of underlying problems in the protocol itself, and cause a number of problems on their own when used.
 On the other side, the way in which the Web is accessed has also change a lot, mobile devices has become the main point of entry to the web. Characteristics of wireless connections (high latency, jitter and packet loss) may prevent Web applications served with HTTP over TCP from being responsive and even usable.
 
-![HTTP/2](https://tools.ietf.org/html/rfc7540), which is already a definitive RFC, was designed to be adapted to the new conditions of the WWW and its main goal is to improve the user experience. HTTP/2 is an evolution of SPDY, experimental protocol mainly developed by Google which is currenlty being used in production in many Google applications.
+[HTTP/2!](https://tools.ietf.org/html/rfc7540), which is already a definitive RFC, was designed to be adapted to the new conditions of the WWW and its main goal is to improve the user experience. HTTP/2 is an evolution of SPDY, experimental protocol mainly developed by Google which is currenlty being used in production in many Google applications.
 To take advantage of HTTP/2 new features a new transport protocol, QUIC, has been designed. Both protocols combined will be extensily used in Internet in the next years. 
 
 
@@ -53,7 +53,7 @@ Headers add a lot of overhead traffic and increase latency.
 
 In HTTP/2 the server can push resources to the client before receiving a request to server that resource. This reduce the load time as the browser does not have to send GET request to ask for all the resources avoiding RTT delays.
 
-![](http2-push.png)
+->![](http2-push.png)<-
 
 ## Features of HTTP/2 
 
@@ -72,14 +72,14 @@ The frame is the smallest unit of communication in HTTP/2, each containing a fra
 The most relevant frames are the used to transport Headers and Data, but there are also frames for other functions like stream control, push content and set the priority of the streams.
 DATA frames are used to transport HTTP message bodies and HEADERS frames are used to communicate header fields for a stream. The rest of frames are used for control tasks and they are called Control Frames.
 
-![HTTP/2 Framing](http2_framing.png)
+->![HTTP/2 Framing](http2_framing.png)<-
 
 ### Multiplexing
 
 HTTP/2 interleave multiple requests and responses in parallel without blocking any one using a single connection to deliver and receive them. This allow to remove unnecessary HTTP/1.x workarounds such as concatenated files, image sprites, and domain sharding. 
 It also resultes in  lower page load times by eliminating unnecessary latency and improving utilization of available network capacity.
 
-![HTTP/2 Streams](http2_streams.png)
+->![HTTP/2 Streams](http2_streams.png)<-
 
 ### Priority
 
