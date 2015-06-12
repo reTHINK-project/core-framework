@@ -19,4 +19,13 @@ To take advantage of HTTP/2 new features a new transport protocol, QUIC, has bee
 
 ## Main features of HTTP/2
 
+|HTTP/1.1   | HTTP/2  | 
+|---|---|
+|textual   | binary  |
+| ordered and blocking  | fully multiplexed  |
+| several connections for parallelism  |  one connection for parallelism |
+| only content compression  | header compression  |
+|   not proactive push     |     allows servers to “push” responses proactively into client caches      |
+
+
 ## Why using for HTTP/2 in ReTHINK project.
