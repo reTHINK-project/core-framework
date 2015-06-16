@@ -26,7 +26,7 @@ Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
 ### Deploy
 **Required software**
 * JVM (select the latest version)
-* XMPP Server (openfire)
+* XMPP Server (openfire, prosody.im, Tigase ...)
 * Jitsi VideoBridge (stream XMPP component)
 * Jicofo (Session handler XMPP component)
 * NGINX (web server and proxy)
@@ -57,6 +57,9 @@ Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
 * Run videobridge with: jicofo --host=shumybridge --port=5275 --secret=xpassword
 * You should see an entry in XMPP components like:
 ![image](openfire_video_jicofo.png)
+
+Conference focus is mandatory component of Jitsi Meet conferencing system next to the videobridge. It is responsible for managing media sessions between each of the participants and the videobridge. It will be creating **Jingle session** between Jitsi videobridge and the participant.
+Although the session in terms of XMPP is between focus user and participant the media will flow between participant and the videobridge. That's because focus user will allocate **Colibri channels** on the bridge and use them as it's own Jingle transport.
 
 **NGINX**
 * Download and install from http://nginx.org/en/download.html
