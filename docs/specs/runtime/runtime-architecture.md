@@ -1,90 +1,10 @@
 ## Runtime Architecture
 
-<!--
-@startuml "Runtime_Architecture.png"
+Updated according to [ongoing discussions](https://github.com/reTHINK-project/core-framework/issues/41):
+* one sandbox per Hyperty Domain that includes the Policy Engine and associated protoStub to be used for the sandbox domain
+* Hyperty instances communicates with event bus through Policy Engine which may also act as a kind of firewall
+* to prevent cross origin attacks / spy, access to Message BUS is subject to authorisation
 
-
- node "Application" as App 
-
- node "Hyperty1" as H1
-
- node "Hyperty2" as H2
-
-node "Runtime" as rt {
-
- node "*            Event      BUS                *" as Bus
-
- node "Policy\nEngine" as PEP
-
- node "Registry" as Reg
-
- node "ProtOfly\nEngine" as Prot
-
- node "WebRTC\nEngine" as WRTC
-
- node "Identities\nContainer" as Id
-
- App -down-> H1
-
- App -down-> H2
-
- H1 -down-> Bus
-
- H2 -down-> Bus
-
- PEP -right-> Bus
-
- Reg -up-> Bus
-
- Prot -up-> Bus
-
- WRTC -up-> Bus
-
- Id -[hidden]up-> Bus
-
- Id -right- Prot
-
- Id -left- Reg
-
-	}
-
-@enduml
--->
-
-![Runtime Architecture](Runtime_Architecture.png)
-
-### Event BUS
-
-Supports local message communication between Hyperties and also with other  Runtime features in a loosely coupled manner. In case local Hyperty is communicating with remote Hyperty it uses the Protofly engine.
-
-### Registry
-
-Local Runtime Hyperty registry where Hyperty local addresses are registered and discoverable by other local Hyperties. The Runtime Registry should ensure synchronisation with Remote Domain Registry (to be provided by WP4)
-
-### Policy Engine
-
-Intercepts Hyperty messages exchanged via the Event Bus and applies valid Policies on it e.g. authorisation policies. Policies are downloaded and stored locally when associated Hyperties are deployed. The possibility to consult Policies stored remotely should also be investigated.
-
-### Identities Containers
-
-Contains Tokens that associates Hyperties with (Tangible / Real ) Entities
-
-### Protocol on the Fly Engine
-
-Implements the Protocol on the Fly and codec on the fly concept to interoperate with remote Hyperties.
-
-### WebRTC Media Engine
-
-Provides the support for Stream communication betweeb Hyperties according to WebRTC Standards.
-
-## New Arch design
-
-Main differences as a result of [this](https://github.com/reTHINK-project/core-framework/issues/41) discussion:
-* one sandbox per Hyperty Domain that includes the Policy Engine to be used for the sandbox domain
-* Hyperty instances communicates with event bus through Policy Engine
-* Policies are stored in Policies Repository, outside Sandbox domain in a separated core runtime sandbox
-
-**question:** should protocol on the fly be included inside the domain sandbox?
 
 <!--
 @startuml "Runtime_Architecture_new.png"
@@ -192,6 +112,31 @@ node "Core Sandbox" as core {
 -->
 
 ![Runtime Architecture](Runtime_Architecture_new.png)
+
+### Event BUS
+
+Supports local message communication between Hyperties and also with other  Runtime features in a loosely coupled manner. In case local Hyperty is communicating with remote Hyperty it uses the Protofly engine.
+
+### Registry
+
+Local Runtime Hyperty registry where Hyperty local addresses are registered and discoverable by other local Hyperties. The Runtime Registry should ensure synchronisation with Remote Domain Registry (to be provided by WP4)
+
+### Policy Engine
+
+Intercepts Hyperty messages exchanged via the Event Bus and applies valid Policies on it e.g. authorisation policies. Policies are downloaded and stored locally when associated Hyperties are deployed. The possibility to consult Policies stored remotely should also be investigated.
+
+### Identities Containers
+
+Contains Tokens that associates Hyperties with (Tangible / Real ) Entities
+
+### Protocol on the Fly Engine
+
+Implements the Protocol on the Fly and codec on the fly concept to interoperate with remote Hyperties.
+
+### WebRTC Media Engine
+
+Provides the support for Stream communication betweeb Hyperties according to WebRTC Standards.
+
 
 ### Analysis on the natively support of Functionalities by the Runtime
 
