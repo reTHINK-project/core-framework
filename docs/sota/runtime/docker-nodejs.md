@@ -72,6 +72,7 @@ COPY . /src
 Install our app dependencies using the npm command:
 
 \# Install app dependencies
+
 RUN cd /src; npm install
 
 Our app binds to port 8080 so we use the EXPOSE command to have it mapped by the docker daemon:
@@ -88,13 +89,17 @@ Our Dockerfile should now look like this:
 FROM    centos:centos6
 
 \# Enable EPEL for Node.js
+
 RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 \# Install Node.js and npm
+
 RUN     yum install -y npm
 
 \# Bundle app source
+
 COPY . /src
 \# Install app dependencies
+
 RUN cd /src; npm install
 
 EXPOSE  8080
@@ -111,6 +116,7 @@ Our image will now be listed by Docker:
 $ sudo docker images
 
 \# Example
+
 REPOSITORY                          TAG        ID              CREATED
 centos                              centos6    539c0211cd76    8 weeks ago
 <your username>/centos-node-hello   latest     d64d3505b0d2    2 hours ago
@@ -124,12 +130,15 @@ $ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
 To print the output of our app:
 
 \# Get container ID
+
 $ sudo docker ps
 
 \# Print app output
+
 $ sudo docker logs <container id>
 
 \# Output
+
 Running on http://localhost:8080
 
 Test
@@ -139,6 +148,7 @@ To test our app, get the port of our app that Docker mapped:
 $ sudo docker ps
 
 \# Example
+
 ID            IMAGE                                     COMMAND              ...   PORTS
 ecce33b30ebf  <your username>/centos-node-hello:latest  node /src/index.js         49160->8080
 
