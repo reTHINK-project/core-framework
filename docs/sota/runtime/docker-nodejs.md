@@ -158,11 +158,16 @@ Is our application working? Lets test it with curl (ok install it with sudo apt-
 
 $ curl -i localhost:49160
 
-HTTP/1.1 200 OK 
-X-Powered-By: Express 
-Content-Type: text/html; charset=utf-8 
-Content-Length: 12 
-Date: Sun, 02 Jun 2013 03:53:22 GMT 
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: text/html; charset=utf-8
+
+Content-Length: 12
+
+Date: Sun, 02 Jun 2013 03:53:22 GMT
+
 Connection: keep-alive 
 
 Hello world
