@@ -28,9 +28,11 @@ Then we need to create an index.js file that defines a web app using the Express
 var express = require('express');
 
 // Constants
+
 var PORT = 8080;
 
 // App
+
 var app = express();
 app.get('/', function (req, res) {
   res.send('Hello world\n');
