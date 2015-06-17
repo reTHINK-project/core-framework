@@ -111,7 +111,7 @@ node "Runtime" as rt {
 
  node "Identities\nContainer" as ID1
 
- node "Policy Engine1" as PEP1
+ node "Policy Engine\nFirewall" as PEP1
 
   H1 -down-> PEP1
 
@@ -122,7 +122,7 @@ node "Sandbox2" as Sand2 {
 
  node "Hyperty2" as H2
 
- node "Policy Engine" as PEP2
+ node "Policy Engine\nFirewall" as PEP2
 
  node "Identities\nContainer" as ID2
 
@@ -141,7 +141,9 @@ Repo1 ..down-> H1: provide
 
 Repo2 ..down-> H2: provide
 
- node "*            Event      BUS                *" as Bus
+node "Core Sandbox" as core {
+
+ node "*            Message      BUS                *" as Bus
 
  node "Registry" as Reg
 
