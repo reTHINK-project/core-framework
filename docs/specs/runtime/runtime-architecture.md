@@ -92,11 +92,17 @@ Main differences as a result of [this](https://github.com/reTHINK-project/core-f
 
 node "Service Provider 1" as SP1 {
 	node Repository as Repo1
+	node "Messaging\nServer" as Msg1
+
+	Repo1 -[hidden]left- Msg1
 }
 
 
 node "Service Provider 2" as SP2 {
 	node Repository as Repo2
+	node "Messaging\nServer" as Msg2
+
+	Repo2 -[hidden]right- Msg2
 }
 
 node "Runtime" as rt {
@@ -107,7 +113,9 @@ node "Runtime" as rt {
 
  node "Sandbox1" as Sand1 {
 
- node "Hyperty1" as H1
+ node "Hyperty1\nInstance" as H1
+
+ node "ProtoStub" as Proto1
 
  node "Identities\nContainer" as ID1
 
@@ -115,16 +123,22 @@ node "Runtime" as rt {
 
   H1 -down-> PEP1
 
+  PEP1 -up-> Proto1
+
   ID1 <-right- PEP1
  }
 
 node "Sandbox2" as Sand2 {
 
- node "Hyperty2" as H2
+ node "Hyperty2\ninstance" as H2
 
  node "Policy Engine\nFirewall" as PEP2
 
  node "Identities\nContainer" as ID2
+
+  node "ProtoStub" as Proto2
+
+  PEP2 -up-> Proto2
 
   H2 -down-> PEP2
 
@@ -141,17 +155,23 @@ Repo1 ..down-> H1: provide
 
 Repo2 ..down-> H2: provide
 
+Msg1 <-down-> Proto1 : communicate
+
+Msg2 <-down-> Proto2 : communicate
+
 node "Core Sandbox" as core {
 
  node "*            Message      BUS                *" as Bus
 
  node "Registry" as Reg
 
- node "ProtOfly\nEngine" as Prot
-
  node "WebRTC\nEngine" as WRTC
 
  node "Policy Repository" as Rep
+
+ node "Authorisation" as Authz
+
+ Authz <-right- Bus : authorise
 
  PEP1 -down-> Bus
 
@@ -162,8 +182,6 @@ node "Core Sandbox" as core {
  Rep <-up- PEP2
 
  Reg -up-> Bus
-
- Prot -up-> Bus
 
  WRTC -up-> Bus
 
