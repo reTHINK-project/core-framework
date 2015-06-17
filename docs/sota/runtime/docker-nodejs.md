@@ -56,14 +56,17 @@ FROM    centos:centos6
 Since we're building a Node.js app, we have to install Node.js as well as npm on your CentOS image. Node.js is required to run our app and npm to install our app's dependencies defined in package.json. To install the right package for CentOS, we'll use the instructions from the Node.js wiki:
 
 \# Enable EPEL for Node.js
+
 RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 
 \# Install Node.js and npm
+
 RUN     yum install -y npm
 
 To bundle our app's source code inside the Docker image, we use the COPY command:
 
 \# Bundle app source
+
 COPY . /src
 
 Install our app dependencies using the npm command:
