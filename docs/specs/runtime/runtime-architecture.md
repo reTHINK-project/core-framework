@@ -131,7 +131,7 @@ Protocol Stack to be used to communicate with Messaging Server (or other functio
 
 ### Message BUS
 
-Supports local message communication between Hyperty Instances in a loosely coupled manner. Access to message BUS is subject to authorisation.
+Supports local message communication between Hyperty Instances in a loosely coupled manner. Access to message BUS is subject to authorisation. See [postaljs](https://github.com/postaljs/postal.js)
 
 ### Registry
 
