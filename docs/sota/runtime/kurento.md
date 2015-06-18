@@ -57,3 +57,12 @@ JavaScript :
 http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-client-js/index.html
 http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-utils-js/index.html
 
+### Integration in Rethink
+
+As described in WP2 : https://github.com/reTHINK-project/architecture/issues/15
+
+Multiparty conversations supported with MCU/SFU for Star topologies can be supported with server side Hyperties running in the MCU/SFU ie there would be protofly in the MCU/SFU.
+
+Kurento Media Server can be connected through a NodeJs Client : it will be possible to add protOfly interface on nodeJs to then connect to the MCU.
+
+Kureno can be use for the multiparty use case (reTHINK-project/use-cases#86 )
