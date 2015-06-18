@@ -28,6 +28,8 @@ Complete description of Kurento archotecture is avaialble on there webSite :
 http://www.kurento.org/docs/current/mastering/kurento_architecture.html
 
 
+Architecture-Kurento.png
+
 Kurento is mainly composed of the elements :
 - Kurento media server
 - Kurento Application
