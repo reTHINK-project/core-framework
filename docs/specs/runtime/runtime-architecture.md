@@ -25,7 +25,7 @@ node "Service Provider 2" as SP2 {
 	Repo2 -[hidden]right- Msg2
 }
 
-node "Runtime" as rt {
+node "Runtime Device" as rt {
  node "Application" as App 
 
  SP1 -[hidden]down- App
@@ -37,32 +37,25 @@ node "Runtime" as rt {
 
  node "ProtoStub" as Proto1
 
- node "Identities\nContainer" as ID1
-
- node "Policy Engine\nFirewall" as PEP1
+ node "Router\nPEP" as PEP1
 
   H1 -down-> PEP1
 
   PEP1 -up-> Proto1
 
-  ID1 <-right- PEP1
  }
 
 node "Sandbox2" as Sand2 {
 
  node "Hyperty2\ninstance" as H2
 
- node "Policy Engine\nFirewall" as PEP2
-
- node "Identities\nContainer" as ID2
+ node "Router\n+PEP" as PEP2
 
   node "ProtoStub" as Proto2
 
   PEP2 -up-> Proto2
 
   H2 -down-> PEP2
-
-  ID2 -right-> PEP2
 
  }
 
@@ -85,28 +78,36 @@ node "Core Sandbox" as core {
 
  node "Registry" as Reg
 
- node "WebRTC\nEngine" as WRTC
+ node "Identities\nContainer" as ID
 
- node "Policy Repository" as Rep
-
- node "Authorisation" as Authz
-
- Authz <-right- Bus : authorise
-
- PEP1 -down-> Bus
-
- PEP2 -down-> Bus
-
- Rep <-up- PEP1
-
- Rep <-up- PEP2
-
- Reg -up-> Bus
-
- WRTC -up-> Bus
+ node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+ }
 
 
-	}
+node "Native\nRuntime" as native {
+node "WebRTC Engine" as WRTC
+	
+}
+
+
+ PDP ..right-> Bus : authorise
+
+ PEP1 <-down-> Bus
+
+ PEP2 <-down-> Bus
+
+ PDP <-up.. PEP1 : decide on Policy Action
+
+ PDP <-up.. PEP2 : decide on Policy Action
+
+ Reg .left. ID
+
+ Reg <-up. Bus: register or discover\nHyperties and\n protoStubs
+
+ WRTC <-up- Sand1
+
+ WRTC <-up- Sand2
+ 	}
 
 @enduml
 -->
