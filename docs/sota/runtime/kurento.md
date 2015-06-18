@@ -23,16 +23,16 @@ It can be used to handle different type of communications applications : 1 to 1,
 
 ### Architecture
 
-Complete description of Kurento archotecture is avaialble on there webSite :
+Complete description of Kurento archotecture is available on there webSite :
 
 http://www.kurento.org/docs/current/mastering/kurento_architecture.html
 
 
-Architecture-Kurento.png
-
-Kurento is mainly composed of the elements :
+Kurento is mainly composed of the two elements :
 - Kurento media server
 - Kurento Application
+
+<img src="Architecture-Kurento.png" width="450">
 
 Application developers can use Kurento Clients or Kurento API directly for creating their multimedia enabled applications.
 Developpers can use Javascript clients, Java Client or Kurento Protocol. This is interesting as it can easily be integrated with NodeJs
