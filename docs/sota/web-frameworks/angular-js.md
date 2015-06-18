@@ -3,7 +3,7 @@ AngularJS is a Javascript MVC Framework developed and promoted by Google, to bui
 It is usually mistaken for a library due to its lightweight than normal frameworks. It is entirely based on 
 Javascript and a client side framework. It is supported by multiple browsers. 
 
-![image](web-frameworks/mvc_angular.png)
+![image](mvc_angular.png)
 
 
 ## Main Concepts
@@ -40,7 +40,7 @@ Scopes can watch expressions and propagate events.
 * *Dependency Injection* : Dependency Injection (DI) is a software design pattern that deals with how code gets hold of its dependencies
 * *Filters* : Angular filters format data for display to the user. Custon filters can be created as well
 
-## Overall Evaluation
+## Evaluation
 ###Pros
 * Encourages MVC design pattern
 * Two way data binding allows for automation synchronization of data bewteen model and view components
