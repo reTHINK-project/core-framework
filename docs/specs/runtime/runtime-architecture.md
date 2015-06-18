@@ -1,9 +1,5 @@
 ## Runtime Architecture
 
-Updated according to [ongoing discussions](https://github.com/reTHINK-project/core-framework/issues/41):
-* one sandbox per Hyperty Domain that includes the Identities, Policy Engine and associated protoStub to be used for the sandbox domain
-* Hyperty instances communicates with event bus through Policy Engine which may also act as a kind of firewall
-* to prevent cross origin attacks / spy, access to Message BUS is subject to authorisation
 
 
 <!--
