@@ -116,27 +116,39 @@ node "WebRTC Engine" as WRTC
 
 ### Service Provider Sandbox
 
-According to Browser Sandbox model, each Service Provider Sandbox executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server, Policy Engine and associated policies as well as Identities managed by this domain. 
+According to Browser Sandbox model, each Service Provider Sandbox executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
 
-#### Policy Engine
+#### Router
 
-Intercepts Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and applies valid Policies on it e.g. authorisation policies. Policies are downloaded and stored locally when associated Hyperties are deployed. The possibility to consult Policies stored remotely should also be investigated.
-
-#### Identities Containers
-
-Contains Tokens that associates Hyperties with Users, it also provides Identity assertions. Something similar to [WebRTC IdP Proxy](http://w3c.github.io/webrtc-pc/#identity) but not limited to WebRTC.
+Routes Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and enforces valid Policies on messaging routing (e.g. authorisation policies) according to decisions taken in the Core Sandbox PDP. 
 
 #### Protocol Stub
 
 Protocol Stack to be used to communicate with Messaging Server (or other functionalities like IdM) according to Protocol on the Fly and codec on the fly concept.
 
-### Message BUS
+### Core Runtime
 
-Supports local message communication between Hyperty Instances in a loosely coupled manner. Access to message BUS is subject to authorisation. See [postaljs](https://github.com/postaljs/postal.js)
+#### Policy Decision Point and Message BUS authorisation
 
-### Registry
+It provides Policy decision functionalities for the Service Provider Router sandbox according to Policies downloaded and stored locally when associated Hyperties are deployed. The possibility to consult Policies stored remotely should also be investigated. It also provides authorisation / access control to the Message BUS.
+
+#### Message BUS
+
+Supports local message communication between Hyperty Instances in a loosely coupled manner. Access to message BUS is subject to authorisation to prevent cross origin attacks / spy from malicious Hyperties.
+
+See [postaljs](https://github.com/postaljs/postal.js)
+
+#### Registry
 
 Local Runtime Hyperty registry where Hyperty local addresses are registered and discoverable by other local Hyperties. The Runtime Registry should ensure synchronisation with Remote Domain Registry (to be provided by WP4)
+
+#### Identities Containers
+
+Contains Tokens that associates Hyperties with Users, it also provides Identity assertions. Something similar to [WebRTC IdP Proxy](http://w3c.github.io/webrtc-pc/#identity) but not limited to WebRTC.
+
+## Native Runtime
+
+Functionalities that are natively provided by the runtime.
 
 ### WebRTC Media Engine
 
