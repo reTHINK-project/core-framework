@@ -116,11 +116,9 @@ In order, Docker does the following:
 
 ### Dockerizing a Node.js Web App
 
-
-
 The goal of this example is to show how to build your Docker images from a parent image using a Dockerfile.  We will do that by making a simple Node.js hello world web application running on CentOS.
 
-Create Node.js app
+    Create Node.js app
 
 First, create a directory src where all the files would live. Then create a package.json file that describes your app and its dependencies:
 
@@ -160,17 +158,17 @@ console.log('Running on http://localhost:' + PORT);
 
 We'll look at how to run an application inside a CentOS container using Docker. First we need to build a Docker image of our app.
 
-Creating a Dockerfile
+**Creating a Dockerfile**
 
 Create an empty file called Dockerfile:
 
-$ touch Dockerfile
+    $ touch Dockerfile
 
 Open the Dockerfile in your favorite text editor (I'm an old fashioned guy, I use vi)
 
 Define the parent image we want to use to build your own image on top of. Here, we'll use CentOS (tag: centos6) available on the Docker Hub:
 
-FROM    centos:centos6 
+    FROM    centos:centos6 
 
 Since we're building a Node.js app, we have to install Node.js as well as npm on your CentOS image. Node.js is required to run our app and npm to install our app's dependencies defined in package.json. To install the right package for CentOS, we'll use the instructions from the Node.js wiki:
 
@@ -197,7 +195,7 @@ RUN cd /src; npm install
 ```
 Our app binds to port 8080 so we use the EXPOSE command to have it mapped by the docker daemon:
 
-EXPOSE  8080
+    EXPOSE  8080
 
 Define the command to run our app using CMD which defines our runtime, i.e. node, and the path to our app src/index.js (see the step where we added the source to the container):
 ```
@@ -225,11 +223,11 @@ RUN cd /src; npm install
 EXPOSE  8080
 CMD ["node", "/src/index.js"]
 ```
-Building our image
+**Building our image**
 
 Go to the directory that has our Dockerfile and run the following command to build a Docker image. The -t flag adds a tag to our image so it's easier to find later using the docker images command:
 
-$ sudo docker build -t <your username>/centos-node-hello .
+    $ sudo docker build -t <your username>/centos-node-hello .
 
 Our image will now be listed by Docker:
 ```
@@ -245,7 +243,7 @@ centos                              centos6    539c0211cd76    8 weeks ago
 
 Running our image with -d runs the container in detached mode, leaving the container running in the background. The -p flag redirects a public port to a private port in the container. Run the image we previously built:
 
-$ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
+    $ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
 
 To print the output of our app:
 
@@ -262,7 +260,7 @@ $ sudo docker logs <container id>
 ```
 Running on http://localhost:8080
 
-Test
+**Test**
 
 To test our app, get the port of our app that Docker mapped:
 ```
