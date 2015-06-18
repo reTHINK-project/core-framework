@@ -16,7 +16,7 @@ http://www.infoq.com/articles/nashorn
 http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
 http://ringojs.org/
 
-#### [Firefox OS (DT)](firefox-os.md)
+#### [Firefox OS (DT)](fxos.md)
 
 #### [Jitsi](jitsi.md) (PTIN)
 
