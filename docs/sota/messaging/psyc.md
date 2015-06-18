@@ -17,7 +17,7 @@ Figure 1. PSYC message example
 
 
 ## PSYC and messaging node requirements
-[//]: # (Não uses números. Coloca o nome do requisito que está a ser analisado. Ou pelo menos coloca um link para um local onde esteja a relação número->requisito)
+[//]: # (Não uses números. Ve como está feito o mqtt)
 1. The PSYC2 project implementation, Secushare, comes with an [API for pubsub](http://secushare.org/pubsub)
 2. PSYC has its own authentication method, inherited in PSYC2 specification. A request_authentication_method is used to query a UNI if a given network entity is actually a linked location of hers. 
 [//]: # (location of hers?)
@@ -36,5 +36,5 @@ However, there is no evidence in the documentation that PSYC is able to accept e
 12. Current implementations of PSYC do not support WebSockets nor HTTP Live Streaming. About HTTP Long-Polling, it does not make much sense in the context of PSYC, since it models all data distribution based on an event push system. So, whenever some potentially interesting information for a recipient is available at the server, it is automatically sent, overcoming this way the need of something like HTTP Long-Polling or even REST.
 [//]: # (ou seja, não usa http?)
 13. The psyced implementation of PSYC has a negotiation feature of protocol switch advertising. This way, each node has information about supported protocols on all the nodes it is communicating with. However, this featura only serves the purpose of advertising other options than PSYC, instead of switching between protocols on-the-fly.
-[//]: # (a resposta aqui não deveria ser identica à dos outros protocolos? Pode ser, fazendo o wrap do cliente)
+[//]: # (a resposta aqui não deveria ser identica à dos outros protocolos? Pode ser, fazendo o wrap do cliente. ve o mqtt)
 
