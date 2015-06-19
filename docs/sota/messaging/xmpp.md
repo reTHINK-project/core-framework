@@ -33,12 +33,12 @@ In the scope of the reTHINK project XMPP is a candidate technology for the Messa
 
 ### Architecture
 
-A typical XMPP network consists  from several Servers/Domains connected together. The mechanism is similar to email where the servers are used as relays for the messages. Every entity on the XMPP network is addressed using a JabberID (JID). It has the form : username@domain/resource where domain is the domain name of the XMPP server, and username identifies an account on that server.
+A typical XMPP network consists of several Servers/Domains connected together. The mechanism is similar to email where the servers are used as relays for the messages. Every entity on the XMPP network is addressed using a JabberID (JID). It has the form : username@domain/resource where domain is the domain name of the XMPP server, and username identifies an account on that server.
 
 
 ![image](xmpp_arch.png)
 
-Server can have adapters/gateways to be able to talk to other protocols such as used by ICQ, AIM, Yahoo and others.
+Server can have adapters/gateways to be able to talk to other protocols such as those used by ICQ, AIM, Yahoo and others.
 
 ![image](xmpp_protocols.png)
 
