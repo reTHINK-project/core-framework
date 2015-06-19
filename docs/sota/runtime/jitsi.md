@@ -117,3 +117,12 @@ var config = {
 ![image](jitsi_arch.png)
 
 Run NGINX and access the Meet App at http://shumybridge and it will create a random room for anyone to join.
+
+### Runtime Requirements Analysis
+The overall developer documentation available is oriented for the client Jitsi Application
+
+**SIP protocol** is available. It was tested with Jitsi client application, however documentation for setup of this in the videobridge is scarce. In theory SIP integration is possible.
+
+**CUSAX WITH JITSI**, the CUSAX specification (RFC7081) describes suggested practices for the Combined Use of SIP And XMPP (hence the name). Such practices aim to provide a single fully featured real-time communication service by using each of the two protocols for what its best suited: SIP for audio/video calls. XMPP for everything else (e.g. IM, presence, server stored contact lists, avatars, file transfer, etc.)
+
+
