@@ -52,7 +52,7 @@ interface StreamChannel extends Channel {
 ```
 
 ###Router Extensions
-Extending the Router API is possible with TypeScript, with the mechanism called [http://www.typescriptlang.org/Handbook#declaration-merging](declaration merging)
+Extending the Router API is possible with TypeScript, with the mechanism called [declaration merging](http://www.typescriptlang.org/Handbook#declaration-merging)
 
 ...TODO
 Examples:
@@ -64,4 +64,4 @@ Study a way of extending **delivery** and **type** options ?
 If hyperty address doesn't have any reference to domain, maybe should be necessary a domain field.
 
 ... TODO (tree-mesh delivery !!)
-Study of [Peer5](www.peer5.com) communication scenario, and how can this be implemented with the actual architecture?
+Study of [Peer5](http://www.peer5.com) communication scenario, and how can this be implemented with the actual architecture?
