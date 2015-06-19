@@ -12,24 +12,29 @@ var channel = router.select('address', 'p2p', 'video\audio', {send: true, receiv
 ```
 
 Definition for **select** function could be: 
-```javascript 
-function select(address: string, delivery: string, data: string, direction: {send: boolean, receive: boolean}): Channel
-```
-* address -> hyperty end point address or multi channel name to subcribe
-* delivery -> type of delivery (p2p, multi, tree-mesh, ...). p2p is a direct one to one connection between peers, and multi is a one to many.
-* data -> data type to send/receive (video/audio stream, signal, binary, ...)
-* direction -> available direction offer send/receive
-
-TypeScript has method overloading that depends on parameter values. This is a nice functionality and can be used here for example:
 ```javascript
-function select(address: string, delivery: string, data: "stream", direction: {send: boolean, receive: boolean}): StreamChannel
+function select(address: string, delivery: string, data: string, direction: {send: boolean, receive: boolean} = {send: true, receive: true}): Channel
 ```
-
-The diference here is that for stream data type it will return a **StreamChannel** instead of simple **Channel**. There are diferences between StreamChannel an Channel interfaces:
+* address -> signal server, hyperty end point address, multi channel name to subcribe
+* delivery -> type of delivery (p2p, multi, tree-mesh, ...). p2p is a direct one to one connection between peers, and multi is a one to many.
+* data -> data type to send/receive (video/audio stream, message, binary, ...)
+* direction -> available direction offer send/receive
 ```javascript
 interface Channel {
     config: Config; //read only values reflecting the channel selection
-    
+}
+```
+
+TypeScript has method overloading that depends on parameter values. This is a nice functionality and can be used here for example:
+```javascript
+function select(address: string, delivery: string, data: "message", direction: {send: boolean, receive: boolean} = {send: true, receive: true}): MessageChannel
+
+function select(address: string, delivery: string, data: "stream", direction: {send: boolean, receive: boolean} = {send: true, receive: true}): StreamChannel
+```
+
+The diference here is that for **stream** data type it will return a **StreamChannel** and **message** returns **MessageChannel**. There are diferences between StreamChannel an MessageChannel interfaces:
+```javascript
+interface MessageChannel extends Channel {
     void on(event: "message", (msg: Message) => void): void;
     void on(event: "error", (msg: Error) => void): void;
     void send(msg: Message): void;
@@ -38,9 +43,7 @@ interface Channel {
 ```
 
 ```javascript
-interface StreamChannel {
-  config: Config; //read only values reflecting the channel selection
-  
+interface StreamChannel extends Channel {
   get outputStream(): any;
   get inputStream(): any;
   //other methods?
