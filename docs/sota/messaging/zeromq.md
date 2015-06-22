@@ -28,11 +28,15 @@ The following figure represents the six basic types of communication patterns th
 
 ![image](zeromq_basic_patterns.png)
 
+Image Source: [http://www.slideshare.net](http://www.slideshare.net/IanBarber/zeromq-is-the-answer)
+
 _Text should be added explaining each of theis patterns. Who is gateway different from pub/sub? What is esb?_
 
 These can be used as "fabric" to make very powerful architectures. The next image shows an example of this modularity. [A pub/sub multi-cluster Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
 ![image](zeromq_clusters_example.png)
+
+Image Source: [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
 The internal Architecture in more detail can be found [here.](http://zeromq.org/whitepapers:architecture)
 

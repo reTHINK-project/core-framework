@@ -38,13 +38,19 @@ A typical XMPP network consists of several Servers/Domains connected together. T
 
 ![image](xmpp_arch.png)
 
+Image Source: [https://el-tramo.be](https://el-tramo.be/documents/beautiful-xmpp-testing/)
+
 Server can have adapters/gateways to be able to talk to other protocols such as those used by ICQ, AIM, Yahoo and others.
 
 ![image](xmpp_protocols.png)
 
+Image Source: [https://en.wikipedia.org](https://en.wikipedia.org/wiki/XMPP)
+
 Sometimes the servers are used only for signaling, in order to establish a media connection. [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol extension for initiating and managing peer-to-peer media sessions between two XMPP entities.
 
 ![image](xmpp_jingle.png)
+
+Image Source: [http://xmppjingle.blogspot.pt](http://xmppjingle.blogspot.pt/2010/09/jingle-nodes-proxy-and-eu-surveillance.html)
 
 ### APIs, Bindings and Extensions
 
