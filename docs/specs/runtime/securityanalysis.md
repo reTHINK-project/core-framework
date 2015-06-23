@@ -10,6 +10,10 @@ Next, we analyze the security properties of our system when all the components o
 
 ## Mitigated Threats Assuming an Intact TCB
 
+When the TCB is intact, our architecture ensures the correct isolation of client JavaScript code (i.e., Hyperties, ProtoStubs, and Applications). Isolation is enforced between different client code instances and between client code instances and the environment (e.g., external applications, or OS resources). Our architecture also provides for the correct enforcement of policy code attached to hyperties. Such policies can regulate different aspects of a hyperty’s behavior: access control policies (e.g., cookies, files, network, etc), routing policies, charging policies, and privacy policies. Finally, our architecture validates the authenticity of client code and the identity of the involved entities / principals.
+
+In the basic threat model, we assume that an attacker can server arbitrary client code to our system. The attacker can impersonate a legitimate service provider and serve malicious ProtoStub or Hyperty code. When instantiated on the Hyperty Runtime, this code can attempt to execute JavaScript instructions in order to access private data held by other pieces of client code (including applications’), by the Hyperty Runtime TCB, or by external components of the hosting environment (e.g., the JavaScript Engine, or the Operating System). Similarly, malicious ProtoStub or Hyperty code can also attempt to tamper with any other component in the system. In particular, malicious code may try to tamper with Hyperty policies or with the respective policy decision and enforcement engine in order to escalate privileges. Finally, malicious code may attempt to launch denial of service attacks (e.g., by executing CPU intensive code). In the sections below, we expand on this threat model to consider potential vulnerabilities of our system when deployed on different environments.
+
 
 ## Vulnerability Assessment of the Browser Deployment
 
