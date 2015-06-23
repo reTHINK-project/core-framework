@@ -42,10 +42,11 @@ Given that ProtoStub, Hyperty instances, and the Router PEP share the same sandb
 In order to mitigate attacks 2 and 3, we recommend that Hyperty instances and ProtoSubs execute isolated in independent sandboxes.
 
 
-## Vulnerability assessment on a browser deployment setting
+
+## Vulnerability assessment on a browser deployment
 
 
-## Vulnerability assessment on an SE deployment setting
+## Vulnerability assessment on an SE deployment
 
 
-## Vulnerability assessment on a server deployment setting
+## Vulnerability assessment on a server deployment
