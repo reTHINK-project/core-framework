@@ -19,11 +19,13 @@ Next, we describe how our system defends against several classes of potential at
 
 ### Unauthorized access by client code
 
+The basic mechanism of our architecture to prevent unauthorized access by client code is sandboxing. Each Hyperty instance running in the system runs in its own sandbox. The sandbox defines a security perimeter for the Hyperty instance, preventing it from reading or writing the memory (or other resources) in use by other Hyperty instances or by other components in the surrounding environment. Along with a Hyperty instance, a sandbox also hosts the ProtoStub instance required by the local Hyperty instance to communicate with external services. Therefore, potentially malicious ProtoSub code will be prevented from accessing resources that are not authorized. To communicate outside the sandbox, the runtime provides well defined interfaces: the Router PEP, which is used by the Hyperty instance to communicate with the PDP and with the Message Bus, and an API to communicate with the Messaging Server. The PDP is responsible for enforcing the policy associated with the Hyperty instance.
+
+Note that, in our architecture, sandboxing is also used to isolate other components. In particular, there is the Core Sandbox, which includes the other components of the Hyperty Runtime implemented in JavaScript. Both the client code sandboxes and the core sandboxes are enforced by the JavaScript engine.
+
 ### Policy subversion
 
 *include policy analysis according to different type of runtime*
-
-### Cross-origin vulnerabilities
 
 ### Threats to client code identity or authenticity
 
@@ -39,8 +41,7 @@ Given that ProtoStub, Hyperty instances, and the Router PEP share the same sandb
 
  * Lastly, the third attack -- a malicious ProtoStub -- can be the most severe one. If a buggy ProtoStub is exploited, an attacker can gain access to execution state of the Hyperty instances sharing the same sandbox. If a Hyperty instance processes sensitive user data or handles key material, such an exploit can result in a data breach. The current version of the Hyperty Runtime architecture offers no protection against this attack.
 
-In order to mitigate attacks 2 and 3, we recommend that Hyperty instances and ProtoSubs execute isolated in independent sandboxes.
-
+In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances and ProtoSubs execute isolated in independent sandboxes.
 
 
 ## Vulnerability assessment on a browser deployment
