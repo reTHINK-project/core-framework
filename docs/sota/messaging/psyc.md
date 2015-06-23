@@ -15,26 +15,45 @@ Due to the deprecated state of some key-concepts PSYC relies on, such as its uni
 
 Figure 1. PSYC message example
 
+### Requirements Analysis
 
-## PSYC and messaging node requirements
-[//]: # (Não uses números. Ve como está feito o mqtt)
-1. The PSYC2 project implementation, Secushare, comes with an [API for pubsub](http://secushare.org/pubsub)
-2. PSYC has its own authentication method, inherited in PSYC2 specification. A request_authentication_method is used to query a UNI if a given network entity is actually a linked location of hers. 
-[//]: # (location of hers?)
-This method can have different arguments (_location, _host_IP, _nonce, _password) to help the UNI to take the decision.
-[//]: # (O UNI não é uma entidade que possa tomar uma decisão)
-However, there is no evidence in the documentation that PSYC is able to accept external authentication/authorisation methods other than this.
-3. The performance of PSYC has been studied, and its wiki relies on benchmarks to say that PSYC is the fastest, yet extensible text-based protocol they are aware of. However, the benchamrk results are not available at this time. More information coming soon on this...
-4. PSYC server (psyced) can currently be deployed on Linux, Mac OSX and Windows (on a Cygwin environment) systems.
-5. PSYC applies some techniques in order to reduce message delivery latency. First, by avoiding negotiations between nodes "talking" the same protocol between them. Since PSYC supports IRC and XMPP, if two nodes are exchanging messages through XMPP protocol, PSYC suggests the protocol switch in order to reduce latency. Also, PSYC avoids resource discovery (disco on XMPP) by pushing information to possibly interested recipients in advance. However, by applying TLS for encrypted PSYC and techniques for DoS prevention on psyced, a certain degree of latency is, therefore, inevitable.
-6. PSYC currently features notification interfaces for software versioning systems (CVS and Git), syslog daemon events, MediaWiki page edits, phpBB forum events and IRC chat messages. Currently, there is no reference to notifications on clients' connection to and disconnection from messaging nodes.
-7. TODO
-8. TODO
-9. PSYC provides three message families to inform clients about problems on message delivery. The _error method family features methods like _error_invalid, _error_illegal, _error_duplicate and informs the client of a problem occuring on his side, rather on the server side. Basically, it is the server telling a client "It's your fault, not mine". The _failure method family informs a message sender about a problem on the receiving side. This method family features methods like _failure_deliver or _failure_redirect (when a given destination changed its address). Finally, the _warning method family means that a message was processed and sent, but maybe not as intended. An example is _warning_usage, which indicates a possible mistake on the message syntax, presented on Fig. 1, and has a single variant for each of the syntax fields.
-10. On PSYC, each server running psyced implements the concept of "log of last messages" for every UNI registered on that server. It is used to store messages received by the server, and to let every user have its last session backlog whenever he logs in. It is possible to tune the log size for each UNI and to export the chat history of a room to a webpage.
-11. PSYC does not have any reference to Store and Forward, probably because it goes against real time communication. And about caching in general, it states it's oriented towards using push events instead of caching. So, whenever a push event regarding a given resource is received by the server, anyone accessing the resource at that time will see it refresh, in order to present always the most recent version.
-12. Current implementations of PSYC do not support WebSockets nor HTTP Live Streaming. About HTTP Long-Polling, it does not make much sense in the context of PSYC, since it models all data distribution based on an event push system. So, whenever some potentially interesting information for a recipient is available at the server, it is automatically sent, overcoming this way the need of something like HTTP Long-Polling or even REST.
-[//]: # (ou seja, não usa http?)
-13. The psyced implementation of PSYC has a negotiation feature of protocol switch advertising. This way, each node has information about supported protocols on all the nodes it is communicating with. However, this featura only serves the purpose of advertising other options than PSYC, instead of switching between protocols on-the-fly.
-[//]: # (a resposta aqui não deveria ser identica à dos outros protocolos? Pode ser, fazendo o wrap do cliente. ve o mqtt)
+Analysis against **Messaging Node** Requirements
 
+* [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
+  * The PSYC2 project implementation, Secushare, comes with an [API for pubsub](http://secushare.org/pubsub)
+
+* [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
+ * PSYC has its own authentication method, inherited in PSYC2 specification. A request_authentication_method is used to query a UNI if a given network entity is actually a linked location of that UNI. This method can have different arguments (_location, _host_IP, _nonce, _password) to help the querying entity to take a decision. However, there is no evidence in the documentation that PSYC is able to accept external authentication/authorisation methods other than this.
+
+* [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
+ * The performance of PSYC has been studied, and its wiki relies on benchmarks to say that PSYC is the fastest, yet extensible text-based protocol they are aware of. However, the benchamrk results are not available at this time.
+
+* [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
+ * PSYC server (psyced) can currently be deployed on Linux, Mac OSX and Windows (on a Cygwin environment) systems.
+
+* [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
+ * PSYC applies some techniques in order to reduce message delivery latency. First, by avoiding negotiations between nodes "talking" the same protocol between them. Since PSYC supports IRC and XMPP, if two nodes are exchanging messages through XMPP protocol, PSYC suggests the protocol switch in order to reduce latency. Also, PSYC avoids resource discovery (disco on XMPP) by pushing information to possibly interested recipients in advance. However, by applying TLS for encrypted PSYC and techniques for DoS prevention on psyced, a certain degree of latency is, therefore, inevitable.
+
+* [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
+ * PSYC currently features notification interfaces for software versioning systems (CVS and Git), syslog daemon events, MediaWiki page edits, phpBB forum events and IRC chat messages. Currently, there is no reference to notifications on clients' connection to and disconnection from messaging nodes.
+
+* [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
+ * TODO
+
+* [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
+ * TODO
+
+* [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
+ * PSYC provides three message families to inform clients about problems on message delivery. The _error method family features methods like _error_invalid, _error_illegal, _error_duplicate and informs the client of a problem occuring on his side, rather on the server side. Basically, it is the server telling a client "It's your fault, not mine". The _failure method family informs a message sender about a problem on the receiving side. This method family features methods like _failure_deliver or _failure_redirect (when a given destination changed its address). Finally, the _warning method family means that a message was processed and sent, but maybe not as intended. An example is _warning_usage, which indicates a possible mistake on the message syntax, presented on Fig. 1, and has a single variant for each of the syntax fields.
+
+* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+ * On PSYC, each server running psyced implements the concept of "log of last messages" for every UNI registered on that server. It is used to store messages received by the server, and to let every user have its last session backlog whenever he logs in. It is possible to tune the log size for each UNI and to export the chat history of a room to a webpage.
+
+* [Message Caching](https://github.com/reTHINK-project/core-framework/issues/19)
+ * PSYC does not have any reference to Store and Forward, probably because it goes against real time communication. And about caching in general, it states it's oriented towards using push events instead of caching. So, whenever a push event regarding a given resource is received by the server, anyone accessing the resource at that time will see it refresh, in order to present always the most recent version.
+
+* [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
+ * Current implementations of PSYC do not support WebSockets nor HTTP Live Streaming. About HTTP Long-Polling, it does not make much sense in the context of PSYC, since it models all data distribution based on an event push system. So, whenever some potentially interesting information for a recipient is available at the server, it is automatically sent, overcoming this way the need of something like HTTP Long-Polling or even REST.
+
+* [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
+ * The psyced implementation of PSYC has a negotiation feature of protocol switch advertising. This way, each node has information about supported protocols on all the nodes it is communicating with. However, this could be achieved, since the Client-Server API could be wrapped in a protocol stub, that can be downloaded at runtime.
