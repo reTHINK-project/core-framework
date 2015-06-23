@@ -51,7 +51,7 @@ In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances
 ## Vulnerability assessment on a browser deployment
 
 
-## Vulnerability assessment on an SE deployment
+## Vulnerability assessment on a SE deployment
 
 
 ## Vulnerability assessment on a server deployment
