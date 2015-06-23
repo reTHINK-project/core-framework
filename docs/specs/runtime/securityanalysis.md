@@ -33,7 +33,7 @@ The authenticity of client code -- Hyperty or ProtoStub -- can be compromised if
 
 ### Denial of service attacks
 
-A malicious Hyperty instance or ProtoStub implementation can launch denial of service attacks by holding to specific resources, e.g., hogging the CPU by sitting on an infinite loop, or flooding the network with bogus messages. To prevent such attacks, the JavaScript engine featuring the Hyperty Runtime bounds the maximum utilization of a given service by a client code instance, for example by limiting the CPU cycles a Hyperty instance is allowed to execute uninterrupted.
+A malicious Hyperty instance or ProtoStub implementation can launch denial of service attacks by holding to specific resources, e.g., hogging the CPU by sitting on an infinite loop, or flooding the network with bogus messages. The JavaScript engine featuring the Hyperty Runtime prevents such attacks by placing a limit to the maximum utilization of a given service by a client code instance, for example by bounding the CPU cycles that a Hyperty instance is allowed to execute uninterrupted.
 
 ### Possible attacks in the current architecture
 
