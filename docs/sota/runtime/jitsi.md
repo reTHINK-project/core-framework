@@ -143,9 +143,15 @@ Starting the XMMP session is normaly made with:
 var BOSH_SERVICE = '/http-bind';
 var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
+var DOMAIN = window.location.hostname;
+var CONFERENCEDOMAIN = 'conference.' + DOMAIN;
+
 var connection = null;
 var rtc = null;
 var localStream = null;
+
+var myroomjid = null;
+var roomjid = null;
 
 $(document).ready(function () {
 	rtc = setupRTC();
@@ -167,19 +173,49 @@ getUserMediaWithConstraints(['audio', 'video']);
 $(document).bind('mediaready.jingle', function (event, stream) {
 	localStream = stream;
 	connection.jingle.localStream = stream;
-	RTC.attachMediaStream($('<video tag>'), localStream);
+	RTC.attachMediaStream($(<video-tag>), localStream);
 	
 	//connect to videobridge
 	connection.connect(<user>, <pasword>, function (event) {
+	    	roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
+	    	myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
+	    	
 	    	//config XMPP presence event handlers...
     		connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
     		connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
     		connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
     		
-    		var myroomjid = <room-id> + '/' + Strophe.getNodeFromJid(connection.jid);
     		var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
     		connection.send(pres);
 	});
 });
+```
+
+And define presence handlers:
+```javascript
+function onPresence(pres) {
+	var from = pres.getAttribute('from'),
+            type = pres.getAttribute('type');
+    	
+    	if (type !== null) {
+        	return true;
+    	}
+    
+    	if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
+        	// http://xmpp.org/extensions/xep-0045.html#createroom-instant
+        	var create = $iq({type: 'set', to: roomjid})
+                	.c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
+                	.c('x', {xmlns: 'jabber:x:data', type: 'submit'});
+        	connection.send(create); // fire away
+    	}
+    	
+    	if (from == myroomjid) {
+        	onJoinComplete();
+    	} else { // TODO: prevent duplicates
+        	list_members.push(from);
+    	}
+    	
+    	return true;
+}
 ```
 //TODO: not finished
