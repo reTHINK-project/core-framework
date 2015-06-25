@@ -125,4 +125,61 @@ The overall developer documentation available is oriented for the client Jitsi A
 
 **CUSAX WITH JITSI**, the CUSAX specification (RFC7081) describes suggested practices for the Combined Use of SIP And XMPP (hence the name). Such practices aim to provide a single fully featured real-time communication service by using each of the two protocols for what its best suited: SIP for audio/video calls. XMPP for everything else (e.g. IM, presence, server stored contact lists, avatars, file transfer, etc.)
 
+### Using Jitsi with jQuery + Strophe + Jingle
+Jitsi Meet uses strophe.js internally, but it's clustered with UI dependencies and other non wanted stuff.
+**Strophe.js** is an XMPP library for JavaScript. Its primary purpose is to enable web-based, real-time XMPP applications that run in any browser. There are Jingle plugins for strophe.js.
+You need to include the following files in your application from projects [jingle](https://github.com/estos/strophe.jingle) and [strophe](https://github.com/strophe/strophejs):
+```javascript
+    <!--add jQuery lib-->
+    <script src='strophe/strophe.js'></script><!-- strophe-->
+    <script src='strophe/strophe.disco.js'></script><!-- strophe.disco, optional -->
+    <script src='strophe/strophe.jingle.js' charset='utf-8'></script><!-- strophe jingle connection plugin -->
+    <script src='strophe/strophe.jingle.session.js' charset='utf-8'></script><!-- strophe jingle connection plugin -->
+    <script src='strophe/strophe.jingle.sdp.js' charset='utf-8'></script><!-- sdp library -->
+    <script src='strophe/strophe.jingle.adapter.js' charset='utf-8'></script><!-- getusermedia cross browser compat layer -->
+```
+Starting the XMMP session is normaly made with:
+```javascript
+var BOSH_SERVICE = '/http-bind';
+var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
+var connection = null;
+var rtc = null;
+var localStream = null;
+
+$(document).ready(function () {
+	rtc = setupRTC();
+	connection = new Strophe.Connection(BOSH_SERVICE);
+	connection.jingle.ice_config = ICE_CONFIG;
+	connection.jingle.pc_constraints = rtc.pc_constraints;
+	
+	//nice for debug purposes...
+	connection.xmlInput = function (data) { console.log('RECV: ', data); };
+	connection.xmlOutput = function (data) { console.log('SEND: ', data); };
+});
+
+//call this on a click button (connect)
+getUserMediaWithConstraints(['audio', 'video']);
+```
+
+**getUserMediaWithConstraints** will fire an event configured with jQuery.
+```javascript
+$(document).bind('mediaready.jingle', function (event, stream) {
+	localStream = stream;
+	connection.jingle.localStream = stream;
+	RTC.attachMediaStream($('<video tag>'), localStream);
+	
+	//connect to videobridge
+	connection.connect(<user>, <pasword>, function (event) {
+	    	//config XMPP presence event handlers...
+    		connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
+    		connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
+    		connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
+    		
+    		var myroomjid = <room-id> + '/' + Strophe.getNodeFromJid(connection.jid);
+    		var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
+    		connection.send(pres);
+	});
+});
+```
+//TODO: not finished
