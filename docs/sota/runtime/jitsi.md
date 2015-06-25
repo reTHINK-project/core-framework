@@ -181,29 +181,29 @@ $(document).bind('mediaready.jingle', function (event, stream) {
 		//TODO: handle other connection states Strophe.Status
 		if (status == Strophe.Status.DISCONNECTED) {
 			if (localStream) {
-		    		localStream.stop();
-		    		localStream = null;
+				localStream.stop();
+				localStream = null;
 			}
 		} else if (status == Strophe.Status.CONNECTED) {
 			connection.jingle.getStunAndTurnCredentials();
 		
 			// disco stuff
 			if (connection.disco) {
-		    		connection.disco.addIdentity('client', 'web');
-		    		connection.disco.addFeature(Strophe.NS.DISCO_INFO);
+				connection.disco.addIdentity('client', 'web');
+				connection.disco.addFeature(Strophe.NS.DISCO_INFO);
 			}
 			
 			//CONNECTED:
 			roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
-		    	myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
-		    	
-		    	//config XMPP presence event handlers...
-	    		connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
-	    		connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
-	    		connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
-	    		
-	    		var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
-	    		connection.send(pres);
+			myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
+
+			//config XMPP presence event handlers...
+			connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
+			connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
+			connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
+
+			var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
+			connection.send(pres);
 		}
 	});
 });
@@ -213,27 +213,27 @@ and define presence handlers:
 ```javascript
 function onPresence(pres) {
 	var from = pres.getAttribute('from');
-        var type = pres.getAttribute('type');
+	var type = pres.getAttribute('type');
     	
-    	if (type !== null) {
-        	return true;
-    	}
+	if (type !== null) {
+		return true;
+	}
     
-    	if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
+	if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
 		// http://xmpp.org/extensions/xep-0045.html#createroom-instant
 		var create = $iq({type: 'set', to: roomjid})
-                	.c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
-                	.c('x', {xmlns: 'jabber:x:data', type: 'submit'});
-        	connection.send(create); // fire away
+			.c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
+			.c('x', {xmlns: 'jabber:x:data', type: 'submit'});
+		connection.send(create); // fire away
     	}
     	
     	//manage list members
     	if (from == myroomjid) {
 		for (i = 0; i < listMembers.length; i++) {
-        		connection.jingle.initiate(listMembers[i], myroomjid);
-    		}
+			connection.jingle.initiate(listMembers[i], myroomjid);
+		}
     	} else {
-        	listMembers.push(from);
+		listMembers.push(from);
     	}
     	
     	return true;
@@ -241,12 +241,12 @@ function onPresence(pres) {
 
 function onPresenceUnavailable(pres) {
 	connection.jingle.terminateByJid($(pres).attr('from'));
-    
-    	//manage list members
+
+	//manage list members
 	for (var i = 0; i < listMembers.length; i++) {
 		if (listMembers[i] == $(pres).attr('from')) {
-	    		listMembers.splice(i, 1);
-	    		break;
+			listMembers.splice(i, 1);
+			break;
 		}
 	}
 	
@@ -255,7 +255,18 @@ function onPresenceUnavailable(pres) {
 
 function onPresenceError(pres) {
 	//TODO: process error
-    	return true;
+	return true;
 }
 ```
-//TODO: not finished
+
+Handle add/remove video/audio streams:
+```javascript
+	$(document).bind('remotestreamadded.jingle', function (event, data, sid) {
+		var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
+    		RTC.attachMediaStream(el, data.stream);
+	});
+	
+	$(document).bind('remotestreamremoved.jingle', function (event, data, sid) {
+		//TODO: remove video element
+	});
+```
