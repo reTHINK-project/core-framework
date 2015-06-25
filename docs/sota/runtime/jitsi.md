@@ -152,6 +152,7 @@ var localStream = null;
 
 var myroomjid = null;
 var roomjid = null;
+var listMembers = [];
 
 $(document).ready(function () {
 	rtc = setupRTC();
@@ -177,44 +178,83 @@ $(document).bind('mediaready.jingle', function (event, stream) {
 	
 	//connect to videobridge
 	connection.connect(<user>, <pasword>, function (event) {
-	    	roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
-	    	myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
-	    	
-	    	//config XMPP presence event handlers...
-    		connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
-    		connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
-    		connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
-    		
-    		var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
-    		connection.send(pres);
+		//TODO: handle other connection states Strophe.Status
+		if (status == Strophe.Status.DISCONNECTED) {
+			if (localStream) {
+		    		localStream.stop();
+		    		localStream = null;
+			}
+		} else if (status == Strophe.Status.CONNECTED) {
+			connection.jingle.getStunAndTurnCredentials();
+		
+			// disco stuff
+			if (connection.disco) {
+		    		connection.disco.addIdentity('client', 'web');
+		    		connection.disco.addFeature(Strophe.NS.DISCO_INFO);
+			}
+			
+			//CONNECTED:
+			roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
+		    	myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
+		    	
+		    	//config XMPP presence event handlers...
+	    		connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
+	    		connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
+	    		connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
+	    		
+	    		var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
+	    		connection.send(pres);
+		}
 	});
 });
 ```
 
-And define presence handlers:
+and define presence handlers:
 ```javascript
 function onPresence(pres) {
-	var from = pres.getAttribute('from'),
-            type = pres.getAttribute('type');
+	var from = pres.getAttribute('from');
+        var type = pres.getAttribute('type');
     	
     	if (type !== null) {
         	return true;
     	}
     
     	if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
-        	// http://xmpp.org/extensions/xep-0045.html#createroom-instant
-        	var create = $iq({type: 'set', to: roomjid})
+		// http://xmpp.org/extensions/xep-0045.html#createroom-instant
+		var create = $iq({type: 'set', to: roomjid})
                 	.c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
                 	.c('x', {xmlns: 'jabber:x:data', type: 'submit'});
         	connection.send(create); // fire away
     	}
     	
+    	//manage list members
     	if (from == myroomjid) {
-        	onJoinComplete();
-    	} else { // TODO: prevent duplicates
-        	list_members.push(from);
+		for (i = 0; i < listMembers.length; i++) {
+        		connection.jingle.initiate(listMembers[i], myroomjid);
+    		}
+    	} else {
+        	listMembers.push(from);
     	}
     	
+    	return true;
+}
+
+function onPresenceUnavailable(pres) {
+	connection.jingle.terminateByJid($(pres).attr('from'));
+    
+    	//manage list members
+	for (var i = 0; i < listMembers.length; i++) {
+		if (listMembers[i] == $(pres).attr('from')) {
+	    		listMembers.splice(i, 1);
+	    		break;
+		}
+	}
+	
+	return true;
+}
+
+function onPresenceError(pres) {
+	//TODO: process error
     	return true;
 }
 ```
