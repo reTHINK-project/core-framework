@@ -4,7 +4,7 @@
 
 In the scope of the reTHINK project ZeroMQ is a candidate technology for the Messaging Node.
 
-It is a  high-performance low level asynchronous messaging library originally written in C++ which now has multiple native Implementations.
+It is a  high-performance, low level, asynchronous messaging library originally written in C++, that now has multiple native Implementations.
 It is used as a thin layer between the application and transport layers.
 
 ##### Highlights:
@@ -18,7 +18,7 @@ It is used as a thin layer between the application and transport layers.
 * Any architecture: centralized, distributed, small, or large.
 * Multicore Optimized
 * Automatic TCP (re)connect
-* Fast 8M msg/sec, usec latency
+* Fast: 8M msg/sec, usec latency
 * Faster than TCP, for clustered products and supercomputing
 * Fast for development thanks to many useful abstraction layers, native languages, bindings and huge open source community.
 
@@ -28,9 +28,24 @@ The following figure represents the six basic types of communication patterns th
 
 ![image](zeromq_basic_patterns.png)
 
+Image Source: [http://www.slideshare.net](http://www.slideshare.net/IanBarber/zeromq-is-the-answer)
+
+
+#### Built-in core ZeroMQ patterns
+* Request-reply: connects a set of clients to a set of services. This is a remote procedure call and task distribution pattern.
+* Pub-sub: connects a set of publishers to a set of subscribers. This is a data distribution pattern.
+* Pipeline: connects nodes in a fan-out/fan-in pattern that can have multiple steps and loops. This is a parallel task distribution and collection pattern.
+* Exclusive pair: connects two sockets exclusively. This is a pattern for connecting two threads in a process, not to be confused with "normal" pairs of sockets.
+
+On top of the built-in core ZeroMQ patterns high-level messaging patterns are defined [here](http://zguide.zeromq.org/page:all). They are not part of the core library, do not come with the ZeroMQ package, and exist in their own space as part of the ZeroMQ community. For example the Majordomo pattern ([Reliable Request-Reply Patterns](http://zguide.zeromq.org/page:all#reliable-request-reply)), sits in the GitHub Majordomo project in the ZeroMQ organization.
+One of the things that ZeroMQ also aims to provide is a set of high-level patterns, both small (how to handle messages sanely) and large (how to make a reliable pub-sub architecture).
+
+
 These can be used as "fabric" to make very powerful architectures. The next image shows an example of this modularity. [A pub/sub multi-cluster Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
 ![image](zeromq_clusters_example.png)
+
+Image Source: [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
 The internal Architecture in more detail can be found [here.](http://zeromq.org/whitepapers:architecture)
 
@@ -39,11 +54,11 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 #### Native Implementations of the library
 
 * [C/C++](https://github.com/zeromq/libzmq) represents the State of the Art.
-* [Java](https://github.com/zeromq/jeromq) fully compatible at both API and protocol level)sans encryption or PGM.
+* [Java](https://github.com/zeromq/jeromq) JeroMQ. Fully compatible at both API and protocol level but sans encryption or PGM. _what is PGM?_
 * [.NET](https://github.com/zeromq/netmq) same constraints as JeroMQ
 * [Erlang](https://github.com/zeromq/ezmq)
 * [Python](https://github.com/caedesvvv/zmqproto)
-* [C](https://github.com/zeromq/libzmtp) designed for small places you would not normally expect messaging technology to fit
+* [C](https://github.com/zeromq/libzmtp) designed for small devices you would not normally expect messaging technology to fit
 * [Netty](https://github.com/spotify/netty-zmtp)
 
 #### Language Bindings
@@ -55,7 +70,7 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 * [NullMQ](https://github.com/progrium/nullmq) ZeroMQ semantics in the browser [Link1](http://www.slideshare.net/progrium/nullmq-pdx) [Link2](http://avalanche123.com/blog/2012/02/25/interacting-with-zeromq-from-the-browser/)
 * [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript) talk to zmq sockets from your JavaScript code.
 * [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/) a simple proxy server that proxies message from SockJS to a ZeroMQ.
-* [Zerogw](https://github.com/tailhook/zerogw) http to zeromq gateway
+* [Zerogw](https://github.com/tailhook/zerogw) HTTP to zeromq gateway
 * [XARP](http://rfc.zeromq.org/spec:40) (Draft) Extensible Resource Access Protocol (XRAP), a RESTful protocol built over ZeroMQ
 * [Zato](https://zato.io/docs/index.html)  ESB, SOA, REST, APIs and cloud integrations
 * [Malamute](https://github.com/miska/malamute) All the enterprise messaging patterns in one box.

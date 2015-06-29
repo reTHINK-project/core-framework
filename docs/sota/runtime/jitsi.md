@@ -117,3 +117,156 @@ var config = {
 ![image](jitsi_arch.png)
 
 Run NGINX and access the Meet App at http://shumybridge and it will create a random room for anyone to join.
+
+### Runtime Requirements Analysis
+The overall developer documentation available is oriented for the client Jitsi Application
+
+**SIP protocol** is available. It was tested with Jitsi client application, however documentation for setup of this in the videobridge is scarce. In theory SIP integration is possible.
+
+**CUSAX WITH JITSI**, the CUSAX specification (RFC7081) describes suggested practices for the Combined Use of SIP And XMPP (hence the name). Such practices aim to provide a single fully featured real-time communication service by using each of the two protocols for what its best suited: SIP for audio/video calls. XMPP for everything else (e.g. IM, presence, server stored contact lists, avatars, file transfer, etc.)
+
+### Using Jitsi with jQuery + Strophe + Jingle
+Jitsi Meet uses strophe.js internally, but it's clustered with UI dependencies and other non wanted stuff.
+**Strophe.js** is an XMPP library for JavaScript. Its primary purpose is to enable web-based, real-time XMPP applications that run in any browser. There are Jingle plugins for strophe.js.
+You need to include the following files in your application from projects [jingle](https://github.com/estos/strophe.jingle) and [strophe](https://github.com/strophe/strophejs):
+```javascript
+    <!--add jQuery lib-->
+    <script src='strophe/strophe.js'></script><!-- strophe-->
+    <script src='strophe/strophe.disco.js'></script><!-- strophe.disco, optional -->
+    <script src='strophe/strophe.jingle.js' charset='utf-8'></script><!-- strophe jingle connection plugin -->
+    <script src='strophe/strophe.jingle.session.js' charset='utf-8'></script><!-- strophe jingle connection plugin -->
+    <script src='strophe/strophe.jingle.sdp.js' charset='utf-8'></script><!-- sdp library -->
+    <script src='strophe/strophe.jingle.adapter.js' charset='utf-8'></script><!-- getusermedia cross browser compat layer -->
+```
+Starting the XMMP session is normaly made with:
+```javascript
+var BOSH_SERVICE = '/http-bind';
+var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
+
+var DOMAIN = window.location.hostname;
+var CONFERENCEDOMAIN = 'conference.' + DOMAIN;
+
+var connection = null;
+var rtc = null;
+var localStream = null;
+
+var myroomjid = null;
+var roomjid = null;
+var listMembers = [];
+
+$(document).ready(function () {
+	rtc = setupRTC();
+	connection = new Strophe.Connection(BOSH_SERVICE);
+	connection.jingle.ice_config = ICE_CONFIG;
+	connection.jingle.pc_constraints = rtc.pc_constraints;
+	
+	//nice for debug purposes...
+	connection.xmlInput = function (data) { console.log('RECV: ', data); };
+	connection.xmlOutput = function (data) { console.log('SEND: ', data); };
+});
+
+//call this on a click button (connect)
+getUserMediaWithConstraints(['audio', 'video']);
+```
+
+**getUserMediaWithConstraints** will fire an event configured with jQuery.
+```javascript
+$(document).bind('mediaready.jingle', function (event, stream) {
+	localStream = stream;
+	connection.jingle.localStream = stream;
+	RTC.attachMediaStream($(<video-tag>), localStream);
+	
+	//connect to videobridge
+	connection.connect(<user>, <pasword>, function (event) {
+		//TODO: handle other connection states Strophe.Status
+		if (status == Strophe.Status.DISCONNECTED) {
+			if (localStream) {
+				localStream.stop();
+				localStream = null;
+			}
+		} else if (status == Strophe.Status.CONNECTED) {
+			connection.jingle.getStunAndTurnCredentials();
+		
+			// disco stuff
+			if (connection.disco) {
+				connection.disco.addIdentity('client', 'web');
+				connection.disco.addFeature(Strophe.NS.DISCO_INFO);
+			}
+			
+			//CONNECTED:
+			roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
+			myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
+
+			//config XMPP presence event handlers...
+			connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
+			connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
+			connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
+
+			var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
+			connection.send(pres);
+		}
+	});
+});
+```
+
+and define presence handlers:
+```javascript
+function onPresence(pres) {
+	var from = pres.getAttribute('from');
+	var type = pres.getAttribute('type');
+    	
+	if (type !== null) {
+		return true;
+	}
+    
+	if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
+		// http://xmpp.org/extensions/xep-0045.html#createroom-instant
+		var create = $iq({type: 'set', to: roomjid})
+			.c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
+			.c('x', {xmlns: 'jabber:x:data', type: 'submit'});
+		connection.send(create); // fire away
+    	}
+    	
+    	//manage list members
+    	if (from == myroomjid) {
+		for (i = 0; i < listMembers.length; i++) {
+			connection.jingle.initiate(listMembers[i], myroomjid);
+		}
+    	} else {
+		listMembers.push(from);
+    	}
+    	
+    	return true;
+}
+
+function onPresenceUnavailable(pres) {
+	connection.jingle.terminateByJid($(pres).attr('from'));
+
+	//manage list members
+	for (var i = 0; i < listMembers.length; i++) {
+		if (listMembers[i] == $(pres).attr('from')) {
+			listMembers.splice(i, 1);
+			break;
+		}
+	}
+	
+	return true;
+}
+
+function onPresenceError(pres) {
+	//TODO: process error
+	return true;
+}
+```
+
+Handle add/remove video/audio streams:
+```javascript
+	$(document).bind('remotestreamadded.jingle', function (event, data, sid) {
+		var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
+    		RTC.attachMediaStream(el, data.stream);
+	});
+	
+	$(document).bind('remotestreamremoved.jingle', function (event, data, sid) {
+		//TODO: remove video element
+	});
+```

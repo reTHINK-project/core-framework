@@ -24,6 +24,8 @@ The core component is the **Broker** that routes the messages from the **produce
 
 ![image](rabbitmq_arch2.png)
 
+
+
 The **Broker** has two main componentes:
 * **Exchange**: accepts and routes messages from producer to clients based on the message information such as keys, bindings, filtering or broadcast.
 
@@ -31,6 +33,8 @@ The **Broker** has two main componentes:
 
 Message routing can be based on topic / wild-card,  as shown in the following image.
 ![image](rabbitmq_arch.png)
+
+Image Source: [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
 
 ### APIs and Documentation
 

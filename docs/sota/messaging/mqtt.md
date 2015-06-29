@@ -7,7 +7,7 @@ MQTT-SN (MQTT for Sensor Networks) is a variation of the main protocol aimed at 
 
 ### Overview
 
-In the scope of the reTHINK project MQTT is a candidate technology for the Messaging Node.
+In the scope of the reTHINK project, MQTT is a candidate technology for the Messaging Node.
 
 
 #### Highlights:
@@ -16,10 +16,10 @@ MQTT was designed for low-bandwidth, high latency networks in the late 1990s/ear
 
  *  Simplicity, simplicity, simplicity! Don't add too many "bells and whistles" but provide a solid building block which can easily be integrated into other solutions. Be simple to implement.
  *  Publish/subscribe messaging. Useful for most sensor applications, and enables devices to come online and publish "stuff" that hasn't been previously known about or predefined.
- *  Zero administration (or as close as possible). Behave sensibly in response to unexpected actions and enable applications to "just work" e.g. dynamically create topics when needed.
+ *  Zero administration (or as close as possible). Behave sensibly in response to unexpected actions and enable applications to "just work", e.g. by dynamically creating topics when needed.
  *  Minimise the on-the-wire footprint. Add an absolute minimum of data overhead to any message. Be lightweight and bandwidth efficient.
- *  Expect and cater for frequent network disruption (for low bandwidth, high latency, unreliable, high cost-to-run networks)... -> Last Will and Testament
- *  Continuous session awareness -> Last Will and Testament
+ *  Expect and cater for frequent network disruption (for low bandwidth, high latency, unreliable, high cost-to-run networks)... -> [Last Will and Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
+ *  Continuous session awareness -> [Last Will and Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
  *  Expect that client applications may have very limited processing resources available. 
  *  Provide traditional messaging qualities of service where the environment allows. Provide "quality of service" 
  *  Data agnostic. Don't mandate content formats, remain flexible.
@@ -32,10 +32,11 @@ MQTT has a client/server model, where every node is a client that connects to a 
 MQTT is message oriented. Messages are published to a topic.
 Clients may subscribe to multiple topics or use a wildcard matching based subscription.
 
-MQTT supports three quality of service levels, "Fire and forget", "delivered at least once" and "delivered exactly once".
+MQTT supports three quality of service levels, "Fire and forget", "delivered at least once" (QoS1) and "delivered exactly once" (QoS2).
 
 ![image](mqtt_arch.jpg)
 
+Image Source: [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
 
 
 
@@ -288,7 +289,7 @@ Analysis against **Messaging Node** Requirements
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
   * Yes
-  * Using a QoS1 pr QoS2 level.
+  * Using a QoS1 or QoS2 level.
   * [More Info](http://www.hivemq.com/mqtt-essentials-part-6-mqtt-quality-of-service-levels/)
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)

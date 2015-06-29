@@ -21,9 +21,13 @@ From http://redis.io/:
 
 ![image](redis_as_cache.png)
 
+Image Source: [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
+
 * Another possibility is a PubSub model with message filtering based on prefix matching.
 
 ![image](redis_pubsub.png)
+
+Image Source: [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
 
 ### APIs and Bindings
 

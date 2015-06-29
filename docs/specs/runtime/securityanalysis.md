@@ -1,0 +1,57 @@
+# Security analysis of the Hyperty Runtime
+
+## Introduction
+
+The security analysis contained in this document refers to the runtime architecture described in [[1]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
+
+In reTHINK, the trusted computing base (TCB) of the Hyperty Runtime encompasses the following components: the Native Runtime, the Core Sandbox components, and the underlying JavaScript engine, Operating System, and hardware platform. If the native runtime is compromised, so it will be the support for WebRTC stream communication between hyperties. Subverting the core sandbox components can compromise: the correct decision and enforcement of policies by the PDP, the proper routing of messages through the Message Bus, the flawless registration and discovery of Hyperty and protoStubs by the Registry, and the correct maintenance of identities by the Identities Container. Subverting the JavaScript Engine can interfere with the correctness and security of JavaScript code, whose execution necessarily requires a JavaScript engine such as V8. The code that depends on the JavaScript engine includes the runtime components specific to the reTHINK architecture (Router PEP, PDP, Message Bus, Registry, Identities Container, and WebRTC engine), and all the user or developer code hosted by the Hyperty runtime, namely Hyperty Instances, ProtoStubs, and Applications. Given that the JavaScript Engine depends on both the Operating System and the hardware platform, compromising the latter can also affect the JavaScript engine and all the other components sitting on top of it.
+
+Next, we analyze the security properties of our system when all the components of the trusted computing base are intact. Then, we assess the security of the Hyperty Runtime when deployed on target platforms that exhibit different characteristics with respect to the platforms’ software and hardware configuration. In particular, we explore three configurations: browser, secure element, and server deployments. For each different platform, we analyze their resilience under various threat models.
+
+
+## Mitigated threats assuming an intact TCB
+
+When the TCB is intact, our architecture ensures correct isolation of client JavaScript code (i.e., Hyperties, ProtoStubs, and Applications). Isolation is enforced both among client code instances and between client code instances and the environment (e.g., external applications, or OS resources). In addition, our architecture provides for the correct enforcement of the policy rules attached to Hyperty code. Such policies can regulate different aspects of a hyperty’s behavior: access control to local resources (e.g., cookies, files, network, etc), routing, charging, and privacy restrictions. Finally, our architecture ensures the authenticity of client code and the identity of the involved entities.
+
+In the basic threat model, we assume that an attacker can server arbitrary client code to the Hyperty Runtime. The attacker can impersonate a legitimate service provider and serve malicious ProtoStub or Hyperty code. When instantiated on the Hyperty Runtime, this code can attempt to execute JavaScript instructions in order to access private data held: by other client code (including applications’), by the Hyperty Runtime TCB, or by the surrounding environment (e.g., the JavaScript Engine, or the Operating System). Malicious ProtoStub or Hyperty code may also aim to tamper with any of the just mentioned software components of the system. In particular, malicious code may try to tamper with Hyperty policies or with the respective policy decision and enforcement engine in order to escalate privileges. Finally, malicious code may launch denial of service attacks (e.g., by executing CPU intensive code). Below in this document, we expand on this threat model to consider potential vulnerabilities of our system when deployed on different environments.
+
+Next, we describe how our system defends against several classes of potential attacks. We add to this list some attacks that can be currently launched. We provide some recommendations for fixing such attacks.
+
+### Unauthorized access by client code
+
+The basic mechanism of our architecture to prevent unauthorized access by client code is sandboxing. Each Hyperty instance running in the system runs in its own sandbox. A sandbox defines a security perimeter for the Hyperty instance, preventing it from reading or writing the memory (or other resources) in use by other Hyperty instances or by other components in the surrounding environment. Along with a Hyperty instance, a sandbox also hosts the ProtoStub instance required by the local Hyperty instance to communicate with external services. Therefore, potentially malicious ProtoSub code will be prevented from accessing resources that are not authorized. To communicate outside the sandbox, the runtime provides well defined interfaces: the Router PEP, which is used by the Hyperty instance to communicate with the PDP and with the Message Bus, and an API to communicate with the Messaging Server. The PDP is responsible for enforcing the policy associated with the Hyperty instance.
+
+Note that, in our architecture, sandboxing is also used to isolate other software components. In particular, there is the Core Sandbox, which hosts the Hyperty Runtime components implemented in JavaScript. Both the client code sandboxes and the core sandboxes are enforced by the JavaScript engine.
+
+### Policy subversion
+
+Every Hyperty instance running in the system is constrained by a policy. In general, a policy can enclose several policy fragments, each of them defining subpolicies of different types. There are four types of policies: access control policies, routing policies, charging usage policies, and privacy policies. These policies are responsible for regulating, supervising, or restricting the operations that a hyperty can perform, e.g., prevent access to a local file, enforce a predefined network route, or define the usage costs of a service. To prevent a malicious Hyperty instance (or ProtoSub) from subverting the security policy and escalate its privileges, the policy decision component (PDP) and the policy repository are located in the Core Sandbox, and therefore outside the Hyperty instance’s reach. As a result, policy integrity and enforcement are safe from malicious client code.
+
+### Threats to client code authenticity
+
+The authenticity of client code -- Hyperty or ProtoStub -- can be compromised if at least one of two things occurred without detection before the code is loaded and instantiated into a sandbox: an attacker modified the original code bytes (e.g., by embedding malware into a Hyperty code), or (ii) modified the identity of the code or of its manufacturer. To prevent these attacks, our architecture requires that every client code distribution, be it Hyperty or ProtoStub, is digitally signed by its manufacturer. By checking these signatures before instantiating the Hyperty or ProtoStub code on the sandboxes and assuming that the cryptographic primitives are correct, the Hyperty Runtime is able to guarantee the integrity and identity of the code.
+
+### Denial of service attacks
+
+A malicious Hyperty instance or ProtoStub implementation can launch denial of service attacks by holding to specific resources, e.g., hogging the CPU by sitting on an infinite loop, or flooding the network with bogus messages. The JavaScript engine featuring the Hyperty Runtime prevents such attacks by placing a limit to the maximum utilization of a given service by a client code instance, for example by bounding the CPU cycles that a Hyperty instance is allowed to execute uninterrupted.
+
+### Possible attacks in the current architecture
+
+Given that ProtoStub, Hyperty instances, and the Router PEP share the same sandboxes, some attacks are possible: (i) a malicious Hyperty instance or ProtoStub can compromise the Router PEP, (ii) a malicious Hyperty can subvert a ProtoStub, or (iii) a malicious ProtoStub can compromise a Hyperty instance.
+
+ * The first attack causes no particular damage outside the enclosing sandbox. Because the Router PEPs holds no secrets, there’s no risks of confidentiality breaches. On the other hand, the Router PEP provides services to the sandbox’s client code. As a result, compromising the integrity of the Router PEP could result at most in integrity and availability violations to the JavaScript client instances enclosed in the sandbox.
+
+ * The second attack -- a malicious Hyperty subverts a ProtoStub -- could be problematic if the ProtoStub contains secrets bundled into the ProtoStub code itself. Secrets can refer not necessarily to sensitive data (which is unlikely given that ProtoStubs implement communication protocols), but proprietary  IT-protected code owned by the developer or by the service provider. The current architecture provides no protection against this attack.
+
+ * Lastly, the third attack -- a malicious ProtoStub -- can be the most severe one. If a buggy ProtoStub is exploited, an attacker can gain access to execution state of the Hyperty instances sharing the same sandbox. If a Hyperty instance processes sensitive user data or handles key material, such an exploit can result in a data breach. The current version of the Hyperty Runtime architecture offers no protection against this attack.
+
+In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances and ProtoSubs execute isolated in independent sandboxes.
+
+
+## Vulnerability assessment on a browser deployment
+
+
+## Vulnerability assessment on a SE deployment
+
+
+## Vulnerability assessment on a server deployment
