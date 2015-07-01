@@ -56,8 +56,6 @@ The threats described in the previous section can be thwarted by the Hyperty Run
 
 For the vulnerability assessment of the Hyperty Runtime when deployed on a given platform, we define a security matrix that combines two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty degree of launching attacks based on the required technical skills and resources. The lower the difficulty degree is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. The attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc.
 
-![image](dummymatrix.png)
-
 **Attack vectors.** Attack vectors can be classified in five types, ordered top-down, from the highest to the lowest layer of the computer stack, as shown in the figure below:
 
 ![image](stack.png)
@@ -85,6 +83,21 @@ For the vulnerability assessment of the Hyperty Runtime when deployed on a given
 
 ### Browser platform
 
+One of the primary platforms targeted by reTHINK is the browser. The browser platform will be highly heterogeneous. We may be talking about desktops, laptops, or mobile devices featuring many different configurations with respect to: hardware architecture, operating system in use, installed software, and specific browser distribution and extensions.
+
+Nevertheless, the figure below illustrates a possible architecture of the browser platform. Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
+
+![image](securitybrowser.png)
+
+From the security point of view, the threats to the TCB have two main sources: the user and malware. To better characterize these threats, we define the following attacker profiles:
+
+ * Regular user (PU1). This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications.
+
+ * Advanced user (PU2): This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
+
+* Power user (PU3): This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
+
+
 
 ### Application platform
 
@@ -96,3 +109,4 @@ For the vulnerability assessment of the Hyperty Runtime when deployed on a given
 
 
 ### Secure element platform
+
