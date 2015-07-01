@@ -1,6 +1,5 @@
 ## Runtime Architecture
 
-<<<<<<< HEAD
 According to [ongoing discussions](https://github.com/reTHINK-project/core-framework/issues/41):
 * one sandbox for the ASP providing the Application
 * one sandbox per Hyperty Service Provider Domain that includes the Router/Policy Engine and associated protoStub
@@ -8,8 +7,6 @@ According to [ongoing discussions](https://github.com/reTHINK-project/core-frame
 * Hyperty instances communicates with event bus through Router/Policy Engine which may also act as a kind of firewall
 * according to recommendations provided in the [runtime security analysis](securityanalysis.md), protoStubs and Router/Policy Engines execute isolated in independent sandboxes.
 * to prevent cross origin attacks / spy, access to Message BUS is subject to authorisation
-=======
->>>>>>> 326c22a77b92ad87d6be6f3e0ceb462021bf347d
 
 
 <!--
@@ -133,13 +130,9 @@ node "WebRTC Engine" as WRTC
 
 According to Browser Sandbox model, each Service Provider Sandbox executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
 
-<<<<<<< HEAD
 #### Router/Policy Engine
-=======
-#### Router
->>>>>>> 326c22a77b92ad87d6be6f3e0ceb462021bf347d
 
-Routes Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and enforces valid Policies on messaging routing (e.g. authorisation policies) according to decisions taken in the Core Sandbox PDP. 
+Routes Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and enforces valid Policies on messaging routing (e.g. authorisation policies) according to Service Provider domain policies. 
 
 #### Protocol Stub
 
