@@ -1,0 +1,93 @@
+actor "Alice" as Alice
+
+!ifdef SHOW_RuntimeA
+
+	!ifdef SHOW_AppAtRuntimeA
+		participant "App" as App
+	!endif
+
+	!ifdef SHOW_NativeAtRuntimeA
+		box "Native Runtime"
+			!ifdef SHOW_WebRTCAtRuntimeA
+				participant "WebRTC" as WRTC
+			!endif
+
+			!ifdef SHOW_JavascriptEngineAtRuntimeA
+				participant "Javascript Runtime" as JS
+			!endif
+		end box
+	!endif
+
+	!ifdef SHOW_CoreRuntimeA
+		box "Core Runtime"
+			!ifdef SHOW_MsgBUSAtRuntimeA
+				participant "Msg BUS" as BUS@A
+			!endif
+
+			!ifdef SHOW_RegistryAtRuntimeA
+				participant "Registry" as RunReg@A
+			!endif
+
+			!ifdef SHOW_IdentitiesAtRuntimeA
+				participant "Identities" as RunID@A
+			!endif
+
+			!ifdef SHOW_AuthAtRuntimeA
+				participant "Authorisation" as RunAuth@A
+			!endif
+		end box
+	!endif
+
+	!ifdef SHOW_SP1SandboxAtRuntimeA
+		box "Service Provider 1 Sandbox"
+			!ifdef SHOW_Protostub1AtRuntimeA
+			participant "SP1\nprotoStub" as Proto1@A
+			!endif
+
+			!ifdef SHOW_ServiceProvider1HypertyAtRuntimeA
+			participant "Service Provider1\nHyperty" as SP1H@A
+			!endif
+
+			!ifdef SHOW_ServiceProvider1RouterAtRuntimeA
+			participant "Service Provider1\nRouter" as Router1@A
+			!endif
+
+			!ifdef SHOW_IdentityObjectAtRuntimeA
+			participant "Identity\nData Object" as IDObj@A
+			!endif
+
+		end box
+	!endif
+
+	!ifdef SHOW_SP2SandboxAtRuntimeA
+		box "Service Provider 2 Sandbox"
+			!ifdef SHOW_Protostub2AtRuntimeA
+			participant "SP2\nprotoStub" as Proto2@A
+			!endif
+
+			!ifdef SHOW_ServiceProvider2HypertyAtRuntimeA
+			participant "Service Provider2\nHyperty" as SP2H@A
+			!endif
+
+			!ifdef SHOW_ServiceProvider2RouterAtRuntimeA
+			participant "Service Provider2\nRouter" as Router2@A
+			!endif
+		end box
+	!endif
+!endif
+
+!ifdef SHOW_SP1
+	box "Core Service Provider 1"
+		participant "Backend Service" as SP1
+	end box
+!endif
+
+!ifdef SHOW_SP2
+	box "Service Provider 2"
+		participant "Backend Service" as SP2
+	end box
+!endif
+
+!ifdef SHOW_Bob
+	actor "Bob" as Bob
+!endif
