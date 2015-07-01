@@ -52,11 +52,18 @@ In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances
 
 The threats described in the previous section can be thwarted by the Hyperty Runtime so long as the TCB of the system remains intact. In this section, we study the potential vulnerabilities that the TCB could be subjected to depending on the platform where the Hyperty Runtime is deployed. We envision five potential target platforms: browser, application, middlebox, server, and secure element. But, before assessing the system’s vulnerabilities, we present a common taxonomy to be used for this assessment.
 
-### Taxonomy
+### Taxonomy and security matrices
 
 For the vulnerability assessment of the Hyperty Runtime when deployed on a given platform, we define a security matrix that combines two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty degree of launching attacks based on the required technical skills and resources. The lower the difficulty degree is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. The attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc.
 
-*Attack vectors.* Attack vectors can be classified in six types, ordered top-down, from the highest to the lowest layer of the computer stack as shown in the figure below:
+| | D0 | D1 | D2 |
+| L0 | unsafe | n/a  | n/a  |
+| L1 | safe | n/a | n/a  |
+| L2 | safe | n/a | n/a |
+| L3 | n/a | n/a | n/a |
+| L4 | n/a | n/a | n/a |
+
+**Attack vectors.** Attack vectors can be classified in five types, ordered top-down, from the highest to the lowest layer of the computer stack, as shown in the figure below:
 
  *  *Sandbox level (L0)*: The attacker has direct access to the sandbox environment, hence to the code and execution state of Hyperty instances. For example, on a browser platform, users typically have access to the JavaScript of a given page. This means that a malicious user could leverage that mechanism to tamper with the JavaScript code of locally running Hyperty instances.
 
@@ -66,19 +73,17 @@ For the vulnerability assessment of the Hyperty Runtime when deployed on a given
 
  * *Operating system level (L3)*: the adversary has access to the execution state of the operating system, and therefore to the execution state of the Hyperty Runtime. Similarly to L1 and L2, L3 attacks can be catastrophic. An attack performed at this layer consists, for example, of adding a rootkit to the operating system in order to keep track of the all ingress and outgress communication performed by the Hyperty instances running on the host.
 
- * *Soft hardware level (L4)*: the adversary has physical access to the hardware of the platform and can launch simple attacks that do not involve tampering with the circuitry. Attacks in this category include, removal or inspection of the hard disk, probing the system bus in order to extract secrets from volatile memory, etc. In theory, attacks performed at this level can reveal the entirety of the system state, including operating system’s. In practice, however, such attacks are more directed to extract specific secrets when L3 attacks or above are not possible.
+ * *Hardware level (L4)*: the adversary has physical access to the hardware of the platform and can launch simple attacks that do not involve tampering with the circuitry. Attacks in this category include, removal or inspection of the hard disk, probing the system bus in order to extract secrets from volatile memory, etc. An attack at this level may also include tampering with the silicon chips, perform side-channel attacks, etc. Such attacks require a high-level of expertise and committed resources. In theory, attacks performed at this level can reveal the entirety of the system state, including operating system’s. In practice, however, such attacks are more directed to extract specific secrets when L3 attacks or above are not possible.
 
- * *Deep hardware level (L5)*: a variant of L4 where the adversary can also tamper with the silicon chips, perform side-channel attacks, etc. Such attacks require a high-level of expertise and committed resources.
-
-*Difficulty level.* The difficulty level of launching an attack depends on several factors, namely the privileges owned by the adversary (e.g., user or superuser), the skills required to perform the exploit (e.g., run a debugger or tamper with silicon), and the resources that are necessary to commit to successfully carry out the exploit (e.g., specific software exploits, memory probes, etc.). Based on these factors, we define four difficulty levels for a given attack:
+**Difficulty degree.** The difficulty level of launching an attack depends on several factors, namely the privileges owned by the adversary (e.g., user or superuser), the skills required to perform the exploit (e.g., run a debugger or tamper with silicon), and the resources that are necessary to commit to successfully carry out the exploit (e.g., specific software exploits, memory probes, etc.). Based on these factors, we define three difficulty levels for a given attack:
 
  * *Easy (D0)*: The attack is easy to perform. Based on the privileges owned by the attacker, the tools that are necessary to launch the attack are accessible, well documented, and are simple to handle. Some examples of D0 attacks include: (i) on a browser platform, a malicious user leverages the browser interface controls in order to modify the JavaScript code of a given Hyperty, (ii) on a server platform, a disgruntled system administrator leverages superuser privileges to disable the policy enforcement mechanisms of the Hyperty Runtime where client Hyperty instances are being executed.
 
  * *Medium (D1)*: The attack requires some degree of knowledge or resources. It can be launched by mastering the tools already available on the system (e.g., tools provided by the operating system, debuggers) or installing new ones that can be found on the Internet (including malware or exploits). The attacker has not enough skills or resources to find new vulnerabilities in the system or to develop its own exploits known vulnerabilities. Examples of such attacks include, for example, attaching debuggers to extract in-memory secrets from the Hyperty Runtime, patch the Hyperty Runtime using exploit code  published on the Web, etc.
 
- * *Hard (D2)*: To mount the attack, the attacker must be able to develop its own exploit code, find new vulnerabilities in the system, and / or launch software hardware attacks. For example, finding a new vulnerability in a device driver’s code, and write the code to exploit that vulnerability.
+ * *Hard (D2)*: To mount the attack, the attacker must be able to develop its own exploit code, find new vulnerabilities in the system, and / or launch software hardware attacks. For example, finding a new vulnerability in a device driver’s code, and write the code to exploit that vulnerability. The attacks performed at the deep hardware level are also considered hard to execute.
 
- * *Very Hard (D3)*: The attack is very demanding in terms of skills and resources. Typically, such attacks correspond to those performed at the deep hardware level.
+**Attack profile.** An attack profile characterizes the subset of all possible attacks to the Hyperty Runtime’s TCB that a given agent is capable of performing. For example, considering an attacker agent personified by an average web user, its attack profile certainly includes attacks like “inspection of JavaScript code through the browser”, but not “probing the system bus”. Since there are specific attacker agents for each target platform, when analyzing the security of the TCB, we must assess whether or not the TCB is safe against the typical attacks of each agent’s profile.
 
 
 ### Browser platform
@@ -94,3 +99,5 @@ For the vulnerability assessment of the Hyperty Runtime when deployed on a given
 
 
 ### Secure element platform
+
+
