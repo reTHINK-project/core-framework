@@ -56,12 +56,7 @@ The threats described in the previous section can be thwarted by the Hyperty Run
 
 For the vulnerability assessment of the Hyperty Runtime when deployed on a given platform, we define a security matrix that combines two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty degree of launching attacks based on the required technical skills and resources. The lower the difficulty degree is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. The attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc.
 
-| | D0 | D1 | D2 |
-| L0 | unsafe | n/a  | n/a  |
-| L1 | safe | n/a | n/a  |
-| L2 | safe | n/a | n/a |
-| L3 | n/a | n/a | n/a |
-| L4 | n/a | n/a | n/a |
+![image](dummymatrix.png)
 
 **Attack vectors.** Attack vectors can be classified in five types, ordered top-down, from the highest to the lowest layer of the computer stack, as shown in the figure below:
 
