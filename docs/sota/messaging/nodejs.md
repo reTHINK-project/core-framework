@@ -44,7 +44,7 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
   * Yes
-  * ProtOFly connector can be developped. JS application can be develop on top of NodeJs
+  * ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
   * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection betwwen user and server. (Long polling, WebSocket ...)
@@ -53,19 +53,27 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
   * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
-  * Yes - Socket.io enable message acknowledge
+  * Yes - Socket.io enables message acknowledgement
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
   * 
   * Using:
     * Cluster Mode
-    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected thourgh the redis cluster : this can enable load balancing, redundancy 
+    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy
     
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
-  * Yes (socket.io)
+  * Yes - socket.io can manage reconnection with different configurable parmeters (timeout, retries ...)
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
-  * Yes (socket.io)
+  * Yes - socket.io fired diffrent event on connection status :
+    connect. Fired upon connecting.
+    error. Fired upon a connection error
+    disconnect. Fired upon a disconnection.
+    reconnect. Fired upon a successful reconnection.
+    reconnect_attempt. Fired upon an attempt to reconnect.
+    reconnecting. Fired upon an attempt to reconnect.
+    reconnect_error. Fired upon a reconnection attempt error.
+    reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
   * Yes 
