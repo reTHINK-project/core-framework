@@ -62,15 +62,12 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
     
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
   * Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
- 
-– reconnection whether to reconnect automatically (true)
 
-– reconnectionDelay how long to wait before attempting a new reconnection (1000)
-
-– reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by
+- reconnection whether to reconnect automatically (true)
+- reconnectionDelay how long to wait before attempting a new reconnection (1000)
+- reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by
 the amount specified by reconnectionDelay.
-
-– timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
+- timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
   * Yes - using socket.io different event are fired on connection status :
@@ -78,14 +75,10 @@ the amount specified by reconnectionDelay.
 - error. Fired upon a connection error
 - disconnect. Fired upon a disconnection.
 - reconnect. Fired upon a successful reconnection.
-    
-    reconnect_attempt. Fired upon an attempt to reconnect.
-    
-    reconnecting. Fired upon an attempt to reconnect.
-    
-    reconnect_error. Fired upon a reconnection attempt error.
-    
-    reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
+- reconnect_attempt. Fired upon an attempt to reconnect.
+- reconnecting. Fired upon an attempt to reconnect.
+- reconnect_error. Fired upon a reconnection attempt error.
+- reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
   * Yes 
