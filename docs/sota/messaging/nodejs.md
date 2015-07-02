@@ -47,7 +47,7 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
   * ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection betwwen user and server. (Long polling, WebSocket ...)
+  * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
    
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
@@ -56,7 +56,6 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
   * Yes - Socket.io enables message acknowledgement
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
-  * 
   * Using:
     * Cluster Mode
     * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy
@@ -75,14 +74,10 @@ the amount specified by reconnectionDelay.
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
   * Yes - using socket.io different event are fired on connection status :
-  * 
-    connect. Fired upon connecting.
-
-    error. Fired upon a connection error
-    
-    disconnect. Fired upon a disconnection.
-    
-    reconnect. Fired upon a successful reconnection.
+- connect. Fired upon connecting.
+- error. Fired upon a connection error
+- disconnect. Fired upon a disconnection.
+- reconnect. Fired upon a successful reconnection.
     
     reconnect_attempt. Fired upon an attempt to reconnect.
     
