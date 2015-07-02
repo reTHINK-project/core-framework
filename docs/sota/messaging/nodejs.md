@@ -84,7 +84,7 @@ the amount specified by reconnectionDelay.
   * Yes 
 
 * [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
-  * Yes
+  * Yes - NodeJs is available on Linux, windows, mac
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
   * Yes
@@ -93,7 +93,7 @@ the amount specified by reconnectionDelay.
   * Yes
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
-  * No - Yes with Redis
+  * No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
 
 #### [Runtime Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
 
