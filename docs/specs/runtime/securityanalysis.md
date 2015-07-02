@@ -61,7 +61,7 @@ Our basic methodology to assess the vulnerabilities of the Hyperty Runtime’s T
 
 The figure above shows an example of a vulnerability matrix for a dummy platform. The content of each cell contains attacks that the TCB is vulnerable to. Each attack is identified, e.g, as A1, or A7, and naturally must be accompanied by a description of the attack, e.g., “A1: inspection of JavaScript code through the browser”, “A7: probing the system bus”. The columns represent the difficulty level and the rows the attack vector (both will be explained below). The vulnerability matrix will then allow us to grasp how exposed the TCB is to attacks: the lower the difficulty degree of the attacks is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. 
 
-An attack will be launched by a given attack agent. Attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc. A specific attack agent can be characterized by an *attack profile*. An attack profile is the subset of all possible attacks to the Hyperty Runtime’s TCB that a given agent can perform. For example, considering an adversarial average web user, its attack profile certainly includes attacks like “inspection of JavaScript code through the browser”, but not “probing the system bus”. Since there are specific attacker agents for each target platform, when analyzing the security of the TCB, we must assess whether or not the TCB is safe against the typical attacks of each agent’s profile.
+The attacks presented in the vulnerability matrix are launched by a given attack agent. The attack agents to be considered depend on the specific platform and may include, for example, the local user, malware, the system administrator, a thief, etc. The behavior of an attack agent is characterized by an *attack profile*, which specifies the subset of all possible attacks to the Hyperty Runtime’s TCB that a given agent can perform. For example, considering a browser platform, the attack profile of an adversarial average web user certainly includes attacks like “inspection of JavaScript code through the browser”, but not “probing the system bus”. Therefore, when drawing the vulnerability matrix of the TCB for a given platform, we determine which attacks the TCB may be subjected to based on the profiles of the attacker agents that we expect to find in that particular usage scenario.
 
 Next, we describe the classification for attack vectors and difficulty levels:
 
@@ -79,46 +79,48 @@ Next, we describe the classification for attack vectors and difficulty levels:
 
  * *Hardware level (L5)*: the adversary has physical access to the hardware of the platform and can launch simple attacks that do not involve tampering with the circuitry. Attacks in this category include, removal or inspection of the hard disk, probing the system bus in order to extract secrets from volatile memory, etc. An attack at this level may also include tampering with the silicon chips, perform side-channel attacks, etc. Such attacks require a high-level of expertise and committed resources. In theory, attacks performed at this level can reveal the entirety of the system state, including operating system’s. In practice, however, such attacks are more directed to extract specific secrets when L3 attacks or above are not possible.
 
-**Difficulty degree.** The difficulty level of launching an attack depends on several factors, namely the privileges owned by the adversary (e.g., user or superuser), the skills required to perform the exploit (e.g., run a debugger or tamper with silicon), and the resources that are necessary to commit to successfully carry out the exploit (e.g., specific software exploits, memory probes, etc.). Based on these factors, we define three difficulty levels for a given attack:
+**Difficulty level.** The difficulty level of launching an attack depends on several factors, namely the privileges owned by the adversary (e.g., user or superuser), the skills required to perform the exploit (e.g., run a debugger or tamper with silicon), and the resources that are necessary to commit to successfully carry out the exploit (e.g., specific software exploits, memory probes, etc.). Based on these factors, we define three difficulty levels for a given attack:
 
- * *Easy (D0)*: The attack is easy to perform. Based on the privileges owned by the attacker, the tools that are necessary to launch the attack are accessible, well documented, and are simple to handle. Some examples of D0 attacks include: (i) on a browser platform, a malicious user leverages the browser interface controls in order to modify the JavaScript code of a given Hyperty, (ii) on a server platform, a disgruntled system administrator leverages superuser privileges to disable the policy enforcement mechanisms of the Hyperty Runtime where client Hyperty instances are being executed.
+ * *Easy (D1)*: The attack is easy to perform. Based on the privileges owned by the attacker, the tools that are necessary to launch the attack are accessible, well documented, and are simple to handle. Some examples of D0 attacks include: (i) on a browser platform, a malicious user leverages the browser interface controls in order to modify the JavaScript code of a given Hyperty, (ii) on a server platform, a disgruntled system administrator leverages superuser privileges to disable the policy enforcement mechanisms of the Hyperty Runtime where client Hyperty instances are being executed.
 
- * *Medium (D1)*: The attack requires some degree of knowledge or resources. It can be launched by mastering the tools already available on the system (e.g., tools provided by the operating system, debuggers) or installing new ones that can be found on the Internet (including malware or exploits). The attacker has not enough skills or resources to find new vulnerabilities in the system or to develop its own exploits known vulnerabilities. Examples of such attacks include, for example, attaching debuggers to extract in-memory secrets from the Hyperty Runtime, patch the Hyperty Runtime using exploit code  published on the Web, etc.
+ * *Medium (D2)*: The attack requires considerable skills and / or resources. It can be launched by mastering the tools presently available in the system (e.g., tools provided by the operating system, debuggers) or installing new ones that can be found on the Internet (including malware or exploits). The attacker has not enough skills or resources to find new vulnerabilities in the system or to develop its own exploits known vulnerabilities. Examples of such attacks include, for example, attaching debuggers to extract in-memory secrets from the Hyperty Runtime, patch the Hyperty Runtime using exploit code  published on the Web, etc.
 
- * *Hard (D2)*: To mount the attack, the attacker must be able to develop its own exploit code, find new vulnerabilities in the system, and / or launch software hardware attacks. For example, finding a new vulnerability in a device driver’s code, and write the code to exploit that vulnerability. The attacks performed at the deep hardware level are also considered hard to execute.
+ * *Hard (D3)*: The attack is very sophisticated. To mount the attack, the attacker must be able to develop its own exploit code, find new vulnerabilities in the system, and / or launch software hardware attacks. For example, finding a new vulnerability in a device driver’s code, and write the code to exploit that vulnerability. The attacks performed at the deep hardware level are also considered hard to execute.
 
 
 ### Browser platform
 
-One of the primary platforms targeted by reTHINK is the browser. The browser platform will be highly heterogeneous; we may be talking about desktops, laptops, or mobile devices featuring many different configurations with respect to: hardware architecture, operating system in use, installed software, and specific browser distribution and extensions.
+One of the primary platforms targeted by reTHINK is the browser. The browser platform will be highly heterogeneous; we may be talking about desktops, laptops, or mobile devices featuring many different configurations with respect to: hardware architecture, operating system in use, installed software, and specific browser distribution and extensions. Nevertheless, a general architecture of the browser platform is shown in the figure below. 
 
 ![image](browser.png)
 
-Nevertheless, the figure above illustrates a general architecture of the browser platform. Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
+Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
 
 From the security point of view, the threats to the TCB are mainly caused by an adversarial user. To better characterize these threats, we define three attacker profiles:
 
- * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications.
+ * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications. A regular user is expected to mount the following attacks:
+
+   * *A0*: access and modify client Javascript code through the browser interface 
 
  * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
 
-* *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
-
-![image](securitybrowser.png)
-
-The vulnerability matrix of the browser platform is shown above. Here’s the description of the attacks:
-
- * A0:
  * A1:
  * A2:
  * A3:
+
+* *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
+
  * A4:
  * A5:
  * A6:
  * A7:
 
+![image](securitybrowser.png)
 
-### Application platform
+**Vulnerability assessment.** The vulnerability matrix of the browser platform is shown above. Here’s the description of the attacks
+
+
+### Standalone application platform
 
 
 ### Middlebox platform
@@ -128,4 +130,3 @@ The vulnerability matrix of the browser platform is shown above. Here’s the de
 
 
 ### Secure element platform
-
