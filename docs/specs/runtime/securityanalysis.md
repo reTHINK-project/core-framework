@@ -103,7 +103,7 @@ From the security point of view, the threats to the TCB are mainly caused by an 
 
    * *A0*: access and modify client Javascript code through the browser interface.
 
- * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk). In addition to attack A1, an advanced user can perform attacks in different layers such as these:
+ * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk). In addition to attack A0, an advanced user can perform attacks in different layers such as these:
 
    * *A1*: compromise the runtime by installing a malicious browser extension,
    * *A2*: dump the memory contents of the process to disk,
