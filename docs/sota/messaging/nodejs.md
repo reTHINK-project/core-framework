@@ -65,14 +65,22 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
   * Yes - socket.io can manage reconnection with different configurable parmeters (timeout, retries ...)
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
-  * Yes - socket.io fired diffrent event on connection status :
+  * Yes - using socket.io different event are fired on connection status :
+  * 
     connect. Fired upon connecting.
+
     error. Fired upon a connection error
+    
     disconnect. Fired upon a disconnection.
+    
     reconnect. Fired upon a successful reconnection.
+    
     reconnect_attempt. Fired upon an attempt to reconnect.
+    
     reconnecting. Fired upon an attempt to reconnect.
+    
     reconnect_error. Fired upon a reconnection attempt error.
+    
     reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
