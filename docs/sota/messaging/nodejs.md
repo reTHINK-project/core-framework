@@ -44,22 +44,22 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
   * Yes
-  * ProtOFly connector can be developped
+  * ProtOFly connector can be developped. JS application can be develop on top of NodeJs
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  * Yes (socket.io)
+  * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection betwwen user and server. (Long polling, WebSocket ...)
    
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
-  * Yes (several logging modules available : log4js, winston, bunyan ...)
+  * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
-  * Yes
+  * Yes - Socket.io enable message acknowledge
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
   * 
   * Using:
     * Cluster Mode
-    * Redis cluster
+    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected thourgh the redis cluster : this can enable load balancing, redundancy 
     
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
   * Yes (socket.io)
