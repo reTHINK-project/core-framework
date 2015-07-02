@@ -95,7 +95,9 @@ One of the primary platforms targeted by reTHINK is the browser. The browser pla
 
 Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
 
-From the security point of view, the threats to the TCB are mainly caused by an adversarial user. To better characterize these threats, we define three attacker profiles:
+From the security point of view, the threats to the TCB are mainly caused by an adversarial user. To better characterize these threats, we define three attacker profiles and draw the vulnerability matrix as follows:
+
+![image](securitybrowser.png)
 
  * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications. A regular user is expected to mount the following attacks:
 
@@ -114,11 +116,7 @@ From the security point of view, the threats to the TCB are mainly caused by an 
    * *A6*: build a device driver to continuously monitor the execution of Hyperty Instances,
    * *A7*: probe the system bus in order to extract private key material in use by Hyperty Instances.
 
-Based on these attacker profiles, we draw the vulnerability matrix of the browser platform as follows: 
-
-![image](securitybrowser.png)
-
-**Conclusion.** As illustrated by the vulnerability matrix, the browser platform is vulnerable to a range of attacks. Some of these attacks can be mounted by regular users with relative ease. In addition, there are several ways for advanced users to successfully compromise the TCB by exploiting the system at different layers in the stack. As a result, we recommend that the browser platform should be avoided for hosting client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has incentives to subvert. Examples of such code include: Hyperty instances restricted by specific usage charging policies, ProtoStubs that encode proprietary communication protocols, or Applications that access copyrighted digital data.
+**Vulnerability assessment:** As illustrated by the vulnerability matrix, the browser platform is vulnerable to a range of attacks. Some of these attacks can be mounted by regular users with relative ease. In addition, there are several ways for advanced users to successfully compromise the TCB by exploiting the system at different layers in the stack. As a result, we recommend that the browser platform should be avoided for hosting client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has incentives to subvert. Examples of such code include: Hyperty instances restricted by specific usage charging policies, ProtoStubs that encode proprietary communication protocols, or Applications that access copyrighted digital data.
 
 ### Standalone application platform
 
