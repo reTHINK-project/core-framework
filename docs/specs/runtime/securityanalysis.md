@@ -55,7 +55,7 @@ The threats described in the previous section can be thwarted by the Hyperty Run
 
 ### Methodology
 
-Our basic methodology assess the vulnerabilities of the Hyperty Runtime’s TCB on a given platform is based on a *vulnerability matrix*. A vulnerability matrix indicates representative practical attacks that can be carried out against the TCB as a mean to compromising the security of the system by successfully achieving one of the goals described in the section above: permit unauthorized access by client code (T1), subvert hyperty policies (T2), compromise the authenticity of client code (T3), and launch denial of service attacks (T4). Such practical attacks to the TCB are classified in the vulnerability matrix along two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty level of launching attacks based on the required technical skills and resources.
+Our basic methodology to assess the vulnerabilities of the Hyperty Runtime’s TCB is based on a *vulnerability matrix*. A vulnerability matrix indicates representative practical attacks that can be carried out against the TCB on a given platform as a mean to compromising the security of the system. The security is compromised by successfully achieving one of the goals described in the section above: permit unauthorized access by client code (T1), subvert hyperty policies (T2), compromise the authenticity of client code (T3), and launch denial of service attacks (T4). Such practical attacks to the TCB are classified in the vulnerability matrix along two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty level of launching attacks based on the required technical skills and resources.
 
 ![image](dummymatrix.png)
 
@@ -90,21 +90,32 @@ Next, we describe the classification for attack vectors and difficulty levels:
 
 ### Browser platform
 
-One of the primary platforms targeted by reTHINK is the browser. The browser platform will be highly heterogeneous. We may be talking about desktops, laptops, or mobile devices featuring many different configurations with respect to: hardware architecture, operating system in use, installed software, and specific browser distribution and extensions.
+One of the primary platforms targeted by reTHINK is the browser. The browser platform will be highly heterogeneous; we may be talking about desktops, laptops, or mobile devices featuring many different configurations with respect to: hardware architecture, operating system in use, installed software, and specific browser distribution and extensions.
 
 ![image](browser.png)
 
-Nevertheless, the figure above illustrates a possible architecture of the browser platform. Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
+Nevertheless, the figure above illustrates a general architecture of the browser platform. Essentially, the Hyperty Runtime runs inside a browser’s process. This process is in fact a “subprocess” of the browser that implements a sandboxing mechanism of its own (as in the Chrome browser). The Hyperty Runtime is responsible for the secure execution of JavaScript code inside individual sandboxes: the core sandbox encloses additional components of the reTHINK framework written in JavaScript, the client sandbox is used for securing JavaScript client code (i.e., Hyperty instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty applications. As shown in the figure, the Hyperty Runtime’s hosting process depends on the operating system, which in turn depends on the underlying hardware configuration. Aside to the browser processes, we find all sorts of application processes and operating system services.
 
-![image](securitybrowser.png)
-
-From the security point of view, the threats to the TCB have two main sources: the user and malware. To better characterize these threats, we define the following attacker profiles:
+From the security point of view, the threats to the TCB are mainly caused by an adversarial user. To better characterize these threats, we define three attacker profiles:
 
  * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications.
 
  * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
 
 * *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
+
+![image](securitybrowser.png)
+
+The vulnerability matrix of the browser platform is shown above. Here’s the description of the attacks:
+
+ * A0:
+ * A1:
+ * A2:
+ * A3:
+ * A4:
+ * A5:
+ * A6:
+ * A7:
 
 
 ### Application platform
@@ -117,5 +128,4 @@ From the security point of view, the threats to the TCB have two main sources: t
 
 
 ### Secure element platform
-
 
