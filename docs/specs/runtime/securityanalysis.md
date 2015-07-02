@@ -50,8 +50,7 @@ In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances
 
 ## Vulnerability assessment of the Hyperty Runtime
 
-The threats described in the previous section can be thwarted by the Hyperty Runtime so long as the TCB of the system remains intact. In this section, we study the potential vulnerabilities of the TCB when deployed on a specific target platform. We envision five potential target platforms: browser, application, middlebox, server, and secure element. Next, we describe the methodology we use in order to ensure a uniform assessment of the system across platforms, and then we present our analysis for each platform.
-
+The threats described in the previous section can be thwarted by the Hyperty Runtime so long as the TCB of the system remains intact. In this section, we study the potential vulnerabilities of the TCB when deployed on a specific target platform. We envision five potential target platforms: browser, standalone application, middlebox, server, and secure element. Next, before we present our analysis for each platform, we describe our methodology to ensure a uniform assessment of the system across platforms.
 
 ### Methodology
 
@@ -100,25 +99,26 @@ From the security point of view, the threats to the TCB are mainly caused by an 
 
  * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications. A regular user is expected to mount the following attacks:
 
-   * *A0*: access and modify client Javascript code through the browser interface 
+   * *A0*: access and modify client Javascript code through the browser interface.
 
- * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
+ * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk). In addition to attack A1, an advanced user can perform attacks in different layers such as these:
 
- * A1:
- * A2:
- * A3:
+   * *A1*: compromise the runtime by installing a malicious browser extension,
+   * *A2*: dump the memory contents of the process to disk,
+   * *A3*: install a rootkit on the operating system that keeps track of Hyperty instances’ communication.
 
-* *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
+ * *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon. Summing up to the attacks described previously, a power user can mount more sophisticated attacks on various layers of the stack:
 
- * A4:
- * A5:
- * A6:
- * A7:
+   * *A4*: find and exploit a bug in the Hyperty Runtime
+   * *A5*: attach a debugger to the browser’s subprocess and inspect / modify its memory,
+   * *A6*: build a device driver to continuously monitor the execution of Hyperty Instances,
+   * *A7*: probe the system bus in order to extract private key material in use by Hyperty Instances.
+
+Based on these attacker profiles, we draw the vulnerability matrix of the browser platform as follows: 
 
 ![image](securitybrowser.png)
 
-**Vulnerability assessment.** The vulnerability matrix of the browser platform is shown above. Here’s the description of the attacks
-
+**Conclusion.** As illustrated by the vulnerability matrix, the browser platform is vulnerable to a range of attacks. Some of these attacks can be mounted by regular users with relative ease. In addition, there are several ways for advanced users to successfully compromise the TCB by exploiting the system at different layers in the stack. As a result, we recommend that the browser platform should be avoided for hosting client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has incentives to subvert. Examples of such code include: Hyperty instances restricted by specific usage charging policies, ProtoStubs that encode proprietary communication protocols, or Applications that access copyrighted digital data.
 
 ### Standalone application platform
 
@@ -130,3 +130,5 @@ From the security point of view, the threats to the TCB are mainly caused by an 
 
 
 ### Secure element platform
+
+
