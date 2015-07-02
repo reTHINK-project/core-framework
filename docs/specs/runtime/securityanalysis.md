@@ -50,11 +50,20 @@ In order to mitigate attacks (ii) and (iii), we recommend that Hyperty instances
 
 ## Vulnerability assessment of the Hyperty Runtime
 
-The threats described in the previous section can be thwarted by the Hyperty Runtime so long as the TCB of the system remains intact. In this section, we study the potential vulnerabilities that the TCB could be subjected to depending on the platform where the Hyperty Runtime is deployed. We envision five potential target platforms: browser, application, middlebox, server, and secure element. But, before assessing the system’s vulnerabilities, we present a common taxonomy to be used for this assessment.
+The threats described in the previous section can be thwarted by the Hyperty Runtime so long as the TCB of the system remains intact. In this section, we study the potential vulnerabilities of the TCB when deployed on a specific target platform. We envision five potential target platforms: browser, application, middlebox, server, and secure element. Next, we describe the methodology we use in order to ensure a uniform assessment of the system across platforms, and then we present our analysis for each platform.
 
-### Taxonomy and security matrices
 
-For the vulnerability assessment of the Hyperty Runtime when deployed on a given platform, we define a security matrix that combines two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty degree of launching attacks based on the required technical skills and resources. The lower the difficulty degree is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. The attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc.
+### Methodology
+
+Our basic methodology assess the vulnerabilities of the Hyperty Runtime’s TCB on a given platform is based on a *vulnerability matrix*. A vulnerability matrix indicates representative practical attacks that can be carried out against the TCB as a mean to compromising the security of the system by successfully achieving one of the goals described in the section above: permit unauthorized access by client code (T1), subvert hyperty policies (T2), compromise the authenticity of client code (T3), and launch denial of service attacks (T4). Such practical attacks to the TCB are classified in the vulnerability matrix along two dimensions: (i) the attack vector along the computer stack where vulnerabilities can be exploited (e.g.., targeting the operating system), and (ii) the difficulty level of launching attacks based on the required technical skills and resources.
+
+![image](dummymatrix.png)
+
+The figure above shows an example of a vulnerability matrix for a dummy platform. The content of each cell contains attacks that the TCB is vulnerable to. Each attack is identified, e.g, as A1, or A7, and naturally must be accompanied by a description of the attack, e.g., “A1: inspection of JavaScript code through the browser”, “A7: probing the system bus”. The columns represent the difficulty level and the rows the attack vector (both will be explained below). The vulnerability matrix will then allow us to grasp how exposed the TCB is to attacks: the lower the difficulty degree of the attacks is the more vulnerable the Hyperty Runtime will be when deployed on that particular target platform. 
+
+An attack will be launched by a given attack agent. Attack agents will depend on the target platform and can include, for example, a local user, malware, the system administrator, a thief, etc. A specific attack agent can be characterized by an *attack profile*. An attack profile is the subset of all possible attacks to the Hyperty Runtime’s TCB that a given agent can perform. For example, considering an adversarial average web user, its attack profile certainly includes attacks like “inspection of JavaScript code through the browser”, but not “probing the system bus”. Since there are specific attacker agents for each target platform, when analyzing the security of the TCB, we must assess whether or not the TCB is safe against the typical attacks of each agent’s profile.
+
+Next, we describe the classification for attack vectors and difficulty levels:
 
 **Attack vectors.** Attack vectors can be classified in five types, ordered top-down, from the highest to the lowest layer of the computer stack, as shown in the figure below:
 
@@ -78,8 +87,6 @@ For the vulnerability assessment of the Hyperty Runtime when deployed on a given
 
  * *Hard (D2)*: To mount the attack, the attacker must be able to develop its own exploit code, find new vulnerabilities in the system, and / or launch software hardware attacks. For example, finding a new vulnerability in a device driver’s code, and write the code to exploit that vulnerability. The attacks performed at the deep hardware level are also considered hard to execute.
 
-**Attack profile.** An attack profile characterizes the subset of all possible attacks to the Hyperty Runtime’s TCB that a given agent is capable of performing. For example, considering an attacker agent personified by an average web user, its attack profile certainly includes attacks like “inspection of JavaScript code through the browser”, but not “probing the system bus”. Since there are specific attacker agents for each target platform, when analyzing the security of the TCB, we must assess whether or not the TCB is safe against the typical attacks of each agent’s profile.
-
 
 ### Browser platform
 
@@ -93,11 +100,11 @@ Nevertheless, the figure above illustrates a possible architecture of the browse
 
 From the security point of view, the threats to the TCB have two main sources: the user and malware. To better characterize these threats, we define the following attacker profiles:
 
- * Regular user: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications.
+ * *Regular user*: This attacker profile captures the class of users with an average proficiency level in computing, but is willing to subvert the security properties enforced by the TCB. He has only user privileges that enable him to launch the browser, and run Hyperty-based applications.
 
- * Advanced user: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
+ * *Advanced user*: This profile captures users with superuser privileges and some degree of skills and knowledge of the system. He is informed about existing tools and techniques that can be used to hack into the system’s components, has access to exploits published online, and can handle auxiliary tools (e.g., debuggers, Unix advanced commands, etc.). If necessary he can root or jailbreak the operating system by following instructions (if we are talking about mobile devices). He can assemble and disassemble the basic hardware components of the system (e.g., plugging in / out the hard disk).
 
-* Power user: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
+* *Power user*: This user is highly skilled. He gathers deep knowledge of the system and can launch sophisticated attacks. He is able investigate for vulnerabilities in the software (including in the Hyperty Runtime or in the OS) and build its own exploits. He has the resources and tools to launch hardware attacks that involve tampering with silicon.
 
 
 ### Application platform
@@ -110,4 +117,5 @@ From the security point of view, the threats to the TCB have two main sources: t
 
 
 ### Secure element platform
+
 
