@@ -90,7 +90,8 @@ the amount specified by reconnectionDelay.
   * Yes
 
 * [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
-  * Yes
+  * Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google ..
+  (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
   * No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
