@@ -37,9 +37,11 @@ node "Runtime Device" as rt {
  SP1 -[hidden]down- App
  SP2 -[hidden]right- App
 
- node "Service Provider 1 Sandbox" as SP1Sand {
+ node "Service Provider 1 Sandboxes" as SP1Sand {
 
- node "Hyperty1\nInstance" as H1
+ node "Hyperties\nSandbox" as H1Sand {
+	 node "Hyperty1\nInstance" as H1
+	 }
 
  node "ProtoStub1\nSandbox" as Proto1Sand {
 
@@ -56,9 +58,11 @@ node "Runtime Device" as rt {
 
  }
 
-node "Service Provider 2 Sandbox" as SP2Sand {
+node "Service Provider 2 Sandboxes" as SP2Sand {
 
- node "Hyperty2\ninstance" as H2
+ node "Hyperties\nSandbox" as H2Sand {
+	 node "Hyperty2\nInstance" as H2
+	 }
 
  node "Router2\nSandbox" as PEP2Sand {
 	 node "Router\nPEP" as PEP2
@@ -126,9 +130,9 @@ node "WebRTC Engine" as WRTC
 
 ![Runtime Architecture](Runtime_Architecture_new.png)
 
-### Service Provider Sandbox
+### Service Provider Sandboxes
 
-According to Browser Sandbox model, each Service Provider Sandbox executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
+According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
 
 #### Router/Policy Engine
 
