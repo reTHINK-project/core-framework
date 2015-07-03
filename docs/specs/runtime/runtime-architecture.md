@@ -134,6 +134,8 @@ node "WebRTC Engine" as WRTC
 
 According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
 
+Mechanisms to support Hyperty Communication through data object synchronisation are discussed [here](data-synch-model.md).
+
 #### Router/Policy Engine
 
 Routes Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and enforces valid Policies on messaging routing (e.g. authorisation policies) according to Service Provider domain policies. 
