@@ -44,43 +44,57 @@ In case the Requirement is not fulfilled, possible solutions should be proposed 
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
   * Yes
-  * ProtOFly connector can be developped
+  * ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  * Yes (socket.io)
+  * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
    
 * [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
-  * Yes (several logging modules available : log4js, winston, bunyan ...)
+  * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
-  * Yes
+  * Yes - Socket.io enables message acknowledgement
 
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
-  * 
   * Using:
     * Cluster Mode
-    * Redis cluster
+    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy
     
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
-  * Yes (socket.io)
+  * Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
+
+- reconnection whether to reconnect automatically (true)
+- reconnectionDelay how long to wait before attempting a new reconnection (1000)
+- reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by
+the amount specified by reconnectionDelay.
+- timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
 
 * [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
-  * Yes (socket.io)
+  * Yes - using socket.io different event are fired on connection status :
+- connect. Fired upon connecting.
+- error. Fired upon a connection error
+- disconnect. Fired upon a disconnection.
+- reconnect. Fired upon a successful reconnection.
+- reconnect_attempt. Fired upon an attempt to reconnect.
+- reconnecting. Fired upon an attempt to reconnect.
+- reconnect_error. Fired upon a reconnection attempt error.
+- reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
 * [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
   * Yes 
 
 * [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
-  * Yes
+  * Yes - NodeJs is available on Linux, windows, mac
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
   * Yes
 
 * [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
-  * Yes
+  * Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google ..
+  (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
 
 * [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
-  * No - Yes with Redis
+  * No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
 
 #### [Runtime Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
 
