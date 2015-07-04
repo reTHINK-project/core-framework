@@ -1,4 +1,4 @@
-### Deploy runtime
+### Deploy Protocol Stub
 
 <!--
 @startuml "deploy-protostub.png"
