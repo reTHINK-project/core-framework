@@ -6,10 +6,10 @@
 
 #### [deploy Hyperty](deploy-hyperty.md)
 
-#### [Intra domain remote communication](intradomain-remote-communication.md)
+#### [Intra domain remote communication](intra-remote-comm.md)
 
-#### [Intra domain local communication](intradomain-remote-communication.md)
+#### [Intra domain local communication](intra-local-comm.md)
 
-#### [Inter domain local communication](interdomain-remote-communication.md)
+#### [Inter domain local communication](inter-local-comm.md)
 
-#### [Inter domain remote communication](interdomain-remote-communication.md)
+#### [Inter domain remote communication](inter-remote-comm.md)
