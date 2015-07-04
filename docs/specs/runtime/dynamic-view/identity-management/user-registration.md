@@ -26,7 +26,7 @@ autonumber
 
 !define SHOW_SP1
 
-!include runtime_objects.plantuml
+!include ../runtime_objects.plantuml
 
 == Deploy protocol stub and Registration Hyperty ==
 

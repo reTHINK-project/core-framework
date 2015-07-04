@@ -10,7 +10,6 @@ autonumber
 !define SHOW_AppAtRuntimeA
 
 !define SHOW_NativeAtRuntimeA
-!define SHOW_WebRTCAtRuntimeA
 !define SHOW_JavascriptEngineAtRuntimeA
 
 !define SHOW_CoreRuntimeA
@@ -19,9 +18,10 @@ autonumber
 !define SHOW_IdentitiesAtRuntimeA
 !define SHOW_AuthAtRuntimeA
 
+
 !define SHOW_SP1
 
-!include runtime_objects.plantuml
+!include ../runtime_objects.plantuml
 
 == Deploy Core Runtime ==
 

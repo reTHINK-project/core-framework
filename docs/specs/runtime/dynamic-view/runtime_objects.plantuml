@@ -3,7 +3,7 @@ actor "Alice" as Alice
 !ifdef SHOW_RuntimeA
 
 	!ifdef SHOW_AppAtRuntimeA
-		participant "App" as App
+		participant "App" as App@A
 	!endif
 
 	!ifdef SHOW_NativeAtRuntimeA
@@ -20,9 +20,6 @@ actor "Alice" as Alice
 
 	!ifdef SHOW_CoreRuntimeA
 		box "Core Runtime"
-			!ifdef SHOW_MsgBUSAtRuntimeA
-				participant "Msg BUS" as BUS@A
-			!endif
 
 			!ifdef SHOW_RegistryAtRuntimeA
 				participant "Registry" as RunReg@A
@@ -35,14 +32,14 @@ actor "Alice" as Alice
 			!ifdef SHOW_AuthAtRuntimeA
 				participant "Authorisation" as RunAuth@A
 			!endif
+			!ifdef SHOW_MsgBUSAtRuntimeA
+				participant "Msg BUS" as BUS@A
+			!endif
 		end box
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntimeA
 		box "Service Provider 1 Sandbox"
-			!ifdef SHOW_Protostub1AtRuntimeA
-			participant "SP1\nprotoStub" as Proto1@A
-			!endif
 
 			!ifdef SHOW_ServiceProvider1HypertyAtRuntimeA
 			participant "Service Provider1\nHyperty" as SP1H@A
@@ -56,6 +53,9 @@ actor "Alice" as Alice
 			participant "Identity\nData Object" as IDObj@A
 			!endif
 
+			!ifdef SHOW_Protostub1AtRuntimeA
+			participant "SP1\nprotoStub" as Proto1@A
+			!endif
 		end box
 	!endif
 
