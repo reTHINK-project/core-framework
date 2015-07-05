@@ -7,7 +7,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_NativeAtRuntimeA
-		box "Alice Native Runtime"
+		box "Alice's Device Native Runtime"
 			!ifdef SHOW_WebRTCAtRuntimeA
 				participant "WebRTC" as WRTC
 			!endif
@@ -19,7 +19,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_CoreRuntimeA
-		box "Alice Core Runtime"
+		box "Alice's Device Core Runtime"
 
 			!ifdef SHOW_RegistryAtRuntimeA
 				participant "Registry" as RunReg@A
@@ -39,10 +39,14 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntimeA
-		box "Alice Service Provider 1 Sandbox"
+		box "Service Provider 1 Sandbox at Alice Device"
 
 			!ifdef SHOW_ServiceProvider1HypertyAtRuntimeA
 			participant "Service Provider1\nHyperty" as SP1H@A
+			!endif
+
+			!ifdef SHOW_ServiceProvider1Hyperty2AtRuntimeA
+			participant "Service Provider1\nHyperty2" as SP1H2@A
 			!endif
 
 			!ifdef SHOW_ServiceProvider1RouterAtRuntimeA
@@ -53,6 +57,10 @@ actor "Alice" as Alice
 			participant "Identity\nData Object" as IDObj@A
 			!endif
 
+			!ifdef SHOW_CommObjectAtRuntimeA
+			participant "Communication\nData Object" as CommObj@A
+			!endif
+
 			!ifdef SHOW_Protostub1AtRuntimeA
 			participant "SP1\nprotoStub" as Proto1@A
 			!endif
@@ -60,7 +68,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP2SandboxAtRuntimeA
-		box "Alice Service Provider 2 Sandbox"
+		box "Service Provider 2 Sandbox at Alice Device"
 			!ifdef SHOW_Protostub2AtRuntimeA
 			participant "SP2\nprotoStub" as Proto2@A
 			!endif
@@ -77,8 +85,8 @@ actor "Alice" as Alice
 !endif
 
 !ifdef SHOW_SP1
-	box "Core Service Provider 1"
-		participant "Backend Service" as SP1
+	box "Service Provider 1"
+		participant "Msg Server" as SP1
 	end box
 !endif
 
@@ -89,7 +97,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_NativeAtRuntime1B
-		box "Bob Native Runtime"
+		box "Bob's Device Native Runtime"
 			!ifdef SHOW_WebRTCAtRuntime1B
 				participant "WebRTC" as WRTC
 			!endif
@@ -101,7 +109,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_CoreRuntime1B
-		box "Bob Core Runtime"
+		box "Bob's Device Core Runtime"
 
 			!ifdef SHOW_RegistryAtRuntime1B
 				participant "Registry" as RunReg@1B
@@ -121,7 +129,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntime1B
-		box "Bob Service Provider 1 Sandbox"
+		box "Service Provider 1 Sandbox at Bob Device"
 			!ifdef SHOW_Protostub1AtRuntime1B
 			participant "SP1\nprotoStub" as Proto1@1B
 			!endif
@@ -134,6 +142,9 @@ actor "Alice" as Alice
 			participant "Service Provider1\nHyperty" as SP1H@1B
 			!endif
 
+			!ifdef SHOW_CommObjectAtRuntime1B
+			participant "Communication\nData Object" as CommObj@1B
+			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntime1B
 			participant "Identity\nData Object" as IDObj@1B
@@ -143,7 +154,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP2SandboxAtRuntime1B
-		box "Bob Service Provider 2 Sandbox"
+		box "Service Provider 2 Sandbox at Bob Device"
 			!ifdef SHOW_Protostub2AtRuntime1B
 			participant "SP2\nprotoStub" as Proto2@1B
 			!endif
