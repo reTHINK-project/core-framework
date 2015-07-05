@@ -22,22 +22,19 @@ NodeJs is already used in several WebRTC platform or product. (NodeJs can be use
 
 ### Architecture
 
-*Main functional modules and interfaces. Should be based on a picture*
+NodeJS is divided into two main components: the core and its modules. The core is built in C and C++. It combines Google’s V8 JavaScript engine with Node’s Libuv library and protocol bindings including sockets and HTTP.
+
+![image](Archi-NodeJs.png)
+
+More information are avaialble in this document : http://mcgill-csus.github.io/student_projects/Submission2.pdf
 
 ### APIs
 
-*Available APIs for developers*
-
-API are described on nodejs website : https://nodejs.org/api/
+Available API are described on nodejs website : https://nodejs.org/api/
 
 But this can be completed thanks to the different packages available on https://www.npmjs.com/
 
 ### Requirements Analysis
-
-*Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
-*The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
-In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
-
 
 #### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
 
@@ -119,4 +116,6 @@ socket.io
 sockjs
 
 The most performante is claimded to be ws.
+
+Socket.io seems to be the most complete regarding feature (connection type, acknowledgement, configuration ..)
 
