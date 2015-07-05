@@ -24,6 +24,12 @@ NodeJs is already used in several WebRTC platform or product. (NodeJs can be use
 
 *Main functional modules and interfaces. Should be based on a picture*
 
+NodeJS is divided into two main components: the core and its modules. The core is built in C and C++. It combines Google’s V8 JavaScript engine with Node’s Libuv library and protocol bindings including sockets and HTTP.
+
+![image](Archi-NodeJs.png)
+
+More information are avaialble in this document : http://mcgill-csus.github.io/student_projects/Submission2.pdf
+
 ### APIs
 
 *Available APIs for developers*
