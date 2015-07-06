@@ -29,6 +29,11 @@ autonumber
 !define SHOW_ServiceProvider2RouterAtRuntimeB
 
 !define SHOW_SP2
+!define SHOW_Msg2
+
+!define SHOW_CoreRuntimeB
+!define SHOW_MsgBUSAtRuntimeB
+!define SHOW_AuthAtRuntimeB
 
 !include ../runtime_objects.plantuml
 !include ../runtime_objects_domain2.plantuml
@@ -47,17 +52,17 @@ Router1@A -> BUS@A : send msg
 
 RunAuth@A <- BUS@A : Authz request
 
-Router2@A <- BUS@A : send msg
+BUS@A -> Proto2@A : send msg
 
-Router2@A -> Router2@A : Apply SP2 policies
+Proto2@A -> Msg2 : send msg
 
-Router2@A -> Proto2@A : send msg
+Proto2@B <- Msg2 : send msg
 
-Proto2@A -> SP2 : send msg
+BUS@B <- Proto2@B : send msg
 
-Proto2@B <- SP2 : send msg
+RunAuth@B <- BUS@B : Authz request
 
-Router2@B <- Proto2@B : send msg
+Router2@B <- BUS@B : send msg
 
 Router2@B -> Router2@B : Apply Local Bob policies
 
