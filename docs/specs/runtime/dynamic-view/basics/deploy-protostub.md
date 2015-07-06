@@ -11,6 +11,7 @@ autonumber
 
 !define SHOW_NativeAtRuntimeA
 !define SHOW_JavascriptEngineAtRuntimeA
+!define SHOW_HTTPClientAtRuntimeA
 
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
@@ -28,44 +29,51 @@ autonumber
 
 group discover protostub URL
 
-	JS -> RunID@A : get protostub URL
+	JS@A -> RunID@A : get protostub URL
+
+	note right
+		to be designed in a separated diagram
+		by Identity managament group
+	end note
+	... ...
 
 end group
 
 
-JS -> SP1 : download protostub
+HTTP_UAC@A -> SP1 : download protostub
 
 create Proto1@A
-JS -> Proto1@A : new
+JS@A -> Proto1@A : new
 
-Proto1@A -> Proto1@A : Router?
 
-Proto1@A -> JS : download Router
+Proto1@A -> BUS@A : register protoStub(domainURL)
 
-JS -> SP1 : download Router
+BUS@A -> RunAuth@A : ask authz
 
-create Router1@A
-JS -> Router1@A : new
-
-Proto1@A -> Router1@A : register protoStub
-
-Router1@A -> Router1@A : apply SP1 policies
-
-Router1@A -> BUS@A : register protoStub
-
-BUS@A -> RunReg@A : register protoStub
+BUS@A -> RunReg@A : register protoStub(domainURL)
 
 note right
 	protostub is discoverable 
 	to let other hyperties to use it
-	**open issue:** the protostub only connects when is requested by an Hyperty?
+	**open issue:** the protostub only connects
+	to the domain when is requested by 
+	an Hyperty?
 end note
 
+group protocol stub connection to domain: to be designed by the ID Management group
+
+end group
 
 
 @enduml
 -->
 
-
 ![Deploy Protocol Stub](deploy-protostub.png)
 
+The protocol stub deployment may be triggered by the deployment of an Hyperty or by some attempt from a local Hyperty to communicate with a remote Hyperty running in the domain served by the protocol Stub. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
+
+Protocol stubs are reachable through the Message BUS and not through domain routers (should we change the name). In this way it is ensured that all messages received and sent goes through the message bus where policies can be enforced and additional data can be added or changed including message addresses and identity tokens.
+
+When registered, protocol stubs are associated with the domainURL they connect to.
+
+Protocol stubs are connected by using credentials handled by the Core Runtime Identities Container. To be designed by the Identity Manager group.

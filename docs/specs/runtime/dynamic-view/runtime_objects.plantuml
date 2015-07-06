@@ -2,12 +2,18 @@ actor "Alice" as Alice
 
 !ifdef SHOW_RuntimeA
 
+
+
 	!ifdef SHOW_AppAtRuntimeA
 		participant "App" as App@A
 	!endif
 
 	!ifdef SHOW_NativeAtRuntimeA
 		box "Alice's Device Native Runtime"
+			!ifdef SHOW_HTTPClientAtRuntimeA
+				participant "HTTP Client" as HTTP_UAC@A
+			!endif
+
 			!ifdef SHOW_WebRTCAtRuntimeA
 				participant "WebRTC" as WRTC@A
 			!endif
@@ -20,6 +26,9 @@ actor "Alice" as Alice
 
 	!ifdef SHOW_CoreRuntimeA
 		box "Alice's Device Core Runtime"
+			!ifdef SHOW_CoreAgentAtRuntimeA
+				participant "Runtime Management Agent" as RunUA@A
+			!endif
 
 			!ifdef SHOW_RegistryAtRuntimeA
 				participant "Registry" as RunReg@A
@@ -84,9 +93,21 @@ actor "Alice" as Alice
 	!endif
 !endif
 
+!ifdef SHOW_CoreRuntimeProvider
+	box "Core Runtime Service Provider"
+		participant "Catalog" as CoreRunProvider
+	end box
+!endif
+
+
 !ifdef SHOW_SP1
 	box "Service Provider 1"
-		participant "Msg Server" as SP1
+		participant "Back-end Service" as SP1
+
+		!ifdef SHOW_Msg1
+			participant "Msg Service" as Msg1
+		!endif
+
 	end box
 !endif
 

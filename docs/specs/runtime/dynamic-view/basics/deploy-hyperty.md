@@ -11,6 +11,7 @@ autonumber
 
 !define SHOW_NativeAtRuntimeA
 !define SHOW_JavascriptEngineAtRuntimeA
+!define SHOW_HTTPClientAtRuntimeA
 
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
@@ -27,16 +28,26 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-group discover Hyperty URL
+group discover Hyperty URL: to be designed in a separated diagram by the Id Management Group
 
-	JS <- App@A : deploy Hyperty(URL)
+	... ...
+	HTTP_UAC@A <- App@A : deploy Hyperty(URL)
 
 end group
 
-JS -> SP1 : download Hyperty(URL)
+HTTP_UAC@A -> SP1 : download Hyperty(URL)
 
 create SP1H@A
-JS -> SP1H@A : new
+JS@A -> SP1H@A : new
+
+SP1H@A -> SP1H@A : Router?
+
+SP1H@A -> HTTP_UAC@A : download Router
+
+HTTP_UAC@A -> SP1 : download Router
+
+create Router1@A
+JS@A -> Router1@A : new
 
 SP1H@A -> Router1@A : register Hyperty
 
@@ -46,26 +57,26 @@ BUS@A <- Router1@A : register Hyperty
 
 BUS@A -> RunReg@A : register Hyperty
 
-group associate to Identity
+group associate to Identity : to be designed in a separate diagram by Id Management Group
 
 	RunID@A <- RunReg@A : get Identity
+
+	... ...
+
 	RunReg@A <- RunReg@A : set Identity
-	RunReg@A <- RunReg@A : collect Hyperty Context
 
 end group
 
 group register Hyperty at SP1 Registry
 	RunReg@A <- RunReg@A : collect Hyperty runtime Context data
-	RunReg@A -> BUS@A : register Hyperty
-	Router1@A <- BUS@A : register Hyperty
-	Router1@A -> Router1@A : Apply SP1 policies
-	Router1@A -> Proto1@A : register Hyperty
+	RunReg@A <- RunReg@A : resolve protoStub URL
+	RunReg@A -> BUS@A : register Hyperty/n(ID Token)
+	BUS@A -> Proto1@A : register Hyperty/n(ID Token)
 	Proto1@A -> SP1 : register Hyperty
 
-	note left
-		**open issue:** protostub may noy be
-		connected yet. Show such procedures here?
-	end note
+	group option: connect protocol stub to the domain in case it is still not connected yet
+	
+	end group
 
 end group
 
@@ -75,3 +86,11 @@ end group
 
 ![Deploy Hyperty](deploy-hyperty.png)
 
+
+The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
+
+Hyperties are reachable through domain routers (should we change the name?) to:
+1- enable enforcement of domain proprietary policies
+2- the Hyperty (data synch) communication model would be implemented by the router (connector is a better name?) and not by the Hyperty itself
+
+When registered, Hyperties are associated with an Identity by the Registry / Identities container. Then all, messages sent by the Hyperty will be signed with a token according to the Identity associated to the Hyperty. To be designed by the Identity Manager group.
