@@ -9,11 +9,11 @@ actor "Alice" as Alice
 	!ifdef SHOW_NativeAtRuntimeA
 		box "Alice's Device Native Runtime"
 			!ifdef SHOW_WebRTCAtRuntimeA
-				participant "WebRTC" as WRTC
+				participant "WebRTC" as WRTC@A
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntimeA
-				participant "Javascript Runtime" as JS
+				participant "Javascript Runtime" as JS@A
 			!endif
 		end box
 	!endif

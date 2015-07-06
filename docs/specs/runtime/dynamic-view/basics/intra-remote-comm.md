@@ -32,7 +32,9 @@ SP1H@A -> Router1@A : send msg
 
 Router1@A -> Router1@A : Apply Local Alice policies
 
-Router1@A -> Proto1@A : send msg
+Router1@A -> BUS@A : send msg
+
+BUS@A -> Proto1@A : send msg
 
 Proto1@A -> SP1 : send msg
 
