@@ -98,9 +98,9 @@ Msg2 <-down-> Proto2 : communicate
 
 node "Core Sandbox" as core {
 
- node "*            Message      BUS                *" as Bus {
-  node "PEP"
- }
+ node "*            Message      BUS                *" as Bus 
+
+ node "Msg BUS\nPEP" as BusPEP
 
  node "Registry" as Reg
 
@@ -123,7 +123,9 @@ node "WebRTC Engine" as WRTC
 
  Bus <-up-> Proto2
 
- PDP ..right-> Bus : authorise
+ BusPEP ..right-> Bus : enforce
+
+ PDP ..right-> BusPEP : authorise
 
  PDP .down-> Reg
 
