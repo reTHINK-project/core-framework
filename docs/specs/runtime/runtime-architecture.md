@@ -4,9 +4,14 @@ According to [ongoing discussions](https://github.com/reTHINK-project/core-frame
 * one sandbox for the ASP providing the Application
 * one sandbox per Hyperty Service Provider Domain that includes the Router/Policy Engine and associated protoStub
 * the ProtoStub is used to communicate with Service Provider backend services.
-* Hyperty instances communicates with event bus through Router/Policy Engine which may also act as a kind of firewall
+* Hyperty instances communicates with Msg bus through Router/Policy Engine which may also act as a kind of firewall
 * according to recommendations provided in the [runtime security analysis](securityanalysis.md), protoStubs and Router/Policy Engines execute isolated in independent sandboxes.
-* to prevent cross origin attacks / spy, access to Message BUS is subject to authorisation
+* to prevent cross origin attacks / spy, access to Message BUS may be subject to authorisation
+* Different Points of Policy Enforcement:
+ * Policies enforced at Hyperty Sender Domain Router for outgoing messages
+ * Policies enforced to control the access to message Bus
+ * Policies enforced at Hyperty Receiver Domain Router for incoming messages
+ to different types of policies to applied on these different points namely in the Message BUS requires further research to avoid performance overhead and potential conflicts.
 
 
 <!--
@@ -92,7 +97,9 @@ Msg2 <-down-> Proto2 : communicate
 
 node "Core Sandbox" as core {
 
- node "*            Message      BUS                *" as Bus
+ node "*            Message      BUS                *" as Bus {
+  node "PEP"
+ }
 
  node "Registry" as Reg
 
