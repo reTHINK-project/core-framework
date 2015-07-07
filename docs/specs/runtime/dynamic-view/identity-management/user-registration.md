@@ -11,6 +11,7 @@ autonumber
 
 !define SHOW_NativeAtRuntimeA
 !define SHOW_JavascriptEngineAtRuntimeA
+!define SHOW_HTTPClientAtRuntimeA
 
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
@@ -30,33 +31,35 @@ autonumber
 
 == Deploy protocol stub and Registration Hyperty ==
 
-Alice -> JS : download\nRegistration App
+Alice -> HTTP_UAC@A : download\nRegistration App
 
-JS -> SP1 : download Registration App
+HTTP_UAC@A -> SP1 : download Registration App
 
-create App
-JS -> App : new
+create App@A
+JS@A -> App@A : new
 
-create Proto1@A
-JS -> Proto1@A : new
+group deploy protocol stub
+	App@A -> HTTP_UAC@A : download protocol stub
+	create Proto1@A
+	JS@A -> Proto1@A : new
+end
 
-Proto1@A -> RunReg@A : register ProtoStub
+group deploy Hyperty
+	App@A -> HTTP_UAC@A : download hyperty
+	create SP1H@A
+	JS@A -> SP1H@A : new
 
-create SP1H@A
-JS -> SP1H@A : new
-
-SP1H@A -> RunReg@A : register Hyperty
-
-create Router1@A
-JS -> Router1@A : new
+	create Router1@A
+	JS@A -> Router1@A : new
+end
 
 == Create Identity Account ==
 
-App -> Alice : request\nRegistration\nData
+App@A -> Alice : request\nRegistration\nData
 
-App <- Alice : Registration\nData\nprovided
+App@A <- Alice : Registration\nData\nprovided
 
-App -> SP1H@A : Registration Data provided
+App@A -> SP1H@A : Registration Data provided
 
 create IDObj@A
 SP1H@A -> IDObj@A : new
@@ -67,19 +70,17 @@ SP1H@A -> Router1@A : send CreateObj Msg
 
 Router1@A -> Router1@A : enforce SP1\nIdentity Creation \nPolicies
 
-Proto1@A <- Router1@A : send CreateObj Msg
+BUS@A <- Router1@A : send CreateObj Msg
+
+Proto1@A <- BUS@A : send CreateObj Msg
 
 Proto1@A -> SP1 : send CreateObj Msg
 
-Proto1@A <- SP1 : Success/nID Token
+Proto1@A <- SP1 : Success\nID Token
 
-Proto1@A -> SP1H@A : Success
+Proto1@A -> BUS@A : Success\nID Token
 
-IDObj@A <- SP1H@A : Update Obj
-
-Proto1@A -> Router1@A : Success/nID Token
-
-RunReg@A <- Router1@A : Set ID Token
+RunReg@A <- BUS@A : Register Hyperty
 
 RunReg@A -> RunID@A : Set ID Token
 
@@ -87,9 +88,12 @@ Proto1@A <- RunReg@A : register Hyperty\n+ID Token
 
 Proto1@A -> SP1 : register Hyperty\n+ID Token
 
-note left
-	through router and BUS?
-end note
+BUS@A -> Router1@A : Success
+
+Router1@A -> SP1H@A : Success
+
+IDObj@A <- SP1H@A : Update Obj
+
 
 @enduml
 -->

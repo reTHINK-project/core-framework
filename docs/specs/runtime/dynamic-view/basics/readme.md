@@ -6,6 +6,8 @@
 
 #### [deploy Hyperty](deploy-hyperty.md)
 
+#### [Message BUS Routing](bus-msg-routing.md)
+
 #### [Intra domain local communication](intra-local-comm.md)
 
 #### [Inter domain local communication](inter-local-comm.md)

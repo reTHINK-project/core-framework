@@ -2,7 +2,11 @@
 !ifdef SHOW_SP2
 	box "Service Provider 2"
 		participant "Msg Server" as SP2
+		!ifdef SHOW_Msg2
+			participant "Msg Service" as Msg2
+		!endif
 	end box
+
 !endif
 
 !ifdef SHOW_RuntimeB

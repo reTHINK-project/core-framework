@@ -54,7 +54,6 @@ node "Runtime Device" as rt {
 
   H1 -down-> PEP1
 
-  PEP1 -up-> Proto1
 
  }
 
@@ -73,7 +72,6 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
   node "ProtoStub" as Proto2
   }
 
-  PEP2 -up-> Proto2
 
   H2 -down-> PEP2
 
@@ -101,6 +99,10 @@ node "Core Sandbox" as core {
  node "Identities\nContainer" as ID
 
  node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+
+ node "Runtime\nUser Agent" as RunUA
+
+ RunUA -[hidden]left- Reg
  }
 
 
@@ -109,8 +111,13 @@ node "WebRTC Engine" as WRTC
 	
 }
 
+ Bus <-up-> Proto1
+
+ Bus <-up-> Proto2
 
  PDP ..right-> Bus : authorise
+
+ PDP .down-> Reg
 
  PEP1 <-down-> Bus
 
@@ -132,13 +139,13 @@ node "WebRTC Engine" as WRTC
 
 ### Service Provider Sandboxes
 
-According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Messaging Server and PEP enabled Router. 
+According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Domain and PEP enabled Connector. 
 
 Mechanisms to support Hyperty Communication through data object synchronisation are discussed [here](data-synch-model.md).
 
 #### Router/Policy Engine
 
-Routes Hyperty messages to be exchanged with local Message Bus or the Messaging Server via the protoStub, and enforces valid Policies on messaging routing (e.g. authorisation policies) according to Service Provider domain policies. 
+Routes Hyperty messages to be exchanged with local Message Bus and enforces valid Policies on messaging routing (e.g. authorisation policies) according to Service Provider domain policies. 
 
 #### Protocol Stub
 
@@ -163,6 +170,10 @@ Local Runtime Hyperty registry where Hyperty local addresses are registered and 
 #### Identities Containers
 
 Contains Tokens that associates Hyperties with Users, it also provides Identity assertions. Something similar to [WebRTC IdP Proxy](http://w3c.github.io/webrtc-pc/#identity) but not limited to WebRTC.
+
+#### Runtime User Agent
+
+Manages Core Sandbox components including its deployment and update from Core Runtime Provider.
 
 ## Native Runtime
 
