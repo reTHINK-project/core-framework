@@ -11,7 +11,8 @@ According to [ongoing discussions](https://github.com/reTHINK-project/core-frame
  * Policies enforced at Hyperty Sender Domain Router for outgoing messages
  * Policies enforced to control the access to message Bus
  * Policies enforced at Hyperty Receiver Domain Router for incoming messages
- to different types of policies to applied on these different points namely in the Message BUS requires further research to avoid performance overhead and potential conflicts.
+
+ The different types of policies to be applied on these different points, namely in the Message BUS, requires further research to avoid performance overhead and potential conflicts.
 
 
 <!--
