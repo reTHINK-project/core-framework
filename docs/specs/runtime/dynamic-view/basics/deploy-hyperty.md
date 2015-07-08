@@ -89,6 +89,9 @@ end group
 
 The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
 
+**Open Issue:** In the diagram above, the Hyperty is instantiated by the native Javascript engine as a normal javascript function/object, and in its constructor the registration process is performed. Another option, is to have in the Core Runtime, a Hyperty loader functionality (a Service/Web Worker?) that would handle the instantiation of the Hyperty and its registration in the runtime.
+
+
 Hyperties are reachable through domain routers (should we change the name?) to:
 1- enable enforcement of domain proprietary policies
 2- the Hyperty (data synch) communication model would be implemented by the router (connector is a better name?) and not by the Hyperty itself
