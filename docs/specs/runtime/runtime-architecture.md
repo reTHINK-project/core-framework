@@ -12,7 +12,8 @@ According to [ongoing discussions](https://github.com/reTHINK-project/core-frame
  * Policies enforced to control the access to message Bus
  * Policies enforced at Hyperty Receiver Domain Router for incoming messages
 
- The different types of policies to be applied on these different points, namely in the Message BUS, requires further research to avoid performance overhead and potential conflicts.
+ The different types of policies to be applied on these different points, namely in the Message BUS, requires further research to avoid performance overhead and potential conflicts. Initial thoughts:
+ Message BUS PEP would enforce general access control policies that are agnostic of sender and target domains, or specific to the domain managing the device runtime (Core Runtime Provider). The access control to CRUD operations on standardised data objects like the Communication Data Object (eg only the owner of an active communication may apply delete or update operations on it) is a good candidate.
 
 
 <!--
