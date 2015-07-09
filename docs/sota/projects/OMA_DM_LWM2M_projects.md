@@ -1,14 +1,7 @@
 ## OMA Device Management
-### Funanbol Project
+For exchanging information on the device properties and also monitor/manage connectivity of the device, OMA LWM2M standards can be used, as an energy efficient evolution from OMA DM standard.
 
-#### Overview
-Features
-Programming Language
-Link
-License
-Flexibility
-
-#### How to use
+Several projects have been analyzed in terms of features, flexibility and license in order to be able to choose the most suitable for the Rethink project.
 
 ### Californium Project
 
@@ -34,12 +27,17 @@ Flexibility
 
 ### OMA LWM2M Dev Kit Project
 
-#### Overview
-Features
-The programming language is Javascript.
-Link https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
-The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE)
+The project can act as multiple virtual OMA LWM2M clients by connecting to a remote OMA LWM2M server.
 
+#### Overview
+
+The supported features include interfaces:  Registration, Device Management and Service Enablement Interface, Information Reporting Interface.
+
+The programming language is Javascript.
+
+The homepage can be found on: https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
+
+The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE)
 
 Flexibility
 
