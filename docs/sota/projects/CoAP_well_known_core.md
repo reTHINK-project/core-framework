@@ -1,5 +1,7 @@
 ## CoAP/ Well-known CoRE Projects
 
+If Hyperties, Codecs, Protostub and other artifacts to be provisioned on the end devices are to be regarded as resources with attributes describing: capabilities (audio, video, text), running platform (OS), configuration (DNS name of the messaging node, DNS server), implementation (code/script, codecs)
+
 ### LibCoap Project
 
 #### Overview
