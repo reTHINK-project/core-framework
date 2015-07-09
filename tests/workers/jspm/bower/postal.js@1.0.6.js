@@ -1,0 +1,1 @@
+module.exports = require("bower:postal.js@1.0.6/lib/postal");
