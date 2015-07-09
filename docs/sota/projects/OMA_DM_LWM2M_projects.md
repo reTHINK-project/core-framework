@@ -14,7 +14,7 @@ The project uses Java as programming language.
 
 The project is hosted on github at: https://github.com/eclipse/leshan
 
-This program and the accompanying materials are made available under the terms of the [Eclipse Public License v1.0] (http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which accompany the distribution.
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License v1.0] (http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which accompany the distribution. The license is business-friendly. "Neither the name of the Eclipse Foundation, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission."
 
 #### How to use
 
@@ -40,7 +40,7 @@ The programming language is Javascript.
 
 The homepage can be found on: https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
 
-The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE)
+The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE), the name of the project has to be mentioned in the redistribution.
 
 #### How to use
 
