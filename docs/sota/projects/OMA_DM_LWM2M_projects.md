@@ -8,7 +8,8 @@ Several projects have been analyzed in terms of features, flexibility and licens
 The project is supported by Sierra Wireless and hosted by the Eclipse foundation.
 
 #### Overview
-Features
+
+The implementation supports all the interfaces: Bootstrap, Registration, Device Management and Service Enablement, Information Reporting.
 
 The project uses Java as programming language.
 
@@ -21,12 +22,16 @@ This program and the accompanying materials are made available under the terms o
 ### Wakaama Project
 
 #### Overview
-Features
+
+The implementation supports interfaces.
+
 Programming Language
 Link
 License
 
 #### How to use
+
+The project can be further extended with some new Management Objects, if necessary. The server is to be compiled and run according to a configuration file.
 
 ### OMA LWM2M Dev Kit Project
 
