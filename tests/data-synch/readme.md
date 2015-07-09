@@ -105,14 +105,15 @@ H1 <- Obj1 : report change
 @enduml
 -->
 
+
+Usage of the emerging [object.observe](https://developer.mozilla.org/pt-PT/docs/Web/JavaScript/Reference/Global_Objects/Object/observe) javascript API to support Hyperty communication based on object synchronisation. If not supported by the native runtime we can use a few [existing libraries](https://github.com/MaxArt2501/object-observe).
+
 Experimentation proposal:
 
 ![hyperty data synchronisation communication experimentation](hyperty-data-synchronisation-msc.png)
 
 
-
-Usage of the emerging [object.observe](https://developer.mozilla.org/pt-PT/docs/Web/JavaScript/Reference/Global_Objects/Object/observe) javascript API to support Hyperty communication based on object synchronisation. If not supported by the native runtime we can use a few [existing libraries](https://github.com/MaxArt2501/object-observe).
-
 **questions:**
-* how to handle concurrency ie both hyperties change the same attribute at "the same time" creating inconsistence between the two object
-* 
+* concurrency (ie both hyperties change the same attribute at "the same time" creating inconsistence between the two objects) will be addressed in other experimentations
+* To simplify, concurrency may be handled by only granting writing permissions to Object owner (creator). Such control would be enforced by the Msg BUS Access control.
+* In case more sophisticated concurrency control is needed we may look on existing solutions like [sync-it](https://www.npmjs.com/package/sync-it)
