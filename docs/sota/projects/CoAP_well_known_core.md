@@ -14,6 +14,8 @@ The library is published as open-source software without any warranty of any kin
 
 #### How to use
 
+Handlers for CRUD operations triggered by CoAP requests: Post, Get, Put and Delete can be registered to the main information named coap_context. Callback will be generated to the registered handlers when the requests or replies are received. A command line application, example of code and ETSI tests are included.
+
 ### Copper Project
 
 #### Overview
