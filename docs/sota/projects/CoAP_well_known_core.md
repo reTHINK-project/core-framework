@@ -1,4 +1,4 @@
-## CoAP Open-source Projects
+## CoAP/ Well-known CoRE Projects
 
 ### LibCoap Project
 
