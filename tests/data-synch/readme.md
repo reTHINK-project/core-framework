@@ -117,3 +117,9 @@ Experimentation proposal:
 * concurrency (ie both hyperties change the same attribute at "the same time" creating inconsistence between the two objects) will be addressed in other experimentations
 * To simplify, concurrency may be handled by only granting writing permissions to Object owner (creator). Such control would be enforced by the Msg BUS Access control.
 * In case more sophisticated concurrency control is needed we may look on existing solutions like [sync-it](https://www.npmjs.com/package/sync-it)
+
+**Swarm**
+
+*Swarm is an isomorphic reactive M-of-MVC library that synchronizes objects in real-time and may work offline.*
+
+Should we also have a look on this?
