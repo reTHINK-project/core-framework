@@ -19,6 +19,8 @@ This program and the accompanying materials are made available under the terms o
 
 #### How to use
 
+The project can be further extended with some new Management Objects, if necessary. The server is to be compiled and run according to a configuration file.
+
 ### Wakaama Project
 
 #### Overview
@@ -31,7 +33,7 @@ License
 
 #### How to use
 
-The project can be further extended with some new Management Objects, if necessary. The server is to be compiled and run according to a configuration file.
+
 
 ### OMA LWM2M Dev Kit Project
 
