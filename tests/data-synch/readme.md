@@ -122,7 +122,7 @@ Experimentation proposal:
 
 Should we also have a look on the libraries below?
 
-*[Swarm](https://github.com/gritzko/swarm) is an isomorphic reactive M-of-MVC library that synchronizes objects in real-time and may work offline.*
+*[Swarm](https://github.com/gritzko/swarm) is an isomorphic reactive M-of-MVC library that synchronizes objects in real-time and may work offline. Swarm is safely described as “data sync middleware”. Like git repos, Swarm replicas are peers, so there is no master copy. As a byproduct, Swarm supports local data caches and P2P serverless sync.*
 
 *[Secure Scuttlebutt](https://github.com/ssbc/ssb-docs) is a decentralized network which gossips blockchains in a peer-to-peer mesh. It is an alternative to hosted Web applications, with greater protections for user data and greater freedom to choose your software.*
 
