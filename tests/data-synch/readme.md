@@ -1,7 +1,5 @@
 ## Experimentations for Data Synchonisation model
 
-### [Interdomain Local Communication](inter-local-comm-md)
-
 
 <!--
 @startuml "hyperty-data-synchronisation.png"
