@@ -1,4 +1,4 @@
-## Experimentations for Data Synchonisation model
+## Experimentations for Data Synchronisation model
 
 
 <!--
