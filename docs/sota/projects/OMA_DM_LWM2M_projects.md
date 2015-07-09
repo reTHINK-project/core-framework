@@ -10,7 +10,6 @@ Features
 Programming Language
 Link
 License
-Flexibility
 
 #### How to use
 
@@ -21,7 +20,6 @@ Features
 Programming Language
 Link
 License
-Flexibility
 
 #### How to use
 
@@ -39,7 +37,7 @@ The homepage can be found on: https://github.com/OpenMobileAlliance/OMA-LWM2M-De
 
 The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE)
 
-Flexibility
-
 #### How to use
+
+The project provides a Web GUI as an addon for Firefox to get the user/developer familiarize. The core functionality can be included in any software package like a Javascript library and also, the Core Framework of the client side for the Rethink project.
 
