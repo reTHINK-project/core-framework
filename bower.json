@@ -1,0 +1,27 @@
+{
+  "name": "workers",
+  "version": "0.0.0",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "lodash": "~3.10.0"
+  },
+  "dependencies": {
+    "postal.js": "~1.0.6",
+    "postal.federation": "~0.2.4",
+    "postal.xframe": "~0.3.2",
+    "riveter": "~0.1.2",
+    "materialize": "~0.97.0",
+    "lodash": "~3.10.0"
+  }
+}
