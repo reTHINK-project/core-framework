@@ -36,9 +36,11 @@ Flexibility
 
 #### Overview
 Features
-Programming Language
+The programming language is Javascript.
 Link https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
-License
+The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE)
+
+
 Flexibility
 
 #### How to use
