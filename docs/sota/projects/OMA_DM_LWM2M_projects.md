@@ -1,5 +1,5 @@
 ## OMA Device Management
-For exchanging information on the device properties and also monitor/manage connectivity of the device, [OMA LWM2M standard]  can be used, as an energy efficient and scalable evolution from OMA DM standard.
+For exchanging information on the device properties and also monitor/manage connectivity of the device, [OMA LWM2M standard] (http://member.openmobilealliance.org/ftp/Public_documents/DM/LightweightM2M/) can be used, as an energy efficient and scalable evolution from OMA DM standard.
 
 Several projects have been analyzed in terms of features, flexibility and license in order to be able to choose the most suitable for the Rethink project.
 
