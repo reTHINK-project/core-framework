@@ -1,15 +1,17 @@
 ## OMA Device Management
-For exchanging information on the device properties and also monitor/manage connectivity of the device, OMA LWM2M standards can be used, as an energy efficient evolution from OMA DM standard.
+For exchanging information on the device properties and also monitor/manage connectivity of the device, [OMA LWM2M standard]  can be used, as an energy efficient and scalable evolution from OMA DM standard.
 
 Several projects have been analyzed in terms of features, flexibility and license in order to be able to choose the most suitable for the Rethink project.
 
-### Californium Project
+### Leshan Project
+
+The project is supported by Sierra Wireless and hosted by the Eclipse foundation.
 
 #### Overview
 Features
-Programming Language
-Link
-License
+The project uses Java as programming language.
+The project is hosted on github at: https://github.com/eclipse/leshan
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License v1.0] (http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which accompany the distribution.
 
 #### How to use
 
