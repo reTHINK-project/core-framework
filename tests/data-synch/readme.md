@@ -118,8 +118,11 @@ Experimentation proposal:
 * To simplify, concurrency may be handled by only granting writing permissions to Object owner (creator). Such control would be enforced by the Msg BUS Access control.
 * In case more sophisticated concurrency control is needed we may look on existing solutions like [sync-it](https://www.npmjs.com/package/sync-it)
 
-**Swarm**
+**Other Candidate Libraries**
 
-*Swarm is an isomorphic reactive M-of-MVC library that synchronizes objects in real-time and may work offline.*
+Should we also have a look on the libraries below?
 
-Should we also have a look on this?
+*[Swarm](https://github.com/gritzko/swarm) is an isomorphic reactive M-of-MVC library that synchronizes objects in real-time and may work offline.*
+
+*[Secure Scuttlebutt](https://github.com/ssbc/ssb-docs) is a decentralized network which gossips blockchains in a peer-to-peer mesh. It is an alternative to hosted Web applications, with greater protections for user data and greater freedom to choose your software.*
+
