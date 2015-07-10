@@ -46,7 +46,7 @@ Using TDF with the rules detecting WebRTC flows.
 * Define appropriate TDF rules
 * TURN servers management
 
-### Last Hop Connectivity Broker
+### Last Hop Connectivity Broker (for full text see https://github.com/reTHINK-project/core-framework/issues/50)
 * The Last Hop Connectivity Broker (LHCB) provides information about access technologies available at the end device to establish an Internet connection. 
 * The provided information encompasses in addition to the 'kind of link technology available' per link information about the current or expected QoS, e.g. expected error rates, delays, throughput on the last hop. 
 * Information about available link technologies is provided without interacting with any network service provider; hence providing an unbiased view of alternative links from alternative service providers which is required for an operator-agnostic choice of the best last hop link used within an end-to-end communication between Hyperties. 
