@@ -108,10 +108,17 @@ H1 <- Obj1 : report change
 
 Usage of the emerging [object.observe](https://developer.mozilla.org/pt-PT/docs/Web/JavaScript/Reference/Global_Objects/Object/observe) javascript API to support Hyperty communication based on object synchronisation. If not supported by the native runtime we can use a few [existing libraries](https://github.com/MaxArt2501/object-observe).
 
-Experimentation proposal:
+### Experimentation
 
 ![hyperty data synchronisation communication experimentation](hyperty-data-synchronisation-msc.png)
 
+[Source code](src/observer-test)
+
+**Results**
+
+* Every time an object/field is created, we need to add it to the observer system.
+* The API is available natively on Chrome, no need for the polyfill.
+* Not available on IE, but the polyfill works fine.
 
 **questions:**
 * concurrency (ie both hyperties change the same attribute at "the same time" creating inconsistence between the two objects) will be addressed in other experimentations
