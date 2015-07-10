@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Workers Testes</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="card teal lighten-1">
+        <div class="card-content white-text">
+          <span class="card-title">Service Worker</span>
+          <p id="service-worker-registration"></p>
+        </div>
+        <!--
+        <div class="card-action">
+          <a class="link-btn link-active" href="#">active service worker</a>
+          <a class="link-btn link-deactivate right" href="#">deactivate service worker</a>
+        </div>
+         -->
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col s12 m6">
+        <h4>With PostalJS</h3>
+        <ul class="messages-list messages-list-postal">
+
+        </ul>
+      </div>
+
+      <div class="col s12 m6">
+        <h4>With Shared Workers</h3>
+        <ul class="messages-list messages-list-worker">
+
+        </ul>
+      </div>
+
+
+
+    </div>
+
+    <div class="row">
+
+      <form id="messages" action="">
+        <textarea id="icon_prefix2" name="message" class="message-textarea materialize-textarea" placeholder="message"></textarea>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Send
+          <i class="material-icons right">send</i>
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="jspm/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+  System.import('js/app');
+  </script>
+
+</body>
+</html>

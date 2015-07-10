@@ -1,7 +1,6 @@
 .messages-list {
 
   margin: 0 auto;
-  width: 400px;
 
   .message-item {
     float: left;
@@ -11,13 +10,13 @@
 
     border-bottom: 1px solid #ececec;
 
+    label {
+      display: block;
+    }
+
     &.right {
       text-align: right;
       background: lighten(blue, 48%);
-    }
-
-    .time {
-      display: block;
     }
 
   }
@@ -25,7 +24,6 @@
 }
 
 #messages {
-  width: 400px;
   margin: 0 auto;
   border-top: 1px solid #ececec;
 

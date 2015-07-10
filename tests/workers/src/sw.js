@@ -2,6 +2,7 @@
 // be aware that any global state is likely to disappear
 importScripts('../jspm/npm/serviceworker-cache-polyfill@3.0.0/index.js');
 
+
 var version = 'v1';
 var staticCacheName = 'rethink' + version;
 
