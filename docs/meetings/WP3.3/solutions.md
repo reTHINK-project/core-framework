@@ -16,11 +16,11 @@ modified/added.
 Using AF to provide information to PCRF. Based on this information, appropriate QoS (dedicated bearer) can be assured.
 
 
-
+![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch1.png)
 
 #### Solution 2 
 
-
+![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch2.png)
 
 
 
