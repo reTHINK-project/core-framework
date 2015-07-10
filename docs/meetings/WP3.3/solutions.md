@@ -20,26 +20,31 @@ Using AF to provide information to PCRF. Based on this information, appropriate 
 
 ![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch1.png)
 
-Main elements and their functions:
-* UE - User equipment with a WebRTc application, launches the communication
+#####Main elements and their functions:
+* UE - User equipment with a WebRTC application
 * PDN Gateway
-* AF (Application Function) - provides session information to PCRF. If it is integrate with a web server it can get information from SDP. If it is a server apart, it can get information from the client app, e.g. by using getStats browser API.
-* PCRF - based on the information provided by the AF, it can generate QoS rules
+* AF (Application Function) - provides session information to PCRF. If it is integrated with a web server it can get information from SDP. If it is a server apart, it can get information from the client app, e.g. by using getStats browser API.
+* PCRF - based on the information provided by the AF, it can provide QoS rules.
 
-Issues:
+#####Issues:
 * If there is a NAT behind the PDN gateway, AF will not provide PCRF the right address,  since PCRF needs a local host address.
+* Security and privacy issues.
 
 #### Solution 2 
 Using TDF with the rules detecting WebRTC flows.
 
 ![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch2.png)
 
-* UE - User equipment with a WebRTc application, launches the communication
+#####Main elements and their functions:
+* UE - User equipment with a WebRTc application
 * PDN Gateway
 * TDF (Traffic Detection Function) - must have detection rules that would allow it to recognize flows supposed to be prioritized. For example if there are known TURN servers their addresses can be used as a filter, i.e. if there is a flow with TURN server address as a destination address, it can be eligible for prioritization.
-* PCRF - based on the information provided by the TDF, it can generate QoS rules
+* PCRF - based on the information provided by the TDF, it can provide QoS rules
 * Web Server
 
+#####Issues:
+* Define appropriate TDF rules
+* TURN servers management
 
 ### Last Hop Connectivity Broker
 * The Last Hop Connectivity Broker (LHCB) provides information about access technologies available at the end device to establish an Internet connection. 
