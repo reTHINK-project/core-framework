@@ -112,7 +112,7 @@ Usage of the emerging [object.observe](https://developer.mozilla.org/pt-PT/docs/
 
 ![hyperty data synchronisation communication experimentation](hyperty-data-synchronisation-msc.png)
 
-[Source code](src\observer-test)
+[Source code](src/observer-test)
 
 **Results**
 
