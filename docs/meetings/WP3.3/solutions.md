@@ -9,20 +9,36 @@ modified/added.
  
 ####Interface selection discussion
 * Not sure if we can get information about which interface is used by using getStats.
-* It would be iteresting to combine application and network information for the interface selection.
+* It would be interesting to combine application and network information for the interface selection.
  
 
 ## Suggested solutions
 ### Offering dedicated bearer
+Images are very simplified and will be subject to our discussion next week.
 #### Solution 1
 Using AF to provide information to PCRF. Based on this information, appropriate QoS (dedicated bearer) can be assured.
 
-
 ![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch1.png)
 
+Main elements and their functions:
+* UE - User equipment with a WebRTc application, launches the communication
+* PDN Gateway
+* AF (Application Function) - provides session information to PCRF. If it is integrate with a web server it can get information from SDP. If it is a server apart, it can get information from the client app, e.g. by using getStats browser API.
+* PCRF - based on the information provided by the AF, it can generate QoS rules
+
+Issues:
+* If there is a NAT behind the PDN gateway, AF will not provide PCRF the right address,  since PCRF needs a local host address.
+
 #### Solution 2 
+Using TDF with the rules detecting WebRTC flows.
 
 ![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch2.png)
+
+* UE - User equipment with a WebRTc application, launches the communication
+* PDN Gateway
+* TDF (Traffic Detection Function) - must have detection rules that would allow it to recognize flows supposed to be prioritized. For example if there are known TURN servers their addresses can be used as a filter, i.e. if there is a flow with TURN server address as a destination address, it can be eligible for prioritization.
+* PCRF - based on the information provided by the TDF, it can generate QoS rules
+* Web Server
 
 
 ### Last Hop Connectivity Broker
