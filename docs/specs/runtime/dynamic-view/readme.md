@@ -6,6 +6,6 @@
 
 #### [Identity Management](identity-management/readme.md)
 
-#### H2H Communication
+#### [H2H Communication](h2h-communication/readme.md)
 
 #### M2M Communication
