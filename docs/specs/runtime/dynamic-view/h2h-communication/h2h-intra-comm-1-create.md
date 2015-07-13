@@ -1,6 +1,6 @@
 ### H2H Intradomain Communication - create communication
 
-*just providing the needed components*
+This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob. It finishes when the invitation reaches Bob's device and the Communication object is created at Bob's device.
 
 <!--
 @startuml "h2h-intra-comm-create.png"
