@@ -6,6 +6,6 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 To be done by Paulo, Arnaut and Nuno.
 
-#### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice](h2h-intra-comm-2-accept.md)
+#### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice](h2h-intra-comm-2-accepted.md)
 
 To be done by Steffen and Santiago.
