@@ -84,15 +84,18 @@ RunReg@A <- BUS@A : Register Hyperty
 
 RunReg@A -> RunID@A : Set ID Token
 
-Proto1@A <- RunReg@A : register Hyperty\n+ID Token
-
-Proto1@A -> SP1 : register Hyperty\n+ID Token
-
 BUS@A -> Router1@A : Success
 
 Router1@A -> SP1H@A : Success
 
-IDObj@A <- SP1H@A : Update Obj
+IDObj@A x<- SP1H@A : Delete Obj
+
+group Hyperty Instance Registration 
+	Proto1@A <- RunReg@A : register Hyperty\n+ID Token
+
+	Proto1@A -> SP1 : register Hyperty\n+ID Token
+end group
+
 
 
 @enduml
