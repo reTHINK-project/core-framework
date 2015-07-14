@@ -5,7 +5,7 @@
 var serviceWorker;
 
 function waitUntilInstalled(registration) {
-
+  
   return new Promise(function(resolve, reject) {
     if (registration.installing) {
       document.querySelector('#service-worker-registration').textContent = 'Installing...';

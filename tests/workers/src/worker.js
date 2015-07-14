@@ -22,6 +22,9 @@ postal.subscribe({
     channel: "worker1",
     topic: "#",
     callback: function(d, e) {
+
+      console.log("send from worker:", e);
+
       self.postMessage(e);
     }
 });
@@ -35,18 +38,22 @@ postal.fedx.signalReady("xframe", function(e){
   console.log("Signal Ready:", e);
 }}); */
 
-console.log(self.self);
+// console.log(self.port);
 
-self.addEventListener('message', function(e){
+// postal.fedx.transports.xframe.listenToWorker(self);
 
-  console.log('worker get message: ', e.data);
+self.addEventListener('message', function(envelope){
+
+  // console.log('worker get message: ', envelope);
 
   postal.publish({
       channel: "worker1",
       topic: "teste",
-      data: e.data,
+      data: envelope.data,
       direction: 'out'
   });
+
+  // postal.fedx.sendMessage(envelope);
 
 
 }, false);

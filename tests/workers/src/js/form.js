@@ -19,14 +19,24 @@ var worker = new Worker('worker.js');
 var myWorker = new SharedWorker("sharedWorker.js", 'rethink');
 myWorker.port.start();
 
+function getLastIndex(){
+  var lastIndex = localStorage.length;
+  var newIndex = lastIndex + 1;
+  return newIndex;
+}
+
 myWorker.port.addEventListener('message', function(e){
-  console.log("shared worker listen message:", e);
+
+  // localStorage.setItem("web-worker1-" + getLastIndex(), JSON.stringify(e));
   renderMessage(e);
-});
+
+}, false);
 
 worker.addEventListener('message', function(e){
 
-  console.log("listen for worker message: ", e);
+  console.log("postajs worker:", e);
+
+  localStorage.setItem("postal-worker1-" + getLastIndex(), JSON.stringify(e));
   renderPostalMessage(e);
 
 }, false);
@@ -73,11 +83,13 @@ function sendMessage(message) {
   myWorker.port.postMessage(message);
 
   resetForm();
+
 }
 
 function renderPostalMessage(envelope) {
 
   var data = envelope.data.data;
+
   var time = envelope.timeStamp;
   var topic = envelope.data.topic;
   var channel = envelope.data.channel;
@@ -102,3 +114,24 @@ function renderMessage(envelope) {
 function resetForm(){
   $form[0].reset();
 }
+
+function storageChange(e) {
+
+  console.log("AQUI:", e);
+
+  if ( _.isEmpty(e.newValue) ){
+    console.log('remove');
+  } else {
+
+    var data = JSON.parse(e.newValue);
+
+    if( data.data.hasOwnProperty('channel')){
+      renderPostalMessage(data);
+    } else {
+      renderMessage(data);
+    }
+  }
+
+}
+
+window.addEventListener('storage', storageChange, false);

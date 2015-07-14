@@ -33,6 +33,9 @@ SP2H@A -> BUS@A : post msg
 
 ![Interdomain Local Communication between Hyperties](interdomain-local-communication.png)
 
+[Tests execution with Postal as Msg BUS](src/readme.md)
+
+
 **questions:**
 * how to exchange messages between web workers through a service worker each one running in a dedicated sandbox
 * persistence of data including status eg identity tokens and registry data
