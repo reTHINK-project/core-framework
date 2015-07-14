@@ -30,6 +30,7 @@ SP2H@A -> BUS@A : post msg
 @enduml
 -->
 
+[Tests with Postal as Msg BUS](src/readme.md)
 
 ![Interdomain Local Communication between Hyperties](interdomain-local-communication.png)
 
