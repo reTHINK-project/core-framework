@@ -1,3 +1,5 @@
+importScripts('external/sharedWorkerBot.js');
+
 var connections = [];
 
 self.addEventListener("connect", function (e) {
@@ -6,6 +8,8 @@ self.addEventListener("connect", function (e) {
     connections.push(port);
 
     port.addEventListener("message", function (e) {
+
+      self.reciveMessage(connections, e);
 
       connections.forEach(function(conn) {
         conn.postMessage(e.data);
