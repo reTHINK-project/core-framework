@@ -15,20 +15,35 @@
 * **Q: Registry / Discovery are runtime local?**
 * A: yes
 
+According to work session on the 14th July, the following use cases were distributed among partners:
 
 #### [User Registration](user-registration.md)
 
+PTIN
+
 #### [Discover Protocol Stub URL](discover-protostub-url.md)
+
+DT
 
 #### [Login into Domain](domain-login.md)
 
+PTIN
+
 #### [Discover Hyperty URL](discover-hyperty-url.md)
+
+DT
 
 #### [Associate User Identity to Hyperty Instance](user-to-hyperty-binding.md)
 
+INESC
+
 #### [Discover User](discover-user.md)
 
+DT
+
 #### [Assert User Identity](user-identity-assertion.md)
+
+Quobis
 
 #### [User Profile Management](user-profile-management.md)
 
