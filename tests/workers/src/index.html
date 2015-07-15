@@ -27,9 +27,22 @@
     </div>
 
     <div class="row">
+      <div class="col s12 m6">
+        <h4>All Messages</h4>
+
+      </div>
+    </div>
+
+    <div class="row">
 
       <div class="col s12 m6">
         <h4>With PostalJS</h3>
+
+        <!-- <h5>History</h5>
+        <ul class="history-list-postal">
+        </ul> -->
+
+        <h5>Today</h5>
         <ul class="messages-list messages-list-postal">
 
         </ul>
@@ -37,6 +50,12 @@
 
       <div class="col s12 m6">
         <h4>With Shared Workers</h3>
+
+        <!-- <h5>History</h5>
+        <ul class="history-list-worker">
+        </ul> -->
+
+        <h5>Today</h5>
         <ul class="messages-list messages-list-worker">
 
         </ul>
@@ -61,11 +80,10 @@
 
   </div>
 
-
   <script src="jspm/system.js"></script>
   <script src="config.js"></script>
   <script>
-  System.import('js/app');
+    System.import('js/app');
   </script>
 
 </body>
