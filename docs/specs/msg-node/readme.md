@@ -1,13 +1,2 @@
-## Messaging Node Architecture
+## [Messaging Node Architecture](messaging-node-arch.md)
 
-### Message/ Event BUS
-
-### Access Control (PEP)
-
-### Authorisation (PDP)
-
-### Address Allocation Management
-
-### Session Management
-
-### Protocol Stub
