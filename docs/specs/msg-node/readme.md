@@ -1,2 +1,2 @@
-## [Messaging Node Architecture](messaging-node-arch.md)
+## [Messaging Node Architecture](msg-node-architecture.md)
 
