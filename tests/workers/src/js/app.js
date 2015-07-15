@@ -1,11 +1,8 @@
 // polyfill
-// import serviceWorker from 'serviceworker-cache-polyfill';
-// window.Promise = window.Promise || require('es6-promise').Promise;
-
-var serviceWorker;
+import serviceWorker from 'serviceworker-cache-polyfill';
 
 function waitUntilInstalled(registration) {
-  
+
   return new Promise(function(resolve, reject) {
     if (registration.installing) {
       document.querySelector('#service-worker-registration').textContent = 'Installing...';
@@ -25,17 +22,33 @@ function waitUntilInstalled(registration) {
   });
 }
 
+if (window.MessageChannel) {
+  var messageChannel = new MessageChannel();
+  window.messageChannel = messageChannel;
+}
+
 if ('serviceWorker' in navigator) {
 
   document.querySelector('#service-worker-registration').textContent = '✓ Is available but not active';
 
   // TODO: activate service worker instalation
 
-  /* navigator.serviceWorker.register('/sw.js', {scope: '/'})
+  var sw = navigator.serviceWorker;
+
+  sw.register('/sw.js', {scope: '/'})
     .then(waitUntilInstalled)
     .catch(function(error) {
       document.querySelector('#service-worker-registration').textContent = '✘ Error:' + error;
-  }); */
+  });
+
+  sw.ready.then(function(reg){
+
+    navigator.serviceWorker.ready.then(function(reg){
+      console.warn(reg);
+      reg.active.postMessage('',[messageChannel.port2]); //initialise the messaging channel
+    });
+
+  });
 
   /* document.querySelector('#service-worker-registration').textContent = '✓ Is available but not active';
   var activateBtn = document.querySelector('.link-btn');
@@ -47,6 +60,8 @@ if ('serviceWorker' in navigator) {
 } else {
   document.querySelector('#service-worker-registration').textContent = '✘ Unavailable!';
 }
+
+
 
 function deactivateServiceWorker(e) {
   serviceWorker.unregister('/sw.js')

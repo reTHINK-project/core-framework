@@ -10,8 +10,8 @@
   "license": "ISC",
   "dependencies": {},
   "jspm": {
-    "format": "amd",
     "directories": {
+      "format": "amd",
       "packages": "jspm"
     },
     "dependencies": {

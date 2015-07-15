@@ -6,11 +6,6 @@ importScripts('../jspm/npm/serviceworker-cache-polyfill@3.0.0/index.js');
 var version = 'v1';
 var staticCacheName = 'rethink' + version;
 
-
-self.addEventListener('message', function(event){
-  console.log("message:", event);
-});
-
 self.addEventListener('push', function(event){
   console.log('push: ', event);
 });
@@ -35,7 +30,7 @@ self.addEventListener('install', function(event) {
         return new Request(urlToCache, {mode: 'no-cors'});
       })).then(function(url) {
         console.log('All urls have been fetched and cached.', url);
-        return caches.delete(cacheName);
+        return caches.delete(cache);
       });
 
       console.log("installed: ", cache);

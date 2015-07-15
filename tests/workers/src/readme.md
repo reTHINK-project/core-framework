@@ -14,6 +14,7 @@ On command line execute these commands:
 npm install grunt-cli -g
 npm install bower -g
 npm install jspm -g
+npm install live-server -g
 
 jspm init;
 ```

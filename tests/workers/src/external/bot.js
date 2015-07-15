@@ -5,7 +5,7 @@ postal.instanceId("rethink-bot");
     allowedOrigins : [ "http://localhost:8080", "http://localhost:3001" ],
     defaultOriginUrl : "http://localhost:3001"
 });
-*/
+
 postal.fedx.addFilter(
   [{
     channel: "worker1",
@@ -16,8 +16,8 @@ postal.fedx.addFilter(
     topic: "#",
     direction: "in"
 }]);
-
-/* 
+*/
+/*
 postal.addWireTap( function( d, e ) {
 	console.log( "ID: " + postal.instanceId() + " " + JSON.stringify( e, null, 4 ) );
 } ); */

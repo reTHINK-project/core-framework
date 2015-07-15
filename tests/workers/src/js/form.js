@@ -117,8 +117,6 @@ function resetForm(){
 
 function storageChange(e) {
 
-  console.log("AQUI:", e);
-
   if ( _.isEmpty(e.newValue) ){
     console.log('remove');
   } else {
@@ -133,5 +131,17 @@ function storageChange(e) {
   }
 
 }
+
+function fillHistory(){
+
+  console.log(localStorage);
+
+  var postals = _.reduce(localStorage, function(a, b, c){
+    return a;
+  }, {});
+
+}
+
+// fillHistory();
 
 window.addEventListener('storage', storageChange, false);
