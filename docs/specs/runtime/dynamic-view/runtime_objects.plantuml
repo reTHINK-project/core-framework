@@ -67,7 +67,15 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_CommObjectAtRuntimeA
-			participant "Communication\nData Object" as CommObj@A
+			participant "Connection\nData Object" as CommObj@A
+			!endif
+
+			!ifdef SHOW_ReceiverObjectAtRuntimeA
+			participant "Receiver\nData Object" as RecvObj@A
+			!endif
+
+			!ifdef SHOW_SenderObjectAtRuntimeA
+			participant "Sender\nData Object" as SendObj@A
 			!endif
 
 			!ifdef SHOW_Protostub1AtRuntimeA
@@ -164,12 +172,21 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_CommObjectAtRuntime1B
-			participant "Communication\nData Object" as CommObj@1B
+			participant "Connection\nData Object" as CommObj@1B
+			!endif
+
+			!ifdef SHOW_ReceiverObjectAtRuntime1B
+			participant "Receiver\nData Object" as RecvObj@1B
+			!endif
+
+			!ifdef SHOW_SenderObjectAtRuntime1B
+			participant "Sender\nData Object" as SendObj@1B
 			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntime1B
 			participant "Identity\nData Object" as IDObj@1B
 			!endif
+
 
 		end box
 	!endif
