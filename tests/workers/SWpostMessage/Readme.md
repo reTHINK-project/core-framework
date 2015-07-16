@@ -1,6 +1,6 @@
 
 #### ServiceWorker - postMessage test
-This is a minimum example to test the exchange of messages between a service worker and a html page in both directions. It it just about posting and receiving messages, not about any kind of caching.
+This is a minimum example to test the exchange of messages between a service worker and a html page in both directions. It's just about posting and receiving messages, not about any kind of caching.
 
 The service worker script simply increases a counter, every time it receives a message and sends the counter and message back to the active clients. 
 
