@@ -1,4 +1,4 @@
-# Security analysis of the Hiperty Runtime
+# Security analysis of the Hyperty Runtime
 
 ## Introduction
 
