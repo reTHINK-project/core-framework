@@ -1,4 +1,4 @@
-# Security analysis of the Hiperty Runtime
+# Security analysis of the Hyperty Runtime
 
 ## Introduction
 
@@ -6,7 +6,7 @@ The security analysis contained in this document refers to the runtime architect
 
 In reTHINK, the trusted computing base (TCB) of the Hyperty Runtime encompasses the following components: the Native Runtime, the Core Sandbox components, and the underlying JavaScript engine, Operating System, and hardware platform. If the native runtime is compromised, so it will be the support for WebRTC stream communication between hyperties. Subverting the core sandbox components can compromise: the correct decision and enforcement of policies by the PDP, the proper routing of messages through the Message Bus, the flawless registration and discovery of Hyperty and protoStubs by the Registry, and the correct maintenance of identities by the Identities Container. Subverting the JavaScript Engine can interfere with the correctness and security of JavaScript code, whose execution necessarily requires a JavaScript engine such as V8. The code that depends on the JavaScript engine includes the runtime components specific to the reTHINK architecture (Router PEP, PDP, Message Bus, Registry, Identities Container, and WebRTC engine), and all the user or developer code hosted by the Hyperty runtime, namely Hyperty Instances, ProtoStubs, and Applications. Given that the JavaScript Engine depends on both the Operating System and the hardware platform, compromising the latter can also affect the JavaScript engine and all the other components sitting on top of it.
 
-Next, we analyze the security properties of our system when all the components of the trusted computing base are intact. Then, we assess the security of the Hyperty Runtime when deployed on target platforms that exhibit different characteristics with respect to the platforms’ software and hardware configuration. In particular, we explore three configurations: browser, secure element, and server deployments. For each different platform, we analyze their resilience under various threat models.
+Next, we analyze the security properties of our system assuming that all components of the trusted computing base are intact. Then, we assess the security of the Hyperty Runtime when deployed on target platforms that exhibit different characteristics with respect to the platforms’ software and hardware configuration. In particular, we explore five platform configurations: *browser*, *application*, *server*, *router*, and *embedded*. We analyze the security of each platform under different threat models.
 
 
 ## Mitigated threats assuming an intact TCB
@@ -118,15 +118,27 @@ From the security point of view, the threats to the TCB are mainly caused by an 
 
 **Vulnerability assessment:** As illustrated by the vulnerability matrix, the browser platform is vulnerable to a range of attacks. Some of these attacks can be mounted by regular users with relative ease. In addition, there are several ways for advanced users to successfully compromise the TCB by exploiting the system at different layers in the stack. As a result, we recommend that the browser platform should be avoided for hosting client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has incentives to subvert. Examples of such code include: Hyperty instances restricted by specific usage charging policies, ProtoStubs that encode proprietary communication protocols, or Applications that access copyrighted digital data.
 
-### Standalone application platform
+### Application platform
 
+A variant of the browser platform just presented is to run the Hyperty Runtime and client code as a standalone application. A practical usage scenario, for example, is to bundle the Hyperty Runtime in mobile apps and deploy them on mobile devices such as smartphones or tablets. Alternatively, we also envision that the Hyperty Runtime can be packaged as a classical standalone application for desktop platforms, for example Linux- or Windows-based. To allow for the development and maintenance of such applications, reTHINK will provide an SDK, which will include APIs and platform specific libraries for adapting the Hyperty Runtime to the underlying operating system platform.
 
-### Middlebox platform
+![image](application.png)
 
+The figure above illustrates a hypothetical application platform tailored for Android mobile devices. Just like in the browser platform, the Hyperty Runtime is hosted by an application process. The host application is responsible for mediating the system calls issued by the Hyperty Runtime to the operating system and for providing a user interface to the Hyperty Runtime and client JavaScript applications (and hyperties). This application comprises additional software components: a platform-independent adaptation layer, and platform-specific libraries, e.g., for IO, storage, and memory management. In the example, the platform-specific libraries are tailored for the Android API.
 
-### Server platform
+From the security point of view, application and browser platform are quite similar; for that reason we adopt the same attacker profiles (regular user, advanced user, and power user). The main difference between architectures is twofold. First, the host application will prevent direct introspection of the JavaScript code running inside Hyperty Runtime sandboxes. As a result, the application architecture is able to mitigate simple attacks to the browser (A0 in the browser’s vulnerability matrix), raising the bar for regular users. Second, the host application will not support software extensions. This will prevent some advanced attacks to the runtime based on installation of malicious extension code, and to the browser process (see attacks A1 and A2, respectively, in the browser’s vulnerability matrix). Apart from that, the vulnerability matrices are comparable. Next, we present the vulnerability matrix of the application platform and provide alternative examples for attacks on Android devices.
 
+![image](securityapplication.png)
 
-### Secure element platform
+ * *Advanced user*: An advanced user can compromise the entire system by launching attacks at the OS level:
 
+   * *A1*: root the device and instrument the operating system in order to introspect the Hyperty instances’ sandboxes.
 
+ * *Power user*: A power user can mount more sophisticated attacks on various layers of the stack:
+
+   * *A2*: find and exploit a bug in the Hyperty Runtime,
+   * *A3*: find a bug in the host application code and exploit it,
+   * *A4*: monitor the execution of Hyperty Instances by rooting the device,
+   * *A5*: hack the device hardware to extract sensitive Hyperty data from memory.
+
+**Vulnerability assessment:** As illustrated by the vulnerability matrix, the application platform (targeting Android devices) is more robust to attacks than the browser platform. This is mainly due to the fact the application architecture allows us to close some security holes in the browser architecture that cannot be thwarted without modifying the code of the browser. Nevertheless, it is still possible to for an advanced user to compromise the system by rooting the device, which will likely dissuade the average user. Nevertheless, we recommend prudence in deploying client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has high incentives to subvert.
