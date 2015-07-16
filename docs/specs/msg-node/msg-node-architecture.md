@@ -47,7 +47,7 @@ node "Connectors" as Conn {
 }
 
 
-node "Core Sandbox" as core {
+node "Core Functionalities" as core {
 
  node "*            Message      BUS                *" as Bus 
 
