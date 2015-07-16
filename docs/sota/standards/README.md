@@ -4,6 +4,8 @@
 
 ### [OMA (DT)](OMA.md)
 
+### [HGI-SDT (DT)](HGI-SDT.md)
+
 ### [W3C WebRTC Working Group (Quobis)] (w3c_webrtc.md)
 
 ### [Object RTC (Quobis)] (ORTC.md)
