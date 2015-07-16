@@ -142,3 +142,13 @@ From the security point of view, application and browser platform are quite simi
    * *A5*: hack the device hardware to extract sensitive Hyperty data from memory.
 
 **Vulnerability assessment:** As illustrated by the vulnerability matrix, the application platform (targeting Android devices) is more robust to attacks than the browser platform. This is mainly due to the fact the application architecture allows us to close some security holes in the browser architecture that cannot be thwarted without modifying the code of the browser. Nevertheless, it is still possible to for an advanced user to compromise the system by rooting the device, which will likely dissuade the average user. Nevertheless, we recommend prudence in deploying client code (i.e., Hyperty Instances, ProtoStubs, or Applications) and policies which the local user has high incentives to subvert.
+
+### Server platform
+
+
+### Router platform
+
+
+### Embedded platform
+
+
