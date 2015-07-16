@@ -27,7 +27,7 @@ actor "Alice" as Alice
 	!ifdef SHOW_CoreRuntimeA
 		box "Alice's Device Core Runtime"
 			!ifdef SHOW_CoreAgentAtRuntimeA
-				participant "Runtime Management Agent" as RunUA@A
+				participant "RuntimeUA" as RunUA@A
 			!endif
 
 			!ifdef SHOW_RegistryAtRuntimeA

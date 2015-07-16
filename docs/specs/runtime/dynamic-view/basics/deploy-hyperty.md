@@ -9,15 +9,12 @@ autonumber
 
 !define SHOW_AppAtRuntimeA
 
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
-
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
 !define SHOW_RegistryAtRuntimeA
 !define SHOW_IdentitiesAtRuntimeA
 !define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
 
 !define SHOW_SP1SandboxAtRuntimeA
 !define SHOW_Protostub1AtRuntimeA
@@ -31,23 +28,23 @@ autonumber
 group discover Hyperty URL: to be designed in a separated diagram by the Id Management Group
 
 	... ...
-	HTTP_UAC@A <- App@A : deploy Hyperty(URL)
+	RunUA@A <- App@A : deploy Hyperty(URL)
 
 end group
 
-HTTP_UAC@A -> SP1 : download Hyperty(URL)
+RunUA@A -> SP1 : download Hyperty(URL)
 
 create SP1H@A
-JS@A -> SP1H@A : new
+RunUA@A -> SP1H@A : new
 
 SP1H@A -> SP1H@A : Router?
 
-SP1H@A -> HTTP_UAC@A : download Router
+SP1H@A -> RunUA@A : get Router
 
-HTTP_UAC@A -> SP1 : download Router
+RunUA@A -> SP1 : get Router
 
 create Router1@A
-JS@A -> Router1@A : new
+RunUA@A -> Router1@A : new
 
 SP1H@A -> Router1@A : register Hyperty
 

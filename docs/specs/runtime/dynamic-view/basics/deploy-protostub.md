@@ -9,15 +9,12 @@ autonumber
 
 !define SHOW_AppAtRuntimeA
 
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
-
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
 !define SHOW_RegistryAtRuntimeA
 !define SHOW_IdentitiesAtRuntimeA
 !define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
 
 !define SHOW_SP1SandboxAtRuntimeA
 !define SHOW_Protostub1AtRuntimeA
@@ -29,7 +26,7 @@ autonumber
 
 group discover protostub URL
 
-	JS@A -> RunID@A : get protostub URL
+	RunUA@A -> RunID@A : get protostub URL
 
 	note right
 		to be designed in a separated diagram
@@ -40,10 +37,10 @@ group discover protostub URL
 end group
 
 
-HTTP_UAC@A -> SP1 : download protostub
+RunUA@A -> SP1 : download protostub
 
 create Proto1@A
-JS@A -> Proto1@A : new
+RunUA@A -> Proto1@A : new
 
 
 Proto1@A -> BUS@A : register protoStub(domainURL)

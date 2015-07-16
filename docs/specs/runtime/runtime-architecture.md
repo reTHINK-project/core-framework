@@ -57,7 +57,7 @@ node "Runtime Device" as rt {
  }
 
  node "Router1\nSandbox" as PEP1Sand {
-	 node "Router\nPEP" as PEP1
+	 node "Connector\nPEP" as PEP1
  }
 
   H1 -down-> PEP1
@@ -72,7 +72,7 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
 	 }
 
  node "Router2\nSandbox" as PEP2Sand {
-	 node "Router\nPEP" as PEP2
+	 node "Connector\nPEP" as PEP2
 	 }
 
  node "ProtoStub2\nSandbox" as Proto2Sand {
