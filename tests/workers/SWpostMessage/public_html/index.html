@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ServiceWorker example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            if ('serviceWorker' in navigator) {
+                var sw = navigator.serviceWorker.register('./service-worker.js', {scope: './'}).then(function () {
+                    if (navigator.serviceWorker.controller) {
+                        log("service worker registered successfully!")
+                    } else {
+                        log("Please reload this page to allow the service worker to take control.");
+                    }
+                }).catch(function (error) {
+                    log("error while registering service worker: " + error);
+                });
+            } else {
+                log('Service Workers are not supported in the current browser.');
+            }
+
+            function postMsg() {
+                var msg = document.getElementById('msg').value;
+                log("posting message> " + msg);
+                navigator.serviceWorker.controller.postMessage(msg);
+            }
+
+            // this should work in Chrome
+            window.onmessage = function (event) {
+                log("received reply via window.onmessage: " + event.data);
+            };
+
+            // this seems to work in Firefox
+            navigator.serviceWorker.onmessage = function (event) {
+                log("received reply via navigator.serviceWorker.onmessage: " + event.data);
+            };
+
+            if (window.MessageChannel) {
+                var messageChannel = new MessageChannel();
+
+                messageChannel.port1.onmessage = function (event) {
+                    log("received reply via MessageChannel: " + event.data);
+                };
+            }
+
+            function log(msg) {
+                document.body.appendChild(document.createTextNode(msg));
+                document.body.appendChild(document.createElement("br"));
+                console.log.apply(console, arguments);
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <!-- div><a href="catchme.html">chatchme.html</a></div -->
+        <div>
+            <p>send message to service worker which should reply with a counter and the echoed msg</p>
+            <input id="msg" type="text"/>
+            <input type="button" value="Post message" name="btnPost" onclick="postMsg()"/>
+            <p></p>
+        </div>
+    </body>
+</html>
