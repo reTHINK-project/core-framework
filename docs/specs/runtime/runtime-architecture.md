@@ -157,9 +157,9 @@ According to Browser Sandbox model, each Service Provider Sandboxes executes com
 
 Mechanisms to support Hyperty Communication through data object synchronisation are discussed [here](data-synch-model.md).
 
-#### Router/Policy Engine
+#### Connector/Policy Engine
 
-Routes Hyperty messages to be exchanged with local Message Bus and enforces valid Policies on messaging routing (e.g. authorisation policies) according to Service Provider domain policies. 
+Handles (data synch) communication between Hyperties and the local Message Bus, enforcing when needed valid Policies on this communicayion (e.g. authorisation policies) according to Service Provider domain policies. 
 
 #### Protocol Stub
 
@@ -187,7 +187,7 @@ Contains Tokens that associates Hyperties with Users, it also provides Identity 
 
 #### Runtime User Agent
 
-Manages Core Sandbox components including its deployment and update from Core Runtime Provider.
+Manages Core Sandbox components including its deployment and update from Core Runtime Provider. It also handles Device bootstrap and the deployment of Hyperties and Protocol Stubs in the Runtime.
 
 ## Native Runtime
 
