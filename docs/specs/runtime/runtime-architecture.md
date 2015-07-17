@@ -17,6 +17,8 @@ According to [ongoing discussions](https://github.com/reTHINK-project/core-frame
 
 Below, it is depicted a functional architecture of the Runtime:
 
+*Provide first a higher level architecture without showing detailed components. Distinguish internal APIs from external Interfaces which should be identified according to names defined in D2.2.*
+
 <!--
 @startuml "Runtime_Architecture_new.png"
 
