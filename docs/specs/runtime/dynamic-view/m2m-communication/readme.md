@@ -6,10 +6,10 @@ To be aligned with [WP2 dynamic viw](https://github.com/reTHINK-project/architec
 
 To be aligned with [Domain Login](../identity-management/domain-login.md) 
 
-#### [Device Registration][m2m-intra-comm-2-registration.md)
+#### [Device Registration](m2m-intra-comm-2-registration.md)
 
 To be aligned with [Domain Login](../basics/deploy-hyperty.md) and [Associate User Identity with Hyperty Instance](../identity-management/user-to-hyperty-binding.md)
 
-#### [Context Discovery][m2m-intra-comm-3-discovery.md)
+#### [Context Discovery](m2m-intra-comm-3-discovery.md)
 
-#### [PUB-SUB Communication][m2m-intra-comm-4-pub-sub.md)
+#### [PUB-SUB Communication](m2m-intra-comm-4-pub-sub.md)
