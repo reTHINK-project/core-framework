@@ -18,6 +18,7 @@ autonumber
 !define SHOW_RegistryAtRuntimeA
 !define SHOW_IdentitiesAtRuntimeA
 !define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
 
 !define SHOW_SP1SandboxAtRuntimeA
 !define SHOW_Protostub1AtRuntimeA
@@ -39,18 +40,30 @@ create App@A
 JS@A -> App@A : new
 
 group deploy protocol stub
-	App@A -> HTTP_UAC@A : download protocol stub
+
+	App@A -> RunUA@A : download protocol stub
+
+	note right
+		detailed in a separated diagram
+	end note
+
 	create Proto1@A
-	JS@A -> Proto1@A : new
+	RunUA@A -> Proto1@A : new
 end
 
 group deploy Hyperty
-	App@A -> HTTP_UAC@A : download hyperty
+
+	App@A -> RunUA@A : download hyperty
+
+	note right
+		detailed in a separated diagram
+	end note
+
 	create SP1H@A
-	JS@A -> SP1H@A : new
+	RunUA@A -> SP1H@A : new
 
 	create Router1@A
-	JS@A -> Router1@A : new
+	RunUA@A -> Router1@A : new
 end
 
 == Create Identity Account ==
@@ -62,19 +75,17 @@ App@A <- Alice : Registration\nData\nprovided
 App@A -> SP1H@A : Registration Data provided
 
 create IDObj@A
-SP1H@A -> IDObj@A : new
+SP1H@A -> IDObj@A : new(data collected)
 
-SP1H@A -> SP1H@A: create CreateObj Msg
-
-SP1H@A -> Router1@A : send CreateObj Msg
+SP1H@A -> Router1@A : report Identity Data to backend
 
 Router1@A -> Router1@A : enforce SP1\nIdentity Creation \nPolicies
 
-BUS@A <- Router1@A : send CreateObj Msg
+BUS@A <- Router1@A : send Identity Obj Msg
 
-Proto1@A <- BUS@A : send CreateObj Msg
+Proto1@A <- BUS@A : send Identity Obj Msg
 
-Proto1@A -> SP1 : send CreateObj Msg
+Proto1@A -> SP1 : send Identity Obj Msg
 
 Proto1@A <- SP1 : Success\nID Token
 
