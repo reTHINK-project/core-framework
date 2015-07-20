@@ -1,6 +1,6 @@
 ### H2H Intradomain Communication
 
-To be aligned with the [Communication setup model based on the Reporter-Observer pattern](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch-communication-model.md)
+To be aligned with the [Communication setup model based on the Reporter-Observer pattern](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/data-synch-communication-model.md)
 
 As agreed in the conf call of 13th July, this use case is splitted into 2 diagrams:
 
