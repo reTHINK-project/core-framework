@@ -67,7 +67,7 @@ alt explicit Login
 		or by the Registry?
 	end note
 
-else implicit Loging
+else implicit Login
 
 	note over RunUA@A
 		In second option, the protostub only
