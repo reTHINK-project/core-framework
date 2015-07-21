@@ -23,7 +23,7 @@ PTIN
 
 #### [Discover Protocol Stub URL](discover-protostub-url.md)
 
-DT
+DT **pending**
 
 #### [Login into Domain](domain-login.md)
 
@@ -31,19 +31,19 @@ PTIN
 
 #### [Discover Hyperty URL](discover-hyperty-url.md)
 
-DT
+DT **pending**
 
 #### [Associate User Identity to Hyperty Instance](user-to-hyperty-binding.md)
 
-INESC
+INESC, Orange(?) **pending**
 
 #### [Discover User](discover-user.md)
 
-DT
+DT **pending**
 
 #### [Assert User Identity](user-identity-assertion.md)
 
-Quobis
+Quobis, Orange(?) **pending**
 
 #### [User Profile Management](user-profile-management.md)
 
