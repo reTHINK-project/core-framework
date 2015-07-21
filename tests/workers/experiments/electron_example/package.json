@@ -1,0 +1,12 @@
+{
+  "name": "electron-rethink-example",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joelpinheiro",
+  "license": "ISC",
+  "description": ""
+}
