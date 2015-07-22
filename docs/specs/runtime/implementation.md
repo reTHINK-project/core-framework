@@ -18,4 +18,10 @@ Possible Strategies:
 * JDK8
 * Javascript shim layer to be used in Browsers without extensions ie files implementing the Shim layer would be downloaded with the Hyperty
 
+##### Browser Runtime
+
+* A Service Worker is used to manage the cache of Runtime Core Components
+* Hyperties and Protocol Stubs are implemented as Web Workers 
+* Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame
+* Web Workers are only able to interact each other with iFRame.postMessage(..) which is intercepted by the Runtime Core Components
 
