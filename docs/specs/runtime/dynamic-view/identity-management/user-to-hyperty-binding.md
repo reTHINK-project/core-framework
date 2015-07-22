@@ -1,5 +1,7 @@
 ### Associate User Identity to Hyperty Instance
 
+![User-to-Hyperty Binding Scheme](user-to-hyperty-binding-scheme.png)
+
 ####Description of the protocol steps:
 
 *1*- 
