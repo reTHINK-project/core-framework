@@ -30,4 +30,16 @@
     registerHyperty( hypertySandbox, address )
     registerStub( stub.postMessage, address )
 
+End-User-device components
 
+### Bootstrap module
+
+    discoverHiperty(applId, OSname, capability_list)
+    downloadHiperty()
+    registerHipertyInstance()
+    
+### LHCB
+
+    getCurrentConnectivityStatistics()
+    sendConnectivityStatisticsToBroker()
+    
