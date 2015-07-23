@@ -8,3 +8,5 @@
 implemented by the Runtime MsgBUS Core Component
 * The same Service Worker may also be used to manage the cache of Hyperties and protostubs
 
+![](Runtime_Browser_Implementation.png)
+
