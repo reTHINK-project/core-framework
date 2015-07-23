@@ -30,6 +30,12 @@
     registerHyperty( hypertySandbox, address )
     registerStub( stub.postMessage, address )
 
+### Catalogue
+
+    createHipertyInstance(applId, HipertyObjectId)
+    updateHipertyInstance(HipertyURL, key-value-pair resource values)
+    
+
 End-User-device components
 
 ### Bootstrap module
@@ -37,6 +43,7 @@ End-User-device components
     discoverHiperty(applId, OSname, capability_list)
     downloadHiperty()
     registerHipertyInstance()
+    checkForHipertyUpdate()
     
 ### LHCB
 
