@@ -2,6 +2,10 @@
 
 To be aligned with [WP2 dynamic viw](https://github.com/reTHINK-project/architecture/tree/master/docs/dynamic-view/M2M%20Communication)
 
+### [Overview](m2m-comm-overview.md) 
+
+### [Bootstrap](m2m-bootstrap.md)
+
 #### [Device Authentication](m2m-intra-comm-1-authentication.md)
 
 To be aligned with [Domain Login](../identity-management/domain-login.md) 
