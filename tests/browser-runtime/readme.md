@@ -2,6 +2,10 @@
 
 Set of tests to validate selected options for the [browser runtime implementation](../../docs/specs/runtime/browser-runtime.md).
 
+#### Interaction between Application and Hyperties
+
+Including streaming. See [issue](https://github.com/reTHINK-project/core-framework/issues/53)
+
 ####   Deployment of [Core Runtime](../../docs/specs/runtime/dynamic-view/basics/deploy-runtime.md), [Hyperty](../../docs/specs/runtime/dynamic-view/basics/deploy-hyperty.md) and [Protocol Stub](../../docs/specs/runtime/dynamic-view/basics/deploy-protostub.md))
 
 #### Communication between Hyperties
