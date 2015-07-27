@@ -21,25 +21,18 @@ According to work session on the 14th July, the following use cases were distrib
 
 PTIN
 
-#### [Discover Protocol Stub URL](discover-protostub-url.md)
+#### [Discovery](discovery.md) : Protocol Stub URL, Hyperty, User
 
-DT **pending**
+DT 
 
 #### [Login into Domain](domain-login.md)
 
 PTIN
 
-#### [Discover Hyperty URL](discover-hyperty-url.md)
-
-DT **pending**
 
 #### [Associate User Identity to Hyperty Instance](user-to-hyperty-binding.md)
 
-INESC, Orange(?) **pending**
-
-#### [Discover User](discover-user.md)
-
-DT **pending**
+INESC, Orange(?)
 
 #### [Assert User Identity](user-identity-assertion.md)
 
