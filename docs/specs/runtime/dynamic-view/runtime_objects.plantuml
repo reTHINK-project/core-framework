@@ -70,12 +70,16 @@ actor "Alice" as Alice
 			participant "Connection\nData Object" as CommObj@A
 			!endif
 
-			!ifdef SHOW_ReceiverObjectAtRuntimeA
-			participant "Receiver\nData Object" as RecvObj@A
+			!ifdef SHOW_LocalObjectAtRuntimeA
+			participant "Local\nData Objects" as LocObj@A
 			!endif
 
-			!ifdef SHOW_SenderObjectAtRuntimeA
-			participant "Sender\nData Object" as SendObj@A
+			!ifdef SHOW_RemoteObjectAtRuntimeA
+			participant "Remote\nData Objects" as RemObj@A
+			!endif
+
+			!ifdef SHOW_Syncher1AtRuntimeA
+			participant "Syncher" as Sync1@A
 			!endif
 
 			!ifdef SHOW_Protostub1AtRuntimeA
@@ -97,6 +101,11 @@ actor "Alice" as Alice
 			!ifdef SHOW_ServiceProvider2RouterAtRuntimeA
 			participant "Service Provider2\nRouter" as Router2@A
 			!endif
+
+			!ifdef SHOW_Syncher2AtRuntimeA
+			participant "Syncher" as Sync2@A
+			!endif
+
 		end box
 	!endif
 !endif
@@ -175,18 +184,21 @@ actor "Alice" as Alice
 			participant "Connection\nData Object" as CommObj@1B
 			!endif
 
-			!ifdef SHOW_ReceiverObjectAtRuntime1B
-			participant "Receiver\nData Object" as RecvObj@1B
+			!ifdef SHOW_LocalObjectAtRuntime1B
+			participant "Local\nData Object" as LocObj@1B
 			!endif
 
-			!ifdef SHOW_SenderObjectAtRuntime1B
-			participant "Sender\nData Object" as SendObj@1B
+			!ifdef SHOW_RemoteObjectAtRuntime1B
+			participant "Remote\nData Object" as RemObj@1B
 			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntime1B
 			participant "Identity\nData Object" as IDObj@1B
 			!endif
 
+			!ifdef SHOW_Syncher1AtRuntime1B
+			participant "Syncher" as Sync1@1B
+			!endif
 
 		end box
 	!endif
