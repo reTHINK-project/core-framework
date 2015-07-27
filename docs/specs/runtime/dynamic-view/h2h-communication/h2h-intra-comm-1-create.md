@@ -153,5 +153,5 @@ type = OK
 from = hyperty://sp1/bobhy123
 to = hyperty://sp1/alicehy123
 contextId = qwertyuiopasdfghjkl
-cseq = 2
+cseq = 1
 ```
