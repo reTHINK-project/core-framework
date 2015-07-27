@@ -1,3 +1,0 @@
-
-### Discover Protocol Stub URL
-
