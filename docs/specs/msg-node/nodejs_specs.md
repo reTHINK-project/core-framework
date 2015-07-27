@@ -34,6 +34,7 @@ I guess this is doable in Node.js, but I have to check with our Dev team what's 
 
 This connector could be ad-hoc developemtns in Node.js, receiving messages from the session management layer.
 
+
 ### End User Device Connector
 The aim of this Connector is to enable interaction with Hyperty instances running in the end-user device. 
 This component will need to interact somehow with the Protocol Stub sandbox to achieve this, since the communication protocol will not be standardized. 
@@ -47,6 +48,11 @@ The aim of this Connector is to enable interaction with Hyperty instances runnin
 The Registry provides an interface for registration and deregistration of Hyperty instances, as well as for keeping the published information up to date. For each Hyperty instance, the Registry stores data (hyperty location, type, description, start-time, presence information of user) that enables other applications to contact it. 
 The implementation of the Registry service is thought to be basically a distributed database. 
 It will provide service interfaces for CRUD operations to allow users to retrieve data for a given GraphID, publish (i.e. create, update, and delete) their own information on the ring. To verify authenticity and integrity of the published data, digital signatures will be applied. The Connector will exposed the available interfaces of the Registry Services to users of managing Hyperty instances.   
+
+####LWM2M
+There is an available LWM2M library for node.js which may be helpful to implement the Registry interface:
+https://github.com/telefonicaid/lwm2m-node-lib
+
 
 ### IdM Connector
 This Connector is to provide functionalities for interacting with the remote Identity Management Functionailities. 
