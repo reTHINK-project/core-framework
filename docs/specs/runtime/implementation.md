@@ -18,4 +18,5 @@ Possible Strategies:
 * JDK8
 * Javascript shim layer to be used in Browsers without extensions ie files implementing the Shim layer would be downloaded with the Hyperty
 
+##### [Browser Runtime](browser-runtime.md)
 
