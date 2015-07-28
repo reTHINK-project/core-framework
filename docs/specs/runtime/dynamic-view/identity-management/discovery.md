@@ -9,6 +9,6 @@ The picture shows Discovery of a Hyperty.  The first picture is about the prepar
 
 ### Use Discovery
 
-![Use Discovery](prepare_discovery.png)
+![Use Discovery](use_discovery.png)
 
 
