@@ -4,13 +4,13 @@
 
 ## Models and Views
 
+The model looks as follows:
 ![image](backbone-MV.png)
-
 
 ### Model
 
-* Orchestrates data and business logic.
-* Loads and saves from the server.
+* Orchestrates data and business logic,
+* Loads and saves from the server,
 * Emits events when data changes.
 
 A Model manages an internal table of data attributes, and triggers "change" events when any of its data is modified. Models handle syncing data with a persistence layer — usually a REST API with a backing database. Design your models as the atomic reusable objects containing all of the helpful functions for manipulating their particular bit of data. Models should be able to be passed around throughout your app, and used anywhere that bit of data is needed.
