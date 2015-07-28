@@ -24,7 +24,10 @@
 
     loadHyperty( URL )
     loadStub( URL )
-    
+    discoverHiperty(applId, OSname, capability_list)
+    registerHipertyInstance()
+    checkForHipertyUpdate()
+     
 ### Registry
 
     registerHyperty( hypertySandbox, address )
@@ -35,16 +38,13 @@
     createHipertyInstance(applId, HipertyObjectId)
     updateHipertyInstance(HipertyURL, key-value-pair resource values)
     
+### Identities Container
 
-End-User-device components
+Functions to deal with assertions compliant with [WebRTC RTCIdentityProvider](http://w3c.github.io/webrtc-pc/#identity-provider-interaction)
 
-### Bootstrap module
+    IdAssertion generateAssertion( contents, origin, usernameHint )
+    validateAssertion( assertion, origin )
 
-    discoverHiperty(applId, OSname, capability_list)
-    downloadHiperty()
-    registerHipertyInstance()
-    checkForHipertyUpdate()
-    
 ### LHCB
 
     getCurrentConnectivityStatistics()
