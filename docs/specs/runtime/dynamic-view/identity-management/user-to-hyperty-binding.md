@@ -39,3 +39,6 @@ This sequence details the steps needed to associate the user identity to a given
 *16*- Hyperty 1 created a new ID Association Token object.
 
 
+Note: This association protocol is assuming that the request for the ID association is triggered by the Application/Hyperty instance. The Second option is for the association action to be triggered by the User Agent (RuntimeUA). In this case steps 4 to 7 need to be changed.
+
+Question: Which option should be provided? If both, which should be the default one? 
