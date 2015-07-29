@@ -36,11 +36,11 @@ actor "Bob" as Bob
 
 == Previous diagram results on the Communication and Remote object creation ==
 
-group 
+group
 
 	create CommObj@1B
 	Sync1@1B -> CommObj@1B : new (AliceCommObj)
-	
+
 	create RemObj@1B
 	Sync1@1B -> RemObj@1B : new (AliceCommObj)
 
@@ -99,31 +99,49 @@ Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
 
 Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
-== Get WebRTC resources ==
+== Get WebRTC resources (assuming that Hyperty is observer of Remote Data Object) ==
 
-SP1H@1B -> WRTC : get Comm resources (incl. SDP)
-note left
-	very simplified
-end note
+RemObj@1B -> SP1H@1B : observer reports "remoteDescription added"
+SP1H@1B -> WRTC : PC.setRemoteDescription
+
+group forEach remote IceCandidate
+	RemObj@1B -> SP1H@1B : observer reports "remote IceCandidate added"
+	SP1H@1B -> WRTC : PC.addIceCandidate()
+end
+
+
+SP1H@1B -> WRTC : PC.createAnswer()
+WRTC -> SP1H@1B : callback with localDescription (SDP)
+SP1H@1B -> WRTC : PC.setLocalDescription()  - [triggers local ICE process]
 
 create LocObj@1B
 
-SP1H@1B -> LocObj@1B : new(sessionDescription)
+SP1H@1B -> LocObj@1B : new(localDescription)
 
-== Update connection on Alice about local resources ==
+group forEach local IceCandidate
+	WRTC -> SP1H@1B : IceCandidate
+	SP1H@1B -> SP1H@1B : filter IceCandidate (e.g. to force relayed operation)
+	SP1H@1B -> LocObj@1B : add IceCandidate
+end
+
+
+== For each change in Local Data Object: Update connection on Alice about local resources ==
 
 SP1H@1B -> Sync1@1B : notify Alice about local resources
+note left
+	SD: IMO, the Syncer should directly observe the Local Data  Object
+end note
 
 ' Update comm in Alice
 Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
 Router1@1B -> Router1@1B : create msg, apply local policies
 note right
-	should the real msg be created here or in the Hyperty?
+	should the real msg be created here or in the Syncer?
 end note
 
 Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
 note left
-via already established channel
+via already established ProtOFly channel (assuming that it is bi-directional)
 end note
 Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
@@ -138,3 +156,5 @@ Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 - TODO: include ringing state
 - Update Comm object and synchronize previous to get WebRTC media (establishing) (it could take some time)
 - Update Comm object and synchronize when finally call is established
+
+-
