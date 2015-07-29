@@ -35,8 +35,8 @@
 
 ### Catalogue
 
-    createHipertyInstance(applId, HipertyObjectId)
-    updateHipertyInstance(HipertyURL, key-value-pair resource values)
+    createHipertySmartObjectInstance(applId, HipertyObjectId)
+    updateHipertySmartObjectInstance(HipertyURL, key-value-pair resource values)
     
 ### Identities Container
 
