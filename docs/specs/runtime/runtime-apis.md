@@ -23,9 +23,16 @@
 ### Runtime UA
 
     loadHyperty( URL )
+    download Hiperty from URL
+    
     loadStub( URL )
-    discoverHiperty(applId, OSname, capability_list) - used to accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
-    checkForHipertyUpdate(URL) - to be used by Applications or Hiperties to check for updates
+    download Stub from URL
+    
+    discoverHiperty(applId, OSname, capability_list) 
+    accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
+    
+    checkForHipertyUpdate(URL)
+    used by Applications or Hiperties to check for updates
      
 ### Registry
 
