@@ -21,20 +21,6 @@ This program and the accompanying materials are made available under the terms o
 
 The project can be further extended with some new Management Objects, if necessary. The server is to be compiled and run according to a configuration file.
 
-### Wakaama Project
-
-#### Overview
-
-The implementation supports interfaces.
-
-Programming Language
-Link
-License
-
-#### How to use
-
-
-
 ### OMA LWM2M Dev Kit Project
 
 The project can act as multiple virtual OMA LWM2M clients by connecting to a remote OMA LWM2M server.
