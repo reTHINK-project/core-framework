@@ -23,21 +23,22 @@
 ### Runtime UA
 
     loadHyperty( URL )
+    download Hiperty from URL
+    
     loadStub( URL )
-    discoverHiperty(applId, OSname, capability_list)
-    registerHipertyInstance()
-    checkForHipertyUpdate()
+    download Stub from URL
+    
+    discoverHiperty(applId, OSname, capability_list) 
+    accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
+    
+    checkForHipertyUpdate(URL)
+    used by Applications or Hiperties to check for updates
      
 ### Registry
 
     registerHyperty( hypertySandbox, address )
     registerStub( stub.postMessage, address )
 
-### Catalogue
-
-    createHipertyInstance(applId, HipertyObjectId)
-    updateHipertyInstance(HipertyURL, key-value-pair resource values)
-    
 ### Identities Container
 
 Functions to deal with assertions compliant with [WebRTC RTCIdentityProvider](http://w3c.github.io/webrtc-pc/#identity-provider-interaction)

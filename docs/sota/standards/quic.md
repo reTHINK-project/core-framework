@@ -74,7 +74,7 @@ In the Chromium repository it is available a standalone client and server which 
 
 In all the imeplementations QUIC is used with SPDY and HTTP/2 so its use separated from those protocols has to be investigated.
 
-##Drawbakcs of using QUIC as transport protocol
+##Drawbacks of using QUIC as transport protocol
 QUIC is a very new protocol so it is still not widely used. It means that many existing systems and projects does still not support it so testing and implementation which requires an additional effrot compared to TCP.
 
 On the other side, despite the fact that is a protocol likely to become an RFC darft in short-term it has not been formally specified by the IETF. This is the official definition document mantained by Google: https://docs.google.com/document/d/1RNHkx_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/edit Any implementation made today may not be completely compliant with the final protocol. 
