@@ -20,3 +20,6 @@ Possible Strategies:
 
 ##### [Browser Runtime](browser-runtime.md)
 
+##### [Standalone Runtime](browser-runtime.md)
+
+##### [M2M/IoT Gateway Runtime](gw-runtime.md)
