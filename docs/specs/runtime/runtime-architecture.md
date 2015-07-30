@@ -51,6 +51,8 @@ node "Runtime Device" as rt {
 
  node "Hyperties\nSandbox" as H1Sand {
 	 node "Hyperty1\nInstance" as H1
+	 node "Syncer" as Sync1
+	 H1 -down-> Sync1
 	 }
 
  node "ProtoStub1\nSandbox" as Proto1Sand {
@@ -62,7 +64,7 @@ node "Runtime Device" as rt {
 	 node "Connector\nPEP" as PEP1
  }
 
-  H1 -down-> PEP1
+  Sync1 -> PEP1
 
 
  }
@@ -71,6 +73,8 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
 
  node "Hyperties\nSandbox" as H2Sand {
 	 node "Hyperty2\nInstance" as H2
+	 node "Syncer" as Sync2
+	 H2 -down-> Sync2
 	 }
 
  node "Router2\nSandbox" as PEP2Sand {
@@ -83,7 +87,7 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
   }
 
 
-  H2 -down-> PEP2
+  Sync2 -> PEP2
 
  }
 
@@ -155,11 +159,11 @@ node "WebRTC Engine" as WRTC
 
 According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Domain and PEP enabled Connector. 
 
-Mechanisms to support Hyperty Communication through data object synchronisation are discussed [here](data-synch-model.md).
+Functionalities to support Hyperty Communication through data object synchronisation are provided by the Syncer component based on Object.observer API. Details are discussed [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md).
 
 #### Connector/Policy Engine
 
-Handles (data synch) communication between Hyperties and the local Message Bus, enforcing when needed valid Policies on this communicayion (e.g. authorisation policies) according to Service Provider domain policies. 
+Handles communication between Hyperties and the local Message Bus, enforcing when needed valid Policies on this communicayion (e.g. authorisation policies) according to Service Provider domain policies. It also enforces access control policies to synchronised object (Object Monitor functionalities as proposed [here](https://github.com/reTHINK-project/architecture/issues/52)).
 
 #### Protocol Stub
 
