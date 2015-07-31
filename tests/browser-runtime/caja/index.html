@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Caja host page</title>
+    <script type="text/javascript" src="//caja.appspot.com/caja.js"></script>
+    <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
+    <script src="bower_components/adapter.js/adapter.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <h1>Caja host page</h1>
+    <div id="guest"></div>
+
+
+    <video autoplay></video>
+    <button>Take snapshot</button>
+    <canvas></canvas>
+
+
+    <script type="text/javascript">
+
+    caja.initialize({
+        server: 'http://caja.appspot.com/',
+        debug: true
+    }, null, function(err){
+        alert('Error');
+    });
+
+    caja.whenReady(function(){
+        doTest();
+    });
+
+    var tamedConsoleService;
+    function doTest(){
+
+      var consoleService = {
+        log: function () {
+          console.log.apply(console, arguments);
+        }
+      };
+
+      caja.markReadOnlyRecord(consoleService);
+      caja.markFunction(consoleService.log);
+      tamedConsoleService = caja.tame(consoleService);
+
+      doLoad();
+    }
+
+    function doLoad() {
+
+      var _api = { console: tamedConsoleService};
+
+      caja.load(document.getElementById('guest'), caja.policy.net.NO_NETWORK, function (frame) {
+
+        frame.code('guest.js', 'application/javascript')
+          .api(_api)
+          .run();
+
+        frame.code('guest.html', 'text/html')
+          .api(_api)
+          .run();
+      });
+    }
+
+    </script>
+  </body>
+</html>

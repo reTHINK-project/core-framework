@@ -1,6 +1,6 @@
 importScripts('../bower/lodash/lodash.js', '../bower/riveter/lib/riveter.js', '../bower/postal.js/lib/postal.js', '../bower/postal.federation/lib/postal.federation.js', '../bower/postal.xframe/lib/postal.xframe.js');
-// importScripts('http://localhost:4730/files/bot.js');
-importScripts('../external/bot.js');
+importScripts('http://localhost:4730/files/bot.js');
+// importScripts('../external/bot.js');
 
 var xhr;
 if(typeof XMLHttpRequest !== 'undefined') xhr = new XMLHttpRequest();
@@ -64,6 +64,8 @@ postal.subscribe({
 postal.fedx.transports.xframe.listenToWorker(self);
 
 self.addEventListener('message', function(envelope){
+
+  console.log(envelope);
 
   postal.publish({
       channel: "worker1",
