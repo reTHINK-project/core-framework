@@ -26,7 +26,7 @@ New Api could be available in crosswalk before they get standardized at the W3C 
 Apache Cordova is a library used to create native mobile applications using Web technologies. The application is created using HTML, CSS and JavaScript and compiled for each specific platform using the platform native tools. Cordova provides a standard set of JavaScript APIs to access device features on all supported platforms. Additional features can be provided through the development of plugins
 
 ##Cordova fonctionnal schema
-![cordova](./cordova_archi)
+![cordova](./cordova_archi.jpg)
 
 
 The application itself is implemented as a web page, by default a local file named index.html, that references whatever CSS, JavaScript, images, media files, or other resources are necessary for it to run. The app executes as a WebView within the native application wrapper, which you distribute to app stores.
