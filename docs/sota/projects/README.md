@@ -4,4 +4,6 @@
 
 #### [OMA Device Management Projects (Fraunhofer)](OMA_DM_LWM2M_projects.md)
 
+#### [ETSI and OneM2M Projects (Fraunhofer)](ETSI_oneM2M.md)
+
 
