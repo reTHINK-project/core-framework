@@ -163,8 +163,8 @@ Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it res
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty://sp1/bobhy123",
-"to" : "hyperty://sp1/alicehy123",
+"from" : "hyperty-instance://sp1/bobhy123",
+"to" : "hyperty-instance://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "200" , "description" : "ok"}
 ```
