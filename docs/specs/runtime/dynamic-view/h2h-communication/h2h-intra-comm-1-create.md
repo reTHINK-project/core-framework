@@ -132,9 +132,14 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 
 ![H2H Intradomain Communication : create communication](h2h-intra-comm-create.png)
 
-**Create Message**
 
-For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates
+Steps 1 - 4 : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
+
+Steps 5 - 7 : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection). 
+
+Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
+
+**[Create Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
 
 ```
 type = CREATE
@@ -145,6 +150,8 @@ cseq = 1
 resource = comm://sp1/alice/123456
 body = <json object with connection, sdp and ice candidates>
 ```
+
+
 
 **OK Message**
 
