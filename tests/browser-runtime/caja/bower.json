@@ -1,0 +1,23 @@
+{
+  "name": "caja",
+  "version": "0.0.0",
+  "authors": [
+    "Vitor Silva <vitorsilva@boldint.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "adapter.js": "~0.1.6",
+    "underscore": "~1.8.3"
+  }
+}

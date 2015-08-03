@@ -6,6 +6,31 @@ importScripts('../jspm/npm/serviceworker-cache-polyfill@3.0.0/index.js');
 var version = 'v1';
 var staticCacheName = 'rethink' + version;
 
+self.addEventListener('message', function(event){
+  console.log("message to service worker recived:", event);
+
+  var msg = event.data;
+
+  if (event.source) {
+      console.log("event.source present");
+      event.source.postMessage(msg);
+  }
+  else {
+      console.log("No event.source");
+      if (event.data.port) {
+          event.data.port.postMessage(msg);
+      }
+  }
+
+  if (self.clients) {
+      console.log("Attempting postMessage via clients API");
+      clients.matchAll().then(function (clients) {
+          for (i = 0; i < clients.length; i++ )
+              clients[i].postMessage(msg);
+      });
+  }
+});
+
 self.addEventListener('push', function(event){
   console.log('push: ', event);
 });
@@ -18,9 +43,7 @@ self.addEventListener('install', function(event) {
 
   var urlsToCache = [
     '../index.html',
-    '../css/screen.css',
-    //'../js/app.js',
-    '../external/bot.js'
+    '../css/screen.css'
   ];
 
   event.waitUntil(

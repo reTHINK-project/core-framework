@@ -19,6 +19,7 @@ Below, it is depicted a functional architecture of the Runtime:
 
 *Provide first a higher level architecture without showing detailed components. Distinguish internal APIs from external Interfaces which should be identified according to names defined in D2.2.*
 
+<<<<<<< HEAD
 <!--
 @startuml "Runtime_Architecture_new.png"
 
@@ -156,6 +157,8 @@ node "WebRTC Engine" as WRTC
 @enduml
 -->
 
+=======
+>>>>>>> 0bfb8e3be5e5c3565af4c9a4ba550bee8ae7b5b2
 ![Runtime Architecture](Runtime_Architecture_new.png)
 
 ### Service Provider Sandboxes

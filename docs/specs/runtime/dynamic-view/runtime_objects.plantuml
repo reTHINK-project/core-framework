@@ -112,7 +112,7 @@ actor "Alice" as Alice
 
 !ifdef SHOW_CoreRuntimeProvider
 	box "Core Runtime Service Provider"
-		participant "Catalog" as CoreRunProvider
+		participant "Catalogue" as CoreRunProvider
 	end box
 !endif
 

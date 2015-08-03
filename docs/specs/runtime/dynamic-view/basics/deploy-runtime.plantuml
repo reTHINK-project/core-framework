@@ -1,0 +1,52 @@
+@startuml "deploy-runtime.png"
+
+autonumber
+
+!define SHOW_RuntimeA
+
+!define SHOW_NativeAtRuntimeA
+!define SHOW_JavascriptEngineAtRuntimeA
+!define SHOW_HTTPClientAtRuntimeA
+
+!define SHOW_CoreRuntimeA
+!define SHOW_MsgBUSAtRuntimeA
+!define SHOW_RegistryAtRuntimeA
+!define SHOW_IdentitiesAtRuntimeA
+!define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
+
+!define SHOW_CoreRuntimeProvider
+
+!include ../runtime_objects.plantuml
+
+== Deploy Core Runtime ==
+
+group option : these steps won't be needed in case the Run User Agent is already running in the device
+
+Alice -> HTTP_UAC@A : download App with Core Runtime
+
+HTTP_UAC@A -> CoreRunProvider : download App with Core Runtime
+
+create RunUA@A
+JS@A -> RunUA@A : new
+end group 
+
+'RunUA@A -> HTTP_UAC@A : download Core Runtime\n(runtime profile)
+
+'HTTP_UAC@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
+
+RunUA@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
+
+create BUS@A
+JS@A -> BUS@A : new
+
+create RunReg@A
+JS@A -> RunReg@A : new
+
+create RunID@A
+JS@A -> RunID@A : new
+
+create RunAuth@A
+JS@A -> RunAuth@A : new
+
+@enduml

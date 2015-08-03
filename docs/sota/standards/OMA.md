@@ -50,5 +50,5 @@ these resources via that API on the Resource Owner’s behalf.*
 * Quality of Service
 
 ### Selected Protocols with potential relevance for ReTHINK
-#### Light Weight M2M 
-OMA Lightweight M2M is a protocol from the Open Mobile Alliance for M2M or IoT device management. Lightweight M2M enabler defines the application layer communication protocol between a LWM2M Server and a LWM2M Client, which is located in a LWM2M Device. The OMA Lightweight M2M enabler includes device management and service enablement for LWM2M Devices. It is normally used with COAT. This protocol can be used in ReTHINK for several tasks such as user registry. 
+#### Lightweight M2M 
+OMA Lightweight M2M is a protocol from the Open Mobile Alliance for M2M or IoT device management. Lightweight M2M enabler defines the application layer communication protocol between a LWM2M Server and a LWM2M Client, which is located in a LWM2M Device. The OMA Lightweight M2M enabler includes device management and service enablement for LWM2M Devices. It is normally used with CoAP. This protocol can be used in ReTHINK for several components such as the Catalogue. 

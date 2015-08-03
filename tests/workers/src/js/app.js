@@ -24,7 +24,12 @@ function waitUntilInstalled(registration) {
 
 if (window.MessageChannel) {
   var messageChannel = new MessageChannel();
+  messageChannel.port1.onmessage = function (event) {
+      console.log("received reply via MessageChannel: " + event.data);
+  };
+
   window.messageChannel = messageChannel;
+
 }
 
 if ('serviceWorker' in navigator) {
@@ -45,7 +50,8 @@ if ('serviceWorker' in navigator) {
 
     navigator.serviceWorker.ready.then(function(reg){
       console.warn(reg);
-      reg.active.postMessage('',[messageChannel.port2]); //initialise the messaging channel
+      reg.active.postMessage('dsafasdfasdfasdf'); //initialise the messaging channel
+
     });
 
   });
