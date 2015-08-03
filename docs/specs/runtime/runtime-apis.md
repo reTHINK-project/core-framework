@@ -7,6 +7,37 @@
 ### Hyperty
 
     init( bus )
+    report(message)
+
+### Syncher
+
+To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher:
+
+    create( object, to, objectId )
+    
+To add an attribute to object without triggering the synchronisation process:
+
+    addAttribute(objectId, attributeName, attributeValue)
+
+To update an attribute without triggering the synchronisation process:
+
+    updateAttribute(objectId, attributeName, attributeValue)
+
+To delete an attribute without triggering the synchronisation process:
+
+    deleteAttribute(objectId, attributeName)
+
+To delete an Object:
+
+    delete(objectId)
+    
+To trigger the synchronisation process:
+
+    synch(objectId)
+
+
+To receive messages from other Hyperties that will be reported to the Hyperty:
+
     postMessage(message)
 
 ### protoStub
