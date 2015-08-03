@@ -11,17 +11,19 @@
 
 ### Syncher
 
-To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher:
+To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher. Promise is used to handle Response messages to this object. 
 
-    create( object, to, objectId )
+    Promise  create( object, resourceURL, to)
     
+By default the events triggered by changes performed on this object by the Resporter Hyperty will trigger the synchronisation process. Otherwise the Hyperty instance should invoke a separate function, *addAttribute()*, *updateAttribute()*, *deleteAttribute()* defined below and afterwards invoke the *synch()* function to trigger the synchronisation process.
+
 To add an attribute to object without triggering the synchronisation process:
 
-    addAttribute(objectId, attributeName, attributeValue)
+    addAttribute(resourceURL, attributeName, attributeValue)
 
 To update an attribute without triggering the synchronisation process:
 
-    updateAttribute(objectId, attributeName, attributeValue)
+    updateAttribute(resourceURL, attributeName, attributeValue)
 
 To delete an attribute without triggering the synchronisation process:
 
@@ -33,8 +35,7 @@ To delete an Object:
     
 To trigger the synchronisation process:
 
-    synch(objectId)
-
+    Promise synch(objectId)
 
 To receive messages from other Hyperties that will be reported to the Hyperty:
 
