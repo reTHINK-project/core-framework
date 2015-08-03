@@ -158,7 +158,7 @@ Step 17 : Bob's PEP applies local policies if required including incoming commun
 
 Steps 18 - 21 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
 
-Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message]https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
+Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
 
 ```
 "id" : "1"
