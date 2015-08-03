@@ -142,23 +142,29 @@ Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and
 **[Create Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
 
 ```
-type = CREATE
-from = hyperty://sp1/alicehy123
-to = hyperty://sp1/bobhy123
-contextId = qwertyuiopasdfghjkl
-cseq = 1
-resource = comm://sp1/alice/123456
-body = <json object with connection, sdp and ice candidates>
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty://sp1/alicehy123",
+"to" : "hyperty://sp1/bobhy123",
+"contextId" : "qwertyuiopasdfghjkl",
+"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
 ```
 
+Steps 10 : Alice's PEP applies local policies if required including outgoing communication request access control
 
+Steps 11 - 16 : the message is routed through Alice Message BUS, Service Provider Back-end Messaginge Service and Bob's Message BUS, reaching Bob's PEP component
 
-**OK Message**
+Step 17 : Bob's PEP applies local policies if required including incoming communication request access control
+
+Steps 18 - 21 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
+
+Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message]https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
 
 ```
-type = OK
-from = hyperty://sp1/bobhy123
-to = hyperty://sp1/alicehy123
-contextId = qwertyuiopasdfghjkl
-cseq = 1
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "hyperty://sp1/bobhy123",
+"to" : "hyperty://sp1/alicehy123",
+"contextId" : "qwertyuiopasdfghjkl",
+"body" : { "code" : "200" , "description" : "ok"}
 ```
