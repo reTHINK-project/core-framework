@@ -144,8 +144,8 @@ Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty://sp1/alicehy123",
-"to" : "hyperty://sp1/bobhy123",
+"from" : "hyperty-instance://sp1/alicehy123",
+"to" : "hyperty-instance://sp1/bobhy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
 ```
