@@ -50,6 +50,8 @@ node "Runtime Device" as rt {
  node "Service Provider 1 Sandboxes" as SP1Sand {
 
  node "Hyperties\nSandbox" as H1Sand {
+
+
 	 node "Hyperty1\nInstance" as H1
 	 node "Syncer" as Sync1
 	 H1 -down-> Sync1
@@ -60,11 +62,12 @@ node "Runtime Device" as rt {
 	 node "ProtoStub" as Proto1
  }
 
- node "Router1\nSandbox" as PEP1Sand {
-	 node "Connector\nPEP" as PEP1
+ node "PEP1\nSandbox" as PEP1Sand {
+	 node "Service Provider1\nPEP" as PEP1
  }
 
-  Sync1 -> PEP1
+
+  Sync1 -> PEP1 : message
 
 
  }
@@ -77,8 +80,8 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
 	 H2 -down-> Sync2
 	 }
 
- node "Router2\nSandbox" as PEP2Sand {
-	 node "Connector\nPEP" as PEP2
+ node "PEP2\nSandbox" as PEP2Sand {
+	 node "Service Provider2\nPEP" as PEP2
 	 }
 
  node "ProtoStub2\nSandbox" as Proto2Sand {
@@ -87,7 +90,7 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
   }
 
 
-  Sync2 -> PEP2
+  Sync2 -> PEP2 : message
 
  }
 
@@ -100,9 +103,9 @@ Repo1 ..down-> H1: provide
 
 Repo2 ..down-> H2: provide
 
-Msg1 <-down-> Proto1 : communicate
+Msg1 <-down-> Proto1 : protocol\nmessage
 
-Msg2 <-down-> Proto2 : communicate
+Msg2 <-down-> Proto2 : protocol\nmessage
 
 node "Core Sandbox" as core {
 
@@ -127,9 +130,9 @@ node "WebRTC Engine" as WRTC
 	
 }
 
- Bus <-up-> Proto1
+ Bus <-up-> Proto1 : message
 
- Bus <-up-> Proto2
+ Bus <-up-> Proto2 : message
 
  BusPEP ..right-> Bus : enforce
 
@@ -137,9 +140,9 @@ node "WebRTC Engine" as WRTC
 
  PDP .down-> Reg
 
- PEP1 <-down-> Bus
+ PEP1 <-down-> Bus : message
 
- PEP2 <-down-> Bus
+ PEP2 <-down-> Bus : message
 
  Reg .left. ID
 
