@@ -19,6 +19,146 @@ Below, it is depicted a functional architecture of the Runtime:
 
 *Provide first a higher level architecture without showing detailed components. Distinguish internal APIs from external Interfaces which should be identified according to names defined in D2.2.*
 
+<<<<<<< HEAD
+<!--
+@startuml "Runtime_Architecture_new.png"
+
+
+node "Service Provider 1" as SP1 {
+	node Repository as Repo1
+	node "Backend\nServer" as Msg1
+
+	Repo1 -[hidden]left- Msg1
+}
+
+
+node "Service Provider 2" as SP2 {
+	node Repository as Repo2
+	node "Backend\nServer" as Msg2
+
+	Repo2 -[hidden]right- Msg2
+}
+
+node "Runtime Device" as rt {
+
+ node "ASP Sandbox" as ASPSand {
+	 node "Application" as App 
+	}
+
+ SP1 -[hidden]down- App
+ SP2 -[hidden]right- App
+
+ node "Service Provider 1 Sandboxes" as SP1Sand {
+
+ node "Hyperties\nSandbox" as H1Sand {
+
+
+	 node "Hyperty1\nInstance" as H1
+	 node "Syncer" as Sync1
+	 H1 -down-> Sync1
+	 }
+
+ node "ProtoStub1\nSandbox" as Proto1Sand {
+
+	 node "ProtoStub" as Proto1
+ }
+
+ node "PEP1\nSandbox" as PEP1Sand {
+	 node "Service Provider1\nPEP" as PEP1
+ }
+
+
+  Sync1 -> PEP1 : message
+
+
+ }
+
+node "Service Provider 2 Sandboxes" as SP2Sand {
+
+ node "Hyperties\nSandbox" as H2Sand {
+	 node "Hyperty2\nInstance" as H2
+	 node "Syncer" as Sync2
+	 H2 -down-> Sync2
+	 }
+
+ node "PEP2\nSandbox" as PEP2Sand {
+	 node "Service Provider2\nPEP" as PEP2
+	 }
+
+ node "ProtoStub2\nSandbox" as Proto2Sand {
+
+  node "ProtoStub" as Proto2
+  }
+
+
+  Sync2 -> PEP2 : message
+
+ }
+
+ App -down-> H1
+
+ App -down-> H2
+
+
+Repo1 ..down-> H1: provide
+
+Repo2 ..down-> H2: provide
+
+Msg1 <-down-> Proto1 : protocol\nmessage
+
+Msg2 <-down-> Proto2 : protocol\nmessage
+
+node "Core Sandbox" as core {
+
+ node "*            Message      BUS                *" as Bus 
+
+ node "Msg BUS\nPEP" as BusPEP
+
+ node "Registry" as Reg
+
+ node "Identities\nContainer" as ID
+
+ node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+
+ node "Runtime\nUser Agent" as RunUA
+
+ RunUA -[hidden]left- Reg
+ }
+
+
+node "Native\nRuntime" as native {
+node "WebRTC Engine" as WRTC
+	
+}
+
+ Bus <-up-> Proto1 : message
+
+ Bus <-up-> Proto2 : message
+
+ BusPEP ..right-> Bus : enforce
+
+ PDP ..right-> BusPEP : authorise
+
+ PDP .down-> Reg
+
+ PEP1 <-down-> Bus : message
+
+ PEP2 <-down-> Bus : message
+
+ Reg .left. ID
+
+ Reg <-up. Bus: register or discover\nHyperties and\n protoStubs
+
+ WRTC <-up- SP1Sand
+
+ WRTC <-up- SP2Sand
+ 	}
+
+@enduml
+-->
+
+=======
+>>>>>>> 0bfb8e3be5e5c3565af4c9a4ba550bee8ae7b5b2
 ![Runtime Architecture](Runtime_Architecture_new.png)
 
 ### Service Provider Sandboxes

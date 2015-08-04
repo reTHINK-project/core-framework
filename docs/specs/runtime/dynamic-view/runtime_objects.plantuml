@@ -59,7 +59,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_ServiceProvider1RouterAtRuntimeA
-			participant "Service Provider1\nRouter" as Router1@A
+			participant "Service Provider1\nPEP" as Router1@A
 			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntimeA

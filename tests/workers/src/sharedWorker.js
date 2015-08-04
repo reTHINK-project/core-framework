@@ -1,4 +1,4 @@
-importScripts('external/sharedWorkerBot.js');
+importScripts('http://localhost:4730/files/bot.js');
 
 var connections = [];
 

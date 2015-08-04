@@ -1,0 +1,94 @@
+<html>
+  <head></head>
+  <body>
+
+    <h1>Guest.html file</h1>
+
+    <h3>Messages:</h3>
+    <ul id="demo"></ul>
+
+    <h3>Dynamic li</h3>
+    <ul class="list"></ul>
+
+    <button class="btn">Click me</button>
+    <button class="btn-add">Add</button>
+    <video autoplay></video>
+
+    <script type="text/javascript">
+      var obj = {
+        name: 'vitor silva'
+      };
+
+      var result = ['0', '1', '2', '3', '4', '5'];
+
+      console.log('try create elements dynamically');
+      result.forEach(function(el){
+        var item = document.createElement('li');
+        item.innerHTML = el;
+
+        document.querySelector('.list').appendChild(item);
+      });
+
+      var btnAdd = document.querySelector('.btn-add');
+      btnAdd.addEventListener('click', function(e){
+
+        var oneMore = (result.length + 1) - 1;
+        result.push(oneMore);
+
+        try {
+          var item = document.createElement('li');
+          item.innerHTML = oneMore;
+
+          document.querySelector('.list').appendChild(item);
+        } catch (err) {
+          sendMessages(err.message);
+        }
+        e.preventDefault();
+
+      });
+
+      var btn = document.querySelector('.btn');
+      btn.addEventListener('click', function(e){
+
+        try {
+          console.log('try click on button', e);
+        } catch (err) {
+          sendMessages(err.message);
+        }
+        e.preventDefault();
+
+      });
+
+      var constraints = {
+        audio: true,
+        video: true
+      };
+
+      function successCallback() {
+        console.log('success');
+      }
+
+      function errorCallback() {
+        console.log('error');
+      }
+
+      try {
+        console.log("try use getUserMedia:" , constraints);
+        navigator.webkitGetUserMedia(constraints, successCallback, errorCallback);
+      }
+
+      catch(err) {
+        sendMessages(err.message);
+      }
+
+      function sendMessages(messageStr){
+        var message = document.createElement('li');
+        message.innerHTML = messageStr;
+
+        document.getElementById("demo").appendChild(message);
+        console.log("Error:" , messageStr);
+      };
+
+    </script>
+  </body>
+</html>
