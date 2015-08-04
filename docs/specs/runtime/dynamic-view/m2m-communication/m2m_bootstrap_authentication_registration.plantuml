@@ -1,0 +1,93 @@
+@startuml "deploy-runtime.png"
+
+autonumber
+
+!define SHOW_RuntimeA
+
+!define SHOW_NativeAtRuntimeA
+!define SHOW_JavascriptEngineAtRuntimeA
+'!define SHOW_HTTPClientAtRuntimeA
+
+!define SHOW_CoreRuntimeA
+!define SHOW_MsgBUSAtRuntimeA
+!define SHOW_RegistryAtRuntimeA
+!define SHOW_IdentitiesAtRuntimeA
+!define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
+
+!define SHOW_CoreRuntimeProvider
+
+!include ../runtime_objects.plantuml
+
+== Deploy Core Runtime ==
+
+group option : these steps won't be needed in case the Run User Agent is already running in the device
+
+'Alice -> HTTP_UAC@A : download App with Core Runtime
+
+
+
+create RunUA@A
+JS@A -> RunUA@A : new
+end group 
+
+'RunUA@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
+
+'HTTP_UAC@A -> CoreRunProvider : download App with Core Runtime
+
+'RunUA@A -> HTTP_UAC@A : download Core Runtime\n(runtime profile)
+
+'HTTP_UAC@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
+
+RunUA@A -> CoreRunProvider : register Bootstrapping Endpoint Ids
+
+Alice -> CoreRunProvider : discover Bootstrapping Endpoints Ids
+
+Alice <-- CoreRunProvider : list of Bootstrapping Endpoints Ids
+
+Alice -> CoreRunProvider : Bootstrapp Device (Id)
+
+RunUA@A <- CoreRunProvider : Create Smart Object Instance (protoStub, Hiperties, Application, Core Runtime)
+
+RunUA@A --> CoreRunProvider : Ok
+
+RunUA@A -> CoreRunProvider : Read Smart Object Resources
+
+RunUA@A <-- CoreRunProvider : Smart Object Resources
+
+RunUA@A <- CoreRunProvider : Create Access Control List Objects (announce which DM Bootstrap can modify/execute)
+
+RunUA@A --> CoreRunProvider : Access Control List Objects Created
+
+Alice <-- CoreRunProvider : Bootstrap Complete (Id), list of downloaded artifacts
+
+Alice -> CoreRunProvider : Authorize Execution/Loading the artifacts (Id)
+
+RunUA@A <- CoreRunProvider : execute/load artifacts
+
+RunUA@A --> CoreRunProvider : done
+
+Alice <-- CoreRunProvider : artifacts loaded
+
+RunUA@A  -> RunReg@A : register Hiperties and protoStub
+
+RunReg@A  -> RemoteRegistry : register Hiperties and protoStub
+
+
+
+
+
+
+create BUS@A
+'JS@A -> BUS@A : new
+
+create RunReg@A
+'JS@A -> RunReg@A : new
+
+create RunID@A
+'JS@A -> RunID@A : new
+
+create RunAuth@A
+'JS@A -> RunAuth@A : new
+
+@enduml

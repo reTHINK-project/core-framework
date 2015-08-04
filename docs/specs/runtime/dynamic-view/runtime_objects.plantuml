@@ -113,7 +113,10 @@ actor "Alice" as Alice
 !ifdef SHOW_CoreRuntimeProvider
 	box "Core Runtime Service Provider"
 		participant "Catalogue" as CoreRunProvider
+		participant "Registry" as RemoteRegistry
+		participant "M2M Server" as M2MServer
 	end box
+	
 !endif
 
 
