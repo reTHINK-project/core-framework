@@ -6,10 +6,34 @@
     
 ### Hyperty
 
-    init( bus )
+    init( postMessage )
     report(message)
 
+### Policy Enforcer
+
+To set postMessage() function to be used by the Policy Enforcer to send messages usually the "MessageBUS". 
+
+    setSender( postMessage )
+    
+To set postMessage() function to be used by the Policy Enforcer to receive messages usually the Hyperty or a Syncher. In case the resouce parameter is provided this postMessage() is only valid for messages containing the same resource url.
+
+    setReceiver( postMessage, resource )
+
+To receive messages from the message BUS
+
+    postMessage(message)
+
 ### Syncher
+
+*should we distinguish between Reporter and Observer syncher?*
+
+To set postMessage() function to be used by the Syncher to send messages usually a "Policy Enforcer" but it could also be the MessageBUS. 
+
+    setSender( postMessage )
+
+Hyperty instance uses this function to provide the object to be changed by the (observer) syncher according to messages received. The Hyperty instance has previsouly used the *Object.observe* javascript api to set as an observer of this object
+
+    observe( object )
 
 To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher. Promise is used to handle Response messages to this object. 
 
