@@ -57,7 +57,17 @@ RunUA@A <-- CoreRunProvider : Smart Object Resources
 
 RunUA@A <- CoreRunProvider : Create Access Control List Objects (announce which DM Bootstrap can modify/execute)
 
-RunUA@A <- CoreRunProvider : Access Control List Objects Created
+RunUA@A --> CoreRunProvider : Access Control List Objects Created
+
+Alice <-- CoreRunProvider : Bootstrap Complete (Id), list of downloaded artifacts
+
+Alice -> CoreRunProvider : Authorize Execution/Loading the artifacts (Id)
+
+RunUA@A <- CoreRunProvider : execute/load artifacts
+
+RunUA@A --> CoreRunProvider : done
+
+Alice <-- CoreRunProvider : artifacts loaded
 
 RunUA@A  -> RunReg@A : register Hiperties and protoStub
 
