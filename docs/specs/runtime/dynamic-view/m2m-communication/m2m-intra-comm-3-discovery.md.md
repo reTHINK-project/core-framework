@@ -19,7 +19,7 @@ autonumber
 
 !define SHOW_SP1
 
-!include ../runtime_objects.plantuml
+!include runtime_objects.plantuml
 
 == Discover Home Energy Context ==
 
@@ -47,7 +47,7 @@ SP1H@A <- Router1@A : Return Home \nEnergy Context URL
 
 ![Context Discovery in M2M Intradomain Communication](m2m-intra-comm-3-discovery.png)
 
-**[Previous: Device Registration](UC5_Device_Registration)**
+**[Previous: Device Bootstrap, Authentication Registration](m2m-bootstrap-auth-registration.md)**
 
 Steps 1 - 4: The Energy Context Consumer Hyperty requests to Discover the Home Energy Context through the Gateway Protocol Stub.
 
@@ -56,10 +56,11 @@ Steps 1 - 4: The Energy Context Consumer Hyperty requests to Discover the Home E
 ```
 "id" : "1"
 "type" : "READ",
-"from" : "hyperty-instance://my.gateway/washmachinehy123",
-"to" : "my.gateway",
-"body" : { "resource" : "my.gateway/registry/context", 
-			"criteria" : {"tag" : "energy"} }
+"from" : "hyperty-instance://alice.home/washmachinehy123",
+"to" : "alice.home",
+"body" : { "resource" : "alice.home/registry/context", 
+			"criteria" : {"tag" : "energy"},
+			"projection" : {"url" : 1} }
 ```
 
 
@@ -72,8 +73,8 @@ Steps 6 - 9: The Home Energy Context URL is returned to the Energy Context Consu
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "my.gateway",
-"to" : "hyperty-instance://my.gateway/washmachinehy123",
+"from" : "alice.home",
+"to" : "hyperty-instance://alice.home/washmachinehy123",
 "body" : { "code" : "200" , "description" : "ok",
-		"value" : {"resource" : "ctxt://my.gateway/energy"}}
+		"value" : {"url" : "ctxt://alice.home/energy"}}
 ```
