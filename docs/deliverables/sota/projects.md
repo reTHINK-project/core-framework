@@ -1,3 +1,7 @@
 ### Projects
 
-*To make a summary of [contributions about projects](../sota/projects) including an evaluation on how to be taken into account in reTHINK and how. The full contributions will be provided in annex*
+The WONDER project has enlightened some foundations 
+paths to be followed in a post-IMS era dominated by Web technologies that reTHINK is currently exploiting. Notably, the novel Signalling On-the-fly (SigOfly) concept was conceived and successfully demonstrated to enable seamless interoperability between different WebRTC service domains. reTHINK Protocol On-the-fly concept extends WONDER, the Signalling On-the-fly concept to any other service domain where needed protocol stacks can be executed in a Web Runtime. 
+
+The WONDER Library used to validate SigOfly concept can be used in reTHINK as a good starting point to design and implement reTHINK runtime APIs and reTHINK Javascript framework.
+
