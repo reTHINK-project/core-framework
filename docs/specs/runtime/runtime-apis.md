@@ -92,7 +92,10 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
      
 ### Registry
 
-    registerHyperty( hypertySandbox, address )
+To register a new Hyperty in the runtime which returns the HypertyInstanceURL allocated to the new Hyperty.
+
+    HypertyINstanceURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
+    
     registerStub( stub.postMessage, address )
 
 ### Identities Container
