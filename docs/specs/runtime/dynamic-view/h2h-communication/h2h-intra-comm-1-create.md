@@ -74,7 +74,7 @@ SP1H@A ->  LocObj@A : new(sessionDescription)
 
 == Request Bob to Create and Observe Connection object ==
 
-SP1H@A -> Sync1@A : report Connection Object to Bob
+SP1H@A -> Sync1@A : create( Connection DataObject, resourceURL, to)
 
 Sync1@A -> Router1@A : postMsg(Create MSG) 
 

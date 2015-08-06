@@ -46,13 +46,9 @@ RunUA@A -> SP1 : get Router
 create Router1@A
 RunUA@A -> Router1@A : new
 
-SP1H@A -> Router1@A : register Hyperty
+RunUA@A -> Router1@A : new
 
-Router1@A -> Router1@A : Apply SP1 policies
-
-BUS@A <- Router1@A : register Hyperty
-
-BUS@A -> RunReg@A : register Hyperty
+RunUA@A -> RunReg@A : registerHyperty( postMessage, HypertyURL )
 
 group associate to Identity : to be designed in a separate diagram by Id Management Group
 
@@ -64,24 +60,71 @@ group associate to Identity : to be designed in a separate diagram by Id Managem
 
 end group
 
-group register Hyperty at SP1 Registry
-	RunReg@A <- RunReg@A : collect Hyperty runtime Context data
+group allocate address for new Hyperty Instance
 	RunReg@A <- RunReg@A : resolve protoStub URL
-	RunReg@A -> BUS@A : register Hyperty/n(ID Token)
-	BUS@A -> Proto1@A : register Hyperty/n(ID Token)
-	Proto1@A -> SP1 : register Hyperty
+	RunReg@A -> BUS@A : postMessage( read hyperty Address Allocation MSG)
+
+	BUS@A -> Proto1@A : postMessage( read hyperty Address Allocation MSG)
+
+	Proto1@A -> SP1 : read hyperty Address Allocation SP1 MSG Protocol
 
 	group option: connect protocol stub to the domain in case it is still not connected yet
-	
+
 	end group
 
 end group
+	
+group register Hyperty at SP1 Registry
+	RunReg@A <- RunReg@A : collect Hyperty runtime Context data
+	RunReg@A <- RunReg@A : resolve protoStub URL
+	RunReg@A -> BUS@A : postMessage( create hypertyRegistration MSG)
+
+	BUS@A -> Proto1@A : postMessage( create hypertyRegistration MSG)
+
+	Proto1@A -> SP1 : create hypertyRegistration SP1 MSG Protocol
+
+	end group
+
 
 @enduml
 -->
 
 
 ![Deploy Hyperty](deploy-hyperty.png)
+
+Message to request address allocated for new Hyperty Instance:
+
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty-runtime://sp1/runalice/registry",
+"to" : "sp1/msg-node/address-allocation",
+"body" : { "hypertyUrl" : "hyperty://sp1/hy123" }
+```
+
+Message to Responde to request address allocated for new Hyperty Instance:
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "sp1/msg-node/address-allocation",
+"to" : "hyperty-runtime://sp1/runalice/registry",
+"body" : { "hypertyInstanceURL" : "hyperty-instance://sp1/alice/hy123" }
+```
+
+Message to Register new Hyperty Instance:
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty-runtime://sp1/runalice",
+"to" : "sp1/registry",
+"body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty-instance://sp1/hy123,
+"hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice,
+...}
+```
+
 
 
 The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
