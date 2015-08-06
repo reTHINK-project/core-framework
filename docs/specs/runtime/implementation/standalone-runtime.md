@@ -14,6 +14,7 @@ By using the Crosswalk Project, an application developer can:
 - Use experimental APIs not available in mainstream web browsers.
 - Control the upgrade cycle of an application by distributing it with its own runtime.
 - Add custom extensions to an application, to leverage platform features not exposed by Crosswalk or the standardized web platform.
+- Crosswalk supports WebRTC applications so it makes possible to send and receive real-time flows from Android and iOS devices. 
 
 ##Crosswalk Architecture
 ![crosswalk](./crosswalk.png)
@@ -45,11 +46,31 @@ Cordova has a high quality plugin API, we just need more great plugins that expo
 - iosrtc
 iosrtc is a wrapper around Google’s WebRTC library and simply provides  PeerConnection, getMediaDevices and getUserMedia APIs , without any limitations or artificial constraints.
 
-- crosswalk
+- Crosswalk
 The crosswalk plugin aimed at replacing default Android Webview with Crosswalk Webview, bringing all new functionalities of Chrome. 
+
 
 ##Cordova vs PhoneGap
 Cordova is the community powered version of PhoneGap, which is Adobe’s productized version and ecosystem on top of Cordova. 
 
 ##Cordova vs Ionic
 Ionic uses and extends Cordova  
+
+##Webview
+The WebView class is an extension of Android's View class that allows you to display web pages as a part of your activity layout. It does not include any features of a fully developed web browser, such as navigation controls or an address bar. All that WebView does, by default, is show a web page. This allows to leverage features provided by the browser engine in any App without adding extra libraries.
+
+Since Android 4.4 (KitKat), the WebView component is based on the Chromium open source project. WebViews now include an updated version of the V8 JavaScript engine and support for modern web standards previously missing in old WebViews. New Webviews also share the same rendering engine as Chrome for Android, so rendering should be much more consistent between the WebView and Chrome.
+
+In Android 5.0 (Lollipop), the WebView has moved to an APK so it can be updated seperately to the Android platform.
+
+
+###Webview WebRTC support
+From WebView v36 WebRTC is supported so it makes easier to add WebRTC capabilities to any native. Webview 36.0.0.0 is still a developer preview version so it can not be used in official Apps currently but it is expected to become soon the stable release..
+
+###Crosswalk vs Webview
+
+The size of the apps is lower compared to Crosswalk applications which must include all the libraries to implement the browser functionality. 
+The WebView can be updated separately from the rest of the application. This can be an advantage as it will allows to fix any kind of issue and support new features, but it may cause issues if the App using it is not updated to fix any possible incompability.
+
+One of the obvious drawbacks is that Webview is not available in iOS. 
+
