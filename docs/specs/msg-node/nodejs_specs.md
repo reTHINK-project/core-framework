@@ -61,6 +61,9 @@ Node.js can easily interact with OAuth servers in order to authenticate and auth
 It this is for authentication purpose the authentication agoinst the IdP has to be done at the begining. 
 If the CRUD operations have to be authorized on a per identity basis (e.g. user A, correctly authenticated, is only allowed to do 'RU' over a Data Objet) we should get 
 
+### Node Sandbox framework
 
+[Node-sandbox] (https://www.npmjs.com/package/node-sandbox) is a way of running untrusted code outside of the main node process. The code can be interfaced with code running in the sandbox via RPC (or any library that works over the node Stream API).
+Node Sandbox framework 
 
 
