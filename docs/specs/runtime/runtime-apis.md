@@ -37,7 +37,7 @@ Hyperty instance uses this function to provide the object to be changed by the (
 
 To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher. Promise is used to handle Response messages to this object. 
 
-    Promise  create( object, resourceURL, to)
+    Promise <SyncObject> create(  resourceURL, schemaURL, toURL, dataObject?)
     
 By default the events triggered by changes performed on this object by the Resporter Hyperty will trigger the synchronisation process. Otherwise the Hyperty instance should invoke a separate function, *addAttribute()*, *updateAttribute()*, *deleteAttribute()* defined below and afterwards invoke the *synch()* function to trigger the synchronisation process.
 
