@@ -1,0 +1,56 @@
+/* Generic Spcecification
+	Publish on Hyperties could be accepted by policy configs or manualy by a user
+	P2P publish/subscribe for WebRTC
+	
+	Change-Request and Change is essential for:
+	1. Ensure the sequentiality of changes.
+	2. 
+	
+	Publish and Subscribe is essential for:
+	1. Ensure limited synchronization of data blocks. Synchronize only for limited number of nodes.
+	2. Ensure the ownership of an object. The publisher is the owner.
+	3. Simulates connect/disconnect or join/leave, but adapted to a synchronization protocol.
+	4. Separate the synchronization connection, from the process of synchronization itself.
+	
+*/
+msg {
+	header {
+		version: "1.0"
+		type: "sync(optimistic-lock)"
+		cmd: < sync(chg | chg-req) | boot(pub | sub | unsub) | rpc(call | reply) | search(obj-discover | api-discover) | other(...) >
+		from: {address: "x.domain", token: "auth-token"}
+		msg-id: <seq number>	//works in conjunction with from to identify a message globaly?
+		
+		to?: "y.domain" //if there is no 'to' field, it means that is directed to a Federation Service?
+	}
+	
+	body {
+		cmd(pub | sub | unsub) =>
+			sync: [<sync-protocol>, ...] | <sync-protocol> 	// When publish send list of supported sync-protocols. When subscribe, select the protocol.
+															// Examples of options: "optimistic-lock", "pessimistic-lock", "real-only", "commutative-replicated-data-types", ...
+			obj: <obj reference> //ex: {id: "123", schema-ref: "URL"}
+			cmd(pub) =>
+				policy?: {sync: {admin: "rw", public: "r"}, search: {public: "available"}}
+				schema?: <JSON Schema if not available in a repository> //this is needed for search capabilities
+		
+		cmd(chg-req | chg) => //one example of sync protocol, implementations depend on selected protocol
+			oper: <create | delete | update>
+			obj: <obj reference>
+			data: <data changes>
+			cmd(chg) =>
+				seq: <number>
+		
+		cmd(reply) =>
+			status: <OK | ERROR>
+			status(error) =>
+				msg: "error message"
+		
+		cmd(search) =>
+			query: "mongo db query? or other specification?"
+	}
+}
+
+//specific reply's
+cmd(pub | sub) =>
+	data: <actual data>
+	seq: <last seq number>
