@@ -143,6 +143,31 @@ Three mandatory stages on this part of the communication:
 
 In addition is included an optional "answering status" synchornization. That could help to solve the gap between the user response and the gather of the multiple iceCandidates.
 
+(step 5) The Application which interacts with the human user setups a callback in to be notifed when the Connection data Object is modified.
+
+(step 6) When a Data Connection Object receives any modification request from another Hyperty, the callback setup in the step before is called. The App is aware of the incoming invitation to establish a media session.
+
+(step 7) The App can  show this invitation to the human user in some way through a human interface. (step 8)In such a case the human typically will acept the communication. (step 9) The App acepts teh invitation through the API exposed by the the Service Provider Hyperty.
+In orther to start the media session a Local Data Object is created (step 10) where the data related to the  local parameters of the media session is going to be established.
+
+(step 11) The Syncher elemtn from the Hyperty setups an Observer callback in the Local Data Object which will be called when the Local Data Object changes. (step 12) The observer reports that there is a communication in progress t othe Syncher.
+
+(step 13)The Syncher sends a CRUD message to update the Communication Data Object to the Policy Enforcer. The Policy Enforcer checks if this message is compliant with the assigned policies to the user (step 14). 
+(Step 15) Once the message has been verified it is sent to the ProtoStub which in turn will sent to the Back-End Service from SP1 to update the Remote COnnection Data Object (step 16).
+
+The Remote Data Object which contains the media session parameters which will be used by the remote Hyperty. (Step 17) When it experience any change thats reported to the Hyperty which has previusly Observed it. (Step 18) The Hyperty call the WebRTC API from the browser including the remote parameters from the Remote Data Object. The same happens when a new Ice Candidate is updated in the Remote Data Object (step 19 and Step 20). 
+
+While remote Ice Candidate are added (step 19 and Step 20 may take place several times as Trickle Ice is supported) the Hyperty calls the Peer Connection method to create an SDP answer  (step 21) to be sent to it with all the parameters used to establish the media session between Alice and Bob but the Ice Candidates which will be received asynchronaly later. When the SDP with the local description is ready a callback is called and the SDP is sent to the Hyperty (step 22).
+
+(Step 23) The Hyperty calls the Peer setLocalDesciption API method from the WebRTC API exposed by the browser so that the browser is aware of the media parameters which are going to be used to establish the media session with Alice. At this point the gathering process of local Ice Candidates starts. 
+
+(Step 24) the Hyperty also update teh Local COnnection Data Object with the SDP received from the WebRTC API in step 22.
+
+(Step 25) During IceCandiates gathering period which started just after step 23 the WebRTC API calls a callbcak to send the candidates to the Htyperty through the WebRTC API. (Step 26)The Hyperty checks if the Candidate can be sent to the remote party (some candidates may contain IPs which don't want to the sent) and then the Candidate is added to the Local Data Object.
+
+(Step 28)The local Data object reports that there have been changes in the connection parameters and the Syncher sends a CRUD message through the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty (Step 29). (Step 30) the Policy Enforcer checks if the message is compliant with the local policies and the message is sent to the ProtoStub (Step 31) to be in turn sent to the Service Provider 1  Back-End (Step 32)
+
+
 ### Section 1. App interaction
 
 The app could be set an observer and receive the creation of the Connection object, it can use it to notify the user about the incomming call. To be remark that the *app interaction is not standarized*.
