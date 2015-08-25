@@ -6,9 +6,6 @@ import config from '../configs/config';
 
 export class Agent extends ObjectEvent {
 
-  haveStream;
-  isInitiator;
-
   /**
    * WebRTC Agent Peer Connectio to create connection
    * @method constructor
@@ -75,7 +72,7 @@ export class Agent extends ObjectEvent {
         type: 'candidate',
         candidate: event.candidate.candidate,
         sdpMid: event.candidate.sdpMid,
-        sdpMLineIndex: event.candidate.sdpMLineIndex,
+        sdpMLineIndex: event.candidate.sdpMLineIndex
       };
 
       _this.sb.sendMessage(ice);
@@ -170,7 +167,7 @@ export class Agent extends ObjectEvent {
 
       var data = {
         sdp: description.sdp,
-        type: description.type,
+        type: description.type
       };
 
       _this.sb.sendMessage(data);

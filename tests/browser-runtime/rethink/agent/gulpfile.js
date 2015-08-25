@@ -11,6 +11,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var compass = require('gulp-compass');
 var assign = require('lodash').assign;
 var browserSync = require('browser-sync').create();
+var Server = require('karma').Server;
 
 function handleError(err) {
   gutil.log(gutil.colors.red(err.toString()));
@@ -30,7 +31,7 @@ gulp.task('clean', function(done) {
     }
 
     gutil.log('Deleted files:\n', gutil.colors.green(paths.join('\n')));
-    done;
+    done();
   });
 
 });
@@ -118,6 +119,17 @@ gulp.task('sass:watch', function() {
 gulp.task('watch', function() {
   gulp.watch('./js/rethink.js', ['installer']);
   gulp.watch('./js/rethinkAgent.js', ['agent']);
+});
+
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('default', ['clean', 'main', 'installer', 'agent', 'watch', 'compass', 'sass:watch']);

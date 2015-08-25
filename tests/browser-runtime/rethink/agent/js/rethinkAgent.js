@@ -11,7 +11,7 @@ class RethinkAgent extends ObjectEvent {
     super();
 
     var _this = this;
-
+    
     var localAgent = new LocalAgent(isInitiator);
     localAgent.addEventListener('remote:stream:added', function(stream) {
       _this.trigger('remote:stream:added', stream);
