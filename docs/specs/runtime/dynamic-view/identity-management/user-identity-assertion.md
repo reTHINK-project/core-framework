@@ -1,6 +1,6 @@
 ### User identity assertion sequence diagram (proposition)
 
-![assertuserid](https://cloud.githubusercontent.com/assets/10709934/8854090/76aca2a0-315e-11e5-8602-8243f7a0b736.png)
+![assertuserid](https://cloud.githubusercontent.com/assets/10709934/9498320/7fbc4dde-4c19-11e5-8fed-17c5fc93c107.png)
 
 In this sequence, Alice Hyperty receives an Identity Assertion from its signaling/backend service.
 Before prompting the user with the asserted identity (e.g. an incoming call notification) it must be verified.
