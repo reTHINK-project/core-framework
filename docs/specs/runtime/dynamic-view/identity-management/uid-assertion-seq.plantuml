@@ -1,0 +1,60 @@
+@startuml
+autonumber
+
+box "Runtime Environment"
+        participant RuntimeUA as runtime
+        participant "Msg Bus" as msgbus
+end box
+box "IdP Proxy Sandbox"
+        participant "IdP Proxy" as idpproxy
+end box
+box "Hyperty Sandbox"
+        participant "Hyperty Service" as hyperty
+end box
+participant "Backend Service" as backend
+participant "Backend IdP" as idp
+
+backend  -> hyperty     : Send(IdToken)
+note right
+        IdToken received through
+        signaling of the Backend Service.
+end note
+
+hyperty  -> msgbus      : Verify(IdToken)
+msgbus   -> runtime     : Verify(IdToken)
+runtime  -> idp         : GetProxy(IdToken.proxy)
+idp      -> runtime     : return(proxy)
+create idpproxy
+runtime  -> idpproxy    : <<create>>\n new IdPProxy(proxy)
+
+note over idp
+        May be two different server
+        but are shown here as the same
+        participant.
+end note
+
+runtime  -> msgbus      : Verify(IdToken)
+msgbus   -> idpproxy    : Verify(IdToken)
+idpproxy -> idp         : Verify(IdToken)
+activate idp
+idp      -> idpproxy    : Verified(IdToken, validity)
+deactivate idp
+idpproxy -> msgbus      : Verified(IdToken, validity)
+msgbus   -> runtime     : Verified(IdToken, validity)
+note over runtime
+        Received and validated IdToken
+        could be stored for future reference.
+        (e.g. last known assertion)
+end note
+
+runtime  -> msgbus      : Confirm(IdToken)
+msgbus   -> hyperty     : Confirm(IdToken)
+
+opt Refresh Trust
+end
+
+opt Negotiate Trust
+end
+
+
+@enduml
