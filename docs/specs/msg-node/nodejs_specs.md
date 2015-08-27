@@ -75,9 +75,9 @@ It can also facilitate the development and the integration of new connectors, He
 
 
       User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
-      User B -------|            |   |------- Node Js Connector to another CSP
-                                 |   |------- Node Js Connector to Kurento
-      User C -----NodeJs 2 ------|   |------- Node Js Connector to an IMS GW
+      User B -------|            |   |------- NodeJs Connector to another CSP
+                                 |   |------- NodeJs Connector to Kurento
+      User C -----NodeJs 2 ------|   |------- NodeJs Connector to an IMS GW
 
 Communication between Users and NodeJs can be managed by socket.io
 
