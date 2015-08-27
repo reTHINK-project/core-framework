@@ -80,7 +80,9 @@ It can also facilitate the development and the integration of new connectors, He
       User C -----NodeJs 2 ------|   |------- Node Js Connector to an IMS GW
 
 Communication between Users and NodeJs can be managed by socket.io
+
 Communication between NodeJs and Redis can be managed by a NodesJs Redis client module : https://github.com/NodeRedis/node_redis
+
 Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
 
 Redis instance can be a single instance or a Redis cluster
