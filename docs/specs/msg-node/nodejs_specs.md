@@ -71,7 +71,7 @@ Node Sandbox framework
 ## Usage of Redis with NodeJs
 
 Redis can be used to add scalability/redundancy to the messaging node.
-It can also facilitate the development and the integration of new connectors, Here is a quick architecture : (Fred : Will add a real schema)
+It can also facilitate the development and the integration of new connectors, Here is a quick architecture :
 
 
       User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
@@ -80,7 +80,8 @@ It can also facilitate the development and the integration of new connectors, He
       User C -----NodeJs 2 ------|   |------- Node Js Connector to an IMS GW
 
 Communication between Users and NodeJs can be managed by socket.io
-Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. (http://redis.io/topics/pubsub)
+Communication between NodeJs and Redis can be managed by a NodesJs Redis client module : https://github.com/NodeRedis/node_redis
+Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
 
 Redis instance can be a single instance or a Redis cluster
 
