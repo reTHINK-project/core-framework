@@ -74,13 +74,16 @@ Redis can be used to add scalability/redundancy to the messaging node.
 It can also facilitate the development and the integration of new connectors, Here is a quick architecture : (Fred : Will add a real schema)
 
 
-      User A ---- NodeJs 1 ----- REdis ----- NodeJs Connector to IdM
+      User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
       User B -------|            |   |------- Node Js Connector to another CSP
                                  |   |------- Node Js Connector to Kurento
       User C -----NodeJs 2 ------|   |------- Node Js Connector to an IMS GW
 
+Communication between Users and NodeJs can be managed by socket.io
+Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. (http://redis.io/topics/pubsub)
 
-Communication between the differents NodeJs instance can be manage by the PUB/SUB mechanism of Redis
+Redis instance can be a single instance or a Redis cluster
+
 
 
 
