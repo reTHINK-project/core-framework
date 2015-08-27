@@ -75,8 +75,11 @@ It can also facilitate the development and the integration of new connectors, He
 
 
 User A ---- NodeJs 1 ----- REdis ----- NodeJs Connector to IdM
+
 User B -------|             | |------- Node Js Connector to another CSP
+
                             | |------- Node Js Connector to Kurento
+                            
 User C -----NodeJs 2 -------| |------- Node Js Connector to an IMS GW
 
 
