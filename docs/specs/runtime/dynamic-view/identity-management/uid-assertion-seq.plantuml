@@ -1,23 +1,23 @@
 @startuml
 autonumber
 
-box "Runtime Environment"
+box "Alice Device Runtime"
         participant RuntimeUA as runtime
-        participant "Msg Bus" as msgbus
+        participant "Msg BUS" as msgbus
 end box
-box "IdP Proxy Sandbox"
-        participant "IdP Proxy" as idpproxy
+box "IdP Proxy Sandbox at Alice"
+        participant "Identity Hyperty (IdP Proxy)" as idpproxy
 end box
-box "Hyperty Sandbox"
-        participant "Hyperty Service" as hyperty
+box "Service Provider Sandbox at Alice"
+        participant "Service Provider Hyperty" as hyperty
 end box
-participant "Backend Service" as backend
-participant "Backend IdP" as idp
+participant "Service Provider" as backend
+participant "Identity service Provider" as idp
 
 backend  -> hyperty     : Send(IdToken)
 note right
-        IdToken received through
-        signaling of the Backend Service.
+        Bob's IdToken received through
+        signaling of the Service Provider.
 end note
 
 hyperty  -> msgbus      : Verify(IdToken)
@@ -29,6 +29,7 @@ runtime  -> idpproxy    : <<create>>\n new IdPProxy(proxy)
 
 note over idp
         May be two different server
+        (repository and verify backend)
         but are shown here as the same
         participant.
 end note

@@ -1,4 +1,4 @@
-# Security in Runtime
+## Security in Runtime
 
   In this document, we present an overview about the security in runtime component of the project. In first place, we will define the security goals we want to achieve. Then, possible attacks against those goals are explained. Finally, we present the state of the art on how current systems solve the referred problems, splitting the security runtimes in two distinct areas: 
 
@@ -25,9 +25,9 @@ Multiple attack types can be performed against the hyperty instances, at multipl
 
 *Compromised hardware:* E.g., an attacker manages to gain physical access to the host computer and has the capability to extract secrets directly from the RAM memory or by probing the system bus. This attack can violate the security goals G1, G2, and G3.
 
-## Web Browsers
+### Web Browsers
 
-### Monolithic vs Modular Architectures:
+#### Monolithic vs Modular Architectures:
 
   Traditionally, commercial and open-source web browsers employed a monolithic architecture. This means that both user’s and web application’s data are combined into a single security domain, which brings serious performance/usability and security issues. On the performance/usability side, if a web application crashes during its execution, the whole web browser can be affected, harming the user experience. On the security side, if an attacker exploits an unpatched vulnerability in the browser while a user is using it, he may gain access to the whole user space, being able to execute code on behalf of that user and access its private sensitive information, like credentials.
 
@@ -42,7 +42,7 @@ Multiple attack types can be performed against the hyperty instances, at multipl
 
 Figure 1. Chromium sandbox scheme
 
-### Browser Extensions Security:
+#### Browser Extensions Security:
 
   Browser extensions provide useful additional functionality to web browsers, such as facilitating the access to a website’s content or even as almost standalone applications running on the browser environment. However, these extensions often introduce serious security issues into both user’s browser and websites, because most of the times they’re written by well-meaning developers who are not security experts. Extensions can read and alter users’ bookmarks and preferences, websites’ content and perform requests over the network, many times on behalf of the browser user. Browser extensions are mostly written in JavaScript and HTML, and since JavaScript provides methods for converting a string to code (e.g. eval), an extension may be dangerous if misused.
   Typically, benign extensions face two types of attackers:
@@ -59,7 +59,7 @@ According to [2], Google Chrome and its extension platform apply three mechanism
 
 Figure 2. The architecture of a Google Chrome extension.
 
-### XSS Detection Techniques:
+#### XSS Detection Techniques:
 
 Cross-Site Scripting attacks are getting more common on the web, since they allow an attacker to get control of a user’s browser and execute malicious code (usually JavaScript/HTML) within the trusted context of a web application. This can result in the attacker being able to access any sensitive information associated to the application (cookies, session IDs, etc.).
 	The study of XSS attacks can be split into two distinct categories, according to [3]:
@@ -76,7 +76,7 @@ Figure 3. Scheme of a persistent XSS attack.
 
 Figure 4. Scheme of a non-persistent XSS attack.
 
-### XSS (and other types) prevention techniques:
+#### XSS (and other types) prevention techniques:
 
 * **Analysis and Filtering of the Exchanged Information:**
 
@@ -88,9 +88,9 @@ On other point of view, approaches seen in [6,7] propose the content filtering t
 
 There are also other strategies which try to avoid the need for intermediate elements like proxy-servers by proposing startegies to enforce the runtime context of the web browser. In [8], authors propose an auditing system for the JavaScript interpreter of the Mozilla Firefox browser, which detects misuses on JS operations and take counter-measures to avoid violations on browser’s security. Other approach is also followed by [9], which presents the use of dynamic taint tracking on JavaScript code, in order to detect whether browser’s sensitive resources are going to be transferred to an untrusted third-party. In such case, the user is warned and can decide whether he allows or denies the transfer. Finally, the approach followed by [10] propose a policy-based management where a list of actions is embedded into the documents exchanged between the browser and the server. These actions help the browser to decide whether or not a script should be executed. Although, a lack of semantics in the policy-language and the restrictiveness of the approach due to the sandboxing-like mechanism are some of the drawbacks.
 
-## Secure Elements
+### Secure Elements
 
-### Java Card: Internet Computing on a Smart Card
+#### Java Card: Internet Computing on a Smart Card
 
 In secure computing, a smart card is a typical card with a built-in computer chip. Until a few years ago, it was only used to produce credit and debit cards, whose information can only be accessed when in possession of the card itself and a PIN code. Due to the short information on how to communicate and program them, until a few years ago this useful technology wasn’t being used on computer security in general.
 
@@ -116,7 +116,7 @@ With this in mind, engineers concluded that Java could preserve the required sec
 Java Cards combine smart card’s identity-verification features with the Java “sandbox”, guaranteeing that only allowed applications run on the card and that applications are protected from each other.
 
 
-### Cloud of Secure Elements
+#### Cloud of Secure Elements
 
 Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal is to provide trusted computing resources to mobile and cloud applications. To reach that, it relies on an infrastructure composed by multiple secure microcontrollers, named Secure Elements.
 
@@ -145,37 +145,37 @@ A grid of secure elements is an Internet server hosting multiple secure elements
 
 Despite all the advantages on using Java language in smart cards, such as the absence of low-level memory vulnerabilities, Java Cards still have an open door for attacks through malicious code. This attack entry is possible because an on-card bytecode verifier (BCV) is optional on Java Cards, and those who don't feature it, are more open to malicious code that might damage other applets running on the system or even the platform itself.
 
-## **Defenses against malicious code**
+### **Defenses against malicious code**
 
 Here we present the different mechanisms for protection against malicious code actions present in Java Cards.
 
 
-### **Bytecode verification**
+#### **Bytecode verification**
 
 Bytecode verification of Java code guarantees type safety, and thus, memory safety. On normal Java platform, bytecode verification occurs at load time. Although, since Java Cards do not support dynamic class loading, this verification must occur at the time an applet is installed to the card. However, most Java Cards do not feature an on-card BCV and rely on a digital signature
 of a third party who is trusted to have performed bytecode verification off-card.
 
-### **Applet firewall**
+#### **Applet firewall**
 
 The applet firewall is an additional defense mechanism present in Java Cards. The firewall performs runtime checks to prevent applets from accessing and/or altering data of other applets (concretely, in a different security context). For every object within an applet, the firewall records its context, and for any field or method accessed this context is checked. Only the Java Card Runtime Environment (JCRE) has unlimited permission, since it executes in root-mode, on a UNIX terminology.
 
 
-## **Getting malicious code on cards**
+### **Getting malicious code on cards**
 
-### **CAP file manipulation**
+#### **CAP file manipulation**
 
 This is the easiest way of introducing ill-typed code on a Java Card. This can be achieved by editing a CAP (Converted APplet) file to introduce a type flaw in the bytecode and install it to the card. Although, this will only work for cards without an on-card BCV and with unsigned CAP files. In example, by changing a ```baload``` (byte load) opcode onto a ```saload``` (short load) one, will make the platform treat a byte array as a short array, and can potentially lead to accessing other applet's memory space.
 
-### **Abusing Shareable Interface Objects**
+#### **Abusing Shareable Interface Objects**
 
 The shareable mechanism of Java Card can be used to create type confusion between applets without any direct editing on CAP files. Shareable interfaces allow direct communication between security contexts. Using this to create type confusion is pretty simple: Let two applets communicate through a shareable interface, but compile and generate CAP files for both applets using different definitions of the shareable interface, which is possible because the applets are compiled and loaded separately. This way we can achieve an attack like the CAP file manipulation but without ever touching the CAP file directly.
 
-### **Abusing the transaction mechanism**
+#### **Abusing the transaction mechanism**
 
 The Java Card transaction mechanism is probably the tricliest aspect of the Java Card platform. It allows multiple byte-code instructions to be turned into an atomic operation, offering a roll-back mechanism in case the operation is aborted, either through card tear or calling an API method. Buggy implementations of the transaction mechanism in some cards tend to make it not behave as expected. When object references are spread around the code, by assignments to instance fields and local variables, it becomes difficult for the mechanism to keep track of all the references that should be nulled out. The root cause of the problem is that stack-allocated variables, such as ```short[] localArray``` are not subject to roll-back in the event of a programatically transaction abort (through API method call).
 
 
-## **Dynamic countermeasures**
+### **Dynamic countermeasures**
 
 Now we present some dynamic runtime checks implemented by some VMs in order to prevent ill-typed code to damage the Java Card platform. These were verified by [13], by performing tests on multiple Java Card models of multiple manufacturers against the referred vulnerabilities.
 
@@ -186,7 +186,7 @@ Now we present some dynamic runtime checks implemented by some VMs in order to p
 * Integrity checks in memory
 
 
-# **Automated Analysis of Security-Critical JavaScript APIs**
+## **Automated Analysis of Security-Critical JavaScript APIs**
 
 Current web applications usually rely on JavaScript in order to offer additional features like maps, widgets or social media content. Although, since these additions may manipulate a page Document Object Model (DOM), steal cookies or navigate on the page, untrusted third-party JavaScript may pose security threats to the hosting page.
 
