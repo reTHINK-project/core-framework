@@ -10,7 +10,7 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 #### [Alice is aknowledged Bob received Invitation](h2h-intra-comm-3-alice-is-aknowledged-invitation-received.md)
 
-#### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice](h2h-intra-comm-2-accepted.md)
+#### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice](h2h-intra-comm-4-accepted.md)
 
 ### H2H Inter-domain Communication
 
