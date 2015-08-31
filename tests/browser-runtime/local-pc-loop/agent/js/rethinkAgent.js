@@ -4,14 +4,14 @@ import ExternalAgents from './rethink/externalAgents';
 
 import * as config from './configs/config';
 
-class RethinkAgent extends ObjectEvent {
+export class RethinkAgent extends ObjectEvent {
 
   constructor(isInitiator) {
 
     super();
 
     var _this = this;
-    
+
     var localAgent = new LocalAgent(isInitiator);
     localAgent.addEventListener('remote:stream:added', function(stream) {
       _this.trigger('remote:stream:added', stream);
@@ -26,13 +26,13 @@ class RethinkAgent extends ObjectEvent {
     });
 
     externalAgent.addEventListener('remote:stream:added', function(stream) {
-      _this.trigger('remote:stream:added', stream);
       // console.log('remote stream added: ', stream);
+      _this.trigger('remote:stream:added', stream);
     });
 
     externalAgent.addEventListener('local:stream:added', function(stream) {
-      _this.trigger('local:stream:added', stream);
       // console.log('local stream added: ', stream);
+      _this.trigger('local:stream:added', stream);
     });
 
     externalAgent.addEventListener('call:incoming', function(data) {
@@ -84,5 +84,7 @@ class RethinkAgent extends ObjectEvent {
 
 }
 
-module.exports = RethinkAgent;
-window.RethinkAgent = RethinkAgent;
+// module.exports = RethinkAgent;
+// window.RethinkAgent = RethinkAgent;
+
+export default RethinkAgent;

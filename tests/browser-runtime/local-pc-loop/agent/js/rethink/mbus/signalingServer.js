@@ -5,10 +5,6 @@ import config from '../../configs/config';
 
 export class SignalingServer extends ObjectEvent {
 
-  data;
-  initiators;
-  clients;
-
   constructor() {
 
     super();
@@ -46,7 +42,7 @@ export class SignalingServer extends ObjectEvent {
         creator: true,
         room: room,
         isInitiator: false,
-        clientId: clientId,
+        clientId: clientId
       };
 
       _this.clients[clientId] = data;
@@ -62,7 +58,7 @@ export class SignalingServer extends ObjectEvent {
         creator: false,
         room: room,
         isInitiator: true,
-        clientId: clientId,
+        clientId: clientId
       };
 
       _this.clients[clientId] = data;
@@ -96,7 +92,7 @@ export class SignalingServer extends ObjectEvent {
       var isInitiator = _this.initiators[clientId] ? _this.initiators[clientId] : false;
       data.isInitiator = isInitiator;
 
-      console.info('Ready to create a peer connection where ' , clientId , ' is initiator ', isInitiator);
+      console.info('Ready to create a peer connection where ', clientId, ' is initiator ', isInitiator);
 
       _this.trigger('room:ready', data);
     });
@@ -153,8 +149,8 @@ export class SignalingServer extends ObjectEvent {
   * Updates URL on the page so that users can copy&paste it to their peers.
   */
   updateRoomURL(ipaddr) {
-    var url;
-    return url = config.rethink.server;
+    var url = config.rethink.server;
+    return url;
   }
 
 }

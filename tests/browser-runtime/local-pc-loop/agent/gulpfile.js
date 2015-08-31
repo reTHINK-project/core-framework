@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var babelify = require('babelify');
+var argv = require('yargs').argv;
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var watchify = require('watchify');
@@ -12,6 +13,17 @@ var compass = require('gulp-compass');
 var assign = require('lodash').assign;
 var browserSync = require('browser-sync').create();
 var Server = require('karma').Server;
+var jscs = require('gulp-jscs');
+
+gulp.task('jscs', function() {
+
+  return gulp.src(['js/**/*.js', 'test/**/*.js'])
+  .pipe(jscs({
+    esnext: true,
+    fix: false
+  }));
+
+});
 
 function handleError(err) {
   gutil.log(gutil.colors.red(err.toString()));
@@ -40,7 +52,7 @@ gulp.task('agent', function(done) {
   browserify({
     insertGlobals: true,
     entries: './js/rethinkAgent.js',
-    debug: true,
+    debug: true
   }).transform(babelify.configure({compact: false}))
   .bundle()
   .on('error', handleError)
@@ -52,49 +64,133 @@ gulp.task('agent', function(done) {
   });
 });
 
-// add custom browserify options here
-var customOpts = {
-  entries: ['./js/main.js'],
-  debug: true,
-};
-var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
-b.transform(babelify.configure({
-  compact: false,
-}));
+gulp.task('main-task', function(done) {
 
-gulp.task('main', bundle);
-b.on('update', bundle);
-b.on('log', gutil.log);
+  // add custom browserify options here
+  var customOpts = {
+    entries: ['./js/main.js'],
+    debug: true
+  };
+  var opts = assign({}, watchify.args, customOpts);
+  var b = watchify(browserify(opts));
+  b.transform(babelify.configure({
+    compact: false
+  }));
 
-function bundle() {
+  gulp.task('main', bundle);
+  b.on('update', bundle);
+  b.on('log', gutil.log);
 
-  return b.bundle()
+  function bundle() {
 
-    // log errors if they happen
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-    .pipe(source('main.js'))
+    return b.bundle()
 
-    // optional, remove if you don't need to buffer file contents
-    .pipe(buffer())
+      // log errors if they happen
+      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+      .pipe(source('main.js'))
 
-    // optional, remove if you dont want sourcemaps
-    .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-    // Add transformation tasks to the pipeline here.
-    .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('./dist'));
-}
+      // optional, remove if you don't need to buffer file contents
+      .pipe(buffer())
+
+      // optional, remove if you dont want sourcemaps
+      .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+      // Add transformation tasks to the pipeline here.
+      .pipe(sourcemaps.write('./')) // writes .map file
+      .pipe(gulp.dest('./dist'));
+  }
+
+  gulp.start(['main']);
+
+});
+
+gulp.task('workers', function(done) {
+
+  // add custom browserify options here
+  var customOpts = {
+    entries: ['./js/rethink/workers/protoStub.js'],
+    debug: true
+  };
+  var opts = assign({}, watchify.args, customOpts);
+  var b = watchify(browserify(opts));
+  b.transform(babelify.configure({
+    compact: false
+  }));
+
+  gulp.task('main', bundle);
+  b.on('update', bundle);
+  b.on('log', gutil.log);
+
+  function bundle() {
+
+    return b.bundle()
+
+      // log errors if they happen
+      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+      .pipe(source('protoStub.js'))
+
+      // optional, remove if you don't need to buffer file contents
+      .pipe(buffer())
+
+      // optional, remove if you dont want sourcemaps
+      .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+      // Add transformation tasks to the pipeline here.
+      .pipe(sourcemaps.write('./')) // writes .map file
+      .pipe(gulp.dest('./dist/workers/'));
+  }
+
+  gulp.start(['main']);
+
+});
+
+gulp.task('rethink', function(done) {
+
+  // add custom browserify options here
+  var customOpts = {
+    entries: ['./js/rethink.js'],
+    debug: true
+  };
+  var opts = assign({}, watchify.args, customOpts);
+  var b = watchify(browserify(opts));
+  b.transform(babelify.configure({
+    compact: false
+  }));
+
+  gulp.task('main', bundle);
+  b.on('update', bundle);
+  b.on('log', gutil.log);
+
+  function bundle() {
+
+    return b.bundle()
+
+      // log errors if they happen
+      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+      .pipe(source('rethink.js'))
+
+      // optional, remove if you don't need to buffer file contents
+      .pipe(buffer())
+
+      // optional, remove if you dont want sourcemaps
+      .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+      // Add transformation tasks to the pipeline here.
+      .pipe(sourcemaps.write('./')) // writes .map file
+      .pipe(gulp.dest('./dist'));
+  }
+
+  gulp.start(['main']);
+
+});
 
 gulp.task('installer', function(done) {
   browserify({
     insertGlobals: true,
-    entries: './js/rethink.js',
-    debug: true,
+    entries: './js/rethinkInstaller.js',
+    debug: true
   })
   .transform(babelify.configure({compact: false}))
   .bundle()
   .on('error', handleError)
-  .pipe(source('rethink.js'))
+  .pipe(source('rethinkInstaller.js'))
   .pipe(gulp.dest('./dist'))
   .on('end', function() {
     gutil.log(gutil.colors.green('Rethink file has been processed'));
@@ -117,19 +213,30 @@ gulp.task('sass:watch', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./js/rethink.js', ['installer']);
+  gulp.watch('./js/rethinkInstaller.js', ['installer']);
   gulp.watch('./js/rethinkAgent.js', ['agent']);
 });
-
 
 /**
  * Run test once and exit
  */
-gulp.task('test', function (done) {
+gulp.task('test', function(done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('default', ['clean', 'main', 'installer', 'agent', 'watch', 'compass', 'sass:watch']);
+/**
+ * Watch for file changes and re-run tests on each change
+ */
+gulp.task('tdd', function(done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
+});
+
+gulp.task('dev', ['js', 'sass', 'watch', 'sass:watch']);
+gulp.task('js', ['clean', 'workers', 'main-task', 'installer', 'agent', 'rethink']);
+gulp.task('sass', ['compass']);
+gulp.task('default', ['clean', 'dev']);

@@ -1,4 +1,4 @@
-module.exports = {
+var utils = {
 
   randomToken: function() {
     return Math.floor((1 + Math.random()) * 1e16).toString(16).substring(1);
@@ -41,4 +41,23 @@ module.exports = {
       segments: a.pathname.replace(/^\//, '').split('/')
     };
   }
-}
+
+};
+
+(function() {
+
+  var all;
+  if (typeof self !== 'undefined') {
+    all = self; // Web Worker
+  } else if (typeof window !== 'undefined') {
+    all = window; // Browser
+  } else if (typeof global !== 'undefined') {
+    all = global; // NodeJS
+  }
+
+  all.utils = utils;
+
+  if (typeof module !== 'undefined') {
+    module.exports = utils;
+  }
+})();
