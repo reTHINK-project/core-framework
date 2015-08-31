@@ -22,7 +22,7 @@ rectangle "host | app.domain" {
     component [video] as GUIVideo
     component [app.js] as App
     
-    component [WebRTC User Agent] as PeerLocal
+    component [HypertyAPIStub] as PeerLocal
     component [WebRTC API] as WebRTCApiLocal
 
     rectangle rething.js {
@@ -49,8 +49,9 @@ rectangle "host | app.domain" {
                 auth
             endnote
 
-            node "Web Worker\nHyperty 1" as W1 {
+            node "Web Worker\nwith ProtoStub" as WPS {
               [ProtoStub] as PS
+              [Hyperty\nWebRTCAgent] as HWRTCA
             }
         
             node "Web Worker\nHyperty 2" as W2 {
@@ -72,7 +73,6 @@ rectangle "host | app.domain" {
             
                 rectangle "Message Bus Events" as MsgBusEvent {
                     component [* Message BUS *] as MsgBus
-                    component [* Message BUS (crud) *] as MsgBusCrud
                 }
             }
 
@@ -80,9 +80,8 @@ rectangle "host | app.domain" {
     }
 }
 
-Auth <-[hidden]down-> WebRTCDevice
+Auth <-[hidden]up-> WebRTCDevice
 WebRTCApiRemote <-[hidden]down-> Core
-
 
 App -down-> APIStub
 APIStub -down-> MsgBus
@@ -91,23 +90,21 @@ GUIVideo -left-> PeerLocal
 PeerLocal <-left-> WebRTCApiLocal
 PeerLocal <-down-> PeerRemote : Peer Connection
 PeerRemote <-right-> WebRTCApiRemote
-PeerRemote <-down-> MsgBus
-WebRTCApiRemote <-right-> WebRTCDevice : WebRTC API\nConnection with\nexternal device
+PeerRemote <-down-> HWRTCA  : only postMessage\nare allowed
+WebRTCApiRemote <-up-> WebRTCDevice : WebRTC API\nConnection with\nexternal device
 
-Registry -down-> MsgBusEvent
+Registry -right-> MsgBusEvent
 IContainer -left- Registry
 
-MsgBus <-> Policy
-MsgBusCrud <-> Policy
-PDP -left-> Policy
+MsgBus <-down-> Policy
+PDP -right-> Policy
 
-Policy <-right-> W1 : only postMessage\nare allowed
-Policy <-right-> W2 : only postMessage\nare allowed
-Policy <-down-> W3 : only postMessage\nare allowed
+PS <-right-> MNode
 
+Policy <-right-> W3 : only postMessage\nare allowed
+Policy <-left-> W2 : only postMessage\nare allowed
 
-MsgBusCrud <-right-> MNode : Send CRUD Messages\nto message node
-Agent <-right-> Auth
+Agent <-right-> Auth : Verify\ncredentials
 
 @enduml
 -->
