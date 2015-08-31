@@ -11,10 +11,14 @@ This section attempts to match the functional blocks of the Message Node archite
 #### Message BUS
 
 The requirements towards the Message Bus are defined as:
-* to route messages to internal Messaging Node components and external elements by using Connectors or Protocol Stubs. (**What is the difference of a connector and a protocol stub?**)
+* to route messages to internal Messaging Node components and external elements by using Connectors or Protocol Stubs.
 * to support different communication patterns including publish/subscribe communication.
 
-These requirements are fulfilled out-of-the-box by standard matrix features. In order to route messages to internal Messaging Node components it might be required to treat such components as "users" that can be addressed and perform the same communication tasks as normal users.
+The pure routing requirements are fulfilled out-of-the-box by standard matrix features. In order to route messages to internal Messaging Node components it might be required to treat such components as "users" that can be addressed and perform the same communication tasks as normal users.
+
+Connectors are comparable to protocol stubs, except that they are not downloaded to the Messaging Node clients and instead are executed in the scope of the Messaging Node. Such Connectors can provide support for different "legacy" clients that don't support Protocol-on-the-fly.
+Matrix does not provide this out-of-the-box. Additional components have to be implemented that should be plugged into the first step of the message flow and perform the required protocol translations. The Matrix concept of "Application Services" could eventually applied here (see later section "Stub and Connector Management").
+
 
 #### Access Control
 
@@ -78,9 +82,11 @@ Manages allocation of messaging addresses to Hyperty Instances in cooperation wi
 It also manages the allocation of messaging addresses to foreign Hyperty Instances i.e. Hyperty Instances that are provided from external domains but that use the protofly concept to interact with Hyperty Instances served by this Messaging Node.
 
 
-The assumption is that each hyperty is an individual client of the Messaging Node that registers with an own identity and needs a login before it can exchange messages. The Messaging Node allocates the identity of a hyperty during the registration/subscription process.
+Each hyperty instance should be treated as an individual client of the Messaging Node that registers with an own identity and needs a login before it can exchange messages. The Messaging Node allocates the identity of a hyperty during the registration/subscription process. The allocated identity of is sufficient to serve as a messaging address for domain internal communication.
 
-The allocation/assignment of addresses for foreign hyperty instances should not be the task of the own domains messaging node because foreign domain instances should not be registerd/subscribed with this node. Nevertheless the Messaging Node should be able to forward messages to such external Hyperty instances inferred from their Identity.
+External Hyperties from foreign domains (that might use different communication protocols and identifiers) might need an address representation in the own domain that is compatible with the local addressing scheme. A SIP based domain, for instance, will require a representation of an external entitiy as a SIP URI in order to route messages correctly. The Messaging Node is responsible for the creation and assignment of such transient addresses.
+
+In Matrix.org this can be achieved with Application Services, which maintain an own namespace of virtual users and are able to operate (send/receive) "on behalf" of an certain virtual user.
 
 
 ### Protocol Stub
@@ -95,7 +101,4 @@ An approach to achieve this was described above in section "Stub and connector m
 * End-User Device Connector to interact with Hyperty Instances running in the end-user device
 * Network Server Connector to interact with Hyperty Instances running in a Network Server
 
-
-I'm not sure about the purpose of these connectors. **Isn't their intention to provide message exchange with other functional components/hyperties in the own domain? Would these components not be registered with the same Messaging Node and would exchange messages via the Message Bus directly?**
-
-Otherwise these connectors would be "normal" stubs that are handled by the Protocol-on-the-fly engine.
+The concept of connectors can be supported by the implementation of appropriate Application Services, as mentioned above already. These connectors would be executed in the scope of the Messaging Node and perform the required protocol translations.
