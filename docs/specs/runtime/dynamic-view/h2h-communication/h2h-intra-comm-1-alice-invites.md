@@ -78,7 +78,7 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 -->
 
 
-![H2H Intradomain Communication : create communication](h2h-intra-comm-create.png)
+![H2H Intradomain Communication : Alice invites Bob](h2h-intra-comm-1-alice-invites-bob.png)
 
 
 Steps 1 - 4 : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
