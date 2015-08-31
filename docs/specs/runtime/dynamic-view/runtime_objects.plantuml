@@ -89,7 +89,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP2SandboxAtRuntimeA
-		box "Service Provider 2 Sandbox at Alice Device"
+		box "Service Provider 2\n Sandbox at Alice Device"
 			!ifdef SHOW_Protostub2AtRuntimeA
 			participant "SP2\nprotoStub" as Proto2@A
 			!endif
@@ -99,7 +99,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_ServiceProvider2RouterAtRuntimeA
-			participant "Service Provider2\nRouter" as Router2@A
+			participant "Service Provider2\nPEP" as Router2@A
 			!endif
 
 			!ifdef SHOW_Syncher2AtRuntimeA
