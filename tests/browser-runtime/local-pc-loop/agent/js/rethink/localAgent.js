@@ -8,8 +8,6 @@ import signalingBus from './mbus/signalingBus';
 
 export class LocalAgent extends ObjectEvent {
 
-  isInitiator;
-
   constructor(isInitiator) {
 
     super();

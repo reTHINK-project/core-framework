@@ -90,37 +90,35 @@ export class Agent extends ObjectEvent {
 
     _this.sb.addEventListener('message', function(message) {
 
-      // console.info('MESSAGE:', message.type, message);
-
       if (message.type === 'offer' || message.type === 'answer') {
 
-        peerConnection.setRemoteDescription(new RTCSessionDescription(message), function() {}, function(error) {
-
-          console.error('error: ', error);
-
-        });
+        peerConnection.setRemoteDescription(new RTCSessionDescription(message), _this.remoteDescriptionSuccess, _this.remoteDescriptionError);
 
         if (message.type === 'offer') {
-
-          // console.info('Got ', message.type, '. Sending answer to peer.');
-
           if (_this.isInternal) {
             _this.createAnswer();
           }
-
-        } else {
-          // console.log('Got ', message.type, '.');
         }
 
       } else if (message.type === 'candidate') {
         peerConnection.addIceCandidate(new RTCIceCandidate({candidate: message.candidate}));
-      } else if (message === 'bye') {
-        // TODO: cleanup RTC connection?
-        // console.log('clean up rtc connections');
       }
+
+      // TODO: cleanup RTC connection?
+      // else if (message === 'bye') {
+      //   console.log('clean up rtc connections');
+      // }
 
     });
 
+  }
+
+  remoteDescriptionSuccess() {
+
+  }
+
+  remoteDescriptionError(error) {
+    console.error('error: ', error);
   }
 
   addStream(stream) {

@@ -19,6 +19,7 @@
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
+    "gulp-jscs": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.4",
@@ -27,10 +28,14 @@
     "karma-browserify": "^4.3.0",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
+    "karma-html-reporter": "^0.2.6",
     "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
     "lodash": "^3.10.1",
+    "phantomjs": "^1.9.18",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^3.21.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -9,9 +9,6 @@ import signalingServer from './mbus/signalingServer';
 
 export class ExternalAgents extends ObjectEvent {
 
-  participants;
-  streams;
-
   /**
    * [constructor description]
    * @method constructor
@@ -46,7 +43,6 @@ export class ExternalAgents extends ObjectEvent {
 
     signalingServer.addEventListener('room:joined:peer', function(data) {
       _this.isInitiator = true;
-      // _this.participant = data,
       console.info('CLIENT JOINED:', data);
       _this.callInProgress = true;
     });
@@ -100,7 +96,7 @@ export class ExternalAgents extends ObjectEvent {
 
     if (agent.isInitiator) {
 
-      console.log("Stream: ", _this.streams, _this.streams[data.from]);
+      console.log('Stream: ', _this.streams, _this.streams[data.from]);
 
       _this.addStream(_this.streams[data.from]);
     }
@@ -147,7 +143,7 @@ export class ExternalAgents extends ObjectEvent {
 
     var _this = this;
 
-    console.log("room: ", room);
+    console.log('room: ', room);
 
     _this.streams[_this.owner.clientId] = stream;
     signalingServer.joinTo(room, _this.owner);
@@ -155,7 +151,6 @@ export class ExternalAgents extends ObjectEvent {
     console.info('call to and get stream: ', _this.participant, _this.owner, _this.streams);
 
     _this.trigger('local:stream:added', stream);
-
 
     /*_this.getMedia().then(function(stream) {
 

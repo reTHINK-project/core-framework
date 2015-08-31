@@ -4,6 +4,10 @@ import _ from 'underscore';
 
 import ExternalAgents from './rethink/externalAgents';
 
+import rethink from './rethink';
+window.rethink = rethink;
+console.log(rethink);
+
 var callBtn = document.querySelector('.call');
 var cancelBtn = document.querySelector('.cancel');
 var roomField = document.querySelector('.room-id');
@@ -55,7 +59,6 @@ callBtn.addEventListener('click', function(e) {
       externalAgent.callTo(room, stream);
     });
 
-
   }
 
   e.preventDefault();
@@ -78,6 +81,6 @@ externalAgent.addEventListener('remote:stream:added', function(stream) {
 });
 
 externalAgent.addEventListener('local:stream:added', function(stream) {
-  document.querySelector('.local-video').src = URL.createObjectURL(stream);
   // console.log('local:stream:added');
+  document.querySelector('.local-video').src = URL.createObjectURL(stream);
 });

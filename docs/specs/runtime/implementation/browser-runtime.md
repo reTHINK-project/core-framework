@@ -22,7 +22,7 @@ rectangle "host | app.domain" {
     component [video] as GUIVideo
     component [app.js] as App
     
-    component [WebRTC User Agent] as PeerLocal
+    component [HypertyAPIStub] as PeerLocal
     component [WebRTC API] as WebRTCApiLocal
 
     rectangle rething.js {
@@ -49,8 +49,9 @@ rectangle "host | app.domain" {
                 auth
             endnote
 
-            node "Web Worker\nHyperty 1" as W1 {
+            node "Web Worker\nwith ProtoStub" as WPS {
               [ProtoStub] as PS
+              [Hyperty\nWebRTCAgent] as HWRTCA
             }
         
             node "Web Worker\nHyperty 2" as W2 {
@@ -72,7 +73,6 @@ rectangle "host | app.domain" {
             
                 rectangle "Message Bus Events" as MsgBusEvent {
                     component [* Message BUS *] as MsgBus
-                    component [* Message BUS (crud) *] as MsgBusCrud
                 }
             }
 
@@ -80,9 +80,8 @@ rectangle "host | app.domain" {
     }
 }
 
-Auth <-[hidden]down-> WebRTCDevice
+Auth <-[hidden]up-> WebRTCDevice
 WebRTCApiRemote <-[hidden]down-> Core
-
 
 App -down-> APIStub
 APIStub -down-> MsgBus
@@ -91,23 +90,21 @@ GUIVideo -left-> PeerLocal
 PeerLocal <-left-> WebRTCApiLocal
 PeerLocal <-down-> PeerRemote : Peer Connection
 PeerRemote <-right-> WebRTCApiRemote
-PeerRemote <-down-> MsgBus
-WebRTCApiRemote <-right-> WebRTCDevice : WebRTC API\nConnection with\nexternal device
+PeerRemote <-down-> HWRTCA  : only postMessage\nare allowed
+WebRTCApiRemote <-up-> WebRTCDevice : WebRTC API\nConnection with\nexternal device
 
-Registry -down-> MsgBusEvent
+Registry -right-> MsgBusEvent
 IContainer -left- Registry
 
-MsgBus <-> Policy
-MsgBusCrud <-> Policy
-PDP -left-> Policy
+MsgBus <-down-> Policy
+PDP -right-> Policy
 
-Policy <-right-> W1 : only postMessage\nare allowed
-Policy <-right-> W2 : only postMessage\nare allowed
-Policy <-down-> W3 : only postMessage\nare allowed
+PS <-right-> MNode
 
+Policy <-right-> W3 : only postMessage\nare allowed
+Policy <-left-> W2 : only postMessage\nare allowed
 
-MsgBusCrud <-right-> MNode : Send CRUD Messages\nto message node
-Agent <-right-> Auth
+Agent <-right-> Auth : Verify\ncredentials
 
 @enduml
 -->
@@ -118,6 +115,9 @@ Agent <-right-> Auth
     window.addEventListener('message', handleSizingResponse, false); 
 implemented by the Runtime MsgBUS Core Component
 * The same Service Worker may also be used to manage the cache of Hyperties and protostubs
+* Since it is not possible to use webrtc APIs inside a web worker, there will be a "reTHINK WebRTC" component inside the iFrame but outside the web worker, that is in charge of interacting with the WebRTC API on behalf of Hyperties running inside Web Workers, through messages exchanged between Hyperties and the "reTHINK WebRTC". There will be a "HypertyWebRTCAgent" that will expose standard WebRTC APIs to be used by the Hyperty. In this way the Hyperty is not aware that it is not interacting directly with the native WebRTC API. It should be analysed whether communication between "reTHINK WebRTC" and "HypertyWebRTCAgent" will be supported by the Message BUS or by something else.
+* Since the Hyperty API to be consumed by the Application can't be directly used by the App (cos it is inside a Web Worker) there will a kind of RPC communication through messages exchanged between the HypertyAPIStub component running on the App side and an API Skeleton running on Hyperty side. It should be analysed whether communication between these components will be supported by the Message BUS or by something else.
+* in addition, and since it is not possible to pass WebRTC Media and Data Streams handled inside the iFrame towards the Application that is outside the iFrame, a local loop peerconnection is established between the "reTHINK WebRTC" and the "HypertyAPIStub" running on Application side. See more details below.
 
 
 ![](Runtime_Browser_Implementation.png)

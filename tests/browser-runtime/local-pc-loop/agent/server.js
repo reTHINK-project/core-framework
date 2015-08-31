@@ -6,7 +6,7 @@ var _ = require('underscore');
 
 var port = 8080;
 
-var fileServer = new(static.Server)();
+var fileServer = new static.Server();
 
 var app = http.createServer(function(req, res) {
   fileServer.serve(req, res);
