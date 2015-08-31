@@ -14,3 +14,6 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 ### H2H Inter-domain Communication
 
+#### [Alice Invites Bob](h2h-inter-comm-1-alice-invites.md)
+
+The remaining steps are similar to intra domain communication *or should we consider the usage of different IdPs?*
