@@ -1,6 +1,6 @@
 ### H2H Intradomain Communication - create communication
 
-This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob. It finishes when the invitation reaches Bob's device and the Communication object is created at Bob's device.
+This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob. 
 
 <!--
 @startuml "h2h-intra-comm-1-alice-invites-bob.png"
@@ -78,7 +78,7 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 -->
 
 
-![H2H Intradomain Communication : create communication](h2h-intra-comm-create.png)
+![H2H Intradomain Communication : Alice invites Bob](h2h-intra-comm-1-alice-invites-bob.png)
 
 
 Steps 1 - 4 : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
@@ -100,19 +100,6 @@ Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and
 
 Steps 10 : Alice's PEP applies local policies if required including outgoing communication request access control
 
-Steps 11 - 16 : the message is routed through Alice Message BUS, Service Provider Back-end Messaginge Service and Bob's Message BUS, reaching Bob's PEP component
+Steps 11 - 13 : the message is routed through Alice Message BUS reaching Service Provider Back-end Messaginge Service.
 
-Step 17 : Bob's PEP applies local policies if required including incoming communication request access control
 
-Steps 18 - 21 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
-
-Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
-
-```
-"id" : "1"
-"type" : "RESPONSE",
-"from" : "hyperty-instance://sp1/bobhy123",
-"to" : "hyperty-instance://sp1/alicehy123",
-"contextId" : "qwertyuiopasdfghjkl",
-"body" : { "code" : "200" , "description" : "ok"}
-```

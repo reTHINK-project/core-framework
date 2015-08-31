@@ -1,6 +1,6 @@
 ### H2H Intradomain Communication - create communication
 
-This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob. It finishes when the invitation reaches Bob's device and the Communication object is created at Bob's device.
+This MSC diagrams shows how Bob receives invitation from Bob. 
 
 <!--
 @startuml "h2h-intra-comm-2-bob-receives-invitation.png"
@@ -62,35 +62,16 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 -->
 
 
-![H2H Intradomain Communication : create communication](h2h-intra-comm-create.png)
+![H2H Intradomain Communication : bob receives invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
 
-Steps 1 - 4 : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
+Steps 1 - 3 : Service Provider Back-end Messaginge Service routes the message to Bob's Message BUS, reaching Bob's PEP component
 
-Steps 5 - 7 : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection). 
+Step 4 : Bob's PEP applies local policies if required including incoming communication request access control
 
-Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
+Steps 5 - 8 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
 
-**[Create Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
-
-```
-"id" : "1"
-"type" : "CREATE",
-"from" : "hyperty-instance://sp1/alicehy123",
-"to" : "hyperty-instance://sp1/bobhy123",
-"contextId" : "qwertyuiopasdfghjkl",
-"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
-```
-
-Steps 10 : Alice's PEP applies local policies if required including outgoing communication request access control
-
-Steps 11 - 16 : the message is routed through Alice Message BUS, Service Provider Back-end Messaginge Service and Bob's Message BUS, reaching Bob's PEP component
-
-Step 17 : Bob's PEP applies local policies if required including incoming communication request access control
-
-Steps 18 - 21 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
-
-Steps 22 - 30 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
+Steps 9 - 12 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
 
 ```
 "id" : "1"
