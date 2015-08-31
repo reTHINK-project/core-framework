@@ -17,7 +17,7 @@ participant "Identity service Provider" as idp
 backend  -> hyperty     : Send(IdToken)
 note right
         Bob's IdToken received through
-        signaling of the Backend Service.
+        signaling of the Service Provider.
 end note
 
 hyperty  -> msgbus      : Verify(IdToken)
