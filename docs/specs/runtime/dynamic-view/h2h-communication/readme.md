@@ -11,3 +11,6 @@ To be done by Paulo, Arnaut and Nuno.
 #### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice](h2h-intra-comm-2-accepted.md)
 
 To be done by Steffen and Santiago.
+
+### H2H Inter-domain Communication
+
