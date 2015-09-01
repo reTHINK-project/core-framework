@@ -26,7 +26,7 @@ New Api could be available in crosswalk before they get standardized at the W3C 
 ##cordova /Ionic / phonegap
 Apache Cordova is a library used to create native mobile applications using Web technologies. The application is created using HTML, CSS and JavaScript and compiled for each specific platform using the platform native tools. Cordova provides a standard set of JavaScript APIs to access device features on all supported platforms. Additional features can be provided through the development of plugins
 
-##Cordova fonctionnal schema
+##Cordova functionnal schema
 ![cordova](./cordova_archi.jpg)
 
 
@@ -43,12 +43,13 @@ Cordova has a high quality plugin API, we just need more great plugins that expo
 
 ##Some plugin examples
 
-- iosrtc
+### iosrtc
 iosrtc is a wrapper around Google’s WebRTC library and simply provides  PeerConnection, getMediaDevices and getUserMedia APIs , without any limitations or artificial constraints.
 
-- Crosswalk
-The crosswalk plugin aimed at replacing default Android Webview with Crosswalk Webview, bringing all new functionalities of Chrome. 
+### Crosswalk-based Cordova Android
+Crosswalk-based Cordova Android is derived from Cordova Android and uses Crosswalk as the HTML5 runtime. It is an Android application library that allows for Cordova-based projects to be built for the Android Platform. It is aimed at replacing default Android Webview with Crosswalk Webview, bringing all new functionalities of Chrome.
 
+This solution has been succesfully used by companies part of the reTHINK project to develop WebRTC hybrid applications so it is a suitable candidate to be used to implement standalone reTHINK applications for Android.   
 
 ##Cordova vs PhoneGap
 Cordova is the community powered version of PhoneGap, which is Adobe’s productized version and ecosystem on top of Cordova. 
