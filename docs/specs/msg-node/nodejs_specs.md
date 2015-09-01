@@ -49,23 +49,21 @@ The Registry provides an interface for registration and deregistration of Hypert
 The implementation of the Registry service is thought to be basically a distributed database. 
 It will provide service interfaces for CRUD operations to allow users to retrieve data for a given GraphID, publish (i.e. create, update, and delete) their own information on the ring. To verify authenticity and integrity of the published data, digital signatures will be applied. The Connector will exposed the available interfaces of the Registry Services to users of managing Hyperty instances.   
 
-####LWM2M
-There is an available LWM2M library for node.js which may be helpful to implement the Registry interface:
-https://github.com/telefonicaid/lwm2m-node-lib
+####LWM2M library
+There is an available [LWM2M/COAP library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) which may be helpful to implement a COAP/interface for constrained devices along with other interfaces for the rest of devices.   
+
 
 
 ### IdM Connector
 This Connector is to provide functionalities for interacting with the remote Identity Management Functionailities. 
 Node.js can easily interact with OAuth servers in order to authenticate and authorize users.
 
-It this is for authentication purpose the authentication agoinst the IdP has to be done at the begining. 
+It this is for authentication purpose the authentication agqinst the IdP has to be done at the begining. 
 If the CRUD operations have to be authorized on a per identity basis (e.g. user A, correctly authenticated, is only allowed to do 'RU' over a Data Objet) we should get 
 
 ### Node Sandbox framework
 
-[Node-sandbox] (https://www.npmjs.com/package/node-sandbox) is a way of running untrusted code outside of the main node process. The code can be interfaced with code running in the sandbox via RPC (or any library that works over the node Stream API).
-Node Sandbox framework 
-
+[Node-sandbox](https://www.npmjs.com/package/node-sandbox) allows to run untrusted code outside of the main node process. The code can be interfaced with code running in the sandbox via RPC (or any library that works over the node Stream API). 
 
 
 ## Usage of Redis with NodeJs
