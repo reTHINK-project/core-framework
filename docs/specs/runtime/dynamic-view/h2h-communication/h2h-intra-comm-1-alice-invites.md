@@ -70,6 +70,12 @@ Router1@A -> Router1@A : apply policies
 
 Router1@A -> BUS@A : postMsg(Create MSG) 
 
+group insert Alice ID Token as defined in IDM/User Id Assertion diagram
+
+	BUS@A -> BUS@A : add ID Token to Message
+
+end group
+
 Proto1@A <- BUS@A : postMsg(Create MSG) 
 
 Proto1@A -> SP1 : postMsg(Create MSG) 
@@ -100,6 +106,7 @@ Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and
 
 Steps 10 : Alice's PEP applies local policies if required including outgoing communication request access control
 
-Steps 11 - 13 : the message is routed through Alice Message BUS reaching Service Provider Back-end Messaginge Service.
+Steps 11 : Alice ID Token assertion is added to the message (see [here](../identity-management/user-identity-assertion.md) for more details).
 
+Steps 12 - 14 : the message is routed through Alice Message BUS reaching Service Provider Back-end Messaginge Service.
 

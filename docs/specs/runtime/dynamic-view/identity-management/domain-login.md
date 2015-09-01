@@ -46,15 +46,32 @@ group Associate Hyperty with Identity diagram included in the IdM
 	RunUA@A -> RunReg@A : set Identity
 end
 
-alt explicit Login
+	RunUA@A -> SP1H@A : start
 
+alt explicit Login 
 	note over RunUA@A
-		A first option is to provide a function
-		to explicitely connect to the domain
-		to be called by the Runtime User Agent.
+		A first option is the Hyperty 
+		to explicitely ask to connect 
+		with a certain Id.
 	end note
 
-	RunUA@A -> Proto1@A : connect(ID Token)
+	SP1H@A -> Router1@A : postMessage(login message)
+
+	BUS@A <- Router1@A : postMessage(login message)
+
+	BUS@A -> RunReg@A : setIdentity(HypertyURL, Identity.Identifier)
+
+	BUS@A -> RunReg@A : getToken(HypertyURL)
+
+	RunReg@A -> RunID@A : getToken(Identifier)
+
+	RunReg@A <- RunID@A : IDToken
+
+	BUS@A <- RunReg@A : IDToken
+
+	BUS@A -> BUS@A : add Token to message
+
+	BUS@A  -> Proto1@A : postMessage( connect message with ID Token)
 
 	Proto1@A -> SP1 : connect(ID Token)
 
@@ -100,9 +117,17 @@ else implicit Login
 		or by the Registry?
 	end note
 
+	Proto1@A -> SP1 : register Hyperty\nSession Token
+
 end
 
-Proto1@A -> SP1 : register Hyperty\nSession Token
+Proto1@A -> BUS@A : Session Token Granted
+
+BUS@A -> RunReg@A : setStatus(protostubURL, status, session token)
+
+BUS@A -> Router1@A : postMessage(login response message)
+
+SP1H@A <- Router1@A : postMessage(login response message)
 
 
 @enduml
