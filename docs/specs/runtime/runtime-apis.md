@@ -114,9 +114,21 @@ To register a new Hyperty in the runtime which returns the HypertyURL allocated 
 
     HypertyURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
     
+To unregister a previously registered Hyperty
+
+     unregisterHyperty( HypertyURL )
+    
 To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
 
     HypertyRuntimeURL registerStub( stub.postMessage, DomainURL )
+    
+To unregister a previously registered protocol stub
+
+     unregisterStub( HypertyRuntimeURL )
+
+To receive status events from components registered in the Registry
+
+    onEvent( Message.Message event )
 
 ### Identities Container
 
