@@ -6,7 +6,7 @@ NSP - Network Service Provider, Network Operator
 General:
 * WebRTC/ Web Server - Server used by a CSPs. 
     * Runs the code of a communication service (application).
-    * Note: not sure about network hyperty here since we want to stay universal
+    * With a QoS functionality (as e.g. a network hyperty).
 
 * Broker - provides an easy to use interface for CSPs so they can provide specialized network services but without the need of contacting each NSP.
     * Needs to communicate with underlying NSPs.
