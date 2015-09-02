@@ -119,9 +119,11 @@ node "Core Sandbox" as core {
 
  node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
 
- node "Runtime\nUser Agent" as RunUA
+ node "Runtime\nUser Agent" as RunUA {
+	node "CatalogueProtoStub" as RepUA
+ }
 
- RunUA -[hidden]left- Reg
+ RunUA -[hidden]up- Reg
  }
 
 
@@ -153,6 +155,9 @@ node "WebRTC Engine" as WRTC
  WRTC <-up- SP2Sand
  	}
 
+RepUA -> Repo1 : query and\n download \nCatalogue\n Objects
+RepUA -> Repo2 : query and\n download \nCatalogue\n Objects
+
 @enduml
 -->
 
@@ -172,6 +177,9 @@ Handles communication between Hyperties and the local Message Bus, enforcing whe
 #### Protocol Stub
 
 Protocol Stack to be used to communicate with Service Provider Backend Servers (including Messaging Server or other functionalities like IdM) according to Protocol on the Fly and codec on the fly concept.
+
+Protocol stubs are reachable through the Message BUS. In this way it is ensured that all messages received and sent goes through the message bus where policies can be enforced and additional data can be added or changed including message addresses and identity tokens.
+
 
 ### Core Runtime
 
@@ -195,7 +203,7 @@ Contains Tokens that associates Hyperties with Users, it also provides Identity 
 
 #### Runtime User Agent
 
-Manages Core Sandbox components including its deployment and update from Core Runtime Provider. It also handles Device bootstrap and the deployment of Hyperties and Protocol Stubs in the Runtime.
+Manages Core Sandbox components including its deployment and update from Core Runtime Provider. It also handles Device bootstrap and the deployment of Hyperties and Protocol Stubs in the Runtime. It includes a Catalogue Protocol Stub to interface with any reTHINK Service Provider Catalogue service to query and download required Catalogue Data Objects, according to [Catalogue Service interface design][interface-catalogue](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface).
 
 ## Native Runtime
 

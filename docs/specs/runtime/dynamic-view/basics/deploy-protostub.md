@@ -24,55 +24,73 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-group discover protostub URL
+-> RunUA@A : loadStub( domain )
 
-	RunUA@A -> RunID@A : get protostub URL
+RunUA@A -> RunReg@A : discoverStub( domain )
+
+alt Stub Not Available in Registry
+
+	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub
+
+		note over BUS@A
+			as defined in the data model the protocol stub is a well know URI.
+			**open issue:** should it be the protostub URL a well known URI?
+		end note
+
+	create Proto1@A
+	RunUA@A -> Proto1@A : new
+
+	RunUA@A -> RunReg@A : registerStub(domainURL)
+
+	RunUA@A <- RunReg@A : return RuntimeProtoStubURL
 
 	note right
-		to be designed in a separated diagram
-		by Identity managament group
+		**open issue:** the protostub only connects
+		to the domain when is requested by 
+		an Hyperty?
 	end note
-	... ...
 
-end group
+	RunReg@A -> BUS@A : addListener( registryListener, RuntimeProtoStubURL\status)
+
+	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/configuration
+
+	RunUA@A <- SP1 : return protoStubConfigurationData
+
+	RunUA@A -> Proto1@A : init(RuntimeProtoStubURL, BUS.postMessage, protoStubConfigurationData)
+
+	group protocol stub connection to domain: to be designed by the ID Management group
+
+	...
+
+	end group
+
+	Proto1@A -> BUS@A : postMessage( protostubStatusUpdate message )
 
 
-RunUA@A -> SP1 : download protostub
+	note left
+		eg protostub is connected or disconnected from the domain
+	end note
 
-create Proto1@A
-RunUA@A -> Proto1@A : new
+	BUS@A -> RunReg@A : onEvent( protostubStatusUpdate message )
 
-
-Proto1@A -> BUS@A : register protoStub(domainURL)
-
-BUS@A -> RunAuth@A : ask authz
-
-BUS@A -> RunReg@A : register protoStub(domainURL)
-
-note right
-	protostub is discoverable 
-	to let other hyperties to use it
-	**open issue:** the protostub only connects
-	to the domain when is requested by 
-	an Hyperty?
-end note
-
-group protocol stub connection to domain: to be designed by the ID Management group
-
-end group
-
+end
 
 @enduml
 -->
 
 ![Deploy Protocol Stub](deploy-protostub.png)
 
-The protocol stub deployment may be triggered by the deployment of an Hyperty or by some attempt from a local Hyperty to communicate with a remote Hyperty running in the domain served by the protocol Stub. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
+Steps 1-2 : The protocol stub deployment may be triggered by the deployment of an Hyperty or by some attempt from a local Hyperty to communicate with a remote Hyperty running in the domain served by the protocol Stub. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations). The Runtime UA only downloads and deploys requested protocol stub after checking in the Registry that there is no protocol stub available in the runtime.
 
-**Open Issue:** In the diagram above, the protocol stub is instantiated by the native Javascript engine as a normal javascript function/object, and in its constructor the registration process is performed. Another option, is to have in the Core Runtime, a protocol stub loader functionality (a Service/Web Worker?) that would handle the instantiation of the protocol stub and its registration in the runtime.
+Steps 3 - 4 : the Runtime UA is able to derive the URL to download the protocol stub from the domain url, since it is a well known URI defined in the reTHINK Architecture Interfaces. The Runtime UA uses the protocol stub well known URI to download and instantiate it in the runtime.
 
-Protocol stubs are reachable through the Message BUS and not through domain routers (should we change the name). In this way it is ensured that all messages received and sent goes through the message bus where policies can be enforced and additional data can be added or changed including message addresses and identity tokens.
+Steps 5 - 7 : the new protocol stub is registered in the Runtime Registry, which allocates and return the runtime address (RuntimeURL) for the new runtime component. In addition, the runtime Registry requests the runtime BUS to add its listener to receive events about the protocol stub status.
 
-When registered, protocol stubs are associated with the domainURL they connect to.
+Steps 8 - 10 : the Runtime UA retrieves required configuration data for the new protocol stub and initialises it. 
 
-Protocol stubs are connected by using credentials handled by the Core Runtime Identities Container. To be designed by the Identity Manager group.
+Protocol stubs are connected by using credentials handled by the Core Runtime Identities Container which are detailed in the [domain login use case](../identity-management/domain-login.md).
+
+Steps 11 - 12 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status. 
+
+
+
