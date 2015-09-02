@@ -1,8 +1,16 @@
 ## Runtime APIs
 
+*Should we use Typescript interfaces to define Runtime APIs?*
+
 ### Message BUS
 
-    postMessage( message , callback)
+To send messages with optional call back
+
+    postMessage( Message.Message message , callback)
+
+To listen to messages published on a certain resource
+
+    addListener( listener, URL.URL resource )
     
 ### Hyperty
 
@@ -78,11 +86,13 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
 
 ### Runtime UA
 
+Download Hiperty from URL
+
     loadHyperty( URL )
-    download Hiperty from URL
-    
+ 
+ Download Stub from URL
+
     loadStub( URL )
-    download Stub from URL
     
     discoverHiperty(applId, OSname, capability_list) 
     accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
@@ -92,10 +102,12 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
      
 ### Registry
 
-To register a new Hyperty in the runtime which returns the HypertyInstanceURL allocated to the new Hyperty.
+To register a new Hyperty in the runtime which returns the HypertyURL allocated to the new Hyperty.
 
-    HypertyINstanceURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
+    HypertyURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
     
+To register a new Protocol Stub in the runtime which returns the RuntimeURL allocated to the new ProtocolStub.
+
     registerStub( stub.postMessage, address )
 
 ### Identities Container
