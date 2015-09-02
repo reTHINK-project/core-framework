@@ -14,7 +14,7 @@ General:
     * Needs to provide a token to a given CSP. This token for a certain time, amount of data etc. would provide an access to specialized network services. CSP would provide this token to its users.
     * Provides CSP with a list of preferred TURN servers to use.
 
-* Backend QOS Function (Connector)
+* Backend QoS Function (Connector)
     * Manages TURN servers (?)
 * TURN server - media relay
     * Use in a path as a way in order to be able to identify and steer the traffic
