@@ -130,6 +130,10 @@ To receive status events from components registered in the Registry
 
     onEvent( Message.Message event )
 
+To discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime url for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers (*do we need something similar for Hyperties?*).
+
+    RuntimeURL discoverProtostub( DomainURL )
+
 ### Identities Container
 
 Functions to deal with assertions compliant with [WebRTC RTCIdentityProvider](http://w3c.github.io/webrtc-pc/#identity-provider-interaction)
