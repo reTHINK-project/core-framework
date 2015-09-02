@@ -86,19 +86,21 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
 
 ### Runtime UA
 
-Download Hiperty from URL
+Download Hiperty from Catalogue URL
 
     loadHyperty( URL )
  
- Download Stub from URL
+Download Stub from Catalogue URL or domain url
 
     loadStub( URL )
+
+Used to check for updates about components handled in the Catalogue including protocol stubs and Hyperties. *check relationship with lifecycle management provided by Service Workers*
+
+    checkForUpdate(CatalogueURL)
     
     discoverHiperty(applId, OSname, capability_list) 
     accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
     
-    checkForHipertyUpdate(URL)
-    used by Applications or Hiperties to check for updates
      
 ### Registry
 
@@ -106,9 +108,9 @@ To register a new Hyperty in the runtime which returns the HypertyURL allocated 
 
     HypertyURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
     
-To register a new Protocol Stub in the runtime which returns the RuntimeURL allocated to the new ProtocolStub.
+To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
 
-    registerStub( stub.postMessage, address )
+    HypertyRuntimeURL registerStub( stub.postMessage, DomainURL )
 
 ### Identities Container
 
