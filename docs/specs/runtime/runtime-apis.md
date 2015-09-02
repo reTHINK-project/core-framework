@@ -75,8 +75,14 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
 
 ### protoStub
 
-    disconnect(  )
+To initialise the protocol stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the protocol stub and required configuration retrieved from protocolStub descriptor.
+
+    init( RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.configuration configuration )
+    
     connect(  )
+    
+    
+    disconnect(  )
     postMessage(message)
     addListener( onMessage )
 
