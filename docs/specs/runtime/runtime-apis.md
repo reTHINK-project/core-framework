@@ -1,8 +1,16 @@
 ## Runtime APIs
 
+*Should we use Typescript interfaces to define Runtime APIs?*
+
 ### Message BUS
 
-    postMessage( message , callback)
+To send messages with optional call back
+
+    postMessage( Message.Message message , callback)
+
+To listen to messages published on a certain resource
+
+    addListener( listener, URL.URL resource )
     
 ### Hyperty
 
@@ -67,8 +75,14 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
 
 ### protoStub
 
-    disconnect(  )
+To initialise the protocol stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the protocol stub and required configuration retrieved from protocolStub descriptor.
+
+    init( RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.configuration configuration )
+    
     connect(  )
+    
+    
+    disconnect(  )
     postMessage(message)
     addListener( onMessage )
 
@@ -78,25 +92,47 @@ To receive messages from other Hyperties that will be reported to the Hyperty:
 
 ### Runtime UA
 
+Download Hiperty from Catalogue URL
+
     loadHyperty( URL )
-    download Hiperty from URL
-    
+ 
+Download Stub from Catalogue URL or domain url
+
     loadStub( URL )
-    download Stub from URL
+
+Used to check for updates about components handled in the Catalogue including protocol stubs and Hyperties. *check relationship with lifecycle management provided by Service Workers*
+
+    checkForUpdate(CatalogueURL)
     
     discoverHiperty(applId, OSname, capability_list) 
     accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
     
-    checkForHipertyUpdate(URL)
-    used by Applications or Hiperties to check for updates
      
 ### Registry
 
-To register a new Hyperty in the runtime which returns the HypertyInstanceURL allocated to the new Hyperty.
+To register a new Hyperty in the runtime which returns the HypertyURL allocated to the new Hyperty.
 
-    HypertyINstanceURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
+    HypertyURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
     
-    registerStub( stub.postMessage, address )
+To unregister a previously registered Hyperty
+
+     unregisterHyperty( HypertyURL )
+    
+To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
+
+    HypertyRuntimeURL registerStub( stub.postMessage, DomainURL )
+    
+To unregister a previously registered protocol stub
+
+     unregisterStub( HypertyRuntimeURL )
+
+To receive status events from components registered in the Registry
+
+    onEvent( Message.Message event )
+
+To discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime url for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers (*do we need something similar for Hyperties?*).
+
+    RuntimeURL discoverProtostub( DomainURL )
 
 ### Identities Container
 
