@@ -28,14 +28,29 @@ autonumber
 group discover Hyperty URL: to be designed in a separated diagram by the Id Management Group
 
 	... ...
-	RunUA@A <- App@A : deploy Hyperty(URL)
 
 end group
 
-RunUA@A -> SP1 : download Hyperty(URL)
+alt App and Hyperty are from the same domain
 
-create SP1H@A
-RunUA@A -> SP1H@A : new
+	RunUA@A <- App@A : registerHyperty( HypertyInstance )
+
+	RunUA@A -> RunUA@A : check Hyperty and App domain
+
+	note right
+		 In this case, it is the App that instantiates the Hyperty, since the RuntimeUA is not able to do it
+	end note
+
+else App and Hyperty are from different domains
+
+	RunUA@A <- App@A : loadHyperty( HypertyCatalogueURL)
+
+	RunUA@A -> SP1 : get HypertyCatalogueURL
+
+	create SP1H@A
+	RunUA@A -> SP1H@A : new
+
+end group
 
 SP1H@A -> SP1H@A : Router?
 

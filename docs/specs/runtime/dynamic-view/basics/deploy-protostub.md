@@ -92,5 +92,14 @@ Protocol stubs are connected by using credentials handled by the Core Runtime Id
 
 Steps 11 - 12 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status. 
 
+Message to publish Protocol Stub Status
 
+```
+"id" : "1"
+"type" : "UPDATE",
+"from" : "hyperty-runtime://sp1/protostub/123",
+"resource" : "hyperty-runtime://sp1/protostub/123/status",
+
+"body" : { "value" : "LIVE" }
+```
 
