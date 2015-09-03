@@ -1,1 +1,1 @@
-## Message Node
+# Message Node Specification
