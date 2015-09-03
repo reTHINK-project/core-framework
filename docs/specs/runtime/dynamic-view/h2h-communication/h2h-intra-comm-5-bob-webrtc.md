@@ -1,4 +1,4 @@
-### Bob starts WebRTC API and updates Alice's connection 
+### Bob starts WebRTC API and updates Alice's connection (TBC)
 
 
 <!--
