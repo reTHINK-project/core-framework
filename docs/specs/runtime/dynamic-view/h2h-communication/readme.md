@@ -13,7 +13,7 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 #### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice - To be Removed ](h2h-intra-comm-4-accepted.md)
 
 #### [Bob's App is notified and Alice's connection is updated] (h2h-intra-comm-4-notification-update.md)
-#### [Bob gathers WebRTC resources and updates Alice's connection object ] (h2h-intra-comm-5-bob-webrtc.md)
+#### [Bob gathers WebRTC resources] (h2h-intra-comm-5-bob-webrtc.md)
 #### [Synchronization of Alice's Data Object] (h2h-intra-comm-6-alice-DO-synch.md)
 
 
