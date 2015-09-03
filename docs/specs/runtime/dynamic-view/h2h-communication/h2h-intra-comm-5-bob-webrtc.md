@@ -1,4 +1,4 @@
-### Bob starts WebRTC API and updates Alice's connection (TBC)
+### Bob starts WebRTC API (TBC)
 
 
 <!--
@@ -150,4 +150,4 @@ While remote Ice Candidate are added (step 19 and Step 20 may take place several
 
 (Step 25) During IceCandiates gathering period which started just after step 23 the WebRTC API calls a callbcak to send the candidates to the Htyperty through the WebRTC API. (Step 26)The Hyperty checks if the Candidate can be sent to the remote party (some candidates may contain IPs which don't want to the sent) and then the Candidate is added to the Local Data Object.
 
-(Step 28)The local Data object reports that there have been changes in the connection parameters and the Syncher sends a CRUD message through the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty (Step 29). (Step 30) the Policy Enforcer checks if the message is compliant with the local policies and the message is sent to the ProtoStub (Step 31) to be in turn sent to the Service Provider 1  Back-End (Step 32)
+
