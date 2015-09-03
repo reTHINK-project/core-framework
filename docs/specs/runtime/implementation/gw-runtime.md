@@ -1,7 +1,10 @@
-### Runtime implementation in Gateways
+### Runtime implementation in Constrained Devices
 
-NodeJs is considered one of the options for implementing the Runtime API for platforms like Raspberry Pie.
+NodeJs is considered one of the options for implementing the Runtime API for platforms like Raspberry PI and [Beagle Board](http://beagleboard.org/bone):
+
 http://elinux.org/Node.js_on_RPi
+
+http://beagleboard.org/Support/BoneScript
 
 https://www.npmjs.com/package/node-sandbox
 
