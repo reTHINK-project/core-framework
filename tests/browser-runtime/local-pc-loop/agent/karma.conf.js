@@ -12,7 +12,7 @@ module.exports = function(config) {
     frameworks: ['browserify', 'jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [
+    files:[
       'js/**/*.js',
       'spec/**/*.spec.js'
     ],
@@ -69,11 +69,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   });
 
 };

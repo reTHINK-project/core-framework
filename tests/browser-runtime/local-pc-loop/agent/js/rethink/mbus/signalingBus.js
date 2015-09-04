@@ -19,18 +19,29 @@ export class SignalingBus extends ObjectEvent {
 
     _this.setDomain();
 
-    window.addEventListener('message', function(e) {
+    window.addEventListener('message', function(event) {
 
-      var message = e.data;
+      var message = event;
 
-      _this.trigger('message', e.data);
+      console.log(message);
+
+      switch (message.type) {
+
+        case 'offer':
+        case 'answer':
+        case 'message':
+          _this.trigger('message', message);
+          break;
+
+      }
+
+      console.log('signalinb bus: ', _this);
 
       /* if (message.hasOwnProperty('sdp')) {
         _this.trigger('sdpMessage', e.data);
       } else {
         _this.trigger('iceMessage', e.data);
       } */
-
     });
 
   }
@@ -53,7 +64,7 @@ export class SignalingBus extends ObjectEvent {
 
   }
 
-  sendMessage(data) {
+  postMessage(data) {
     var _this = this;
     var domain;
 
@@ -65,6 +76,14 @@ export class SignalingBus extends ObjectEvent {
       window.parent.postMessage(data, domain);
     }
 
+  }
+
+  sendStream(stream) {
+    var _this = this;
+
+    console.info(stream);
+
+    _this.trigger('send:stream', stream);
   }
 
 }

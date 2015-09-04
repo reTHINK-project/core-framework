@@ -3,12 +3,15 @@ var gutil = require('gulp-util');
 var babelify = require('babelify');
 var argv = require('yargs').argv;
 var source = require('vinyl-source-stream');
+var transform = require('vinyl-transform');
 var browserify = require('browserify');
 var watchify = require('watchify');
+var es = require('event-stream');
 var buffer = require('vinyl-buffer');
 var del = require('del'); // rm -rf
 var watch = require('gulp-watch');
 var sourcemaps = require('gulp-sourcemaps');
+var glob = require('glob');
 var compass = require('gulp-compass');
 var assign = require('lodash').assign;
 var browserSync = require('browser-sync').create();
@@ -105,40 +108,56 @@ gulp.task('main-task', function(done) {
 
 gulp.task('workers', function(done) {
 
-  // add custom browserify options here
-  var customOpts = {
-    entries: ['./js/rethink/workers/protoStub.js'],
-    debug: true
-  };
-  var opts = assign({}, watchify.args, customOpts);
-  var b = watchify(browserify(opts));
-  b.transform(babelify.configure({
-    compact: false
-  }));
+  glob('./js/hyperties/*.js', function(err, files) {
 
-  gulp.task('main', bundle);
-  b.on('update', bundle);
-  b.on('log', gutil.log);
+    if (err) done(err);
 
-  function bundle() {
+    var tasks = files.map(function(filename) {
 
-    return b.bundle()
+      // add custom browserify options here
+      var customOpts = {
+        debug: true
+      };
 
-      // log errors if they happen
-      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-      .pipe(source('protoStub.js'))
+      var opts = assign({}, watchify.args, customOpts);
+      var b = watchify(browserify(filename, opts));
+      b.transform(babelify.configure({
+        compact: false
+      }));
 
-      // optional, remove if you don't need to buffer file contents
-      .pipe(buffer())
+      b.on('update', bundle);
+      b.on('log', gutil.log);
 
-      // optional, remove if you dont want sourcemaps
-      .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-      // Add transformation tasks to the pipeline here.
-      .pipe(sourcemaps.write('./')) // writes .map file
-      .pipe(gulp.dest('./dist/workers/'));
-  }
+      function bundle(file) {
 
-  gulp.start(['main']);
+        gutil.log('update hyperties\nfile path: ', filename);
+        var name = filename.substr(filename.lastIndexOf('/') + 1);
+
+        return b.bundle()
+
+          // log errors if they happen
+          .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+          .pipe(source(name))
+
+          // optional, remove if you don't need to buffer file contents
+          .pipe(buffer())
+
+          // optional, remove if you dont want sourcemaps
+          .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+
+          // Add transformation tasks to the pipeline here.
+          .pipe(sourcemaps.write('./')) // writes .map file
+          .pipe(gulp.dest('./dist/hyperties'));
+
+      }
+
+      return bundle(filename);
+
+    });
+
+    es.merge(tasks).on('end', done);
+
+  });
 
 });
 
@@ -236,7 +255,8 @@ gulp.task('tdd', function(done) {
   }, done).start();
 });
 
+gulp.task('clean', ['clean']);
 gulp.task('dev', ['js', 'sass', 'watch', 'sass:watch']);
-gulp.task('js', ['clean', 'workers', 'main-task', 'installer', 'agent', 'rethink']);
+gulp.task('js', ['workers', 'main-task', 'installer', 'agent', 'rethink']);
 gulp.task('sass', ['compass']);
-gulp.task('default', ['clean', 'dev']);
+gulp.task('default', ['dev']);

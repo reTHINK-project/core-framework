@@ -24,6 +24,16 @@ export class ExternalAgents extends ObjectEvent {
     _this.participants = [];
     _this.streams = {};
 
+    /* var rethinkIframe = document.getElementById('rethink-iframe');
+
+    if (rethinkIframe) {
+      var hypertyWebRTCAgent = new Worker(config.rethink.server + 'dist/hyperties/hyperty.webrtc.agent.js');
+      console.log('asdasda: ', hypertyWebRTCAgent);
+
+      _this.hypertyWebRTCAgent = hypertyWebRTCAgent;
+
+    }*/
+
     signalingServer.addEventListener('room:ready', function(data) {
       console.info('Room Ready: ', data, _this.participants);
 
@@ -143,29 +153,12 @@ export class ExternalAgents extends ObjectEvent {
 
     var _this = this;
 
-    console.log('room: ', room);
-
     _this.streams[_this.owner.clientId] = stream;
     signalingServer.joinTo(room, _this.owner);
 
-    console.info('call to and get stream: ', _this.participant, _this.owner, _this.streams);
+    console.info('call to and get stream: ', _this.participant, _this.streams);
 
     _this.trigger('local:stream:added', stream);
-
-    /*_this.getMedia().then(function(stream) {
-
-      _this.streams[_this.owner.clientId] = stream;
-      signalingServer.joinTo(userId, _this.owner);
-
-      console.info('call to and get stream: ', _this.participant, _this.owner, _this.streams);
-
-      _this.trigger('local:stream:added', stream);
-
-    }, function(error) {
-
-      _this.trigger('local:stream:error', error);
-
-    }); */
 
   }
 
@@ -173,13 +166,9 @@ export class ExternalAgents extends ObjectEvent {
 
     var _this = this;
 
-    console.info('Call is in progress: ', _this.participant, _this.owner);
-
     if (_this.callInProgresss) {
 
-      console.info('Call is in progress');
       signalingServer.answered(_this.participant);
-
       return;
     }
 

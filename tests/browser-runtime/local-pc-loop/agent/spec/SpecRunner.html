@@ -93,20 +93,14 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </style>
 </head>
 
-<body id="HTMLReporter" class="html-reporter showDetails">
-<h1>Tested in Chrome 44.0.2403 (Linux 0.0.0) on Mon Aug 31 2015</h1>
+<body id="HTMLReporter" class="html-reporter">
+<h1>Tested in Chrome 44.0.2403 (Linux 0.0.0) on Tue Sep 01 2015</h1>
 
 <div class="alert">
 
 
-<!-- <span class="failingAlert bar">Failed 1 specs</span> -->
-<span class="failingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
-  <a href="#" onclick="unfold();">Unfold</a></span>5 specs, 1 failed, 0 pending</span>
-<span class="resultsMenu bar">
-<a class="summaryMenuItem" onclick="showSummary();" href="#">Spec List<a>|<a 
-   class="detailsMenuItem" onclick="showFailures();" href="#">Failures</a>
-</span>
 
+  
 
 
 </div>
@@ -118,7 +112,7 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
   
   
     <div class="suite passed">
-      <span class="description">Rethink agent Constructor</span>
+      <span class="description">0</span>
     
       <div class="specSummary passed">
       <span class="description">Instanciate new local agent</span>
@@ -131,28 +125,10 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
     </div>
   
     <div class="suite passed">
-      <span class="description">Configuration file server</span>
+      <span class="description">1</span>
     
       <div class="specSummary passed">
       <span class="description">should have a url</span>
-      </div>
-    
-    </div>
-  
-    <div class="suite failed">
-      <span class="description">Hyperty with Protocol Stub Recive message through &quot;postMessage&quot; and handle it</span>
-    
-      <div class="specSummary failed">
-      <span class="description">encountered a declaration exception</span>
-      </div>
-    
-    </div>
-  
-    <div class="suite passed">
-      <span class="description">Hyperty with Protocol Stub Send message to server and wait for response</span>
-    
-      <div class="specSummary passed">
-      <span class="description">should send message</span>
       </div>
     
     </div>
@@ -161,19 +137,6 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </div>
 
 <div id="details">
-  
-  
-  <div class="specDetail failed">
-    <span class="description">Hyperty with Protocol Stub Recive message through &quot;postMessage&quot; and handle it encountered a declaration exception</span>
-    <div class="stackTrace">
-      <div class="resultMessage">SyntaxError: Unexpected identifier
-    at Helper.workerTester (http://localhost:9876/absolute/tmp/9112ad6a0f84523bcea3672389f79152.browserify?400865bafc448a7c88a04749189858cf52f01a26:9857:12)
-    at Suite.&lt;anonymous&gt; (http://localhost:9876/absolute/tmp/9112ad6a0f84523bcea3672389f79152.browserify?400865bafc448a7c88a04749189858cf52f01a26:9904:38)
-    at Suite.&lt;anonymous&gt; (http://localhost:9876/absolute/tmp/9112ad6a0f84523bcea3672389f79152.browserify?400865bafc448a7c88a04749189858cf52f01a26:9902:3)
-    at Object.require./home/vsilva/pt-inovacao/core-framework/tests/browser-runtime/local-pc-loop/agent/spec/protoStub.spec.js../helpers/worker.helper (http://localhost:9876/absolute/tmp/9112ad6a0f84523bcea3672389f79152.browserify?400865bafc448a7c88a04749189858cf52f01a26:9898:1)</div>
-    </div>
-  </div>
-  
   
 </div>
 
@@ -186,7 +149,7 @@ document.body.onkeypress = function (e) {
   switch (e.keyCode) {
     case 102: toggleFold(); break;
     case 49: showSummary(); break;
-    case 50: showFailures(); break;
+    
   }
 };
 
