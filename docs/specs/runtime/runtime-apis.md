@@ -71,9 +71,10 @@ To add "listener" functions to be called when routing messages published on a ce
 
     addListener( listener, URL.URL url )
 
-To add an interceptor Policy Enforcer which "listener" function is called when "resource" or "to" routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
+To add an interceptor Policy Enforcer which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "pepURL" are not intercepted.
+This function is only accessible by internal Core Components.
 
-    addPEP( listener, URL.URL url )
+    addPEP( listener, URL.URL pepURL, URL.URL interceptedURL)
     
 ### Hyperty
 
