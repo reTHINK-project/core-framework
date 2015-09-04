@@ -136,13 +136,13 @@ export class SignalingServer extends ObjectEvent {
   /**
   * Send message to signaling server
   */
-  sendMessage(message) {
+  postMessage(message) {
 
     var _this = this;
     var socket = _this.socket;
 
     // console.log('Client sending message: ', message, _this.room);
-    socket.emit('message', message, _this.room);
+    socket.emit('message', {data: message}, _this.room);
   }
 
   /**

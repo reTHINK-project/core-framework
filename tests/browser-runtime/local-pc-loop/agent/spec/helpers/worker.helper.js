@@ -6,40 +6,83 @@ export class Helper {
 
   getWorker(path) {
     var http = new XMLHttpRequest();
-    http.open('GET', path, false);
-    http.send();
 
+    // progress on transfers from the server to the client (downloads)
+    function updateProgress(oEvent) {
+      console.log('progress:', oEvent);
+    }
+
+    function transferComplete(evt) {
+      console.log('The transfer is complete.');
+    }
+
+    function transferFailed(evt) {
+      console.log('An error occurred while transferring the file.');
+    }
+
+    function transferCanceled(evt) {
+      console.log('The transfer has been canceled by the user.');
+    }
+
+    http.addEventListener('progress', updateProgress, false);
+    http.addEventListener('load', transferComplete, false);
+    http.addEventListener('error', transferFailed, false);
+    http.addEventListener('abort', transferCanceled, false);
+
+    http.open('GET', path);
+    http.send();
+    console.log('path:', path);
     return http.responseText;
   }
 
   workerTester(workerCode) {
 
-    // Define onmessage from the worker
-    eval(workerCode);
+    console.log(workerCode);
 
-    return new Promise(function(resolve, reject){
-      
-    });
+    var promise = Promise;
 
     // The worker will call this method with the post-back data
     function postMessage(data) {
-      deferred.resolve(data);
+      promise.resolve(data);
     }
 
     var thenAssertOn = function(assertion) {
-      deferred.then(function(data) {
+      promise.then(function(data) {
         assertion(data);
       });
     };
 
     var sendMessage = function(data) {
-      // Call into the worker code
-      onmessage({data: data});
-
+      onmessage(data);
       return {thenAssertOn: thenAssertOn};
     };
 
     return {sendMessage: sendMessage};
+
+    // var deferred = $.Deferred();
+    //
+    // // Define onmessage from the worker
+    // eval(workerCode);
+    //
+    // // The worker will call this method with the post-back data
+    // function postMessage(data) {
+    //   deferred.resolve(data);
+    // }
+    //
+    // var thenAssertOn = function(assertion) {
+    //   deferred.promise().then(function(data) {
+    //     assertion(data);
+    //   });
+    // };
+    //
+    // var sendMessage = function(data) {
+    //   // Call into the worker code
+    //   onmessage({data: data});
+    //
+    //   return {thenAssertOn: thenAssertOn};
+    // };
+    //
+    // return {sendMessage: sendMessage};
   }
 
 }

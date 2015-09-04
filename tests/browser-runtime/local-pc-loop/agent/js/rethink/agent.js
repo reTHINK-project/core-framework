@@ -75,7 +75,7 @@ export class Agent extends ObjectEvent {
         sdpMLineIndex: event.candidate.sdpMLineIndex
       };
 
-      _this.sb.sendMessage(ice);
+      _this.sb.postMessage(ice);
 
     });
 
@@ -88,7 +88,11 @@ export class Agent extends ObjectEvent {
     var _this = this;
     var peerConnection = _this.peerConnection;
 
-    _this.sb.addEventListener('message', function(message) {
+    _this.sb.addEventListener('message', function(event) {
+
+      console.info('message:', event.data);
+
+      var message = event.data;
 
       if (message.type === 'offer' || message.type === 'answer') {
 
@@ -168,7 +172,7 @@ export class Agent extends ObjectEvent {
         type: description.type
       };
 
-      _this.sb.sendMessage(data);
+      _this.sb.postMessage(data);
 
     }, _this.logError);
 

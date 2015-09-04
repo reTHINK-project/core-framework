@@ -1,38 +1,4 @@
-var config = {
-
-  rethink: {
-    server: 'http://193.136.93.35:8080/'
-  },
-
-  iceServersConfig: {
-    iceServers: [{
-      url: 'stun:stun.l.google.com:19302'
-    }, {
-      url: 'turn:luis@185.17.229.117',
-      credential: 'luis123'
-    }
-  ]},
-
-  RTPDataChannelsConfig: {
-    optional: [{
-      RtpDataChannels: true
-    }]
-  },
-
-  mediaConstraints: {
-    optional: [],
-    mandatory: {
-      OfferToReceiveAudio: true, // Hmm!!
-      OfferToReceiveVideo: true // Hmm!!
-    }
-  },
-
-  defaultMedia: {
-    video: true,
-    audio: true
-  }
-
-};
+var config = require('./config.json');
 
 (function() {
 

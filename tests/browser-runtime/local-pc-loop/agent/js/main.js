@@ -4,10 +4,6 @@ import _ from 'underscore';
 
 import ExternalAgents from './rethink/externalAgents';
 
-import rethink from './rethink';
-window.rethink = rethink;
-console.log(rethink);
-
 var callBtn = document.querySelector('.call');
 var cancelBtn = document.querySelector('.cancel');
 var roomField = document.querySelector('.room-id');

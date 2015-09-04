@@ -4,7 +4,10 @@ var http = require('http');
 var socketIO = require('socket.io');
 var _ = require('underscore');
 
-var port = 8080;
+var env = process.env.NODE_ENV ? process.env.NODE_ENV : 'prod';
+
+var config = require('./configs/config-' + env + '.json');
+var port = config.rethink.port;
 
 var fileServer = new static.Server();
 
@@ -38,15 +41,16 @@ io.on('connection', function(socket) {
 
     var currentRoom = socket.adapter.rooms[room];
     var numClients = currentRoom ? Object.keys(currentRoom).length : 0;
+    var data;
 
     log('Room ' + room + ' has ' + numClients + ' client(s)');
 
     if (numClients === 0) {
-      var data = {
+      data = {
         creator: true,
         room: room,
         num: numClients,
-        clientId: socket.id,
+        clientId: socket.id
       };
 
       clients[socket.id] = data;
@@ -62,12 +66,12 @@ io.on('connection', function(socket) {
         return r;
       }, []);
 
-      var data = {
+      data = {
         creator: false,
         room: room,
         num: numClients,
         from: socket.id,
-        to: to,
+        to: to
       };
 
       socket.join(room);

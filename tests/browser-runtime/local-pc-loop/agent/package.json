@@ -17,9 +17,13 @@
     "browserify": "^11.0.1",
     "browserify-shim": "^3.8.10",
     "del": "^1.2.0",
+    "event-stream": "^3.3.1",
+    "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
     "gulp-jscs": "^2.0.0",
+    "gulp-preprocess": "^1.2.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.4",
@@ -35,11 +39,12 @@
     "phantomjs": "^1.9.18",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0",
     "yargs": "^3.21.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever -w server.js"
+    "start": "export NODE_ENV='dev'; forever -w server.js"
   },
   "browserify": {
     "transform": [

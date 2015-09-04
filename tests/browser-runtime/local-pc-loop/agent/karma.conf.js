@@ -12,14 +12,14 @@ module.exports = function(config) {
     frameworks: ['browserify', 'jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [
+    files:[
       'js/**/*.js',
       'spec/**/*.spec.js'
     ],
 
     // list of files to exclude
     exclude: [
-      'js/rethink/workers/*.js',
+      'js/hyperties/*.js',
       'js/main.js'
     ],
 
