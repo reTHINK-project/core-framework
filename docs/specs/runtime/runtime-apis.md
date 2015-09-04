@@ -6,7 +6,7 @@
 
 Register Hyperty deployed by the App that is passed as input parameter. To be used when App and Hyperties are from the same domain otherwise the RuntimeUA will raise an exception and the App has to use the loadHyperty(..) function.
 
-    registerHyperty( Object )
+    registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
 
 Deploy Hiperty from Catalogue URL
 
