@@ -14,6 +14,6 @@ document.body.appendChild(rethink);
 
 var script = document.createElement('script');
 script.type = 'text/javascript';
-script.src = config.rethink.server + '/dist/rethinkAgent.js';
+script.src = config.rethink.server + '/dist/js/rethinkAgent.js';
 
 document.getElementsByTagName('head')[0].appendChild(script);

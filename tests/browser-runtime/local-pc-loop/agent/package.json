@@ -22,6 +22,8 @@
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
     "gulp-jscs": "^2.0.0",
+    "gulp-preprocess": "^1.2.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.4",
@@ -42,7 +44,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever -w server.js"
+    "start": "export NODE_ENV='dev'; forever -w server.js"
   },
   "browserify": {
     "transform": [
