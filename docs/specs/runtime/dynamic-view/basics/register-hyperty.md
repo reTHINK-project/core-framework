@@ -79,7 +79,13 @@ RunUA@A <- RunReg@A : hypertyURL
 
 ![Register Hyperty](register-hyperty.png)
 
-Message to request address allocated for new Hyperty Instance:
+Step 1 : the Hyperty registration is requested by the Runtime UA triggered by the [Hyperty Deployment process](deploy-hyperty.md)
+
+Steps 2 and 3 : The Hyperty is associated to a certain [identity](../identity-management/user-to-hyperty-binding.md)
+
+Steps 4 - 10 : an Hyperty URL address is allocated in cooperation with the Msg Node Address Allocation functionality.
+
+**Message to request address allocated for new Hyperty Instance**
 
 
 ```
@@ -90,7 +96,7 @@ Message to request address allocated for new Hyperty Instance:
 "body" : { "hypertyUrl" : "hyperty://sp1/hy123" }
 ```
 
-Message to Responde to request address allocated for new Hyperty Instance:
+**Response Message returning the requested Hyperty Instance address**
 
 ```
 "id" : "1"
@@ -100,7 +106,9 @@ Message to Responde to request address allocated for new Hyperty Instance:
 "body" : { "hypertyInstanceURL" : "hyperty-instance://sp1/alice/hy123" }
 ```
 
-Message to Register new Hyperty Instance:
+Steps 11 - 15 : the Hyperty instance is registered in the back-end Registry
+
+**Message to Register new Hyperty Instance**
 
 ```
 "id" : "1"
@@ -111,3 +119,5 @@ Message to Register new Hyperty Instance:
 "hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice,
 ...}
 ```
+
+Steps 16 - 17 : The runtime Registry adds its listener to be notified about Hyperty instance status and returns the Hyperty URL to the runtime UA

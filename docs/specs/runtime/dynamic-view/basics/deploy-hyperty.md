@@ -84,7 +84,7 @@ end group
 
 RunUA@A -> RunUA@A : HypertyDescriptor.policies?
 
-opt There is a Hyperty policy enforcer to be deployed
+alt There is a Hyperty policy enforcer to be deployed
 
 	RunUA@A -> SP1 : get\nPolicyEnforcerSourceCodeURL
 
@@ -97,26 +97,50 @@ opt There is a Hyperty policy enforcer to be deployed
 
 	RunUA@A -> Router1@A : init( pepRuntimeURL,\n bus.postMessage\n, hypertyURL)
 
-	BUS@A <- Router1@A : addListener(\n pepListener, \npepRuntimeURL)
+	BUS@A <- RunUA@A : addPEP(\n pepListener, \npepURL, \ninterceptedHypertyURL)
+
+else There is no Hyperty Policy Enforcer
+
+	RunUA@A -> SP1H@A : init( hypertyURL,\n bus.postMessage\n, configuration)
+
+	BUS@A <- RunUA@A : addListener(\n hypertyListener, \nhypertyURL)
 
 end group
-
-RunUA@A -> SP1H@A : init( hypertyURL,\n bus.postMessage\n, configuration)
-
-BUS@A <- SP1H@A : addListener(\n hypertyListener, \nhypertyURL)
 
 @enduml
 -->
 
+ According to the sandboxing runtime architecture, Hyperties and App domains will have an impact on the procedures to be used to deploy the Hyperty. Nevertheless, the trigger of Hyperty deployment may take advantage of some existing libraries like require.js.
 
+---
 
-The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
+** Hyperty and App from the same domain **
 
-**Open Issue:** In the diagram above, the Hyperty is instantiated by the native Javascript engine as a normal javascript function/object, and in its constructor the registration process is performed. Another option, is to have in the Core Runtime, a Hyperty loader functionality (a Service/Web Worker?) that would handle the instantiation of the Hyperty and its registration in the runtime.
+Steps 1 - 4: In this situation, the App and the Hyperty are running in the same isolated sandbox which is different from the Hyperty Core Runtime Sandbox. This means the download and instantiation of the Hyperty has first to be performed by the Application. Then the App asks the Runtime UA to register and activate the new Hyperty in the runtime.
 
+** Hyperty and App from different domains **
 
-Hyperties are reachable through domain routers (should we change the name?) to:
-1- enable enforcement of domain proprietary policies
-2- the Hyperty (data synch) communication model would be implemented by the router (connector is a better name?) and not by the Hyperty itself
+Steps 7 - 8: In this situation, the App and the Hyperty are running in different and isolated sandboxes. In this case the Hyperty sandbox is managed by the runtime UA which means the runtime UA can download and instante the Hyperty. The runtime UA should avoid the creation of new sandboxes in case there is already a sandbox for the same domain
 
-When registered, Hyperties are associated with an Identity by the Registry / Identities container. Then all, messages sent by the Hyperty will be signed with a token according to the Identity associated to the Hyperty. To be designed by the Identity Manager group.
+---
+
+Steps 9 - 10 : the [Hyperty is registered](register-hyperty.md).
+
+Steps 11: the runtime UA checks in the Hyperty Descriptor if a Policy Enforcer is required
+
+---
+
+** Alt1 : Hyperty PEP deployment is required **
+
+Steps 12 - 13 : the runtime UA downloads and instantiates the Hyperty PEP in a isolated sandbox.
+
+Steps 14 - 15 : the Runtime UA register in the runtime Registry the new PEP for the new deployed Hyperty and the Registry returns PEP Runtime component URL
+
+Steps 16 - 17 : the runtime UA activates the Hyperty PEP which adds its intercepting listener to the runtime BUS to receive messages targeting the Hyperty URL.
+
+** Alt2 : Hyperty PEP deployment is not required **
+
+Steps 18 - 19 : the runtime UA activates the Hyperty instance which adds its listener to the runtime BUS to receive messages targeting the Hyperty URL.
+
+---
+

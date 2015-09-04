@@ -58,7 +58,7 @@ alt Stub Not Available in Registry
 
 	RunUA@A -> Proto1@A : init(RuntimeProtoStubURL, BUS.postMessage, protoStubConfigurationData)
 
-	BUS@A <- Proto1@A : addListener( protostubListener, RuntimeProtoStubURL)
+	BUS@A <- RunUA@A : addListener( protostubListener, RuntimeProtoStubURL)
 
 	group protocol stub connection to domain: to be designed by the ID Management group
 
