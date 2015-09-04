@@ -27,19 +27,27 @@ Used to check for updates about components handled in the Catalogue including pr
 
 To register a new Hyperty in the runtime which returns the HypertyURL allocated to the new Hyperty.
 
-    HypertyURL registerHyperty( hypertySandbox.postMessage, hypertyUrl)
+    HypertyURL registerHyperty( postMessage, HypertyCatalogueURL descriptor)
     
 To unregister a previously registered Hyperty
 
-     unregisterHyperty( HypertyURL )
+     unregisterHyperty( HypertyURL url )
     
 To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
 
-    HypertyRuntimeURL registerStub( stub.postMessage, DomainURL )
+    HypertyRuntimeURL registerStub( postMessage, DomainURL )
     
 To unregister a previously registered protocol stub
 
      unregisterStub( HypertyRuntimeURL )
+
+To register a new Policy Enforcer in the runtime including as input parameters the function to postMessage, the HypertyURL associated with the PEP, which returns the RuntimeURL allocated to the new Policy Enforcer component.
+
+    HypertyRuntimeURL registerPEP( postMessage, HypertyURL hyperty )
+    
+To unregister a previously registered protocol stub
+
+     unregisterPEP( HypertyRuntimeURL )
 
 To receive status events from components registered in the Registry
 
