@@ -63,13 +63,17 @@ To discover sandboxes available in the runtime for a certain domain. Required by
 
 ### Message BUS
 
-To send messages with optional call back
+To send messages with optional call back. This function is accessible outside the Core runtime.
 
     postMessage( Message.Message message , callback)
 
-To listen to messages published on a certain resource
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
 
-    addListener( listener, URL.URL resource )
+    addListener( listener, URL.URL url )
+
+To add an interceptor Policy Enforcer which "listener" function is called when "resource" or "to" routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
+
+    addPEP( listener, URL.URL url )
     
 ### Hyperty
 
