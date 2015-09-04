@@ -108,7 +108,7 @@ BUS@A <- SP1H@A : addListener(\n hypertyListener, \nhypertyURL)
 @enduml
 -->
 
-
+![Hyperty Deploy](deploy-hyperty.png)
 
 The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
 
