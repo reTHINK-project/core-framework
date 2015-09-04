@@ -110,6 +110,8 @@ end group
 @enduml
 -->
 
+![Hyperty Deploy](deploy-hyperty.png)
+
  According to the sandboxing runtime architecture, Hyperties and App domains will have an impact on the procedures to be used to deploy the Hyperty. Nevertheless, the trigger of Hyperty deployment may take advantage of some existing libraries like require.js.
 
 ---

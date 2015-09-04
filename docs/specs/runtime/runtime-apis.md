@@ -55,17 +55,26 @@ To receive status events from components registered in the Registry
 
 To discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime url for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers (*do we need something similar for Hyperties?*).
 
-    RuntimeURL discoverProtostub( DomainURL )
+    RuntimeURL discoverProtostub( DomainURL url)
+
+To discover sandboxes available in the runtime for a certain domain. Required by the runtime UA to avoid more than one sandbox for the same domain.
+
+    RuntimeSandbox getSandbox( DomainURL url )
 
 ### Message BUS
 
-To send messages with optional call back
+To send messages with optional call back. This function is accessible outside the Core runtime.
 
     postMessage( Message.Message message , callback)
 
-To listen to messages published on a certain resource
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
 
-    addListener( listener, URL.URL resource )
+    addListener( listener, URL.URL url )
+
+To add an interceptor Policy Enforcer which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "pepURL" are not intercepted.
+This function is only accessible by internal Core Components.
+
+    addPEP( listener, URL.URL pepURL, URL.URL interceptedURL)
     
 ### Hyperty
 
