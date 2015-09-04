@@ -69,8 +69,14 @@ To listen to messages published on a certain resource
     
 ### Hyperty
 
-    init( postMessage )
+To initialise the Hyperty instance including as input parameters its allocated Hyperty url, the runtime BUS postMessage function to be invoked to send messages and required configuration retrieved from Hyperty descriptor.
+
+    init( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+    
+    
     report(message)
+    
+    
 
 ### Policy Enforcer
 
@@ -89,6 +95,20 @@ To set postMessage() function to be used by the Policy Enforcer to receive messa
 To receive messages from the message BUS
 
     postMessage(message)
+
+
+### protoStub
+
+To initialise the protocol stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the protocol stub and required configuration retrieved from protocolStub descriptor.
+
+    init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+    
+    connect(  )
+    
+    
+    disconnect(  )
+    postMessage(message)
+    addListener( onMessage )
 
 ### Syncher
 
@@ -131,19 +151,6 @@ To trigger the synchronisation process:
 To receive messages from other Hyperties that will be reported to the Hyperty:
 
     postMessage(message)
-
-### protoStub
-
-To initialise the protocol stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the protocol stub and required configuration retrieved from protocolStub descriptor.
-
-    init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
-    
-    connect(  )
-    
-    
-    disconnect(  )
-    postMessage(message)
-    addListener( onMessage )
 
 ### HypertySandbox
 
