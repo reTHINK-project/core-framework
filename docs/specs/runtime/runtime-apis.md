@@ -55,7 +55,11 @@ To receive status events from components registered in the Registry
 
 To discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime url for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers (*do we need something similar for Hyperties?*).
 
-    RuntimeURL discoverProtostub( DomainURL )
+    RuntimeURL discoverProtostub( DomainURL url)
+
+To discover sandboxes available in the runtime for a certain domain. Required by the runtime UA to avoid more than one sandbox for the same domain.
+
+    RuntimeSandbox getSandbox( DomainURL url )
 
 ### Message BUS
 
