@@ -19,7 +19,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'js/rethink/workers/*.js',
+      'js/hyperties/*.js',
       'js/main.js'
     ],
 

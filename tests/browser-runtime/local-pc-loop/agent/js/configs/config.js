@@ -8,7 +8,8 @@ var config = {
     iceServers: [{
       url: 'stun:stun.l.google.com:19302'
     }, {
-      url: 'turn:luis@185.17.229.117',
+      url: 'turn:185.17.229.117',
+      username: 'luis',
       credential: 'luis123'
     }
   ]},
