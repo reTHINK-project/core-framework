@@ -76,7 +76,7 @@ To listen to messages published on a certain resource
 
 To initialise the Policy Enforcer including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked to send messages and the url of the Hyperty associated to the Policy Enforcer (it will forward received and processed messages to this address).
 
-    init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage , HypertyURL hyperty)
+    init( URL.RuntimeURL pepURL, bus.postMessage , HypertyURL hyperty)
 
 To set postMessage() function to be used by the Policy Enforcer to send messages usually the "MessageBUS". 
 
