@@ -3,11 +3,15 @@ introduction\readme.md ^
 requirements\readme.md ^
 sota\readme.md ^
 ..\..\sota\runtime\runtime-security.md ^
-sota\projects.md ^
-sota\runtime.md ^
 sota\standards.md ^
-..\..\specs\readme.md ^
-..\..\specs\runtime\readme.md ^
+sota\runtime.md ^
+sota\messaging.md ^
+sota\service-framework.md ^
+sota\projects.md ^
+sota\products.md ^
+..\..\sota\products\SOTA%20of%20ApiRTC.md ^
+..\..\sota\products\SOTA%20of%20Sippo%20and%20the%20protocol-on-the-fly%20approach.md ^
+specs\runtime.md ^
 ..\..\specs\runtime\runtime-architecture.md ^
 ..\..\specs\runtime\securityanalysis.md ^
 ..\..\specs\runtime\runtime-apis.md ^
@@ -44,6 +48,7 @@ sota\standards.md ^
 ..\..\specs\runtime\implementation\browser-runtime.md ^
 ..\..\specs\runtime\implementation\standalone-runtime.md ^
 ..\..\specs\runtime\implementation\gw-runtime.md ^
+specs\msg-node.md ^
 ..\..\specs\msg-node\readme.md ^
 ..\..\specs\msg-node\msg-node-architecture.md ^
 ..\..\specs\msg-node\vertx_specs.md ^

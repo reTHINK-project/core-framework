@@ -33,112 +33,80 @@ end group
 
 alt App and Hyperty are from the same domain
 
-	RunUA@A <- App@A : registerHyperty( HypertyInstance )
+	App@A -> SP1 : get\nHypertySourceCodeURL
 
-	RunUA@A -> RunUA@A : check Hyperty and App domain
+	create SP1H@A
+	App@A -> SP1H@A : new
 
 	note right
-		 In this case, it is the App that instantiates the Hyperty, since the RuntimeUA is not able to do it
+		 In this case, it is the App
+		  that instantiates the Hyperty,
+		   since the RuntimeUA is not able to do it
 	end note
+
+	RunUA@A <- App@A : registerHyperty\n(HypertyDescriptorURL\n hypertyInstance )
+
+	RunUA@A -> RunUA@A : check Hyperty\nand App domain
+
 
 else App and Hyperty are from different domains
 
-	RunUA@A <- App@A : loadHyperty( HypertyCatalogueURL)
+	RunUA@A <- App@A : loadHyperty\n( HypertyDescriptorURL )
 
-	RunUA@A -> SP1 : get HypertyCatalogueURL
+	RunUA@A -> SP1 : get\nHypertySourceCodeURL
+
+	RunUA@A -> RunReg@A : getHypertySandbox\n(HypertyDomain)
+
+	note right
+		If there is already a sandbox for the Hyperty domain
+		the Hyperty is instantiated there.
+		Otherwise a new sandbox has to be created.
+		Sandbox management procedures are not shown here
+		since it will depend on the runtime type.
+	end note
 
 	create SP1H@A
 	RunUA@A -> SP1H@A : new
 
 end group
 
-SP1H@A -> SP1H@A : Router?
 
-SP1H@A -> RunUA@A : get Router
+group register Hyperty (designed at register-hyperty.md)          
 
-RunUA@A -> SP1 : get Router
+RunUA@A -> RunReg@A : registerHyperty(\npostMessage,\nHypertyDescriptor )
 
-create Router1@A
-RunUA@A -> Router1@A : new
+...
 
-RunUA@A -> Router1@A : new
-
-RunUA@A -> RunReg@A : registerHyperty( postMessage, HypertyURL )
-
-group associate to Identity : to be designed in a separate diagram by Id Management Group
-
-	RunID@A <- RunReg@A : get Identity
-
-	... ...
-
-	RunReg@A <- RunReg@A : set Identity
+RunUA@A <- RunReg@A : hypertyURL
 
 end group
 
-group allocate address for new Hyperty Instance
-	RunReg@A <- RunReg@A : resolve protoStub URL
-	RunReg@A -> BUS@A : postMessage( read hyperty Address Allocation MSG)
 
-	BUS@A -> Proto1@A : postMessage( read hyperty Address Allocation MSG)
+RunUA@A -> RunUA@A : HypertyDescriptor.policies?
 
-	Proto1@A -> SP1 : read hyperty Address Allocation SP1 MSG Protocol
+opt There is a Hyperty policy enforcer to be deployed
 
-	group option: connect protocol stub to the domain in case it is still not connected yet
+	RunUA@A -> SP1 : get\nPolicyEnforcerSourceCodeURL
 
-	end group
+	create Router1@A
+	RunUA@A -> Router1@A : new
+
+	RunUA@A -> RunReg@A : registerPEP( \npepSandbox.postMessage \n, hyperty)
+
+	RunUA@A <- RunReg@A : pep runtime URL
+
+	RunUA@A -> Router1@A : init( pepRuntimeURL,\n bus.postMessage\n, hypertyURL)
+
+	BUS@A <- Router1@A : addListener(\n pepListener, \npepRuntimeURL)
 
 end group
-	
-group register Hyperty at SP1 Registry
-	RunReg@A <- RunReg@A : collect Hyperty runtime Context data
-	RunReg@A <- RunReg@A : resolve protoStub URL
-	RunReg@A -> BUS@A : postMessage( create hypertyRegistration MSG)
 
-	BUS@A -> Proto1@A : postMessage( create hypertyRegistration MSG)
+RunUA@A -> SP1H@A : init( hypertyURL,\n bus.postMessage\n, configuration)
 
-	Proto1@A -> SP1 : create hypertyRegistration SP1 MSG Protocol
-
-	end group
-
+BUS@A <- SP1H@A : addListener(\n hypertyListener, \nhypertyURL)
 
 @enduml
 -->
-
-
-![Deploy Hyperty](deploy-hyperty.png)
-
-Message to request address allocated for new Hyperty Instance:
-
-
-```
-"id" : "1"
-"type" : "CREATE",
-"from" : "hyperty-runtime://sp1/runalice/registry",
-"to" : "sp1/msg-node/address-allocation",
-"body" : { "hypertyUrl" : "hyperty://sp1/hy123" }
-```
-
-Message to Responde to request address allocated for new Hyperty Instance:
-
-```
-"id" : "1"
-"type" : "RESPONSE",
-"from" : "sp1/msg-node/address-allocation",
-"to" : "hyperty-runtime://sp1/runalice/registry",
-"body" : { "hypertyInstanceURL" : "hyperty-instance://sp1/alice/hy123" }
-```
-
-Message to Register new Hyperty Instance:
-
-```
-"id" : "1"
-"type" : "CREATE",
-"from" : "hyperty-runtime://sp1/runalice",
-"to" : "sp1/registry",
-"body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty-instance://sp1/hy123,
-"hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice,
-...}
-```
 
 
 

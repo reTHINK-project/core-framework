@@ -30,7 +30,7 @@ RunUA@A -> RunReg@A : discoverStub( domain )
 
 alt Stub Not Available in Registry
 
-	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub
+	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/sourceCode
 
 		note over BUS@A
 			as defined in the data model the protocol stub is a well know URI.
@@ -57,6 +57,8 @@ alt Stub Not Available in Registry
 	RunUA@A <- SP1 : return protoStubConfigurationData
 
 	RunUA@A -> Proto1@A : init(RuntimeProtoStubURL, BUS.postMessage, protoStubConfigurationData)
+
+	BUS@A <- Proto1@A : addListener( protostubListener, RuntimeProtoStubURL)
 
 	group protocol stub connection to domain: to be designed by the ID Management group
 
@@ -86,11 +88,11 @@ Steps 3 - 4 : the Runtime UA is able to derive the URL to download the protocol 
 
 Steps 5 - 7 : the new protocol stub is registered in the Runtime Registry, which allocates and return the runtime address (RuntimeURL) for the new runtime component. In addition, the runtime Registry requests the runtime BUS to add its listener to receive events about the protocol stub status.
 
-Steps 8 - 10 : the Runtime UA retrieves required configuration data for the new protocol stub and initialises it. 
+Steps 8 - 11 : the Runtime UA retrieves required configuration data for the new protocol stub and initialises it. The protostub adds a listener to the runtime BUS to receive messages from the runtime.
 
 Protocol stubs are connected by using credentials handled by the Core Runtime Identities Container which are detailed in the [domain login use case](../identity-management/domain-login.md).
 
-Steps 11 - 12 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status. 
+Steps 12 - 13 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status. 
 
 Message to publish Protocol Stub Status
 
