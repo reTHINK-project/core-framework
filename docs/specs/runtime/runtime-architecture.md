@@ -208,6 +208,12 @@ When registered, Hyperties are associated with an Identity by the Registry / Ide
 
 Manages Core Sandbox components including its deployment and update from Core Runtime Provider. It also handles Device bootstrap and the deployment of Hyperties and Protocol Stubs in the Runtime. It includes a Catalogue Protocol Stub to interface with any reTHINK Service Provider Catalogue service to query and download required Catalogue Data Objects, according to [Catalogue Service interface design][interface-catalogue](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface).
 
+#### QoS User Agent
+
+Manages network QoS in the runtime. Not limited to WebRTC. Relationship with LHCB?
+
+*to be discussed in Aveiro*
+
 ### Native Runtime
 
 Functionalities that are natively provided by the runtime.
