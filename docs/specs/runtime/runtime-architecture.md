@@ -170,7 +170,15 @@ According to Browser Sandbox model, each Service Provider Sandboxes executes com
 
 Functionalities to support Hyperty Communication through data object synchronisation are provided by the Syncer component based on Object.observer API. Details are discussed [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md).
 
-#### Connector/Policy Engine
+#### Application
+
+
+
+#### Hyperty
+
+
+
+#### Policy Enforcer
 
 Handles communication between Hyperties and the local Message Bus, enforcing when needed valid Policies on this communicayion (e.g. authorisation policies) according to Service Provider domain policies. It also enforces access control policies to synchronised object (Object Monitor functionalities as proposed [here](https://github.com/reTHINK-project/architecture/issues/52)).
 
