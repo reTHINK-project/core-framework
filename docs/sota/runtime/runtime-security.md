@@ -38,9 +38,7 @@ Multiple attack types can be performed against the hyperty instances, at multipl
   * A **browser kernel module** which acts on behalf of the user and is responsible for implementing the tab-based windowing system of the browser, storing user’s data as its preferences, bookmarks, credentials and cookies and also working as a middleware between the native operating system window manager and every instance of the second browser module, the rendering engine.
   * The **rendering engine** provides the web application behaviour. It interprets and executes web content, serving calls to the DOM API. It is the unique browser part in contact with the untrsuted web content. Apart from that, it is also responsible for enforcing the same-origin policy between the user and a website he’s visiting.
   
-![image](chromium-sandbox.png)
-
-Figure 1. Chromium sandbox scheme
+![Figure @sota-security-chromium-sandbox: Chromium sandbox scheme](chromium-sandbox.png)
 
 #### Browser Extensions Security:
 
@@ -51,30 +49,27 @@ Figure 1. Chromium sandbox scheme
 * **Web attackers:** A malicious website can launch a XSS attack on an extension if the extension treats the website as trusted, possibly stealing the browser’s userdata, like credentials. This way, it can scale up to attack multiple websites within the same entry point.
 
 According to [2], Google Chrome and its extension platform apply three mechanisms to prevent  these vulnerabilities:
-* **Privilege Separation:** Every Chrome extension has two types of components which run in separate processes: zero or more content scripts and zero or one core extension. Content scripts read and modify websites as needed. The core extension implements functionality not directly involving websites, like browser UI jobs or long-running background tasks. These two types of components communicate by sending structured clones over a trused channel. Each website that an extension communicates with, receives its own isolated instance of a content script, making content scripts highly bound to attacks. However, only the core extension is able to communicate with the Chrome extension’s API, reducing the risk that a content script is able to access the user data space. The architecture scheme of a Google Chrome extension is on Fig. 2.
+* **Privilege Separation:** Every Chrome extension has two types of components which run in separate processes: zero or more content scripts and zero or one core extension. Content scripts read and modify websites as needed. The core extension implements functionality not directly involving websites, like browser UI jobs or long-running background tasks. These two types of components communicate by sending structured clones over a trused channel. Each website that an extension communicates with, receives its own isolated instance of a content script, making content scripts highly bound to attacks. However, only the core extension is able to communicate with the Chrome extension’s API, reducing the risk that a content script is able to access the user data space. The architecture scheme of a Google Chrome extension is on Fig. @sota-security-chrome-extension.
 * **Isolated Words:** This mechanism ensures that content scripts and websites have separate JavaScript heaps and DOM objects. Consequently, content scripts never exchange pointers with websites, protecting them against web attackers.
 * **Permissions:** Extension developers have to specify the desired permissions in kind of a manifest file that is packaged with the extension. For example, the bookmarks permission is needed for the extension to be able to read and alter the user’s bookmarks. Only core extension can use permissions to invoke browser API methods, while content scripts are limited to interacting with the core extension and the website it is running on. This way, an extension is limited to the permissions its developer requested, so an attacker is not able to request new permissions for a compromised extension in runtime.
 
-![image](chrome-extension-arch.png)
+![Figure @sota-security-chrome-extension: The architecture of a Google Chrome extension](chrome-extension-arch.png)
 
-Figure 2. The architecture of a Google Chrome extension.
 
 #### XSS Detection Techniques:
 
 Cross-Site Scripting attacks are getting more common on the web, since they allow an attacker to get control of a user’s browser and execute malicious code (usually JavaScript/HTML) within the trusted context of a web application. This can result in the attacker being able to access any sensitive information associated to the application (cookies, session IDs, etc.).
 	The study of XSS attacks can be split into two distinct categories, according to [3]:
 	
-* **Persistent/Stored attacks:** Occurs when a malicious user registers itself into a web application and posts a malicious JavaScript to the application, which, by its turn, save it into the application’s data repository, persistently. After that, if another user fetches the content uploaded by the malicious one onto his browser, and since this code is coming out of the trusted context of the web application, the user’s browser will allow the script to access any possibly sensitive resource it is willing to, overcoming this way the security imposed by the same-origin policy. Apart from stealing the user’s information, XSS attacks can also be used to redirect users to a malicious website which can then perform other distinct attacks within its context. A persistent XSS attack scheme is presented on Fig. 3.
+* **Persistent/Stored attacks:** Occurs when a malicious user registers itself into a web application and posts a malicious JavaScript to the application, which, by its turn, save it into the application’s data repository, persistently. After that, if another user fetches the content uploaded by the malicious one onto his browser, and since this code is coming out of the trusted context of the web application, the user’s browser will allow the script to access any possibly sensitive resource it is willing to, overcoming this way the security imposed by the same-origin policy. Apart from stealing the user’s information, XSS attacks can also be used to redirect users to a malicious website which can then perform other distinct attacks within its context. A persistent XSS attack scheme is presented on Fig. @sota-security-xss-persistent.
 
-![image](xss-persistent.png)
 
-Figure 3. Scheme of a persistent XSS attack.
+![Figure @sota-security-xss-persistent: Scheme of a persistent XSS attack](xss-persistent.png)
 
-* **Non-persistent/Reflected attacks:** Unlike the first type, reflected attacks do not persistently store malicious code in the web application data space. Instead of that, the content is automatically reflected back to the user through a third-party mechanism. For example, by using a spoofed email, an attacker can make a user click on a link containing malicious code, which will finally be interpreted by the user’s browser, but within the trusted context fo the web application. This type of XSS attacks is often combined with other techniques as phishing, and is the most common type of XSS attacks in web applications. Figure 4 shows a scheme of the architecture of a non-persistent XSS attack.
 
-![image](xss-nonpersistent.png)
+* **Non-persistent/Reflected attacks:** Unlike the first type, reflected attacks do not persistently store malicious code in the web application data space. Instead of that, the content is automatically reflected back to the user through a third-party mechanism. For example, by using a spoofed email, an attacker can make a user click on a link containing malicious code, which will finally be interpreted by the user’s browser, but within the trusted context fo the web application. This type of XSS attacks is often combined with other techniques as phishing, and is the most common type of XSS attacks in web applications. Figure @sota-security-xss-nonpersistent shows a scheme of the architecture of a non-persistent XSS attack.
 
-Figure 4. Scheme of a non-persistent XSS attack.
+![Figure @sota-security-xss-nonpersistent: Scheme of a non-persistent XSS attack](xss-nonpersistent.png)
 
 #### XSS (and other types) prevention techniques:
 
@@ -98,9 +93,7 @@ In secure computing, a smart card is a typical card with a built-in computer chi
 
 This single-chip computer is an off-the-shelf **8-bit microcontroller** with added tamper-safe features. While most 8-bit microcontrollers can support at least **64 KBytes** of 8-bit memory, popular smart cards contain 4 to 20 Kbytes of memory, due to size constraints. The memory space of a smart card is divided into RAM, EEPROM and ROM. RAM is used to store temporary values when a program is running, while EEPROM is used to store sensitive data as an encryption key or the account holder info on credit cards. Finally, ROM is used to store the basic programs that run on the smart card. The single-chip computer is embedded in a plastic chip carrier, and both of them hold several tamper-resistant and tamper-detection features.
 
-![image](java-smart-card.jpg)
-
-Figure 5. Java Smart Card scheme [11]
+![Figure @sota-security-java-smart-card: Java Smart Card scheme [11]](java-smart-card.jpg)
 
 * **Software**
 
@@ -122,13 +115,12 @@ Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal is to pro
 
 CoSE, in a WEB-like paradigm, are meant to support Uniform Resource Identifiers (URIs) for users to locate the different secure elements and use their embedded resources. These resources usually target two service types: Near Field Communication (NFC) facilities for mobile applications and trusted cryptogrtaphic features for cloud applications.
 
-![image](cose.png)
+![Figure @sota-security-cose: CoSE architecture](cose.png)
 
-Figure 6. CoSE architecture
 
 * **Architecture**
 
-A Cloud of Secure Elements has the following components, as Fig. 6 shows:
+A Cloud of Secure Elements has the following components, as Fig. @sota-security-cose shows:
 
   * NFC kiosks, typically deliver payment facilities
   * Users with NFC-enabled devices or terminals needing trusted cryptographic resources
