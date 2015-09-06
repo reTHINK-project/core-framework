@@ -1,4 +1,4 @@
-### User Registration
+#### User Registration
 
 <!--
 @startuml "user-registration.png"

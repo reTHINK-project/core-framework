@@ -1,3 +1,5 @@
+#### Register Hyperty
+
 <!--
 @startuml "register-hyperty.png"
 

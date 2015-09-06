@@ -1,4 +1,4 @@
-### M2M Intra Communication : PUB-SUB Communication
+#### M2M Intra Communication : PUB-SUB Communication
 
 **[Previous: Context Discovery](m2m-intra-comm-3-discovery.md)**
 

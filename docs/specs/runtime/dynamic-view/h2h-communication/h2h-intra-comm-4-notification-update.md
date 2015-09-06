@@ -1,4 +1,4 @@
-### Incoming call is notified to Bob's application and Alice is updated
+#### Incoming call is notified to Bob's application and Alice is updated
 
 <!--
 @startuml "h2h-intra-comm-4-notification-update.png"

@@ -1,8 +1,7 @@
-### Associate User Identity to Hyperty Instance
+#### Associate User Identity to Hyperty Instance
 
 ![User-to-Hyperty Binding Scheme](user-to-hyperty-binding-scheme.png)
 
-####Description of the protocol steps:
 
 This sequence details the steps needed to associate the user identity to a given Hyperty instance.
   

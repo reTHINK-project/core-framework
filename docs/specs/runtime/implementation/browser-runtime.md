@@ -1,4 +1,4 @@
-#### Browser Runtime Implementation
+### Browser Runtime Implementation
 
 <!--
 @startuml "Runtime_Browser_Implementation.png"
@@ -122,12 +122,12 @@ implemented by the Runtime MsgBUS Core Component
 
 ![](Runtime_Browser_Implementation.png)
 
-## Runtime Architecture with IFrame
+#### Runtime Architecture with IFrame
 
 After some investigation we find away to send stream from app client to iframe with our domain.
 We use peer connection to send media stream.
 
-#### how it works
+**how it works**
 The peer getUserMedia from app client and make a call to peer inside the rethink iframe, and this answer with null stream (we send stream one way), after this, peer can send the stream through peer connection to another client.
 
 We need to do an experimentation code to make an complete validation for  this architecture. 

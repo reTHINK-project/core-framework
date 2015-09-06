@@ -1,4 +1,4 @@
-## Synchronization of Alice's Data Object
+#### Synchronization of Alice's Data Object
 
 
 <!--

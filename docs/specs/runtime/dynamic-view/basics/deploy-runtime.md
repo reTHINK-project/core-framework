@@ -1,4 +1,4 @@
-### Deploy runtime
+#### Deploy runtime
 
 ![Deploy Core Runtime Components in the Native Runtime](deploy-runtime.png)
 

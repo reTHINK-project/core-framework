@@ -1,4 +1,4 @@
-### M2M Intra Communication : Context Discovery
+#### M2M Intra Communication : Context Discovery
 
 <!--
 @startuml "m2m-intra-comm-3-discovery.png"

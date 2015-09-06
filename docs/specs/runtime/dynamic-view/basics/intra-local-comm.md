@@ -1,4 +1,4 @@
-### Intra-domain Local Communication
+#### Intra-domain Local Communication
 
 <!--
 @startuml "intradomain-local-communication.png"

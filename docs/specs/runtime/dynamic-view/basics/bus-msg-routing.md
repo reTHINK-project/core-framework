@@ -1,4 +1,4 @@
-### Message Routing in Message BUS
+#### Message Routing in Message BUS
 
 <!--
 @startuml "bus-msg-routing.png"

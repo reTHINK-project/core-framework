@@ -1,4 +1,4 @@
-### Deploy Protocol Stub
+#### Deploy Protocol Stub
 
 <!--
 @startuml "deploy-protostub.png"

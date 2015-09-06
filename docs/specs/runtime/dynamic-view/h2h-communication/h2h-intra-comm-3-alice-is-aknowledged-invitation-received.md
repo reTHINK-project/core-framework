@@ -1,4 +1,4 @@
-### H2H Intradomain Communication - create communication
+#### H2H Intradomain Communication - create communication
 
 This MSC diagrams shows how Alice is aknowledged that Bob received the invitation
 

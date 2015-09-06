@@ -1,4 +1,4 @@
-### User identity assertion sequence diagram (proposition)
+#### User identity assertion 
 
 ![uid-assertion-seq](https://cloud.githubusercontent.com/assets/10709934/9578851/a18add7c-4fed-11e5-81ab-be8dd605a09b.png)
 

@@ -1,4 +1,4 @@
-### H2H Interdomain Communication - create communication
+#### H2H Interdomain Communication - create communication
 
 This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob, where Alice and Bob are in different domains.
 

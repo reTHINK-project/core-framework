@@ -1,4 +1,4 @@
-### Deploy Hyperty
+#### Deploy Hyperty
 
 <!--
 @startuml "deploy-hyperty.png"
