@@ -1,9 +1,9 @@
-| **Requirement Name** | **Description** | <br/> | --- | --- |<br/>The effort to introduce new capabilities in the runtime should be reasonable | Estimate effort needed to introduce the following features:
+<h2>Runtime Node Requirements</h2><p></p>**The effort to introduce new capabilities in the runtime should be reasonable** :</br> Estimate effort needed to introduce the following features:
 - missing WebRTC features eg Identity
 - Protocol on the fly mechanism
 - Policy engine
 - Hyperty Registry
-- others?<br/>The Runtime must be secured | *to be done: Identity attacks to be secured against*
+- others?<br/>**The Runtime must be secured** :</br> *to be done: Identity attacks to be secured against*
 
 It should be possible to deploy in secured elements like SIM cards or embedded SIM (Nuno: not yet entirely sure that this can be done.)
 
@@ -26,9 +26,9 @@ G3 - to enforce the security policies attached to hyperty code.
 
 
 
-<br/>The Runtime must have a good performance | <br/>The Runtime should support Web Messaging Notifications | http://dev.w3.org/html5/postmsg/<br/>The Runtime should support Web Socket | http://www.w3.org/TR/websockets/ <br/>The runtime must support standard Javascript (ECMAScript) | http://www.ecma-international.org/ecma-262/5.1/ <br/>The Runtime should support W3C WebRTC APIs | http://www.w3.org/TR/mediacapture-streams/
+<br/>**The Runtime must have a good performance** :</br> <br/>**The Runtime should support Web Messaging Notifications** :</br> http://dev.w3.org/html5/postmsg/<br/>**The Runtime should support Web Socket** :</br> http://www.w3.org/TR/websockets/ <br/>**The runtime must support standard Javascript (ECMAScript)** :</br> http://www.ecma-international.org/ecma-262/5.1/ <br/>**The Runtime should support W3C WebRTC APIs** :</br> http://www.w3.org/TR/mediacapture-streams/
 
-http://www.w3.org/TR/webrtc/ <br/>The Runtime should be deployable in the most used Devices and Operating Systems | Including:
+http://www.w3.org/TR/webrtc/ <br/>**The Runtime should be deployable in the most used Devices and Operating Systems** :</br> Including:
 * Android (Smartphone and Tablet) 
 * iOS (Smartphone and Tablet)
 * Raspberry PI

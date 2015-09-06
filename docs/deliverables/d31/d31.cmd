@@ -1,6 +1,10 @@
 pandoc -o readme.md ^
 introduction\readme.md ^
 requirements\readme.md ^
+requirements\runtime-requirements.md ^
+requirements\messaging-requirements.md ^
+requirements\qos-requirements.md ^
+requirements\framework-requirements.md ^
 sota\readme.md ^
 ..\..\sota\runtime\runtime-security.md ^
 sota\standards.md ^
@@ -53,7 +57,8 @@ specs\msg-node.md ^
 ..\..\specs\msg-node\nodejs_specs.md ^
 ..\..\specs\msg-node\matrix_specs.md ^
 conclusions\readme.md ^
-..\..\references\readme.md
+..\..\references\readme.md ^
+introduction\figures.md
 
 
  pushd ..\..\sota
