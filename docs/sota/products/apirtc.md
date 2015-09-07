@@ -17,17 +17,7 @@ Instant Messaging 1 to 1, Group
 
 **WebRTC Client :**
 
-Voice Calls, Voice and Video Calls<br/>
-Audio, video mute<br/>
-ScreenSharing<br/>
-TakeSnapshot<br/>
-Support of IE and Safari for audio and video calls through a plugin<br/>
-Network disconnection detection<br/>
-Network traversal management for media flows<br/>
-DataChannel<br/>
-Calls recording<br/>
-Connection to IMS, RCS, SIP Architecture<br/>
-Conference calls<br/>
+Voice Calls, Voice and Video Calls; Audio, video mute; ScreenSharing; TakeSnapshot; Support of IE and Safari for audio and video calls through a plugin; Network disconnection detection; Network traversal management for media flows; DataChannel; Calls recording; Connection to IMS, RCS, SIP Architecture; Conference calls<br/>
 
 **Data Client :**
 
@@ -60,7 +50,6 @@ Redis is a NoSQL database that is really interesting for real time data and that
 ApiRTC use a javascript library on client side to provide teh developers APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
-
 
 ApiRTC actual architecture is presented on following diagram :
 <img src="ApiRTC-ReTHINK.png" width="450">
