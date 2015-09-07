@@ -1,11 +1,41 @@
 ### apiRTC
 #### What is ApiRTC?
 
-ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their applications.
+ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their own applications without having to consider the technical aspects of communication.
 
 #### Features Overview
 
+ApiRTC Entreprise edition includes following features : 
+*Session*
+Connexion : long polling , webSocket
+HTTP, HTTPS
+Presence : group connection and subscription
+Custom User Data sharing
+Browsers type and version detection
 
+*IMClient*
+Instant Messaging 1 to 1, Group
+
+*WebRTC Client*
+Voice Calls
+Voice and Video Calls
+ScreenSharing
+TakeSnapshot
+Audio, video mute
+Support of IE and Safari for audio and video calls through a plugin 
+Network disconnection detection
+Network traversal management for media flows
+DataChannel
+Calls recording
+Connection to IMS, RCS, SIP Architecture
+Conference calls
+
+*Data Client*
+Custom data sending and reception
+
+*Compatibility*
+PC, Mac througth webRTC compatible browsers
+Plugin for Android and iOS application development
 
 
 
