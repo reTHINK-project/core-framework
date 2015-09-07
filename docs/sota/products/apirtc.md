@@ -70,16 +70,13 @@ ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
 #### Requirements Analysis
 
-*Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
-*The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
-In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
-
-
-Analysis regarding WP3 requirements :
+Analysis regarding WP3 Messaging node requirements :
 
 **Messaging Node with carrier grade deployment features :**</br>
+NodeJs and Redis enables to buld a resiliante and scalable architecture
 
 **The Messaging Node MUST offer DoS and DDoS Protection :**</br>
+user authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
 		
 **It should be possible to support Protocol on-the-fly :**</br>
 		
@@ -88,8 +85,6 @@ ProtOFly connector can be developped. JS connector can be develop on top of Node
 **Messaging Transport Protocols:**</br>
 		
 Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
-
-**Message Caching :**</br>
 		
 **Messaging Node logging :**</br>
 
@@ -129,12 +124,13 @@ reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 Yes - NodeJs is available on Linux, windows, mac
 
 **Messaging Node should require minimal computing resources :**</br>
+Messaging nodes components can be isntalled in only one VM
 
 **Messaging Node must support external authentication and Authorisation :**</br>
 Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
 
 **Messaging Node must support multiple messaging functionalities :**</br>
-
+Several routing can be performed with socket.io. Send message to only one dest, broadcast message to several users
 
 
 #### Integration in Rethink
