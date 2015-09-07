@@ -73,6 +73,25 @@ ApiRTC actual architecture is presented on following diagram :
 Components such as NodeJs, Redis or socket.io are used.
 ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 
+
+
+                                                                           
+#### APIs
+
+*needs elaborate *
+ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
+
+#### Requirements Analysis
+
+*Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
+*The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
+In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
+
+
+Analyse regarding WP3 requirements :
+TO BE COMPLETED
+
+
 #### Role in Rethink
 
 apiRTC can be used in a nodejs based Messaging Node. 
@@ -92,22 +111,5 @@ A Redis Cluster with Pub/Sub mechanism can be used to manage communications betw
 For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
 
 Complete version of ApiRTC is described on www.apirtc.com
-
-                                                                           
-#### APIs
-
-*needs elaborate *
-ApiRTC provides API for developers
-
-#### Requirements Analysis
-
-*Analyse how the solution fullfills [WP3 requirements](selection-criteria.md) according to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS or Framework*
-*The fullfillment of each requirement should be analysed and if needed validated with some tests. Code snippets or other means like configuration data should be provided to clearly demonstrate the requirement fullfilment.
-In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
-
-
-Analyse regarding WP3 requirements :
-TO BE COMPLETED
-
 
 
