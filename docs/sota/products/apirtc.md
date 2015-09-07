@@ -75,10 +75,9 @@ ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 In case the Requirement is not fulfilled, possible solutions should be proposed including effort estimation.*
 
 
-Analyse regarding WP3 requirements :
+Analysis regarding WP3 requirements :
 
 **Messaging Node with carrier grade deployment features :**</br>
-Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy</br>
 
 **The Messaging Node MUST offer DoS and DDoS Protection :**</br>
 		
@@ -86,37 +85,24 @@ Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mech
 		
 ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enable protofly on server side. This connector will be for example reusable to connect an external CSP, Kurento Media Server, or the Identity manager
 
-		Messaging Transport Protocols Messaging Node Requirement
+**Messaging Transport Protocols:**</br>
 		
 Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
 
-
-		Message Caching Messaging Node Requirement
+**Message Caching :**</br>
 		
-		Messaging Node logging Messaging Node Requirement
+**Messaging Node logging :**</br>
+
 Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
 
-		Message delivery reliability Messaging Node Requirement
+**Message delivery reliability :**</br>
 Socket.io enables message acknowledgement
 		
-		Messaging Node deployments with carrier grade scalability Messaging Node Requirement
-		Messaging Node should be tolerant to unstable connections Messaging Node Requirement
-		Events about clients connection / disconnection from Messaging Node Messaging Node Requirement
-		Messaging Node must support very low message delivery latency Messaging Node Requirement
-		Messaging Node must be deployable in the most used Virtual Machines Messaging Node Requirement
-		Messaging Node should require minimal computing resources Messaging Node Requirement
-		Messaging Node must support external authentication and Authorisation Messaging Node Requirement
-		Messaging Node must support multiple messaging functionalities Messaging Node Requirement
+**Messaging Node deployments with carrier grade scalability :**</br>
 
+Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy</br>
 
-
-
-
-
-Messaging Node deployments with carrier grade scalability
-
-
-Messaging Node should be tolerant to unstable connections
+**Messaging Node should be tolerant to unstable connections :**</br>
 
 Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
 reconnection whether to reconnect automatically (true)
@@ -125,7 +111,7 @@ reconnectionDelay how long to wait before attempting a new reconnection (1000)
 reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by the amount specified by reconnectionDelay.
 timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
 
-Events about clients connection / disconnection from Messaging Node
+**Events about clients connection / disconnection from Messaging Node :**</br>
 
 Yes - using socket.io different event are fired on connection status :
 connect. Fired upon connecting.
@@ -137,21 +123,18 @@ reconnecting. Fired upon an attempt to reconnect.
 reconnect_error. Fired upon a reconnection attempt error.
 reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
-Messaging Node must support very low message delivery latency
+**Messaging Node must support very low message delivery latency :**</br>
 
-Yes
-Messaging Node must be deployable in the most used Virtual Machines
-
+**Messaging Node must be deployable in the most used Virtual Machines :**</br>
 Yes - NodeJs is available on Linux, windows, mac
-Messaging Node should require minimal computing resources
 
-Yes
-Messaging Node must support external authentication and Authorisation
+**Messaging Node should require minimal computing resources :**</br>
 
+**Messaging Node must support external authentication and Authorisation :**</br>
 Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
-Messaging Node must support pub/sub
 
-No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
+**Messaging Node must support multiple messaging functionalities :**</br>
+
 
 
 #### Integration in Rethink
@@ -168,7 +151,6 @@ Integration of ApiRTC in Rethink can be done by adding differents connectors dep
 A Redis Cluster with Pub/Sub mechanism can be used to manage communications between connectors
 
 <img src="ApiRTC-IntegrationInReTHINK.png" width="450">    
-
 
 For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
 
