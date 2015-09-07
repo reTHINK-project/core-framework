@@ -1,14 +1,15 @@
 ### apiRTC
 #### What is ApiRTC?
 
-ApiRTC solution includes a communication platform and a client JavaScript library that can be used by developpers to developped their applications.
+ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their applications.
 
-For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
-
-Complete version of ApiRTC is described on www.apirtc.com
+#### Features Overview
 
 
-#### Overview
+
+
+
+#### Architecture Overview
 
 **Messaging Node :** NodeJs + Redis Cluster
 
@@ -40,7 +41,13 @@ Integration of ApiRTC in Rethink can be done by adding differents connectors dep
 
 A Redis Cluster with Pub/Sub mechanism can be used to manage communications between connectors
 
-<img src="ApiRTC-IntegrationInReTHINK.png" width="450">                                                                     
+<img src="ApiRTC-IntegrationInReTHINK.png" width="450">    
+
+
+For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
+
+Complete version of ApiRTC is described on www.apirtc.com
+
                                                                            
 #### APIs
 
