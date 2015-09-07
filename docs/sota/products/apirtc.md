@@ -45,23 +45,23 @@ Plugin for Android and iOS application development
 
 #### Architecture Overview
 
-
-ApiRTC solution use different components : 
+ApiRTC solution use different components on server and client side.
 
 **Messaging Node :**
 
-Main components are NodeJs and Redis :
+On server side, main used components are NodeJs and Redis :
 
-NodeJs : https://nodejs.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
+  NodeJs : https://nodejs.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
 
 NodeJs is a Javascript engine that can be enhanced through diffrent existing modules for connections, log, ... 
 
-Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
+  Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
 
 Redis is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several nodeJs process.
 
-**Runtime / Framework :** ApiRTC Client
+**Runtime / Framework :** 
 
+ApiRTC use a javascript library on client side to provide teh developers APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
 
