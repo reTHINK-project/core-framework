@@ -39,7 +39,7 @@ Custom data sending and reception
 
 **Compatibility :**
 
-PC, OSx throught webRTC compatible browsers<br/>
+Window, linux, OSx, Android devices throught webRTC compatible browsers<br/>
 Plugin for Android and iOS application development
 
 
