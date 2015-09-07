@@ -9,11 +9,11 @@ ApiRTC Entreprise edition includes following features :
 
 **Session :**
 
-Connexion : long polling , webSocket<br/>
-HTTP, HTTPS<br/>
-Presence : group connection and subscription<br/>
-Custom User Data sharing<br/>
-Browsers type and version detection<br/>
+  Connexion : long polling , webSocket<br/>
+  HTTP, HTTPS<br/>
+  Presence : group connection and subscription<br/>
+  Custom User Data sharing<br/>
+  Browsers type and version detection<br/>
 
 **IMClient :**
 
