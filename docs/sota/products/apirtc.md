@@ -57,13 +57,18 @@ ApiRTC actual architecture is presented on following diagram :
 Components such as NodeJs, Redis or socket.io are used.
 ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 
-
-
-                                                                           
 #### APIs
 
-*needs elaborate *
 ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
+
+APIS are decomposed with following classes :
+ApiRTCSession
+ApiRTCWebRTCClient
+ApiRTCIMClient
+ApiRTCCoBrowsingClient
+ApiRTCDataClient
+ApiRTCWhiteBoardClient
+
 
 #### Requirements Analysis
 
