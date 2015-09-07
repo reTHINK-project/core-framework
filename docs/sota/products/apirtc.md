@@ -62,13 +62,12 @@ ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
 
 APIS are decomposed with following classes :<br/>
-ApiRTCSession
-ApiRTCWebRTCClient
-ApiRTCIMClient
-ApiRTCCoBrowsingClient
-ApiRTCDataClient
-ApiRTCWhiteBoardClient
-
+ApiRTCSession : manage user connection to the platform (presence)<br/>
+ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
+ApiRTCIMClient : manage Instant messaging feature<br/>
+ApiRTCCoBrowsingClient : manage co-browsing feature<br/>
+ApiRTCDataClient: : manage data sending feature<br/>
+ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
 #### Requirements Analysis
 
