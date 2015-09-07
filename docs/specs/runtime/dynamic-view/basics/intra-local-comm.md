@@ -32,16 +32,8 @@ group discover Local Hyperty URL
 
 end group
 
-SP1H@A -> Router1@A : send msg
+SP1H@A -> SP1H2@A : send msg
 
-Router1@A -> Router1@A : Apply Local Alice policies
-
-Router1@A -> SP1H2@A : send msg
-
-note left
-	should message goes through
-	msg BUS?
-end note
 
 @enduml
 -->

@@ -18,15 +18,11 @@ autonumber
 
 BUS@A <-  : send msg
 
-RunAuth@A <- BUS@A : Authz request(Message)
+RunReg@A <- BUS@A : resolve(Message)
 
-RunReg@A <- RunAuth@A : Resolve(Message)
+RunReg@A -> RunReg@A  : verify source(association Id Token)
 
-RunReg@A -> RunID@A : get Identity token
-
-RunReg@A -> RunReg@A  : add ID Token to Msg
-
-RunReg@A -> RunReg@A  : resolve addresses
+RunReg@A -> RunReg@A  : resolve targed address
 
 group option :unregistered protocol stub for external address
 
@@ -38,29 +34,45 @@ group option :unregistered protocol stub for external address
 
 end
 
-RunReg@A -> RunAuth@A : return(ResolvedMessage)
 
-group enforce policies
-	RunAuth@A -> RunAuth@A : enforce source policies
+RunReg@A -> BUS@A : return(ResolvedMessage)
 
-	RunAuth@A -> RunAuth@A : enforce target policies
+loop until authorised or final error
+	RunAuth@A <- BUS@A : authorise(Message)
+
+	RunAuth@A -> RunAuth@A : apply authz Policies
+
+	alt Message Routing authorised
+		RunAuth@A -> BUS@A : authorised
+	else 
+		RunAuth@A -> BUS@A : action required
+
+		alt assertion required
+			BUS@A -> RunID@A : generateAssertion( message / scope? )
+			BUS@A <- RunID@A : return Assertion
+		else verify assertion
+			BUS@A -> RunID@A : validateAssertion( message )
+			BUS@A <- RunID@A : return validation
+		end
+	else
+		RunAuth@A -> BUS@A : final error
+
+		alt Error : unknown source
+
+		else Error : target not found
+
+		else Error : not associated with Identity
+
+		else Error : blocked by source policy
+
+		else Error : blocked by target policy
+		end
+	end
 end
 
-alt
-	RunAuth@A -> BUS@A : authorised(ResolvedMessage)
 
-	BUS@A ->  : send msg
-else Error : unknown source
+BUS@A ->  : send msg
 
-else Error : target not found
-
-else Error : not associated with Identity
-
-else Error : blocked by source policy
-
-else Error : blocked by target policy
-
-end
 
 @enduml
 -->
