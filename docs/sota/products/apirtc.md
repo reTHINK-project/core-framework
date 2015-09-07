@@ -1,7 +1,7 @@
 ### apiRTC
 #### What is ApiRTC?
 
-ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their own applications without having to consider the technical aspects of communication.
+ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their own applications without having to consider the technical aspects of communication. Complete version of ApiRTC with tutorials is described on www.apirtc.com
 
 #### Features Overview
 
@@ -61,11 +61,10 @@ ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 
 ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
 
-APIS are decomposed with following classes :<br/>
+APIS are decomposed with main following classes :<br/>
 ApiRTCSession : manage user connection to the platform (presence)<br/>
 ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
 ApiRTCIMClient : manage Instant messaging feature<br/>
-ApiRTCCoBrowsingClient : manage co-browsing feature<br/>
 ApiRTCDataClient: : manage data sending feature<br/>
 ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
@@ -98,6 +97,6 @@ A Redis Cluster with Pub/Sub mechanism can be used to manage communications betw
 
 For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
 
-Complete version of ApiRTC is described on www.apirtc.com
+
 
 
