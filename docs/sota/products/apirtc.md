@@ -44,15 +44,24 @@ PC, OSx throught webRTC compatible browsers<br/>
 Plugin for Android and iOS application development
 
 
-
 #### Architecture Overview
 
-**Messaging Node :** NodeJs + Redis Cluster
+
+ApiRTC solution use different components : 
+
+**Messaging Node :**
+
+Main components are NodeJs and Redis :
 
 NodeJs : https://nodejs.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
+
+NodeJs is a Javascript engine that can be enhanced through diffrent existing modules for connections, log, ... 
+
 Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
 
-**Runtime / Framework :** ApiRTC CE Client
+Redis is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several nodeJs process.
+
+**Runtime / Framework :** ApiRTC Client
 
 
 #### Architecture
