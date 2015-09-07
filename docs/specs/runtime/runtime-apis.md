@@ -61,6 +61,10 @@ To discover sandboxes available in the runtime for a certain domain. Required by
 
     RuntimeSandbox getSandbox( DomainURL url )
 
+To verify if source is valid and to resolve target runtime url address if needed (eg protostub runtime url in case the message is to be dispatched to a remote endpoint ).
+
+    Message.Message resolve( Message.Message message )
+
 ### Message BUS
 
 To send messages with optional call back. This function is accessible outside the Core runtime.
