@@ -21,18 +21,18 @@ Instant Messaging 1 to 1, Group
 
 **WebRTC Client :**
 
-Voice Calls
-Voice and Video Calls
-ScreenSharing
-TakeSnapshot
-Audio, video mute
-Support of IE and Safari for audio and video calls through a plugin 
-Network disconnection detection
-Network traversal management for media flows
-DataChannel
-Calls recording
-Connection to IMS, RCS, SIP Architecture
-Conference calls
+Voice Calls<br/>
+Voice and Video Calls<br/>
+ScreenSharing<br/>
+TakeSnapshot<br/>
+Audio, video mute<br/>
+Support of IE and Safari for audio and video calls through a plugin<br/>
+Network disconnection detection<br/>
+Network traversal management for media flows<br/>
+DataChannel<br/>
+Calls recording<br/>
+Connection to IMS, RCS, SIP Architecture<br/>
+Conference calls<br/>
 
 **Data Client :**
 
@@ -40,7 +40,7 @@ Custom data sending and reception
 
 **Compatibility :**
 
-PC, OSx throught webRTC compatible browsers
+PC, OSx throught webRTC compatible browsers<br/>
 Plugin for Android and iOS application development
 
 
