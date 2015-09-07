@@ -21,11 +21,10 @@ Instant Messaging 1 to 1, Group
 
 **WebRTC Client :**
 
-Voice Calls<br/>
-Voice and Video Calls<br/>
+Voice Calls, Voice and Video Calls<br/>
+Audio, video mute<br/>
 ScreenSharing<br/>
 TakeSnapshot<br/>
-Audio, video mute<br/>
 Support of IE and Safari for audio and video calls through a plugin<br/>
 Network disconnection detection<br/>
 Network traversal management for media flows<br/>
