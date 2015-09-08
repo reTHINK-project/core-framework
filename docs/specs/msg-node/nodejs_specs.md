@@ -69,13 +69,11 @@ If the CRUD operations have to be authorized on a per identity basis (e.g. user 
 ### Usage of Redis with NodeJs
 
 Redis can be used to add scalability/redundancy to the messaging node.
-It can also facilitate the development and the integration of new connectors, Here is a quick architecture :
+It can also facilitate the development and the integration of new connectors</br>
 
-
-      User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
-      User B -------|            |   |------- NodeJs Connector to another CSP
-                                 |   |------- NodeJs Connector to Kurento
-      User C -----NodeJs 2 ------|   |------- NodeJs Connector to an IMS GW
+Architecture description :
+      
+<img src="MessagingNode-NodeJs-3.png" width="450">      
 
 Communication between Users and NodeJs can be managed by socket.io
 
