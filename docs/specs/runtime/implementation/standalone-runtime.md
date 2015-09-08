@@ -78,8 +78,16 @@ The WebView can be updated separately from the rest of the application. This can
 
 One of the obvious drawbacks is that Webview is not available in iOS. 
 
+####OpenWebRTC
 
-### Possible Solution :
+TO BE COMPLETED
+
+OpenWebRTC : to be tested.
+
+May enable both native and Hybrid application development.
+
+### Selected solution for the implementation:
+
 #### Android :
 
 Crosswalk : integrate chromium in the application with different possible integration :
@@ -94,8 +102,6 @@ iOSRTC, cordova plugin : https://github.com/eface2face/cordova-plugin-iosrtc
 #### Android & iOS :
 
 Crosswalk and iosRTC can be embeded in the same application code to support both platform.
-
-OpenWebRTC : to be tested. May enable both native and Hybrid application development.
 
 Hybrid solution will be selected for the project as it enable to use JavaScript for the runtime
 
