@@ -73,7 +73,7 @@ It can also facilitate the development and the integration of new connectors</br
 
 Architecture description :
       
-<img src="MessagingNode-NodeJs-3.png" width="450">      
+<img src="MessagingNode-NodeJs-3.png" width="600">      
 
 Communication between Users and NodeJs can be managed by socket.io
 
