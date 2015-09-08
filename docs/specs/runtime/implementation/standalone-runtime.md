@@ -95,4 +95,6 @@ Crosswalk and iosRTC can be embeded in the same application code to support both
 
 OpenWebRTC : to be tested. May enable both native and Hybrid application development.
 
+Hybrid solution will be selected for the project as it enable to use JavaScript for the runtime
+
 
