@@ -86,6 +86,8 @@ Crosswalk : integrate chromium in the application with different possible integr
 - Crosswalk embedded in the application
 - Crosswalk cordova plugin
 
+Crosswalk usage should ensure us a compatibility with what is done for browser runtime as it embed Chromium
+
 #### iOS : 
 iOSRTC, cordova plugin : https://github.com/eface2face/cordova-plugin-iosrtc
 
