@@ -80,15 +80,18 @@ One of the obvious drawbacks is that Webview is not available in iOS.
 
 
 ### Possible Solution :
-Android : Crosswalk : integrate chromium in the application with different possible integration :
+#### Android :
+
+Crosswalk : integrate chromium in the application with different possible integration :
 - Crosswalk embedded in the application
 - Crosswalk cordova plugin
 
-iOS : cordova plugin
+#### iOS : cordova plugin
 iOSRTC : https://github.com/eface2face/cordova-plugin-iosrtc
 
-Note : crosswalk and iosRTC can be embeded in the same application code to support both platform
+#### Android & iOS :
 
-Android & iOS : OpenWebRTC : to be tested
+Crosswalk and iosRTC can be embeded in the same application code to support both platform
+OpenWebRTC : to be tested. May enable both native and Hybrid application development.
 
 
