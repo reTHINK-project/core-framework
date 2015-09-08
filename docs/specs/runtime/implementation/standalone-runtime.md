@@ -46,6 +46,9 @@ Cordova has a high quality plugin API, we just need more great plugins that expo
 ##### iosrtc
 iosrtc is a wrapper around Google’s WebRTC library and simply provides  PeerConnection, getMediaDevices and getUserMedia APIs , without any limitations or artificial constraints.
 
+##### phoneRTC
+phoneRTC : https://github.com/alongubkin/phonertc
+
 ##### Crosswalk-based Cordova Android
 Crosswalk-based Cordova Android is derived from Cordova Android and uses Crosswalk as the HTML5 runtime. It is an Android application library that allows for Cordova-based projects to be built for the Android Platform. It is aimed at replacing default Android Webview with Crosswalk Webview, bringing all new functionalities of Chrome.
 
@@ -74,4 +77,18 @@ The size of the apps is lower compared to Crosswalk applications which must incl
 The WebView can be updated separately from the rest of the application. This can be an advantage as it will allows to fix any kind of issue and support new features, but it may cause issues if the App using it is not updated to fix any possible incompability.
 
 One of the obvious drawbacks is that Webview is not available in iOS. 
+
+
+### Possible Solution :
+Android : Crosswalk : integrate chromium in the application with different possible integration :
+- Crosswalk embedded in the application
+- Crosswalk cordova plugin
+
+iOS : cordova plugin
+iOSRTC : https://github.com/eface2face/cordova-plugin-iosrtc
+
+Note : crosswalk and iosRTC can be embeded in the same application code to support both platform
+
+Android & iOS : OpenWebRTC : to be tested
+
 
