@@ -91,7 +91,8 @@ iOSRTC : https://github.com/eface2face/cordova-plugin-iosrtc
 
 #### Android & iOS :
 
-Crosswalk and iosRTC can be embeded in the same application code to support both platform
+Crosswalk and iosRTC can be embeded in the same application code to support both platform.
+
 OpenWebRTC : to be tested. May enable both native and Hybrid application development.
 
 
