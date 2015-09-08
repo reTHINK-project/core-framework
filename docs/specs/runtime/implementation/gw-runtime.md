@@ -2,9 +2,15 @@
 
 NodeJs is considered one of the options for implementing the Runtime API for platforms like Raspberry PI and [Beagle Board](http://beagleboard.org/bone):
 
-http://elinux.org/Node.js_on_RPi
+### NodeJs Installation
 
-http://beagleboard.org/Support/BoneScript
+For installing NodeJs on Raspberry Pi, 2 steps are required: download the debian package and then install it (http://weworkweplay.com/play/raspberry-pi-nodejs/)
+
+    wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+    sudo dpkg -i node_latest_armhf.deb
+
+For installing NodeJs on BeagleBoard (http://beagleboard.org/Support/BoneScript) one can compile it from scratch (http://www.armhf.com/node-js-for-the-beaglebone-black/) or install it in a similar way as for Raspberry using one of the versions from the download page: http://www.armhf.com/download/
+
 
 ### Design
 
