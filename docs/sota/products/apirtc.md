@@ -1,4 +1,4 @@
-### apiRTC
+### ApiRTC
 #### What is ApiRTC?
 
 ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their own applications without having to consider the technical aspects of communication. Complete version of ApiRTC with tutorials is described on www.apirtc.com
