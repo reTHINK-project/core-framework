@@ -13,11 +13,21 @@ ApiRTC Entreprise edition includes following features :
 
 **IMClient :**
 
-Instant Messaging 1 to 1, Group
+Instant Messaging : 1 to 1, Group
 
 **WebRTC Client :**
 
-Voice Calls, Voice and Video Calls; Audio, video mute; ScreenSharing; TakeSnapshot; Support of IE and Safari for audio and video calls through a plugin; Network disconnection detection; Network traversal management for media flows; DataChannel; Calls recording; Connection to IMS, RCS, SIP Architecture; Conference calls<br/>
+*Voice Calls, Voice and Video Calls
+*Audio, video mute
+*ScreenSharing
+*TakeSnapshot
+*Support of IE and Safari for audio and video calls through a plugin
+*Network disconnection detection
+*Network traversal management for media flows
+*DataChannel
+*Calls recording
+*Connection to IMS, RCS, SIP Architecture
+*Conference calls<br/>
 
 **Data Client :**
 
@@ -25,7 +35,7 @@ Custom data sending and reception
 
 **Compatibility :**
 
-Window, linux, OSx, Android devices throught webRTC compatible browsers<br/>
+Window, linux, OSx, Android devices through WebRTC compatible browsers<br/>
 Plugin for Android and iOS application development
 
 
