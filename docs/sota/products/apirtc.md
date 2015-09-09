@@ -1,4 +1,4 @@
-### apiRTC
+### ApiRTC
 #### What is ApiRTC?
 
 ApiRTC is the communication platform developped by Apizee. This includes a communication platform and a client JavaScript library that can be used by developpers to developped their own applications without having to consider the technical aspects of communication. Complete version of ApiRTC with tutorials is described on www.apirtc.com
@@ -13,11 +13,21 @@ ApiRTC Entreprise edition includes following features :
 
 **IMClient :**
 
-Instant Messaging 1 to 1, Group
+Instant Messaging : 1 to 1, Group
 
 **WebRTC Client :**
 
-Voice Calls, Voice and Video Calls; Audio, video mute; ScreenSharing; TakeSnapshot; Support of IE and Safari for audio and video calls through a plugin; Network disconnection detection; Network traversal management for media flows; DataChannel; Calls recording; Connection to IMS, RCS, SIP Architecture; Conference calls<br/>
+* Voice Calls, Voice and Video Calls
+* Audio, video mute
+* ScreenSharing
+* TakeSnapshot
+* Support of IE and Safari for audio and video calls through a plugin
+* Network disconnection detection
+* Network traversal management for media flows
+* DataChannel
+* Calls recording
+* Connection to IMS, RCS, SIP Architecture
+* Conference calls<br/>
 
 **Data Client :**
 
@@ -25,7 +35,7 @@ Custom data sending and reception
 
 **Compatibility :**
 
-Window, linux, OSx, Android devices throught webRTC compatible browsers<br/>
+Window, linux, OSx, Android devices through WebRTC compatible browsers<br/>
 Plugin for Android and iOS application development
 
 
@@ -62,11 +72,11 @@ ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
 
 APIS are decomposed with main following classes :<br/>
-ApiRTCSession : manage user connection to the platform (presence)<br/>
-ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
-ApiRTCIMClient : manage Instant messaging feature<br/>
-ApiRTCDataClient: : manage data sending feature<br/>
-ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
+* ApiRTCSession : manage user connection to the platform (presence)<br/>
+* ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
+* ApiRTCIMClient : manage Instant messaging feature<br/>
+* ApiRTCDataClient: : manage data sending feature<br/>
+* ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
 #### Requirements Analysis
 
@@ -76,7 +86,7 @@ Analysis regarding WP3 Messaging node requirements :
 NodeJs and Redis enables to buld a resiliante and scalable architecture
 
 **The Messaging Node MUST offer DoS and DDoS Protection :**</br>
-user authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
+User authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
 		
 **It should be possible to support Protocol on-the-fly :**</br>
 		
@@ -84,11 +94,11 @@ ProtOFly connector can be developped. JS connector can be develop on top of Node
 
 **Messaging Transport Protocols:**</br>
 		
-Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
+Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
 		
 **Messaging Node logging :**</br>
 
-Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
+Several logging modules are available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
 
 **Message delivery reliability :**</br>
 Socket.io enables message acknowledgement
@@ -99,7 +109,7 @@ Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mech
 
 **Messaging Node should be tolerant to unstable connections :**</br>
 
-Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
+Socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
 reconnection whether to reconnect automatically (true)
 
 reconnectionDelay how long to wait before attempting a new reconnection (1000)
@@ -108,7 +118,7 @@ timeout connection timeout before a connect_error and connect_timeout events are
 
 **Events about clients connection / disconnection from Messaging Node :**</br>
 
-Yes - using socket.io different event are fired on connection status :
+Using socket.io different events are fired on connection status :
 connect. Fired upon connecting.
 error. Fired upon a connection error
 disconnect. Fired upon a disconnection.
@@ -121,13 +131,13 @@ reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 **Messaging Node must support very low message delivery latency :**</br>
 
 **Messaging Node must be deployable in the most used Virtual Machines :**</br>
-Yes - NodeJs is available on Linux, windows, mac
+NodeJs is available on Linux, windows, mac and can be deployed on small virtual machine or devices
 
 **Messaging Node should require minimal computing resources :**</br>
 Messaging nodes components can be isntalled in only one VM
 
 **Messaging Node must support external authentication and Authorisation :**</br>
-Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
+Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
 
 **Messaging Node must support multiple messaging functionalities :**</br>
 Several routing can be performed with socket.io. Send message to only one dest, broadcast message to several users
@@ -135,7 +145,7 @@ Several routing can be performed with socket.io. Send message to only one dest, 
 
 #### Integration in Rethink
 
-apiRTC can be used in a nodejs based Messaging Node. 
+ApiRTC can be used in a nodejs based Messaging Node. 
 
 Integration of ApiRTC in Rethink can be done by adding differents connectors depending of needs :
 - Identity Management : connector to Identity server
@@ -148,8 +158,6 @@ A Redis Cluster with Pub/Sub mechanism can be used to manage communications betw
 
 <img src="ApiRTC-IntegrationInReTHINK.png" width="450">    
 
-For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented.
-
-
+For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented and propose a limited set of feature compare to the entreprise edition but is suitable for 1 to 1 WebRTC call establishment.
 
 
