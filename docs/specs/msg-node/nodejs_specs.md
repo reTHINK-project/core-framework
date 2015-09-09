@@ -88,7 +88,9 @@ Redis instance can be a single instance or a Redis cluster.
 
 Goal will then to mutualize connectors by using the protoStub/protoFly mechanism : this will add flexibility to connect other GWs, CSP ...
 
-
+**Architecture : Integration in ReThink :**
+      
+<img src="MessagingNode-NodeJs-Integration_In_Rethink.png" width="600">  
 
 
 
