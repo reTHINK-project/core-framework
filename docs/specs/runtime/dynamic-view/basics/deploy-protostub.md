@@ -30,12 +30,14 @@ RunUA@A -> RunReg@A : discoverStub( domain )
 
 alt Stub Not Available in Registry
 
-	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/sourceCode
+	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/
 
 		note over BUS@A
 			as defined in the data model the protocol stub is a well know URI.
 			**open issue:** should it be the protostub URL a well known URI?
 		end note
+
+	RunUA@A -> SP1 : get protocolStubSourceCode
 
 	create Proto1@A
 	RunUA@A -> Proto1@A : new
@@ -51,10 +53,6 @@ alt Stub Not Available in Registry
 	end note
 
 	RunReg@A -> BUS@A : addListener( registryListener, RuntimeProtoStubURL\status)
-
-	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/configuration
-
-	RunUA@A <- SP1 : return protoStubConfigurationData
 
 	RunUA@A -> Proto1@A : init(RuntimeProtoStubURL, BUS.postMessage, protoStubConfigurationData)
 
