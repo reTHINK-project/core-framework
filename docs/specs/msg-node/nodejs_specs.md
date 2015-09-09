@@ -69,13 +69,14 @@ If the CRUD operations have to be authorized on a per identity basis (e.g. user 
 ### Usage of Redis with NodeJs
 
 Redis can be used to add scalability/redundancy to the messaging node.
-It can also facilitate the development and the integration of new connectors, Here is a quick architecture :
 
+This is simple to use Redis Pub/Sub and easy to add new connectors.
 
-      User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
-      User B -------|            |   |------- NodeJs Connector to another CSP
-                                 |   |------- NodeJs Connector to Kurento
-      User C -----NodeJs 2 ------|   |------- NodeJs Connector to an IMS GW
+It can also facilitate the development and the integration of new connectors</br>
+
+**Architecture description :**
+      
+<img src="MessagingNode-NodeJs-3.png" width="600">      
 
 Communication between Users and NodeJs can be managed by socket.io
 
@@ -83,9 +84,19 @@ Communication between NodeJs and Redis can be managed by a NodesJs Redis client 
 
 Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
 
-Redis instance can be a single instance or a Redis cluster
+Redis instance can be a single instance or a Redis cluster.
+
+Goal will then to mutualize connectors by using the protoStub/protoFly mechanism : this will add flexibility to connect other GWs, CSP ...
 
 
+**Architecture : Integration in ReThink :**
+      
+<img src="MessagingNode-NodeJs-Integration_In_Rethink.png" width="600">
+
+
+**Architecture : Integration in ReThink with Actors:**
+      
+<img src="MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png" width="600">  
 
 
 
