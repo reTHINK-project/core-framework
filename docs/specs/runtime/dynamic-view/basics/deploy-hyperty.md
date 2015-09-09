@@ -31,9 +31,17 @@ group discover Hyperty URL: to be designed in a separated diagram by the Id Mana
 
 end group
 
-alt App and Hyperty are from the same domain
+App@A -> App@A : App and Hyperty executes in the same sandbox?
 
-	App@A -> SP1 : get\nHypertySourceCodeURL
+note right
+	to be compliant with W3C CORS (http://www.w3.org/TR/cors/)
+end note
+
+alt Yes, App and Hyperty executes in the same sandbox
+
+	App@A -> SP1 : get\nHypertyDescriptorURL
+
+	App@A -> SP1 : get\nHypertySouceCodeURL
 
 	create SP1H@A
 	App@A -> SP1H@A : new
@@ -46,12 +54,18 @@ alt App and Hyperty are from the same domain
 
 	RunUA@A <- App@A : registerHyperty\n(HypertyDescriptorURL\n hypertyInstance )
 
-	RunUA@A -> RunUA@A : check Hyperty\nand App domain
-
-
-else App and Hyperty are from different domains
+else No, App and Hyperty are executed in different sandboxes
 
 	RunUA@A <- App@A : loadHyperty\n( HypertyDescriptorURL )
+
+	RunUA@A -> SP1 : get\HypertyDescriptorURL
+
+	note right
+		according to the runtime type
+		(eg web worker in browsers) 
+		the Hyperty download may have 
+		to be downloaded inside the sandbox
+	end note
 
 	RunUA@A -> SP1 : get\nHypertySourceCodeURL
 
@@ -65,8 +79,11 @@ else App and Hyperty are from different domains
 		since it will depend on the runtime type.
 	end note
 
+	RunUA@A -> RunReg@A : getHypertySandbox\n(HypertyDomain)
+
 	create SP1H@A
 	RunUA@A -> SP1H@A : new
+
 
 end group
 
@@ -95,15 +112,20 @@ alt There is a Hyperty policy enforcer to be deployed
 
 	RunUA@A <- RunReg@A : pep runtime URL
 
-	RunUA@A -> Router1@A : init( pepRuntimeURL,\n bus.postMessage\n, hypertyURL)
-
 	BUS@A <- RunUA@A : addPEP(\n pepListener, \npepURL, \ninterceptedHypertyURL)
+
+	BUS@A <- RunUA@A : postMessage( init message \n(pepRuntimeURL,\n bus.postMessage\n, hypertyURL) )
+
+	BUS@A -> Router1@A : postMessage( init message \n(pepRuntimeURL,\n bus.postMessage\n, hypertyURL) )
 
 else There is no Hyperty Policy Enforcer
 
-	RunUA@A -> SP1H@A : init( hypertyURL,\n bus.postMessage\n, configuration)
-
 	BUS@A <- RunUA@A : addListener(\n hypertyListener, \nhypertyURL)
+
+	RunUA@A -> BUS@A : postMessage(\n init message(\n hypertyURL,\n bus.postMessage\n, configuration
+
+	SP1H@A <- BUS@A : postMessage(\n init message(\n hypertyURL,\n bus.postMessage\n, configuration )
+
 
 end group
 
