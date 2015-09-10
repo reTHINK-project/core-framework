@@ -14,14 +14,15 @@ Redis is an open source (BSD licensed), in-memory data structure store, used as 
 
 ##### Usage of Redis with NodeJs
 
-Redis integrate a PUB/SUB mecahnism : http://redis.io/topics/pubsub
+Redis integrate a PUB/SUB mechanism : http://redis.io/topics/pubsub
 
 SUBSCRIBE, UNSUBSCRIBE and PUBLISH implement the Publish/Subscribe messaging paradigm where (citing Wikipedia) senders (publishers) are not programmed to send their messages to specific receivers (subscribers). Rather, published messages are characterized into channels, without knowledge of what (if any) subscribers there may be. Subscribers express interest in one or more channels, and only receive messages that are of interest, without knowledge of what (if any) publishers there are. This decoupling of publishers and subscribers can allow for greater scalability and a more dynamic network topology.
 
 Redis can be used to add scalability/redundancy to the messaging node. This Pub/Sub mechanism is simple to use and It can also facilitate the development and the integration of new connectors</br>
 
+Communication between NodeJs and Redis can be managed by a NodesJs Redis client module : https://github.com/NodeRedis/node_redis
 
-
+Redis instance can be a single instance or a Redis cluster.
 
 #### Access Control
 
@@ -43,11 +44,7 @@ Here is decription of the architecure with Redis :
 
 Communication between Users and NodeJs can be managed by socket.io
 
-Communication between NodeJs and Redis can be managed by a NodesJs Redis client module : https://github.com/NodeRedis/node_redis
 
-Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
-
-Redis instance can be a single instance or a Redis cluster.
 
 Goal will then to mutualize connectors by using the protoStub/protoFly mechanism : this will add flexibility to connect other GWs, CSP ...
 
