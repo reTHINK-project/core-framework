@@ -61,3 +61,25 @@
 (@runtime-ident-man-user-to-hyperty-binding-scheme) Associate User Identity to Hyperty Instance
 
 (@runtime-ident-man-user-identity-assertion-diagram) User identity assertion sequence diagram
+
+(@runtime-m2m-comm-runtime-archit-violet) Runtime Main Procedures for M2M Communication
+
+(@runtime-m2m-comm-bootstrap-auth-registration) M2M Device Bootstrap
+
+(@runtime-m2m-intra-comm-4-pub-sub-1) Communication 4 pub sub 1
+
+(@runtime-m2m-intra-comm-4-pub-sub-2) Communication 4 pub sub 2
+
+(@runtime-m2m-intra-comm-4-pub-sub-3) Communication 4 pub sub 3
+
+(@runtime-browser-implementation) Runtime browser implementation
+
+(@stand-runtime-crosswalk) Crosswalk Architecture
+
+(@stand-runtime-cordova-archi) Cordova functionnal schema
+
+(@stand-runtime-cordova-archi) Cordova functionnal schema
+
+(@msg-node-architecture-messaging-node-architecture) Messaging Node Architecture
+
+
