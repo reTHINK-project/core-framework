@@ -61,22 +61,22 @@ Node.js can easily interact with OAuth servers in order to authenticate and auth
 It this is for authentication purpose the authentication agqinst the IdP has to be done at the begining. 
 If the CRUD operations have to be authorized on a per identity basis (e.g. user A, correctly authenticated, is only allowed to do 'RU' over a Data Objet) we should get 
 
-#### Registry Connector
+##### Registry Connector
 
 The Registry provides an interface for registration and deregistration of Hyperty instances, as well as for keeping the published information up to date. For each Hyperty instance, the Registry stores data (hyperty location, type, description, start-time, presence information of user) that enables other applications to contact it. 
 The implementation of the Registry service is thought to be basically a distributed database. 
 It will provide service interfaces for CRUD operations to allow users to retrieve data for a given GraphID, publish (i.e. create, update, and delete) their own information on the ring. To verify authenticity and integrity of the published data, digital signatures will be applied. The Connector will exposed the available interfaces of the Registry Services to users of managing Hyperty instances. 
 
-#### End-User Device Connector
+##### End-User Device Connector
 
 Communication between Users and NodeJs can be managed by socket.io
 Socket.io is a popular Node.js library to handle connections at application level. It can use Websocket and it falls back to HTTP automatically if WS connectivity is not possible.
 
-#### Network Server Connector
+##### Network Server Connector
 
 The aim of this Connector is to enable interaction with Hyperty instances running in a network server. This component will need to interact somehow with the Protocol Stub sandbox to achieve this, since the communication protocol will not be standardized. It will need to implement a simple protocol for sending and receiving requests. In itself it is not responsible for processing communication requests, that is left to the protocol stack. It merely forwards messages to and from the Network server.
 
-#### Node Sandbox framework
+##### Node Sandbox framework
 
 [Node-sandbox](https://www.npmjs.com/package/node-sandbox) allows to run untrusted code outside of the main node process. The code can be interfaced with code running in the sandbox via RPC (or any library that works over the node Stream API). 
 
