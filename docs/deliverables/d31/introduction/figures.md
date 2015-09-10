@@ -46,4 +46,18 @@
 
 (@runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
 
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
 
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-ident-man-user-registration) User registration
+
+(@runtime-ident-man-preprare-discovery) Prepare Discovery
+
+(@runtime-ident-man-use-discovery) Use Discovery
+
+(@runtime-ident-man-domain-login) Domain Login
+
+(@runtime-ident-man-user-to-hyperty-binding-scheme) Associate User Identity to Hyperty Instance
+
+(@runtime-ident-man-user-identity-assertion-diagram) User identity assertion sequence diagram
