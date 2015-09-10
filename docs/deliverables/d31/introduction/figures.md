@@ -81,5 +81,3 @@
 (@stand-runtime-cordova-archi) Cordova functionnal schema
 
 (@msg-node-architecture-messaging-node-architecture) Messaging Node Architecture
-
-
