@@ -74,10 +74,8 @@ http://www.w3.org/TR/mediacapture-streams/
 http://www.w3.org/TR/webrtc/ <br/>**The Runtime should be deployable in
 the most used Devices and Operating Systems** :</br> Including: \*
 Android (Smartphone and Tablet) \* iOS (Smartphone and Tablet) \*
-Raspberry PI \* Linux VM \* Windows VM<br/>
-<h2>
-Messaging Node Requirements
-</h2>
+Raspberry PI \* Linux VM \* Windows VM<br/> \#\#Messaging Node
+Requirements\#\#
 <p>
 </p>
 **Messaging Node with carrier grade deployment features** :</br> \*
@@ -930,29 +928,78 @@ APIs and reTHINK Javascript framework.
 Products
 --------
 
-### apiRTC
+### ApiRTC
 
 #### What is ApiRTC?
 
-ApiRTC solution includes a communication platform and a client
-JavaScript library that can be used by developpers to developped their
-applications.
+ApiRTC is the communication platform developped by Apizee. This includes
+a communication platform and a client JavaScript library that can be
+used by developpers to developped their own applications without having
+to consider the technical aspects of communication. Complete version of
+ApiRTC with tutorials is described on www.apirtc.com
 
-For Rethink, Apizee propose the usage of apiRTC Community Edition (Open
-source version : LGPL). This version is not yet published and
-documented.
+#### Features Overview
 
-Complete version of ApiRTC is described on www.apirtc.com
+ApiRTC Entreprise edition includes following features :
 
-#### Overview
+**Session :**
 
-**Messaging Node :** NodeJs + Redis Cluster
+Connexion : long polling , webSocket; HTTP, HTTPS; Presence : group
+connection and subscription; Custom User Data sharing ; Browsers type
+and version detection<br/>
+
+**IMClient :**
+
+Instant Messaging : 1 to 1, Group
+
+**WebRTC Client :**
+
+-   Voice Calls, Voice and Video Calls
+-   Audio, video mute
+-   ScreenSharing
+-   TakeSnapshot
+-   Support of IE and Safari for audio and video calls through a plugin
+-   Network disconnection detection
+-   Network traversal management for media flows
+-   DataChannel
+-   Calls recording
+-   Connection to IMS, RCS, SIP Architecture
+-   Conference calls<br/>
+
+**Data Client :**
+
+Custom data sending and reception
+
+**Compatibility :**
+
+Window, linux, OSx, Android devices through WebRTC compatible
+browsers<br/> Plugin for Android and iOS application development
+
+#### Architecture Overview
+
+ApiRTC solution use different components on server and client side.
+
+**Messaging Node :**
+
+On server side, main used components are NodeJs and Redis :
 
 NodeJs : https://nodejs.org/ - Description is available :
-http://en.wikipedia.org/wiki/Node.js Redis : http://redis.io/ -
-Description is available : http://en.wikipedia.org/wiki/Redis
+http://en.wikipedia.org/wiki/Node.js
 
-**Runtime / Framework :** ApiRTC CE Client
+NodeJs is a Javascript engine that can be enhanced through diffrent
+existing modules for connections, log, ...
+
+Redis : http://redis.io/ - Description is available :
+http://en.wikipedia.org/wiki/Redis
+
+Redis is a NoSQL database that is really interesting for real time data
+and that provide a publish/subscribe that can be used to establish
+communication between several nodeJs process.
+
+**Runtime / Framework :**
+
+ApiRTC use a javascript library on client side to provide teh developers
+APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
 
@@ -962,9 +1009,102 @@ ApiRTC actual architecture is presented on following diagram :
 Components such as NodeJs, Redis or socket.io are used. ApiRTC uses JSON
 over WebSocket to manage signalling between clients and server.
 
-#### Role in Rethink
+#### APIs
 
-apiRTC can be used in a nodejs based Messaging Node.
+ApiRTC provides API for developers : complete set of APIs is describe on
+http://apirtc.com/api-docs/
+
+APIS are decomposed with main following classes :<br/> \* ApiRTCSession
+: manage user connection to the platform (presence)<br/> \*
+ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
+...<br/> \* ApiRTCIMClient : manage Instant messaging feature<br/> \*
+ApiRTCDataClient: : manage data sending feature<br/> \*
+ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
+
+#### Requirements Analysis
+
+Analysis regarding WP3 Messaging node requirements :
+
+**Messaging Node with carrier grade deployment features :**</br> NodeJs
+and Redis enables to buld a resiliante and scalable architecture
+
+**The Messaging Node MUST offer DoS and DDoS Protection :**</br> User
+authentication, message rate limitation are example of feature taht may
+be implemented to fulfill this requirement
+
+**It should be possible to support Protocol on-the-fly :**</br>
+
+ProtOFly connector can be developped. JS connector can be develop on top
+of NodeJs to enable protofly on server side. This connector will be for
+example reusable to connect an external CSP, Kurento Media Server, or
+the Identity manager
+
+**Messaging Transport Protocols:**</br>
+
+Socket.io enables the usage of different transport protocol to establish
+connection between user and server. (Long polling, WebSocket ...)
+
+**Messaging Node logging :**</br>
+
+Several logging modules are available : log4js, winston, bunyan ... Logs
+can be dispalyed in console, store in file with log rotate, send to a
+network entity ...
+
+**Message delivery reliability :**</br> Socket.io enables message
+acknowledgement
+
+**Messaging Node deployments with carrier grade scalability :**</br>
+
+Using Redis cluster mode : it is possible to use Redis Cluster with
+PUB/SUB mechanism : several NodeJs entities can be connected through the
+redis cluster : this can enable load balancing, redundancy</br>
+
+**Messaging Node should be tolerant to unstable connections :**</br>
+
+Socket.io can manage reconnection with different configurable parameters
+(timeout, retries ...) reconnection whether to reconnect automatically
+(true)
+
+reconnectionDelay how long to wait before attempting a new reconnection
+(1000) reconnectionDelayMax maximum amount of time to wait between
+reconnections (5000). Each attempt increases the reconnection by the
+amount specified by reconnectionDelay. timeout connection timeout before
+a connect\_error and connect\_timeout events are emitted (20000)
+
+**Events about clients connection / disconnection from Messaging Node
+:**</br>
+
+Using socket.io different events are fired on connection status :
+connect. Fired upon connecting. error. Fired upon a connection error
+disconnect. Fired upon a disconnection. reconnect. Fired upon a
+successful reconnection. reconnect\_attempt. Fired upon an attempt to
+reconnect. reconnecting. Fired upon an attempt to reconnect.
+reconnect\_error. Fired upon a reconnection attempt error.
+reconnect\_failed. Fired when couldn’t reconnect within
+reconnectionAttempts
+
+**Messaging Node must support very low message delivery latency :**</br>
+
+**Messaging Node must be deployable in the most used Virtual Machines
+:**</br> NodeJs is available on Linux, windows, mac and can be deployed
+on small virtual machine or devices
+
+**Messaging Node should require minimal computing resources :**</br>
+Messaging nodes components can be isntalled in only one VM
+
+**Messaging Node must support external authentication and Authorisation
+:**</br> Module like Passport : http://passportjs.org/ enables to use
+external authentication like facebook, twitter, google .. (We will have
+to check if passport can be used as it seems to require Express which
+may not be relevant in rethink case)
+
+**Messaging Node must support multiple messaging functionalities
+:**</br> Several routing can be performed with socket.io. Send message
+to only one dest, broadcast message to several users
+
+#### Integration in Rethink
+
+ApiRTC can be used in a nodejs based Messaging Node.
 
 Integration of ApiRTC in Rethink can be done by adding differents
 connectors depending of needs : - Identity Management : connector to
@@ -978,22 +1118,10 @@ communications between connectors
 
 <img src="ApiRTC-IntegrationInReTHINK.png" width="450">
 
-#### APIs
-
-*needs elaborate * ApiRTC provides API for developers
-
-#### Requirements Analysis
-
-*Analyse how the solution fullfills [WP3
-requirements](selection-criteria.md) according to Component Type
-addressed by the solution ie Messaging Node, Runtime, Network QoS or
-Framework* *The fullfillment of each requirement should be analysed and
-if needed validated with some tests. Code snippets or other means like
-configuration data should be provided to clearly demonstrate the
-requirement fullfilment. In case the Requirement is not fulfilled,
-possible solutions should be proposed including effort estimation.*
-
-Analyse regarding WP3 requirements : TO BE COMPLETED
+For Rethink, Apizee propose the usage of apiRTC Community Edition (Open
+source version : LGPL). This version is not yet published and documented
+and propose a limited set of feature compare to the entreprise edition
+but is suitable for 1 to 1 WebRTC call establishment.
 
 ### State of the art of current WebRTC solutions of Quobis
 
@@ -2156,6 +2284,12 @@ domain.
 
     RuntimeSandbox getSandbox( DomainURL url )
 
+To verify if source is valid and to resolve target runtime url address
+if needed (eg protostub runtime url in case the message is to be
+dispatched to a remote endpoint ).
+
+    Message.Message resolve( Message.Message message )
+
 ### Message BUS
 
 To send messages with optional call back. This function is accessible
@@ -2367,12 +2501,14 @@ RunUA@A -> RunReg@A : discoverStub( domain )
 
 alt Stub Not Available in Registry
 
-    RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/sourceCode
+    RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/
 
         note over BUS@A
             as defined in the data model the protocol stub is a well know URI.
             **open issue:** should it be the protostub URL a well known URI?
         end note
+
+    RunUA@A -> SP1 : get protocolStubSourceCode
 
     create Proto1@A
     RunUA@A -> Proto1@A : new
@@ -2388,10 +2524,6 @@ alt Stub Not Available in Registry
     end note
 
     RunReg@A -> BUS@A : addListener( registryListener, RuntimeProtoStubURL\status)
-
-    RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/configuration
-
-    RunUA@A <- SP1 : return protoStubConfigurationData
 
     RunUA@A -> Proto1@A : init(RuntimeProtoStubURL, BUS.postMessage, protoStubConfigurationData)
 
@@ -2494,9 +2626,17 @@ group discover Hyperty URL: to be designed in a separated diagram by the Id Mana
 
 end group
 
-alt App and Hyperty are from the same domain
+App@A -> App@A : App and Hyperty executes in the same sandbox?
 
-    App@A -> SP1 : get\nHypertySourceCodeURL
+note right
+    to be compliant with W3C CORS (http://www.w3.org/TR/cors/)
+end note
+
+alt Yes, App and Hyperty executes in the same sandbox
+
+    App@A -> SP1 : get\nHypertyDescriptorURL
+
+    App@A -> SP1 : get\nHypertySouceCodeURL
 
     create SP1H@A
     App@A -> SP1H@A : new
@@ -2509,12 +2649,18 @@ alt App and Hyperty are from the same domain
 
     RunUA@A <- App@A : registerHyperty\n(HypertyDescriptorURL\n hypertyInstance )
 
-    RunUA@A -> RunUA@A : check Hyperty\nand App domain
-
-
-else App and Hyperty are from different domains
+else No, App and Hyperty are executed in different sandboxes
 
     RunUA@A <- App@A : loadHyperty\n( HypertyDescriptorURL )
+
+    RunUA@A -> SP1 : get\HypertyDescriptorURL
+
+    note right
+        according to the runtime type
+        (eg web worker in browsers) 
+        the Hyperty download may have 
+        to be downloaded inside the sandbox
+    end note
 
     RunUA@A -> SP1 : get\nHypertySourceCodeURL
 
@@ -2528,8 +2674,11 @@ else App and Hyperty are from different domains
         since it will depend on the runtime type.
     end note
 
+    RunUA@A -> RunReg@A : getHypertySandbox\n(HypertyDomain)
+
     create SP1H@A
     RunUA@A -> SP1H@A : new
+
 
 end group
 
@@ -2558,15 +2707,20 @@ alt There is a Hyperty policy enforcer to be deployed
 
     RunUA@A <- RunReg@A : pep runtime URL
 
-    RunUA@A -> Router1@A : init( pepRuntimeURL,\n bus.postMessage\n, hypertyURL)
-
     BUS@A <- RunUA@A : addPEP(\n pepListener, \npepURL, \ninterceptedHypertyURL)
+
+    BUS@A <- RunUA@A : postMessage( init message \n(pepRuntimeURL,\n bus.postMessage\n, hypertyURL) )
+
+    BUS@A -> Router1@A : postMessage( init message \n(pepRuntimeURL,\n bus.postMessage\n, hypertyURL) )
 
 else There is no Hyperty Policy Enforcer
 
-    RunUA@A -> SP1H@A : init( hypertyURL,\n bus.postMessage\n, configuration)
-
     BUS@A <- RunUA@A : addListener(\n hypertyListener, \nhypertyURL)
+
+    RunUA@A -> BUS@A : postMessage(\n init message(\n hypertyURL,\n bus.postMessage\n, configuration
+
+    SP1H@A <- BUS@A : postMessage(\n init message(\n hypertyURL,\n bus.postMessage\n, configuration )
+
 
 end group
 
@@ -2647,15 +2801,11 @@ autonumber
 
 BUS@A <-  : send msg
 
-RunAuth@A <- BUS@A : Authz request(Message)
+RunReg@A <- BUS@A : resolve(Message)
 
-RunReg@A <- RunAuth@A : Resolve(Message)
+RunReg@A -> RunReg@A  : verify source(association Id Token)
 
-RunReg@A -> RunID@A : get Identity token
-
-RunReg@A -> RunReg@A  : add ID Token to Msg
-
-RunReg@A -> RunReg@A  : resolve addresses
+RunReg@A -> RunReg@A  : resolve targed address
 
 group option :unregistered protocol stub for external address
 
@@ -2667,29 +2817,45 @@ group option :unregistered protocol stub for external address
 
 end
 
-RunReg@A -> RunAuth@A : return(ResolvedMessage)
 
-group enforce policies
-    RunAuth@A -> RunAuth@A : enforce source policies
+RunReg@A -> BUS@A : return(ResolvedMessage)
 
-    RunAuth@A -> RunAuth@A : enforce target policies
+loop until authorised or final error
+    RunAuth@A <- BUS@A : authorise(Message)
+
+    RunAuth@A -> RunAuth@A : apply authz Policies
+
+    alt Message Routing authorised
+        RunAuth@A -> BUS@A : authorised
+    else 
+        RunAuth@A -> BUS@A : action required
+
+        alt assertion required
+            BUS@A -> RunID@A : generateAssertion( message / scope? )
+            BUS@A <- RunID@A : return Assertion
+        else verify assertion
+            BUS@A -> RunID@A : validateAssertion( message )
+            BUS@A <- RunID@A : return validation
+        end
+    else
+        RunAuth@A -> BUS@A : final error
+
+        alt Error : unknown source
+
+        else Error : target not found
+
+        else Error : not associated with Identity
+
+        else Error : blocked by source policy
+
+        else Error : blocked by target policy
+        end
+    end
 end
 
-alt
-    RunAuth@A -> BUS@A : authorised(ResolvedMessage)
 
-    BUS@A ->  : send msg
-else Error : unknown source
+BUS@A ->  : send msg
 
-else Error : target not found
-
-else Error : not associated with Identity
-
-else Error : blocked by source policy
-
-else Error : blocked by target policy
-
-end
 
 @enduml
 -->
@@ -2729,16 +2895,8 @@ group discover Local Hyperty URL
 
 end group
 
-SP1H@A -> Router1@A : send msg
+SP1H@A -> SP1H2@A : send msg
 
-Router1@A -> Router1@A : Apply Local Alice policies
-
-Router1@A -> SP1H2@A : send msg
-
-note left
-    should message goes through
-    msg BUS?
-end note
 
 @enduml
 -->
@@ -4671,6 +4829,10 @@ iosrtc is a wrapper around Google’s WebRTC library and simply provides
 PeerConnection, getMediaDevices and getUserMedia APIs , without any
 limitations or artificial constraints.
 
+##### phoneRTC
+
+phoneRTC : https://github.com/alongubkin/phonertc
+
 ##### Crosswalk-based Cordova Android
 
 Crosswalk-based Cordova Android is derived from Cordova Android and uses
@@ -4730,20 +4892,83 @@ updated to fix any possible incompability.
 
 One of the obvious drawbacks is that Webview is not available in iOS.
 
+#### OpenWebRTC
+
+TO BE COMPLETED
+
+OpenWebRTC : to be tested.
+
+May enable both native and Hybrid application development.
+
+### Selected solution for the implementation:
+
+#### Android :
+
+Crosswalk : integrate chromium in the application with different
+possible integration : - Crosswalk embedded in the application -
+Crosswalk cordova plugin
+
+Crosswalk usage should ensure us a compatibility with what is done for
+browser runtime as it embed Chromium
+
+#### iOS :
+
+iOSRTC, cordova plugin :
+https://github.com/eface2face/cordova-plugin-iosrtc
+
+#### Android & iOS :
+
+Crosswalk and iosRTC can be embeded in the same application code to
+support both platform.
+
+Hybrid solution will be selected for the project as it enable to use
+JavaScript for the runtime
+
 ### Runtime implementation in Constrained Devices
 
 NodeJs is considered one of the options for implementing the Runtime API
 for platforms like Raspberry PI and [Beagle
 Board](http://beagleboard.org/bone):
 
-http://elinux.org/Node.js\_on\_RPi
+### NodeJs Installation
 
-http://beagleboard.org/Support/BoneScript
+For installing NodeJs on Raspberry Pi, 2 steps are required: download
+the debian package and then install it
+(http://weworkweplay.com/play/raspberry-pi-nodejs/)
 
-https://www.npmjs.com/package/node-sandbox
+    wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+    sudo dpkg -i node_latest_armhf.deb
 
-A package for LWM2M is already available for NodeJs
-(https://github.com/telefonicaid/lwm2m-node-lib).
+For installing NodeJs on BeagleBoard
+(http://beagleboard.org/Support/BoneScript) one can compile it from
+scratch (http://www.armhf.com/node-js-for-the-beaglebone-black/) or
+install it in a similar way as for Raspberry using one of the versions
+from the download page: http://www.armhf.com/download/
+
+### Design
+
+The goal of the design is to use stable NodeJs open-source or business
+friendly modules that provide functionality for the components that are
+part of the architecture of the Runtime.
+
+One of the key functional requirements is security of the Runtime. Thus
+multiple sandboxes to separate code is present in the Runtime
+architecture as a security by design feature. There are 3 types of
+sandboxes to be used: Core Sandbox, Service Provider Sandbox and Hyperty
+Sandbox (http://gf3.github.io/sandbox/).
+
+The message component of the Runtime implementation constitues one of
+the main components. There are many message buses implemented as NodeJs
+modules. The one selected for evaluation is Capriza,
+https://github.com/capriza/node-busmq, having as key functionality:
+scalability and guaranteed order of messages.
+
+For the Runtime UA a module implementing the protocol LWM2M is already
+available for NodeJs (https://github.com/telefonicaid/lwm2m-node-lib).
+
+### Code Snippets (maybe they should be directly added as code on the github)
+
+For creating several sandboxes the following code can be used:
 
 #### Also potentially relevant:
 
@@ -5199,13 +5424,15 @@ works over the node Stream API).
 ### Usage of Redis with NodeJs
 
 Redis can be used to add scalability/redundancy to the messaging node.
-It can also facilitate the development and the integration of new
-connectors, Here is a quick architecture :
 
-      User A ---- NodeJs 1 ----- REdis ------ NodeJs Connector to IdM
-      User B -------|            |   |------- NodeJs Connector to another CSP
-                                 |   |------- NodeJs Connector to Kurento
-      User C -----NodeJs 2 ------|   |------- NodeJs Connector to an IMS GW
+This is simple to use Redis Pub/Sub and easy to add new connectors.
+
+It can also facilitate the development and the integration of new
+connectors</br>
+
+**Architecture description :**
+
+<img src="MessagingNode-NodeJs.png" width="600">
 
 Communication between Users and NodeJs can be managed by socket.io
 
@@ -5215,7 +5442,18 @@ client module : https://github.com/NodeRedis/node\_redis
 Communication between the differents NodeJs instance can be managed by
 the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
 
-Redis instance can be a single instance or a Redis cluster
+Redis instance can be a single instance or a Redis cluster.
+
+Goal will then to mutualize connectors by using the protoStub/protoFly
+mechanism : this will add flexibility to connect other GWs, CSP ...
+
+**Architecture : Integration in ReThink :**
+
+<img src="MessagingNode-NodeJs-Integration_In_Rethink.png" width="600">
+
+**Architecture : Integration in ReThink with Actors:**
+
+<img src="MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png" width="600">
 
 Matrix.org based Messaging Node Specification
 ---------------------------------------------
