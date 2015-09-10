@@ -108,5 +108,5 @@ Crosswalk and iosRTC can be embeded in the same application code to support both
 Hybrid solution will be selected for the project as it enable to use JavaScript for the runtime
 
 #### Solution to be tested during the implementation :
-1 - Usage of Webviews will be interesting as it should facilitate the integration of WebRTC API.
-2 - openWebRTC can also be insteresting as it should enable the possibility to build complete native and hybrid application.
+1 - Usage of Webviews will be interesting as it should facilitate the integration of WebRTC API.</br>
+- openWebRTC can also be insteresting as it should enable the possibility to build complete native and hybrid application.
