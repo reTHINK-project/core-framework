@@ -27,3 +27,23 @@
 (@runtime-security-analysis-security-application) Security Application platform
 
 (@runtime-deploy-protostub) Deploy Protocol Stub
+
+(@runtime-deploy-hyperty) Deploy Hyperty
+
+(@runtime-bus-msg-routing) Message Routing in Message BUS
+
+(@runtime-intra-local-comm) Intra-domain Local Communication
+
+(@runtime-intra-remote-comm) Intra-domain Remote Communication
+
+(@runtime-inter-local-comm) Inter-domain Local Communication
+
+(@runtime-inter-remote-comm) Inter-domain Remote Communication
+
+(@runtime-h2h-comm-intra-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-intra-comm-2-bob-receives-invitation) Bob receives invitation
+
+(@runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
+
+
