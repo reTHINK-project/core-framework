@@ -10,3 +10,54 @@
 
 (@sota-security-cose) CoSE architecture
 
+(@service-framework-middle-layer) Service framework middle layer
+
+(@runtime-arch-new) Runtime Architecture
+
+(@runtime-security-analysis-dummymatrix) Vulnerability matrix for a dummy platform
+
+(@runtime-security-analysis-stack) Stack
+
+(@runtime-security-analysis-browser) Browser
+
+(@runtime-security-analysis-security-browser) Security Browser
+
+(@runtime-security-analysis-application) Application platform
+
+(@runtime-security-analysis-security-application) Security Application platform
+
+(@runtime-deploy-protostub) Deploy Protocol Stub
+
+(@runtime-deploy-hyperty) Deploy Hyperty
+
+(@runtime-bus-msg-routing) Message Routing in Message BUS
+
+(@runtime-intra-local-comm) Intra-domain Local Communication
+
+(@runtime-intra-remote-comm) Intra-domain Remote Communication
+
+(@runtime-inter-local-comm) Inter-domain Local Communication
+
+(@runtime-inter-remote-comm) Inter-domain Remote Communication
+
+(@runtime-h2h-comm-intra-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-intra-comm-2-bob-receives-invitation) Bob receives invitation
+
+(@runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-ident-man-user-registration) User registration
+
+(@runtime-ident-man-preprare-discovery) Prepare Discovery
+
+(@runtime-ident-man-use-discovery) Use Discovery
+
+(@runtime-ident-man-domain-login) Domain Login
+
+(@runtime-ident-man-user-to-hyperty-binding-scheme) Associate User Identity to Hyperty Instance
+
+(@runtime-ident-man-user-identity-assertion-diagram) User identity assertion sequence diagram

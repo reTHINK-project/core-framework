@@ -60,7 +60,7 @@ On the other side, 91-94% of the users which had TCP connectivity with Google ca
 It is also necesary to consider NAT unbinding which does not happen to TCP. This problem has been addressed internally by QUIC designers through the use of keepalives packets. 
 
 
-##Why QUIC can be a good option for ReThink project?
+##Applicability to reThink project
 
 Including the use of QUIC as a requirement or a recommendation could help to support more reliably mobility scenarios where the End-User IP may be changed during a connection with the Signaling service. Additionaly thee transport layer connectivity provided by QUIC is more suitable for wireless connections (longer RTTs, packet lost and changes at IP level) than TCP. 
 QUIC has been designed bearing HTTP/2 in mind as it improves its performance a lot, however the use of QUIC by other protocols can also be very advantageous. 
