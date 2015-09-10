@@ -1,3 +1,70 @@
+## NodeJs based Messaging Node Specification
+
+*For each [functional block](msg-node-architecture.md) identify existing nodeJs modules that can be either reused or extended. If extensions are needed they should be specificied by designing apis to be implemented*
+
+### Core Functionalities
+
+This section attempts to match the functional blocks of the Message Node architecture to features and functional blocks of the nodeJs and Redis architecture.
+
+#### Message BUS
+
+The message bus can be implemented with Redis. http://redis.io
+
+Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
+
+##### Usage of Redis with NodeJs
+
+Redis integrate a PUB/SUB mecahnism : http://redis.io/topics/pubsub
+
+SUBSCRIBE, UNSUBSCRIBE and PUBLISH implement the Publish/Subscribe messaging paradigm where (citing Wikipedia) senders (publishers) are not programmed to send their messages to specific receivers (subscribers). Rather, published messages are characterized into channels, without knowledge of what (if any) subscribers there may be. Subscribers express interest in one or more channels, and only receive messages that are of interest, without knowledge of what (if any) publishers there are. This decoupling of publishers and subscribers can allow for greater scalability and a more dynamic network topology.
+
+Redis can be used to add scalability/redundancy to the messaging node. This Pub/Sub mechanism is simple to use and It can also facilitate the development and the integration of new connectors</br>
+
+
+
+
+#### Access Control
+
+#### Session Management
+
+#### Address Allocation Management
+
+#### Protocol Stub
+
+#### Connectors
+
+
+
+### NodeJs implementation architecture 
+
+Here is decription of the architecure with Redis :
+
+<img src="MessagingNode-NodeJs.png" width="600">      
+
+Communication between Users and NodeJs can be managed by socket.io
+
+Communication between NodeJs and Redis can be managed by a NodesJs Redis client module : https://github.com/NodeRedis/node_redis
+
+Communication between the differents NodeJs instance can be managed by the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
+
+Redis instance can be a single instance or a Redis cluster.
+
+Goal will then to mutualize connectors by using the protoStub/protoFly mechanism : this will add flexibility to connect other GWs, CSP ...
+
+
+
+
+
+
+
+
+
+-------------------------
+
+
+
+
+
 ## Node.js Specification
 
 ### Core Functionalities
