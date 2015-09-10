@@ -80,13 +80,9 @@ One of the obvious drawbacks is that Webview is not available in iOS.
 
 ####OpenWebRTC
 
-TO BE COMPLETED
+OpenWebRTC is an open sourced project from Ericsson Research : https://github.com/EricssonResearch/openwebrtc
 
-A flexible, mobile-first, cross-platform WebRTC client framework based on GStreamer. OpenWebRTC currently supports iOS, Android, Mac OS X and Linux. Windows support is quite doable too if needed.
-
-OpenWebRTC : to be tested.
-
-May enable both native and Hybrid application development.
+A flexible, mobile-first, cross-platform WebRTC client framework based on GStreamer. OpenWebRTC currently supports iOS, Android, Mac OS X and Linux.
 
 ### Selected solution for the implementation:
 
