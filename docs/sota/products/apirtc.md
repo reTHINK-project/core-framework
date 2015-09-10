@@ -158,6 +158,7 @@ A Redis Cluster with Pub/Sub mechanism can be used to manage communications betw
 
 <img src="ApiRTC-IntegrationInReTHINK.png" width="450">    
 
-For Rethink, Apizee propose the usage of apiRTC Community Edition (Open source version : LGPL). This version is not yet published and documented and propose a limited set of feature compare to the entreprise edition but is suitable for 1 to 1 WebRTC call establishment.
+For Rethink, Apizee propose the usage of apiRTC, for instance to simulate an external CSP connection.
+
 
 
