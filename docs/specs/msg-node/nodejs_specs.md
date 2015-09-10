@@ -1,16 +1,19 @@
 ## Node.js Specification
 
-*For each [functional block](msg-node-architecture.md) identify existing Node.js modules that can be either reused or extended. If extensions are neede they should be specificied by designing apis to be implemented*
-
 ### Core Functionalities
 * Main objective of core func. is to authorize, filter and process messages. Messages are JSON objects that should have 2 blocks, HEADER and DATA, and are processed from different components of core.
 * Outbound messages should be processed in a Pub/Sub system. If message DATA blocks are for CRUD operations, there should be a Pub/Sub protocol for object/model subscriptions, where should this be processed? The address scheme of t
 
+TO BE COMPLETED
+
 #### Low level connection management
-Socket.io is a popular Node.js library to handle connections at aplication level. It can use Websocket and it falls back to HTTP automatically if WS connectivity is not possible.
+Socket.io is a popular Node.js library to handle connections at application level. It can use Websocket and it falls back to HTTP automatically if WS connectivity is not possible.
 
 #### Session Management
 Events/messages for OPEN and CLOSE received by Socket.io should be intercepted by this component. A session instance is linked to a connection resource (WebSocket, SockJS) if authorized. Every message header is intercepted, session token is verified and if exist, a "user" or other identification URL is replaced in HEADER. The JSON object is forwarded to "Access Control" component.
+
+TO BE COMPLETED
+
 <comment> We have to discuss with our dev team it sth can be re-used to implement the session management or we have to implement it</comment>
 
 #### Address Allocation Management
@@ -23,23 +26,30 @@ This component is able to analyze HEADER (identification URL from "Session Manag
 Main objective of the MB is to process the DATA block, that contains information of the protocol, CRUD operation or other defined information. Vertx EventBus can be used directly for the Message Bus component. Important headers of the original JSON (like the identification URL) must be forwarded to io.vertx.core.eventbus.Message.headers() map.
 For the Message Bus we could use some RabbitMQ by using Rabbit.js node library.
 
+TO BE COMPLETED - VertX ???
+
 ### Protocol Stub Sandbox
+
+TO BE COMPLETED
+
 <comment>
 We understand that we must have a Protocol Stub Sandbox to be able to interact to other Messaging Servers and the protocol stub will be retrieved from repository servers.
-The messgaing server which wants to interact with another one must download the Protocol Stub from the Repository and then it will be able to exchange messages.
+The messaging server which wants to interact with another one must download the Protocol Stub from the Repository and then it will be able to exchange messages.
 I guess this is doable in Node.js, but I have to check with our Dev team what's the best way to implement this in Node.js.
 </comment>
 
 ### Connectors
 
-This connector could be ad-hoc developemtns in Node.js, receiving messages from the session management layer.
-
+These connectors could be ad-hoc developments in Node.js, receiving messages from the session management layer.
 
 #### End User Device Connector
 The aim of this Connector is to enable interaction with Hyperty instances running in the end-user device. 
 This component will need to interact somehow with the Protocol Stub sandbox to achieve this, since the communication protocol will not be standardized. 
 The Protocol Stub should expose a common API which will be interacted from the connector. 
-<comment>This has been already addressed in the WONDER project so we need to check with Paulo the approach the followed</comment>  
+
+TO BE COMPLETED
+
+<comment>This has been already addressed in the WONDER project so we need to check with Paulo the approach they followed</comment>  
 
 #####LWM2M library
 There is an available [LWM2M/COAP library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) which may be helpful to implement a COAP/interface for constrained devices along with other interfaces for the rest of devices.   
@@ -90,14 +100,16 @@ Goal will then to mutualize connectors by using the protoStub/protoFly mechanism
 
 
 **Architecture : Integration in ReThink :**
+
+Following architecture shows the target integration with the different components of the ReThink projet : 
       
 <img src="MessagingNode-NodeJs-Integration_In_Rethink.png" width="600">
 
 
 **Architecture : Integration in ReThink with Actors:**
+
+Following architecture shows the actors in the architecture to unsderstand the decomposition of work to be done and the interaction with other partners :
       
 <img src="MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png" width="600">  
-
-
 
 
