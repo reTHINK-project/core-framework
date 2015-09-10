@@ -1,6 +1,6 @@
 ## NodeJs based Messaging Node Specification
 
-*For each [functional block](msg-node-architecture.md) identify existing nodeJs modules that can be either reused or extended. If extensions are needed they should be specificied by designing apis to be implemented*
+For each [functional block](msg-node-architecture.md) the WP3 team has identified existing nodeJs modules which can be either reused or extended.
 
 ### Core Functionalities
 
