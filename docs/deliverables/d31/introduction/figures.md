@@ -10,3 +10,4 @@
 
 (@sota-security-cose) CoSE architecture
 
+(@service-framework-middle-layer) Service framework middle layer

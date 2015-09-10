@@ -18,6 +18,6 @@ MeteorJS offers the distinct advantage to be used both for all devices and opera
 
 To summarize, the main objective of service framework is to provide an SDK which developers can utilize to facilitate the development of Hyperties. The SDK is envisioned to provide high level APIs on top of the Runtime APIs for managing especially the data models. It will also provide basic templates for different Hyperty Types which developer can use or extend in developing more advanced merged-up Hyperties. 
 
-![image](service_framework_middle_layer.png)
+![Figure @service-framework-middle-layer: Service framework middle layer](service_framework_middle_layer.png)
 
 The existing web platform (runtime) is the basis of all applicatiion development. With the middle layer of web components offering a new set of bulding blocks to choose from, a new ecosystem is formed on top of which other frameworks and applications exist. From the analyzed existing JavaScript Frameworks, MeteorJS and Polymer offer a good stepping stone to extend and be used within the reTHINK project.
