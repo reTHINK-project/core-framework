@@ -43,7 +43,7 @@ Cordova has a high quality plugin API, we just need more great plugins that expo
 
 ####Some plugin examples
 
-##### iosrtc
+##### iosRTC
 iosrtc is a wrapper around Google’s WebRTC library and simply provides  PeerConnection, getMediaDevices and getUserMedia APIs , without any limitations or artificial constraints.
 
 ##### phoneRTC
@@ -82,13 +82,17 @@ One of the obvious drawbacks is that Webview is not available in iOS.
 
 TO BE COMPLETED
 
+A flexible, mobile-first, cross-platform WebRTC client framework based on GStreamer. OpenWebRTC currently supports iOS, Android, Mac OS X and Linux. Windows support is quite doable too if needed.
+
 OpenWebRTC : to be tested.
 
 May enable both native and Hybrid application development.
 
 ### Selected solution for the implementation:
 
-#### Android :
+#### Solution that have already been tested :
+
+##### Android :
 
 Crosswalk : integrate chromium in the application with different possible integration :
 - Crosswalk embedded in the application
@@ -96,13 +100,17 @@ Crosswalk : integrate chromium in the application with different possible integr
 
 Crosswalk usage should ensure us a compatibility with what is done for browser runtime as it embed Chromium
 
-#### iOS : 
+##### iOS : 
 iOSRTC, cordova plugin : https://github.com/eface2face/cordova-plugin-iosrtc
 
-#### Android & iOS :
+Usage of Cordova will enables us to reuse the components that will be developped on the browser runtime.
+
+##### Android & iOS :
 
 Crosswalk and iosRTC can be embeded in the same application code to support both platform.
 
 Hybrid solution will be selected for the project as it enable to use JavaScript for the runtime
 
-
+##### Solution to be tested during the implementation :
+1 - Usage of Webviews will be interesting as it should facilitate the integration of WebRTC API.
+2 - openWebRTC can also be insteresting as it should enable the possibility to build complete native and hybrid application.
