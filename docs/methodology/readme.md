@@ -1,0 +1,183 @@
+# Methodology and Continuous Integration
+
+## Directory Strucuture
+
+Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)
+
+#### samples
+```
+core-framework/src/runtime/core/
+core-framework/src/runtime/browser/
+core-framework/src/runtime/node/
+```
+
+#### sample for *core* folder
+```
+├── core
+│   ├── dist
+│   ├── test
+│   │   ├── test1.js
+│   │   ├── test2.js
+│   ├── node_modules
+│   ├── src
+│   │   ├── configs
+│   │   │   ├── config.js
+│   │   │   ├── config1.js
+│   │   │   ├── config2.js
+│   │   ├── plugins
+│   │   ├── utils
+│   │   │   ├── util1.js
+│   │   │   ├── util2.js
+│   │   ├── corefile.js
+│   │   ├── corefile1.js
+│   │   ├── corefile2.js
+│   ├── vendor (third party)
+│   ├── package.json
+│   ├── karma.conf.js
+│   ├── readme.md
+│   ├── .gitignore
+```
+#### Explication of some files on src directory
+
+[package.json](#package)
+[.gitignore](#ignore)
+[karma.conf.js](#karma)
+
+---
+
+##### <a id="package"></a>package.json
+this file will hold all dependecies when we use option `--save` or `--save-dev` on `npm install <package name>`
+```
+{
+  "name": "core",
+  "version": "0.1.0",
+  "description": "small description about core",
+  "main": "src/corefile.js",
+  "scripts": {
+    "test": "specify the command to make the tests",
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
+```
+
+##### <a id="ignore"></a>.gitignore
+inside this file, you can add other folders
+```
+// this two folders are ignored because they will be automatically generated
+node_modules
+vendors
+
+// the dist folder it is automatically generated with the production file(s) minified, uglified, etc;
+dist
+
+// ignore npm log if an error ocurred
+npm*.log
+npm*.log.*
+
+```
+
+##### <a id="karma"></a>karma.conf.js
+inside this file, you can add other folders
+```
+// Karma configuration
+// Generated on Tue Aug 25 2015 10:41:43 GMT+0100 (WEST)
+
+module.exports = function(config) {
+  config.set({
+        // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '',
+
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    frameworks: ['mocha'],
+    
+    // other configurations listen on http://karma-runner.github.io/0.13/config/configuration-file.html
+    other: configurations
+
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: [],
+
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: true
+  }
+}
+
+```
+---
+
+## Javascript Environment
+
+We have an direct dependencies from nodejs and npm, they can be installed separately or both with [nvm](https://github.com/creationix/nvm)
+
+### dependencies:
+
+* nodejs 
+* npm
+* karma - Make the comunication with karma and jenkins. See more on [karma](http://karma-runner.github.io/0.13/index.html)
+* mocha - Unit test tool. See more on [http://mochajs.org](http://mochajs.org/)
+* jspm - Don't need compile the code, it use babel (or traucer or typescript) to run ES6 code on browser. Know more in [jspm.io](http://jspm.io/)
+
+### how to prepare directory
+
+We provide an template folder which you can download from [here](template.zip), and only need to do this: `npm run init-setup;` and a basic structure are created;
+
+### installing modules on jspm
+
+Because we are using the ES6 standards, we needed a tool which make the code readable for modern browser, therefore, we are using jspm and this way, we prevent  the code compiling on each save.
+
+#### how to install a new module with jspm
+
+Install modules with **jspm** is so simple like **npm**, see the above samples;
+
+examples: `jspm install jquery ` or `jspm install npm:socket.io` or `jspm install bower:socket.io-client`
+
+---
+## Version control
+
+For version control, we suggest, the following method;
+
+#### Git Flow
+
+![Git Flow method](version.png)
+
+About git flow method we can have a tool which can help us to start a new feature or releases, make hotfixes or publish a feature to the remote server so it can be used by other.
+
+You can know more [http://danielkummer.github.io/git-flow-cheatsheet/](http://danielkummer.github.io/git-flow-cheatsheet/)
+
+#### Semantic Versioning
+
+Quobis present an solution partialy based on [semantic versioning](http://semver.org/).
+
+![semver](semver.png)
+
+How this works:
+```
+1.2.3 (Major version).(Minor version).(Revision number)
+^ ^ ^
+| | +--- Minor bugs, spelling mistakes, hot-fixes, etc.
+| +----- Features, major bug fixes, etc.
++------- Major version
+```
+
+#### Task runner
+
+We can create an automatic process which can help us to increment versions with gulp and grunt (hasn't are decided yet what we can use).
+
+But stay here some examples for each one:
+
+Gulp
+ * [gulp-tag-version](https://www.npmjs.com/package/gulp-tag-version)
+ * [gulp-bump](https://www.npmjs.com/package/gulp-bump)
+Grunt
+ * [grunt-bump](https://github.com/vojtajina/grunt-bump)
+ * [grunt-bump-version](https://www.npmjs.com/package/grunt-bump-version)
+---
+
+## Feedback
+
+if something isn't right, please open an issue.
