@@ -89,7 +89,7 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 
 (Steps 1 - 4) : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
 
-(Steps 5 - 7) : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection).
+(Steps 5 - 7) : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined in [15].
 
 (Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
 
@@ -106,6 +106,6 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 
 (Steps 10) : Alice's PEP applies local policies if required including outgoing communication request access control
 
-(Steps 11) : Alice ID Token assertion is added to the message (see [here](../identity-management/user-identity-assertion.md) for more details).
+(Steps 11) : Alice ID Token assertion is added to the message (see chapter "User identity assertion" for more details).
 
 (Steps 12 - 14) : the message is routed through Alice Message BUS reaching Service Provider Back-end Messaginge Service.
