@@ -127,19 +127,22 @@ The web application labeled as *app.domain* represents the html file which is do
  
  The *rethink.js* library contains the Javascript code necessary to setup all the runtime used by reTHINK in the browser. In the next setion all the elements instantiated by rethink.js will be covered. iFrames and Service workers will be used to implement the necessary runtimes.     
 
-### Service workers
+### Service workers. 
 A service worker is a script that is run by your browser in the background, separate from a web page, allowing to execute features which do not need a web page or user interaction. They are used to manage the cache of Runtime Core Components. Web Workers are only able to interact to each other by sending messages with self.postMessage(..) which can be caught by en event listener implemented by the Runtime MsgBUS Core Component. 
 
 #### Hyperties and Protocol Stubs 
 As described in the diagram both Hyperties and Protocol Stubs will be implemented inside Web Workers so they can be executed as separated threads which run independent from the Core runtime.
 The same Service Worker may also be used to manage the cache of Hyperties and protostubs.
 
-* Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain
+
 
 ### Runtime MsgBUS Core Component.
 The Message Bus Core component which will be in charge of listening to messagies comming from the different elements. For example, it will capture the events coming from the service workers which implement the hyperties and the protocol stubs by instantiating and event listener: *window.addEventListener('message', handleSizingResponse, false)*. 
 
 
+### iFrames
+
+As depicted in the diagram all Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain. This allows to hav different runtime for each one. 
 
 
 * 
@@ -148,14 +151,11 @@ The Message Bus Core component which will be in charge of listening to messagies
 * in addition, and since it is not possible to pass WebRTC Media and Data Streams handled inside the iFrame towards the Application that is outside the iFrame, a local loop peerconnection is established between the "reTHINK WebRTC" and the "HypertyAPIStub" running on Application side. See more details below.
 
 
+#### How to send media stream from the reTHINK iFrame to the Web App 
+After some investigation we find away to send stream from app client to iframe with our domain.An internal loop between peer connection objetcs is used to send to send the media stream between the iFrame where is received from the remote peer and the App which consumes the media coming from the hyperty (it is displayed in *<video>* and *<audio>* elements).
 
+The performance impact of this technique has not been considered very relevant in the preliminary tests however other alternatives will be considered in case a performance penalty is observed in more complex applications.
 
-#### Runtime Architecture with IFrame
-
-After some investigation we find away to send stream from app client to iframe with our domain.
-We use peer connection to send media stream.
-
-**how it works**
+##### Practical implementation
 The peer getUserMedia from app client and make a call to peer inside the rethink iframe, and this answer with null stream (we send stream one way), after this, peer can send the stream through peer connection to another client.
 
-We need to do an experimentation code to make an complete validation for  this architecture. 
