@@ -49,6 +49,5 @@ Router2@A -> SP2H@A : send msg
 @enduml
 -->
 
-
-![Interdomain Local Communication between Hyperties](interdomain-local-communication.png)
+![Figure @runtime-inter-local-comm: Inter-domain Local Communication](interdomain-local-communication.png)
 

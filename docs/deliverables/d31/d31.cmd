@@ -42,7 +42,6 @@ specs\runtime-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-4-notification-update.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-5-bob-webrtc.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-6-alice-DO-synch.md ^
-..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-1-alice-invites.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-comm-overview.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-bootstrap-auth-registration.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-intra-comm-3-discovery.md ^

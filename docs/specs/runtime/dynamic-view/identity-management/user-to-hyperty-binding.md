@@ -1,6 +1,6 @@
 #### Associate User Identity to Hyperty Instance
 
-![User-to-Hyperty Binding Scheme](user-to-hyperty-binding-scheme.png)
+![Figure @runtime-ident-man-user-to-hyperty-binding-scheme: Associate User Identity to Hyperty Instance](user-to-hyperty-binding-scheme.png)
 
 
 This sequence details the steps needed to associate the user identity to a given Hyperty instance.

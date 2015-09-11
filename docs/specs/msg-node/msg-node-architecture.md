@@ -93,7 +93,7 @@ Msg2 <-left-> Proto1 : communicate
 @enduml
 -->
 
-![Messaging Node Architecture](Messaging_Node_Architecture.png)
+![Figure @msg-node-architecture-messaging-node-architecture: Messaging Node Architecture](Messaging_Node_Architecture.png)
 
 The Messaging Node is comprised by three main types of functionalities:
 

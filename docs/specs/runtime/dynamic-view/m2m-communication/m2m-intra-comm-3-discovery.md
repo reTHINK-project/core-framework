@@ -45,7 +45,10 @@ SP1H@A <- Router1@A : Return Home \nEnergy Context URL
 -->
 
 
-![Context Discovery in M2M Intradomain Communication](m2m-intra-comm-3-discovery.png)
+![Figure @runtime-m2m-comm3-discovery: Context Discovery in M2M Intradomain Communication](m2m-intra-comm-3-discovery.png)
+
+
+(@runtime-m2m-comm3-discovery) Context Discovery in M2M Intradomain Communication
 
 **[Previous: Device Bootstrap, Authentication Registration](m2m-bootstrap-auth-registration.md)**
 

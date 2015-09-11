@@ -116,7 +116,7 @@ actor "Alice" as Alice
 		participant "Registry" as RemoteRegistry
 		participant "M2M Server" as M2MServer
 	end box
-	
+
 !endif
 
 
@@ -128,6 +128,12 @@ actor "Alice" as Alice
 			participant "Msg Service" as Msg1
 		!endif
 
+	end box
+!endif
+
+!ifdef SHOW_SP1_WITH_SP2Stub
+	box "Service Provider 1"
+		participant "SP2 protoStub" as SP2Stub
 	end box
 !endif
 

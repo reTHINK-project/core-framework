@@ -61,6 +61,5 @@ SP1H@1B <- Router1@1B : send msg
 @enduml
 -->
 
-
-![Deploy Hyperty](intradomain-remote-communication.png)
+![Figure @runtime-intra-remote-comm: Intra-domain Remote Communication](intradomain-local-communication.png)
 

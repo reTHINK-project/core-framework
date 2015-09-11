@@ -17,28 +17,6 @@ MeteorJS is an open-source, [production-ready](http://www.wired.com/2014/10/mete
 
 ### [StapesJS](stapesjs.md) - QUOBIS 
 
-### SocketPeer
-
-https://github.com/cvan/socketpeer
-
-https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/
-
-### [DerbyJS](http://derbyjs.com/)
-
-realtime synchronization of the client and server. It enables one to write an application in which two users edit the same text field–live–without writing too much code yourself. Derby handles all of the synchronization of the models and views. It uses http://sharejs.org/
-
-### [runtime.js](https://github.com/runtimejs/runtime)
-
-Runtime.js is a kernel built on V8 JavaScript engine. It uses event-driven and non-blocking I/O model inspired by Node.js.
-
-The goal of this project is to design and implement a kernel that is optimized to run JavaScript applications. By providing environment for JavaScript code only, it is possible to rethink and improve overall kernel design.
-
-It's currently under development and does not include many essential features.
-
-### [TogetherJS](https://togetherjs.com/)
-
-Nodejs based collaboration framework ready to be integrated with Web Apps using WebRTC for Audio chat
-
 
 ### Others
 
@@ -48,6 +26,11 @@ http://browserify.org/
 
 https://github.com/mojo-js/mesh.js
 
+[TogetherJS](https://togetherjs.com/) 
+
+[runtime.js](https://github.com/runtimejs/runtime)
+
+[DerbyJS](http://derbyjs.com/)
 
 ### References
 
@@ -58,3 +41,8 @@ https://github.com/mojo-js/mesh.js
 [Why Meteor](http://www.meteorpedia.com/read/Why_Meteor)
 
 [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
+
+https://github.com/cvan/socketpeer
+
+https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/
+

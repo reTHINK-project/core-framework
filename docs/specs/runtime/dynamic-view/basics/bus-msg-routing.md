@@ -78,5 +78,5 @@ BUS@A ->  : send msg
 -->
 
 
-![Routing messages in Message BUS](bus-msg-routing.png)
+![Figure @runtime-bus-msg-routing: Message Routing in Message BUS](bus-msg-routing.png)
 

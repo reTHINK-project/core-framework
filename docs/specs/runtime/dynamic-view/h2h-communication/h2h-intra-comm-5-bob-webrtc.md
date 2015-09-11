@@ -61,16 +61,18 @@ end
 @enduml
 -->
 
-![H2H Intradomain Communication : Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
+![Figure @runtime-h2h-intra-comm-5-bob-webrtc: Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
 
-(Step 1) The Hyperty is notified about the added remoteDescription object.
 
-(Step 2) The Hyperty calls the WebRTC API from the browser including the remote parameters from the Remote Data Object. The same happens when a new Ice Candidate is updated in the Remote Data Object (step 3 and Step 4).
+
+(Step 1) : The Hyperty is notified about the added remoteDescription object.
+
+(Step 2) : The Hyperty calls the WebRTC API from the browser including the remote parameters from the Remote Data Object. The same happens when a new Ice Candidate is updated in the Remote Data Object (step 3 and Step 4).
 
 While remote Ice Candidate are added (step 3 and Step 4 may take place several times as Trickle Ice is supported) the Hyperty calls the Peer Connection method to create an SDP answer (step 5) to be sent to it with all the parameters used to establish the media session between Alice and Bob but the Ice Candidates which will be received asynchronously later. When the SDP with the local description is ready a callback is called and the SDP is sent to the Hyperty (step 6).
 
-(Step 7) The Hyperty calls the Peer setLocalDesciption API method from the WebRTC API exposed by the browser so that the browser is aware of the media parameters which are going to be used to establish the media session with Alice. At this point the gathering process of local Ice Candidates starts.
+(Step 7) : The Hyperty calls the Peer setLocalDesciption API method from the WebRTC API exposed by the browser so that the browser is aware of the media parameters which are going to be used to establish the media session with Alice. At this point the gathering process of local Ice Candidates starts.
 
-(Step 8) The Hyperty updates the Local Data Object with the parameters from the localDescription.
+(Step 8) : The Hyperty updates the Local Data Object with the parameters from the localDescription.
 
-(Step 9) As a result of the started ICE process local connectivity candidate will be reported from the WebRTC engine to the Hyperty. For each reported localCandidate the Hyperty can optionally perform a filter operation (Step 10), e.g. to filter out non-relay candidates to force TURN based operation, and reports the remaining candidates to the Local Data Object (Step 11)
+(Step 9) : As a result of the started ICE process local connectivity candidate will be reported from the WebRTC engine to the Hyperty. For each reported localCandidate the Hyperty can optionally perform a filter operation (Step 10), e.g. to filter out non-relay candidates to force TURN based operation, and reports the remaining candidates to the Local Data Object (Step 11)

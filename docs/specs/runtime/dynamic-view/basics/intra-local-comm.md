@@ -39,5 +39,5 @@ SP1H@A -> SP1H2@A : send msg
 -->
 
 
-![Intradomain Local Communication between Hyperties](intradomain-local-communication.png)
+![Figure @runtime-intra-local-comm: Intra-domain Local Communication](intradomain-local-communication.png)
 
