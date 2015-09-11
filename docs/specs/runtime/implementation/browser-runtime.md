@@ -114,7 +114,7 @@ The Runtime implementation at browsers plays a central role in reTHINK project. 
 
 The design of the browser runtime implementation for reTHINK project has been directed by security and functional requirements along as well as the security limitations forced by the browser. Some of the design decissions are expected to be modified during the implementation phase, however all the proposed design has been tested with real code which implemented prototypes of the different parts.  
 
-## Design descrption.
+## Design description.
 
 
 
