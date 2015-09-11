@@ -113,6 +113,6 @@ end group
 -->
 
 
-![User Registration](user-registration.png)
+![Figure @runtime-ident-man-user-registration: User registration](user-registration.png)
 
 In this use case, it is considered there is a single protocol stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services including authentication, authorisation and messaging services.

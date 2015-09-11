@@ -1,6 +1,6 @@
 #### User identity assertion 
 
-![uid-assertion-seq](https://cloud.githubusercontent.com/assets/10709934/9578851/a18add7c-4fed-11e5-81ab-be8dd605a09b.png)
+![Figure @runtime-ident-man-user-identity-assertion-diagram: User identity assertion sequence diagram](user-identity-assertion-diagram.png)
 
 In this sequence, Alice Hyperty receives an Identity Assertion from its signaling/backend service.
 Before prompting the user with the asserted identity (e.g. an incoming call notification) it must be verified.

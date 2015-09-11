@@ -72,5 +72,5 @@ SP2H@B <- Router2@B : send msg
 -->
 
 
-![Interdomain Remote Communication between Hyperties](interdomain-remote-communication.png)
+![Figure @runtime-inter-remote-comm: Inter-domain Remote Communication](interdomain-remote-communication.png)
 

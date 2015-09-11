@@ -1,6 +1,6 @@
 #### Deploy runtime
 
-![Deploy Core Runtime Components in the Native Runtime](deploy-runtime.png)
+![Figure @runtime-deploy-runtime: Deploy Core Runtime Components in the Native Runtime](deploy-runtime.png)
 
 In case the device does not support the Hyperty Core Runtime components eg an existing browser like Chrome or a Network Node.js Server, they have to be deployed in the Device.
 

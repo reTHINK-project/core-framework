@@ -61,7 +61,9 @@ end
 @enduml
 -->
 
-![H2H Intradomain Communication : Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
+![Figure @runtime-h2h-intra-comm-5-bob-webrtc: Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
+
+
 
 (Step 1) The Hyperty is notified about the added remoteDescription object.
 

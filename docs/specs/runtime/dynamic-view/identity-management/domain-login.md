@@ -134,6 +134,6 @@ SP1H@A <- Router1@A : postMessage(login response message)
 -->
 
 
-![Domain Login](domain-login.png)
+![Figure @runtime-ident-man-domain-login: Domain Login](domain-login.png)
 
 In this use case, it is considered there is a single protocol stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services including authentication, authorisation and messaging services.

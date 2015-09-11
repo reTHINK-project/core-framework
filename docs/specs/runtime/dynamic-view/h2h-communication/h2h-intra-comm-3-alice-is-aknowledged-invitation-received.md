@@ -45,7 +45,7 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 -->
 
 
-![H2H Intradomain Communication : Alice is Aknowledged](h2h-intra-comm-3-alice-is-aknowledged.png)
+![Figure @runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received: Aknowledged that Bob received the invitation](h2h-intra-comm-3-alice-is-aknowledged.png)
 
 
 (Step 1 - 3) : Service Provider Back-end Messaginge Service routes the OK Message to Bob's Message BUS which forwards it to its PEP

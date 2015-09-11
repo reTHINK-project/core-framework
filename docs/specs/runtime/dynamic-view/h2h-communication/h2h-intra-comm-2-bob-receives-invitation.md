@@ -74,7 +74,7 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 -->
 
 
-![H2H Intradomain Communication : bob receives invitation](h2h-intra-comm-2-bob-receives-invitation.png)
+![Figure @runtime-h2h-intra-comm-2-bob-receives-invitation: Bob receives invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
 
 (Steps 1 - 4) : Service Provider Back-end Messaginge Service routes the message to Bob's Message BUS, asserts Alice's identity and forwards the message to Bobs Router reaching Bob's PEP component

@@ -321,7 +321,7 @@ achieve this separation:
     web content. Apart from that, it is also responsible for enforcing
     the same-origin policy between the user and a website he’s visiting.
 
-![Figure 1: Chromium sandbox scheme](chromium-sandbox.png)
+![Figure 2: Chromium sandbox scheme](chromium-sandbox.png)
 
 #### Browser Extensions Security:
 
@@ -361,7 +361,7 @@ own isolated instance of a content script, making content scripts highly
 bound to attacks. However, only the core extension is able to
 communicate with the Chrome extension’s API, reducing the risk that a
 content script is able to access the user data space. The architecture
-scheme of a Google Chrome extension is on Fig. 2. \* **Isolated Words:**
+scheme of a Google Chrome extension is on Fig. 3. \* **Isolated Words:**
 This mechanism ensures that content scripts and websites have separate
 JavaScript heaps and DOM objects. Consequently, content scripts never
 exchange pointers with websites, protecting them against web attackers.
@@ -375,7 +375,7 @@ the website it is running on. This way, an extension is limited to the
 permissions its developer requested, so an attacker is not able to
 request new permissions for a compromised extension in runtime.
 
-![Figure 2: The architecture of a Google Chrome
+![Figure 3: The architecture of a Google Chrome
 extension](chrome-extension-arch.png)
 
 #### XSS Detection Techniques:
@@ -400,9 +400,9 @@ distinct categories, according to \[3\]:
     stealing the user’s information, XSS attacks can also be used to
     redirect users to a malicious website which can then perform other
     distinct attacks within its context. A persistent XSS attack scheme
-    is presented on Fig. 3.
+    is presented on Fig. 4.
 
-![Figure 3: Scheme of a persistent XSS attack](xss-persistent.png)
+![Figure 4: Scheme of a persistent XSS attack](xss-persistent.png)
 
 -   **Non-persistent/Reflected attacks:** Unlike the first type,
     reflected attacks do not persistently store malicious code in the
@@ -413,10 +413,10 @@ distinct categories, according to \[3\]:
     which will finally be interpreted by the user’s browser, but within
     the trusted context fo the web application. This type of XSS attacks
     is often combined with other techniques as phishing, and is the most
-    common type of XSS attacks in web applications. Figure 4 shows a
+    common type of XSS attacks in web applications. Figure 5 shows a
     scheme of the architecture of a non-persistent XSS attack.
 
-![Figure 4: Scheme of a non-persistent XSS
+![Figure 5: Scheme of a non-persistent XSS
 attack](xss-nonpersistent.png)
 
 #### XSS (and other types) prevention techniques:
@@ -495,7 +495,7 @@ that run on the smart card. The single-chip computer is embedded in a
 plastic chip carrier, and both of them hold several tamper-resistant and
 tamper-detection features.
 
-![Figure 5: Java Smart Card scheme \[11\]](java-smart-card.jpg)
+![Figure 6: Java Smart Card scheme \[11\]](java-smart-card.jpg)
 
 -   **Software**
 
@@ -535,11 +535,11 @@ use their embedded resources. These resources usually target two service
 types: Near Field Communication (NFC) facilities for mobile applications
 and trusted cryptogrtaphic features for cloud applications.
 
-![Figure 6: CoSE architecture](cose.png)
+![Figure 7: CoSE architecture](cose.png)
 
 -   **Architecture**
 
-A Cloud of Secure Elements has the following components, as Fig. 6
+A Cloud of Secure Elements has the following components, as Fig. 7
 shows:
 
 -   NFC kiosks, typically deliver payment facilities
@@ -899,7 +899,7 @@ the Runtime APIs for managing especially the data models. It will also
 provide basic templates for different Hyperty Types which developer can
 use or extend in developing more advanced merged-up Hyperties.
 
-![Figure 7: Service framework middle
+![Figure 8: Service framework middle
 layer](service_framework_middle_layer.png)
 
 The existing web platform (runtime) is the basis of all applicatiion
@@ -1169,7 +1169,7 @@ in close collaboration with the WebRTC gateway. The following picture
 describes how the WAC fits into a service provider or enterprise voice
 network:
 
-![Figure 8: Sippo WAC reference
+![Figure 9: Sippo WAC reference
 architecture](quobis_reference_architecture.png)
 
 The following network elements are the basic ones to understand the
@@ -1250,7 +1250,7 @@ to Call or Sippo GMail Toolbar.
 Sippo offers a set of different API’s and service interfaces that are
 summarised in the picture below:
 
-![Figure 9: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
+![Figure 10: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
 
 ##### Sippo.js API
 
@@ -1268,7 +1268,7 @@ benefit of using Sippo.js API as it hides the complexity of the
 underlying signaling plane and provides a single and simple-to-use
 javascript API to the applications.
 
-![Figure 10: Sippo.js abstraction layer](quobis_abstraction_layer.png)
+![Figure 11: Sippo.js abstraction layer](quobis_abstraction_layer.png)
 
 ##### Sippo Service API (SAPI)
 
@@ -1323,7 +1323,7 @@ the WAC, whereas a backend is a implementation of a specific service. In
 other words, we can say that a services is “what” to do and the backend
 is “how” to do it.
 
-![Figure 11: Sippo services and
+![Figure 12: Sippo services and
 backends](quobis_sippo_services_and_backends.png)
 
 There are thirty-three available services at Sippo WAC that are listed
@@ -1352,7 +1352,7 @@ the Sippo WAC is done by using the WAPI interface, which dispatches the
 incoming messages to the corresponding services, as shown in the picture
 below:
 
-![Figure 12: Sippo WebRTC applications
+![Figure 13: Sippo WebRTC applications
 stack](quobis_webrtc_applications.png)
 
 #### Potential integration with Wonder proposal
@@ -1752,7 +1752,7 @@ attack is directed to (e.g., the operating system), and (ii) the
 difficulty level of the attack based on the technical skills and
 resources required by the adversary.
 
-![image](dummymatrix.png)
+![Figure 18: Vulnerability matrix for a dummy platform](dummymatrix.png)
 
 The figure above provides an example of a vulnerability matrix for a
 dummy platform. The content of each cell describes examples of attacks
@@ -1769,7 +1769,7 @@ classification for attack layers and difficulty levels:
 ordered top-down, from the highest to the lowest layer of the computer
 stack, as shown in the figure below:
 
-![image](stack.png)
+![Figure 19: Stack](stack.png)
 
 -   *Sandbox level (L1)*: The attacker has direct access to the sandbox
     environment, hence to the code and execution state of
@@ -1867,7 +1867,7 @@ specific browser version and extensions. In spite of this diversity, a
 Hyperty-enabled browser will tend to follow the general architecture
 represented in the figure below.
 
-![image](browser.png)
+![Figure 20: Browser](browser.png)
 
 In this architecture, the Hyperty Runtime represented by the shaded
 components of the Figure is deployed on an independent browser process.
@@ -1889,7 +1889,7 @@ Runtime are mainly caused by an adversarial user. To better characterize
 these threats, we define three attacker profiles and draw the
 vulnerability matrix as follows:
 
-![image](securitybrowser.png)
+![Figure 21: Security Browser](securitybrowser.png)
 
 -   *Regular user*: This attacker profile captures the class of users
     with an average proficiency level in computing, but are willing to
@@ -1960,7 +1960,7 @@ of such applications, reTHINK will provide an SDK that will include APIs
 and platform specific libraries for adapting the Hyperty Runtime to the
 underlying operating system platform.
 
-![image](application.png)
+![Figure 22: Application platform](application.png)
 
 The figure above illustrates a general standalone platform tailored for
 Android mobile devices. Just like in the browser platform, the Hyperty
@@ -1989,7 +1989,7 @@ A2, respectively, in the browser's vulnerability matrix). Next, we
 present the vulnerability matrix of the standalone platform and provide
 alternative attack examples.
 
-![image](securityapplication.png)
+![Figure 23: Security Application platform](securityapplication.png)
 
 -   *Advanced user*: An advanced user can compromise the entire system
     by launching attacks at the OS level:
@@ -2269,7 +2269,7 @@ Runtime Main Procedures
 
 #### Deploy runtime
 
-![Deploy Core Runtime Components in the Native
+![Figure 24: Deploy Core Runtime Components in the Native
 Runtime](deploy-runtime.png)
 
 In case the device does not support the Hyperty Core Runtime components
@@ -2373,7 +2373,7 @@ end
 
 @enduml
 -->
-![Figure 23: Deploy Protocol Stub](deploy-protostub.png)
+![Figure 25: Deploy Protocol Stub](deploy-protostub.png)
 
 Steps 1-2 : The protocol stub deployment may be triggered by the
 deployment of an Hyperty or by some attempt from a local Hyperty to
@@ -2551,7 +2551,7 @@ end group
 
 @enduml
 -->
-![Hyperty Deploy](deploy-hyperty.png)
+![Figure 26: Deploy Hyperty](deploy-hyperty.png)
 
 According to the sandboxing runtime architecture, Hyperties and App
 domains will have an impact on the procedures to be used to deploy the
@@ -2684,7 +2684,7 @@ BUS@A ->  : send msg
 
 @enduml
 -->
-![Routing messages in Message BUS](bus-msg-routing.png)
+![Figure 27: Message Routing in Message BUS](bus-msg-routing.png)
 
 #### Intra-domain Local Communication
 
@@ -2725,8 +2725,8 @@ SP1H@A -> SP1H2@A : send msg
 
 @enduml
 -->
-![Intradomain Local Communication between
-Hyperties](intradomain-local-communication.png)
+![Figure 28: Intra-domain Local
+Communication](intradomain-local-communication.png)
 
 #### Intra-domain Remote Communication
 
@@ -2790,7 +2790,8 @@ SP1H@1B <- Router1@1B : send msg
 
 @enduml
 -->
-![Deploy Hyperty](intradomain-remote-communication.png)
+![Figure 29: Intra-domain Remote
+Communication](intradomain-local-communication.png)
 
 #### Inter-domain Local Communication
 
@@ -2842,8 +2843,8 @@ Router2@A -> SP2H@A : send msg
 
 @enduml
 -->
-![Interdomain Local Communication between
-Hyperties](interdomain-local-communication.png)
+![Figure 30: Inter-domain Local
+Communication](interdomain-local-communication.png)
 
 #### Inter-domain Remote Communication
 
@@ -2917,8 +2918,8 @@ SP2H@B <- Router2@B : send msg
 
 @enduml
 -->
-![Interdomain Remote Communication between
-Hyperties](interdomain-remote-communication.png)
+![Figure 31: Inter-domain Remote
+Communication](interdomain-remote-communication.png)
 
 ### Runtime Identity Management Procedures
 
@@ -3035,7 +3036,7 @@ end group
 
 @enduml
 -->
-![User Registration](user-registration.png)
+![Figure 32: User registration](user-registration.png)
 
 In this use case, it is considered there is a single protocol stub to
 interact with all back-end services including Identity Management.
@@ -3052,11 +3053,11 @@ use it?".
 
 ##### Prepare Discovery
 
-![Prepare Discovery](prepare_discovery.png)
+![Figure 33: Prepare Discovery](prepare_discovery.png)
 
 ##### Use Discovery
 
-![Use Discovery](use_discovery.png)
+![Figure 34: Use Discovery](use_discovery.png)
 
 #### Domain Login
 
@@ -3192,7 +3193,7 @@ SP1H@A <- Router1@A : postMessage(login response message)
 
 @enduml
 -->
-![Domain Login](domain-login.png)
+![Figure 35: Domain Login](domain-login.png)
 
 In this use case, it is considered there is a single protocol stub to
 interact with all back-end services including Identity Management.
@@ -3202,7 +3203,8 @@ messaging services.
 
 #### Associate User Identity to Hyperty Instance
 
-![User-to-Hyperty Binding Scheme](user-to-hyperty-binding-scheme.png)
+![Figure 36: Associate User Identity to Hyperty
+Instance](user-to-hyperty-binding-scheme.png)
 
 This sequence details the steps needed to associate the user identity to
 a given Hyperty instance.
@@ -3270,7 +3272,8 @@ default one?
 
 #### User identity assertion
 
-![uid-assertion-seq](https://cloud.githubusercontent.com/assets/10709934/9578851/a18add7c-4fed-11e5-81ab-be8dd605a09b.png)
+![Figure 37: User identity assertion sequence
+diagram](user-identity-assertion-diagram.png)
 
 In this sequence, Alice Hyperty receives an Identity Assertion from its
 signaling/backend service. Before prompting the user with the asserted
@@ -3357,11 +3360,11 @@ SP1H@A ->  LocObj@A : new(sessionDescription)
 
 SP1H@A -> Sync1@A : create( Connection DataObject, resourceURL, to)
 
-Sync1@A -> Router1@A : postMsg(Create MSG) 
+Sync1@A -> Router1@A : postMsg(Create MSG)
 
 Router1@A -> Router1@A : apply policies
 
-Router1@A -> BUS@A : postMsg(Create MSG) 
+Router1@A -> BUS@A : postMsg(Create MSG)
 
 group insert Alice ID Token as defined in IDM/User Id Assertion diagram
 
@@ -3369,25 +3372,25 @@ group insert Alice ID Token as defined in IDM/User Id Assertion diagram
 
 end group
 
-Proto1@A <- BUS@A : postMsg(Create MSG) 
+Proto1@A <- BUS@A : postMsg(Create MSG)
 
-Proto1@A -> SP1 : postMsg(Create MSG) 
+Proto1@A -> SP1 : postMsg(Create MSG)
 
 @enduml
 -->
-![H2H Intradomain Communication : Alice invites
-Bob](h2h-intra-comm-1-alice-invites-bob.png)
+![Figure 38: Alice invites Bob for a
+communication](h2h-intra-comm-1-alice-invites-bob.png)
 
-Steps 1 - 4 : Alice decides to invite Bob for a communication. The
+(Steps 1 - 4) : Alice decides to invite Bob for a communication. The
 discovery of Bob's Hyperty Instance URL is described
 here(../identity-management/discovery.md).
 
-Steps 5 - 7 : the Hyperty Instance creates the Connection, the
+(Steps 5 - 7) : the Hyperty Instance creates the Connection, the
 LocalConnectionDescription and the LocalIceCandidates data objects as
 defined
 [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection).
 
-Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to
+(Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to
 create and observe these objects. Syncher generates CREATE messages for
 each object and puts it in the Body in JSON format. For simplification
 purposes we assume the CREATE msg contains the Connection object plus
@@ -3403,15 +3406,15 @@ Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamo
     "contextId" : "qwertyuiopasdfghjkl",
     "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
 
-Steps 10 : Alice's PEP applies local policies if required including
+(Steps 10) : Alice's PEP applies local policies if required including
 outgoing communication request access control
 
-Steps 11 : Alice ID Token assertion is added to the message (see
+(Steps 11) : Alice ID Token assertion is added to the message (see
 [here](../identity-management/user-identity-assertion.md) for more
 details).
 
-Steps 12 - 14 : the message is routed through Alice Message BUS reaching
-Service Provider Back-end Messaginge Service.
+(Steps 12 - 14) : the message is routed through Alice Message BUS
+reaching Service Provider Back-end Messaginge Service.
 
 #### H2H Intradomain Communication - Bob receives invitation
 
@@ -3442,15 +3445,21 @@ autonumber
 !include ../runtime_objects.plantuml
 
 
-Proto1@1B <- SP1 : postMsg(Create MSG) 
+Proto1@1B <- SP1 : postMsg(Create MSG)
 
-BUS@1B <- Proto1@1B : postMsg(Create MSG) 
+BUS@1B <- Proto1@1B : postMsg(Create MSG)
 
-Router1@1B <- BUS@1B : postMsg(Create MSG) 
+group assert Alice ID Token as defined in IDM/User Id Assertion diagram
+
+    BUS@1B -> BUS@1B : assert Alice's identity
+
+end group
+
+Router1@1B <- BUS@1B : postMsg(Create MSG)
 
 Router1@1B -> Router1@1B : Apply Local Bob policies
 
-Sync1@1B <- Router1@1B : postMsg(Create MSG) 
+Sync1@1B <- Router1@1B : postMsg(Create MSG)
 
 create CommObj@1B
 
@@ -3464,34 +3473,42 @@ SP1H@1B <- Sync1@1B : report new objects
 
 == Reply Object was successfuly Created by Bob ==
 
-Sync1@1B -> Router1@1B : postMsg(OK MSG) 
+Sync1@1B -> Router1@1B : postMsg(OK MSG)
 
-Router1@1B -> BUS@1B : postMsg(OK MSG) 
+Router1@1B -> BUS@1B : postMsg(OK MSG)
 
-BUS@1B -> Proto1@1B : postMsg(OK MSG) 
+group insert Bob's ID Token as defined in IDM/User Id Assertion diagram
 
-Proto1@1B -> SP1 : postMsg(OK MSG) 
+    BUS@1B -> BUS@1B : add ID Token to Message
+
+end group
+
+BUS@1B -> Proto1@1B : postMsg(OK MSG)
+
+Proto1@1B -> SP1 : postMsg(OK MSG)
 
 
 @enduml
 -->
-![H2H Intradomain Communication : bob receives
+![Figure 39: Bob receives
 invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
-Steps 1 - 3 : Service Provider Back-end Messaginge Service routes the
-message to Bob's Message BUS, reaching Bob's PEP component
+(Steps 1 - 4) : Service Provider Back-end Messaginge Service routes the
+message to Bob's Message BUS, asserts Alice's identity and forwards the
+message to Bobs Router reaching Bob's PEP component
 
-Step 4 : Bob's PEP applies local policies if required including incoming
-communication request access control
+(Step 4) : Bob's PEP applies local policies if required including
+incoming communication request access control
 
-Steps 5 - 8 : the message is forwarded to Bob's Syncher which creates
+(Steps 5 - 8) : the message is forwarded to Bob's Syncher which creates
 the requested new objects and reports to Bob's Hyperty Instance the new
 created objects.
 
-Steps 9 - 12 : As soon as the new Objects were created by Bob's syncher,
-it responds back to Alice to confirm the objects were created with a
-[Response
-Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
+(Steps 9 - 14) : As soon as the new Objects were created by Bob's
+syncher, it responds back to Alice to confirm the objects were created
+with a [Response
+Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody).
+In (Step 12) Bobs ID-Token is added to the Message:
 
     "id" : "1"
     "type" : "RESPONSE",
@@ -3546,8 +3563,8 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 
 @enduml
 -->
-![H2H Intradomain Communication : Alice is
-Aknowledged](h2h-intra-comm-3-alice-is-aknowledged.png)
+![Figure 40: Aknowledged that Bob received the
+invitation](h2h-intra-comm-3-alice-is-aknowledged.png)
 
 (Step 1 - 3) : Service Provider Back-end Messaginge Service routes the
 OK Message to Bob's Message BUS which forwards it to its PEP
@@ -3611,7 +3628,7 @@ Sync1@1B -> LocObj@1B : setup Observer Callback
 
 @enduml
 -->
-![H2H Intradomain Communication : notification
+![Figure 41: notification
 update](h2h-intra-comm-4-notification-update.png)
 
 (step 1) The Application which interacts with the human user setups a
@@ -3696,7 +3713,7 @@ end
 
 @enduml
 -->
-![H2H Intradomain Communication : Bob gatheres WebRTC
+![Figure 42: Bob gatheres WebRTC
 resources](h2h-intra-comm-5-bob-webrtc.png)
 
 (Step 1) The Hyperty is notified about the added remoteDescription
@@ -3783,145 +3800,18 @@ Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-![H2H Intradomain Communication : Synchronization of Alice's Data
+![Figure 43: Synchronization of Alice's Data
 object](h2h-intra-comm-6-alice-DO-synch.png)
 
-(Step 1) The local Data object reports that there have been changes in
-the connection parameters and the Syncher sends a CRUD message through
-the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty
-(Step 2).
+1)  Synchronization of Alice's Data object (Step 1) The local Data
+    object reports that there have been changes in the connection
+    parameters and the Syncher sends a CRUD message through the Policy
+    Enforcer to Update the Remote Data Object at Alice's Hyperty
+    (Step 2).
 
 (Step 3) the Policy Enforcer checks if the message is compliant with the
 local policies and the message is sent to the ProtoStub (Step 4) to be
 in turn sent to the Service Provider 1 Back-End (Step 5)
-
-#### H2H Interdomain Communication - create communication
-
-This MSC diagrams shows the most relevant steps to support the initial
-invitation of Alice to Bob, where Alice and Bob are in different
-domains.
-
-<!--
-@startuml "h2h-inter-comm-1-alice-invites-bob.png"
-
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_AppAtRuntimeA
-
-!define SHOW_NativeAtRuntimeA
-!define SHOW_WebRTCAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_CommObjectAtRuntimeA
-!define SHOW_LocalObjectAtRuntimeA
-!define SHOW_Syncher1AtRuntimeA
-
-!define SHOW_SP2SandboxAtRuntimeA
-!define SHOW_Protostub2AtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-
-!define SHOW_SP2
-
-!define SHOW_Bob
-
-!include ../runtime_objects.plantuml
-
-Alice -> App@A : invite Bob
-
-App@A -> Router1@A : invite Bob
-
-SP1H@A <- Router1@A : invite Bob
-
-group discover Remote Hyperty URL
-
-SP1H@A -> SP1H@A : discover Bob
-
-note right
-    returned address set that Bob is
-    in a different SP2 domain.
-end note
-
-end group
-
-create CommObj@A
-
-SP1H@A ->  CommObj@A : new(HypertyOwner,Constraints)
-
-SP1H@A -> WRTC@A : get Comm resources\n(incl SDP)
-
-create LocObj@A
-
-SP1H@A ->  LocObj@A : new(sessionDescription)
-
-== Request Bob to Create and Observe Connection object ==
-
-SP1H@A -> Sync1@A : create( Connection DataObject, resourceURL, to)
-
-Sync1@A -> Router1@A : postMsg(Create MSG) 
-
-Router1@A -> Router1@A : apply policies
-
-Router1@A -> BUS@A : postMsg(Create MSG) 
-
-group deploy SP2 protocol Stub as defined at basics/deploy-protostub.md
-
-create Proto2@A
-BUS@A -> Proto2@A : new
-
-end group
-
-Proto2@A <- BUS@A : postMsg(Create MSG) 
-
-Proto2@A -> SP2 : postMsg(Create MSG) 
-
-@enduml
--->
-![H2H Intradomain Communication : create
-communication](h2h-inter-comm-1-alice-invites-bob.png)
-
-Steps 1 - 4 : Alice decides to invite Bob for a communication. The
-discovery of Bob's Hyperty Instance URL is described
-here(../identity-management/discovery.md).
-
-Steps 5 - 7 : the Hyperty Instance creates the Connection, the
-LocalConnectionDescription and the LocalIceCandidates data objects as
-defined
-[here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection).
-
-Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to
-create and observe these objects. Syncher generates CREATE messages for
-each object and puts it in the Body in JSON format. For simplification
-purposes we assume the CREATE msg contains the Connection object plus
-local SDP and local IceCandidates:
-
-**[Create
-Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
-
-    "id" : "1"
-    "type" : "CREATE",
-    "from" : "hyperty-instance://sp1/alicehy123",
-    "to" : "hyperty-instance://sp2/bobhy123",
-    "contextId" : "qwertyuiopasdfghjkl",
-    "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
-
-Steps 10 : Alice's PEP applies local policies if required including
-outgoing communication request access control
-
-Steps 11 : the message is routed towards Alice Message BUS.
-
-Steps 12 : SP2 protostub is deployed in the runtime if not deployed yet
-as defined [here](../basics/deploy-protostub.md)
-
-Steps 13 - 14: Message BUS routes the message to SP2 protocol stub which
-proceses it to send it to Service Provider 2 Back-end Messaginge
-Service.
 
 ### Runtime Main Procedures for M2M Communication
 
@@ -5486,104 +5376,112 @@ and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA,
 363-378. DOI=10.1109/SP.2011.39
 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-(1) Chromium sandbox scheme
+(2) Chromium sandbox scheme
 
-(2) The architecture of a Google Chrome extension
+(3) The architecture of a Google Chrome extension
 
-(3) Scheme of a persistent XSS attack
+(4) Scheme of a persistent XSS attack
 
-(4) Scheme of a non-persistent XSS attack
+(5) Scheme of a non-persistent XSS attack
 
-(5) Java Smart Card scheme
+(6) Java Smart Card scheme
 
-(6) CoSE architecture
+(7) CoSE architecture
 
-(7) Service framework middle layer
+(8) Service framework middle layer
 
-(8) Sippo WAC reference architecture
+(9) Sippo WAC reference architecture
 
-(9) Sippo interfaces and APIs
+(10) Sippo interfaces and APIs
 
-(10) Sippo.js abstraction layer
+(11) Sippo.js abstraction layer
 
-(11) Sippo services and backends
+(12) Sippo services and backends
 
-(12) Sippo WebRTC applications stack
+(13) Sippo WebRTC applications stack
 
-(13) Runtime High Level Architecture
+(14) Runtime High Level Architecture
 
-(14) Runtime High Level Architecture with Unstrusted Hyperties
+(15) Runtime High Level Architecture with Unstrusted Hyperties
 
-(15) Runtime High Level Architecture with Policy Enforcer
+(16) Runtime High Level Architecture with Policy Enforcer
 
-(16) Runtime Architecture
+(17) Runtime Architecture
 
-(17) Vulnerability matrix for a dummy platform
+(18) Vulnerability matrix for a dummy platform
 
-(18) Stack
+(19) Stack
 
-(19) Browser
+(20) Browser
 
-(20) Security Browser
+(21) Security Browser
 
-(21) Application platform
+(22) Application platform
 
-(22) Security Application platform
+(23) Security Application platform
 
-(23) Deploy Protocol Stub
+(24) Deploy Core Runtime Components in the Native Runtime
 
-(24) Deploy Hyperty
+(25) Deploy Protocol Stub
 
-(25) Message Routing in Message BUS
+(26) Deploy Hyperty
 
-(26) Intra-domain Local Communication
+(27) Message Routing in Message BUS
 
-(27) Intra-domain Remote Communication
+(28) Intra-domain Local Communication
 
-(28) Inter-domain Local Communication
+(29) Intra-domain Remote Communication
 
-(29) Inter-domain Remote Communication
+(30) Inter-domain Local Communication
 
-(30) Alice invites Bob for a communication
+(31) Inter-domain Remote Communication
 
-(31) Bob receives invitation
+(32) User registration
 
-(32) Aknowledged that Bob received the invitation
+(33) Prepare Discovery
 
-(33) Alice invites Bob for a communication
+(34) Use Discovery
 
-(34) Alice invites Bob for a communication
+(35) Domain Login
 
-(35) User registration
+(36) Associate User Identity to Hyperty Instance
 
-(36) Prepare Discovery
+(37) User identity assertion sequence diagram
 
-(37) Use Discovery
+(38) Alice invites Bob for a communication
 
-(38) Domain Login
+(39) Bob receives invitation
 
-(39) Associate User Identity to Hyperty Instance
+(40) Aknowledged that Bob received the invitation
 
-(40) User identity assertion sequence diagram
+(41) notification update
 
-(41) Runtime Main Procedures for M2M Communication
+(42) Bob gatheres WebRTC resources
 
-(42) M2M Device Bootstrap
+(43) Synchronization of Alice's Data object
 
-(43) Communication 4 pub sub 1
+(44) Alice invites Bob for a communication
 
-(44) Communication 4 pub sub 2
+(45) Alice invites Bob for a communication
 
-(45) Communication 4 pub sub 3
+(46) Runtime Main Procedures for M2M Communication
 
-(46) Runtime browser implementation
+(47) M2M Device Bootstrap
 
-(47) Crosswalk Architecture
+(48) Communication 4 pub sub 1
 
-(48) Cordova functionnal schema
+(49) Communication 4 pub sub 2
 
-(49) Cordova functionnal schema
+(50) Communication 4 pub sub 3
 
-(50) Messaging Node Architecture
+(51) Runtime browser implementation
+
+(52) Crosswalk Architecture
+
+(53) Cordova functionnal schema
+
+(54) Cordova functionnal schema
+
+(55) Messaging Node Architecture
 
 

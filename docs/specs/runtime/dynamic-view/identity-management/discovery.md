@@ -5,10 +5,10 @@ The picture shows Discovery of a Hyperty.  The first picture is about the prepar
 
 ##### Prepare Discovery
 
-![Prepare Discovery](prepare_discovery.png)
+![Figure @runtime-ident-man-preprare-discovery: Prepare Discovery](prepare_discovery.png)
 
 ##### Use Discovery
 
-![Use Discovery](use_discovery.png)
+![Figure @runtime-ident-man-use-discovery: Use Discovery](use_discovery.png)
 
 

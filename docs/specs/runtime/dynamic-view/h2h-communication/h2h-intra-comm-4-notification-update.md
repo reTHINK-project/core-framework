@@ -52,7 +52,9 @@ Sync1@1B -> LocObj@1B : setup Observer Callback
 @enduml
 -->
 
-![H2H Intradomain Communication : notification update](h2h-intra-comm-4-notification-update.png)
+
+![Figure @runtime-h2h-intra-comm-4-notification-update: notification update](h2h-intra-comm-4-notification-update.png)
+
 
 (step 1) The Application which interacts with the human user setups a callback in to be notified when the Connection data Object is modified.
 

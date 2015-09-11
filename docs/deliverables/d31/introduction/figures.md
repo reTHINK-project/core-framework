@@ -42,6 +42,8 @@
 
 (@runtime-security-analysis-security-application) Security Application platform
 
+(@runtime-deploy-runtime) Deploy Core Runtime Components in the Native Runtime
+
 (@runtime-deploy-protostub) Deploy Protocol Stub
 
 (@runtime-deploy-hyperty) Deploy Hyperty
@@ -56,16 +58,6 @@
 
 (@runtime-inter-remote-comm) Inter-domain Remote Communication
 
-(@runtime-h2h-comm-intra-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
-(@runtime-h2h-intra-comm-2-bob-receives-invitation) Bob receives invitation
-
-(@runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
 (@runtime-ident-man-user-registration) User registration
 
 (@runtime-ident-man-preprare-discovery) Prepare Discovery
@@ -77,6 +69,23 @@
 (@runtime-ident-man-user-to-hyperty-binding-scheme) Associate User Identity to Hyperty Instance
 
 (@runtime-ident-man-user-identity-assertion-diagram) User identity assertion sequence diagram
+
+(@runtime-h2h-comm-intra-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-intra-comm-2-bob-receives-invitation) Bob receives invitation
+
+(@runtime-h2h-intra-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
+
+(@runtime-h2h-intra-comm-4-notification-update) notification update
+
+(@runtime-h2h-intra-comm-5-bob-webrtc) Bob gatheres WebRTC resources
+
+(@runtime-h2h-intra-comm-6-alice-DO-synch) Synchronization of Alice's Data object
+
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
 
 (@runtime-m2m-comm-runtime-archit-violet) Runtime Main Procedures for M2M Communication
 
