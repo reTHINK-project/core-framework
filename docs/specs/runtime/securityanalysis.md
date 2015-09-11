@@ -129,7 +129,4 @@ From the security point of view, standalone and browser platforms are quite simi
 
 #### Constrained platform
 
-reTHINK also targets server platforms. The idea is to allow Hyperties and client applications to deliver their services from the cloud or from a local cluster. In such environments, there is a server infrastructure which is carefully configured to provide specific services to users (e.g., web hosting, VM hosting). Part of that configuration requires the installation and setup of specific server-side applications (SSAs), e.g., web server, DB server, etc. There are two typical server configurations for hosting server-side applications (SSAs): virtualized or non-virtualized. In virtualized environments, SSAs run inside virtual machines, which in turn are managed by virtual machine monitors (VMMs), such as Xen or VMware. In non-virtualized environments, SSAs execute natively on servers configured with a classical operating system like Linux. Regardless of whether the server platform is virtualized or not, the SSA will always depend on an operating system, even if the OS runs inside a VM. Therefore, to provide Hyperty support for server platforms, the Hyperty Runtime will be packaged as a standalone SSA.
-
-
-
+reTHINK also targets constrained platforms, namely Raspberry Pi devices. Such devices adopt an internal architecture very similar to the standalone platform: they can run Linux or even Android operating systems. The main differences between constrained and standalone platforms take place at the implementation level. Therefore, our security analysis for the standalone platform applies for both cases.
