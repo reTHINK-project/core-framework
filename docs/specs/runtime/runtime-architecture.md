@@ -23,17 +23,33 @@ Some more details are provided in the following sections.
 
 #### Hyperty
 
-Functionalities to support Hyperty Communication through data object synchronisation are provided by the Syncer component based on Object.observer API. Details are discussed [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md).
+As defined in [D2.2] Hyperties communicate through [data object synchronisation](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md) where different access control policies can be used. The Reporter-Observer pattern introduced in D2.2  will be evaluated in order to simplify the management of inconsistencies in such distributed data synchronisation communication model.
+
+The main Reporter-Observer pattern principle is to only grant writing permissions to Object owner (creator). Such policy to control the access to synchronised object has to be enforced by the Message BUS Policy Enforcer the Hyperty Core Runtime to be able to enforce .
+
+The following Terminology is used:
+
+Observer hyperty is not allowed to change objects
+
+Reporter hyperty creator of the object is allowed to change the object. Only one hyperty instance reporter per Synched object instance.
+
+Such Model is depicted in figure  @runtime_arch_data_synch. The Reporter-Observer pattern is supported by the exchange of messages between Reporter Syncher and Observer Syncher as defined in the reTHINK Message Model [D2.2].
+
+![Figure @runtime_arch_data_synch Reporter-Observer Communication Pattern](reporter-observer-pattern.png)
+
+Additional, and more sophisticated and proprietary data synchronisation alghorithms can be used, by deploying a Policy Enforcer in the Runtime.
+
+Hyperty Communication through data object synchronisation are provided by the Syncer component running in the Hyperty Sandbox. Data object synchronisation should take advantage on emerging [javascript Object.observer API](http://www.html5rocks.com/en/tutorials/es7/observe/).
 
 #### Policy Enforcer
 
-Handles communication between Hyperties and the local Message Bus, enforcing when needed valid Policies on this communicayion (e.g. authorisation policies) according to Service Provider domain policies. It also enforces access control policies to synchronised object (Object Monitor functionalities as proposed [here](https://github.com/reTHINK-project/architecture/issues/52)).
+Policy Enforcer complements the Message BUS Policy Enforcer functionality enabling the enforcement of proprietary or closed Policies in the runtime for a specific Hyperty instance including access control policies to synchronised object.
 
 #### Protocol Stub
 
-Protocol Stack to be used to communicate with Service Provider Backend Servers (including Messaging Server or other functionalities like IdM) according to Protocol on the Fly and codec on the fly concept.
+The protocol stub implements a Protocol Stack to be used to communicate with Service Provider Backend Servers (including Messaging Server or other functionalities like IdM) according to Protocol on the Fly and codec on the fly concept as introduced in D2.2.
 
-Protocol stubs are reachable through the Message BUS. In this way it is ensured that all messages received and sent goes through the message bus where policies can be enforced and additional data can be added or changed including message addresses and identity tokens.
+Protocol stubs are only reachable through the Message BUS. In this way it is ensured that all messages received and sent goes through the message bus where policies can be enforced and additional data can be added or changed including message addresses and identity tokens.
 
 
 ### Core Runtime

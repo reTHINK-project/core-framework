@@ -1,0 +1,42 @@
+
+@startuml "reporter-observer-pattern.png"
+
+
+	node "Reporter Hyperty Instance 1" as H1 {
+
+		node "Data Object1" as Obj1 {
+
+		}
+	}
+
+
+	node "Reporter Syncer" as Syncer1 {
+
+	}
+
+	node "Observer Hyperty Instance 2" as H2 {
+
+		node "Data Object2" as Obj2 {
+
+		}
+	}
+
+
+	node "Observer Syncer" as Syncer2 {
+
+	}
+
+	Obj1 -down- Syncer1 : report to syncer
+
+	Syncer1 -down-> Syncer2 : report message
+
+	Syncer1 <-down- Syncer2 : observe message
+
+	Obj2 -up- Syncer2 : observe from syncer
+
+@enduml
+
+
+
+
+
