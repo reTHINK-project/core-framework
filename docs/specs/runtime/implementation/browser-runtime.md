@@ -125,17 +125,24 @@ The web application labeled as *app.domain* represents the html file which is do
  
  app.js represents a Javascript file used by app.domain which allows to interact from app.domain with the *rethink.js* library.
  
- The *rethink.js* library contains the Javascript code necessary to setup all the runtime used by reTHINK in the browser. In the next setion all the elements instantiated by rethink.js will be covered.    
+ The *rethink.js* library contains the Javascript code necessary to setup all the runtime used by reTHINK in the browser. In the next setion all the elements instantiated by rethink.js will be covered. iFrames and Service workers will be used to implement the necessary runtimes.     
 
 ### Service workers
-A service worker is a script that is run by your browser in the background, separate from a web page, allowing to execute features which do not need a web page or user interaction. They are used to manage the cache of Runtime Core Components. As desribed in the diagram both Hyperties and Protocol Stubs will be implemented inside Web Workers.
+A service worker is a script that is run by your browser in the background, separate from a web page, allowing to execute features which do not need a web page or user interaction. They are used to manage the cache of Runtime Core Components. Web Workers are only able to interact to each other by sending messages with self.postMessage(..) which can be caught by en event listener implemented by the Runtime MsgBUS Core Component. 
+
+#### Hyperties and Protocol Stubs 
+As described in the diagram both Hyperties and Protocol Stubs will be implemented inside Web Workers so they can be executed as separated threads which run independent from the Core runtime.
+The same Service Worker may also be used to manage the cache of Hyperties and protostubs.
+
+* Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain
+
+### Runtime MsgBUS Core Component.
+The Message Bus Core component which will be in charge of listening to messagies comming from the different elements. For example, it will capture the events coming from the service workers which implement the hyperties and the protocol stubs by instantiating and event listener: *window.addEventListener('message', handleSizingResponse, false)*. 
+
+
+
 
 * 
-* Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain
-* Web Workers are only able to interact each other with self.postMessage(..) which is caught by
-    window.addEventListener('message', handleSizingResponse, false); 
-implemented by the Runtime MsgBUS Core Component
-* The same Service Worker may also be used to manage the cache of Hyperties and protostubs
 * Since it is not possible to use webrtc APIs inside a web worker, there will be a "reTHINK WebRTC" component inside the iFrame but outside the web worker, that is in charge of interacting with the WebRTC API on behalf of Hyperties running inside Web Workers, through messages exchanged between Hyperties and the "reTHINK WebRTC". There will be a "HypertyWebRTCAgent" that will expose standard WebRTC APIs to be used by the Hyperty. In this way the Hyperty is not aware that it is not interacting directly with the native WebRTC API. It should be analysed whether communication between "reTHINK WebRTC" and "HypertyWebRTCAgent" will be supported by the Message BUS or by something else.
 * Since the Hyperty API to be consumed by the Application can't be directly used by the App (cos it is inside a Web Worker) there will a kind of RPC communication through messages exchanged between the HypertyAPIStub component running on the App side and an API Skeleton running on Hyperty side. It should be analysed whether communication between these components will be supported by the Message BUS or by something else.
 * in addition, and since it is not possible to pass WebRTC Media and Data Streams handled inside the iFrame towards the Application that is outside the iFrame, a local loop peerconnection is established between the "reTHINK WebRTC" and the "HypertyAPIStub" running on Application side. See more details below.
