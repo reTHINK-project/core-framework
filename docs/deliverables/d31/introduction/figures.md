@@ -82,20 +82,23 @@
 
 (@runtime-h2h-intra-comm-6-alice-DO-synch) Synchronization of Alice's Data object
 
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
 (@runtime-m2m-comm-runtime-archit-violet) Runtime Main Procedures for M2M Communication
 
 (@runtime-m2m-comm-bootstrap-auth-registration) M2M Device Bootstrap
+
+(@runtime-m2m-comm3-discovery) Context Discovery in M2M Intradomain Communication
 
 (@runtime-m2m-intra-comm-4-pub-sub-1) Communication 4 pub sub 1
 
 (@runtime-m2m-intra-comm-4-pub-sub-2) Communication 4 pub sub 2
 
 (@runtime-m2m-intra-comm-4-pub-sub-3) Communication 4 pub sub 3
+
+
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
 
 (@runtime-browser-implementation) Runtime browser implementation
 

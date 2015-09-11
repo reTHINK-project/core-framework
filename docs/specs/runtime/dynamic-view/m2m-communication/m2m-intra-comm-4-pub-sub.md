@@ -37,7 +37,7 @@ SP1 <- Proto1@A : Subscribe Energy Context\n HomeGW Protocol MSG
 
 @enduml-->
 
-![Context Discovery in M2M Intradomain Communication](m2m-intra-comm-4-pub-sub-1.png)
+![Figure @runtime-m2m-intra-comm-4-pub-sub-1: Communication 4 pub sub 1](m2m-intra-comm-4-pub-sub-1.png)
 
 
 Steps 1 - 4: The Energy Context Consumer Hyperty requests to Subscribe the Home Energy Context through the Gateway Protocol Stub.
@@ -119,7 +119,7 @@ SP1 <- Proto1@1B : Response with Energy Context Object\n HomeGW Protocol MSG
 
 @enduml-->
 
-![Context Discovery in M2M Intradomain Communication](m2m-intra-comm-4-pub-sub-2.png)
+![Figure @runtime-m2m-intra-comm-4-pub-sub-2: Communication 4 pub sub 2](m2m-intra-comm-4-pub-sub-2.png)
 
 Two options to handle with Subscription Auhtorisation:
 
@@ -206,7 +206,7 @@ SP1H@A -> Router1@A : setReceiver( syncher.postMessage )
 -->
 
 
-![Context Discovery in M2M Intradomain Communication](m2m-intra-comm-4-pub-sub-3.png)
+![Figure @runtime-m2m-intra-comm-4-pub-sub-3: Communication 4 pub sub 3](m2m-intra-comm-4-pub-sub-3.png)
 
 
 Steps 1 - 4: The Subscription Response with Energy Context Data Object reachs the Consumer Hyperty.
