@@ -16,9 +16,9 @@
 
 (@runtime_arch_high_level_unstrusted) Runtime High Level Architecture with Unstrusted Hyperties
 
-(@runtime_arch_high_level_unstrusted) Runtime High Level Architecture with Policy Enforcer
+(@runtime_arch_high_level_pep) Runtime High Level Architecture with Policy Enforcer
 
-(@runtime-arch-new) Runtime Architecture
+(@runtime_arch_core) Core Runtime Architecture
 
 (@runtime-security-analysis-dummymatrix) Vulnerability matrix for a dummy platform
 

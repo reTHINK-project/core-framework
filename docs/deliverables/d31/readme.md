@@ -900,7 +900,8 @@ the Runtime APIs for managing especially the data models. It will also
 provide basic templates for different Hyperty Types which developer can
 use or extend in developing more advanced merged-up Hyperties.
 
-![image](service_framework_middle_layer.png)
+![Figure 7: Service framework middle
+layer](service_framework_middle_layer.png) Fig. 7
 
 The existing web platform (runtime) is the basis of all applicatiion
 development. With the middle layer of web components offering a new set
@@ -1118,10 +1119,8 @@ communications between connectors
 
 <img src="ApiRTC-IntegrationInReTHINK.png" width="450">
 
-For Rethink, Apizee propose the usage of apiRTC Community Edition (Open
-source version : LGPL). This version is not yet published and documented
-and propose a limited set of feature compare to the entreprise edition
-but is suitable for 1 to 1 WebRTC call establishment.
+For Rethink, Apizee propose the usage of apiRTC, for instance to
+simulate an external CSP connection.
 
 ### State of the art of current WebRTC solutions of Quobis
 
@@ -1171,7 +1170,8 @@ in close collaboration with the WebRTC gateway. The following picture
 describes how the WAC fits into a service provider or enterprise voice
 network:
 
-*image missing* Imagen 1
+![Sippo WAC reference
+architecture](quobis_reference_architecture.png "Sippo WAC reference architecture")
 
 The following network elements are the basic ones to understand the
 reference architecture (from right to left):
@@ -1251,9 +1251,10 @@ to Call or Sippo GMail Toolbar.
 Sippo offers a set of different API’s and service interfaces that are
 summarised in the picture below:
 
-*pictures missing* Imagen
+![Sippo interfaces and
+APIs](quobis_interfaces_and_API.png "Sippo interfaces and APIs")
 
-##### Sippo.js API (JAPI)
+##### Sippo.js API
 
 Sippo.js is a Javascript API that is downloaded to the user’s browsers,
 thus containing all the signaling stacks and WebRTC media API calls.
@@ -1269,7 +1270,8 @@ benefit of using Sippo.js API as it hides the complexity of the
 underlying signaling plane and provides a single and simple-to-use
 javascript API to the applications.
 
-*picture missing* Imagen
+![Sippo.js abstraction
+layer](quobis_abstraction_layer.png "Sippo.js abstraction layer")
 
 ##### Sippo Service API (SAPI)
 
@@ -1324,25 +1326,13 @@ the WAC, whereas a backend is a implementation of a specific service. In
 other words, we can say that a services is “what” to do and the backend
 is “how” to do it.
 
-*picture missing* Imagen
+![Sippo services and
+backends](quobis_sippo_services_and_backends.png "Sippo services and backends")
 
 There are thirty-three available services at Sippo WAC that are listed
 alphabetically in the table below. Some of those services have a 1-to-1
 implementation at sippo.js API calls while others are internals and not
 exposed to the end user, but are explained here for completeness.
-
-Each services is configured in a specific section of wac.ini, the main
-configuration file of Sippo WAC.
-
--   Service configuration: describes the parameters of this specific
-    service. Service name is included between brackets, as for example
-    [auth] for the “Authentication” service. One of the parameters of
-    each service is the name of the backend that it’s using.
--   Backend configuration: describes the parameters of this specific
-    backend, which is associated to its parent service. Only one backend
-    is support for each service at this WAC version.
-
-*picture missing* Imagen
 
 #### 1.7. Sippo WebRTC applications
 
@@ -1365,7 +1355,8 @@ the Sippo WAC is done by using the WAPI interface, which dispatches the
 incoming messages to the corresponding services, as shown in the picture
 below:
 
-*picture missing* Imagen
+![Sippo WebRTC applications
+stack](quobis_webrtc_applications.png "Sippo WebRTC applications stack")
 
 #### Potential integration with Wonder proposal
 
@@ -1416,13 +1407,62 @@ in both options to manage this approach.
 
 #### Requirements Analysis
 
-*missing*
+Sippo.js provides a high level abstraction layer which allow to build
+WebRTC applications in an easy and quick way. Sippo.js supports many
+signaling protocols for WebRTC and can be used with WebRTC gateways from
+many vendors. This is possible thanks to it implements a static-flavor
+of the protocol-of-the-fly approach used in reTHINK project. This was
+identitified in the early stages of WebRTC as a need to deal with the
+signaling diversity in the WebRTC arena. Sippo.js can be adapted to be
+an intermediate layer between the hyperty and the web application
+hidding all the innecesary complexity to te developer. This will also
+allow that all the applications already build over Sippo.js can be used
+in reTHINK reducing considerably the integration costs.
 
 Hyperty Runtime Specification
 =============================
 
 Runtime Architecture
 --------------------
+
+The main Hyperty runtime architecture is presented in fig.
+@runtime_arch_0. It is comprised by different types of components that,
+for security reasons, are executed in isolated sandboxes. Thus,
+components downloaded from a specific Service Provider (e.g. Service
+Provider 1 from fig. @runtime_arch_0) are executed in sandboxes that are
+different from the sandboxes used to execute components downloaded from
+another service provider (e.g. Service Provider 2 from fig.
+@runtime_arch_0). In addition, for the same Service Provider, and also
+for security reasons, protocol stubs and Hyperties are isolated from
+each other and executed in different sandboxes. Communication between
+components running in different sandboxes are only possible through
+messages exchanged through a message bus functionality provided by the
+Core Sandbox. In general, in the Core Sandbox, all required
+functionalities to support the deployment, execution and maintenance of
+components downloaded from service providers, are executed. Core
+components are, ideally, natively part of the device runtime. However,
+to support existing platforms including Browsers and Mobile Operating
+Systems, to minimise the need to install new applications, the existing
+device native runtime functionalities (e.g. Javascript engine) are
+distinguished from the hyperty core runtime functionalities. In such
+situations, the Hyperty Core Runtime components are downloaded from the
+Hyperty Runtime Service Provider and are executed in an isolated core
+sandbox.
+
+![Figure @runtime_arch_0 High Level Runtime Architecture with trusted
+Hyperties](Runtime_Architecture_high_level_simple.png)
+
+In figure @runtime_arch_0, the Application and the Hyperty Instances it
+consumes, are downloaded from the same Service Provider, and they trust
+each other, i.e. they are executed in the same sandbox. In figure
+@runtime_arch_1, it is depicted the Runtime Architectyre where the
+Application and the Hyperty Instances it consumes, don't trust each
+other, for example, they are downloaded from different service
+providers. In such situation, Hyperties and the Application are isolated
+from each other and are executed in different sandboxes.
+
+![Figure @runtime_arch_1 High Level Runtime Architecture with untrusted
+Hyperties](Runtime_Architecture_high_level_simple.png)
 
 According to [ongoing
 discussions](https://github.com/reTHINK-project/core-framework/issues/41): \*
@@ -1456,148 +1496,8 @@ Below, it is depicted a functional architecture of the Runtime:
 components. Distinguish internal APIs from external Interfaces which
 should be identified according to names defined in D2.2.*
 
-<!--
-@startuml "Runtime_Architecture_new.png"
-
-
-node "Service Provider 1" as SP1 {
-    node Repository as Repo1
-    node "Backend\nServer" as Msg1
-
-    Repo1 -[hidden]left- Msg1
-}
-
-
-node "Service Provider 2" as SP2 {
-    node Repository as Repo2
-    node "Backend\nServer" as Msg2
-
-    Repo2 -[hidden]right- Msg2
-}
-
-node "Runtime Device" as rt {
-
- node "ASP Sandbox" as ASPSand {
-     node "Application" as App 
-    }
-
- SP1 -[hidden]down- App
- SP2 -[hidden]right- App
-
- node "Service Provider 1 Sandboxes" as SP1Sand {
-
- node "Hyperties\nSandbox" as H1Sand {
-
-
-     node "Hyperty1\nInstance" as H1
-     node "Syncer" as Sync1
-     H1 -down-> Sync1
-     }
-
- node "ProtoStub1\nSandbox" as Proto1Sand {
-
-     node "ProtoStub" as Proto1
- }
-
- node "PEP1\nSandbox" as PEP1Sand {
-     node "Service Provider1\nPolicy Enforcer" as PEP1
- }
-
-
-  Sync1 -> PEP1 : message
-
-
- }
-
-node "Service Provider 2 Sandboxes" as SP2Sand {
-
- node "Hyperties\nSandbox" as H2Sand {
-     node "Hyperty2\nInstance" as H2
-     node "Syncer" as Sync2
-     H2 -down-> Sync2
-     }
-
- node "PEP2\nSandbox" as PEP2Sand {
-     node "Service Provider2\nPolicy Enforcer" as PEP2
-     }
-
- node "ProtoStub2\nSandbox" as Proto2Sand {
-
-  node "ProtoStub" as Proto2
-  }
-
-
-  Sync2 -> PEP2 : message
-
- }
-
- App -down-> H1
-
- App -down-> H2
-
-
-Repo1 ..down-> H1: provide
-
-Repo2 ..down-> H2: provide
-
-Msg1 <-down-> Proto1 : protocol\nmessage
-
-Msg2 <-down-> Proto2 : protocol\nmessage
-
-node "Core Sandbox" as core {
-
- node "*            Message      BUS                *" as Bus 
-
- node "Msg BUS\nPEP" as BusPEP
-
- node "Registry" as Reg
-
- node "Identities\nContainer" as ID
-
- node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
-
- node "Runtime\nUser Agent" as RunUA {
-    node "CatalogueProtoStub" as RepUA
- }
-
- RunUA -[hidden]up- Reg
- }
-
-
-node "Native\nRuntime" as native {
-node "WebRTC Engine" as WRTC
-    
-}
-
- Bus <-up-> Proto1 : message
-
- Bus <-up-> Proto2 : message
-
- BusPEP ..right-> Bus : enforce
-
- PDP ..right-> BusPEP : authorise
-
- PDP .down-> Reg
-
- PEP1 <-down-> Bus : message
-
- PEP2 <-down-> Bus : message
-
- Reg .left. ID
-
- Reg <-up. Bus: register or discover\nHyperties and\n protoStubs
-
- WRTC <-up- SP1Sand
-
- WRTC <-up- SP2Sand
-    }
-
-RepUA -> Repo1 : query and\n download \nCatalogue\n Objects
-RepUA -> Repo2 : query and\n download \nCatalogue\n Objects
-
-@enduml
--->
-![Runtime Architecture](Runtime_Architecture_new.png)
+![High Level Runtime Architecture with unstruted
+Hyperties](Runtime_Architecture_high_level.png)
 
 ### Service Provider Sandboxes
 
@@ -1636,6 +1536,9 @@ where policies can be enforced and additional data can be added or
 changed including message addresses and identity tokens.
 
 ### Core Runtime
+
+![Complete Hyperty Runtime
+Architecture](Runtime_Architecture_complete.png)
 
 #### Policy Decision Point and Message BUS authorisation
 
@@ -1696,7 +1599,7 @@ Functionalities that are natively provided by the runtime.
 
 #### WebRTC Media Engine
 
-Provides the support for Stream communication betweeb Hyperties
+Provides the support for Stream communication between Hyperties
 according to WebRTC Standards.
 
 Security analysis of the Hyperty Runtime
@@ -1704,75 +1607,67 @@ Security analysis of the Hyperty Runtime
 
 ### Introduction
 
-The security analysis contained in this document refers to the runtime
-architecture described in
+This document presents the security analysis of the Hyperty Runtime
+architecture
 [[1]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
 
-In reTHINK, the trusted computing base (TCB) of the Hyperty Runtime
-encompasses the following components: the Native Runtime, the Core
-Sandbox components, and the underlying JavaScript engine, Operating
-System, and hardware platform. If the native runtime is compromised, so
-it will be the support for WebRTC stream communication between
-hyperties. Subverting the core sandbox components can compromise: the
-correct decision and enforcement of policies by the PDP, the proper
-routing of messages through the Message Bus, the flawless registration
-and discovery of Hyperty and protoStubs by the Registry, and the correct
-maintenance of identities by the Identities Container. Subverting the
-JavaScript Engine can interfere with the correctness and security of
-JavaScript code, whose execution necessarily requires a JavaScript
-engine such as V8. The code that depends on the JavaScript engine
-includes the runtime components specific to the reTHINK architecture
-(Router PEP, PDP, Message Bus, Registry, Identities Container, and
-WebRTC engine), and all the user or developer code hosted by the Hyperty
-runtime, namely Hyperty Instances, ProtoStubs, and Applications. Given
-that the JavaScript Engine depends on both the Operating System and the
-hardware platform, compromising the latter can also affect the
-JavaScript engine and all the other components sitting on top of it.
+The Hyperty Runtime depends on a trusted computing base (TCB) that
+consists of several components: the Native Runtime, the Core Sandbox,
+and the underlying JavaScript engine, Operating System, and hardware. If
+the Native Runtime is compromised, so it will be the support for WebRTC
+stream communication between hyperties. Subverting the Core Sandbox
+components may result in (1) incorrect decision and enforcement of
+policies by the PDP, (2) failure in routing messages through the Message
+Bus, (3) flawed registration and discovery of Hyperty and protoStubs by
+the Registry, and (4) incorrect maintenance of identities by the
+Identities Container. Subverting the JavaScript Engine such as V8 can
+undermine the correctness and security of JavaScript code, which
+includes both some the components of the Hyperty Runtime written in
+JavaScript (i.e., PDP, Message Bus, Registry, Identities Container, and
+WebRTC engine) and the client code hosted by the Hyperty runtime, namely
+Hyperty Instances, ProtoStubs, Service Provider Policy Enforcers
+(SPPEs), and Applications. Since the JavaScript Engine depends on
+Operating System and hardware, compromising these components may
+interfere with the correct operation of the JavaScript engine and
+overlying components.
 
-Next, we analyze the security properties of our system assuming that all
-components of the trusted computing base are intact. Then, we assess the
-security of the Hyperty Runtime when deployed on target platforms that
-exhibit different characteristics with respect to the platforms’
-software and hardware configuration. In particular, we explore five
-platform configurations: *browser*, *application*, *server*, *router*,
-and *embedded*. We analyze the security of each platform under different
-threat models.
+Next, we analyze the security properties of our system assuming that the
+trusted computing base is intact. Then, we assess the security
+vulnerabilities of the Hyperty Runtime when deployed on platforms
+featuring specific software and hardware configuration. In particular,
+we explore three platform configurations: *browser*, *standalone*, and
+*constrained*. We analyze each target platform under its specific threat
+model.
 
 ### Mitigated threats assuming an intact TCB
 
-When the TCB is intact, our architecture ensures correct isolation of
-client JavaScript code (i.e., Hyperties, ProtoStubs, and Applications).
-Isolation is enforced both among client code instances and between
-client code instances and the environment (e.g., external applications,
-or OS resources). In addition, our architecture provides for the correct
-enforcement of the policy rules attached to Hyperty code. Such policies
-can regulate different aspects of a hyperty’s behavior: access control
-to local resources (e.g., cookies, files, network, etc), routing,
-charging, and privacy restrictions. Finally, our architecture ensures
-the authenticity of client code and the identity of the involved
-entities.
+When the TCB is intact, our architecture ensures the correct isolation
+of client JavaScript code (i.e., Hyperties, ProtoStubs, SPPEs, and
+Applications). Isolation is enforced both between different client code
+instances and between client code instances and the environment (e.g.,
+external applications, or OS resources). The Hyperty Runtime enforces
+access control decisions based on policy rules attached to Hyperty code.
+Such policies can regulate different aspects of a Hyperty’s behavior:
+access to local resources (e.g., cookies, files, network, etc), routing,
+charging, and privacy restrictions. The system also ensures the
+authenticity of client code and the identity of the involved entities.
 
 In the basic threat model, we assume that an attacker can server
 arbitrary client code to the Hyperty Runtime. The attacker can
-impersonate a legitimate service provider and serve malicious ProtoStub
-or Hyperty code. When instantiated on the Hyperty Runtime, this code can
-attempt to execute JavaScript instructions in order to access private
-data held: by other client code (including applications’), by the
-Hyperty Runtime TCB, or by the surrounding environment (e.g., the
-JavaScript Engine, or the Operating System). Malicious ProtoStub or
-Hyperty code may also aim to tamper with any of the just mentioned
-software components of the system. In particular, malicious code may try
-to tamper with Hyperty policies or with the respective policy decision
-and enforcement engine in order to escalate privileges. Finally,
+impersonate a legitimate service provider and serve malicious ProtoStub,
+Hyperty, or SPPE code. When instantiated on the Hyperty Runtime, this
+code can attempt to execute JavaScript instructions in order to access
+private data held: by other client code (including applications’), by
+the Hyperty Runtime TCB, or by the surrounding environment (e.g., the
+JavaScript Engine, or the Operating System). Malicious code may also aim
+to tamper with some of the Hyperty Runtime components. For example,
+malicious code may try to tamper with Hyperty policies or with the
+policy enforcement engine in order to escalate privileges. Finally,
 malicious code may launch denial of service attacks (e.g., by executing
 CPU intensive code). Below in this document, we expand on this threat
 model to consider potential vulnerabilities of our system when deployed
-on different environments.
-
-Next, we describe how our system defends against several classes of
-potential attacks. We add to this list some attacks that can be
-currently launched. We provide some recommendations for fixing such
-attacks.
+on different environments. Next, we describe how our system defends
+against several classes of potential attacks.
 
 #### T1: Unauthorized access by client code
 
@@ -1780,194 +1675,136 @@ The basic mechanism of our architecture to prevent unauthorized access
 by client code is sandboxing. Each Hyperty instance running in the
 system runs in its own sandbox. A sandbox defines a security perimeter
 for the Hyperty instance, preventing it from reading or writing the
-memory (or other resources) in use by other Hyperty instances or by
-other components in the surrounding environment. Along with a Hyperty
-instance, a sandbox also hosts the ProtoStub instance required by the
-local Hyperty instance to communicate with external services. Therefore,
-potentially malicious ProtoSub code will be prevented from accessing
-resources that are not authorized. To communicate outside the sandbox,
-the runtime provides well defined interfaces: the Router PEP, which is
-used by the Hyperty instance to communicate with the PDP and with the
-Message Bus, and an API to communicate with the Messaging Server. The
-PDP is responsible for enforcing the policy associated with the Hyperty
-instance.
+memory (or other resources) allocated to other Hyperty instances or by
+other components in the surrounding environment. An independent sandbox
+hosts the ProtoStub instance required by local Hyperty instances to
+communicate with external services. This sandbox will prevent
+potentially malicious ProtoSub code from unauthorized access to
+resources. To communicate outside the sandboxes, the runtime provides
+well defined interfaces: the Syncer, which is used by the Hyperty
+instance to communicate with the SPPE, and an API to communicate with
+the Message Bus. The SPPE and the PEE are responsible for enforcing the
+policy associated with the Hyperty instance.
 
-Note that, in our architecture, sandboxing is also used to isolate other
-software components. In particular, there is the Core Sandbox, which
-hosts the Hyperty Runtime components implemented in JavaScript. Both the
-client code sandboxes and the core sandboxes are enforced by the
-JavaScript engine.
+Note that, in our architecture, sandboxing is also used to secure the
+components of the Hyperty Runtime that are implemented in JavaScript,
+namely the components allocated in the Core Sandbox. The JavaScript
+engine implements both the client code sandboxes and the Core Sandbox.
 
 #### T2: Policy subversion
 
-Every Hyperty instance running in the system is constrained by a policy.
-In general, a policy can enclose several policy fragments, each of them
-defining subpolicies of different types. There are four types of
-policies: access control policies, routing policies, charging usage
-policies, and privacy policies. These policies are responsible for
-regulating, supervising, or restricting the operations that a hyperty
-can perform, e.g., prevent access to a local file, enforce a predefined
-network route, or define the usage costs of a service. To prevent a
-malicious Hyperty instance (or ProtoSub) from subverting the security
-policy and escalate its privileges, the policy decision component (PDP)
-and the policy repository are located in the Core Sandbox, and therefore
-outside the Hyperty instance’s reach. As a result, policy integrity and
-enforcement are safe from malicious client code.
+Every Hyperty instance is constrained by a policy. A policy defines a
+set of rules, which can be of several types: access control rules,
+routing rules, charging usage rules, and privacy rules. Altogether, the
+policy's rules are responsible for regulating, supervising, or
+restricting the operations that a Hyperty can perform, e.g., prevent
+access to a local file, enforce a predefined network route, or define
+the usage costs of a service. To prevent a malicious Hyperty instance
+(or ProtoSub) from subverting the policy rules and escalate its
+privileges, the policy decision components and the policy repository are
+protected from the Hyperty instance by the Core Sandbox. As a result,
+policy integrity and enforcement are safe from malicious client code.
 
 #### T3: Threats to client code authenticity
 
-The authenticity of client code -- Hyperty or ProtoStub -- can be
-compromised if at least one of two things occurred without detection
-before the code is loaded and instantiated into a sandbox: an attacker
-modified the original code bytes (e.g., by embedding malware into a
-Hyperty code), or (ii) modified the identity of the code or of its
-manufacturer. To prevent these attacks, our architecture requires that
-every client code distribution, be it Hyperty or ProtoStub, is digitally
-signed by its manufacturer. By checking these signatures before
-instantiating the Hyperty or ProtoStub code on the sandboxes and
-assuming that the cryptographic primitives are correct, the Hyperty
-Runtime is able to guarantee the integrity and identity of the code.
+The authenticity of client code -- Hyperty, ProtoStub, or SPPE -- can be
+compromised if at least one of two events has occurred without being
+detected before the code is loaded and instantiated into a sandbox: an
+attacker has modified the original code bytes (e.g., by embedding
+malware into a Hyperty code), or (ii) has modified the code identity or
+the manufacturer identity. To prevent such attacks, client code must be
+digitally signed by its manufacturer. By checking these signatures
+before instantiating the Hyperty, ProtoStub, or SPPE code on the
+sandboxes and assuming that the cryptographic primitives are correctly
+implemented, the Hyperty Runtime can guarantee the integrity and
+identity of the code.
 
 #### T4: Denial of service attacks
 
-A malicious Hyperty instance or ProtoStub implementation can launch
-denial of service attacks by holding to specific resources, e.g.,
+A malicious Hyperty instance, ProtoStub, or SPEE implementation can
+launch denial of service attacks by holding to specific resources, e.g.,
 hogging the CPU by sitting on an infinite loop, or flooding the network
 with bogus messages. The JavaScript engine featuring the Hyperty Runtime
 prevents such attacks by placing a limit to the maximum utilization of a
 given service by a client code instance, for example by bounding the CPU
 cycles that a Hyperty instance is allowed to execute uninterrupted.
 
-#### Possible attacks in the current architecture
-
-Given that ProtoStub, Hyperty instances, and the Router PEP share the
-same sandboxes, some attacks are possible: (i) a malicious Hyperty
-instance or ProtoStub can compromise the Router PEP, (ii) a malicious
-Hyperty can subvert a ProtoStub, or (iii) a malicious ProtoStub can
-compromise a Hyperty instance.
-
--   The first attack causes no particular damage outside the enclosing
-    sandbox. Because the Router PEPs holds no secrets, there’s no risks
-    of confidentiality breaches. On the other hand, the Router PEP
-    provides services to the sandbox’s client code. As a result,
-    compromising the integrity of the Router PEP could result at most in
-    integrity and availability violations to the JavaScript client
-    instances enclosed in the sandbox.
-
--   The second attack -- a malicious Hyperty subverts a ProtoStub --
-    could be problematic if the ProtoStub contains secrets bundled into
-    the ProtoStub code itself. Secrets can refer not necessarily to
-    sensitive data (which is unlikely given that ProtoStubs implement
-    communication protocols), but proprietary IT-protected code owned by
-    the developer or by the service provider. The current architecture
-    provides no protection against this attack.
-
--   Lastly, the third attack -- a malicious ProtoStub -- can be the most
-    severe one. If a buggy ProtoStub is exploited, an attacker can gain
-    access to execution state of the Hyperty instances sharing the same
-    sandbox. If a Hyperty instance processes sensitive user data or
-    handles key material, such an exploit can result in a data breach.
-    The current version of the Hyperty Runtime architecture offers no
-    protection against this attack.
-
-In order to mitigate attacks (ii) and (iii), we recommend that Hyperty
-instances and ProtoSubs execute isolated in independent sandboxes.
-
 ### Vulnerability assessment of the Hyperty Runtime
 
-The threats described in the previous section can be thwarted by the
-Hyperty Runtime so long as the TCB of the system remains intact. In this
-section, we study the potential vulnerabilities of the TCB when deployed
-on a specific target platform. We envision five potential target
-platforms: browser, standalone application, middlebox, server, and
-secure element. Next, before we present our analysis for each platform,
-we describe our methodology to ensure a uniform assessment of the system
-across platforms.
+The Hyperty Runtime can effectively thwart the threats described in the
+previous section so long as the system's TCB remains intact. However,
+when deployed on a specific platform, the Hyperty Runtime may become
+vulnerable to some environment-specific security risks. In this section,
+we study the potential vulnerabilities of the TCB when deployed on three
+different platforms: browser, standalone application, and constrained
+devices. But first, we describe our methodology to ensure a uniform
+vulnerability assessment of the system across platforms.
 
 #### Methodology
 
-Our basic methodology to assess the vulnerabilities of the Hyperty
-Runtime’s TCB is based on a *vulnerability matrix*. A vulnerability
-matrix indicates representative practical attacks that can be carried
-out against the TCB on a given platform as a mean to compromising the
-security of the system. The security is compromised by successfully
-achieving one of the goals described in the section above: permit
-unauthorized access by client code (T1), subvert hyperty policies (T2),
-compromise the authenticity of client code (T3), and launch denial of
-service attacks (T4). Such practical attacks to the TCB are classified
-in the vulnerability matrix along two dimensions: (i) the attack vector
-along the computer stack where vulnerabilities can be exploited (e.g..,
-targeting the operating system), and (ii) the difficulty level of
-launching attacks based on the required technical skills and resources.
+Our basic methodology is based on a *vulnerability matrix*. A
+vulnerability matrix indicates representative practical attacks that can
+be carried out against the TCB on a given platform as a mean to
+compromising the security of the Hyperty Runtime. An attack is
+successful by achieving one or more goals described in the section
+above: permit unauthorized access by client code (T1), subvert Hyperty
+policies (T2), compromise the authenticity of client code (T3), and
+launch denial of service attacks (T4). We classify the attacks to the
+TCB along two dimensions: (i) the layer of the computer stack where the
+attack is directed to (e.g., the operating system), and (ii) the
+difficulty level of the attack based on the technical skills and
+resources required by the adversary.
 
 ![image](dummymatrix.png)
 
-The figure above shows an example of a vulnerability matrix for a dummy
-platform. The content of each cell contains attacks that the TCB is
-vulnerable to. Each attack is identified, e.g, as A1, or A7, and
-naturally must be accompanied by a description of the attack, e.g., “A1:
-inspection of JavaScript code through the browser”, “A7: probing the
-system bus”. The columns represent the difficulty level and the rows the
-attack vector (both will be explained below). The vulnerability matrix
-will then allow us to grasp how exposed the TCB is to attacks: the lower
-the difficulty degree of the attacks is the more vulnerable the Hyperty
-Runtime will be when deployed on that particular target platform.
+The figure above provides an example of a vulnerability matrix for a
+dummy platform. The content of each cell describes examples of attacks
+that can be launched to the TCB, e.g., "A1: inspection of JavaScript
+code through the browser", "A7: probing the system bus". Columns
+represent the difficulty level and rows the attack layer (both of them
+will be explained below). Intuitively, the vulnerability matrix allow us
+to grasp how exposed the TCB is to attacks: the lower the difficulty
+degree of the attacks is the more vulnerable the Hyperty Runtime will be
+when deployed on a particular target platform. Next, we describe the
+classification for attack layers and difficulty levels:
 
-The attacks presented in the vulnerability matrix are launched by a
-given attack agent. The attack agents to be considered depend on the
-specific platform and may include, for example, the local user, malware,
-the system administrator, a thief, etc. The behavior of an attack agent
-is characterized by an *attack profile*, which specifies the subset of
-all possible attacks to the Hyperty Runtime’s TCB that a given agent can
-perform. For example, considering a browser platform, the attack profile
-of an adversarial average web user certainly includes attacks like
-“inspection of JavaScript code through the browser”, but not “probing
-the system bus”. Therefore, when drawing the vulnerability matrix of the
-TCB for a given platform, we determine which attacks the TCB may be
-subjected to based on the profiles of the attacker agents that we expect
-to find in that particular usage scenario.
-
-Next, we describe the classification for attack vectors and difficulty
-levels:
-
-**Attack vectors.** Attack vectors can be classified in five types,
+**Attack layers.** Attack layers can be classified in five types,
 ordered top-down, from the highest to the lowest layer of the computer
 stack, as shown in the figure below:
 
 ![image](stack.png)
 
--   *Sandbox level (V1)*: The attacker has direct access to the sandbox
+-   *Sandbox level (L1)*: The attacker has direct access to the sandbox
     environment, hence to the code and execution state of Hyperty
     instances. For example, on a browser platform, users typically have
     access to the JavaScript of a given page. This means that a
-    malicious user could leverage that mechanism to tamper with the
-    JavaScript code of locally running Hyperty instances.
+    malicious user can leverage that mechanism to tamper with the
+    JavaScript code of local Hyperty instances.
 
--   *Runtime level (V2)*: The attacker has direct access to the code or
+-   *Runtime level (L2)*: The attacker has direct access to the code or
     execution state of the Hyperty Runtime. Depending on the specific
-    exploit, he can mount attacks that disable the defenses against any
-    of the attacks described in the previous section. For example, on a
-    browser platform, a V2 attack can be achieved by installing a
-    malicious browser extension that bypasses the policy enforcement
-    mechanism of the Hyperty Runtime.
+    exploit, he can mount attacks that disable defenses against the
+    attacks described in the previous section. On the browser, for
+    example, a L2 attack can be achieved by installing a malicious
+    browser extension that bypasses the policy enforcement mechanism of
+    the Hyperty Runtime.
 
--   *Process level (V3)*: the attacker has access to the execution state
-    of the process where the Hyperty Runtime is hosted. Just like V2
+-   *Process level (L3)*: The attacker has access to the execution state
+    of the process where the Hyperty Runtime is hosted. Just like the L2
     attacks, this type of attack can result in catastrophic
     consequences. Examples of attacks performed at the process level
     include attaching a debugger to the Hyperty Runtime process and
-    inspect its internal data structures, or dumping the process’s
-    memory to disk by reading from /dev/mem.
+    inspect its internal data structures, or dumping its memory state to
+    disk by reading from /dev/mem.
 
--   *Operating system level (V4)*: the adversary has access to the
+-   *Operating system level (L4)*: The adversary has access to the
     execution state of the operating system, and therefore to the
-    execution state of the Hyperty Runtime. Similarly to V2 and V3, V4
-    attacks can be catastrophic. An attack performed at this layer
-    consists, for example, of adding a rootkit to the operating system
-    in order to keep track of the all ingress and outgress communication
-    performed by the Hyperty instances running on the host.
+    execution state of the Hyperty Runtime. Similarly to L2 and L3, L4
+    attacks can be catastrophic. An attack performed at this layer, for
+    example, installs a rootkit to mainain a log of all operations
+    performed by local Hyperty instances.
 
--   *Hardware level (V5)*: the adversary has physical access to the
+-   *Hardware level (L5)*: The adversary has physical access to the
     hardware of the platform and can launch simple attacks that do not
     involve tampering with the circuitry. Attacks in this category
     include, removal or inspection of the hard disk, probing the system
@@ -1976,164 +1813,171 @@ stack, as shown in the figure below:
     perform side-channel attacks, etc. Such attacks require a high-level
     of expertise and committed resources. In theory, attacks performed
     at this level can reveal the entirety of the system state, including
-    operating system’s. In practice, however, such attacks are more
-    directed to extract specific secrets when V3 attacks or above are
-    not possible.
+    the operating system's. In practice, however, such attacks are more
+    directed towards the extractions of specific secrets when L3 attacks
+    or above are not possible.
 
-**Difficulty level.** The difficulty level of launching an attack
-depends on several factors, namely the privileges owned by the adversary
-(e.g., user or superuser), the skills required to perform the exploit
-(e.g., run a debugger or tamper with silicon), and the resources that
-are necessary to commit to successfully carry out the exploit (e.g.,
-specific software exploits, memory probes, etc.). Based on these
-factors, we define three difficulty levels for a given attack:
+**Difficulty level.** The difficulty level of an attack depends on
+several factors: the privileges owned by the adversary (e.g., user or
+superuser), the skills that are required (e.g., know how to run a
+debugger or tamper with silicon), and the necessary resources to carry
+out the attack (e.g., specific software exploits, memory probes, etc.).
+Based on these factors, we define three difficulty levels for a given
+attack:
 
--   *Easy (D1)*: The attack is easy to perform. Based on the privileges
-    owned by the attacker, the tools that are necessary to launch the
-    attack are accessible, well documented, and are simple to handle.
-    Some examples of D0 attacks include: (i) on a browser platform, a
-    malicious user leverages the browser interface controls in order to
-    modify the JavaScript code of a given Hyperty, (ii) on a server
-    platform, a disgruntled system administrator leverages superuser
-    privileges to disable the policy enforcement mechanisms of the
-    Hyperty Runtime where client Hyperty instances are being executed.
+-   *Easy (D1)*: The attack is easy to perform. The tools that are
+    necessary to launch the attack are accessible, well documented, and
+    simple to handle. Some examples of D0 attacks include: (i) on a
+    browser platform, a malicious user leverages the browser interface
+    to modify Hyperty code, (ii) on a constrained device, the device
+    owner abuses superuser privileges to disable the policy enforcement
+    mechanisms of the Hyperty Runtime.
 
 -   *Medium (D2)*: The attack requires considerable skills and / or
     resources. It can be launched by mastering the tools presently
     available in the system (e.g., tools provided by the operating
-    system, debuggers) or installing new ones that can be found on the
-    Internet (including malware or exploits). The attacker has not
-    enough skills or resources to find new vulnerabilities in the system
-    or to develop its own exploits known vulnerabilities. Examples of
-    such attacks include, for example, attaching debuggers to extract
-    in-memory secrets from the Hyperty Runtime, patch the Hyperty
-    Runtime using exploit code published on the Web, etc.
+    system, debuggers) or by installing new ones that can be found on
+    the Internet (including malware or exploits). The attacker has
+    limited skills or resources to discover new vulnerabilities or to
+    develop exploits autonomously. Examples of such attacks include,
+    attaching debuggers to extract in-memory secrets from the Hyperty
+    Runtime, patch the Hyperty Runtime using exploit code published on
+    the Web, etc.
 
 -   *Hard (D3)*: The attack is very sophisticated. To mount the attack,
     the attacker must be able to develop its own exploit code, find new
     vulnerabilities in the system, and / or launch software hardware
-    attacks. For example, finding a new vulnerability in a device
-    driver’s code, and write the code to exploit that vulnerability. The
-    attacks performed at the deep hardware level are also considered
-    hard to execute.
+    attacks. For example, finding bugs in a device driver’s code and
+    write software exploits. The attacks performed at the deep hardware
+    level are also considered hard to execute.
+
+When drawing a vulnerability matrix, we define *attacker profiles*,
+which define sets of possible attacks that characterize possible attack
+agents in that particular platform. For example, for the browser
+platform, we define three profiles: regular user, advanced user, and
+power user. The regular user captures an average web user, which is able
+to launch attacks like "inspection of JavaScript code through the
+browser", but not "probing the system bus". We now present our
+vulnerability assessment for each of the target platforms.
 
 #### Browser platform
 
-One of the primary platforms targeted by reTHINK is the browser. The
-browser platform will be highly heterogeneous; we may be talking about
-desktops, laptops, or mobile devices featuring many different
-configurations with respect to: hardware architecture, operating system
-in use, installed software, and specific browser distribution and
-extensions. Nevertheless, a general architecture of the browser platform
-is shown in the figure below.
+The primary platform targeted by reTHINK is the browser. Browsers can be
+highly heterogeneous; we may be talking about desktops, laptops, or
+mobile devices featuring many different configurations with respect to:
+hardware architecture, operating system in use, installed software, and
+specific browser version and extensions. In spite of this diversity, a
+Hyperty-enabled browser will tend to follow the general architecture
+represented in the figure below.
 
 ![image](browser.png)
 
-Essentially, the Hyperty Runtime runs inside a browser’s process. This
-process is in fact a “subprocess” of the browser that implements a
-sandboxing mechanism of its own (as in the Chrome browser). The Hyperty
-Runtime is responsible for the secure execution of JavaScript code
-inside individual sandboxes: the core sandbox encloses additional
-components of the reTHINK framework written in JavaScript, the client
-sandbox is used for securing JavaScript client code (i.e., Hyperty
-instances and ProtoStubs), and ASP sandboxes provide a home for Hyperty
-applications. As shown in the figure, the Hyperty Runtime’s hosting
-process depends on the operating system, which in turn depends on the
-underlying hardware configuration. Aside to the browser processes, we
-find all sorts of application processes and operating system services.
+In this architecture, the Hyperty Runtime represented by the shaded
+components of the Figure is deployed on an independent browser process.
+This process is in fact a "subprocess" of the browser that implements a
+sandboxing mechanism of its own (as in the Chrome browser). This
+mechanism is responsible for isolating the Hyperty Runtime from the
+browser's rendering engine. The JavaScript engine is responsible for the
+secure execution of JavaScript code inside individual sandboxes: (1) the
+Core Sandbox of the Hyperty Runtime, (2) service provider sandboxes for
+hosting Hyperty instances, ProtoStubs and SPPEs, and (3) application
+sandboxes for executing guest applications. As expected, the Hyperty
+Runtime process depends on the operating system, which in turn depends
+on the underlying hardware setup. Browser processes run side-by-side
+with other standalone application processes and operating system
+services.
 
-From the security point of view, the threats to the TCB are mainly
-caused by an adversarial user. To better characterize these threats, we
-define three attacker profiles and draw the vulnerability matrix as
-follows:
+From the security point of view, the threats to the TCB of the Hyperty
+Runtime are mainly caused by an adversarial user. To better characterize
+these threats, we define three attacker profiles and draw the
+vulnerability matrix as follows:
 
 ![image](securitybrowser.png)
 
 -   *Regular user*: This attacker profile captures the class of users
-    with an average proficiency level in computing, but is willing to
-    subvert the security properties enforced by the TCB. He has only
-    user privileges that enable him to launch the browser, and run
-    Hyperty-based applications. A regular user is expected to mount the
-    following attacks:
+    with an average proficiency level in computing, but are willing to
+    subvert the security properties of the system's TCB. The user's
+    privileges allow for limited operations, such as: launch the
+    browser, and run Hyperty-based applications. A regular user is
+    expected to mount the following attacks:
 
--   *A0*: access and modify client Javascript code through the browser
+-   *A0*: Access and modify client JavaScript code through the browser
     interface.
 
 -   *Advanced user*: This profile captures users with superuser
-    privileges and some degree of skills and knowledge of the system. He
-    is informed about existing tools and techniques that can be used to
-    hack into the system’s components, has access to exploits published
-    online, and can handle auxiliary tools (e.g., debuggers, Unix
-    advanced commands, etc.). If necessary he can root or jailbreak the
-    operating system by following instructions (if we are talking about
-    mobile devices). He can assemble and disassemble the basic hardware
-    components of the system (e.g., plugging in / out the hard disk). In
-    addition to attack A0, an advanced user can perform attacks in
-    different layers such as these:
+    privileges and some degree of skills and knowledge of the system.
+    The user is aware of existing tools and techniques that can be
+    leveraged to hack into the system's components, has access to
+    exploits available on the Internet, and can handle auxiliary tools
+    (e.g., debuggers, Unix advanced commands, etc.). The user can
+    assemble and disassemble the basic hardware components of the system
+    (e.g., plugging in / out the hard disk). For mobile devices, the
+    user can root or jailbreak the platform by following instructions.
+    Thus, considering this set of skills, in addition to A0, an advanced
+    user can perform several other attacks at different stack layers
+    such as these:
 
--   *A1*: compromise the runtime by installing a malicious browser
-    extension,
--   *A2*: dump the memory contents of the process to disk,
--   *A3*: install a rootkit on the operating system that keeps track of
-    Hyperty instances’ communication.
+-   *A1*: Compromise the runtime by installing a malicious browser
+    extension.
+-   *A2*: Dump the memory contents of the process to disk.
+-   *A3*: Install a rootkit on the operating system that keeps track of
+    Hyperty instances' communication.
 
--   *Power user*: This user is highly skilled. He gathers deep knowledge
-    of the system and can launch sophisticated attacks. He is able
-    investigate for vulnerabilities in the software (including in the
-    Hyperty Runtime or in the OS) and build its own exploits. He has the
+-   *Power user*: This profile corresponds to highly skilled users, who
+    have deep knowledge of the system and can launch sophisticated
+    attacks. A user is able to investigate unknown vulnerabilities in
+    the software (including in the Hyperty Runtime or in the OS) and
+    develop specific software exploits. Moreover, the user has enough
     resources and tools to launch hardware attacks that involve
-    tampering with silicon. Summing up to the attacks described
-    previously, a power user can mount more sophisticated attacks on
+    tampering with silicon. A power user is able to mount not only the
+    attacks described previously, but more sophisticated attacks on
     various layers of the stack:
 
--   *A4*: find and exploit a bug in the Hyperty Runtime
--   *A5*: attach a debugger to the browser’s subprocess and inspect /
-    modify its memory,
--   *A6*: build a device driver to continuously monitor the execution of
-    Hyperty Instances,
--   *A7*: probe the system bus in order to extract private key material
-    in use by Hyperty Instances.
+-   *A4*: Find and exploit a bug in the Hyperty Runtime.
+-   *A5*: Attach a debugger to the browser’s subprocess and inspect /
+    modify its memory.
+-   *A6*: Build a device driver to continuously monitor the execution of
+    Hyperty Instances.
+-   *A7*: Probe the system bus and extract private key material of
+    Hyperty Instances.
 
 **Vulnerability assessment:** As illustrated by the vulnerability
 matrix, the browser platform is vulnerable to a range of attacks. Some
 of these attacks can be mounted by regular users with relative ease. In
 addition, there are several ways for advanced users to successfully
-compromise the TCB by exploiting the system at different layers in the
-stack. As a result, we recommend that the browser platform should be
-avoided for hosting client code (i.e., Hyperty Instances, ProtoStubs, or
-Applications) and policies which the local user has incentives to
-subvert. Examples of such code include: Hyperty instances restricted by
-specific usage charging policies, ProtoStubs that encode proprietary
-communication protocols, or Applications that access copyrighted digital
-data.
+compromise the TCB by exploiting the system at different stack layers.
+As a result, we recommend that browser platforms are avoided for hosting
+client code which the local user has incentives to subvert. Examples of
+such code include: Hyperty instances restricted by specific usage
+charging policies, ProtoStubs that encode proprietary communication
+protocols, or Applications that access copyrighted digital data.
 
-#### Application platform
+#### Standalone platform
 
-A variant of the browser platform just presented is to run the Hyperty
-Runtime and client code as a standalone application. A practical usage
-scenario, for example, is to bundle the Hyperty Runtime in mobile apps
-and deploy them on mobile devices such as smartphones or tablets.
-Alternatively, we also envision that the Hyperty Runtime can be packaged
-as a classical standalone application for desktop platforms, for example
-Linux- or Windows-based. To allow for the development and maintenance of
-such applications, reTHINK will provide an SDK, which will include APIs
+A variant of the browser platform is to deploy the Hyperty Runtime as a
+standalone application, for example to execute as mobile apps on mobile
+devices as smartphones or tablets. The Hyperty Runtime can also be
+packaged as a classical standalone application for desktop platforms
+running Linux or Windows. To allow for the development and maintenance
+of such applications, reTHINK will provide an SDK that will include APIs
 and platform specific libraries for adapting the Hyperty Runtime to the
 underlying operating system platform.
 
 ![image](application.png)
 
-The figure above illustrates a hypothetical application platform
-tailored for Android mobile devices. Just like in the browser platform,
-the Hyperty Runtime is hosted by an application process. The host
-application is responsible for mediating the system calls issued by the
-Hyperty Runtime to the operating system and for providing a user
-interface to the Hyperty Runtime and client JavaScript applications (and
-hyperties). This application comprises additional software components: a
-platform-independent adaptation layer, and platform-specific libraries,
-e.g., for IO, storage, and memory management. In the example, the
-platform-specific libraries are tailored for the Android API.
+The figure above illustrates a general standalone platform tailored for
+Android mobile devices. Just like in the browser platform, the Hyperty
+Runtime is wrapped around a host process. The host process is
+responsible for (1) mediating the system calls issued by the Hyperty
+Runtime to the operating system and (2) providing a user interface to
+the Hyperty Runtime and client JavaScript applications (and hyperties).
+In addition to the Hyperty Runtime, the host process application
+consists of: a platform-independent adaptation layer, and
+platform-specific libraries, e.g., for IO, storage, and memory
+management. In the example of the figure, the platform-specific
+libraries correspond to the Android API framework.
 
-From the security point of view, application and browser platform are
+From the security point of view, standalone and browser platforms are
 quite similar; for that reason we adopt the same attacker profiles
 (regular user, advanced user, and power user). The main difference
 between architectures is twofold. First, the host application will
@@ -2141,66 +1985,50 @@ prevent direct introspection of the JavaScript code running inside
 Hyperty Runtime sandboxes. As a result, the application architecture is
 able to mitigate simple attacks to the browser (A0 in the browser’s
 vulnerability matrix), raising the bar for regular users. Second, the
-host application will not support software extensions. This will prevent
-some advanced attacks to the runtime based on installation of malicious
-extension code, and to the browser process (see attacks A1 and A2,
-respectively, in the browser’s vulnerability matrix). Apart from that,
-the vulnerability matrices are comparable. Next, we present the
-vulnerability matrix of the application platform and provide alternative
-examples for attacks on Android devices.
+host application will not support software extensions. This restriction
+prevents some advanced attacks to the runtime based on installation of
+malicious extension code, and to the browser process (see attacks A1 and
+A2, respectively, in the browser's vulnerability matrix). Next, we
+present the vulnerability matrix of the standalone platform and provide
+alternative attack examples.
 
 ![image](securityapplication.png)
 
 -   *Advanced user*: An advanced user can compromise the entire system
     by launching attacks at the OS level:
 
--   *A1*: root the device and instrument the operating system in order
-    to introspect the Hyperty instances’ sandboxes.
+-   *A1*: Root the device and instrument the operating system in order
+    to introspect Hyperty instances' sandboxes.
 
 -   *Power user*: A power user can mount more sophisticated attacks on
     various layers of the stack:
 
--   *A2*: find and exploit a bug in the Hyperty Runtime,
--   *A3*: find a bug in the host application code and exploit it,
--   *A4*: monitor the execution of Hyperty Instances by rooting the
-    device,
--   *A5*: hack the device hardware to extract sensitive Hyperty data
+-   *A2*: Find and exploit a bug in the Hyperty Runtime.
+-   *A3*: Find a bug in the host application code and exploit it.
+-   *A4*: Monitor the execution of Hyperty Instances by rooting the
+    device.
+-   *A5*: Hack the device hardware to extract sensitive Hyperty data
     from memory.
 
-**Vulnerability assessment:** As illustrated by the vulnerability
-matrix, the application platform (targeting Android devices) is more
-robust to attacks than the browser platform. This is mainly due to the
-fact the application architecture allows us to close some security holes
-in the browser architecture that cannot be thwarted without modifying
-the code of the browser. Nevertheless, it is still possible to for an
-advanced user to compromise the system by rooting the device, which will
-likely dissuade the average user. Nevertheless, we recommend prudence in
-deploying client code (i.e., Hyperty Instances, ProtoStubs, or
-Applications) and policies which the local user has high incentives to
+**Vulnerability assessment:** As highlighted by the vulnerability
+matrix, an Android-based standalone platform is more robust to attacks
+than the browser platform. This is mainly due to the fact the
+application architecture allows us to close security holes in the
+browser architecture that can hardly be thwarted without modifying the
+browser. Nevertheless, it is still possible to for an advanced user to
+compromise the system by rooting the device; the need to root the device
+will likely deter the regular users. Nevertheless, we recommend prudence
+in deploying client code that the local user has high incentives to
 subvert.
 
-#### Server platform
+#### Constrained platform
 
-reTHINK also targets server platforms. The idea is to allow Hyperties
-and client applications to deliver their services from the cloud or from
-a local cluster. In such environments, there is a server infrastructure
-which is carefully configured to provide specific services to users
-(e.g., web hosting, VM hosting). Part of that configuration requires the
-installation and setup of specific server-side applications (SSAs),
-e.g., web server, DB server, etc. There are two typical server
-configurations for hosting server-side applications (SSAs): virtualized
-or non-virtualized. In virtualized environments, SSAs run inside virtual
-machines, which in turn are managed by virtual machine monitors (VMMs),
-such as Xen or VMware. In non-virtualized environments, SSAs execute
-natively on servers configured with a classical operating system like
-Linux. Regardless of whether the server platform is virtualized or not,
-the SSA will always depend on an operating system, even if the OS runs
-inside a VM. Therefore, to provide Hyperty support for server platforms,
-the Hyperty Runtime will be packaged as a standalone SSA.
-
-### Router platform
-
-### Embedded platform
+reTHINK also targets constrained platforms, namely Raspberry Pi devices.
+Such devices adopt an internal architecture very similar to the
+standalone platform: they can run Linux or even Android operating
+systems. Essentially, their main differences take place at the
+implementation level. Therefore, our security analysis of the standalone
+platform applies for both cases.
 
 Runtime APIs
 ------------
@@ -3465,7 +3293,7 @@ Hyperty.
 
 ### Main Runtime Procedures for H2H Communication
 
-#### H2H Intradomain Communication - create communication
+#### H2H Intradomain Communication - Alice invites Bob
 
 This MSC diagrams shows the most relevant steps to support the initial
 invitation of Alice to Bob.
@@ -3588,7 +3416,7 @@ details).
 Steps 12 - 14 : the message is routed through Alice Message BUS reaching
 Service Provider Back-end Messaginge Service.
 
-#### H2H Intradomain Communication - create communication
+#### H2H Intradomain Communication - Bob receives invitation
 
 This MSC diagrams shows how Bob receives invitation from Bob.
 
@@ -3675,7 +3503,7 @@ Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamo
     "contextId" : "qwertyuiopasdfghjkl",
     "body" : { "code" : "200" , "description" : "ok"}
 
-#### H2H Intradomain Communication - create communication
+#### H2H Intradomain Communication - Invitation Acknowledgement
 
 This MSC diagrams shows how Alice is aknowledged that Bob received the
 invitation
@@ -3707,13 +3535,15 @@ autonumber
 
 
 
-Proto1@A <- SP1 : postMsg(OK MSG) 
+Proto1@A <- SP1 : postMsg(OK MSG)
 
-Proto1@A -> BUS@A : postMsg(OK MSG) 
+Proto1@A -> BUS@A : postMsg(OK MSG)
 
-Router1@A <- BUS@A : postMsg(OK MSG) 
+Router1@A <- BUS@A : postMsg(OK MSG)
 
-Sync1@A <- Router1@A : postMsg(OK MSG) 
+Router1@A -> Router1@A : Apply Local Alice policies
+
+Sync1@A <- Router1@A : postMsg(OK MSG)
 
 SP1H@A <- Sync1@A : Create MSG promise executed
 
@@ -3721,6 +3551,15 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 -->
 ![H2H Intradomain Communication : Alice is
 Aknowledged](h2h-intra-comm-3-alice-is-aknowledged.png)
+
+(Step 1 - 3) : Service Provider Back-end Messaginge Service routes the
+OK Message to Bob's Message BUS which forwards it to its PEP
+
+(Step 4) : Bob's PEP applies local policies if required
+
+(Steps 5 - 6) : the message is forwarded to Alice's Syncher which
+updates the Data Object and reports the change to Alice's Hyperty
+Instance
 
 #### Incoming call is notified to Bob's application and Alice is updated
 
@@ -3730,24 +3569,13 @@ Aknowledged](h2h-intra-comm-3-alice-is-aknowledged.png)
     autonumber
 !define SHOW_Runtime1B
 !define SHOW_SP1SandboxAtRuntime1B
-!define SHOW_Protostub1AtRuntime1B
 !define SHOW_ServiceProvider1HypertyAtRuntime1B
-!define SHOW_ServiceProvider1RouterAtRuntime1B
+' '!define SHOW_ServiceProvider1RouterAtRuntime1B
 !define SHOW_CommObjectAtRuntime1B
 !define SHOW_RemoteObjectAtRuntime1B
 !define SHOW_LocalObjectAtRuntime1B
 
 !define SHOW_CoreRuntime1B
-!define SHOW_MsgBUSAtRuntime1B
-' !define SHOW_RegistryAtRuntime1B
-' !define SHOW_IdentitiesAtRuntime1B
-' !define SHOW_AuthAtRuntime1B
-
-!define SHOW_NativeAtRuntime1B
-!define SHOW_WebRTCAtRuntime1B
-
-!define SHOW_SP1
-' !define SHOW_Msg1
 
 !define SHOW_Syncher1AtRuntime1B
 
@@ -3783,87 +3611,37 @@ end ref
 
 Sync1@1B -> LocObj@1B : setup Observer Callback
 
-group Update connection on Alice about response NOT MANDATORY
-
-    ref over "SP1H@1B"
-        optional answering status
-    end ref
-
-    LocObj@1B -> Sync1@1B : observer reports connection IN PROGRESS
-    Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
-    Router1@1B -> Router1@1B : create msg, apply local policies
-
-    Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-
-    Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
-end
-
-== Get WebRTC resources (assuming that Hyperty is observer of Remote Data Object) ==
-
-RemObj@1B -> SP1H@1B : observer reports "remoteDescription added"
-SP1H@1B -> WRTC : PC.setRemoteDescription
-
-group forEach remote IceCandidate
-    RemObj@1B -> SP1H@1B : observer reports "remote IceCandidate added"
-    SP1H@1B -> WRTC : PC.addIceCandidate()
-end
-
-
-SP1H@1B -> WRTC : PC.createAnswer()
-WRTC -> SP1H@1B : callback with localDescription (SDP)
-SP1H@1B -> WRTC : PC.setLocalDescription()  - [triggers local ICE process]
-
-SP1H@1B -> LocObj@1B : update(localDescription)
-
-group forEach local IceCandidate
-    WRTC -> SP1H@1B : IceCandidate
-    SP1H@1B -> SP1H@1B : filter IceCandidate (e.g. to force relayed operation)
-    SP1H@1B -> LocObj@1B : add IceCandidate
-end
-
-
-== For each change in Local Data Object: Update connection on Alice about local resources ==
-
-LocObj@1B -> Sync1@1B : observer reports "localDescription resources"
-
-' Update comm in Alice
-Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
-Router1@1B -> Router1@1B : create msg, apply local policies
-
-
-Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-note left
-via already established ProtOFly channel (assuming that it is bi-directional)
-end note
-Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-(step 5) The Application which interacts with the human user setups a
-callback in to be notifed when the Connection data Object is modified.
+![H2H Intradomain Communication : notification
+update](h2h-intra-comm-4-notification-update.png)
 
-(step 6) When a Data Connection Object receives any modification request
+(step 1) The Application which interacts with the human user setups a
+callback in to be notified when the Connection data Object is modified.
+
+(step 2) When a Data Connection Object receives any modification request
 from another Hyperty, the callback setup in the step before is called.
 The App is aware of the incoming invitation to establish a media
 session.
 
-(step 7) The App can show this invitation to the human user in some way
-through a human interface. (step 8)In such a case the human typically
-will acept the communication. (step 9) The App acepts teh invitation
-through the API exposed by the the Service Provider Hyperty. In orther
-to start the media session a Local Data Object is created (step 10)
-where the data related to the local parameters of the media session is
-going to be established.
+(step 3) The App can show this invitation to the human user in some way
+through a human interface. (step 4) In such a case the human typically
+will accept the communication. (step 5) The App accepts the invitation
+through the API exposed by the the Service Provider Hyperty. In order to
+start the media session a Local Data Object is created (step 10) where
+the data related to the local parameters of the media session is going
+to be established.
 
-(step 11) The Syncher elemtn from the Hyperty setups an Observer
+(step 6) The Syncher element from the Hyperty setups an Observer
 callback in the Local Data Object which will be called when the Local
-Data Object changes. (step 12) The observer reports that there is a
-communication in progress t othe Syncher.
+Data Object changes. (step 7) The observer reports that there is a
+communication in progress to the Syncher.
 
-#### Bob starts WebRTC API (TBC)
+#### Bob starts WebRTC API
 
 <!--
-@startuml "h2h-intra-comm-accept.png"
+@startuml "h2h-intra-comm-5-bob-webrtc.png"
 
     autonumber
 !define SHOW_Runtime1B
@@ -3891,65 +3669,12 @@ communication in progress t othe Syncher.
 
 !include ../runtime_objects.plantuml
 
-participant "App" as App@1B
+' participant "App" as App@1B
 actor "Bob" as Bob
 
 
-group TO BE REMOVED (inc at diagram 1)
 
-    create CommObj@1B
-    Sync1@1B -> CommObj@1B : new (AliceCommObj)
-    SP1H@1B -> CommObj@1B : setup Observer Callback
-
-    create RemObj@1B
-    Sync1@1B -> RemObj@1B : new (AliceCommObj)
-    SP1H@1B -> RemObj@1B : setup Observer Callback
-
-end
-
-== OPTIONAL, NON MADATORY APP NOTIFICATION ==
-
-group Notify APP (and, eventually, the user) NOT MANDATORY
-    ref over "App@1B"
-        App communication
-        not standirized
-    end ref
-    App@1B -> CommObj@1B : setup Observer callback
-
-    CommObj@1B -> App@1B : observer callback (invitation)
-    App@1B -> Bob : present invitation to Bob
-
-    ' Bob accepts invitation
-    Bob -> App@1B : accept invitation
-    App@1B -> SP1H@1B : invitation accepted
-end
-
-create LocObj@1B
-
-SP1H@1B -> LocObj@1B : new(localDescription)
-ref over "LocObj@1B"
-    empty LocObject
-    created
-end ref
-
-Sync1@1B -> LocObj@1B : setup Observer Callback
-
-group Update connection on Alice about response NOT MANDATORY
-
-    ref over "SP1H@1B"
-        optional answering status
-    end ref
-
-    LocObj@1B -> Sync1@1B : observer reports connection IN PROGRESS
-    Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
-    Router1@1B -> Router1@1B : create msg, apply local policies
-
-    Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-
-    Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
-end
-
-== Get WebRTC resources (assuming that Hyperty is observer of Remote Data Object) ==
+== Get WebRTC resources  ==
 
 RemObj@1B -> SP1H@1B : observer reports "remoteDescription added"
 SP1H@1B -> WRTC : PC.setRemoteDescription
@@ -3972,47 +3697,47 @@ group forEach local IceCandidate
     SP1H@1B -> LocObj@1B : add IceCandidate
 end
 
-
-== For each change in Local Data Object: Update connection on Alice about local resources ==
-
-LocObj@1B -> Sync1@1B : observer reports "localDescription resources"
-
-' Update comm in Alice
-Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
-Router1@1B -> Router1@1B : create msg, apply local policies
-
-
-Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-note left
-via already established ProtOFly channel (assuming that it is bi-directional)
-end note
-Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
-
 @enduml
 -->
-(Step 18) The Hyperty call the WebRTC API from the browser including the
+![H2H Intradomain Communication : Bob gatheres WebRTC
+resources](h2h-intra-comm-5-bob-webrtc.png)
+
+(Step 1) The Hyperty is notified about the added remoteDescription
+object.
+
+(Step 2) The Hyperty calls the WebRTC API from the browser including the
 remote parameters from the Remote Data Object. The same happens when a
-new Ice Candidate is updated in the Remote Data Object (step 19 and Step
-20).
+new Ice Candidate is updated in the Remote Data Object (step 3 and Step
+4).
 
-While remote Ice Candidate are added (step 19 and Step 20 may take place
+While remote Ice Candidate are added (step 3 and Step 4 may take place
 several times as Trickle Ice is supported) the Hyperty calls the Peer
-Connection method to create an SDP answer (step 21) to be sent to it
-with all the parameters used to establish the media session between
-Alice and Bob but the Ice Candidates which will be received asynchronaly
-later. When the SDP with the local description is ready a callback is
-called and the SDP is sent to the Hyperty (step 22).
+Connection method to create an SDP answer (step 5) to be sent to it with
+all the parameters used to establish the media session between Alice and
+Bob but the Ice Candidates which will be received asynchronously later.
+When the SDP with the local description is ready a callback is called
+and the SDP is sent to the Hyperty (step 6).
 
-(Step 23) The Hyperty calls the Peer setLocalDesciption API method from
+(Step 7) The Hyperty calls the Peer setLocalDesciption API method from
 the WebRTC API exposed by the browser so that the browser is aware of
 the media parameters which are going to be used to establish the media
 session with Alice. At this point the gathering process of local Ice
 Candidates starts.
 
+(Step 8) The Hyperty updates the Local Data Object with the parameters
+from the localDescription.
+
+(Step 9) As a result of the started ICE process local connectivity
+candidate will be reported from the WebRTC engine to the Hyperty. For
+each reported localCandidate the Hyperty can optionally perform a filter
+operation (Step 10), e.g. to filter out non-relay candidates to force
+TURN based operation, and reports the remaining candidates to the Local
+Data Object (Step 11)
+
 #### Synchronization of Alice's Data Object
 
 <!--
-@startuml "h2h-intra-comm-accept.png"
+@startuml "h2h-intra-comm-6-alice-DO-synch.png"
 
     autonumber
 !define SHOW_Runtime1B
@@ -4020,7 +3745,7 @@ Candidates starts.
 !define SHOW_Protostub1AtRuntime1B
 !define SHOW_ServiceProvider1HypertyAtRuntime1B
 !define SHOW_ServiceProvider1RouterAtRuntime1B
-!define SHOW_CommObjectAtRuntime1B
+' '!define SHOW_CommObjectAtRuntime1B
 !define SHOW_RemoteObjectAtRuntime1B
 !define SHOW_LocalObjectAtRuntime1B
 
@@ -4031,7 +3756,7 @@ Candidates starts.
 ' !define SHOW_AuthAtRuntime1B
 
 !define SHOW_NativeAtRuntime1B
-!define SHOW_WebRTCAtRuntime1B
+' '!define SHOW_WebRTCAtRuntime1B
 
 !define SHOW_SP1
 ' !define SHOW_Msg1
@@ -4042,84 +3767,6 @@ Candidates starts.
 
 participant "App" as App@1B
 actor "Bob" as Bob
-
-
-group TO BE REMOVED (inc at diagram 1)
-
-    create CommObj@1B
-    Sync1@1B -> CommObj@1B : new (AliceCommObj)
-    SP1H@1B -> CommObj@1B : setup Observer Callback
-
-    create RemObj@1B
-    Sync1@1B -> RemObj@1B : new (AliceCommObj)
-    SP1H@1B -> RemObj@1B : setup Observer Callback
-
-end
-
-== OPTIONAL, NON MADATORY APP NOTIFICATION ==
-
-group Notify APP (and, eventually, the user) NOT MANDATORY
-    ref over "App@1B"
-        App communication
-        not standirized
-    end ref
-    App@1B -> CommObj@1B : setup Observer callback
-
-    CommObj@1B -> App@1B : observer callback (invitation)
-    App@1B -> Bob : present invitation to Bob
-
-    ' Bob accepts invitation
-    Bob -> App@1B : accept invitation
-    App@1B -> SP1H@1B : invitation accepted
-end
-
-create LocObj@1B
-
-SP1H@1B -> LocObj@1B : new(localDescription)
-ref over "LocObj@1B"
-    empty LocObject
-    created
-end ref
-
-Sync1@1B -> LocObj@1B : setup Observer Callback
-
-group Update connection on Alice about response NOT MANDATORY
-
-    ref over "SP1H@1B"
-        optional answering status
-    end ref
-
-    LocObj@1B -> Sync1@1B : observer reports connection IN PROGRESS
-    Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
-    Router1@1B -> Router1@1B : create msg, apply local policies
-
-    Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-
-    Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
-end
-
-== Get WebRTC resources (assuming that Hyperty is observer of Remote Data Object) ==
-
-RemObj@1B -> SP1H@1B : observer reports "remoteDescription added"
-SP1H@1B -> WRTC : PC.setRemoteDescription
-
-group forEach remote IceCandidate
-    RemObj@1B -> SP1H@1B : observer reports "remote IceCandidate added"
-    SP1H@1B -> WRTC : PC.addIceCandidate()
-end
-
-
-SP1H@1B -> WRTC : PC.createAnswer()
-WRTC -> SP1H@1B : callback with localDescription (SDP)
-SP1H@1B -> WRTC : PC.setLocalDescription()  - [triggers local ICE process]
-
-SP1H@1B -> LocObj@1B : update(localDescription)
-
-group forEach local IceCandidate
-    WRTC -> SP1H@1B : IceCandidate
-    SP1H@1B -> SP1H@1B : filter IceCandidate (e.g. to force relayed operation)
-    SP1H@1B -> LocObj@1B : add IceCandidate
-end
 
 
 == For each change in Local Data Object: Update connection on Alice about local resources ==
@@ -4139,13 +3786,17 @@ Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-(Step 28)The local Data object reports that there have been changes in
+![H2H Intradomain Communication : Synchronization of Alice's Data
+object](h2h-intra-comm-6-alice-DO-synch.png)
+
+(Step 1) The local Data object reports that there have been changes in
 the connection parameters and the Syncher sends a CRUD message through
 the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty
-(Step 29). (Step 30) the Policy Enforcer checks if the message is
-compliant with the local policies and the message is sent to the
-ProtoStub (Step 31) to be in turn sent to the Service Provider 1
-Back-End (Step 32)
+(Step 2).
+
+(Step 3) the Policy Enforcer checks if the message is compliant with the
+local policies and the message is sent to the ProtoStub (Step 4) to be
+in turn sent to the Service Provider 1 Back-End (Step 5)
 
 #### H2H Interdomain Communication - create communication
 
@@ -4699,6 +4350,20 @@ Agent <-right-> Auth : Verify\ncredentials
 
 @enduml
 -->
+General design considerations
+-----------------------------
+
+The Runtime implementation at browsers plays a central role in reTHINK
+project. Browsers are almost always present in devices aimed to be used
+by human beings so using its runtime to execute any application will
+ensure that it will be correctly interpreted and executed. However,
+browser's runtime has many security constraints the developer must deal
+with in order to get a functional web application.
+
+The design of the browser runtime implementation for reTHINK project has
+been directed by security and functional requirements along as well as
+the security limitations imposed by the browser.
+
 -   A Service Worker is used to manage the cache of Runtime Core
     Components
 -   Hyperties and Protocol Stubs are implemented inside Web Workers
@@ -4823,7 +4488,7 @@ want to build something really custom
 
 #### Some plugin examples
 
-##### iosrtc
+##### iosRTC
 
 iosrtc is a wrapper around Google’s WebRTC library and simply provides
 PeerConnection, getMediaDevices and getUserMedia APIs , without any
@@ -4894,15 +4559,18 @@ One of the obvious drawbacks is that Webview is not available in iOS.
 
 #### OpenWebRTC
 
-TO BE COMPLETED
+OpenWebRTC is an open sourced project from Ericsson Research :
+https://github.com/EricssonResearch/openwebrtc
 
-OpenWebRTC : to be tested.
+A flexible, mobile-first, cross-platform WebRTC client framework based
+on GStreamer. OpenWebRTC currently supports iOS, Android, Mac OS X and
+Linux.
 
-May enable both native and Hybrid application development.
+### Selected solutions for the implementation:
 
-### Selected solution for the implementation:
+#### Solutions that have already been tested :
 
-#### Android :
+##### Android :
 
 Crosswalk : integrate chromium in the application with different
 possible integration : - Crosswalk embedded in the application -
@@ -4911,18 +4579,28 @@ Crosswalk cordova plugin
 Crosswalk usage should ensure us a compatibility with what is done for
 browser runtime as it embed Chromium
 
-#### iOS :
+##### iOS :
 
 iOSRTC, cordova plugin :
 https://github.com/eface2face/cordova-plugin-iosrtc
 
-#### Android & iOS :
+Usage of Cordova will enables us to reuse the components that will be
+developped on the browser runtime.
+
+##### Android & iOS :
 
 Crosswalk and iosRTC can be embeded in the same application code to
 support both platform.
 
 Hybrid solution will be selected for the project as it enable to use
 JavaScript for the runtime
+
+#### Solution to be tested during the implementation :
+
+-   Usage of Webviews will be interesting as it should facilitate the
+    integration of WebRTC API.</br>
+-   openWebRTC can also be insteresting as it should enable the
+    possibility to build complete native and hybrid application.
 
 ### Runtime implementation in Constrained Devices
 
@@ -5283,111 +4961,100 @@ SAML2.0 and OpenIDConnect) for different IdPs. However, it is based on
 vertx.2. So if it suits the requirements, we will need to adapt to
 vertx.3.
 
-Node.js Specification
----------------------
+NodeJs based Messaging Node Specification
+-----------------------------------------
 
-*For each [functional block](msg-node-architecture.md) identify existing
-Node.js modules that can be either reused or extended. If extensions are
-neede they should be specificied by designing apis to be implemented*
+For each [functional block](msg-node-architecture.md) the WP3 team has
+identified existing nodeJs modules which can be either reused or
+extended.
 
 ### Core Functionalities
 
--   Main objective of core func. is to authorize, filter and process
-    messages. Messages are JSON objects that should have 2 blocks,
-    HEADER and DATA, and are processed from different components of
-    core.
--   Outbound messages should be processed in a Pub/Sub system. If
-    message DATA blocks are for CRUD operations, there should be a
-    Pub/Sub protocol for object/model subscriptions, where should this
-    be processed? The address scheme of t
-
-#### Low level connection management
-
-Socket.io is a popular Node.js library to handle connections at
-aplication level. It can use Websocket and it falls back to HTTP
-automatically if WS connectivity is not possible.
-
-#### Session Management
-
-Events/messages for OPEN and CLOSE received by Socket.io should be
-intercepted by this component. A session instance is linked to a
-connection resource (WebSocket, SockJS) if authorized. Every message
-header is intercepted, session token is verified and if exist, a "user"
-or other identification URL is replaced in HEADER. The JSON object is
-forwarded to "Access Control" component. <comment> We have to discuss
-with our dev team it sth can be re-used to implement the session
-management or we have to implement it</comment>
-
-#### Address Allocation Management
-
-This is not a Pipeline component (it doesn't process messages), but it's
-used by the "Session Management" to allocate Hyperty identification
-URL's that will be linked to a Session when the Hyperty is connected.
-This will be used to translate Hyperty an URL address into the
-correspondent Connector Resource.
-
-#### Access Control
-
-This component is able to analyze HEADER (identification URL from
-"Session Management") and DATA blocks and decide if the message should
-be forwarded to the "Message Bus" or denied. There is a possibility to
-add a rule engine in this step, but it's not specified for now, what
-kind of rule engine.
+This section attempts to match the functional blocks of the Message Node
+architecture to features and functional blocks of the nodeJs and Redis
+architecture.
 
 #### Message BUS
 
-Main objective of the MB is to process the DATA block, that contains
-information of the protocol, CRUD operation or other defined
-information. Vertx EventBus can be used directly for the Message Bus
-component. Important headers of the original JSON (like the
-identification URL) must be forwarded to
-io.vertx.core.eventbus.Message.headers() map. For the Message Bus we
-could use some RabbitMQ by using Rabbit.js node library.
+The message bus can be implemented with Redis. http://redis.io
 
-### Protocol Stub Sandbox
+Redis is an open source (BSD licensed), in-memory data structure store,
+used as database, cache and message broker. It supports data structures
+such as strings, hashes, lists, sets, sorted sets with range queries,
+bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis
+has built-in replication, Lua scripting, LRU eviction, transactions and
+different levels of on-disk persistence, and provides high availability
+via Redis Sentinel and automatic partitioning with Redis Cluster.
 
-<comment> We understand that we must have a Protocol Stub Sandbox to be
-able to interact to other Messaging Servers and the protocol stub will
-be retrieved from repository servers. The messgaing server which wants
-to interact with another one must download the Protocol Stub from the
-Repository and then it will be able to exchange messages. I guess this
-is doable in Node.js, but I have to check with our Dev team what's the
-best way to implement this in Node.js. </comment>
+##### Usage of Redis with NodeJs
 
-### Connectors
+Redis integrate a PUB/SUB mechanism : http://redis.io/topics/pubsub
 
-This connector could be ad-hoc developemtns in Node.js, receiving
-messages from the session management layer.
+SUBSCRIBE, UNSUBSCRIBE and PUBLISH implement the Publish/Subscribe
+messaging paradigm where (citing Wikipedia) senders (publishers) are not
+programmed to send their messages to specific receivers (subscribers).
+Rather, published messages are characterized into channels, without
+knowledge of what (if any) subscribers there may be. Subscribers express
+interest in one or more channels, and only receive messages that are of
+interest, without knowledge of what (if any) publishers there are. This
+decoupling of publishers and subscribers can allow for greater
+scalability and a more dynamic network topology.
 
-#### End User Device Connector
+Redis can be used to add scalability/redundancy to the messaging node as
+the different components of the architecture can easily be splitted on
+different servers. This Pub/Sub mechanism is simple to use and It can
+also facilitate the development and the integration of new
+connectors</br>
 
-The aim of this Connector is to enable interaction with Hyperty
-instances running in the end-user device. This component will need to
-interact somehow with the Protocol Stub sandbox to achieve this, since
-the communication protocol will not be standardized. The Protocol Stub
-should expose a common API which will be interacted from the connector.
-<comment>This has been already addressed in the WONDER project so we
-need to check with Paulo the approach the followed</comment>
+Communication between NodeJs and Redis can be managed by a NodesJs Redis
+client module : https://github.com/NodeRedis/node\_redis
 
-##### LWM2M library
+Redis instance can be a single instance or a Redis cluster.
 
-There is an available [LWM2M/COAP library for
-Node.js](https://github.com/telefonicaid/lwm2m-node-lib) which may be
-helpful to implement a COAP/interface for constrained devices along with
-other interfaces for the rest of devices.
+#### Access Control
 
-#### Network Server Connector
+User connection to NodeJs connectors can be authentified on the NodeJs
+module. Socket.io integrate a way to authenticate incoming request,
+authenication component will have to be develop on NodeJs connectors.
 
-The aim of this Connector is to enable interaction with Hyperty
-instances running in a network server. This component will need to
-interact somehow with the Protocol Stub sandbox to achieve this, since
-the communication protocol will not be standardized. It will need to
-implement a simple protocol for sending and receiving requests. In
-itself it is not responsible for processing communication requests, that
-is left to the protocol stack. It merely forwards messages to and from
-the Network server.
+This component is able to analyze HEADER (identification URL from
+"Session Management") and DATA blocks and decide if the message should
+be forwarded to the "Message Bus" or denied.
 
-#### Registry Connector
+PassportJs, which is an intesreting middleware, that could enable us to
+add third party authentication should be used : http://passportjs.org/
+
+An authentication can also be done between NodeJs and Redis.
+
+#### Session Management
+
+For a complete session management on NodeJs, it will be interesting to
+use express which is a Web framework for NodeJs : http://expressjs.com/
+
+#### Address Allocation Management
+
+This component will have to be developped on a NodeJs server
+
+#### Protocol Stub & Connectors
+
+Connectors will be NodeJs process to be developped.
+
+Goal will be to mutualize connectors by using the protoStub/protoFly
+mechanism : this will add flexibility to connect other GWs, CSP ...
+
+##### IdM Connector
+
+This Connector is to provide functionalities for interacting with the
+remote Identity Management Functionailities. Node.js can easily interact
+with OAuth servers in order to authenticate and authorize users.
+
+It this is for authentication purpose the authentication agqinst the IdP
+has to be done at the begining. If the CRUD operations have to be
+authorized on a per identity basis (e.g. user A, correctly
+authenticated, is only allowed to do 'RU' over a Data Objet) we should
+get
+
+##### Registry Connector
 
 The Registry provides an interface for registration and deregistration
 of Hyperty instances, as well as for keeping the published information
@@ -5402,237 +5069,343 @@ integrity of the published data, digital signatures will be applied. The
 Connector will exposed the available interfaces of the Registry Services
 to users of managing Hyperty instances.
 
-#### IdM Connector
+##### End-User Device Connector
 
-This Connector is to provide functionalities for interacting with the
-remote Identity Management Functionailities. Node.js can easily interact
-with OAuth servers in order to authenticate and authorize users.
+Communication between Users and NodeJs can be managed by socket.io
+Socket.io is a popular Node.js library to handle connections at
+application level. It can use Websocket and it falls back to HTTP
+automatically if WS connectivity is not possible.
 
-It this is for authentication purpose the authentication agqinst the IdP
-has to be done at the begining. If the CRUD operations have to be
-authorized on a per identity basis (e.g. user A, correctly
-authenticated, is only allowed to do 'RU' over a Data Objet) we should
-get
+##### Network Server Connector
 
-### Node Sandbox framework
+The aim of this Connector is to enable interaction with Hyperty
+instances running in a network server. This component will need to
+interact somehow with the Protocol Stub sandbox to achieve this, since
+the communication protocol will not be standardized. It will need to
+implement a simple protocol for sending and receiving requests. In
+itself it is not responsible for processing communication requests, that
+is left to the protocol stack. It merely forwards messages to and from
+the Network server.
+
+##### Node Sandbox framework
 
 [Node-sandbox](https://www.npmjs.com/package/node-sandbox) allows to run
 untrusted code outside of the main node process. The code can be
 interfaced with code running in the sandbox via RPC (or any library that
 works over the node Stream API).
 
-### Usage of Redis with NodeJs
+### NodeJs implementation architecture
 
-Redis can be used to add scalability/redundancy to the messaging node.
+**Architecture : NodeJs and Redis :**
 
-This is simple to use Redis Pub/Sub and easy to add new connectors.
-
-It can also facilitate the development and the integration of new
-connectors</br>
-
-**Architecture description :**
+Here is decription of the architecure with Redis :
 
 <img src="MessagingNode-NodeJs.png" width="600">
 
-Communication between Users and NodeJs can be managed by socket.io
-
-Communication between NodeJs and Redis can be managed by a NodesJs Redis
-client module : https://github.com/NodeRedis/node\_redis
-
-Communication between the differents NodeJs instance can be managed by
-the PUB/SUB mechanism of Redis. : http://redis.io/topics/pubsub
-
-Redis instance can be a single instance or a Redis cluster.
-
-Goal will then to mutualize connectors by using the protoStub/protoFly
-mechanism : this will add flexibility to connect other GWs, CSP ...
-
 **Architecture : Integration in ReThink :**
+
+Following architecture shows the target integration with the different
+components of the ReThink projet :
 
 <img src="MessagingNode-NodeJs-Integration_In_Rethink.png" width="600">
 
 **Architecture : Integration in ReThink with Actors:**
+
+Following architecture shows the actors in the architecture to
+unsderstand the decomposition of work to be done and the interaction
+with other partners :
 
 <img src="MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png" width="600">
 
 Matrix.org based Messaging Node Specification
 ---------------------------------------------
 
-*For each [functional block](msg-node-architecture.md) identify existing
-matrix.org modules that can be either reused or extended. If extensions
-are needed they should be specificied by designing apis to be
-implemented*
+This section matches the requirements for the functional blocks of the
+Message Node architecture to features and functional blocks of the
+matrix.org architecture. Functional gaps are identified and proposals
+for extensions to the standard Matrix.org Homeserver are made in order
+to fill these gaps.
+
+### Protocol Stub and Connectors
+
+Protocol Stubs and Connectors are means to make a Messaging Node
+interoperable with foreign signalling protocols.
+
+A protocol stub is the core entity of the Protocol-on-the-fly concept.
+It is a downloadable piece of JavaScript code that is executed in the
+client's runtime and performs the required adaptations on the messaging
+protocol. In a Protocol-on-the-fly based communication relation there is
+always one side in the client role (i.e. the side that downloads the
+stub) and the other side in the server role (the side that the stub
+connects to).
+
+A Messaging node has to support both operation modes in order to provide
+full bi-directional interoperability.
+
+#### Matrix as Protocol-on-the-fly client
+
+The most appropriate feature that Matrix provides for this purpose is
+the concept of "Application Services". An Application Service is an
+implementation of a special service function that can be attached to a
+Homeserver (HS). Based on certain patterns, messages are filtered and
+forwarded to the Application Service that performs application specific
+tasks. This concept is quite comparable to Application Servers in the IP
+Multimedia Subsystem (IMS) framework. It can, for example, be used for
+aggregation and accounting purposes, but also for the implementation of
+"breakout" communication to other types of messaging infrastructures it
+is well suited.
+
+A special dedicated Application Service is proposed that will implement
+a Protocol-on-the-fly client engine to allow the "breakout" to different
+signalling domains that provide a Protocol-on-the-fly stub. Such an
+Application Service will be a very flexible mechanism for interdomain
+collaboration.
+
+#### Matrix as Protocol-on-the-fly server
+
+In order to support the server role in the Protocol-on-the-fly
+architecture, a specialized Matrix protocol stub needs to be implemented
+that connects to a Homeserver. Since the Matrix Homeserver has a
+well-documented API and the Matrix message format allows the transport
+of arbitrary payload, this implementation should be straight forward.
+The implementation can make use of the SDK's that are available for
+Matrix client developers. These SDK's encapsulate a lot of the internal
+complexity for REST based communication.
+
+#### Connectors in Matrix
+
+Connectors also play the role of protocol adapters, which makes them
+comparable to protocol stubs. The difference is that they are not
+downloaded to the Messaging Node clients. Instead they are executed in
+the scope of the Messaging Node itself. Such Connectors are intended to
+connect with different "legacy" clients that don't support the
+Protocol-on-the-fly concept.
+
+Also for the implementation of such connectors the concept of
+Application Services seems well suited. The matrix.org developer
+community has implemented this as a proof of concept that connects the
+Matrix ecosystem with the Internet Relay Chat (IRC) world. Messages that
+contain a specially prefixed address are filtered out, converted to IRC
+messages, forwarded to the corresponding IRC client and vice versa. This
+can be used as pattern for the implementation of additional adapters.
 
 ### Core Functionalities
 
-This section attempts to match the functional blocks of the Message Node
-architecture to features and functional blocks of the matrix.org
-architecture.
+#### Message Bus
 
-#### Message BUS
+The Message Bus is responsible for the routing of messages to internal
+Messaging Node components and external elements by using Connectors or
+Protocol Stubs. This routing shall support different communication
+patterns including publish/subscribe communication.
 
-The requirements towards the Message Bus are defined as: \* to route
-messages to internal Messaging Node components and external elements by
-using Connectors or Protocol Stubs. \* to support different
-communication patterns including publish/subscribe communication.
-
-The pure routing requirements are fulfilled out-of-the-box by standard
+These main routing requirements are fulfilled out-of-the-box by standard
 matrix features. In order to route messages to internal Messaging Node
-components it might be required to treat such components as "users" that
-can be addressed and perform the same communication tasks as normal
-users.
-
-Connectors are comparable to protocol stubs, except that they are not
-downloaded to the Messaging Node clients and instead are executed in the
-scope of the Messaging Node. Such Connectors can provide support for
-different "legacy" clients that don't support Protocol-on-the-fly.
-Matrix does not provide this out-of-the-box. Additional components have
-to be implemented that should be plugged into the first step of the
-message flow and perform the required protocol translations. The Matrix
-concept of "Application Services" could eventually applied here (see
-later section "Stub and Connector Management").
+components it will be required to provide such components with virtual
+identifiers that can be used internally to address them.
 
 #### Access Control
 
-> > Message Routing including pub/sub Subscriptions are subject to
-> > Access Control in cooperation with authentication and authorisation
-> > provided by Identity Management functionalities.
+The main task of the access control is to enforce manageable policies to
+the forwarding of individual messages. For example, a single type of
+message shall be blocked if a special combination of sender and/or
+receiver matches.
 
-As described in the following section matrix.org requires
-registration/subscription and login in order to exchange any messages
-with other users. These authentication and authorisation methods however
-always apply to a complete user- and communication session, i.e. ALL
-messages that are exchanged in this scope.
+Matrix.org requires registration/subscription and login of users in
+order to exchange any messages with other users. These authentication
+and authorisation methods however always apply to a complete user- and
+communication session, that means to ALL messages that are exchanged in
+a session scope. This concept does not provide an access control on a
+"per message" base.
 
-In case it is required to perform an access control "per message" based
-on variable policies, some more effort needs to be done. This feature
-would require an integration of a "policy service", which is discussed
-in the matrix developer community already but not specified yet.
+The matrix developer community already discusses the integration of a
+"policy service", but so far this integration in not yet specified.
 
-The concept of "passive" Application Services that matrix.org provides
-seems not suitable, because it does not allow to block traffic.
+In order to achieve a "per message"-policy enforcement without deeper
+changes in the matrix core, we propose the introduction of a message
+proxy as first step of the message flow. This proxy has the task to
+check the messages and to apply the policies. It would forward messages
+according to the policies and should reject the rest. A potential
+bypassing of this proxy must be avoided by appropriate network
+configurations.
 
-In order to achieve this without deeper changes in the matrix core, a
-kind of Message proxy could be integrated as first step into the message
-flow. This proxy would then check the messages and apply the policies.
-It would forward matching messages and should reject the rest.
+The design of this message proxy component should be closely coordinated
+with the MessagingStub that is used to connect to this Matrix based
+Messaging Node, because the proxy will be the first contact point for
+the stub.
 
-The design of such a component should be closely coordinated with the
-MessagingStub that is used to connect to this Matrix based Messaging
-Node, because it should be the first contact point for the stub.
+The following figure gives an overview of the intended architecture of
+the Matrix based Messaging Node.
+
+<!--
+@startuml "matrix_messaging_node_architecture.png"
+
+
+node "Management Services" as Man1 {
+    node "Registry" as Server1
+    node "Identity Management" as IdM1
+
+}
+
+node "Service Provider 2\n(ProtOFly-Server)" as SP2 {
+    node "Messaging\nNode" as Msg2
+    node "Repository\nServer" as Repo2
+}
+
+node "End-User Device 1" as User1 {
+    node "Hyperty" as H1
+}
+
+node "Network Server" as Net {
+    node "Hyperty" as H3
+}
+
+node "Service Provider 1\n(ProtOFly-Client)" as SP1 {
+    node "Messaging\nNode" as Msg1
+    node "Repository\nServer" as Repo1
+}
+
+node "Matrix based Messaging Node" as msg {
+
+ node "Application Services" as AppServices {
+   node "Connectors" as Conn {
+    node "IdM\nConnector" as ConnIdM
+    node "Registry\nConnector" as ConnMan
+    node "End-User Device\nConnector" as ConnUser
+    node "Network Server\nConnector" as ConnNet
+   }
+   node "ProtOFly-client" as Proto1Sand {
+     node "SP2 ProtoStub" as Proto1
+   }
+   node "Address Allocation\nManagement" as ID
+ }
+
+
+node "Matrix Homeserver" as core {
+ node "*            Message      Bus                *" as Bus
+ node "Session Management" as Reg
+}
+
+node "Matrix Proxy" as proxy {
+  node "Access Control\nPEP" as BusPEP
+  node "Message Proxy" as MsgProxy
+}
+
+Repo2 ..down-> Proto1: provide
+
+Msg2 <-left-> Proto1 : communicate
+
+ Bus <-right-> Proto1
+
+ BusPEP ..down-> MsgProxy : enforce
+
+ MsgProxy -> Bus : forward
+
+ Msg1 <-left-> MsgProxy : communicate
+
+ ConnIdM ..down-> BusPEP : authorise
+
+ BusPEP .down-> Reg
+
+ Reg .left. ID
+
+ Reg <-up. Bus: session valid?
+
+ ConnIdM <-up-> IdM1 : authorise
+
+ Bus <-up-> ConnUser : communicate
+ ConnUser <-up-> H1 : communicate
+
+ Bus <-up-> ConnNet : communicate
+ ConnNet <-up-> H3 : communicate
+
+ Bus <-up-> ConnMan : communicate
+ ConnMan <-up-> Server1 : communicate
+    }
+
+@enduml
+-->
+![Matrix Messaging Node
+Architecture](matrix_messaging_node_architecture.png)
 
 #### Session Management
 
-The requirements regarding session management as described in
-[functional block](msg-node-architecture.md) can be separated in 3
-different aspects which are handled in the following sub-chapters. \*
-User session control \* Communication session control \* Stub and
-connector management
+The requirements regarding session management as described in the
+Messaging Node architecture can be separated in three aspects which are
+handled in the following sub-chapters: \* User session control, \*
+Communication session control, and \* Stub and connector management.
 
 ##### User session control
 
-In order to use matrix.org users have to be registered/subscribed with a
-HomeServer.
+In order to use matrix based messaging users have to be
+registered/subscribed with a matrix HomeServer. Matrix provides an API
+for the subscription of new users with their HomeServers. This API can
+be used to provision accounts also programmatically, when required.
 
-In order to connect to matrix HomeServers (e.g. after switching on their
-devide), users have to pass a login sequence. During this sequence an
-access token is generated which is valid for this login session. This
-access token must be present in all sub-sequent requests during this
-user session. The supported authentication methods are not specified and
-left implementation specific for the particular HomeServers. The
-specification lists following standard methods: \* m.login.password \*
-m.login.recaptcha \* m.login.oauth2 \* m.login.email.identity \*
-m.login.dummy The HomeServer Client API provides means to request the
-supported methods before login.
+In order to establish a communication session with other peers, users
+have to pass a login sequence. During this sequence an access token is
+generated which is valid for this login session. This access token must
+be present in all sub-sequent requests during this user session. No
+mandatory authentication methods are specified. This is left as
+implementation specific for the particular HomeServers. The
+specification lists following standard methods:
+
+-   m.login.password,
+-   m.login.recaptcha,
+-   m.login.oauth2,
+-   m.login.email.identity, and
+-   m.login.dummy.
+
+The HomeServer Client API provides means to request the supported
+methods before login.
 
 ##### Communication session control
 
 Communication sessions between two or more users require a valid user
-session. Communication session are always based on "rooms". Messages are
-sent to room-ids and not to individual users. Users must explicitely
-create or join rooms in order to send and receive messages. Some rooms
-might be open - others may require an invitation to become a room
-member. Rooms are persistent, i.e. they exist also if not all room
-members are currently logged in. The message history is maintained by
-the Matrix HomeServers and can be requested by clients.
+session. Communication sessions are always based on "rooms". Each room
+is identified by a unique room-id. Messages are sent to room-ids and not
+to individual users. Users must explicitly create or join rooms in order
+to send and receive messages. Some rooms might be open - others may
+require an invitation by the creator of the room. Rooms are persistent,
+i.e. they exist also if not all room members are currently logged in.
+The message history is maintained by the Matrix HomeServers and can be
+requested by clients.
 
 ##### Stub and connector management
 
-Matrix.org provides powerful means to connect, federate and synchronize
+Matrix.org provides powerful means to connect, federate, and synchronise
 Matrix HomeServers from different domains. The resolution of the peer
 HomeServers connectivity is done via DNS. The message exchange between
 them is secured by encryption mechanisms.
 
-However - for the communication with non-Matrix infrastructures there is
-no common way. The most appropriate approach is to use Application
-Functions, which are application specific services that can be attached
-to HomeServers and listen for filtered messages in order to perform
-special tasks with them.
-
-This mechanism seems well suited for the implementation of "breakout"
-communication to other types of signalling infrastructures. The
-matrix.org community has implemented a proof of this concept that
-connects the Matrix ecosystem with the IRC (reference?) world. Messages
-that contain a specially prefixed address are filtered out, converted to
-IRC messages, forwarded to the corresponding IRC client and vice versa.
-
-In the scope of the reTHINK project this concept can be leveraged by a
-specialized Application Function that filters out messages for
-non-matrix targets and uses the Protocol-on-the-fly concept to connect
-and exchange messages with the appropriate domain.
+However - for the interoperability with non-Matrix infrastructures there
+is no "golden" way. The selected and most appropriate approach is via
+Application Services, as described before.
 
 The "Stub and connector management" function is responsible for the
-management of these Stubs. This can potentially be part of this new
-special Application Function.
+management of the Application Services that implement the
+Protocol-on-the-fly clients and the connectors.
 
 #### Address Allocation Management
 
-> > Manages allocation of messaging addresses to Hyperty Instances in
-> > cooperation with Session Management when users connect to the
-> > domain. It also manages the allocation of messaging addresses to
-> > foreign Hyperty Instances i.e. Hyperty Instances that are provided
-> > from external domains but that use the protofly concept to interact
-> > with Hyperty Instances served by this Messaging Node.
-
-Each hyperty instance should be treated as an individual client of the
-Messaging Node that registers with an own identity and needs a login
-before it can exchange messages. The Messaging Node allocates the
-identity of a hyperty during the registration/subscription process. The
-allocated identity of is sufficient to serve as a messaging address for
-domain internal communication.
+In order to be addressable each hyperty instance should be treated as an
+individual client of the Messaging Node that registers with an own
+identity and needs a login before it can exchange messages. The
+Messaging Node allocates the identity of a hyperty during the
+registration/subscription process. The allocated identity serves then as
+a messaging address for domain internal communication.
 
 External Hyperties from foreign domains (that might use different
-communication protocols and identifiers) might need an address
-representation in the own domain that is compatible with the local
-addressing scheme. A SIP based domain, for instance, will require a
-representation of an external entitiy as a SIP URI in order to route
-messages correctly. The Messaging Node is responsible for the creation
-and assignment of such transient addresses.
+communication protocols and identifiers) will need an address
+representation in the Matrix domain that is compatible with the local
+addressing scheme. The Messaging Node is responsible for the creation
+and assignment of such transient addresses for domain external entities.
 
-In Matrix.org this can be achieved with Application Services, which
-maintain an own namespace of virtual users and are able to operate
-(send/receive) "on behalf" of an certain virtual user.
-
-### Protocol Stub
-
-An approach to achieve this was described above in section "Stub and
-connector management" before.
-
-### Connectors
-
-> > -   IdM Connector to interact with remote Identity Management
-> >     functionalities
-> > -   Registry Connector to interact with remote Registry
-> >     functionalities
-> > -   End-User Device Connector to interact with Hyperty Instances
-> >     running in the end-user device
-> > -   Network Server Connector to interact with Hyperty Instances
-> >     running in a Network Server
-
-The concept of connectors can be supported by the implementation of
-appropriate Application Services, as mentioned above already. These
-connectors would be executed in the scope of the Messaging Node and
-perform the required protocol translations.
+Since we have identified Application Services as the most appropriate
+way of connecting to other signalling domains, also the management of
+such virtual transient addresses is in the responsibility of the
+corresponding Application Service. Each Application Service itself has
+to maintain an own namespace of virtual users and must be able to
+operate (send/receive) "on behalf" of such a virtual user.
 
 Conclusions
 ===========
@@ -5727,5 +5500,83 @@ http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly
 (5) Java Smart Card scheme
 
 (6) CoSE architecture
+
+(7) Service framework middle layer
+
+(8) Runtime High Level Architecture
+
+(9) Runtime High Level Architecture with Unstrusted Hyperties
+
+(10) Runtime High Level Architecture with Policy Enforcer
+
+(11) Runtime Architecture
+
+(12) Vulnerability matrix for a dummy platform
+
+(13) Stack
+
+(14) Browser
+
+(15) Security Browser
+
+(16) Application platform
+
+(17) Security Application platform
+
+(18) Deploy Protocol Stub
+
+(19) Deploy Hyperty
+
+(20) Message Routing in Message BUS
+
+(21) Intra-domain Local Communication
+
+(22) Intra-domain Remote Communication
+
+(23) Inter-domain Local Communication
+
+(24) Inter-domain Remote Communication
+
+(25) Alice invites Bob for a communication
+
+(26) Bob receives invitation
+
+(27) Aknowledged that Bob received the invitation
+
+(28) Alice invites Bob for a communication
+
+(29) Alice invites Bob for a communication
+
+(30) User registration
+
+(31) Prepare Discovery
+
+(32) Use Discovery
+
+(33) Domain Login
+
+(34) Associate User Identity to Hyperty Instance
+
+(35) User identity assertion sequence diagram
+
+(36) Runtime Main Procedures for M2M Communication
+
+(37) M2M Device Bootstrap
+
+(38) Communication 4 pub sub 1
+
+(39) Communication 4 pub sub 2
+
+(40) Communication 4 pub sub 3
+
+(41) Runtime browser implementation
+
+(42) Crosswalk Architecture
+
+(43) Cordova functionnal schema
+
+(44) Cordova functionnal schema
+
+(45) Messaging Node Architecture
 
 

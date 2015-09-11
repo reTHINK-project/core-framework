@@ -1,50 +1,29 @@
 ## Runtime Architecture
 
-The main Hyperty runtime architecture is presented in fig. @runtime_arch_0. It is comprised by different types of components that, for security reasons, are executed in isolated sandboxes. Thus, components downloaded from a specific Service Provider (e.g. Service Provider 1 from fig. @runtime_arch_0) are executed in sandboxes that are different from the sandboxes used to execute components downloaded from another service provider (e.g. Service Provider 2 from fig. @runtime_arch_0). In addition, for the same Service Provider, and also for security reasons, protocol stubs and Hyperties are isolated from each other and executed in different sandboxes. Communication between components running in different sandboxes are only possible through messages exchanged through a message bus functionality provided by the Core Sandbox. In general, in the Core Sandbox, all required functionalities to support the deployment, execution and maintenance of components downloaded from service providers, are executed. Core components are, ideally, natively part of the device runtime. However, to support existing platforms including Browsers and Mobile Operating Systems, to minimise the need to install new applications, the existing device native runtime functionalities (e.g. Javascript engine) are distinguished from the hyperty core runtime functionalities. In such situations, the Hyperty Core Runtime components are downloaded from the Hyperty Runtime Service Provider and are executed in an isolated core sandbox.
+The main Hyperty runtime architecture is presented in fig. @runtime_arch_high_level. It is comprised by different types of components that, for security reasons, are executed in isolated sandboxes. Thus, components downloaded from a specific Service Provider (e.g. Service Provider 1 from fig. @runtime_arch_high_level) are executed in sandboxes that are different from the sandboxes used to execute components downloaded from another service provider (e.g. Service Provider 2 from fig. @runtime_arch_high_level). In addition, for the same Service Provider, and also for security reasons, protocol stubs and Hyperties are isolated from each other and executed in different sandboxes. Communication between components running in different sandboxes are only possible through messages exchanged through a message bus functionality provided by the Core Sandbox. On the other hand, the protocol stub provides the bridge for the Hperty runtime to communicate with associated Service Provider. For example, in fig. @runtime_arch_high_level, protostub1 is the only way that Hyperty instances have to communicate with Service Provider 1. In general, in the Core Sandbox, all required functionalities to support the deployment, execution and maintenance of components downloaded from service providers, are executed. Core components are, ideally, natively part of the device runtime. However, to support existing platforms including Browsers and Mobile Operating Systems, to minimise the need to install new applications, the existing device native runtime functionalities (e.g. Javascript engine) are distinguished from the hyperty core runtime functionalities. In such situations, the Hyperty Core Runtime components are downloaded from the Hyperty Runtime Service Provider and are executed in an isolated core sandbox.
 
-![Figure @runtime_arch_0 High Level Runtime Architecture with trusted Hyperties](Runtime_Architecture_high_level_simple.png)
+![Figure @runtime_arch_high_level High Level Runtime Architecture with trusted Hyperties](Runtime_Architecture_high_level.png)
 
-In figure @runtime_arch_0, the Application and the Hyperty Instances it  consumes, are downloaded from the same Service Provider, and they trust each other, i.e. they are executed in the same sandbox. In figure @runtime_arch_1, it is depicted the Runtime Architectyre where the Application and the Hyperty Instances it consumes, don't trust each other, for example, they are downloaded from different service providers. In such situation, Hyperties and the Application are isolated from each other and are executed in different sandboxes.
+In figure @runtime_arch_high_level, the Application and the Hyperty Instances it  consumes, are downloaded from the same Service Provider, and they trust each other, i.e. they are executed in the same sandbox. In figure @runtime_arch_high_level_unstrusted, it is depicted the Runtime Architecture where the Application and the Hyperty Instances it consumes, don't trust each other, for example, they are downloaded from different service providers. In such situation, Hyperties and the Application are isolated from each other and they are executed in different sandboxes.
 
-![Figure @runtime_arch_1 High Level Runtime Architecture with untrusted Hyperties](Runtime_Architecture_high_level_simple.png)
+![Figure @runtime_arch_high_level_unstrusted High Level Runtime Architecture with untrusted Hyperties](Runtime_Architecture_high_level_unstrusted.png)
 
-According to [ongoing discussions](https://github.com/reTHINK-project/core-framework/issues/41):
-* one sandbox for the ASP providing the Application
-* one sandbox per Hyperty Service Provider Domain that includes the Router/Policy Engine and associated protoStub
-* the ProtoStub is used to communicate with Service Provider backend services.
-* Hyperty instances communicates with Msg bus through Router/Policy Engine which may also act as a kind of firewall
-* according to recommendations provided in the [runtime security analysis](securityanalysis.md), protoStubs and Router/Policy Engines execute isolated in independent sandboxes.
-* to prevent cross origin attacks / spy, access to Message BUS may be subject to authorisation
-* Different Points of Policy Enforcement:
- * Policies enforced at Hyperty Sender Domain Router for outgoing messages
- * Policies enforced to control the access to message Bus
- * Policies enforced at Hyperty Receiver Domain Router for incoming messages
+As described below, to prevent cross origin attacks / spy, access to Core Runtime Message BUS is subject to authorisation, by using standardised policies downloaded from each involved Service Provider. In addition, the Hyperty Runtime Architecture also supports the enforcement of Service Provider policies,  with its own Policy Enforcer component executed in a dedicated sandbox (see fig. @runtime_arch_high_level_pep) enabling the enforcement of proprietary policies.
 
- The different types of policies to be applied on these different points, namely in the Message BUS, requires further research to avoid performance overhead and potential conflicts. Initial thoughts:
- Message BUS PEP would enforce general access control policies that are agnostic of sender and target domains, or specific to the domain managing the device runtime (Core Runtime Provider). The access control to CRUD operations on standardised data objects like the Communication Data Object (eg only the owner of an active communication may apply delete or update operations on it) is a good candidate.
+![Figure @runtime_arch_high_level_pep High Level Runtime Architecture with domain specific Policy Enforcer](Runtime_Architecture_high_level_pep.png)
 
-Below, it is depicted a functional architecture of the Runtime:
+ The different types of policies to be applied on these different points, namely in the Message BUS, requires further research to avoid performance overhead and potential conflicts. In principle, if for a specific domain there is Policy Enforcer, it will not be needed to enforce policies from that domain in the Mesg BUS PEP.
 
-*Provide first a higher level architecture without showing detailed components. Distinguish internal APIs from external Interfaces which should be identified according to names defined in D2.2.*
+ In addition, Message BUS PEP should enforce general access control policies that are agnostic of sender and target domains, or specific to the domain managing the device runtime (Core Runtime Provider). The policies used to control the access to synchronised Data Objects used in Hyperty Communication (see below) , are a good example of such policies.
 
 
-
-
-![High Level Runtime Architecture with unstruted Hyperties](Runtime_Architecture_high_level.png)
+Some more details are provided in the following sections.
 
 ### Service Provider Sandboxes
 
-According to Browser Sandbox model, each Service Provider Sandboxes executes components downloaded from the same Service Povider domain including Hyperties, protocol stubs used to connect and communicate with Service Provider Domain and PEP enabled Connector. 
-
-Functionalities to support Hyperty Communication through data object synchronisation are provided by the Syncer component based on Object.observer API. Details are discussed [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md).
-
-#### Application
-
-
-
 #### Hyperty
 
-
+Functionalities to support Hyperty Communication through data object synchronisation are provided by the Syncer component based on Object.observer API. Details are discussed [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md).
 
 #### Policy Enforcer
 
@@ -59,46 +38,50 @@ Protocol stubs are reachable through the Message BUS. In this way it is ensured 
 
 ### Core Runtime
 
-![Complete Hyperty Runtime Architecture](Runtime_Architecture_complete.png)
+The Core Runtime components are depicted in fig. @runtime_arch_core.
 
-
-#### Policy Decision Point and Message BUS authorisation
-
-It provides Policy decision functionalities for the Service Provider Router sandbox according to Policies downloaded and stored locally when associated Hyperties are deployed. The possibility to consult Policies stored remotely should also be investigated. It also provides authorisation / access control to the Message BUS.
+![Figure @runtime_arch_core Runtime Core Architecture](Core_Runtime.png)
 
 #### Message BUS
 
-Supports local message communication between Hyperty Instances in a loosely coupled manner. Access to message BUS is subject to authorisation to prevent cross origin attacks / spy from malicious Hyperties.
+Supports local message communication in a loosely coupled manner between Service Provider sandboxes including Hyperty Instances, Protocol Stubs and Policy Enforcers. Messages are routed to listeners previsouly added by the Runtime User Agent, to valid Runtime URL addresses handled by the Runtime Registry functionality.
 
-See [postaljs](https://github.com/postaljs/postal.js)
+Access to message BUS is subject to authorisation to prevent cross origin attacks / spy from malicious downloaded code including Hyperties, Protocol Stubs or Policy Enforcers.
 
-#### Registry
+#### Policy Decision Point and Message BUS authorisation
 
-Local Runtime Hyperty registry where Hyperty local addresses are registered and discoverable by other local Hyperties. The Runtime Registry should ensure synchronisation with Remote Domain Registry (to be provided by WP4)
+It provides Policy decision functionalities for incoming and outgoing messages from / to Service Provider sandboxes, according to Policies downloaded and stored locally when associated Hyperties are deployed by the Runtime User Agent. The possibility to consult Policies stored remotely should also be investigated. It also provides authorisation / access control to the Message BUS.
 
-#### Identities Containers
+#### Message BUS Policy Enforcement Point
 
-Contains Tokens that associates Hyperties with Users, it also provides Identity assertions. Something similar to [WebRTC IdP Proxy](http://w3c.github.io/webrtc-pc/#identity) but not limited to WebRTC.
+The Message BUS Policy Enforcement Point, is used by the Message BUS to enforce policy actions requested by the Message BUS Policy Decision Point e.g. to verify or generate identity assertions, to get valid Access tokens.
 
-When registered, Hyperties are associated with an Identity by the Registry / Identities container. Then all, messages sent by the Hyperty will be signed with a token according to the Identity associated to the Hyperty. 
+#### Runtime Registry
+
+The Runtime Registry handles the registration of all available runtime components including Core components, Service Provider Sandboxes and each component executing in each sandbox like Hyperty Instances, Protocol Stubs, Policy Enforcers and Applications.
+
+The Runtime Registry handles the allocation of Runtime URL addresses for all these components and manages its status.
+
+In addition, the Runtime Registry should ensure synchronisation with Back-end Service Provider Registry.
+
+#### Identity Module
+
+The Runtime Identity Module manages ID and Access Tokens required to trustfuly manage Hyperty Instances communication including trustful association between Hyperty Instances with Users. In addition, it also supports the generation and validation of Identity assertions. Identity module is compliant with [WebRTC IdP Proxy](http://w3c.github.io/webrtc-pc/#identity) but not limited to WebRTC.
+
+Messages routed by Message BUS should be signed with a token according to the Identity associated to it and managed by the Identity Module. 
 
 
 #### Runtime User Agent
 
-Manages Core Sandbox components including its deployment and update from Core Runtime Provider. It also handles Device bootstrap and the deployment of Hyperties and Protocol Stubs in the Runtime. It includes a Catalogue Protocol Stub to interface with any reTHINK Service Provider Catalogue service to query and download required Catalogue Data Objects, according to [Catalogue Service interface design][interface-catalogue](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface).
+The Runtime User Agent, manages Core Sandbox components including its download, deployment and update from Core Runtime Provider. It also handles Device bootstrap and the download, deployment and update of Service Provider sandboxes including Hyperties, Protocol Stubs and Policy Enforcers. It manages the descriptors of deployed components that are downloaded from the Service Provider Catalogue via the [Catalogue Service interface](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface)[D2.2].
 
 #### QoS User Agent
 
-Manages network QoS in the runtime. Not limited to WebRTC. Relationship with LHCB?
-
-*to be discussed in Aveiro*
+The QoS User Agent Manages network QoS in the runtime. 
+This component requires further investigations which will be reported in D3.3.
 
 ### Native Runtime
 
-Functionalities that are natively provided by the runtime.
-
-#### WebRTC Media Engine
-
-Provides the support for Stream communication between Hyperties according to WebRTC Standards.
+The Native Runtime provides Functionalities that are natively provided by the runtime, e.g. Javascript engine or WebRTC Media Engine to support for Stream communication between Hyperties according to WebRTC Standards when available.
 
 
