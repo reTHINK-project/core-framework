@@ -114,12 +114,23 @@ The Runtime implementation at browsers plays a central role in reTHINK project. 
 
 The design of the browser runtime implementation for reTHINK project has been directed by security and functional requirements along as well as the security limitations forced by the browser. Some of the design decissions are expected to be modified during the implementation phase, however all the proposed design has been tested with real code which implemented prototypes of the different parts.  
 
-## Design description.
 
+## Description of the proposed implementation design.
 
+The diagram below shows all the elements presents in the runtime environment in a browser executing we web application which uses hyperties. 
 
-* A Service Worker is used to manage the cache of Runtime Core Components
-* Hyperties and Protocol Stubs are implemented inside Web Workers 
+![Figure @runtime-browser-implementation: Runtime browser implementation](Runtime_Browser_Implementation.png)
+
+The web application labeled as *app.domain* represents the html file which is downloaded from the server (hosted by domain which can be an entity different from teh CSP which provides de hyperties). 
+ 
+ app.js represents a Javascript file used by app.domain which allows to interact from app.domain with the *rethink.js* library.
+ 
+ The *rethink.js* library contains the Javascript code necessary to setup all the runtime used by reTHINK in the browser. In the next setion all the elements instantiated by rethink.js will be covered.    
+
+### Service workers
+A service worker is a script that is run by your browser in the background, separate from a web page, allowing to execute features which do not need a web page or user interaction. They are used to manage the cache of Runtime Core Components. As desribed in the diagram both Hyperties and Protocol Stubs will be implemented inside Web Workers.
+
+* 
 * Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain
 * Web Workers are only able to interact each other with self.postMessage(..) which is caught by
     window.addEventListener('message', handleSizingResponse, false); 
@@ -130,7 +141,7 @@ implemented by the Runtime MsgBUS Core Component
 * in addition, and since it is not possible to pass WebRTC Media and Data Streams handled inside the iFrame towards the Application that is outside the iFrame, a local loop peerconnection is established between the "reTHINK WebRTC" and the "HypertyAPIStub" running on Application side. See more details below.
 
 
-![Figure @runtime-browser-implementation: Runtime browser implementation](Runtime_Browser_Implementation.png)
+
 
 #### Runtime Architecture with IFrame
 
