@@ -1,37 +1,39 @@
-#### H2H Intradomain Communication - Invitation Acknowledgement
+#### H2H Interdomain Communication - Invitation Acknowledgement
 
 This MSC diagrams shows how Alice is aknowledged that Bob received the invitation
 
 <!--
-@startuml "h2h-intra-comm-3-alice-is-aknowledged.png"
+@startuml "h2h-inter-comm-3-alice-is-aknowledged.png"
 
 autonumber
 
 !define SHOW_RuntimeA
 
 !define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
 !define SHOW_ServiceProvider1HypertyAtRuntimeA
 !define SHOW_ServiceProvider1RouterAtRuntimeA
 !define SHOW_CommObjectAtRuntimeA
 !define SHOW_LocalObjectAtRuntimeA
 !define SHOW_Syncher1AtRuntimeA
 
-
+!define SHOW_SP2SandboxAtRuntimeA
+!define SHOW_Protostub2AtRuntimeA
 
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
 
-!define SHOW_SP1
+!define SHOW_SP2
+
 !define SHOW_Bob
+
 
 !include ../runtime_objects.plantuml
 
 
 
-Proto1@A <- SP1 : postMsg(OK MSG)
+Proto2@A <- SP2 : postMsg(OK MSG)
 
-Proto1@A -> BUS@A : postMsg(OK MSG)
+Proto2@A -> BUS@A : postMsg(OK MSG)
 
 Router1@A <- BUS@A : postMsg(OK MSG)
 
@@ -45,10 +47,9 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 -->
 
 
-![H2H Intradomain Communication : Alice is Aknowledged](h2h-intra-comm-3-alice-is-aknowledged.png)
+![H2H Interdomain Communication : Alice is Aknowledged](h2h-inter-comm-3-alice-is-aknowledged.png)
 
-
-(Step 1 - 3) : Service Provider Back-end Messaginge Service routes the OK Message to Bob's Message BUS which forwards it to its PEP
+(Step 1 - 3) : Service Provider Back-end Messaginge Service sends the OK Message to via the SP2 protocol Stub to Bob's Message BUS which forwards it to its PEP
 
 (Step 4) : Bob's PEP applies local policies if required
 

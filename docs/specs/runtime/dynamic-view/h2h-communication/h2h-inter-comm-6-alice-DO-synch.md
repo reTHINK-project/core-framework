@@ -2,12 +2,11 @@
 
 
 <!--
-@startuml "h2h-intra-comm-6-alice-DO-synch.png"
+@startuml "h2h-inter-comm-6-alice-DO-synch.png"
 
 	autonumber
 !define SHOW_Runtime1B
 !define SHOW_SP1SandboxAtRuntime1B
-!define SHOW_Protostub1AtRuntime1B
 !define SHOW_ServiceProvider1HypertyAtRuntime1B
 !define SHOW_ServiceProvider1RouterAtRuntime1B
 !define SHOW_RemoteObjectAtRuntime1B
@@ -18,7 +17,7 @@
 
 !define SHOW_NativeAtRuntime1B
 
-!define SHOW_SP1
+!define SHOW_SP1_WITH_SP2Stub
 
 !define SHOW_Syncher1AtRuntime1B
 
@@ -36,15 +35,18 @@ Sync1@1B -> Router1@1B : send CRUD msg. for updated Comm Objt state
 Router1@1B -> Router1@1B : create msg, apply local policies
 
 
-Router1@1B -> Proto1@1B : send CRUD msg. for updated Comm Objt state
-Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
+Router1@1B -> BUS@1B : send CRUD msg. for updated Comm Objt state
+
+BUS@1B -> SP2Stub : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
 
-![H2H Intradomain Communication : Synchronization of Alice's Data object](h2h-intra-comm-6-alice-DO-synch.png)
+![H2H Interdomain Communication : Synchronization of Alice's Data object](h2h-inter-comm-6-alice-DO-synch.png)
 
 
-(Step 1) : The local Data object reports that there have been changes in the connection parameters and the Syncher sends a CRUD message through the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty (Step 2).
+(Steps 1 - 2) : The local Data object reports that there have been changes in the connection parameters and the Syncher sends a CRUD message through the Policy Enforcer to Update the Remote Data Object at Alice's Hyperty (Step 2).
 
-(Step 3) : the Policy Enforcer checks if the message is compliant with the local policies and the message is sent to the ProtoStub (Step 4) to be in turn sent to the Service Provider 1 Back-End (Step 5)
+(Steps 3 - 4) : The Policy Enforcer checks if the message is compliant with the local policies and forwards the message the Msg Bus (Step 4)
+
+(Step 5) : The message Bus sends the message to Alice via the SP2 stub, deployed in Alice's runtime

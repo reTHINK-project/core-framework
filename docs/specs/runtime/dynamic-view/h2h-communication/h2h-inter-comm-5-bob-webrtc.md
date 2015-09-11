@@ -1,8 +1,9 @@
 #### Bob starts WebRTC API
 
+The sequence for the gathering of the WebRTC resources is the same as the corresponding sequence for an Intradomain communication.
 
 <!--
-@startuml "h2h-intra-comm-5-bob-webrtc.png"
+@startuml "h2h-inter-comm-5-bob-webrtc.png"
 
 	autonumber
 !define SHOW_Runtime1B
@@ -23,7 +24,7 @@
 !define SHOW_NativeAtRuntime1B
 !define SHOW_WebRTCAtRuntime1B
 
-!define SHOW_SP1
+' '!define SHOW_SP1
 ' !define SHOW_Msg1
 
 !define SHOW_Syncher1AtRuntime1B
@@ -61,7 +62,7 @@ end
 @enduml
 -->
 
-![H2H Intradomain Communication : Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
+![H2H Interdomain Communication : Bob gatheres WebRTC resources](h2h-inter-comm-5-bob-webrtc.png)
 
 (Step 1) : The Hyperty is notified about the added remoteDescription object.
 

@@ -15,7 +15,7 @@ autonumber
 !define SHOW_WebRTCAtRuntimeA
 
 !define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
+' !define SHOW_Protostub1AtRuntimeA
 !define SHOW_ServiceProvider1HypertyAtRuntimeA
 !define SHOW_ServiceProvider1RouterAtRuntimeA
 !define SHOW_CommObjectAtRuntimeA
@@ -65,11 +65,11 @@ SP1H@A ->  LocObj@A : new(sessionDescription)
 
 SP1H@A -> Sync1@A : create( Connection DataObject, resourceURL, to)
 
-Sync1@A -> Router1@A : postMsg(Create MSG) 
+Sync1@A -> Router1@A : postMsg(Create MSG)
 
 Router1@A -> Router1@A : apply policies
 
-Router1@A -> BUS@A : postMsg(Create MSG) 
+Router1@A -> BUS@A : postMsg(Create MSG)
 
 group deploy SP2 protocol Stub as defined at basics/deploy-protostub.md
 
@@ -78,9 +78,9 @@ BUS@A -> Proto2@A : new
 
 end group
 
-Proto2@A <- BUS@A : postMsg(Create MSG) 
+Proto2@A <- BUS@A : postMsg(Create MSG)
 
-Proto2@A -> SP2 : postMsg(Create MSG) 
+Proto2@A -> SP2 : postMsg(Create MSG)
 
 @enduml
 -->
@@ -89,11 +89,11 @@ Proto2@A -> SP2 : postMsg(Create MSG)
 ![H2H Intradomain Communication : create communication](h2h-inter-comm-1-alice-invites-bob.png)
 
 
-Steps 1 - 4 : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
+(Steps 1 - 4) : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
 
-Steps 5 - 7 : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection). 
+(Steps 5 - 7) : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined [here](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md#connection).
 
-Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
+(Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
 
 **[Create Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
 
@@ -106,11 +106,10 @@ Steps 8 - 9 : the Hyperty Instance requests the Syncher to ask Bob to create and
 "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
 ```
 
-Steps 10 : Alice's PEP applies local policies if required including outgoing communication request access control
+(Steps 10) : Alice's PEP applies local policies if required including outgoing communication request access control
 
-Steps 11 : the message is routed towards Alice Message BUS.
+(Step 11) : The message is routed towards Alice Message BUS.
 
-Steps 12 : SP2 protostub is deployed in the runtime if not deployed yet as defined [here](../basics/deploy-protostub.md)
+(Step 12) : SP2 protostub is deployed in the runtime if not deployed yet as defined [here](../basics/deploy-protostub.md)
 
- Steps 13 - 14: Message BUS routes the message to SP2 protocol stub which proceses it to send it to Service Provider 2 Back-end Messaginge Service.
-
+(Steps 13 - 14) : The Message BUS routes the message to the SP2 protocol stub which processes it to send it to Service Provider 2 Back-end Messaging Service.
