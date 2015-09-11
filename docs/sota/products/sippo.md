@@ -23,8 +23,7 @@ Sippo has been developed by Quobis and it's distributed worldwide through a netw
 
 Sippo WAC is a network component which sits on the edge of the network, in close collaboration with the WebRTC gateway. The following picture describes how the WAC fits into a service provider or enterprise voice network:
 
-*image missing*
-Imagen 1
+![Sippo WAC reference architecture](quobis_reference_architecture.png "Sippo WAC reference architecture")
 
 The following network elements are the basic ones to understand the reference architecture (from right to left):
 
@@ -64,18 +63,18 @@ Along with Sippo, Quobis  has  developed  a  number  of  WebRTC  applications  f
 
 Sippo offers a set of different API’s and service interfaces that are summarised in the picture below:
 
-*pictures missing*
-Imagen
+
+![Sippo interfaces and APIs](quobis_interfaces_and_API.png "Sippo interfaces and APIs")
 
 
-##### Sippo.js API (JAPI)
+##### Sippo.js API 
 
 Sippo.js is a Javascript API that is downloaded to the user’s browsers, thus containing all the signaling stacks and WebRTC media API calls. Sippo applications are built on top of this sippo.js API and it can also be used by third-party developers to code their own client applications.
 
 Sippo.js API supports a complete set of signaling stacks, including both standards-based (like SIPoWS, authored by Quobis at RFC7118) and vendor-specific ones. That means that the applications built on top of the Sippo.js API are capable of communicating with different gateways from different vendors without changing the code. That’s one of the benefit of using Sippo.js API as it hides the complexity of the underlying signaling plane and provides a single and simple-to-use javascript API to the applications.
 
-*picture missing*
-Imagen
+![Sippo.js abstraction layer](quobis_abstraction_layer.png "Sippo.js abstraction layer")
+
 
 ##### Sippo Service API (SAPI)
 Sippo Service API (SAPI) is a REST API which allows to connect Sippo WAC to different elements from the operator’s core and access network. This API can play both client-role and server-role to integrate the Sippo WAC and the WebRTC applications into the core.
@@ -98,18 +97,12 @@ This explains some basic concepts of the Sippo architecture, in order to underst
 
 There are two key concepts to understand the internal architecture of Sippo: services and backends. A service is a functionality provided by the WAC, whereas a backend is a implementation of a specific service. In other words, we can say that a services is “what” to do and the backend is “how” to do it. 
 
-*picture missing*
-Imagen
+![Sippo services and backends](quobis_sippo_services_and_backends.png "Sippo services and backends")
+
+
 
 There are thirty-three available services at Sippo WAC that are listed alphabetically in the table below. Some of those services have a 1-to-1 implementation at sippo.js API calls while others are internals and not exposed to the end user, but are explained here for completeness.
 
-Each services is configured in a specific section of wac.ini, the main configuration file of Sippo WAC.
-
-- Service configuration: describes the parameters of this specific service. Service name is included between brackets, as for example [auth] for the “Authentication” service. One of the parameters of each service is the name of the backend that it’s using. 
-- Backend configuration: describes the parameters of this specific backend, which is associated to its parent service. Only one backend is support for each service at this WAC version.
-
-*picture missing*
-Imagen
 
 #### 1.7. Sippo WebRTC applications
 Services providers and enterprises can deploy their own WebRTC applications using Sippo WAC, developed by using the existing Sippo Javascript API sippo.js (which includes the Sippo Abstraction Layer) and also making use of all the Sippo services like authentication, contacts, etc… 
@@ -118,8 +111,8 @@ Every Sippo application needs to run connected to a Sippo WAC, as some of the fe
 
 Communication between the WebRTC applications running on the browser and the Sippo WAC is done by using the WAPI interface, which dispatches the incoming messages to the corresponding services, as shown in the picture below:
 
-*picture missing*
-Imagen
+![Sippo WebRTC applications stack](quobis_webrtc_applications.png "Sippo WebRTC applications stack")
+
 
 #### Potential integration with Wonder proposal
 
@@ -142,4 +135,5 @@ The WAPI, as the API that interchanges messages between the application and the 
 
 #### Requirements Analysis
 
-*missing*
+Sippo.js provides a high level abstraction layer which allow to build WebRTC applications in an easy and quick way. Sippo.js supports many signaling protocols for WebRTC and can be used with WebRTC gateways from many vendors. This is possible thanks to it implements a static-flavor of the protocol-of-the-fly approach used in reTHINK project. This was identitified in the early stages of WebRTC as a need to deal with the signaling diversity in the WebRTC arena. 
+Sippo.js can be adapted to be an intermediate layer between the hyperty and the web application hidding all the innecesary complexity to te developer. This will also allow that all the applications already build over Sippo.js can be used in reTHINK reducing considerably the integration costs. 
