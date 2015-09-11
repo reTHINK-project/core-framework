@@ -2,7 +2,7 @@
 
 
 <!--
-@startuml "h2h-intra-comm-6-alice-DO-synch"
+@startuml "h2h-intra-comm-6-alice-DO-synch.png"
 
 	autonumber
 !define SHOW_Runtime1B
