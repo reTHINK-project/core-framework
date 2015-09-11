@@ -78,7 +78,7 @@ end
 @enduml
 -->
 
-![Deploy Protocol Stub](deploy-protostub.png)
+![Figure @runtime-deploy-protostub: Deploy Protocol Stub](deploy-protostub.png)
 
 Steps 1-2 : The protocol stub deployment may be triggered by the deployment of an Hyperty or by some attempt from a local Hyperty to communicate with a remote Hyperty running in the domain served by the protocol Stub. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations). The Runtime UA only downloads and deploys requested protocol stub after checking in the Registry that there is no protocol stub available in the runtime.
 

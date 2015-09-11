@@ -1,7 +1,5 @@
 ## Service Frameworks
 
-*To make a summary of [contributions about Service Framework SOTA](../sota/web-frameworks) including an evaluation on how to be taken into account in reTHINK and how. The full contributions will be provided in annex*
-
 An analysis of existing JavaScript frameworks based on the reTHINK service framework requirements was carried out on some of the popularly used frameworks today. These frameworks all endeavor to facilitate the development of web applications utilizing the Model-View-Control design pattern. For the reTHINK project however, focus was on the data model management and routing capabilities of these frameworks.
 
 
@@ -19,6 +17,5 @@ MeteorJS offers the distinct advantage to be used both for all devices and opera
 To summarize, the main objective of service framework is to provide an SDK which developers can utilize to facilitate the development of Hyperties. The SDK is envisioned to provide high level APIs on top of the Runtime APIs for managing especially the data models. It will also provide basic templates for different Hyperty Types which developer can use or extend in developing more advanced merged-up Hyperties. 
 
 ![Figure @service-framework-middle-layer: Service framework middle layer](service_framework_middle_layer.png)
-Fig. @service-framework-middle-layer
 
 The existing web platform (runtime) is the basis of all applicatiion development. With the middle layer of web components offering a new set of bulding blocks to choose from, a new ecosystem is formed on top of which other frameworks and applications exist. From the analyzed existing JavaScript Frameworks, MeteorJS and Polymer offer a good stepping stone to extend and be used within the reTHINK project.

@@ -12,6 +12,16 @@
 
 (@service-framework-middle-layer) Service framework middle layer
 
+(@products-quobis-reference-architecture) Sippo WAC reference architecture
+
+(@products-quobis-interfaces-API) Sippo interfaces and APIs
+
+(@products-quobis_abstraction_layer) Sippo.js abstraction layer
+
+(@products-quobis-sippo-services-backends) Sippo services and backends
+
+(@products-quobis-webrtc-applications) Sippo WebRTC applications stack
+
 (@runtime_arch_high_level) Runtime High Level Architecture
 
 (@runtime_arch_high_level_unstrusted) Runtime High Level Architecture with Unstrusted Hyperties
