@@ -2,16 +2,68 @@
 
 ## Directory Strucuture
 
+#### Suggestion 1
+
 Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)
 
-#### samples
 ```
 core-framework/src/runtime/core/
 core-framework/src/runtime/browser/
 core-framework/src/runtime/node/
 ```
 
-#### sample for *core* folder
+**Advantages:**
+
+- all centralized inside same repository;
+
+**Disadvantages:**
+
+- mix of documentation with source code;
+- we need always commit all the repository;
+- create distribution files is more complex;
+
+---
+
+#### Suggestion 2:
+
+Was been suggested have an repository for each piece of software and inside it, the source code, we only has to have in mind, is the repository name has to be clearly understandable; 
+
+```
+core
+browser
+node
+msg-node
+node
+```
+
+**Advantages:**
+
+- decentralized code
+- it's easily commit and create branches for distribution
+- it's easily increment the version
+
+**Disadvantages:**
+
+- private repository have limits;
+
+---
+
+#### Suggestion 3:
+
+Was been suggested, also, each developer make a fork from the main repository and develop on the top of his fork;
+
+**Advantages:**
+
+- all the commits will be reviewed
+- the code merge is always controlled
+
+**Disadvantages:**
+
+- the code is always public
+
+---
+
+### Source code structure
 ```
 ├── core
 │   ├── dist
