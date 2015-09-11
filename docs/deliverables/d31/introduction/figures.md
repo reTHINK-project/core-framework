@@ -12,6 +12,12 @@
 
 (@service-framework-middle-layer) Service framework middle layer
 
+(@runtime_arch_high_level) Runtime High Level Architecture
+
+(@runtime_arch_high_level_unstrusted) Runtime High Level Architecture with Unstrusted Hyperties
+
+(@runtime_arch_high_level_unstrusted) Runtime High Level Architecture with Policy Enforcer
+
 (@runtime-arch-new) Runtime Architecture
 
 (@runtime-security-analysis-dummymatrix) Vulnerability matrix for a dummy platform
