@@ -171,11 +171,15 @@ We can create an automatic process which can help us to increment versions with 
 But stay here some examples for each one:
 
 Gulp
- * [gulp-tag-version](https://www.npmjs.com/package/gulp-tag-version)
- * [gulp-bump](https://www.npmjs.com/package/gulp-bump)
+
+ - [gulp-tag-version](https://www.npmjs.com/package/gulp-tag-version)
+ - [gulp-bump](https://www.npmjs.com/package/gulp-bump)
+
 Grunt
- * [grunt-bump](https://github.com/vojtajina/grunt-bump)
- * [grunt-bump-version](https://www.npmjs.com/package/grunt-bump-version)
+
+ - [grunt-bump](https://github.com/vojtajina/grunt-bump)
+ - [grunt-bump-version](https://www.npmjs.com/package/grunt-bump-version)
+
 ---
 
 ## Feedback
