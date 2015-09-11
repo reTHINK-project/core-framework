@@ -10,10 +10,10 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 #### [Alice is aknowledged Bob received Invitation](h2h-intra-comm-3-alice-is-aknowledged-invitation-received.md)
 
-#### [Bob Accepts Invitation and Updates the Communication Object which is reported to Alice - To be Removed ](h2h-intra-comm-4-accepted.md)
-
 #### [Bob's App interaction and Alice's connection update] (h2h-intra-comm-4-notification-update.md)
+
 #### [Bob gathers WebRTC resources] (h2h-intra-comm-5-bob-webrtc.md)
+
 #### [Synchronization of Alice's Data Object] (h2h-intra-comm-6-alice-DO-synch.md)
 
 
