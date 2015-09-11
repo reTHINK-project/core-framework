@@ -1,4 +1,4 @@
-#### Bob starts WebRTC API (TBC)
+#### Bob starts WebRTC API
 
 
 <!--
