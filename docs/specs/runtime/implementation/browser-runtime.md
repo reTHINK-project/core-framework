@@ -109,9 +109,12 @@ Agent <-right-> Auth : Verify\ncredentials
 @enduml
 -->
 
+## General design considerations
 The Runtime implementation at browsers plays a central role in reTHINK project. Browsers are almost always present in devices aimed to be used by human beings so using its runtime to execute any application will ensure that it will be correctly interpreted and executed. However, browser's runtime has many security constraints the developer must deal with in order to get a functional web application. 
 
-The design of the browser runtime implementation for reTHINK project has been directed by security and fucntional requirements along as well as the security limitations imposed by the browser. 
+The design of the browser runtime implementation for reTHINK project has been directed by security and functional requirements along as well as the security limitations imposed by the browser. 
+
+
 
 * A Service Worker is used to manage the cache of Runtime Core Components
 * Hyperties and Protocol Stubs are implemented inside Web Workers 
