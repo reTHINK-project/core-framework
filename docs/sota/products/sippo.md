@@ -135,4 +135,5 @@ The WAPI, as the API that interchanges messages between the application and the 
 
 #### Requirements Analysis
 
-Sippo.js provides a high level abstraction layer which allow to build WebRTC applications in an easy and quick way. TBC 
+Sippo.js provides a high level abstraction layer which allow to build WebRTC applications in an easy and quick way. Sippo.js supports many signaling protocols for WebRTC and can be used with WebRTC gateways from many vendors. This is possible thanks to it implements a static-flavor of the protocol-of-the-fly approach used in reTHINK project. This was identitified in the early stages of WebRTC as a need to deal with the signaling diversity in the WebRTC arena. 
+Sippo.js can be adapted to be an intermediate layer between the hyperty and the web application hidding all the innecesary complexity to te developer. This will also allow that all the applications already build over Sippo.js can be used in reTHINK reducing considerably the integration costs. 
