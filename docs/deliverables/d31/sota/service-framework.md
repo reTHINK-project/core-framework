@@ -1,7 +1,5 @@
 ## Service Frameworks
 
-*To make a summary of [contributions about Service Framework SOTA](../sota/web-frameworks) including an evaluation on how to be taken into account in reTHINK and how. The full contributions will be provided in annex*
-
 An analysis of existing JavaScript frameworks based on the reTHINK service framework requirements was carried out on some of the popularly used frameworks today. These frameworks all endeavor to facilitate the development of web applications utilizing the Model-View-Control design pattern. For the reTHINK project however, focus was on the data model management and routing capabilities of these frameworks.
 
 

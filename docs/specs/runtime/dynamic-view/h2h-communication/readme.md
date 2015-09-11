@@ -22,4 +22,12 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 #### [Alice Invites Bob](h2h-inter-comm-1-alice-invites.md)
 
-The remaining steps are similar to intra domain communication *or should we consider the usage of different IdPs?*
+#### [Bob receives Invitation from Alice](h2h-inter-comm-2-bob-receives-invitation.md)
+
+#### [Alice is aknowledged Bob received Invitation](h2h-inter-comm-3-alice-is-aknowledged-invitation-received.md)
+
+#### [Bob's App interaction and Alice's connection update] (h2h-inter-comm-4-notification-update.md)
+
+#### [Bob gathers WebRTC resources] (h2h-inter-comm-5-bob-webrtc.md)
+
+#### [Synchronization of Alice's Data Object] (h2h-inter-comm-6-alice-DO-synch.md)
