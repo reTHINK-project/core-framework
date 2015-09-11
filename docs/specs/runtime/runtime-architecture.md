@@ -1,9 +1,12 @@
 ## Runtime Architecture
 
+The main Hyperty runtime architecture is presented in fig. @runtime_arch_0. It is comprised by different types of components that, for security reasons, are executed in isolated sandboxes. Thus, components downloaded from a specific Service Provider (e.g. Service Provider 1 from fig. @runtime_arch_0) are executed in sandboxes that are different from the sandboxes used to execute components downloaded from another service provider (e.g. Service Provider 2 from fig. @runtime_arch_0). In addition, for the same Service Provider, and also for security reasons, protocol stubs and Hyperties are isolated from each other and executed in different sandboxes. Communication between components running in different sandboxes are only possible through messages exchanged through a message bus functionality provided by the Core Sandbox. In general, in the Core Sandbox, all required functionalities to support the deployment, execution and maintenance of components downloaded from service providers, are executed. Core components are, ideally, natively part of the device runtime. However, to support existing platforms including Browsers and Mobile Operating Systems, to minimise the need to install new applications, the existing device native runtime functionalities (e.g. Javascript engine) are distinguished from the hyperty core runtime functionalities. In such situations, the Hyperty Core Runtime components are downloaded from the Hyperty Runtime Service Provider and are executed in an isolated core sandbox.
 
+![Figure @runtime_arch_0 High Level Runtime Architecture with trusted Hyperties](Runtime_Architecture_high_level_simple.png)
 
-![High Level Runtime Architecture with unstruted Hyperties](Runtime_Architecture_high_level.png)
+In figure @runtime_arch_0, the Application and the Hyperty Instances it  consumes, are downloaded from the same Service Provider, and they trust each other, i.e. they are executed in the same sandbox. In figure @runtime_arch_1, it is depicted the Runtime Architectyre where the Application and the Hyperty Instances it consumes, don't trust each other, for example, they are downloaded from different service providers. In such situation, Hyperties and the Application are isolated from each other and are executed in different sandboxes.
 
+![Figure @runtime_arch_1 High Level Runtime Architecture with untrusted Hyperties](Runtime_Architecture_high_level_simple.png)
 
 According to [ongoing discussions](https://github.com/reTHINK-project/core-framework/issues/41):
 * one sandbox for the ASP providing the Application
