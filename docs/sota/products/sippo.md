@@ -135,4 +135,4 @@ The WAPI, as the API that interchanges messages between the application and the 
 
 #### Requirements Analysis
 
-*missing*
+Sippo.js provides a high level abstraction layer which allow to build WebRTC applications in an easy and quick way. TBC 
