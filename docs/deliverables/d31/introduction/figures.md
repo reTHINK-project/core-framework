@@ -94,17 +94,9 @@
 
 (@runtime-m2m-intra-comm-4-pub-sub-3) Communication 4 pub sub 3
 
-
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
-(@runtime-h2h-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
-
 (@runtime-browser-implementation) Runtime browser implementation
 
 (@stand-runtime-crosswalk) Crosswalk Architecture
-
-(@stand-runtime-cordova-archi) Cordova functionnal schema
 
 (@stand-runtime-cordova-archi) Cordova functionnal schema
 

@@ -128,7 +128,7 @@ implemented by the Runtime MsgBUS Core Component
 * in addition, and since it is not possible to pass WebRTC Media and Data Streams handled inside the iFrame towards the Application that is outside the iFrame, a local loop peerconnection is established between the "reTHINK WebRTC" and the "HypertyAPIStub" running on Application side. See more details below.
 
 
-![](Runtime_Browser_Implementation.png)
+![Figure @runtime-browser-implementation: Runtime browser implementation](Runtime_Browser_Implementation.png)
 
 #### Runtime Architecture with IFrame
 

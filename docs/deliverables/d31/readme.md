@@ -4272,7 +4272,8 @@ the security limitations imposed by the browser.
     between the "reTHINK WebRTC" and the "HypertyAPIStub" running on
     Application side. See more details below.
 
-![](Runtime_Browser_Implementation.png)
+![Figure 51: Runtime browser
+implementation](Runtime_Browser_Implementation.png)
 
 #### Runtime Architecture with IFrame
 
@@ -4313,7 +4314,7 @@ By using the Crosswalk Project, an application developer can:
 
 #### Crosswalk Architecture
 
-![crosswalk](./crosswalk.png)
+![Figure 52: Crosswalk Architecture](./crosswalk.png)
 
 Crosswalk supports an efficient way of creating your own Web APIs as
 extensions by writing native Java code. This way the user can expose new
@@ -4331,7 +4332,7 @@ can be provided through the development of plugins
 
 #### Cordova functionnal schema
 
-![cordova](./cordova_archi.jpg)
+![Figure 53: Cordova functionnal schema](./cordova_archi.jpg)
 
 The application itself is implemented as a web page, by default a local
 file named index.html, that references whatever CSS, JavaScript, images,
@@ -4624,7 +4625,8 @@ Msg2 <-left-> Proto1 : communicate
 
 @enduml
 -->
-![Messaging Node Architecture](Messaging_Node_Architecture.png)
+![Figure 54: Messaging Node
+Architecture](Messaging_Node_Architecture.png)
 
 The Messaging Node is comprised by three main types of functionalities:
 
@@ -5452,18 +5454,12 @@ Specification of the Framework ”, 30-09-2015
 
 (50) Communication 4 pub sub 3
 
-(51) Alice invites Bob for a communication
+(51) Runtime browser implementation
 
-(52) Alice invites Bob for a communication
+(52) Crosswalk Architecture
 
-(53) Runtime browser implementation
+(53) Cordova functionnal schema
 
-(54) Crosswalk Architecture
-
-(55) Cordova functionnal schema
-
-(56) Cordova functionnal schema
-
-(57) Messaging Node Architecture
+(54) Messaging Node Architecture
 
 

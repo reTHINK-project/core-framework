@@ -17,7 +17,7 @@ By using the Crosswalk Project, an application developer can:
 - Crosswalk supports WebRTC applications so it makes possible to send and receive real-time flows from Android and iOS devices. 
 
 ####Crosswalk Architecture
-![crosswalk](./crosswalk.png)
+![Figure @stand-runtime-crosswalk: Crosswalk Architecture](./crosswalk.png)
 
 Crosswalk supports an efficient way of creating your own Web APIs as extensions by writing native Java code. This way the user can expose new platform and device APIs as they need them.
 New Api could be available in crosswalk before they get standardized at the W3C level.
@@ -27,7 +27,7 @@ New Api could be available in crosswalk before they get standardized at the W3C 
 Apache Cordova is a library used to create native mobile applications using Web technologies. The application is created using HTML, CSS and JavaScript and compiled for each specific platform using the platform native tools. Cordova provides a standard set of JavaScript APIs to access device features on all supported platforms. Additional features can be provided through the development of plugins
 
 ####Cordova functionnal schema
-![cordova](./cordova_archi.jpg)
+![Figure @stand-runtime-cordova-archi: Cordova functionnal schema](./cordova_archi.jpg)
 
 
 The application itself is implemented as a web page, by default a local file named index.html, that references whatever CSS, JavaScript, images, media files, or other resources are necessary for it to run. The app executes as a WebView within the native application wrapper, which you distribute to app stores.
