@@ -112,7 +112,9 @@ Agent <-right-> Auth : Verify\ncredentials
 ## General design considerations
 The Runtime implementation at browsers plays a central role in reTHINK project. Browsers are almost always present in devices aimed to be used by human beings so using its runtime to execute any application will ensure that it will be correctly interpreted and executed. However, browser's runtime has many security constraints the developer must deal with in order to get a functional web application. 
 
-The design of the browser runtime implementation for reTHINK project has been directed by security and functional requirements along as well as the security limitations imposed by the browser. 
+The design of the browser runtime implementation for reTHINK project has been directed by security and functional requirements along as well as the security limitations forced by the browser. Some of the design decissions are expected to be modified during the implementation phase, however all the proposed design has been tested with real code which implemented prototypes of the different parts.  
+
+## Design descrption.
 
 
 
