@@ -1,6 +1,6 @@
 #### H2H Intradomain Communication - create communication
 
-This MSC diagrams shows how Bob receives invitation from Bob. 
+This MSC diagrams shows how Bob receives invitation from Bob.
 
 <!--
 @startuml "h2h-intra-comm-2-bob-receives-invitation.png"
@@ -27,15 +27,21 @@ autonumber
 !include ../runtime_objects.plantuml
 
 
-Proto1@1B <- SP1 : postMsg(Create MSG) 
+Proto1@1B <- SP1 : postMsg(Create MSG)
 
-BUS@1B <- Proto1@1B : postMsg(Create MSG) 
+BUS@1B <- Proto1@1B : postMsg(Create MSG)
 
-Router1@1B <- BUS@1B : postMsg(Create MSG) 
+group assert Alice ID Token as defined in IDM/User Id Assertion diagram
+
+	BUS@1B -> BUS@1B : assert Alice's identity
+
+end group
+
+Router1@1B <- BUS@1B : postMsg(Create MSG)
 
 Router1@1B -> Router1@1B : Apply Local Bob policies
 
-Sync1@1B <- Router1@1B : postMsg(Create MSG) 
+Sync1@1B <- Router1@1B : postMsg(Create MSG)
 
 create CommObj@1B
 
@@ -49,13 +55,19 @@ SP1H@1B <- Sync1@1B : report new objects
 
 == Reply Object was successfuly Created by Bob ==
 
-Sync1@1B -> Router1@1B : postMsg(OK MSG) 
+Sync1@1B -> Router1@1B : postMsg(OK MSG)
 
-Router1@1B -> BUS@1B : postMsg(OK MSG) 
+Router1@1B -> BUS@1B : postMsg(OK MSG)
 
-BUS@1B -> Proto1@1B : postMsg(OK MSG) 
+group insert Bob's ID Token as defined in IDM/User Id Assertion diagram
 
-Proto1@1B -> SP1 : postMsg(OK MSG) 
+	BUS@1B -> BUS@1B : add ID Token to Message
+
+end group
+
+BUS@1B -> Proto1@1B : postMsg(OK MSG)
+
+Proto1@1B -> SP1 : postMsg(OK MSG)
 
 
 @enduml
@@ -65,13 +77,13 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 ![H2H Intradomain Communication : bob receives invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
 
-Steps 1 - 3 : Service Provider Back-end Messaginge Service routes the message to Bob's Message BUS, reaching Bob's PEP component
+(Steps 1 - 4) : Service Provider Back-end Messaginge Service routes the message to Bob's Message BUS, asserts Alice's identity and forwards the message to Bobs Router reaching Bob's PEP component
 
-Step 4 : Bob's PEP applies local policies if required including incoming communication request access control
+(Step 4) : Bob's PEP applies local policies if required including incoming communication request access control
 
-Steps 5 - 8 : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
+(Steps 5 - 8) : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
 
-Steps 9 - 12 : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody):
+(Steps 9 - 14) : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody). In (Step 12) Bobs ID-Token is added to the Message:
 
 ```
 "id" : "1"
