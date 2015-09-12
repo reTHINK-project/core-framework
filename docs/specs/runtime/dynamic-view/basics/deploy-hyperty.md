@@ -10,11 +10,11 @@ Step 1: As discussed in the Runtime Architecture,  and according to security pol
 
 ---
 
-** Hyperty and App deployed in the same sandbox **
+**Hyperty and App deployed in the same sandbox**
 
 Steps 2 - 5: In this situation, the App and the Hyperty are running in the same isolated sandbox which is different from the Hyperty Core Runtime Sandbox. This means the download and instantiation of the Hyperty has first to be performed by the Application. Then the App asks the Runtime UA to register and activate the new Hyperty in the runtime.
 
-** Hyperty and App deployed in different sandboxes **
+**Hyperty and App deployed in different sandboxes**
 
 Steps 6 - 10: In this situation, the App and the Hyperty must run in different isolated sandboxes. In this case the Hyperty sandbox is managed by the runtime UA which means the runtime UA can download and instante the Hyperty. The runtime UA should avoid the creation of new sandboxes in case there is already a sandbox for the same domain
 
@@ -30,7 +30,7 @@ Steps 14: the runtime UA checks in the Hyperty Descriptor if a Policy Enforcer i
 
 ---
 
-** Alt1 : Hyperty PEP deployment is required **
+**Hyperty PEP deployment is required**
 
 Steps 15 - 16 : the runtime UA downloads and instantiates the Hyperty PEP in a isolated sandbox.
 
