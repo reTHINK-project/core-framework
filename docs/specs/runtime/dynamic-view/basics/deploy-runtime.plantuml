@@ -4,9 +4,7 @@ autonumber
 
 !define SHOW_RuntimeA
 
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
+!define SHOW_AppAtRuntimeA
 
 !define SHOW_CoreRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
@@ -21,32 +19,32 @@ autonumber
 
 == Deploy Core Runtime ==
 
-group option : these steps won't be needed in case the Run User Agent is already running in the device
+group option : these steps won't be needed in case the Runtime User Agent is already running in the device
 
-Alice -> HTTP_UAC@A : download App with Core Runtime
-
-HTTP_UAC@A -> CoreRunProvider : download App with Core Runtime
+Alice -> CoreRunSP : download App with Core Runtime
 
 create RunUA@A
-JS@A -> RunUA@A : new
+App@A -> RunUA@A : new
 end group 
 
-'RunUA@A -> HTTP_UAC@A : download Core Runtime\n(runtime profile)
-
-'HTTP_UAC@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
-
-RunUA@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
-
-create BUS@A
-JS@A -> BUS@A : new
+RunUA@A -> CoreRunSP : get runtime/<id>/RuntimeDescriptor 
 
 create RunReg@A
-JS@A -> RunReg@A : new
+RunUA@A -> RunReg@A : new
 
 create RunID@A
-JS@A -> RunID@A : new
+RunUA@A -> RunID@A : new
 
 create RunAuth@A
-JS@A -> RunAuth@A : new
+RunUA@A -> RunAuth@A : new
+
+create BUS@A
+RunUA@A -> BUS@A : new
+
+RunUA@A -> CoreRunSP : post registry/hypertyRuntimeInstance/
+
+RunUA@A <- CoreRunSP : return hypertyRuntimeURL
+
+RunUA@A -> RunReg@A : init( hypertyRuntimeURL, remoteRegistryURL )
 
 @enduml
