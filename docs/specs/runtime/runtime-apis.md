@@ -37,6 +37,12 @@ accomodate interoperability in H2H and proto on the fly for newly discovered dev
 
 ### Runtime Registry Interface
 
+#### init
+
+To initialise the Runtime Registry with the RuntimeURL to be used for runtime component addresses allocation and the Registry domain back-end to be used to remotely register Runtime components.
+
+    init( HypertyRuntimeURL runtimeURL, DomainURL remoteRegistry )
+
 #### registerHyperty
 
 To register a new Hyperty in the runtime which returns the HypertyURL allocated to the new Hyperty.
@@ -73,11 +79,6 @@ To unregister a previously registered protocol stub
 
      unregisterPEP( HypertyRuntimeURL )
 
-#### registerRuntime
-
-To register the Runtime instance in the Core Runtime provider Registry service.
-
-    HypertyRuntimeURL registerRuntime( )
 
 #### onEvent
 
