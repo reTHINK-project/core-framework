@@ -73,6 +73,12 @@ To unregister a previously registered protocol stub
 
      unregisterPEP( HypertyRuntimeURL )
 
+#### registerRuntime
+
+To register the Runtime instance in the Core Runtime provider Registry service.
+
+    HypertyRuntimeURL registerRuntime( )
+
 #### onEvent
 
 To receive status events from components registered in the Registry
