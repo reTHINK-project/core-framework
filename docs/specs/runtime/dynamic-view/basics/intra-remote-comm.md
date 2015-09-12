@@ -46,5 +46,5 @@ SP1H@1B <- BUS@1B : postMessage( message )
 @enduml
 -->
 
-![Figure @runtime-intra-remote-comm: Intra-domain Remote Communication](intradomain-local-communication.png)
+![Figure @runtime-intra-remote-comm: Intra-domain Remote Communication](intradomain-remote-communication.png)
 
