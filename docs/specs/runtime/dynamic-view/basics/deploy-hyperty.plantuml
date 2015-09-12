@@ -1,0 +1,127 @@
+
+@startuml "deploy-hyperty.png"
+
+autonumber
+
+!define SHOW_RuntimeA
+
+!define SHOW_AppAtRuntimeA
+
+!define SHOW_CoreRuntimeA
+!define SHOW_MsgBUSAtRuntimeA
+!define SHOW_RegistryAtRuntimeA
+!define SHOW_AuthAtRuntimeA
+!define SHOW_CoreAgentAtRuntimeA
+
+!define SHOW_SP1SandboxAtRuntimeA
+!define SHOW_Protostub1AtRuntimeA
+!define SHOW_ServiceProvider1HypertyAtRuntimeA
+!define SHOW_ServiceProvider1RouterAtRuntimeA
+
+!define SHOW_SP1
+
+!include ../runtime_objects.plantuml
+
+group discover Hyperty: see Hyperty Discovery designed in the Id Management section
+
+	... ...
+
+end group
+
+App@A -> App@A : App and Hyperty\n executes in the\nsame sandbox?
+
+note right
+	to be compliant with W3C CORS (http://www.w3.org/TR/cors/)
+end note
+
+alt Yes, App and Hyperty executes in the same sandbox
+
+	App@A -> SP1 : get\nHypertyDescriptorURL
+
+	App@A -> SP1 : get\nHypertySouceCodeURL
+
+	create SP1H@A
+	App@A -> SP1H@A : new
+
+	note right
+		 In this case, it is the App
+		  that instantiates the Hyperty,
+		   since the RuntimeUA is not able to do it
+	end note
+
+	RunUA@A <- App@A : registerHyperty\n(HypertyDescriptorURL\n hypertyInstance )
+
+else No, App and Hyperty are executed in different sandboxes
+
+	RunUA@A <- App@A : loadHyperty\n( HypertyDescriptorURL )
+
+	RunUA@A -> SP1 : get\nHypertyDescriptorURL
+
+	note right
+		according to the runtime type
+		(eg web worker in browsers) 
+		the Hyperty download may have 
+		to be downloaded inside the sandbox
+	end note
+
+	RunUA@A -> SP1 : get\nHypertySourceCodeURL
+
+	RunUA@A -> RunReg@A : getHypertySandbox\n(HypertyDomain)
+
+	note right
+		If there is already a sandbox for the Hyperty domain
+		the Hyperty is instantiated there.
+		Otherwise a new sandbox has to be created.
+		Sandbox management procedures are not shown here
+		since it will depend on the runtime type.
+	end note
+
+	create SP1H@A
+	RunUA@A -> SP1H@A : new
+
+
+end group
+
+
+group register Hyperty (designed at register-hyperty.md)          
+
+RunUA@A -> RunReg@A : registerHyperty(\npostMessage,\nHypertyDescriptor )
+
+...
+
+RunUA@A <- RunReg@A : hypertyURL
+
+end group
+
+newpage
+
+RunUA@A -> RunAuth@A : addPolicies( hypertyURL, policies )
+
+RunUA@A -> RunUA@A : HypertyDescriptor.policies?
+
+alt There is a Hyperty policy enforcer to be deployed
+
+	RunUA@A -> SP1 : get\nPolicyEnforcerSourceCodeURL
+
+	create Router1@A
+	RunUA@A -> Router1@A : new
+
+	RunUA@A -> RunReg@A : registerPEP( \npepSandbox.postMessage \n, hyperty)
+
+	RunUA@A <- RunReg@A : pep runtime URL
+
+	BUS@A <- RunUA@A : addPEP(\n pepListener, \npepURL, \ninterceptedHypertyURL)
+
+	Router1@A <- RunUA@A : init(\n pepRuntimeURL,\n bus.postMessage\n, hypertyURL)
+
+end
+
+
+	BUS@A <- RunUA@A : addListener(\n hypertyListener, \nhypertyURL)
+
+	RunUA@A -> SP1H@A : init(\n hypertyURL,\n bus.postMessage\n, configuration)
+
+
+
+
+@enduml

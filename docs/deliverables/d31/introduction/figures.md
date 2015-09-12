@@ -48,7 +48,11 @@
 
 (@runtime-deploy-protostub) Deploy Protocol Stub
 
-(@runtime-deploy-hyperty) Deploy Hyperty
+(@runtime-deploy-hyperty1) Deploy Hyperty (part1)
+
+(@runtime-deploy-hyperty2) Deploy Hyperty (part2)
+
+(@runtime-register-hyperty) Register Hyperty
 
 (@runtime-bus-msg-routing) Message Routing in Message BUS
 

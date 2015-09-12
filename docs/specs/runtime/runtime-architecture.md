@@ -58,6 +58,11 @@ The Core Runtime components are depicted in fig. @runtime_arch_core.
 
 ![Figure @runtime_arch_core Runtime Core Architecture](Core_Runtime.png)
 
+Runtime Core components should be as much as possible independent on the Runtime type. 
+They should be deployed once and executed at the background. The next time the runtime is started there should be no need to download the core runtime again unless there is a new version. Runtime core components instances should be shared by different Apps and Hyperty instances. 
+
+The Core Runtime is provided by a specific Service Provider (the Core Runtime Service Provider) that handles a Catalogue service to with Runtime Descriptors and a Registry service to handle the registration of Runtime instances.
+
 #### Message BUS
 
 Supports local message communication in a loosely coupled manner between Service Provider sandboxes including Hyperty Instances, Protocol Stubs and Policy Enforcers. Messages are routed to listeners previsouly added by the Runtime User Agent, to valid Runtime URL addresses handled by the Runtime Registry functionality.

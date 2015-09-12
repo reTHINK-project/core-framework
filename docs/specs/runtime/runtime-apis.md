@@ -248,6 +248,36 @@ Validates an Identity Assertion
 
     validateAssertion( assertion, origin )
 
+### Core Policy Decision Point (PDP) Interface
+
+#### addPolicies
+
+To add policies to be enforced for a certain deployed Hyperty Instance.
+
+    addPolicies( URL.HypertyURL hyperty, HypertyPolicyList policies)
+
+#### removePolicies
+
+To remove previously added policies for a certain deployed Hyperty Instance.
+
+    removePolicies( URL.HypertyURL hyperty)
+
+#### authorise
+
+Authorisation request to send a Message. Returns PolicyAction in the AuthorisationResponse, to be performed in case authorisation is not granted.
+
+    AuthorisationResponse authorise( Message.Message message)
+
+### Core Policy Enforcement Point (PEP) Interface
+
+#### enforce
+
+Enforcement request to perform a PolicyAction in a Message. Returns the Message resulted from the action performed.
+
+    EnforceResponse enforce( PolicyAction action, Message.Message message)
+
+
+
 ### QoS User Agent Interface
 
 #### getCurrentConnectivityStatistics
