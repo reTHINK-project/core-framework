@@ -39,7 +39,7 @@ accomodate interoperability in H2H and proto on the fly for newly discovered dev
 
 #### init
 
-To initialise the Runtime Registry with the RuntimeURL to be used for runtime component addresses allocation and the Registry domain back-end to be used to remotely register Runtime components.
+To initialise the Runtime Registry with the RuntimeURL that will be the basis to derive the internal runtime addresses when allocating addresses to internal runtime component. In addition, the Registry domain back-end to be used to remotely register Runtime components, is also passed as input parameter.
 
     init( HypertyRuntimeURL runtimeURL, DomainURL remoteRegistry )
 
