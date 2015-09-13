@@ -107,3 +107,22 @@
 (@stand-runtime-cordova-archi) Cordova functionnal schema
 
 (@msg-node-architecture-messaging-node-architecture) Messaging Node Architecture
+
+(@sota-webrtc-org-arch) WebRTC.org architecture scheme
+
+(@sota-openwebrtc-arch) OpenWebRTC Architecture
+
+(@sota-v8-arch) V8 Architecture
+
+(@sota-v8-contexts) V8 Multiple Contexts
+
+(@sota-docker-arch) Docker Architecture
+
+(@sota.fxos-arch) Firefox OS Architecture
+
+(@sota-jitsi-arch) Jitsi Videobridge Architecture
+
+(@sota-kurento-arch) Kurento Architecture
+
+(@sota-janus-arch) Janus Gateway architecture
+

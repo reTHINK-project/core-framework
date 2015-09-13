@@ -1,29 +1,17 @@
-## Jitsi Videobridge Evaluation (Meet application)
-Jitsi Videobridge is a WebRTC compatible Selective Forwarding Unit (SFU) that allows for multiuser video communication.
+## Jitsi Videobridge 
+[Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) [26] is a WebRTC compatible Selective Forwarding Unit (SFU) that allows for multiuser video communication.
 
-### Features
-Standalone.
-RTP Relay.
-Supports audio mixing.
-Can be installed as Openfire plugin.
-Call encryption with DTLS/SRTP.
-Support for ICE
+Jitsi Video bridge supports RTP Relay, audio mixing, Call encryption with DTLS/SRTP and ICE. 
 
-### Security
-Encrypted password storage 
-Password protection with a master password 
-Encrypted Instant Messaging with Off-the-Record Messaging (OTRv4) 
-Chat authentication with the Socialist Millionaire Protocol over OTR 
-Call encryption with SRTP and ZRTP for XMPP and SIP 
-Call encryption with SRTP and SDES for XMPP and SIP 
-DNSSEC support 
-TLS support and certificate-based client authentication for SIP and XMPP 
+### Architecture
 
-### Codecs
-Audio: Opus, SILK, Speex, G.722, PCMU/PCMA (G.711), iLBC, GSM, G.729 Annex C (requires compilation and licenses) 
-Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
+JItsi Video bridge is a [XMPP component](http://xmpp.org/) [27] and can be integrated with any compliant XMPP Server like eJabberd or Openfire. In addition there is another XMPP component, the Jicofo, that uses an XMPP extension protocol called COLIBRI (COnferences with LIghtweight BRIdging) to provide conferencing focus functionalities including channels allocation and add / remove participants from each call. Finally, SIP interoperability is provided by a third XMPP component called Jigasi. There is an OpenSource WebRTC JavaScript application, called Jitsi Meet, that uses Jitsi Videobridge to provide high quality, scalable video conferences.
 
-### Deploy
+![Figure @sota-jitsi-arch Jitsi Videobridge Architecture](jitsi_arch.png)
+
+
+### Installation Procedures
+
 **Required software**
 * JVM (select the latest version)
 * XMPP Server (openfire, prosody.im, Tigase ...)
@@ -58,8 +46,6 @@ Video: H.264, H.263-1998 / H.263+, (VP8 coming soon…)
 * You should see an entry in XMPP components like:
 ![image](openfire_video_jicofo.png)
 
-Conference focus is mandatory component of Jitsi Meet conferencing system next to the videobridge. It is responsible for managing media sessions between each of the participants and the videobridge. It will be creating **Jingle session** between Jitsi videobridge and the participant.
-Although the session in terms of XMPP is between focus user and participant the media will flow between participant and the videobridge. That's because focus user will allocate **Colibri channels** on the bridge and use them as it's own Jingle transport.
 
 **NGINX**
 * Download and install from http://nginx.org/en/download.html
@@ -113,19 +99,9 @@ var config = {
 };
 ```
 
-### Final Deploy Architecture
-![image](jitsi_arch.png)
 
-Run NGINX and access the Meet App at http://shumybridge and it will create a random room for anyone to join.
 
-### Runtime Requirements Analysis
-The overall developer documentation available is oriented for the client Jitsi Application
-
-**SIP protocol** is available. It was tested with Jitsi client application, however documentation for setup of this in the videobridge is scarce. In theory SIP integration is possible.
-
-**CUSAX WITH JITSI**, the CUSAX specification (RFC7081) describes suggested practices for the Combined Use of SIP And XMPP (hence the name). Such practices aim to provide a single fully featured real-time communication service by using each of the two protocols for what its best suited: SIP for audio/video calls. XMPP for everything else (e.g. IM, presence, server stored contact lists, avatars, file transfer, etc.)
-
-### Using Jitsi with jQuery + Strophe + Jingle
+### Evalusation of Jitsi Meet Application
 Jitsi Meet uses strophe.js internally, but it's clustered with UI dependencies and other non wanted stuff.
 **Strophe.js** is an XMPP library for JavaScript. Its primary purpose is to enable web-based, real-time XMPP applications that run in any browser. There are Jingle plugins for strophe.js.
 You need to include the following files in your application from projects [jingle](https://github.com/estos/strophe.jingle) and [strophe](https://github.com/strophe/strophejs):

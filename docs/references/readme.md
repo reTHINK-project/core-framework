@@ -40,3 +40,36 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification of the Framework
 ”, 30-09-2015
+
+[16] - http://w3c.github.io/webrtc-pc/
+
+[17] - http://w3c.github.io/mediacapture-main/
+
+[18] - http://www.webrtc.org/
+
+[19] - http://www.openwebrtc.org/
+
+[20] - http://gstreamer.freedesktop.org/
+
+[21] - https://developers.google.com/v8/
+
+[22] - https://nodejs.org/en/
+
+[23] - https://www.docker.com/
+
+[24] - https://www.mozilla.org/en-US/firefox/os/2.0/
+
+[25] - https://wiki.mozilla.org/WebAPI - Firefox Web-API status. (Last Update March 2015)
+
+[26] - https://jitsi.org/Projects/JitsiVideobridge
+
+[27] - http://xmpp.org/
+
+[28] - http://www.kurento.org/
+
+[29] - https://janus.conf.meetecho.com/
+
+[30] - [Alessandro Amirante, 	Tobia Castaldi, 	Lorenzo Miniero, 	Simon Pietro Romano. 2015. Performance analysis of the Janus WebRTC gateway. In Proceedings of the 1st Workshop on All-Web Real-Time Systems]( http://dl.acm.org/citation.cfm?id=2749223)
+
+[31] - [Janus: a general purpose WebRTC gateway](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)
+
