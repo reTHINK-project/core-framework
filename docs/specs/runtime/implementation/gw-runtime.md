@@ -40,6 +40,6 @@ output is an object with two properties: result and console. The result property
 
 #### Other evaluated runtimes
 
-Another platform that was evaluated was IotJs (http://samsung.github.io/iotjs/). It currently supports Raspberry Pie2 and STM32F4-Discovery + BB as hardware platforms and Linux and Nuttx(http://nuttx.org/) Real-Time Operating System using C++ to build the runtime Javascript Environment. Although supported by an important device manufacturer, it is still in its infancy and cannot be used in the development of reThink in which fast-prototyping of new paradigms is intended. 
+Another platform that was evaluated was IotJs (http://samsung.github.io/iotjs/). It currently supports Raspberry Pie2 and STM32F4-Discovery + BB as hardware platforms and Linux and Nuttx(http://nuttx.org/) Real-Time Operating System using C++ to build the runtime Javascript Environment. Although supported by an important device manufacturer, it is still in its infancy and cannot be used in the development of reThink in which fast-prototyping of new paradigms is intended. During the development allignment with the iotJs is considered and tests of the components to validate the support of ioJs is envisioned.
 
 
