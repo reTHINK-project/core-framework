@@ -24,12 +24,12 @@ For the Runtime UA a module implementing the protocol LWM2M is already available
 ### Code Snippets 
 
 For creating several sandboxes the following code can be used:
-'''
+```
 var s = new Sandbox()
 s.run( '1 + 1 + " apples"', function( output ) {
   // output.result == "2 apples"
 })
-'''
+```
 with the basic syntax: sandbox_instance.run( code, hollaback ), where
 
 code is the string of Javascript to be executed.
