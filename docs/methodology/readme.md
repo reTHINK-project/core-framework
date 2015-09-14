@@ -30,10 +30,12 @@ Was been suggested have an repository for each piece of software and inside it, 
 
 ```
 core
-browser
-node
-msg-node
-node
+runtime-browser
+runtime-node
+vertx-node
+nodejs-node
+matrix-node
+hyperty-framework
 ```
 
 **Advantages:**
