@@ -1,4 +1,4 @@
-## WONDER Messages Format
+### WONDER Messages Format
 
 The WONDER Message class provides good input for the design of Hyperty Messages. Wonder Message is a JSON structure and it is comprised by a Header and a Body. The following Message Header attributes are defined:
 

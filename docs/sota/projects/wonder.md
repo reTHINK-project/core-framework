@@ -2,11 +2,11 @@
 
 ### Overview
 
-The main motivation of the OpenLab WONDER experimentation project was to experiment and evaluate some of the P2252 Eurescom Study recommendations.
+The main motivation of the [OpenLab WONDER experimentation project](http://hypercomm.github.io/wonder/) [32] was to experiment and evaluate some of the P2252 Eurescom Study recommendations.
 WONDER evaluated whether to use IMS to deliver services to WebRTC endpoints or to use a more disruptive pure Web based approach to deliver services to WebRTC endpoints.
 
 For the second option WONDER has enlightened some paths to be followed in a post-IMS era dominated by Web technologies and large eclectic cooperative eco-systems. 
-The novel Signalling On-the-fly (SigOfly) concept was conceived and successfully demonstrated to address the lack of a standard WebRTC signalling protocol. 
+The novel [Signalling On-the-fly (SigOfly)](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7073799&filter%3DAND(p_IS_Number%3A7073795)) concept was conceived and successfully demonstrated to address the lack of a standard WebRTC signalling protocol. 
 The SigOfly concept enables seamless interoperability between different WebRTC service domains avoiding NNI interfaces by using peer side APIs and restful push notification services. 
 
 WONDER experimentation involved Portugal Telecom and Deutsche Telekom. 
@@ -31,7 +31,7 @@ Before the SigOfly concept is described in detail, some terms require a definiti
 **Conversation Hosting Messaging Server:** is the Messaging Server that is used to support the exchange of all signalling messages among peers belonging to different domains.
 The Hosting peer uses the Domain Channel to exchange signalling messages, while other peers use Transient Channels that connect to the Hosting Messaging Server.
 
-![signalling on-the-fly concept](sigofly.png)
+![Figure @sota-wonder-sigofly signalling on-the-fly concept](sigofly.png)
 
 The classic Alice and Bob example is used to explain the SigOfly concept. We assume that Alice and Bob are registered in different Service Provider domains having each one a Domain Channel established with their own Messaging Server (see Fig. below). In case Alice wants to talk to Bob by using Bob’s WebRTC identity e.g. bob@domain.com, the following steps will be performed:
 
@@ -54,13 +54,13 @@ The SigOfly concept is also applicable in use cases where conversations are host
 
 In addition, the SigOfly principle is also applied to address Data Channel Services Interoperability, to conceive another novel concept called “Data Codec On-the-fly”. the “Data Codec On-the-fly” concept ensure all peers are using the same protocol on top of the Data Channel. A Data Codec is a JavaScript library that implements a data communication processing algorithm to code and send data to the Data Channel and to receive and decode data from the Data Channel. As with Messaging Stubs in the SigOfly concept, Data Codecs are downloaded and instantiated by peers according to URLs identified in Conversation setup or update signalling messages
 
-Further information about SigOfly and Data Codec On-the-fly is provided [here](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
+Further information about SigOfly and Data Codec On-the-fly is provided in [34](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
 
 ### WONDER Library
 
 A JavaScript framework, the WONDER lib, was designed and implemented to validate the SigOfly and Data Codec On-the-fly concepts. 
 
-![Wonder Library Main Classes](wonderlib.png)
+![Figure @sota-wonder-lib Wonder Library Main Classes](wonderlib.png)
 
 Main WONDER library classes are:
 
@@ -73,7 +73,7 @@ This also includes the service endpoint to retrieve the protocol stack (Messagin
 *	The Data Codec, which  is used by Resources that are shared on top of the Data Channel, like file sharing and Textual Chat, to decode and encode the data in a consistent way by all the peers. The Data Codec may also be downloaded on-the-fly by the peers.
 *	The Message, which is used to exchange all data needed to setup, update and close media and data connection between peers via the Messaging Server. It may also be used for other purposes e.g. presence information management. Each message is comprised by a Header and a Body. 
 
-The API documentation is [here](https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html) and the source code [here](https://github.com/hypercomm/wonder/tree/master/src/libs).
+The [API documentation](https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html) and the [source code](https://github.com/hypercomm/wonder/tree/master/src/libs) were published in a public github repository [35][36] .
 
 ### Input to reTHINK
 
@@ -109,7 +109,7 @@ disconnect = function() {
 };
 ```
 
-Check WONDER MessagingStub API documentation [here](https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html).
+Check WONDER MessagingStub API documentation in [37](https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html).
 
 #### Messages Format
 
