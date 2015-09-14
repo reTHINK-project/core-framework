@@ -73,3 +73,14 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [31] - [Janus: a general purpose WebRTC gateway](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)
 
+[32] - P. Chainho, et Al, FP7 Open Lab Deliverable D4.15, WONDER Assessment Report, April 2014
+
+[33] - Paulo Chainho, Kay Haensge, Steffen Druesedow, Michael Maruscheke, “Signalling-On-the-fly: SigOfly, WebRTC Interoperability testbed in contradictive Deployement Scenarios”, Proc. 18th Int’l Conf. Intelligence in Next Generation Networks (ICIN), 2015.
+
+[34] - https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly
+
+[35] - https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html
+
+[36] - https://github.com/hypercomm/wonder/tree/master/src/libs
+
+[37] - https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
