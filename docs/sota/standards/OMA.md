@@ -7,7 +7,9 @@ The Open Mobile Alliance (OMA) is a Mobile Operator driven industry forum for th
 
 The OMA API program provides standardized interfaces to the service infrastructure residing within communication networks and on devices. Focused primarily between the service access layer and generic network capabilities, OMA API specifications allow operators and other service providers to expose device capabilities and network resources in an open and programmable way—to any developer community independent of the development platform.
 
-![image](OMNA-network.png)
+
+![Figure @sota-standards-omna: OMNA Network](OMNA-network.png)
+
 
 OMA APIs exposes the network assets that developers need—no matter what protocols, platforms or other APIs they use.
 The Core network assets must be made available in order to deploy the wide variety of new applications and services that enter the market every day. These APIs are the tool that Operator offers to developer to make its services accessible to massive markets in a standard way.  The OMA set of APIs increases the portability of applications and services in order to reach the subscriber base of operators and service providers that deploy OMA APIs.

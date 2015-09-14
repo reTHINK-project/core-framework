@@ -45,7 +45,8 @@ sota\qos_annex.md ^
 sota\service-framework_annex.md ^
 ..\..\sota\web-frameworks\angular-js.md ^
 ..\..\sota\web-frameworks\backbone-js.md ^
-..\..\sota\web-frameworks\stapesjs.md
+..\..\sota\web-frameworks\stapesjs.md ^
+introduction\figures.md
 
 
 pandoc --filter pandoc-citeproc -f markdown -t docx --data-dir=. annex.md -o D3.1-annex.docx

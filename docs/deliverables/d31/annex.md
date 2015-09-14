@@ -111,7 +111,7 @@ providers to expose device capabilities and network resources in an open
 and programmable way—to any developer community independent of the
 development platform.
 
-![image](OMNA-network.png)
+![Figure 66: OMNA Network](OMNA-network.png)
 
 OMA APIs exposes the network assets that developers need—no matter what
 protocols, platforms or other APIs they use. The Core network assets
@@ -1142,8 +1142,7 @@ belonging to different domains. The Hosting peer uses the Domain Channel
 to exchange signalling messages, while other peers use Transient
 Channels that connect to the Hosting Messaging Server.
 
-![Figure @sota-wonder-sigofly signalling on-the-fly
-concept](sigofly.png)
+![Figure 64 signalling on-the-fly concept](sigofly.png)
 
 The classic Alice and Bob example is used to explain the SigOfly
 concept. We assume that Alice and Bob are registered in different
@@ -1204,7 +1203,7 @@ in [34](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
 A JavaScript framework, the WONDER lib, was designed and implemented to
 validate the SigOfly and Data Codec On-the-fly concepts.
 
-![Figure @sota-wonder-lib Wonder Library Main Classes](wonderlib.png)
+![Figure 65 Wonder Library Main Classes](wonderlib.png)
 
 Main WONDER library classes are:
 
@@ -1774,8 +1773,7 @@ signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
 
-![Figure @sota-webrtc-org-arch WebRTC.org architecture
-scheme](webrtc-org-arch.png)
+![Figure 56 WebRTC.org architecture scheme](webrtc-org-arch.png)
 
 ### Software stack organization
 
@@ -1849,7 +1847,7 @@ OpenWebRTC is compatible with most video communication services.
 The OpenWebRTC project is free and Open Source with a permissive BSD-2
 license.
 
-![Figure @sota-openwebrtc-arch OpenWebRTC
+![Figure 57 OpenWebRTC
 Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer
@@ -1890,7 +1888,7 @@ inline caching, among many others
 
 ### Architecture
 
-![Figure @sota-v8-arch V8
+![Figure 58 V8
 Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch.png)
 
 **Handles & Garbage Collection**
@@ -1912,7 +1910,7 @@ scope to be a special one (EscapableHandleScope ).
 
 **Contexts**
 
-![Figure @sota-v8-contexts V8 Multiple
+![Figure 59 V8 Multiple
 Contexts](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch2.png)
 
 Contexts are different execution environments that allow separate even
@@ -2247,8 +2245,7 @@ component called Jigasi. There is an OpenSource WebRTC JavaScript
 application, called Jitsi Meet, that uses Jitsi Videobridge to provide
 high quality, scalable video conferences.
 
-![Figure @sota-jitsi-arch Jitsi Videobridge
-Architecture](jitsi_arch.png)
+![Figure 61 Jitsi Videobridge Architecture](jitsi_arch.png)
 
 ### Installation Procedures
 
@@ -2535,7 +2532,7 @@ longer needed.
 
 ### Architecture
 
-![Figure @sota-docker-arch Docker
+![Figure 60 Docker
 Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/docker-arch.png)
 
 Docker uses a client-server architecture. The Docker client talks to the
@@ -2918,7 +2915,7 @@ some useful examples. There is also a Plugin API which offers potential
 plugin developers an overview of how these plugins are implemented and
 also instructions of how to develop a new one.
 
-![Figure @sota-janus-arch Janus Gateway architecture](janus-arch.png)
+![Figure 63 Janus Gateway architecture](janus-arch.png)
 
 ### Janus Gateway and runtime requirements
 
@@ -3003,8 +3000,7 @@ It can be used to handle different type of communications applications :
 Kurento is mainly composed of the two elements : - Kurento media server
 - Kurento Application
 
-![Figure @sota-kurento-arch Kurento
-Architecture](Architecture-Kurento.png)
+![Figure 62 Kurento Architecture](Architecture-Kurento.png)
 
 Application developers can use Kurento Clients or Kurento API directly
 for creating their multimedia enabled applications. Developpers can use
@@ -6220,4 +6216,139 @@ Suitability for ReTHINK project
     StapesJS could be a right choice. Additionally its small size will
     reduce the overhead in the applications which will help to reduce
     the load time.
+
+(1) Chromium sandbox scheme
+
+(2) The architecture of a Google Chrome extension
+
+(3) Scheme of a persistent XSS attack
+
+(4) Scheme of a non-persistent XSS attack
+
+(5) Java Smart Card scheme
+
+(6) CoSE architecture
+
+(7) Service framework middle layer
+
+(8) Sippo WAC reference architecture
+
+(9) Sippo interfaces and APIs
+
+(10) Sippo.js abstraction layer
+
+(11) Sippo services and backends
+
+(12) Sippo WebRTC applications stack
+
+(13) Runtime High Level Architecture
+
+(14) Runtime High Level Architecture with Unstrusted Hyperties
+
+(15) Runtime High Level Architecture with Policy Enforcer
+
+(16) Reporter-Observer Communication Pattern
+
+(17) Core Runtime Architecture
+
+(18) Vulnerability matrix for a dummy platform
+
+(19) Stack
+
+(20) Browser
+
+(21) Security Browser
+
+(22) Application platform
+
+(23) Security Application platform
+
+(24) Deploy Core Runtime Components in the Native Runtime
+
+(25) Deploy Protocol Stub
+
+(26) Deploy Hyperty (part1)
+
+(27) Deploy Hyperty (part2)
+
+(28) Register Hyperty
+
+(29) Message Routing in Message BUS
+
+(30) Intra-domain Local Communication
+
+(31) Intra-domain Remote Communication
+
+(32) Inter-domain Local Communication
+
+(33) Inter-domain Remote Communication
+
+(34) User registration
+
+(35) Prepare Discovery
+
+(36) Use Discovery
+
+(37) Domain Login
+
+(38) Associate User Identity to Hyperty Instance
+
+(39) User identity assertion sequence diagram
+
+(40) Alice invites Bob for a communication
+
+(41) Bob receives invitation
+
+(42) Aknowledged that Bob received the invitation
+
+(43) notification update
+
+(44) Bob gatheres WebRTC resources
+
+(45) Synchronization of Alice's Data object
+
+(46) Runtime Main Procedures for M2M Communication
+
+(47) M2M Device Bootstrap
+
+(48) Context Discovery in M2M Intradomain Communication
+
+(49) Communication 4 pub sub 1
+
+(50) Communication 4 pub sub 2
+
+(51) Communication 4 pub sub 3
+
+(52) Runtime browser implementation
+
+(53) Crosswalk Architecture
+
+(54) Cordova functionnal schema
+
+(55) Messaging Node Architecture
+
+(56) WebRTC.org architecture scheme
+
+(57) OpenWebRTC Architecture
+
+(58) V8 Architecture
+
+(59) V8 Multiple Contexts
+
+(60) Docker Architecture
+
+(@sota.fxos-arch) Firefox OS Architecture
+
+(61) Jitsi Videobridge Architecture
+
+(62) Kurento Architecture
+
+(63) Janus Gateway architecture
+
+(64) signalling on-the-fly concept
+
+(65) Wonder Library Main Classes
+
+(66) OMNA Network
+
 
