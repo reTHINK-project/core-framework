@@ -4,7 +4,7 @@
 
 #### Suggestion 1
 
-Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)
+~~Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)~~
 
 ```
 core-framework/src/runtime/core/
@@ -12,19 +12,21 @@ core-framework/src/runtime/browser/
 core-framework/src/runtime/node/
 ```
 
-**Advantages:**
+~~**Advantages:**~~
 
-- all centralized inside same repository;
+- ~~all centralized inside same repository;~~
 
-**Disadvantages:**
+~~**Disadvantages:**~~
 
-- mix of documentation with source code;
-- we need always commit all the repository;
-- create distribution files is more complex;
+- ~~mix of documentation with source code;~~
+- ~~we need always commit all the repository;~~
+- ~~create distribution files is more complex;~~
 
 ---
 
 #### Suggestion 2:
+
+> **After our conference call on 14 of September 2015 we choose this option;**
 
 Was been suggested have an repository for each piece of software and inside it, the source code, we only has to have in mind, is the repository name has to be clearly understandable; 
 
@@ -43,25 +45,32 @@ hyperty-framework
 - decentralized code
 - it's easily commit and create branches for distribution
 - it's easily increment the version
+- each piece can have it's own version and issues to fix
+- each piece can be integrated with continuous implementation (jenkins)
+- separate licenses, code and documentation
+- source code can be public
+- all project documentation it is private
+- all internal discussion is private;
 
 **Disadvantages:**
 
 - private repository have limits;
+- integration with dependecies of otheres blocks of code
 
 ---
 
 #### Suggestion 3:
 
-Was been suggested, also, each developer make a fork from the main repository and develop on the top of his fork;
+~~Was been suggested, also, each developer make a fork from the main repository and develop on the top of his fork;~~
 
-**Advantages:**
+~~**Advantages:**~~
 
-- all the commits will be reviewed
-- the code merge is always controlled
+- ~~all the commits will be reviewed~~
+- ~~the code merge is always controlled~~
 
-**Disadvantages:**
+~~**Disadvantages:**~~
 
-- the code is always public
+- ~~the code is always public~~
 
 ---
 
@@ -101,7 +110,7 @@ Was been suggested, also, each developer make a fork from the main repository an
 
 ##### <a id="package"></a>package.json
 this file will hold all dependecies when we use option `--save` or `--save-dev` on `npm install <package name>`
-```
+```json
 {
   "name": "core",
   "version": "0.1.0",
@@ -135,7 +144,7 @@ npm*.log.*
 
 ##### <a id="karma"></a>karma.conf.js
 inside this file, you can add other folders
-```
+```javascript
 // Karma configuration
 // Generated on Tue Aug 25 2015 10:41:43 GMT+0100 (WEST)
 
