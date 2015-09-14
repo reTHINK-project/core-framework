@@ -1,4 +1,4 @@
-### Runtime implementation in Constrained Devices
+### Runtime implementation M2M standalone application
 
 NodeJs is considered one of the options for implementing the Runtime API for platforms like Raspberry PI and [Beagle Board](http://beagleboard.org/bone):
 
@@ -11,6 +11,7 @@ For installing NodeJs on Raspberry Pi, 2 steps are required: download the debian
 
 For installing NodeJs on BeagleBoard (http://beagleboard.org/Support/BoneScript) one can compile it from scratch (http://www.armhf.com/node-js-for-the-beaglebone-black/) or install it in a similar way as for Raspberry using one of the versions from the download page: http://www.armhf.com/download/
 
+An important package based on NodeJs is Cylon (http://cylonjs.com/) supporting 36 hardware platforms and providing APIs to interact with sensors or actuators of the platforms. 
 
 ### Design
 
@@ -18,16 +19,27 @@ The goal of the design is to use stable NodeJs open-source or business friendly 
 
 One of the key functional requirements is security of the Runtime. Thus multiple sandboxes to separate code is present in the Runtime architecture as a security by design feature. There are 3 types of sandboxes to be used: Core Sandbox, Service Provider Sandbox and Hyperty Sandbox (http://gf3.github.io/sandbox/).
 
-The message component of the Runtime implementation constitues one of the main components. There are many message buses implemented as NodeJs modules. The one selected for evaluation is Capriza, https://github.com/capriza/node-busmq, having as key functionality: scalability and guaranteed order of messages.
+For the Runtime UA a module implementing the protocol LWM2M is already available for NodeJs (https://github.com/telefonicaid/lwm2m-node-lib). Special care has to be taken into consideration for having one implementation of the Runtime UA that can also run on the other platforms: browser and H-2-E (Human to Everything) standalone.
 
-For the Runtime UA a module implementing the protocol LWM2M is already available for NodeJs (https://github.com/telefonicaid/lwm2m-node-lib).
-
-### Code Snippets (maybe they should be directly added as code on the github)
+### Code Snippets 
 
 For creating several sandboxes the following code can be used:
+```
+var s = new Sandbox()
+s.run( '1 + 1 + " apples"', function( output ) {
+  // output.result == "2 apples"
+})
+```
+with the basic syntax: sandbox_instance.run( code, hollaback ), where
 
-#### Also potentially relevant:
+code is the string of Javascript to be executed.
 
-http://samsung.github.io/iotjs/
+hollaback is a function, and it's called with a single argument, output.
 
-also see:  https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/implementation/standalone-runtime.md
+output is an object with two properties: result and console. The result property is an inspected string of the return value of the code. The console property is an array of all console output. 
+
+#### Other evaluated runtimes
+
+Another platform that was evaluated was IotJs (http://samsung.github.io/iotjs/). It currently supports Raspberry Pie2 and STM32F4-Discovery + BB as hardware platforms and Linux and Nuttx(http://nuttx.org/) Real-Time Operating System using C++ to build the runtime Javascript Environment. Although supported by an important device manufacturer, it is still in its infancy and cannot be used in the development of reThink in which fast-prototyping of new paradigms is intended. During the development allignment with the iotJs is considered and tests of the components to validate the support of ioJs is envisioned.
+
+

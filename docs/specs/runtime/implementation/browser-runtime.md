@@ -139,13 +139,14 @@ The same Service Worker may also be used to manage the cache of Hyperties and pr
 The Hyperty API to be consumed by the Application can not be directly used by the App (because it is inside a Web Worker) there will a kind of RPC communication through messages exchanged between the HypertyAPIStub component running on the App side and an API Skeleton running on Hyperty side. It should be analysed whether communication between these components will be supported by the Message BUS or by something else.
 
 
-### Runtime MsgBUS Core Component.
-The Message Bus Core component which will be in charge of listening to messagies comming from the different elements. For example, it will capture the events coming from the service workers which implement the hyperties and the protocol stubs by instantiating and event listener: *window.addEventListener('message', handleSizingResponse, false)*. 
+### Runtime Message Bus Core Component.
+The Message Bus Core component which will be in charge of listening to messagies comming from the different elements and sending them to the right destionation based on the information included in the message headers. For example, it will capture the events coming from the service workers which implement the hyperties and the protocol stubs by instantiating and event listener: *window.addEventListener('message', handleSizingResponse, false)*. 
 
+Attached to the Message Bus there will be a Policy Enforcer which will implement a set of policies to apply to the messages being transported by the bus. It will also determine whether a message is allowed to be sent or not.  
 
 ### iFrames
 
-As depicted in the diagram all Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain. This allows to hav different runtime for each one. 
+As depicted in the diagram all Runtime Core components, Hyperties and Protocol Stub are executed inside an iFrame loaded from reTHINK runtime provider domain. This the mechanism allows to have a different runtimes for each of them which has been identified as a good security practice as the runtime are isolated. These iFrames are not inteneded to show any content in the Webapp so they will be hidden iFrames.  
 
 
 #### How to send media stream from the reTHINK iFrame to the Web App. 
