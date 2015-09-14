@@ -10,7 +10,7 @@ Traditionally, commercial and open-source web browsers employed a monolithic arc
 
 Nowadays, web browsers evolved into modular architectures, in order to achieve privilege separation and overcome monolithic architectures' limitations. This way, browser developers came up with multiple different architectures to achieve this separation between what is user's property (e.g., credentials, preferences) and what is "web’s" property (e.g., applications' code). In order to achieve this separation in these architectures, multiple techniques have been employed:
 
-* **Sandboxing:** In computer security, a sandbox is a security mechanism which allows untrusted programs to run within a trusted environment, without affecting the environment or other co-located programs. This is usually done by restricting the resources (disk, memory, network) the untrusted software can access. An example is creating scratch memory and disk spaces where it can read/write and limiting the network capabilities it can use, in order to prevent the host environment from getting damaged. This is what Chromium browser [1] **@Sergio: please append this reference to the document.** applies to separate the user and the web side in a modular architecture. It features two modules:
+* **Sandboxing:** In computer security, a sandbox is a security mechanism which allows untrusted programs to run within a trusted environment, without affecting the environment or other co-located programs. This is usually done by restricting the resources (disk, memory, network) the untrusted software can access. An example is creating scratch memory and disk spaces where it can read/write and limiting the network capabilities it can use, in order to prevent the host environment from getting damaged. This is what Chromium browser [1] applies to separate the user and the web side in a modular architecture. It features two modules:
 
   * A **browser kernel module** which acts on behalf of the user and is responsible for implementing the tab-based windowing system of the browser. It stores users' data as its preferences, bookmarks, credentials and cookies and also works as middleware between the native operating system window manager and every instance of the second browser module, the rendering engine.
   * The **rendering engine** implements the web application behavior. It interprets and executes web content, serving calls to the DOM API. It is the unique browser part in contact with the untrusted web content. Apart from that, it is also responsible for enforcing the same-origin policy between the user and a website he's visiting.
@@ -23,10 +23,10 @@ Browser extensions provide useful additional functionality to web browsers, such
 
 Typically, benign extensions face two types of attackers:
   
-* **Network attackers:** Targeting end-users who connect to insecure networks (public Wi-Fi hotspots), these attacks consist in reading and altering HTTP traffic, in order to detect if an extension adds an HTTP Script - JavaScript file loaded over HTTP - to itself, and altering the code in such case. **@Sergio: please clarify this sentence.**
+* **Network attackers:** These attacks target end-users who connect to unsecure networks (i.e. public Wi-Fi hotspots), and consist in sniffing and altering HTTP traffic. These attackers search for any HTTP script - JavaScript file loaded over HTTP - loaded by the extension, and try to introduce malicious code into this script's code, in such case.
 * **Web attackers:** A malicious website can launch a XSS attack on an extension if the extension treats the website as trusted, possibly stealing the browser’s userdata, like credentials. This way, it can scale up to attack multiple websites within the same entry point.
 
-According to [2] **@Sergio: please append this reference to the document.**, Google Chrome and its extension platform apply three mechanisms to prevent these vulnerabilities:
+According to [2], Google Chrome and its extension platform apply three mechanisms to prevent these vulnerabilities:
 * **Privilege Separation:** Every Chrome extension has two types of components which run in separate processes: zero or more content scripts and zero or one core extension. Content scripts read and modify websites as needed. The core extension implements functionality not directly involving websites, like browser UI jobs or long-running background tasks. These two types of components communicate by sending structured clones over a trusted channel. Each website that an extension communicates with, receives its own isolated instance of a content script, making content scripts highly bound to attacks. However, only the core extension is able to communicate with the Chrome extension's API, reducing the risk that a content script is able to access the user data space. The architecture scheme of a Google Chrome extension is on Fig. @sota-security-chrome-extension.
 * **Isolated Words:** This mechanism ensures that content scripts and websites have separate JavaScript heaps and DOM objects. Consequently, content scripts never exchange pointers with websites, protecting them against web attackers.
 * **Permissions:** Extension developers have to specify the desired permissions in a kind of manifest file that is packaged with the extension. For example, the bookmarks permission is needed for the extension to be able to read and alter the user's bookmarks. Only core extension can use permissions to invoke browser API methods, while content scripts are limited to interacting with the core extension and the website it is running on. This way, an extension is limited to the permissions its developer requested, so an attacker is not able to request new permissions for a compromised extension in runtime.
@@ -36,7 +36,7 @@ According to [2] **@Sergio: please append this reference to the document.**, Goo
 
 #### XSS Detection Techniques
 
-Cross-Site Scripting (XSS) attacks are getting more common on the web, since they allow an attacker to get control of a user’s browser and execute malicious code (usually JavaScript/HTML) within the trusted context of a web application. This can result in the attacker being able to access any sensitive information associated to the application (cookies, session IDs, etc.). The study of XSS attacks can be split into two distinct categories, according to [3] **@Sergio: please append this reference to the document.**:
+Cross-Site Scripting (XSS) attacks are getting more common on the web, since they allow an attacker to get control of a user’s browser and execute malicious code (usually JavaScript/HTML) within the trusted context of a web application. This can result in the attacker being able to access any sensitive information associated to the application (cookies, session IDs, etc.). The study of XSS attacks can be split into two distinct categories, according to [3]:
 	
 * **Persistent/Stored attacks:** Occurs when a malicious user registers itself into a web application and posts a malicious JavaScript to the application, which, by its turn, save it into the application’s data repository, persistently. After that, if another user fetches the content uploaded by the malicious one onto his browser, and since this code is coming out of the trusted context of the web application, the user’s browser will allow the script to access any possibly sensitive resource it is willing to, overcoming this way the security imposed by the same-origin policy. Apart from stealing the user’s information, XSS attacks can also be used to redirect users to a malicious website which can then perform other distinct attacks within its context. A persistent XSS attack scheme is presented on Fig. @sota-security-xss-persistent.
 
@@ -56,13 +56,13 @@ We briefly discuss two relevant XSS prevention techniques: (i) analysis and filt
 **Analysis and Filtering of Exchanged Information**
 
 This technique consists in defining a list of characters or tags which users are allowed to exchange with the web application, in the form of text inputs, uploaded files, etc. Then, a filtering process simply rejects everything that is not part of the list.
-Other approach, reported in [4] **@Sergio: please append this reference to the document.**, is having a proxy-server at the web application’s site in order to filter both incoming and outgoing requests. This filtering takes into account a set of rules defined by the application developers. However, a simple use of regular expressions is able to evade both the referred methods and proxy-servers can rapidly become a performance bottleneck on the application deployment. **XXX et al.** [5] **@Sergio: fix this reference.** also suggested placing a proxy-server on the server-side of the application, but in order to differentiate trusted and untrusted traffic, driving each type to separate channels. This partitioning process uses Information Flow Control techniques to taint information and track it thenceforward.
+Other approach, reported in [4], is having a proxy-server at the web application’s site in order to filter both incoming and outgoing requests. This filtering takes into account a set of rules defined by the application developers. However, a simple use of regular expressions is able to evade both the referred methods and proxy-servers can rapidly become a performance bottleneck on the application deployment. Pietraszeck et al. [5] also suggested placing a proxy-server on the server-side of the application, but in order to differentiate trusted and untrusted traffic, driving each type to separate channels. This partitioning process uses Information Flow Control techniques to taint information and track it thenceforward.
 
-From another point of view, some approaches [6,7] **@Sergio: please append this reference to the document.**propose the content filtering to happen at the client-side. On the one hand, ***XXX et al.** [6] **@Sergio: fix this reference.** try to achieve the prevention of XSS attacks by blacklisting links embedded within the web application’s pages, making them unavailable for the client. However, the authors say this approach can only detect basic XSS attacks based on the violation of same-origin policy. On the other hand, ***XXX et al.** [7] **@Sergio: fix this reference.** present another client-proxy solution that is intended to detect malicious requests reflected from the attacker to the victim (non-persistent XSS attacks). If such a request is detected, the malicious characters are re-encoded by the proxy, trying to avoid the success of the attack.
+From another point of view, some approaches [6,7] propose the content filtering to happen at the client-side. On the one hand, Kirda et al. [6] try to achieve the prevention of XSS attacks by blacklisting links embedded within the web application’s pages, making them unavailable for the client. However, the authors say this approach can only detect basic XSS attacks based on the violation of same-origin policy. On the other hand, Ismail et al. [7] present another client-proxy solution that is intended to detect malicious requests reflected from the attacker to the victim (non-persistent XSS attacks). If such a request is detected, the malicious characters are re-encoded by the proxy, trying to avoid the success of the attack.
 
 **Security Enforcement on the Web Browser Runtime**
 
-There are also other strategies which try to avoid the need for intermediate elements like proxy-servers by proposing startegies to enforce the runtime context of the web browser. **XXX at al.** [8] **@Sergio: fix this reference.** propose an auditing system for the JavaScript interpreter of the Mozilla Firefox browser, which detects misuses on JS operations and take counter-measures to avoid violations on browser’s security. Other approach [9] presents the use of dynamic taint tracking on JavaScript code, in order to detect whether browser’s sensitive resources are going to be transferred to an untrusted third-party. In such case, the user is warned and can decide whether he allows or denies the transfer. Finally, **XXX et al.** [10] **@Sergio: fix this reference.** propose a policy-based management where a list of actions is embedded into the documents exchanged between the browser and the server. These actions help the browser to decide whether or not a script should be executed. Although, a lack of semantics in the policy-language and the restrictiveness of the approach due to the sandboxing-like mechanism are some of the drawbacks.
+There are also other strategies which try to avoid the need for intermediate elements like proxy-servers by proposing startegies to enforce the runtime context of the web browser. Hallaraker et al. [8] propose an auditing system for the JavaScript interpreter of the Mozilla Firefox browser, which detects misuses on JS operations and take counter-measures to avoid violations on browser’s security. Other approach [9] presents the use of dynamic taint tracking on JavaScript code, in order to detect whether browser’s sensitive resources are going to be transferred to an untrusted third-party. In such case, the user is warned and can decide whether he allows or denies the transfer. Finally, Jim et al. [10] propose a policy-based management where a list of actions is embedded into the documents exchanged between the browser and the server. These actions help the browser to decide whether or not a script should be executed. Although, a lack of semantics in the policy-language and the restrictiveness of the approach due to the sandboxing-like mechanism are some of the drawbacks.
 
 ### **Automated Analysis of Security-Critical JavaScript APIs**
 
@@ -70,7 +70,7 @@ Current web applications usually rely on JavaScript in order to offer additional
 
 A widely-used approach is to combine a language-based sandbox to restrict the capabilities of untrusted JavaScript with an API offered by the trusted code part to the untrusted one. This API encapsulates all security-critical resources and guarantees they are only accessed in a safe way.
 
-Given this, **XXX et al.** [14] **@Sergio: fix this reference.** proposed ENCAP, a tool that verifies API confinement, analyzing the isolation level it can offer to the critical objects it is intended to protect. ENCAP relies on a context-insensitive and flow-insensitive static analysis method. It analyses the API implementation and generates a conservative Datalog model of all API methods. Also, they propose SESlight, an ECMA JavaScript-subset language which only allows a strict (syntactically and semantically verified) subset of the whole language to be used.
+Given this, Taly et al. [11] proposed ENCAP, a tool that verifies API confinement, analyzing the isolation level it can offer to the critical objects it is intended to protect. ENCAP relies on a context-insensitive and flow-insensitive static analysis method. It analyses the API implementation and generates a conservative Datalog model of all API methods. Also, they propose SESlight, an ECMA JavaScript-subset language which only allows a strict (syntactically and semantically verified) subset of the whole language to be used.
 
 
 ### Secure Elements
@@ -101,7 +101,7 @@ Java Cards combine smart card’s identity-verification features with the Java �
 
 #### Cloud of Secure Elements
 
-Cloud of Secure Elements (CoSE) [12] **@Sergio: fix this reference.** is an emerging concept whose goal is to provide trusted computing resources to mobile and cloud applications. To achieve this, it relies on an infrastructure composed by multiple secure micro-controllers, named Secure Elements.
+Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal is to provide trusted computing resources to mobile and cloud applications. To achieve this, it relies on an infrastructure composed by multiple secure micro-controllers, named Secure Elements.
 
 CoSE, in a WEB-like paradigm, are meant to support Uniform Resource Identifiers (URIs) for users to locate the different secure elements and use their embedded resources. These resources usually target two service types: Near Field Communication (NFC) facilities for mobile applications and trusted cryptographic features for cloud applications.
 
@@ -155,7 +155,7 @@ The Java Card transaction mechanism is probably the trickiest aspect of the Java
 
 #### Dynamic Countermeasures
 
-Now we enumerate some dynamic runtime checks implemented by some VMs in order to prevent ill-typed code to damage the Java Card platform. These were verified by **XXX et al.** [13] **@Sergio: fix this reference.**, by performing tests on multiple Java Card models of multiple manufacturers against the referred vulnerabilities:
+Now we enumerate some dynamic runtime checks implemented by some VMs in order to prevent ill-typed code to damage the Java Card platform. These were verified by Mostowski et al. [13], by performing tests on multiple Java Card models of multiple manufacturers against the referred vulnerabilities:
 
 * Runtime type checking
 * Object (array) bounds checking
@@ -163,4 +163,28 @@ Now we enumerate some dynamic runtime checks implemented by some VMs in order to
 * Firewall checks
 * Integrity checks in memory
 
+### References
 
+[1] - Barth, Reis, Jackson. The Security Architecture of the Chromium Browser.
+[2] - Carlini, Felt, Wagner. An Evaluation of the Google Chrome Extension Security Architecture.
+[3] - Garcia-Alfaro, Navarro-Arribas. A Survey on Detection Techniques to Prevent Cross-Site
+Scripting Attacks on Current Web Applications. 
+[4] -  Scott, Sharp. Abstracting application-level web security. 11th International Conference
+on the World Wide Web. 2002.
+[5] - Pietraszeck, Vanden-Berghe. Defending against injection attacks through context-sensitive
+string evaluation. Recent Advances in Intrusion Detection (RAID 2005). 2005.
+[6] - Kirda, Kruegel, Vigna, Jovanovic. Noxes: A client-side solution for mitigating
+cross-site scripting attacks. 21st ACM Symposium on Applied Computing. 2006.
+[7] -  Ismail, Etoh, Kadobayashi, Yamaguchi. A Proposal and Implementation
+of Automatic Detection/Collection System for Cross-Site Scripting Vulnerability. 18th Int.
+Conf. on Advanced Information Networking and Applications (AINA 2004). 2004.
+[8] -  Hallaraker, Vigna. Detecting Malicious JavaScript Code in Mozilla. 10th IEEE International
+Conference on Engineering of Complex Computer Systems (ICECCS’05). 2005.
+[9] - Jovanovic, Kruegel, Kirda. Precise alias analysis for static detection of web
+application vulnerabilities. 2006 Workshop on Programming Languages and Analysis for
+Security USA. 2006.
+[10] -  Jim, Swamy, Hicks. Defeating Script Injection Attacks with Browser-Enforced
+Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.
+[11] - Taly, Erlingsson, Mitchell, Miller, Nagra. Automated Analysis of Security-Critical JavaScript APIs. IEEE S&P 2011. 2011.
+[12] - Urien. Cloud of Secure Elements perspectives for mobile and cloud applications security. 2013 IEEE Conference on Communications and Network Security (CNS). 2013.
+[13] - Mostowski, Poll. Malicious Code on Java Card Smartcards: Attacks and Countermeasures. Smart Card Research and Advanced Applications. 2008
