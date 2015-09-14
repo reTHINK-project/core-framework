@@ -165,26 +165,38 @@ Now we enumerate some dynamic runtime checks implemented by some VMs in order to
 
 ### References
 
-[1] - Barth, Reis, Jackson. The Security Architecture of the Chromium Browser.
-[2] - Carlini, Felt, Wagner. An Evaluation of the Google Chrome Extension Security Architecture.
+[1] - Barth, Reis, Jackson, The Google Chrome Team. The Security Architecture of the Chromium Browser. 2008.
+
+[2] - Carlini, Felt, Wagner. An Evaluation of the Google Chrome Extension Security Architecture. Proceedings of the 21st USENIX Conference on Security Symposium. 2012
+
 [3] - Garcia-Alfaro, Navarro-Arribas. A Survey on Detection Techniques to Prevent Cross-Site
-Scripting Attacks on Current Web Applications. 
+Scripting Attacks on Current Web Applications. Proceedings of the Second International Conference on Critical Information Infrastructures Security. 2008.
+
 [4] -  Scott, Sharp. Abstracting application-level web security. 11th International Conference
 on the World Wide Web. 2002.
+
 [5] - Pietraszeck, Vanden-Berghe. Defending against injection attacks through context-sensitive
 string evaluation. Recent Advances in Intrusion Detection (RAID 2005). 2005.
+
 [6] - Kirda, Kruegel, Vigna, Jovanovic. Noxes: A client-side solution for mitigating
 cross-site scripting attacks. 21st ACM Symposium on Applied Computing. 2006.
+
 [7] -  Ismail, Etoh, Kadobayashi, Yamaguchi. A Proposal and Implementation
 of Automatic Detection/Collection System for Cross-Site Scripting Vulnerability. 18th Int.
 Conf. on Advanced Information Networking and Applications (AINA 2004). 2004.
+
 [8] -  Hallaraker, Vigna. Detecting Malicious JavaScript Code in Mozilla. 10th IEEE International
 Conference on Engineering of Complex Computer Systems (ICECCS’05). 2005.
+
 [9] - Jovanovic, Kruegel, Kirda. Precise alias analysis for static detection of web
 application vulnerabilities. 2006 Workshop on Programming Languages and Analysis for
 Security USA. 2006.
+
 [10] -  Jim, Swamy, Hicks. Defeating Script Injection Attacks with Browser-Enforced
 Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.
+
 [11] - Taly, Erlingsson, Mitchell, Miller, Nagra. Automated Analysis of Security-Critical JavaScript APIs. IEEE S&P 2011. 2011.
+
 [12] - Urien. Cloud of Secure Elements perspectives for mobile and cloud applications security. 2013 IEEE Conference on Communications and Network Security (CNS). 2013.
-[13] - Mostowski, Poll. Malicious Code on Java Card Smartcards: Attacks and Countermeasures. Smart Card Research and Advanced Applications. 2008
+
+[13] - Mostowski, Poll. Malicious Code on Java Card Smartcards: Attacks and Countermeasures. Smart Card Research and Advanced Applications. 2008.
