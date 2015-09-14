@@ -38,8 +38,8 @@ hollaback is a function, and it's called with a single argument, output.
 
 output is an object with two properties: result and console. The result property is an inspected string of the return value of the code. The console property is an array of all console output. 
 
-#### Also potentially relevant:
+#### Other evaluated runtimes
 
-http://samsung.github.io/iotjs/
+Another platform that was evaluated was IotJs (http://samsung.github.io/iotjs/). It currently supports Raspberry Pie2 and STM32F4-Discovery + BB as hardware platforms and Linux and Nuttx(http://nuttx.org/) Real-Time Operating System using C++ to build the runtime Javascript Environment. Although supported by an important device manufacturer, it is still in its infancy and cannot be used in the development of reThink in which fast-prototyping of new paradigms is intended. 
 
-also see:  https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/implementation/standalone-runtime.md
+
