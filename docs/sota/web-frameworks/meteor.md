@@ -110,28 +110,28 @@ Template.task.events({
 
 ## Requirement Analysis
 
- - #### [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **No**
+ - [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **No**
 
 It have its own "message node", who is called [DDP (distributed Data Protocol)](https://www.meteor.com/ddp).
 
- - #### [The Service Framework **MUST** avoid any JavaScript conflicts](https://github.com/reTHINK-project/core-framework/issues/43): **Yes**
+ - [The Service Framework **MUST** avoid any JavaScript conflicts](https://github.com/reTHINK-project/core-framework/issues/43): **Yes**
 
 The platform is constructed in pure javascript, don't have any other frameworks dependencies;
 
- - #### [Service Framework **MUST** be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42): **Yes**
+ - [Service Framework **MUST** be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42): **Yes**
 
 The platform is complete modular, we can write our own modules or import third party modules.
 
- - #### [The Service Framework **MUST** be open source](https://github.com/reTHINK-project/core-framework/issues/39): **Yes**
+ - [The Service Framework **MUST** be open source](https://github.com/reTHINK-project/core-framework/issues/39): **Yes**
 
 *“Meteor is a complete open source platform for building web and mobile apps in pure JavaScript.”*
 
- - #### [Service Framework **SHOULD** be device agnostic](https://github.com/reTHINK-project/core-framework/issues/38): **Yes**
- - #### [Service Framework **MUST** be light weight and fast](https://github.com/reTHINK-project/core-framework/issues/37): **yes**
+ - [Service Framework **SHOULD** be device agnostic](https://github.com/reTHINK-project/core-framework/issues/38): **Yes**
+ - [Service Framework **MUST** be light weight and fast](https://github.com/reTHINK-project/core-framework/issues/37): **yes**
 
 Meteor is build on top of NodeJs and MongoDB, and both are fast;
 
- - #### [Service Framework **SHOULD** support Model-View-Controller design pattern](https://github.com/reTHINK-project/core-framework/issues/36): **Yes/No**
+ - [Service Framework **SHOULD** support Model-View-Controller design pattern](https://github.com/reTHINK-project/core-framework/issues/36): **Yes/No**
 
 **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but **Yes** we can have MVC, in other way:
 
