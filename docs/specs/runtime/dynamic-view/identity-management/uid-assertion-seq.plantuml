@@ -1,4 +1,4 @@
-@startuml
+@startuml "user-identity-assertion.png"
 autonumber
 
 box "Alice Device Runtime"
