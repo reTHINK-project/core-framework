@@ -1,43 +1,36 @@
 # Methodology and Continuous Integration
 
-## Directory Strucuture
+* Continous Integration with Jenkins
+* [Documentation that is not directly related with source code and source code itself, are in separated repos. One Github repository per main component](#Github structure).
 
-#### Suggestion 1
+* [Quobis Proposal for Versioning](versioning_proposal_by_quobis_to_be_discussed.md).[other options](#Version control)
+* [Javascript source code structure](#Javascript Source code structure)
+* [Javascript development environment](#Javascript Environment)
 
-~~Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)~~
+## Github structure
 
-```
-core-framework/src/runtime/core/
-core-framework/src/runtime/browser/
-core-framework/src/runtime/node/
-```
+**Documentation and issues that are not directly related with source code and source code itself, are in separated repos**
 
-~~**Advantages:**~~
+The main rational is not to constrain internal discussions and documentations from the source code and associated documentation that will be later published to the public. Another reason is to be flexible on the selection of the source code versioning methodology eg avoid the need to clone the full documentation in order to contribute to the source code.
 
-- ~~all centralized inside same repository;~~
+**One Github repository per main component**
+Consensus was also agreed on having a repository per component (e.g. one repo for core-runtime, another for the hyperty-framework and another for vertx message node) in order to be more developer friendly (e,g, an Hyperty developer would only need to have access and clone hyperty-framework not eg runtime or message node related repos). 
 
-~~**Disadvantages:**~~
+These additional private repos would only be needed during a short period of time ( 3 or 4 months?) while these components are not publicly published.
 
-- ~~mix of documentation with source code;~~
-- ~~we need always commit all the repository;~~
-- ~~create distribution files is more complex;~~
-
----
-
-#### Suggestion 2:
-
-> **After our conference call on 14 of September 2015 we choose this option;**
-
-Was been suggested have an repository for each piece of software and inside it, the source code, we only has to have in mind, is the repository name has to be clearly understandable; 
+The repository name has to be clearly understandable; 
 
 ```
-core
-runtime-browser
-runtime-node
-vertx-node
-nodejs-node
-matrix-node
-hyperty-framework
+runtime-core
+runtime-browser // do we need to separate from core
+runtime-node // do we need to separate from core
+vertx-msg-node
+nodejs-msg-node
+matrix-msg-node
+hyperty-framework // will we have more than one?
+hyperty-catalogue // will we have more than one?
+hyperty-registry // will we have more than one?
+idp // will we have more than one?
 ```
 
 **Advantages:**
@@ -57,24 +50,47 @@ hyperty-framework
 - private repository have limits;
 - integration with dependecies of otheres blocks of code
 
+Additional options:
+
+#### Documentation and source code in the same repo
+
+Directory structure inside [`core-framework/src/<main-section-name>/<section>`](https://github.com/reTHINK-project/core-framework/tree/master/src/runtime/browser)
+
+```
+core-framework/src/runtime/core/
+core-framework/src/runtime/browser/
+core-framework/src/runtime/node/
+```
+
+**Advantages:**
+
+- all centralized inside same repository;
+
+**Disadvantages:**
+
+- mix of documentation with source code;
+- we need always commit all the repository;
+- create distribution files is more complex;
+
 ---
 
-#### Suggestion 3:
 
-~~Was been suggested, also, each developer make a fork from the main repository and develop on the top of his fork;~~
+#### Each developer works with forks
 
-~~**Advantages:**~~
+Each developer make a fork from the main repository and develop on the top of his fork;
 
-- ~~all the commits will be reviewed~~
-- ~~the code merge is always controlled~~
+**Advantages:**
 
-~~**Disadvantages:**~~
+- all the commits will be reviewed
+- the code merge is always controlled
 
-- ~~the code is always public~~
+~~Disadvantages:~~
+
+- the code is always public
 
 ---
 
-### Source code structure
+## Javascript Source code structure
 ```
 ├── core
 │   ├── dist
@@ -100,7 +116,7 @@ hyperty-framework
 │   ├── readme.md
 │   ├── .gitignore
 ```
-#### Explication of some files on src directory
+#### Explanations of some files on src directory
 
 [package.json](#package)
 [.gitignore](#ignore)
@@ -245,6 +261,3 @@ Grunt
 
 ---
 
-## Feedback
-
-if something isn't right, please open an issue.
