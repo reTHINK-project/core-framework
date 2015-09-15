@@ -3,7 +3,7 @@
 * Continous Integration with Jenkins
 * [Documentation that is not directly related with source code and source code itself, are in separated repos. One Github repository per main component](#github-structure).
 
-* [Quobis Proposal for Versioning](versioning_proposal_by_quobis_to_be_discussed.md).[other options](#Version-control)
+* [Quobis Proposal for Versioning](versioning_proposal_by_quobis_to_be_discussed.md).[other options](#version-control)
 * [Javascript source code structure](#javascript-source-code-structure)
 * [Javascript development environment](#javascript-environment)
 
