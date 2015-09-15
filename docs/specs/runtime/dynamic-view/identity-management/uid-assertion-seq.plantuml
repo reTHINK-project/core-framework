@@ -2,7 +2,7 @@
 autonumber
 
 box "Alice Device Runtime"
-        participant Id Module as runtime
+        participant "Id Module" as runtime
         participant "Msg BUS" as msgbus
 end box
 box "IdP Proxy Sandbox at Alice"
