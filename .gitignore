@@ -1,0 +1,11 @@
+# Generated folders
+**/src-gen/
+**/xtend-gen/
+
+# Compiled files
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear

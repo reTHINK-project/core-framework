@@ -1,9 +1,11 @@
-import MsgNodeConnection from 'MsgNodeConnection';
+import MsgNodeConnection from 'connector/MsgNodeConnection';
 import MessageBus from 'MessageBus';
+import MiniBus from 'MiniBus';
 import Pipeline from 'Pipeline';
 
 console.log('start...');
 
+//core components...
 let msgNode = new MsgNodeConnection('ws://localhost:9090/ws');
 let msgBus = new MessageBus(msgNode);
 
@@ -23,7 +25,9 @@ msgBus.inbounds = [
   }
 ];
 
-msgBus.send({
+//register hyper-1 in MessageNode
+let addressBus = new MiniBus('runtime://localhost:8080', msgBus);
+addressBus.send({
   header: {
     type: 'create',
     from: 'runtime://localhost:8080',
@@ -35,7 +39,13 @@ msgBus.send({
   }
 });
 
-//testing pipeline...
+//minibus for hyper-1
+let hyper1Bus = new MiniBus('hyper-1', msgBus);
+hyper1Bus.send({header: {to: 'hyper-2'}, body: {value: 'test'}}, (reply) => {
+  console.log('on-reply: ', reply);
+});
+
+/* testing pipeline...
 let pipeline = new Pipeline((error) => {
   console.log('ERROR: ', error);
 });
@@ -58,3 +68,4 @@ pipeline.handlers = [
 pipeline.process({id: 1, value: 'Micael'}, (msg) => {
   console.log('DELIVER: ', msg);
 });
+*/
