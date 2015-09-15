@@ -84,3 +84,5 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [36] - https://github.com/hypercomm/wonder/tree/master/src/libs
 
 [37] - https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
+
+[38]	ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
