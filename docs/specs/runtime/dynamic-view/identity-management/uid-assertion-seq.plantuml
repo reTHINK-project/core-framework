@@ -2,11 +2,11 @@
 autonumber
 
 box "Alice Device Runtime"
-        participant RuntimeUA as runtime
+        participant Id Module as runtime
         participant "Msg BUS" as msgbus
 end box
 box "IdP Proxy Sandbox at Alice"
-        participant "Identity Hyperty (IdP Proxy)" as idpproxy
+        participant "Identity Proxy" as idpproxy
 end box
 box "Service Provider Sandbox at Alice"
         participant "Service Provider Hyperty" as hyperty
@@ -14,15 +14,15 @@ end box
 participant "Service Provider" as backend
 participant "Identity service Provider" as idp
 
-backend  -> hyperty     : Send(IdToken)
+backend  -> hyperty     : Send(IdAssertion)
 note right
-        Bob's IdToken received through
+        Bob's IdAssertion received through
         signaling of the Service Provider.
 end note
 
-hyperty  -> msgbus      : Verify(IdToken)
-msgbus   -> runtime     : Verify(IdToken)
-runtime  -> idp         : GetProxy(IdToken.proxy)
+hyperty  -> msgbus      : Verify(IdAssertion)
+msgbus   -> runtime     : Verify(IdAssertion)
+runtime  -> idp         : GetProxy(IdAssertion.proxy)
 idp      -> runtime     : return(proxy)
 create idpproxy
 runtime  -> idpproxy    : <<create>>\n new IdPProxy(proxy)
@@ -34,22 +34,22 @@ note over idp
         participant.
 end note
 
-runtime  -> msgbus      : Verify(IdToken)
-msgbus   -> idpproxy    : Verify(IdToken)
-idpproxy -> idp         : Verify(IdToken)
+runtime  -> msgbus      : Verify(IdAssertion)
+msgbus   -> idpproxy    : Verify(IdAssertion)
+idpproxy -> idp         : Verify(IdAssertion)
 activate idp
-idp      -> idpproxy    : Verified(IdToken, validity)
+idp      -> idpproxy    : Verified(IdAssertion, validity)
 deactivate idp
-idpproxy -> msgbus      : Verified(IdToken, validity)
-msgbus   -> runtime     : Verified(IdToken, validity)
+idpproxy -> msgbus      : Verified(IdAssertion, validity)
+msgbus   -> runtime     : Verified(IdAssertion, validity)
 note over runtime
-        Received and validated IdToken
+        Received and validated IdAssertion
         could be stored for future reference.
         (e.g. last known assertion)
 end note
 
-runtime  -> msgbus      : Confirm(IdToken)
-msgbus   -> hyperty     : Confirm(IdToken)
+runtime  -> msgbus      : Confirm(IdAssertion)
+msgbus   -> hyperty     : Confirm(IdAssertion)
 
 opt Refresh Trust
 end
