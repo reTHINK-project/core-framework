@@ -8,7 +8,7 @@ V8 compiles JavaScript to native machine code (IA-32, x86-64, ARM, or MIPS ISAs)
 
 ### Architecture
 
-![Figure @sota-v8-arch V8 Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch.png)
+![Figure @sota-v8-arch V8 Architecture](v8-arch.png)
 
 **Handles & Garbage Collection**
 
@@ -19,7 +19,7 @@ We always have to be in mind that an handle cannot survive its default scope, un
 
 **Contexts**
 
-![Figure @sota-v8-contexts V8 Multiple Contexts](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch2.png)
+![Figure @sota-v8-contexts V8 Multiple Contexts](v8-arch2.png)
 
 Contexts are different execution environments that allow separate even unrelated Javascript applications to run concurrently on v8. In fact, the context in which a Javascript code is run must be explicitly specified. This happens because Javascript provides functions and objects that may be changed globally and that may turn into unexpected results.
 One of the advantages of V8 is that it gives you an extensive cache, so in the first time a context may be expensive in time and resources, subsequente times will be substantialy less. Additionally v8 has a snapshot feature that by default has pre-compiled Javascript code on the heap, diminishing time procedures on first context initialization.

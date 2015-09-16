@@ -6,7 +6,7 @@
 
 Firefox OS is designed to provide a complete, community-based alternative system for mobile devices, using open standards and approaches such as HTML5 applications, JavaScript, a robust privilege model, open web APIs to communicate directly with cellphone hardware, and application marketplace.
 
-![Figure @sota.fxos-arch Firefox OS Architecture](fxos-arch.png)
+![Figure @sota-fxos-arch Firefox OS Architecture](fxos-arch.png)
 
 The initial development work involves three major software layers:
 

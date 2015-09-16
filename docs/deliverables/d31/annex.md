@@ -228,8 +228,9 @@ ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC
 Applications to be executed in Web browser.
 
 The protocols on the wire are exactly the same so it is compatible with
-aaplications written using the current API.\
-![WebRTC API evolution](webrtc_API_evolution.png)
+aaplications written using the current API.
+
+![Figure 67: WebRTC API evolution](webrtc_API_evolution.png)
 
 <h2>
 Differences between ORTC and WebRTC 1.0.
@@ -538,12 +539,12 @@ push messages are the following (see figure below):
 -   The user agent delivers the push message to the specific webapp
     intended to receive it.
 
-![Web Push Architecture](web-push-arch.jpg)
+![Figure 68: Web Push Architecture](web-push-arch.jpg)
 
 The main data flows involved in the PUSH API usage are described below:
 
-![Main flows of events for subscription, push message delivery, and
-unsubscription](push_sequence_diagram.png)
+![Figure 69: Main flows of events for subscription, push message
+delivery, and unsubscription](push_sequence_diagram.png)
 
 The W3C Push API is a client API that does not provide any standard for
 how the application server sends messages to the push server. This part
@@ -680,7 +681,7 @@ request to server that resource. This reduce the load time as the
 browser does not have to send GET request to ask for all the resources
 avoiding RTT delays.
 
-![HTTP/2 Push](http2-push.png)
+![Figure 70: HTTP/2 Push](http2-push.png)
 
 Features of HTTP/2
 ------------------
@@ -713,7 +714,7 @@ transport HTTP message bodies and HEADERS frames are used to communicate
 header fields for a stream. The rest of frames are used for control
 tasks and they are called Control Frames.
 
-![HTTP/2 Framing](http2_framing.png)
+![Figure 71: HTTP/2 Framing](http2_framing.png)
 
 ### Multiplexing
 
@@ -724,7 +725,7 @@ concatenated files, image sprites, and domain sharding. It also resultes
 in lower page load times by eliminating unnecessary latency and
 improving utilization of available network capacity.
 
-![HTTP/2 Streams](http2_streams.png)
+![Figure 72: HTTP/2 Streams](http2_streams.png)
 
 ### Priority
 
@@ -1142,7 +1143,7 @@ belonging to different domains. The Hosting peer uses the Domain Channel
 to exchange signalling messages, while other peers use Transient
 Channels that connect to the Hosting Messaging Server.
 
-![Figure 64 signalling on-the-fly concept](sigofly.png)
+![Figure 73 signalling on-the-fly concept](sigofly.png)
 
 The classic Alice and Bob example is used to explain the SigOfly
 concept. We assume that Alice and Bob are registered in different
@@ -1203,7 +1204,7 @@ in [34](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
 A JavaScript framework, the WONDER lib, was designed and implemented to
 validate the SigOfly and Data Codec On-the-fly concepts.
 
-![Figure 65 Wonder Library Main Classes](wonderlib.png)
+![Figure 74 Wonder Library Main Classes](wonderlib.png)
 
 Main WONDER library classes are:
 
@@ -1460,181 +1461,6 @@ Runtime, namely:
 -   DataBroker
 -   DataCodec
 
-CoAP/ Well-known CoRE Projects
-------------------------------
-
-If Hyperties, Codecs, Protostub and other artifacts to be provisioned on
-the end devices are to be regarded as resources with attributes
-describing: capabilities (audio, video, text), running platform (OS),
-configuration (DNS name of the messaging node, DNS server),
-implementation (code/script, codecs), these artifacts can be organized
-as resources in the Repository/Catalogue component.
-
-### LibCoap Project
-
-#### Overview
-
-The implementation includes features for receiving and sending CoAP
-requests. It also supports the \[CoRE-link format RFC 6690\]
-(https://tools.ietf.org/html/rfc6690) to organize the CoAP resources as
-a well-known CORE. It has support for Linux but also Contiki Operating
-Systems.
-
-The implementation is using C as programming language.
-
-Link:
-https://gitlab.informatik.uni-bremen.de/bergmann/libcoap/tree/master
-
-The library is published as open-source software without any warranty of
-any kind. Use is permitted under the terms of the GNU General Public
-License (GPL), Version 2 or higher, OR the revised BSD license.
-
-#### How to use
-
-For starting a CoAP server based on a configuration file, a main program
-has to be written. Handlers for CRUD operations triggered by CoAP
-requests: Post, Get, Put and Delete can be registered to the main
-information named coap\_context. Callbacks will be generated to the
-registered handlers when the requests or replies are received. When
-creating resources, attributes can be associated. The attributes are
-then XML encoded when Get messages are received. A command line
-application, example of code and ETSI tests are included.
-
-### Copper (Cu) CoAP user-agent Project
-
-#### Overview
-
-The CoAP User Agent is a JavaScript implemention of \[Constrained
-Application Protocol (CoAP) RFC 7252\]
-(http://tools.ietf.org/html/rfc7252) with support for DTLS, Observe and
-blockwise transfers. A plugin for Mozilla is also included. The project
-is available on github at: https://github.com/mkovatsc/Copper
-
-The license is 3-Clause BSD with the text available at:
-http://opensource.org/licenses/BSD-3-Clause, and permits redistribution.
-
-#### How to use
-
-The JavaScript code can be used directly in other JavaScript components.
-
-### Californium Project
-
-#### Overview
-
-The project implements CoAP RFC 7152 with DTLS, a CoAP-HTTP translator.
-The implementation is using Java as programming language and is designed
-for IoT Cloud services with the focus on scalability and usability
-instead of resource-efficiency like for embedded devices.
-
-The project is available on github at:
-https://github.com/eclipse/californium The license is business-friendly
-and of type Eclipse Distribution License, available at
-http://www.eclipse.org/org/documents/edl-v10.html.
-
-#### How to use
-
-It can be used as a CoAP server that supports all CRUD operations and
-Observe/Notification mechanism. For example for the Catalogue it would
-make sense to use it.
-
-OMA Device Management Projects
-------------------------------
-
-For exchanging information on the device properties and also
-monitor/manage connectivity of the device, \[OMA LWM2M standard\]
-(http://member.openmobilealliance.org/ftp/Public\_documents/DM/LightweightM2M/)
-can be used, as an energy efficient and scalable evolution from OMA DM
-standard.
-
-Several projects have been analyzed in terms of features, flexibility
-and license in order to be able to choose the most suitable for the
-Rethink project.
-
-### Leshan Project
-
-The project is supported by Sierra Wireless and hosted by the Eclipse
-foundation.
-
-#### Overview
-
-The implementation supports all the interfaces: Bootstrap, Registration,
-Device Management and Service Enablement, Information Reporting.
-
-The project uses Java as programming language.
-
-The project is hosted on github at: https://github.com/eclipse/leshan
-
-This program and the accompanying materials are made available under the
-terms of the \[Eclipse Public License v1.0\]
-(http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution
-License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which
-accompany the distribution. The license is business-friendly. "Neither
-the name of the Eclipse Foundation, Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission."
-
-#### How to use
-
-The project can be further extended with some new Management Objects, if
-necessary. The server is to be compiled and run according to a
-configuration file.
-
-### OMA LWM2M Dev Kit Project
-
-The project can act as multiple virtual OMA LWM2M clients by connecting
-to a remote OMA LWM2M server.
-
-#### Overview
-
-The supported features include interfaces: Registration, Device
-Management and Service Enablement Interface, Information Reporting
-Interface.
-
-The programming language is Javascript.
-
-The homepage can be found on:
-https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
-
-The license is
-[BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit/blob/master/LICENSE),
-the name of the project has to be mentioned in the redistribution.
-
-#### How to use
-
-The project provides a Web GUI as an addon for Firefox to get the
-user/developer familiarize. The core functionality can be included in
-any software package like a Javascript library and also, the Core
-Framework of the client side for the Rethink project.
-
-ETSI and oneM2M Projects
-------------------------
-
-### OM2M Project
-
-#### Overview
-
-The project is developed under the Eclipse umbrella and is described at:
-http://www.eclipse.org/proposals/technology.om2m/ and available at:
-http://www.eclipse.org/om2m/
-
-The project is a Java implementation of the ETSI M2M standard in version
-0.8.x, available at the moment. It aims to implement also oneM2M in
-version 1.x.x, the compatibility with ETSI M2M will not be included.
-
-The current version has support for both CoAP and HTTP. For the OMA-DM
-support it uses SyncML files and can interoperate with
-[Funambol](http://sourceforge.net/projects/funambol/files/) as server
-and [Koneki](http://www.eclipse.org/koneki/omadm-simulator/), the OMA-DM
-simulator for firmware update operation.
-
-The code is licensed using [Eclipse Public
-License](https://www.eclipse.org/legal/epl-v10.html)
-
-#### How to use
-
-The project could be used to store data coming from sensors or smart
-devices and expose it to applications.
-
 ### WONDER Messages Format
 
 The WONDER Message class provides good input for the design of Hyperty
@@ -1773,7 +1599,7 @@ signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
 
-![Figure 56 WebRTC.org architecture scheme](webrtc-org-arch.png)
+![Figure 57: WebRTC.org architecture scheme](webrtc-org-arch.png)
 
 ### Software stack organization
 
@@ -1847,8 +1673,7 @@ OpenWebRTC is compatible with most video communication services.
 The OpenWebRTC project is free and Open Source with a permissive BSD-2
 license.
 
-![Figure 57 OpenWebRTC
-Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/openwebrtc.png)
+![Figure 58 OpenWebRTC Architecture](openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer
 multimedia framework](http://gstreamer.freedesktop.org/)\[20\].
@@ -1888,8 +1713,7 @@ inline caching, among many others
 
 ### Architecture
 
-![Figure 58 V8
-Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch.png)
+![Figure 59 V8 Architecture](v8-arch.png)
 
 **Handles & Garbage Collection**
 
@@ -1910,8 +1734,7 @@ scope to be a special one (EscapableHandleScope ).
 
 **Contexts**
 
-![Figure 59 V8 Multiple
-Contexts](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/v8-arch2.png)
+![Figure 60 V8 Multiple Contexts](v8-arch2.png)
 
 Contexts are different execution environments that allow separate even
 unrelated Javascript applications to run concurrently on v8. In fact,
@@ -2222,11 +2045,9 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
     also possible to add low- and medium-level capabilities there
 -   The effort for low-level extensions will be relatively high.
 
-Jitsi Videobridge
------------------
-
-[Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) \[26\]
-is a WebRTC compatible Selective Forwarding Unit (SFU) that allows for
+o\#\# Jitsi Videobridge [Jitsi
+Videobridge](https://jitsi.org/Projects/JitsiVideobridge) \[26\] is a
+WebRTC compatible Selective Forwarding Unit (SFU) that allows for
 multiuser video communication.
 
 Jitsi Video bridge supports RTP Relay, audio mixing, Call encryption
@@ -2245,7 +2066,7 @@ component called Jigasi. There is an OpenSource WebRTC JavaScript
 application, called Jitsi Meet, that uses Jitsi Videobridge to provide
 high quality, scalable video conferences.
 
-![Figure 61 Jitsi Videobridge Architecture](jitsi_arch.png)
+![Figure 63 Jitsi Videobridge Architecture](jitsi_arch.png)
 
 ### Installation Procedures
 
@@ -2532,7 +2353,7 @@ longer needed.
 
 ### Architecture
 
-![Figure 60 Docker
+![Figure 61 Docker
 Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/docker-arch.png)
 
 Docker uses a client-server architecture. The Docker client talks to the
@@ -2915,7 +2736,7 @@ some useful examples. There is also a Plugin API which offers potential
 plugin developers an overview of how these plugins are implemented and
 also instructions of how to develop a new one.
 
-![Figure 63 Janus Gateway architecture](janus-arch.png)
+![Figure 65 Janus Gateway architecture](janus-arch.png)
 
 ### Janus Gateway and runtime requirements
 
@@ -3000,7 +2821,7 @@ It can be used to handle different type of communications applications :
 Kurento is mainly composed of the two elements : - Kurento media server
 - Kurento Application
 
-![Figure 62 Kurento Architecture](Architecture-Kurento.png)
+![Figure 64 Kurento Architecture](Architecture-Kurento.png)
 
 Application developers can use Kurento Clients or Kurento API directly
 for creating their multimedia enabled applications. Developpers can use
@@ -6217,138 +6038,153 @@ Suitability for ReTHINK project
     reduce the overhead in the applications which will help to reduce
     the load time.
 
-(1) Chromium sandbox scheme
+(1) WP3 Scope
 
-(2) The architecture of a Google Chrome extension
+(2) Chromium sandbox scheme
 
-(3) Scheme of a persistent XSS attack
+(3) The architecture of a Google Chrome extension
 
-(4) Scheme of a non-persistent XSS attack
+(4) Scheme of a persistent XSS attack
 
-(5) Java Smart Card scheme
+(5) Scheme of a non-persistent XSS attack
 
-(6) CoSE architecture
+(6) Java Smart Card scheme
 
-(7) Service framework middle layer
+(7) CoSE architecture
 
-(8) Sippo WAC reference architecture
+(8) Service framework middle layer
 
-(9) Sippo interfaces and APIs
+(9) Sippo WAC reference architecture
 
-(10) Sippo.js abstraction layer
+(10) Sippo interfaces and APIs
 
-(11) Sippo services and backends
+(11) Sippo.js abstraction layer
 
-(12) Sippo WebRTC applications stack
+(12) Sippo services and backends
 
-(13) Runtime High Level Architecture
+(13) Sippo WebRTC applications stack
 
-(14) Runtime High Level Architecture with Unstrusted Hyperties
+(14) Runtime High Level Architecture
 
-(15) Runtime High Level Architecture with Policy Enforcer
+(15) Runtime High Level Architecture with Unstrusted Hyperties
 
-(16) Reporter-Observer Communication Pattern
+(16) Runtime High Level Architecture with Policy Enforcer
 
-(17) Core Runtime Architecture
+(17) Reporter-Observer Communication Pattern
 
-(18) Vulnerability matrix for a dummy platform
+(18) Core Runtime Architecture
 
-(19) Stack
+(19) Vulnerability matrix for a dummy platform
 
-(20) Browser
+(20) Stack
 
-(21) Security Browser
+(21) Browser
 
-(22) Application platform
+(22) Security Browser
 
-(23) Security Application platform
+(23) Application platform
 
-(24) Deploy Core Runtime Components in the Native Runtime
+(24) Security Application platform
 
-(25) Deploy Protocol Stub
+(25) Deploy Core Runtime Components in the Native Runtime
 
-(26) Deploy Hyperty (part1)
+(26) Deploy Protocol Stub
 
-(27) Deploy Hyperty (part2)
+(27) Deploy Hyperty (part1)
 
-(28) Register Hyperty
+(28) Deploy Hyperty (part2)
 
-(29) Message Routing in Message BUS
+(29) Register Hyperty
 
-(30) Intra-domain Local Communication
+(30) Message Routing in Message BUS
 
-(31) Intra-domain Remote Communication
+(31) Intra-domain Local Communication
 
-(32) Inter-domain Local Communication
+(32) Intra-domain Remote Communication
 
-(33) Inter-domain Remote Communication
+(33) Inter-domain Local Communication
 
-(34) User registration
+(34) Inter-domain Remote Communication
 
-(35) Prepare Discovery
+(35) User registration
 
-(36) Use Discovery
+(36) Prepare Discovery
 
-(37) Domain Login
+(37) Use Discovery
 
-(38) Associate User Identity to Hyperty Instance
+(38) Domain Login
 
-(39) User identity assertion sequence diagram
+(39) Associate User Identity to Hyperty Instance
 
-(40) Alice invites Bob for a communication
+(40) User identity assertion sequence diagram
 
-(41) Bob receives invitation
+(41) Alice invites Bob for a communication
 
-(42) Aknowledged that Bob received the invitation
+(42) Bob receives invitation
 
-(43) notification update
+(43) Aknowledged that Bob received the invitation
 
-(44) Bob gatheres WebRTC resources
+(44) notification update
 
-(45) Synchronization of Alice's Data object
+(45) Bob gatheres WebRTC resources
 
-(46) Runtime Main Procedures for M2M Communication
+(46) Synchronization of Alice's Data object
 
-(47) M2M Device Bootstrap
+(47) Runtime Main Procedures for M2M Communication
 
-(48) Context Discovery in M2M Intradomain Communication
+(48) M2M Device Bootstrap
 
-(49) Communication 4 pub sub 1
+(49) Context Discovery in M2M Intradomain Communication
 
-(50) Communication 4 pub sub 2
+(50) Communication 4 pub sub 1
 
-(51) Communication 4 pub sub 3
+(51) Communication 4 pub sub 2
 
-(52) Runtime browser implementation
+(52) Communication 4 pub sub 3
 
-(53) Crosswalk Architecture
+(53) Runtime browser implementation
 
-(54) Cordova functionnal schema
+(54) Crosswalk Architecture
 
-(55) Messaging Node Architecture
+(55) Cordova functionnal schema
 
-(56) WebRTC.org architecture scheme
+(56) Messaging Node Architecture
 
-(57) OpenWebRTC Architecture
+(57) WebRTC.org architecture scheme
 
-(58) V8 Architecture
+(58) OpenWebRTC Architecture
 
-(59) V8 Multiple Contexts
+(59) V8 Architecture
 
-(60) Docker Architecture
+(60) V8 Multiple Contexts
 
-(@sota.fxos-arch) Firefox OS Architecture
+(61) Docker Architecture
 
-(61) Jitsi Videobridge Architecture
+(62) Firefox OS Architecture
 
-(62) Kurento Architecture
+(63) Jitsi Videobridge Architecture
 
-(63) Janus Gateway architecture
+(64) Kurento Architecture
 
-(64) signalling on-the-fly concept
-
-(65) Wonder Library Main Classes
+(65) Janus Gateway architecture
 
 (66) OMNA Network
+
+(67) WebRTC API evolution
+
+(68) Web Push Architecture
+
+(69) Main flows of events for subscription, push message delivery, and
+    unsubscription
+
+(70) HTTP/2 Push
+
+(71) HTTP/2 Framing
+
+(72) HTTP/2 Streams
+
+(73) signalling on-the-fly concept
+
+(74) Wonder Library Main Classes
 
 

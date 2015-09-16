@@ -13,9 +13,6 @@ sota\standards_annex.md ^
 ..\..\sota\standards\standard_summary.md ^
 sota\projects_annex.md ^
 ..\..\sota\projects\wonder.md ^
-..\..\sota\projects\CoAP_well_known_core.md ^
-..\..\sota\projects\OMA_DM_LWM2M_projects.md ^
-..\..\sota\projects\ETSI_oneM2M.md ^
 ..\..\sota\projects\wonder-messages.md ^
 sota\runtime_annex.md ^
 ..\..\sota\runtime\webrtc-org.md ^

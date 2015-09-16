@@ -128,10 +128,25 @@
 
 (@sota-janus-arch) Janus Gateway architecture
 
+(@sota-standards-omna) OMNA Network
+
+(@sota-standards-webrtc-evo) WebRTC API evolution
+
+(@sota-standards-web-push-arch) Web Push Architecture
+
+(@sota-standards-push-seq-diag) Main flows of events for subscription, push message delivery, and unsubscription
+
+(@sota-standards-http2-push) HTTP/2 Push
+
+(@sota-standards-http2-framing) HTTP/2 Framing
+
+(@sota-standards-http2-streams) HTTP/2 Streams
+
 (@sota-wonder-sigofly) signalling on-the-fly concept
 
 (@sota-wonder-lib) Wonder Library Main Classes
 
-(@sota-standards-omna) OMNA Network
+(@sota-runtime-openfire-videobridge) Video Bridge Component
 
+(@sota-runtime-openfire-components) OpenFire VideoBridge and Jicofo Components
 

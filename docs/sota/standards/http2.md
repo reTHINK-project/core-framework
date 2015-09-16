@@ -53,7 +53,8 @@ Headers add a lot of overhead traffic and increase latency.
 
 In HTTP/2 the server can push resources to the client before receiving a request to server that resource. This reduce the load time as the browser does not have to send GET request to ask for all the resources avoiding RTT delays.
 
-![HTTP/2 Push](http2-push.png)
+![Figure @sota-standards-http2-push: HTTP/2 Push](http2-push.png)
+
 
 ## Features of HTTP/2 
 
@@ -72,14 +73,18 @@ The frame is the smallest unit of communication in HTTP/2, each containing a fra
 The most relevant frames are the used to transport Headers and Data, but there are also frames for other functions like stream control, push content and set the priority of the streams.
 DATA frames are used to transport HTTP message bodies and HEADERS frames are used to communicate header fields for a stream. The rest of frames are used for control tasks and they are called Control Frames.
 
-![HTTP/2 Framing](http2_framing.png)
+
+![Figure @sota-standards-http2-framing: HTTP/2 Framing](http2_framing.png)
+
 
 ### Multiplexing
 
 HTTP/2 interleave multiple requests and responses in parallel without blocking any one using a single connection to deliver and receive them. This allow to remove unnecessary HTTP/1.x workarounds such as concatenated files, image sprites, and domain sharding. 
 It also resultes in  lower page load times by eliminating unnecessary latency and improving utilization of available network capacity.
 
-![HTTP/2 Streams](http2_streams.png)
+
+![Figure @sota-standards-http2-streams: HTTP/2 Streams](http2_streams.png)
+
 
 ### Priority
 

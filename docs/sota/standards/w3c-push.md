@@ -11,11 +11,12 @@ The following general entities and example operation for delivery of push messag
 * The push service delivers the message to a specific user agent
 * The user agent delivers the push message to the specific webapp intended to receive it.
 
-![Web Push Architecture](web-push-arch.jpg)
+![Figure @sota-standards-web-push-arch: Web Push Architecture](web-push-arch.jpg)
 
 The main data flows involved in the PUSH API usage are described below:
 
-![Main flows of events for subscription, push message delivery, and unsubscription](push_sequence_diagram.png)
+![Figure @sota-standards-push-seq-diag: Main flows of events for subscription, push message delivery, and unsubscription](push_sequence_diagram.png)
+
 
 The W3C Push API is a client API that does not provide any standard for how the application server sends messages to the push server. This part is covered by the IETF WEBPUSH protocol.
 

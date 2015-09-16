@@ -21,7 +21,7 @@ Kurento is mainly composed of the two elements :
 - Kurento media server
 - Kurento Application
 
-![Figure @sota-kurento-arch Kurento Architecture](Architecture-Kurento.png) 
+![Figure @sota-kurento-arch: Kurento Architecture](Architecture-Kurento.png) 
 
 Application developers can use Kurento Clients or Kurento API directly for creating their multimedia enabled applications.
 Developpers can use Javascript clients, Java Client or Kurento Protocol. This is interesting as it can easily be integrated with NodeJs

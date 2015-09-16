@@ -1,4 +1,4 @@
-## Jitsi Videobridge 
+o## Jitsi Videobridge 
 [Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) [26] is a WebRTC compatible Selective Forwarding Unit (SFU) that allows for multiuser video communication.
 
 Jitsi Video bridge supports RTP Relay, audio mixing, Call encryption with DTLS/SRTP and ICE. 
@@ -36,7 +36,9 @@ JItsi Video bridge is a [XMPP component](http://xmpp.org/) [27] and can be integ
 * Download and install Jitsi Videobridge from https://jitsi.org/Projects/JitsiVideobridge
 * Run videobridge with: jvb --host=shumybridge --secret=xpassword
 * You should see an entry in XMPP components like:
-![image](openfire_videobridge.png)
+
+![Figure @sota-runtime-openfire-videobridge: Video Bridge Component](openfire_videobridge.png)
+
 
 **Jicofo Session**
 * Clone from "git clone https://github.com/jitsi/jicofo.git"
@@ -44,7 +46,12 @@ JItsi Video bridge is a [XMPP component](http://xmpp.org/) [27] and can be integ
 * Add lines "org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false" and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file sip-communicator.properties. In Windows this is located at "C:\Users\"user"\\.sip-communicator\sip-communicator.properties" or in linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
 * Run videobridge with: jicofo --host=shumybridge --port=5275 --secret=xpassword
 * You should see an entry in XMPP components like:
-![image](openfire_video_jicofo.png)
+
+
+![Figure @sota-runtime-openfire-components: OpenFire VideoBridge and Jicofo Components](openfire_video_jicofo.png)
+
+
+(@sota-runtime-openfire-components) OpenFire VideoBridge and Jicofo Components
 
 
 **NGINX**

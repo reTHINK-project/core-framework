@@ -13,7 +13,7 @@ With support for both H.264 (OpenH264) and VP8 (libvpx) video codecs, OpenWebRTC
 
 The OpenWebRTC project is free and Open Source with a permissive BSD-2 license. 
 
-![Figure @sota-openwebrtc-arch OpenWebRTC Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/openwebrtc.png)
+![Figure @sota-openwebrtc-arch OpenWebRTC Architecture](openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer multimedia framework](http://gstreamer.freedesktop.org/)[20]. GStreamer is a set of libraries and plugins that can be used to implement various multimedia applications ranging from desktop players, audio/video recorders, 
 multimedia servers, transcoders, etc. Applications are built by constructing a pipeline composed of elements. An element is an object that performs some action on a multimedia stream such as:

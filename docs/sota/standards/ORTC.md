@@ -4,7 +4,8 @@
 ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC Applications to be executed in Web browser. 
 
 The protocols on the wire are exactly the same so it is compatible with aaplications written using the current API.  
-![WebRTC API evolution](webrtc_API_evolution.png)
+
+![Figure @sota-standards-webrtc-evo: WebRTC API evolution](webrtc_API_evolution.png)
 
 <h2>Differences between ORTC and WebRTC 1.0.</h2>
 <ol>

@@ -17,7 +17,7 @@ Docker's lightweight containers also make scaling up and down fast and easy. Mor
 
 ### Architecture
 
-![Figure @sota-docker-arch Docker Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/docker-arch.png)
+![Figure @sota-docker-arch Docker Architecture](docker-arch.png)
 
 Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing Docker containers. Both the Docker client and the daemon can run on the same system, or can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate via sockets or through a RESTful API.
 
