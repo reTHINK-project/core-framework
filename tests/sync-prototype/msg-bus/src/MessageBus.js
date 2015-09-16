@@ -1,4 +1,4 @@
-import Pipeline from 'Pipeline';
+import Pipeline from './Pipeline';
 
 export default class MessageBus {
   /* private

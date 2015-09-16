@@ -1,5 +1,5 @@
-import SyncObject from 'sync/SyncObject';
-import {ChangeType, ObjectType} from 'sync/SyncObject';
+import SyncObject from './SyncObject';
+import {ChangeType, ObjectType} from './SyncObject';
 
 export default class Syncher {
   /* private
