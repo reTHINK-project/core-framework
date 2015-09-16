@@ -36,12 +36,20 @@ specs\runtime-idm.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-to-hyperty-binding.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-identity-assertion.md ^
 specs\runtime-h2h.md ^
+specs\runtime-intra-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-1-alice-invites.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-2-bob-receives-invitation.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-3-alice-is-aknowledged-invitation-received.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-4-notification-update.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-5-bob-webrtc.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-6-alice-DO-synch.md ^
+specs\runtime-inter-h2h.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-1-alice-invites.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-2-bob-receives-invitation.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-3-alice-is-aknowledged-invitation-received.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-4-notification-update.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-5-bob-webrtc.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-6-alice-DO-synch.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-comm-overview.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-bootstrap-auth-registration.md ^
 ..\..\specs\runtime\dynamic-view\m2m-communication\m2m-intra-comm-3-discovery.md ^
@@ -59,28 +67,31 @@ conclusions\readme.md ^
 ..\..\references\readme.md ^
 introduction\figures.md
 
-
  pushd ..\..\sota
    for /r %%a in (*.png) do (
       COPY "%%a" "..\deliverables\d31\%%~nxa"
    )
 
- pushd ..\..\sota
    for /r %%a in (*.jpg) do (
       COPY "%%a" "..\deliverables\d31\%%~nxa"
    )
 
- pushd ..\..\specs
+ pushd ..\specs
    for /r %%a in (*.png) do (
       COPY "%%a" "..\deliverables\d31\%%~nxa"
    )
-
-pushd ..\..\specs
    for /r %%a in (*.jpg) do (
       COPY "%%a" "..\deliverables\d31\%%~nxa"
    )
 
- pushd ..\deliverables\d31
+pushd ..\deliverables\d31\introduction
+   for /r %%a in (*.jpg) do (
+      COPY "%%a" "..\%%~nxa"
+   )
 
+ pushd ..
 pandoc --filter pandoc-citeproc -f markdown -t docx --data-dir=. readme.md -o D3.1-body.docx
 
+GOTO resume1
+
+:resume1

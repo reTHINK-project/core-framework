@@ -1,4 +1,4 @@
-(@introduction-wp3-scope) - WP3 Scope
+(@introduction-wp3-scope) WP3 Scope
 
 (@sota-security-chromium-sandbox) Chromium sandbox scheme
 
@@ -120,7 +120,7 @@
 
 (@sota-docker-arch) Docker Architecture
 
-(@sota.fxos-arch) Firefox OS Architecture
+(@sota-fxos-arch) Firefox OS Architecture
 
 (@sota-jitsi-arch) Jitsi Videobridge Architecture
 
