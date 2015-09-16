@@ -100,3 +100,5 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [44] - [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
 
 [45] - [Peering through WebRTC with SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/)
+
+[46] - [Web Components] (http://www.w3.org/wiki/WebComponents/)
