@@ -92,3 +92,11 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [40] - [Cookbook MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
 
 [41] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
+
+[42] - [AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
+
+[43] - [Why Meteor] (http://www.meteorpedia.com/read/Why_Meteor)
+
+[44] - [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
+
+[45] - [Peering through WebRTC with SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/)
