@@ -1,7 +1,7 @@
 ### AngularJS Framework 
 
 #### Overview
-AngularJS is a Javascript MVC Framework developed and promoted by Google, to build well architectured and maintainnable web applications. 
+AngularJS [51] is a Javascript MVC Framework developed and promoted by Google, to build well architectured and maintainnable web applications. 
 It is usually mistaken for a library due to its lightweight than normal frameworks. It is entirely based on 
 Javascript and a client side framework. It is supported by multiple browsers. 
 
