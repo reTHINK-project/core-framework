@@ -4,36 +4,41 @@ This section describes the programmable interfaces to be implemented by each Hyp
 
 ### Runtime User Agent Interface
 
-#### registerHyperty
+#### Local Device Runtime APIs
+
+##### registerHyperty
 
 Register Hyperty deployed by the App that is passed as input parameter. To be used when App and Hyperties are from the same domain otherwise the RuntimeUA will raise an exception and the App has to use the loadHyperty(..) function.
 
     registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
 
-#### loadHyperty
+##### loadHyperty
 
 Deploy Hiperty from Catalogue URL
 
     loadHyperty( URL.URL hyperty)
 
-#### loadStub
+##### loadStub
 
 Deploy Stub from Catalogue URL or domain url
 
     loadStub( URL.URL stub)
 
-#### checkForUpdate
+##### checkForUpdate
 
 Used to check for updates about components handled in the Catalogue including protocol stubs and Hyperties. *check relationship with lifecycle management provided by Service Workers*
 
     checkForUpdate(CatalogueURL url)
     
-#### discoverHiperty
+##### discoverHiperty
 
 accomodate interoperability in H2H and proto on the fly for newly discovered devices in M2M
 
     discoverHiperty( CatalogueDataObject.HypertyDescriptor descriptor) 
 
+#### External parties procedures
+
+Communication with the Catalogue will use the LWM2M protocol. For this specific operations are required: registration of the device endpoint to the Catalogue, Catalogue-driven creation and instantion of Smart Object (Hiperties/ProtoStubs) instances and Access Control rules. This functionality maps to the Software Management interface of the LWM2M protocol, still to be finalized as specification. The drafts are available at: http://member.openmobilealliance.org/ftp/Public_documents/DM/LightweightM2M/Permanent_documents/
 
 ### Runtime Registry Interface
 
