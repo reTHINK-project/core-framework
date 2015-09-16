@@ -1,7 +1,5 @@
 ## M2M Intra-domain communication
 
-To be aligned with [WP2 dynamic viw](https://github.com/reTHINK-project/architecture/tree/master/docs/dynamic-view/M2M%20Communication)
-
 ### [Overview](m2m-comm-overview.md) 
 
 ### [Bootstrap, Authentication and Registration](m2m-bootstrap-auth-registration.md)
