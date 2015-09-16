@@ -5,7 +5,7 @@
 [Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a Javascript plataform, offering a complete full-stack framework for delivering web and mobile apps;
 
 
-! [Figure @sota-meteor Meteor Plataform Overview](meteor-platform.png "image from https://www.meteor.com/features")
+![Figure @sota-meteor Meteor Plataform Overview](meteor-platform.png "image from https://www.meteor.com/features")
 
 **Main Features**
 
