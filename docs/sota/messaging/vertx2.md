@@ -24,7 +24,10 @@ Vert.x has a module system. This module system can be understood as a type of co
 
 ### Architecture
 This subsection highlights the main building blocks of the Vert.x architecture. 
-![image](vertx-architecture-diagram.png)
+
+
+![Figure @sota-messaging-vertx-arch: Vertx Architecture Diagram](vertx-architecture-diagram.png)
+
 
 Figure 1. Vert.x Architecture
 

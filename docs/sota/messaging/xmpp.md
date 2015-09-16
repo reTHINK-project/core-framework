@@ -36,19 +36,29 @@ In the scope of the reTHINK project XMPP is a candidate technology for the Messa
 A typical XMPP network consists of several Servers/Domains connected together. The mechanism is similar to email where the servers are used as relays for the messages. Every entity on the XMPP network is addressed using a JabberID (JID). It has the form : username@domain/resource where domain is the domain name of the XMPP server, and username identifies an account on that server.
 
 
-![image](xmpp_arch.png)
+
+![Figure @sota-messaging-xmpp-arch: XMPP Architecture](xmpp_arch.png)
+
+
 
 Image Source: [https://el-tramo.be](https://el-tramo.be/documents/beautiful-xmpp-testing/)
 
 Server can have adapters/gateways to be able to talk to other protocols such as those used by ICQ, AIM, Yahoo and others.
 
-![image](xmpp_protocols.png)
+
+
+![Figure @sota-messaging-xmpp-protocols: XMPP Protocols](xmpp_protocols.png)
+
+
 
 Image Source: [https://en.wikipedia.org](https://en.wikipedia.org/wiki/XMPP)
 
 Sometimes the servers are used only for signaling, in order to establish a media connection. [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol extension for initiating and managing peer-to-peer media sessions between two XMPP entities.
 
-![image](xmpp_jingle.png)
+
+![Figure @sota-messaging-xmpp-jingle: XMPP Jingle](xmpp_jingle.png)
+
+
 
 Image Source: [http://xmppjingle.blogspot.pt](http://xmppjingle.blogspot.pt/2010/09/jingle-nodes-proxy-and-eu-surveillance.html)
 

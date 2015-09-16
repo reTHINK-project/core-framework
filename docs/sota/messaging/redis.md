@@ -19,13 +19,17 @@ From http://redis.io/:
 
 * The main Redis architecture can be resumed as a in memory key-value data-store for service decoupling.
 
-![image](redis_as_cache.png)
+
+![Figure @sota-messaging-redis-cache: Redis architecture](redis_as_cache.png)
+
 
 Image Source: [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
 
 * Another possibility is a PubSub model with message filtering based on prefix matching.
 
-![image](redis_pubsub.png)
+
+![Figure @sota-messaging-redis-pubsub: PubSub model](redis_pubsub.png)
+
 
 Image Source: [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
 

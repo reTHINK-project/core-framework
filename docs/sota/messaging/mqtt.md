@@ -34,7 +34,11 @@ Clients may subscribe to multiple topics or use a wildcard matching based subscr
 
 MQTT supports three quality of service levels, "Fire and forget", "delivered at least once" (QoS1) and "delivered exactly once" (QoS2).
 
-![image](mqtt_arch.jpg)
+
+
+![Figure @sota-messaging-mqtt-arch: MQTT Architecture](mqtt_arch.jpg)
+
+
 
 Image Source: [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
 

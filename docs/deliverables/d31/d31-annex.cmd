@@ -43,6 +43,7 @@ sota\service-framework_annex.md ^
 ..\..\sota\web-frameworks\angular-js.md ^
 ..\..\sota\web-frameworks\backbone-js.md ^
 ..\..\sota\web-frameworks\stapesjs.md ^
+..\..\sota\web-frameworks\meteor.md ^
 introduction\figures.md
 
 

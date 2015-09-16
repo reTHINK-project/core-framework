@@ -162,3 +162,26 @@
 
 (@sota-messaging-zeromq-clusters) ZeroMQ Clusters
 
+(@sota-messaging-redis-cache) Redis architecture
+
+(@sota-messaging-redis-pubsub) PubSub model
+
+(@sota-messaging-xmpp-arch) XMPP Architecture
+
+(@sota-messaging-xmpp-protocols) XMPP Protocols
+
+(@sota-messaging-xmpp-jingle) XMPP Jingle
+
+(@sota-messaging-mqtt-arch) MQTT Architecture
+
+(@sota-messaging-psyc-message) PSYC Message
+
+(@sota-messaging-arch-node) NodeJS Architecture
+
+(@sota-messaging-vertx-arch) Vertx Architecture Diagram
+
+(@sota-messaging-mvc-angular) AngularJS Framework
+
+(@sota-messaging-backbone-mv) BackboneJS Framework
+
+(@sota-messaging-backbone-collections) Backbone Collections
