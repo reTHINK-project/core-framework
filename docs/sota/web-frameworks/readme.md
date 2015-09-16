@@ -12,7 +12,7 @@ This section analyses popularly used JavaScript Frameworks. The analysis of this
 * Service Framework MUST be light weight and fast
 * Service Framework SHOULD support Model-View-Controller design pattern
 
-The following JavaScript have been analyzed.
+The following JavaScript Frameworks have been analyzed.
 
 ### [AngularJS (Google)](angular-js.md)
 
