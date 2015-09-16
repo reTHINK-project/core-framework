@@ -87,5 +87,10 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [38]	ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
 
-[39] https://tools.ietf.org/html/rfc5766
+[39] TURN rfc, https://tools.ietf.org/html/rfc5766
+
+[40] STUN rfc, https://tools.ietf.org/html/rfc5389
+
+[41] TRAM IETF, https://datatracker.ietf.org/wg/tram/documents/
+
 
