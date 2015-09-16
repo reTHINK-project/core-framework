@@ -111,4 +111,8 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [50] - coturn, https://github.com/coturn/coturn
 
+[51] - [AngularJS](https://angularjs.org/)
+
+[52] - [BackboneJS](http://backbonejs.org)
+
 
