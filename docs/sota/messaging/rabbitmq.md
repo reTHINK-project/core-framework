@@ -22,7 +22,9 @@ In the scope of the reTHINK project, RabbitMQ is a candidate technology for the 
 
 The core component is the **Broker** that routes the messages from the **producers** to the **consumers** as depicted in the following image.
 
-![image](rabbitmq_arch2.png)
+
+
+![Figure @sota-messaging-rabbitmq-arch2: RabbitMQ Architecture2](rabbitmq_arch2.png)
 
 
 
@@ -32,7 +34,8 @@ The **Broker** has two main componentes:
 * **Queue**: a FIFO queue of messages
 
 Message routing can be based on topic / wild-card,  as shown in the following image.
-![image](rabbitmq_arch.png)
+
+![Figure @sota-messaging-rabbitmq-arch: RabbitMQ Architecture](rabbitmq_arch.png)
 
 Image Source: [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
 

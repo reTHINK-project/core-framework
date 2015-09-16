@@ -11,7 +11,10 @@ In the scope of the reTHINK project, matrix.org is a candidate technology for th
 
 Following picture shows the main data flow in a matrix architecture.
 
-![image](matrix-dataflows.png)
+
+
+![Figure @sota-messaging-matrix-dataflows: Main data flow in a matrix architecture](matrix-dataflows.png)
+
 
 The core components are the Home Servers (HS) which can federate to sync and maintain the history of shared communication sessions among domains. Home Servers resolv each other via DNS.
 

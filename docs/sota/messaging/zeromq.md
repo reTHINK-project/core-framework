@@ -26,7 +26,9 @@ It is used as a thin layer between the application and transport layers.
 ### Architecture
 The following figure represents the six basic types of communication patterns that ZeroMQ supports.
 
-![image](zeromq_basic_patterns.png)
+
+![Figure @sota-messaging-zeromq-patterns: ZeroMQ types of communication patterns](zeromq_basic_patterns.png)
+
 
 Image Source: [http://www.slideshare.net](http://www.slideshare.net/IanBarber/zeromq-is-the-answer)
 
@@ -43,7 +45,11 @@ One of the things that ZeroMQ also aims to provide is a set of high-level patter
 
 These can be used as "fabric" to make very powerful architectures. The next image shows an example of this modularity. [A pub/sub multi-cluster Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
-![image](zeromq_clusters_example.png)
+
+
+![Figure @sota-messaging-zeromq-clusters: ZeroMQ Clusters](zeromq_clusters_example.png)
+
+
 
 Image Source: [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 

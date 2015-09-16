@@ -152,3 +152,13 @@
 
 (@sota-meteor) Meteor Plataform Overview
 
+(@sota-messaging-matrix-dataflows) Main data flow in a matrix architecture
+
+(@sota-messaging-rabbitmq-arch2) RabbitMQ Architecture2
+
+(@sota-messaging-rabbitmq-arch) RabbitMQ Architecture
+
+(@sota-messaging-zeromq-patterns) ZeroMQ types of communication patterns
+
+(@sota-messaging-zeromq-clusters) ZeroMQ Clusters
+
