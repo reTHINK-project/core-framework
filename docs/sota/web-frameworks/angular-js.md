@@ -6,7 +6,7 @@ It is usually mistaken for a library due to its lightweight than normal framewor
 Javascript and a client side framework. It is supported by multiple browsers. 
 
 
-![Figure @sota-messaging-mvc-angular: AngularJS Framework](mvc_angular.png)
+![Figure @sota-messaging-mvc-angular: AngularJS Framework](mvc_angular.jpg)
 
 
 **Main Features**
