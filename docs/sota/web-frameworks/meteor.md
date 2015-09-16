@@ -28,7 +28,7 @@ Any files here are only served to the client. This is a good place to keep your 
 Any files in this directory are only used on the server, and are never sent to the client. Use /server to store source files with sensitive logic or data that should not be visible to the client.
 
 - **/public**
-Files in /public are served to the client as-is. Use this to store assets such as images. For example, if you have an image located at /public/background.png, you can include it in your HTML with <img src='/background.png'/> or in your CSS with background-image:
+Files in /public are served to the client as-is. Use this to store assets such as images. For example, if you have an image located at /public/background.png, you can include it in your HTML with or in your CSS with background-image:
 url(/background.png). Note that /public is not part of the image URL.
 
 - **/private**
@@ -54,7 +54,6 @@ if (Meteor.isServer) {
 Client connection:
 
 ```javascript
-// simple-todos.js
 Tasks = new Mongo.Collection("tasks");
 ```
 
@@ -96,14 +95,14 @@ Template.task.events({
 
 ##### Positive
 - Full Stack package system
-- Can build system with Corova/Phonegap
+- Mobile version with Cordova/Phonegap
 - Multiplataform Distribution
-- Sofesticaded UI
-- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS;
+- Sofisticaded UI
+- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS
 
 ##### Negative
-- Meteor Development Group has built specifically for a reactive front-end experience.
-- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized;
+- Meteor Development Group has built specifically for a reactive front-end experience
+- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized
  
 
 #### Requirement Analysis
@@ -133,7 +132,7 @@ Meteor is build on top of NodeJs and MongoDB, and both are fast;
 
 **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but **Yes** we can have MVC, in other way:
 
-The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple.
+*"The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple."*
 
 ```
 Model          HTML         What Is Displayed       
