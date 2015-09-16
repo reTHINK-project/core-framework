@@ -51,7 +51,7 @@ if (Meteor.isServer) {
 - While Angular is a front-end library and Sails a backend one, Meteor is a full-stack framework, comparable with Derby.
 - The MVC model is replaced by MVM (Model-View-Mapper) which replace controller by ORM code that supports what views need to display data. Meteor controllers are on the client side.
 
-## Code convetion
+## Code convention
 
 Client connection:
 
@@ -100,11 +100,11 @@ Template.task.events({
 - Mobile version with Cordova/Phonegap
 - Multiplataform Distribution
 - Sofisticaded UI
-- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS;
+- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS
 
 #### Cons
-- Meteor Development Group has built specifically for a reactive front-end experience.
-- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized;
+- Meteor Development Group has built specifically for a reactive front-end experience
+- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized
  
 
 ## Requirement Analysis
@@ -134,7 +134,7 @@ Meteor is build on top of NodeJs and MongoDB, and both are fast;
 
 **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but **Yes** we can have MVC, in other way:
 
-The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple.
+*"The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple."*
 
 ```
 Model          HTML         What Is Displayed       
@@ -144,7 +144,7 @@ Controller     Javascript   When It Is Displayed
 
 ## References
 
-All information contained in this file are from these references:
+All information contained in this file came from these references:
 
 - [Meteor](http://docs.meteor.com/#/full/quickstart)
 - [Cookbook MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
