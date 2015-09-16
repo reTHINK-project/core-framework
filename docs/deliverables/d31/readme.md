@@ -7,9 +7,9 @@ Objectives and Overview
 This report provides a detailed specification of reTHINK Core Framework
 components comprised by the runtime environment where Hyperties are
 executed and the messaging nodes used to support messages exchange
-between Hyperties. Thus, and according to reTHINK Architecture [38], the
-scope of this report includes the specification of the Messaging Node
-providing reTHINK Messaging Services and the specification of the
+between Hyperties. Thus, and according to reTHINK Architecture \[38\],
+the scope of this report includes the specification of the Messaging
+Node providing reTHINK Messaging Services and the specification of the
 Hyperty Runtime that will be included in User Devices and Application
 Servers to deliver User Hyperties and Network Side Hyperties.
 
@@ -21,11 +21,11 @@ originaly planned.
 
 These specifications are compliant with reTHINK Data Model, Hyperty
 Management interfaces, Stream Interface and Messaging Interface designed
-in [37]. It should be noted that, according to Protocol On-the-fly
+in \[37\]. It should be noted that, according to Protocol On-the-fly
 concept, the Messaging Interface is defined by the Message Model defined
-in [37].
+in \[37\].
 
-Besides the Architecture requirements reported in D2.1 [38] additional
+Besides the Architecture requirements reported in D2.1 \[38\] additional
 specific requirements to Core Framework functionalities were analysed.
 
 The specification of the Hyperty Runtime and the Messaging Node is
@@ -106,9 +106,9 @@ runtime should be reasonable, for example:
 -   Protocol on the fly mechanism
 -   Policy Enforcement Points
 -   Hyperty Registry <br/>**The Runtime must be secured** :</br> The
-    runtime must support the execution of entrusted code in isolated
-    sandboxes. It should be possible to take advantage of existing
-    secured elements like SIM cards or embedded SIM
+    runtime must support the execution of entrusted code in
+    isolated sandboxes. It should be possible to take advantage of
+    existing secured elements like SIM cards or embedded SIM
 
 <br/>**The Runtime must have a good performance** :</br> The Runtime
 must have a good performance<br/>**The Runtime should support
@@ -147,8 +147,8 @@ should support W3C WebRTC APIs including:
     (DDoS)<br/><br/>**Messaging Node should support Protocol
     on-the-fly** :</br> Messaging Node should support Protocol
     on-the-fly, to inter-operate with other Messaging Nodes or Back-end
-    servers without having the need to standardize the protocol to be
-    used.
+    servers without having the need to standardize the protocol to
+    be used.
 
 <br/><br/>**Messaging Node should support different Encrypted Messaging
 Transport Protocols** :</br> Messaging Node should support different
@@ -186,9 +186,8 @@ Node must support external authentication and Authorisation** :</br>
 Messaging Node must be able to use an external Authentication Service
 
 Messaging Node must be able to use an external Authorisation Service for
-the following features: \* send/publish a Message \* receive a
-Message \* subscribe / register handlers to be notified about published
-messages
+the following features: \* send/publish a Message \* receive a Message
+\* subscribe / register handlers to be notified about published messages
 
 <br/><br/>**Messaging Node must support multiple message oriented
 communication patterns** :</br> Messaging Node must support multiple
@@ -219,8 +218,8 @@ message oriented communication patterns including:
     monetization reasons. <br/>**QoS component should leverage IP paths
     diversity** :</br> The are different possible connection paths, i.e.
     paths offering best-effort services or managed paths with a certain
-    Service Level agreement. These different possibilities should be
-    considered. <br/>**QoS component should impact different network
+    Service Level agreement. These different possibilities should
+    be considered. <br/>**QoS component should impact different network
     types and segments** :</br> Should impact mobile, wireline, wifi
     access networks, but also interconnection. <br/>**QoS component
     should be compatible with evolution of different standards and
@@ -282,11 +281,11 @@ message oriented communication patterns including:
     handles data & business logic. It also allows for clear separation
     between the presentation (View) and application logic. Meanwhile the
     Controller receives user requests and calls back to the model to
-    select a proper view via HTTP GET or POST request to manage the
-    data. Within the Service Framework, more focus will be laid on the
-    Model. The View and Controller will remain flexible for the
-    developers to determine according to their requirements and
-    preferences. <br/>
+    select a proper view via HTTP GET or POST request to manage
+    the data. Within the Service Framework, more focus will be laid on
+    the Model. The View and Controller will remain flexible for the
+    developers to determine according to their requirements
+    and preferences. <br/>
 
 State of the Art
 ================
@@ -349,26 +348,26 @@ in these architectures, multiple techniques have been employed:
 
 -   **Sandboxing:** In computer security, a sandbox is a security
     mechanism which allows untrusted programs to run within a trusted
-    environment, without affecting the environment or other co-located
-    programs. This is usually done by restricting the resources (disk,
-    memory, network) the untrusted software can access. An example is
-    creating scratch memory and disk spaces where it can read/write and
-    limiting the network capabilities it can use, in order to prevent
-    the host environment from getting damaged. This is what Chromium
-    browser [1] applies to separate the user and the web side in a
-    modular architecture. It features two modules:
+    environment, without affecting the environment or other
+    co-located programs. This is usually done by restricting the
+    resources (disk, memory, network) the untrusted software can access.
+    An example is creating scratch memory and disk spaces where it can
+    read/write and limiting the network capabilities it can use, in
+    order to prevent the host environment from getting damaged. This is
+    what Chromium browser \[1\] applies to separate the user and the web
+    side in a modular architecture. It features two modules:
 
 -   A **browser kernel module** which acts on behalf of the user and is
-    responsible for implementing the tab-based windowing system of the
-    browser. It stores users' data as its preferences, bookmarks,
+    responsible for implementing the tab-based windowing system of
+    the browser. It stores users' data as its preferences, bookmarks,
     credentials and cookies and also works as middleware between the
     native operating system window manager and every instance of the
     second browser module, the rendering engine.
 -   The **rendering engine** implements the web application behavior. It
     interprets and executes web content, serving calls to the DOM API.
-    It is the unique browser part in contact with the untrusted web
-    content. Apart from that, it is also responsible for enforcing the
-    same-origin policy between the user and a website he's visiting.
+    It is the unique browser part in contact with the untrusted
+    web content. Apart from that, it is also responsible for enforcing
+    the same-origin policy between the user and a website he's visiting.
 
 ![Figure 4: Chromium sandbox scheme](chromium-sandbox.png)
 
@@ -400,7 +399,7 @@ Typically, benign extensions face two types of attackers:
     stealing the browser’s userdata, like credentials. This way, it can
     scale up to attack multiple websites within the same entry point.
 
-According to [2], Google Chrome and its extension platform apply three
+According to \[2\], Google Chrome and its extension platform apply three
 mechanisms to prevent these vulnerabilities: \* **Privilege
 Separation:** Every Chrome extension has two types of components which
 run in separate processes: zero or more content scripts and zero or one
@@ -416,9 +415,9 @@ content script is able to access the user data space. The architecture
 scheme of a Google Chrome extension is on Fig. 5. \* **Isolated Words:**
 This mechanism ensures that content scripts and websites have separate
 JavaScript heaps and DOM objects. Consequently, content scripts never
-exchange pointers with websites, protecting them against web
-attackers. \* **Permissions:** Extension developers have to specify the
-desired permissions in a kind of manifest file that is packaged with the
+exchange pointers with websites, protecting them against web attackers.
+\* **Permissions:** Extension developers have to specify the desired
+permissions in a kind of manifest file that is packaged with the
 extension. For example, the bookmarks permission is needed for the
 extension to be able to read and alter the user's bookmarks. Only core
 extension can use permissions to invoke browser API methods, while
@@ -438,7 +437,7 @@ execute malicious code (usually JavaScript/HTML) within the trusted
 context of a web application. This can result in the attacker being able
 to access any sensitive information associated to the application
 (cookies, session IDs, etc.). The study of XSS attacks can be split into
-two distinct categories, according to [3]:
+two distinct categories, according to \[3\]:
 
 -   **Persistent/Stored attacks:** Occurs when a malicious user
     registers itself into a web application and posts a malicious
@@ -459,14 +458,14 @@ two distinct categories, according to [3]:
 -   **Non-persistent/Reflected attacks:** Unlike the first type,
     reflected attacks do not persistently store malicious code in the
     web application data space. Instead of that, the content is
-    automatically reflected back to the user through a third-party
-    mechanism. For example, by using a spoofed email, an attacker can
-    make a user click on a link containing malicious code, which will
-    finally be interpreted by the user’s browser, but within the trusted
-    context of the web application. This type of XSS attacks is often
-    combined with other techniques as phishing, and is the most common
-    type of XSS attacks in web applications. Figure 7 shows a scheme of
-    the architecture of a non-persistent XSS attack.
+    automatically reflected back to the user through a
+    third-party mechanism. For example, by using a spoofed email, an
+    attacker can make a user click on a link containing malicious code,
+    which will finally be interpreted by the user’s browser, but within
+    the trusted context of the web application. This type of XSS attacks
+    is often combined with other techniques as phishing, and is the most
+    common type of XSS attacks in web applications. Figure 7 shows a
+    scheme of the architecture of a non-persistent XSS attack.
 
 ![Figure 7: Scheme of a non-persistent XSS
 attack](xss-nonpersistent.png)
@@ -483,25 +482,25 @@ This technique consists in defining a list of characters or tags which
 users are allowed to exchange with the web application, in the form of
 text inputs, uploaded files, etc. Then, a filtering process simply
 rejects everything that is not part of the list. Other approach,
-reported in [4], is having a proxy-server at the web application’s site
-in order to filter both incoming and outgoing requests. This filtering
-takes into account a set of rules defined by the application developers.
-However, a simple use of regular expressions is able to evade both the
-referred methods and proxy-servers can rapidly become a performance
-bottleneck on the application deployment. Pietraszeck et al. [5] also
-suggested placing a proxy-server on the server-side of the application,
-but in order to differentiate trusted and untrusted traffic, driving
-each type to separate channels. This partitioning process uses
-Information Flow Control techniques to taint information and track it
-thenceforward.
+reported in \[4\], is having a proxy-server at the web application’s
+site in order to filter both incoming and outgoing requests. This
+filtering takes into account a set of rules defined by the application
+developers. However, a simple use of regular expressions is able to
+evade both the referred methods and proxy-servers can rapidly become a
+performance bottleneck on the application deployment. Pietraszeck et al.
+\[5\] also suggested placing a proxy-server on the server-side of the
+application, but in order to differentiate trusted and untrusted
+traffic, driving each type to separate channels. This partitioning
+process uses Information Flow Control techniques to taint information
+and track it thenceforward.
 
-From another point of view, some approaches [6,7] propose the content
+From another point of view, some approaches \[6,7\] propose the content
 filtering to happen at the client-side. On the one hand, Kirda et al.
-[6] try to achieve the prevention of XSS attacks by blacklisting links
+\[6\] try to achieve the prevention of XSS attacks by blacklisting links
 embedded within the web application’s pages, making them unavailable for
 the client. However, the authors say this approach can only detect basic
 XSS attacks based on the violation of same-origin policy. On the other
-hand, Ismail et al. [7] present another client-proxy solution that is
+hand, Ismail et al. \[7\] present another client-proxy solution that is
 intended to detect malicious requests reflected from the attacker to the
 victim (non-persistent XSS attacks). If such a request is detected, the
 malicious characters are re-encoded by the proxy, trying to avoid the
@@ -511,15 +510,15 @@ success of the attack.
 
 There are also other strategies which try to avoid the need for
 intermediate elements like proxy-servers by proposing startegies to
-enforce the runtime context of the web browser. Hallaraker et al. [8]
+enforce the runtime context of the web browser. Hallaraker et al. \[8\]
 propose an auditing system for the JavaScript interpreter of the Mozilla
 Firefox browser, which detects misuses on JS operations and take
 counter-measures to avoid violations on browser’s security. Other
-approach [9] presents the use of dynamic taint tracking on JavaScript
+approach \[9\] presents the use of dynamic taint tracking on JavaScript
 code, in order to detect whether browser’s sensitive resources are going
 to be transferred to an untrusted third-party. In such case, the user is
 warned and can decide whether he allows or denies the transfer. Finally,
-Jim et al. [10] propose a policy-based management where a list of
+Jim et al. \[10\] propose a policy-based management where a list of
 actions is embedded into the documents exchanged between the browser and
 the server. These actions help the browser to decide whether or not a
 script should be executed. Although, a lack of semantics in the
@@ -540,7 +539,7 @@ the trusted code part to the untrusted one. This API encapsulates all
 security-critical resources and guarantees they are only accessed in a
 safe way.
 
-Given this, Taly et al. [11] proposed ENCAP, a tool that verifies API
+Given this, Taly et al. \[11\] proposed ENCAP, a tool that verifies API
 confinement, analyzing the isolation level it can offer to the critical
 objects it is intended to protect. ENCAP relies on a context-insensitive
 and flow-insensitive static analysis method. It analyses the API
@@ -575,7 +574,7 @@ that run on the smart card. The single-chip computer is embedded in a
 plastic chip carrier, and both of them hold several tamper-resistant and
 tamper-detection features.
 
-![Figure 8: Java Smart Card scheme [11]](java-smart-card.jpg)
+![Figure 8: Java Smart Card scheme \[11\]](java-smart-card.jpg)
 
 **Software**
 
@@ -604,7 +603,7 @@ card and that applications are protected from each other.
 
 #### Cloud of Secure Elements
 
-Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal
+Cloud of Secure Elements (CoSE) \[12\] is an emerging concept whose goal
 is to provide trusted computing resources to mobile and cloud
 applications. To achieve this, it relies on an infrastructure composed
 by multiple secure micro-controllers, named Secure Elements.
@@ -719,8 +718,8 @@ subject to roll-back in the event of a programatically transaction abort
 
 Now we enumerate some dynamic runtime checks implemented by some VMs in
 order to prevent ill-typed code to damage the Java Card platform. These
-were verified by Mostowski et al. [13], by performing tests on multiple
-Java Card models of multiple manufacturers against the referred
+were verified by Mostowski et al. \[13\], by performing tests on
+multiple Java Card models of multiple manufacturers against the referred
 vulnerabilities:
 
 -   Runtime type checking
@@ -728,59 +727,6 @@ vulnerabilities:
 -   Physical (byte size) bounds checking
 -   Firewall checks
 -   Integrity checks in memory
-
-### References
-
-[1] - Barth, Reis, Jackson, The Google Chrome Team. The Security
-Architecture of the Chromium Browser. 2008.
-
-[2] - Carlini, Felt, Wagner. An Evaluation of the Google Chrome
-Extension Security Architecture. Proceedings of the 21st USENIX
-Conference on Security Symposium. 2012
-
-[3] - Garcia-Alfaro, Navarro-Arribas. A Survey on Detection Techniques
-to Prevent Cross-Site Scripting Attacks on Current Web Applications.
-Proceedings of the Second International Conference on Critical
-Information Infrastructures Security. 2008.
-
-[4] - Scott, Sharp. Abstracting application-level web security. 11th
-International Conference on the World Wide Web. 2002.
-
-[5] - Pietraszeck, Vanden-Berghe. Defending against injection attacks
-through context-sensitive string evaluation. Recent Advances in
-Intrusion Detection (RAID 2005). 2005.
-
-[6] - Kirda, Kruegel, Vigna, Jovanovic. Noxes: A client-side solution
-for mitigating cross-site scripting attacks. 21st ACM Symposium on
-Applied Computing. 2006.
-
-[7] - Ismail, Etoh, Kadobayashi, Yamaguchi. A Proposal and
-Implementation of Automatic Detection/Collection System for Cross-Site
-Scripting Vulnerability. 18th Int. Conf. on Advanced Information
-Networking and Applications (AINA 2004). 2004.
-
-[8] - Hallaraker, Vigna. Detecting Malicious JavaScript Code in Mozilla.
-10th IEEE International Conference on Engineering of Complex Computer
-Systems (ICECCS’05). 2005.
-
-[9] - Jovanovic, Kruegel, Kirda. Precise alias analysis for static
-detection of web application vulnerabilities. 2006 Workshop on
-Programming Languages and Analysis for Security USA. 2006.
-
-[10] - Jim, Swamy, Hicks. Defeating Script Injection Attacks with
-Browser-Enforced Embedded Policies. International World Wide Web
-Conferencem, WWW 2007, May 2007.
-
-[11] - Taly, Erlingsson, Mitchell, Miller, Nagra. Automated Analysis of
-Security-Critical JavaScript APIs. IEEE S&P 2011. 2011.
-
-[12] - Urien. Cloud of Secure Elements perspectives for mobile and cloud
-applications security. 2013 IEEE Conference on Communications and
-Network Security (CNS). 2013.
-
-[13] - Mostowski, Poll. Malicious Code on Java Card Smartcards: Attacks
-and Countermeasures. Smart Card Research and Advanced Applications.
-2008.
 
 Standards
 ---------
@@ -1122,8 +1068,8 @@ http://apirtc.com/api-docs/
 
 APIS are decomposed with main following classes :<br/> \* ApiRTCSession
 : manage user connection to the platform (presence)<br/> \*
-ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
-...<br/> \* ApiRTCIMClient : manage Instant messaging feature<br/> \*
+ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
+\* ApiRTCIMClient : manage Instant messaging feature<br/> \*
 ApiRTCDataClient: : manage data sending feature<br/> \*
 ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
@@ -1282,11 +1228,11 @@ The following network elements are the basic ones to understand the
 reference architecture (from right to left):
 
 -   Service Provider Network: this block represents the existing UC
-    platform owned by the enterprise (where we might find a corporate
-    PBX) or service provider (where we might find an IMS core or a Class
-    4/5 softswitch). In the latter case we will also find OSS/BSS
-    systems and other identity management platforms that interact with
-    Sippo in some way.
+    platform owned by the enterprise (where we might find a
+    corporate PBX) or service provider (where we might find an IMS core
+    or a Class 4/5 softswitch). In the latter case we will also find
+    OSS/BSS systems and other identity management platforms that
+    interact with Sippo in some way.
 
 -   Third-party WebRTC gateway: in some cases where the UC core does not
     support WebRTC traffic, there is a need for a WebRTC gateway which
@@ -1552,8 +1498,8 @@ Four main types of Runtime procedures are described:
     procedures performed to route messages among Hyperties.
 2.  Identity Management Runtime procedures are the procedures performed
     to register and log in users in the domain, as well as procedures
-    performed to associate identities to Hyperties and assert user
-    identities.
+    performed to associate identities to Hyperties and assert
+    user identities.
 3.  Runtime Procedures to support Human to Human Communication with
     special focus on the validation of the Reporter-Observer
     communication pattern to WebRTC.
@@ -1569,7 +1515,10 @@ specification namely the browser runtime, standalone runtime
 applications and M2M devices with more constrained capabilities. These
 considerations are mainly about the implementation of the runtime
 sandboxing solution since all core runtime components will be shared
-among all platforms. \#\# Runtime Architecture
+among all platforms.
+
+Runtime Architecture
+--------------------
 
 The main Hyperty runtime architecture is presented in fig. 16. It is
 comprised by different types of components that, for security reasons,
@@ -1642,7 +1591,7 @@ Some more details are provided in the following sections.
 
 #### Hyperty
 
-As defined in [D2.2] Hyperties communicate through [data object
+As defined in \[D2.2\] Hyperties communicate through [data object
 synchronisation](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md)
 where different access control policies can be used. The
 Reporter-Observer pattern introduced in D2.2 will be evaluated in order
@@ -1663,7 +1612,7 @@ Only one hyperty instance reporter per Synched object instance.
 
 Such Model is depicted in figure 19. The Reporter-Observer pattern is
 supported by the exchange of messages between Reporter Syncher and
-Observer Syncher as defined in the reTHINK Message Model [D2.2].
+Observer Syncher as defined in the reTHINK Message Model \[D2.2\].
 
 ![Figure 19 Reporter-Observer Communication
 Pattern](reporter-observer-pattern.png)
@@ -1777,7 +1726,7 @@ Service Provider sandboxes including Hyperties, Protocol Stubs and
 Policy Enforcers. It manages the descriptors of deployed components that
 are downloaded from the Service Provider Catalogue via the [Catalogue
 Service
-interface](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface)[D2.2].
+interface](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface)\[D2.2\].
 
 #### QoS User Agent
 
@@ -1798,7 +1747,7 @@ Security analysis of the Hyperty Runtime
 
 This document presents the security analysis of the Hyperty Runtime
 architecture
-[[1]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
+[\[1\]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
 
 The Hyperty Runtime depends on a trusted computing base (TCB) that
 consists of several components: the Native Runtime, the Core Sandbox,
@@ -1964,10 +1913,10 @@ stack, as shown in the figure below:
 ![Figure 22: Stack](stack.png)
 
 -   *Sandbox level (L1)*: The attacker has direct access to the sandbox
-    environment, hence to the code and execution state of Hyperty
-    instances. For example, on a browser platform, users typically have
-    access to the JavaScript of a given page. This means that a
-    malicious user can leverage that mechanism to tamper with the
+    environment, hence to the code and execution state of
+    Hyperty instances. For example, on a browser platform, users
+    typically have access to the JavaScript of a given page. This means
+    that a malicious user can leverage that mechanism to tamper with the
     JavaScript code of local Hyperty instances.
 
 -   *Runtime level (L2)*: The attacker has direct access to the code or
@@ -1980,11 +1929,11 @@ stack, as shown in the figure below:
 
 -   *Process level (L3)*: The attacker has access to the execution state
     of the process where the Hyperty Runtime is hosted. Just like the L2
-    attacks, this type of attack can result in catastrophic
-    consequences. Examples of attacks performed at the process level
-    include attaching a debugger to the Hyperty Runtime process and
-    inspect its internal data structures, or dumping its memory state to
-    disk by reading from /dev/mem.
+    attacks, this type of attack can result in
+    catastrophic consequences. Examples of attacks performed at the
+    process level include attaching a debugger to the Hyperty Runtime
+    process and inspect its internal data structures, or dumping its
+    memory state to disk by reading from /dev/mem.
 
 -   *Operating system level (L4)*: The adversary has access to the
     execution state of the operating system, and therefore to the
@@ -2022,8 +1971,8 @@ attack:
     owner abuses superuser privileges to disable the policy enforcement
     mechanisms of the Hyperty Runtime.
 
--   *Medium (D2)*: The attack requires considerable skills and / or
-    resources. It can be launched by mastering the tools presently
+-   *Medium (D2)*: The attack requires considerable skills and /
+    or resources. It can be launched by mastering the tools presently
     available in the system (e.g., tools provided by the operating
     system, debuggers) or by installing new ones that can be found on
     the Internet (including malware or exploits). The attacker has
@@ -2035,10 +1984,10 @@ attack:
 
 -   *Hard (D3)*: The attack is very sophisticated. To mount the attack,
     the attacker must be able to develop its own exploit code, find new
-    vulnerabilities in the system, and / or launch software hardware
-    attacks. For example, finding bugs in a device driver’s code and
-    write software exploits. The attacks performed at the deep hardware
-    level are also considered hard to execute.
+    vulnerabilities in the system, and / or launch software
+    hardware attacks. For example, finding bugs in a device driver’s
+    code and write software exploits. The attacks performed at the deep
+    hardware level are also considered hard to execute.
 
 When drawing a vulnerability matrix, we define *attacker profiles*,
 which define sets of possible attacks that characterize possible attack
@@ -2090,8 +2039,8 @@ vulnerability matrix as follows:
     browser, and run Hyperty-based applications. A regular user is
     expected to mount the following attacks:
 
--   *A0*: Access and modify client JavaScript code through the browser
-    interface.
+-   *A0*: Access and modify client JavaScript code through the
+    browser interface.
 
 -   *Advanced user*: This profile captures users with superuser
     privileges and some degree of skills and knowledge of the system.
@@ -2106,21 +2055,21 @@ vulnerability matrix as follows:
     user can perform several other attacks at different stack layers
     such as these:
 
--   *A1*: Compromise the runtime by installing a malicious browser
-    extension.
+-   *A1*: Compromise the runtime by installing a malicious
+    browser extension.
 -   *A2*: Dump the memory contents of the process to disk.
 -   *A3*: Install a rootkit on the operating system that keeps track of
     Hyperty instances' communication.
 
 -   *Power user*: This profile corresponds to highly skilled users, who
-    have deep knowledge of the system and can launch sophisticated
-    attacks. A user is able to investigate unknown vulnerabilities in
-    the software (including in the Hyperty Runtime or in the OS) and
-    develop specific software exploits. Moreover, the user has enough
-    resources and tools to launch hardware attacks that involve
-    tampering with silicon. A power user is able to mount not only the
-    attacks described previously, but more sophisticated attacks on
-    various layers of the stack:
+    have deep knowledge of the system and can launch
+    sophisticated attacks. A user is able to investigate unknown
+    vulnerabilities in the software (including in the Hyperty Runtime or
+    in the OS) and develop specific software exploits. Moreover, the
+    user has enough resources and tools to launch hardware attacks that
+    involve tampering with silicon. A power user is able to mount not
+    only the attacks described previously, but more sophisticated
+    attacks on various layers of the stack:
 
 -   *A4*: Find and exploit a bug in the Hyperty Runtime.
 -   *A5*: Attach a debugger to the browser’s subprocess and inspect /
@@ -2194,8 +2143,8 @@ alternative attack examples.
 
 -   *A2*: Find and exploit a bug in the Hyperty Runtime.
 -   *A3*: Find a bug in the host application code and exploit it.
--   *A4*: Monitor the execution of Hyperty Instances by rooting the
-    device.
+-   *A4*: Monitor the execution of Hyperty Instances by rooting
+    the device.
 -   *A5*: Hack the device hardware to extract sensitive Hyperty data
     from memory.
 
@@ -2233,7 +2182,7 @@ Runtime APIs
 This section describes the programmable interfaces to be implemented by
 each Hyperty Runtime Component. These interfaces will evolve according
 to input received from the implementation tasks. Data types defined in
-[D2.2] are used as much as possible to describe input and output
+\[D2.2\] are used as much as possible to describe input and output
 parameters of interface functions.
 
 ### Runtime User Agent Interface
@@ -2613,8 +2562,8 @@ runtime. It includes:
     -   local communication between Hyperties from the same domain
         (running in the same Sandbox)
     -   local communication between Hyperties from different domains
-        (running in different sandboxes but in the same Runtime
-        Instance)
+        (running in different sandboxes but in the same
+        Runtime Instance)
     -   Remote communication between Hyperties from the same domain
     -   Remote communication between Hyperties from different domains
 
@@ -2666,7 +2615,7 @@ there is no protocol stub available in the runtime.
 
 Steps 3 - 5 : the Runtime UA is able to derive the URL to download the
 protocol stub descriptor from the domain url, since it is a well known
-URI defined in the reTHINK Architecture Interfaces [15]. The protocol
+URI defined in the reTHINK Architecture Interfaces \[15\]. The protocol
 stub descriptor contains the url that the Runtime UA uses to download
 and instantiate the protocol stub in the runtime. Depending on the
 Runtime Sandbox implementation, the download and instantiation may have
@@ -2686,8 +2635,7 @@ Execution message type routed by the Message BUS.
 Steps 10 : The Runtime UA adds in the runtime BUS the protostub listener
 to receive messages from the runtime. Protocol stubs are connected by
 using credentials handled by the Core Runtime Identity Module which are
-detailed in the [domain login use
-case](../identity-management/domain-login.md).
+detailed in the [Domain Login](#domain-login).
 
 Steps 11 - 12 : protocol stub publishes its status (including events
 about when it is connected or disconnected) in its resource status.
@@ -2703,7 +2651,7 @@ Message to publish Protocol Stub Status
 
     "body" : { "value" : "LIVE" }
 
-#### Deploy Hyperty
+#### Deploy Hyperty {#header-identifiers-in-html-latex-and-context}
 
 The Runtime procedures to deploy a new Hyperty are described in this
 section.
@@ -3495,7 +3443,7 @@ here(../identity-management/discovery.md).
 
 (Steps 5 - 7) : the Hyperty Instance creates the Connection, the
 LocalConnectionDescription and the LocalIceCandidates data objects as
-defined in [15].
+defined in \[15\].
 
 (Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to
 create and observe these objects. Syncher generates CREATE messages for
@@ -3905,8 +3853,8 @@ object](h2h-intra-comm-6-alice-DO-synch.png)
 1)  Synchronization of Alice's Data object (Step 1) The local Data
     object reports that there have been changes in the connection
     parameters and the Syncher sends a CRUD message through the Policy
-    Enforcer to Update the Remote Data Object at Alice's Hyperty (Step
-    2).
+    Enforcer to Update the Remote Data Object at Alice's Hyperty
+    (Step 2).
 
 (Step 3) the Policy Enforcer checks if the message is compliant with the
 local policies and the message is sent to the ProtoStub (Step 4) to be
@@ -4010,7 +3958,7 @@ here(../identity-management/discovery.md).
 
 (Steps 5 - 7) : the Hyperty Instance creates the Connection, the
 LocalConnectionDescription and the LocalIceCandidates data objects as
-defined in [15].
+defined in \[15\].
 
 (Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to
 create and observe these objects. Syncher generates CREATE messages for
@@ -5071,8 +5019,8 @@ enables to deploy standard web application for various devices
 
 By using the Crosswalk Project, an application developer can:
 
--   Use all the features available in modern web browsers: HTML5, CSS3,
-    JavaScript.
+-   Use all the features available in modern web browsers: HTML5,
+    CSS3, JavaScript.
 -   Access the latest recommended and emerging web standards.
 -   Use experimental APIs not available in mainstream web browsers.
 -   Control the upgrade cycle of an application by distributing it with
@@ -5509,10 +5457,6 @@ Messaging Node in the Service Provider infra-structure.
 Vertx Specification
 -------------------
 
-*For each [functional block](msg-node-architecture.md) identify existing
-vertx components that can be reused and extended. If extensions are
-needed they should be specified by designing api's to be implemented*
-
 ### Core Functionalities
 
 -   Main objective of core functions are to connect, intercept, filter
@@ -5520,9 +5464,9 @@ needed they should be specified by designing api's to be implemented*
     blocks, HEADER and BODY, and are processed from different components
     of core. Inbound messages should be intercepted and processed in the
     Pipeline before deliver in to the Message Bus. The sequence is
-    "Session Management" -\> "Access Control" -\> "Message Bus"
+    "Session Management" -&gt; "Access Control" -&gt; "Message Bus"
 -   Pipeline components will implement a simple interface that we can
-    reuse from io.vertx.core.Handler\<E\> replacing E with a
+    reuse from io.vertx.core.Handler&lt;E&gt; replacing E with a
     PipelineContext object. Using the vertx Handler<E> has the advantage
     to be compatible with io.vertx.ext.web.Router, that can be a
     replacement for the Pipeline.
@@ -5531,28 +5475,34 @@ needed they should be specified by designing api's to be implemented*
     Pub/Sub protocol for object/model subscriptions, where should this
     be processed? The address scheme of the vertx EventBus is not enough
     for this functionality. We need to control the Pub/Sub functionality
-    better than what vertx give to us with the address scheme! Hyperties
+    better than what vertx provides with the address scheme! Hyperties
     need to subscribe to objects/collections not just addresses.
+
+***it is critical that these modifications will survive as much as
+possible to new vertx versions to minimise the maintenance effort***
 
 #### Pipeline
 
-By now, additional components are identified (Pipeline,
-PipelineContext). This is similar to vertx Router but without the URL
-addressing scheme. The io.vertx.ext.web.Router class could be a possible
-candidate for Pipeline functionalities, however the Router is hard coded
-to work with HTTP protocols, and there is no need for static
-configurations of routing schemes. The alternative is to implement a
-simple Pipeline system instead of using the Router, less dependencies
-and better decoupled from the protocol.
+This is a new component to be developed which is similar to vertx Router
+but without the URL addressing scheme. The io.vertx.ext.web.Router class
+could be a possible candidate for Pipeline functionalities, however the
+Router is hard coded to work with HTTP protocols, and there is no need
+for static configurations of routing schemes. The alternative is to
+implement a simple Pipeline system instead of using the Router, less
+dependencies and better decoupled from the protocol.
 
 #### Session Management
 
-On of the Pipeline handlers that will intercept messages and verify the
-sessionID. A session instance is linked to a connection resource
-(WebSocket, SockJS) if authorized. Every message header is intercepted,
-session token is verified and if exist, a "user" or other identification
-URL is replaced in HEADER. The JSON object is forwarded to "Access
-Control" handler.
+Session Management is one of the Pipeline handlers that will intercept
+messages and verify the sessionID. A session instance is linked to a
+connection resource (WebSocket, SockJS) if authorized. Every message
+header is intercepted, session token is verified and if exist, a "user"
+or other identification URL is replaced in HEADER. The JSON object is
+forwarded to "Access Control" handler.
+
+***I don't think this will be a handler but it will be called by access
+control to create / remove / check sessions according to tokens
+contained in the messages***
 
 #### Address Allocation Management
 
@@ -5580,6 +5530,11 @@ identification URL) must be forwarded to
 io.vertx.core.eventbus.Message.headers() map.
 
 ### Protocol Stub Sandbox
+
+The protocol Stub sandbox will be managed by a ProtocolStubManager class
+that loads, registers and removes protocol stubs on request.
+
+***how will the Protocol Stub Sandbox be implemented***
 
 ### Connectors
 
@@ -5635,10 +5590,10 @@ secure local repository for identity tokens provided by IdPs
 If the connector is thought to provide authentication and authorisation,
 Vert.x offers Auth APIs (Common, JDBC, JWT and Shiro).
 
-There is also a library for authentication and discorvery, [vertx-pac4j]
-(https://github.com/pac4j/vertx-pac4j). This vertx module provides
-multiple authentication mechanisms (OAuh, CAS, HTTP, OpenID, SAML2.0 and
-OpenIDConnect) for different IdPs.
+There is also a library for authentication and discorvery,
+\[vertx-pac4j\] (https://github.com/pac4j/vertx-pac4j). This vertx
+module provides multiple authentication mechanisms (OAuh, CAS, HTTP,
+OpenID, SAML2.0 and OpenIDConnect) for different IdPs.
 
 NodeJs based Messaging Node Specification
 -----------------------------------------
@@ -6102,68 +6057,68 @@ implementation of scenarios in WP5.
 References
 ==========
 
-[1] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008.
+\[1\] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008.
 The Security Architecture of the Chromium
 Browser.](http://seclab.stanford.edu/websec/chromium/chromium-security-architecture.pdf)
 
-[2] - [Nicholas Carlini, Adrienne Porter Felt, and David Wagner. 2012.
+\[2\] - [Nicholas Carlini, Adrienne Porter Felt, and David Wagner. 2012.
 An evaluation of the Google Chrome extension security architecture. In
 Proceedings of the 21st USENIX conference on Security symposium
 (Security'12). USENIX Association, Berkeley, CA,
 USA.](http://nicholas.carlini.com/papers/2012_usenix_chromeextensions.pdf)
 
-[3] - [Garcia-Alfaro, J. and Navarro-Arribas, G. 2007. A Survey on
+\[3\] - [Garcia-Alfaro, J. and Navarro-Arribas, G. 2007. A Survey on
 Detection Techniques to Prevent Cross-Site Scripting Attacks on Current
 Web Applications., in Javier Lopez & Bernhard M. Hämmerli, ed., 'CRITIS'
 , Springer, , pp. 287-298
 .](http://eprints.uoc.edu/research/bitstream/10363/605/1/JGA01.pdf)
 
-[4] - [Scott, D. and Sharp, R. Abstracting application-level web
+\[4\] - [Scott, D. and Sharp, R. Abstracting application-level web
 security. 11th Internation Conference on the World Wide Web, pp.
 396–407, 2002.](http://rich.recoil.org/publications/websec.pdf)
 
-[5] - [Pietraszeck, T. and Vanden-Berghe, C. Defending against injection
-attacks through context-sensitive string evaluation. Recent Advances in
-Intrusion Detection (RAID 2005), pp.124– 145,
+\[5\] - [Pietraszeck, T. and Vanden-Berghe, C. Defending against
+injection attacks through context-sensitive string evaluation. Recent
+Advances in Intrusion Detection (RAID 2005), pp.124– 145,
 2005.](http://tadek.pietraszek.org/publications/pietraszek05_defending.pdf)
 
-[6] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A
+\[6\] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A
 client-side solution for mitigating cross-site scripting attacks. 21st
 ACM Symposium on Applied Computing,
 2006.](https://iseclab.org/papers/noxes.pdf)
 
-[7] - [Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A
+\[7\] - [Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A
 Proposal and Implementation of Automatic Detection/Collection System for
 Cross-Site Scripting Vulnerability. 18th Int. Conf. on Advanced
 Information Networking and Applications (AINA 2004),
 2004.](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=1283902&abstractAccess=no&userType=instima)
 
-[8] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript Code
-in Mozilla. 10th IEEE International Conference on Engineering of Complex
-Computer Systems (ICECCS’05), pp.85–94,
+\[8\] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript
+Code in Mozilla. 10th IEEE International Conference on Engineering of
+Complex Computer Systems (ICECCS’05), pp.85–94,
 2005.](http://www.cs.ucsb.edu/~vigna/publications/2005_hallaraker_vigna_ICECCS05.pdf)
 
-[9] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias analysis
-for static detection of web application vulnerabilities. 2006 Workshop
-on Programming Languages and Analysis for Security, pp. 27–36, USA,
-2006.](https://iseclab.org/papers/pixy2.pdf)
+\[9\] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias
+analysis for static detection of web application vulnerabilities. 2006
+Workshop on Programming Languages and Analysis for Security, pp. 27–36,
+USA, 2006.](https://iseclab.org/papers/pixy2.pdf)
 
-[10] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection Attacks
-with Browser-Enforced Embedded Policies. International World Wide Web
-Conferencem, WWW 2007, May
+\[10\] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection
+Attacks with Browser-Enforced Embedded Policies. International World
+Wide Web Conferencem, WWW 2007, May
 2007.](http://www2007.org/papers/paper595.pdf)
 
-[11] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas
+\[11\] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas
 Schaeck. 1999. Smart Card Application Development Using Java (1st ed.).
 Springer-Verlag New York, Inc., Secaucus, NJ,
 USA.](http://dl.acm.org/citation.cfm?id=555354)
 
-[12] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile
+\[12\] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile
 and Cloud Applications Security. IEEE Conference on Communications and
 Network Security 2013 - Poster
 Session](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6682733)
 
-[13] - [Wojciech Mostowski and Erik Poll. 2008. Malicious Code on Java
+\[13\] - [Wojciech Mostowski and Erik Poll. 2008. Malicious Code on Java
 Card Smartcards: Attacks and Countermeasures. In Proceedings of the 8th
 IFIP WG 8.8/11.2 international conference on Smart Card Research and
 Advanced Applications (CARDIS '08), Gilles Grimaud and François-Xavier
@@ -6171,73 +6126,93 @@ Standaert (Eds.). Springer-Verlag, Berlin, Heidelberg, 1-16.
 DOI=10.1007/978-3-540-85893-5\_1
 http://dx.doi.org/10.1007/978-3-540-85893-5\_1](http://www.cs.ru.nl/E.Poll/papers/cardis08.pdf)
 
-[14] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S. Miller,
-and Jasvir Nagra. 2011. Automated Analysis of Security-Critical
+\[14\] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S.
+Miller, and Jasvir Nagra. 2011. Automated Analysis of Security-Critical
 JavaScript APIs. In Proceedings of the 2011 IEEE Symposium on Security
 and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA,
 363-378. DOI=10.1109/SP.2011.39
 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification
-of the Framework ”, 30-09-2015
+\[15\] - ReTHINK Deliverable D2.2 “Data Models and Interface
+Specification of the Framework ”, 30-09-2015
 
-[16] - http://w3c.github.io/webrtc-pc/
+\[16\] - http://w3c.github.io/webrtc-pc/
 
-[17] - http://w3c.github.io/mediacapture-main/
+\[17\] - http://w3c.github.io/mediacapture-main/
 
-[18] - http://www.webrtc.org/
+\[18\] - http://www.webrtc.org/
 
-[19] - http://www.openwebrtc.org/
+\[19\] - http://www.openwebrtc.org/
 
-[20] - http://gstreamer.freedesktop.org/
+\[20\] - http://gstreamer.freedesktop.org/
 
-[21] - https://developers.google.com/v8/
+\[21\] - https://developers.google.com/v8/
 
-[22] - https://nodejs.org/en/
+\[22\] - https://nodejs.org/en/
 
-[23] - https://www.docker.com/
+\[23\] - https://www.docker.com/
 
-[24] - https://www.mozilla.org/en-US/firefox/os/2.0/
+\[24\] - https://www.mozilla.org/en-US/firefox/os/2.0/
 
-[25] - https://wiki.mozilla.org/WebAPI - Firefox Web-API status. (Last
+\[25\] - https://wiki.mozilla.org/WebAPI - Firefox Web-API status. (Last
 Update March 2015)
 
-[26] - https://jitsi.org/Projects/JitsiVideobridge
+\[26\] - https://jitsi.org/Projects/JitsiVideobridge
 
-[27] - http://xmpp.org/
+\[27\] - http://xmpp.org/
 
-[28] - http://www.kurento.org/
+\[28\] - http://www.kurento.org/
 
-[29] - https://janus.conf.meetecho.com/
+\[29\] - https://janus.conf.meetecho.com/
 
-[30] - [Alessandro Amirante, Tobia Castaldi, Lorenzo Miniero, Simon
+\[30\] - [Alessandro Amirante, Tobia Castaldi, Lorenzo Miniero, Simon
 Pietro Romano. 2015. Performance analysis of the Janus WebRTC gateway.
 In Proceedings of the 1st Workshop on All-Web Real-Time
 Systems](http://dl.acm.org/citation.cfm?id=2749223)
 
-[31] - [Janus: a general purpose WebRTC
+\[31\] - [Janus: a general purpose WebRTC
 gateway](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)
 
-[32] - P. Chainho, et Al, FP7 Open Lab Deliverable D4.15, WONDER
+\[32\] - P. Chainho, et Al, FP7 Open Lab Deliverable D4.15, WONDER
 Assessment Report, April 2014
 
-[33] - Paulo Chainho, Kay Haensge, Steffen Druesedow, Michael
+\[33\] - Paulo Chainho, Kay Haensge, Steffen Druesedow, Michael
 Maruscheke, “Signalling-On-the-fly: SigOfly, WebRTC Interoperability
 testbed in contradictive Deployement Scenarios”, Proc. 18th Int’l Conf.
 Intelligence in Next Generation Networks (ICIN), 2015.
 
-[34] - https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly
+\[34\] - https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly
 
-[35] -
+\[35\] -
 https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html
 
-[36] - https://github.com/hypercomm/wonder/tree/master/src/libs
+\[36\] - https://github.com/hypercomm/wonder/tree/master/src/libs
 
-[37] -
+\[37\] -
 https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
-[38] ReTHINK Deliverable D2.1 “Framework Architecture Definition”,
+\[38\] ReTHINK Deliverable D2.1 “Framework Architecture Definition”,
 31-07-2015.
+
+\[39\] - [Meteor](http://docs.meteor.com/#/full/quickstart)
+
+\[40\] - [Cookbook
+MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
+
+\[41\] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
+
+\[42\] - [AngularJS vs. Backbone.js vs.
+Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
+
+\[43\] - \[Why Meteor\] (http://www.meteorpedia.com/read/Why\_Meteor)
+
+\[44\] - [Most Popular JavaScript Frameworks
+2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
+
+\[45\] - [Peering through WebRTC with
+SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/)
+
+\[46\] - \[Web Components\] (http://www.w3.org/wiki/WebComponents/)
 
 (3) WP3 Scope
 
@@ -6369,10 +6344,63 @@ https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.h
 
 (67) Janus Gateway architecture
 
-(68) signalling on-the-fly concept
+(68) OMNA Network
 
-(69) Wonder Library Main Classes
+(69) WebRTC API evolution
 
-(70) OMNA Network
+(70) Web Push Architecture
+
+(71) Main flows of events for subscription, push message delivery, and
+    unsubscription
+
+(72) HTTP/2 Push
+
+(73) HTTP/2 Framing
+
+(74) HTTP/2 Streams
+
+(75) signalling on-the-fly concept
+
+(76) Wonder Library Main Classes
+
+(77) Video Bridge Component
+
+(78) OpenFire VideoBridge and Jicofo Components
+
+(79) Meteor Plataform Overview
+
+(80) Main data flow in a matrix architecture
+
+(81) RabbitMQ Architecture2
+
+(82) RabbitMQ Architecture
+
+(83) ZeroMQ types of communication patterns
+
+(84) ZeroMQ Clusters
+
+(85) Redis architecture
+
+(86) PubSub model
+
+(87) XMPP Architecture
+
+(88) XMPP Protocols
+
+(89) XMPP Jingle
+
+(90) MQTT Architecture
+
+(91) PSYC Message
+
+(92) NodeJS Architecture
+
+(93) Vertx Architecture Diagram
+
+(94) AngularJS Framework
+
+(95) BackboneJS Framework
+
+(96) Backbone Collections
 
 
