@@ -115,4 +115,5 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [52] - [BackboneJS](http://backbonejs.org)
 
+[53] - [StapesJS](https://hay.github.io/stapes/)
 
