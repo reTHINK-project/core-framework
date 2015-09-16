@@ -29,9 +29,7 @@ Main objective of the MB is to process and deliver the message, being independen
 
 ### Protocol Stub Sandbox
 
-The protocol Stub sandbox will be managed by a ProtocolStubManager class that loads, registers and removes protocol stubs on request.
-
-***how will the Protocol Stub Sandbox be implemented***
+The protocol Stub sandbox will be managed by a ProtocolStubManager class that loads, registers and removes protocol stubs on request. If ProtoStubs are in JavaScript, the sandbox model could be implemented using the java NashornScriptEngineFactory and controlling the available API's with ClassFilter.
 
 ### Connectors
 
