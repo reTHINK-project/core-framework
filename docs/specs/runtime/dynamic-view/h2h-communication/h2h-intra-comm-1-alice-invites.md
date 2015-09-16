@@ -1,4 +1,4 @@
-#### H2H Intradomain Communication - Alice invites Bob
+##### H2H Intradomain Communication - Alice invites Bob
 
 This MSC diagrams shows the most relevant steps to support the initial invitation of Alice to Bob.
 

@@ -1,4 +1,4 @@
-#### H2H Intradomain Communication - Bob receives invitation
+##### H2H Intradomain Communication - Bob receives invitation
 
 This MSC diagrams shows how Bob receives invitation from Bob.
 

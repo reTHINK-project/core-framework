@@ -1,4 +1,4 @@
-#### H2H Interdomain Communication - Invitation Acknowledgement
+##### H2H Interdomain Communication - Invitation Acknowledgement
 
 This MSC diagrams shows how Alice is aknowledged that Bob received the invitation
 

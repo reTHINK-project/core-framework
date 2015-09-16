@@ -1,4 +1,4 @@
-#### Incoming call is notified to Bob's application and Alice is updated
+##### Incoming call is notified to Bob's application and Alice is updated
 
 The sequence for presentation of the call notification to the user is the same as the corresponding sequence for an Intradomain communication.
 

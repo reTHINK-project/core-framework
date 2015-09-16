@@ -1,12 +1,21 @@
-# Overview of MeteorJS Framework
+### MeteorJS Framework
 
-## Knowing MeteorJS
+#### Overview
 
-Meteor is a Javascript plataform, offering a complete full-stack framework for delivering web and mobile apps;
+[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a Javascript plataform, offering a complete full-stack framework for delivering web and mobile apps;
 
-***"Meteor is a complete open source platform for building web and mobile apps in pure JavaScript."***
 
-![Meteor Plataform Overview](meteor-platform.png "image from https://www.meteor.com/features")
+![Figure @sota-meteor Meteor Plataform Overview](meteor-platform.png "image from https://www.meteor.com/features")
+
+**Main Features**
+
+* It allows rapid prototyping and produces cross-platform code (Web, Android, iOS).
+* Meteor uses Blaze library for the front-end which fulfills the same purpose as Angular, Backbone or Ember but is much simpler to use and can be used with any of these libraries.
+* Blaze is also faster than Angular in high-throughput rendering tests.
+* Meteor works well with REST APIs using DDP, a simple protocol for fetching structured data from a server, and receiving live updates when that data changes.
+* The underlying database is MongoDB which Meteor works in real-time.
+* While Angular is a front-end library and Sails a backend one, Meteor is a full-stack framework, comparable with Derby.
+* The MVC model is replaced by MVM (Model-View-Mapper) which replace controller by ORM code that supports what views need to display data. Meteor controllers are on the client side.
 
 #### Special directories
 
@@ -32,26 +41,15 @@ These files can only be accessed by server code through Assets API and are not a
 app.js
 
 if (Meteor.isClient) {
-	// code will run only on client	side
+  // code will run only on client side
 }
 
 if (Meteor.isServer) {
-	// code will run only on server side
+  // code will run only on server side
 }
 
 ```
-
-## Main Concepts
-
-- It allows rapid prototyping and produces cross-platform code (Web, Android, iOS). 
-- Meteor use as front-end library Blaze which fulfills the same purpose as Angular, Backbone or Ember but is much simpler to use and can be used with any of these libraries.
-- Blaze is also faster than Angular in high-throughput rendering tests.
-- Meteor works well REST APIs using DDP, a simple protocol for fetching structured data from a server, and receiving live updates when that data changes.
-- The underlying database is MongoDB which Meteor works in real-time.
-- While Angular is a front-end library and Sails a backend one, Meteor is a full-stack framework, comparable with Derby.
-- The MVC model is replaced by MVM (Model-View-Mapper) which replace controller by ORM code that supports what views need to display data. Meteor controllers are on the client side.
-
-## Code convetion
+#### Code convention
 
 Client connection:
 
@@ -93,25 +91,25 @@ Template.task.events({
 )};  
 ```
 
-## Pros and Cons
+#### Evaluation
 
-#### Pros
+##### Positive
 - Full Stack package system
 - Mobile version with Cordova/Phonegap
 - Multiplataform Distribution
 - Sofisticaded UI
-- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS;
+- [Atmosphere Tool](https://atmospherejs.com/) list all available packages to MeteorJS
 
-#### Cons
-- Meteor Development Group has built specifically for a reactive front-end experience.
-- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized;
+##### Negative
+- Meteor Development Group has built specifically for a reactive front-end experience
+- For applications with very large numbers of concurrent connections (like facebook), Meteor might require larger amounts of RAM than other solutions, but can be optimized
  
 
-## Requirement Analysis
+#### Requirement Analysis
 
  - [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **No**
 
-It have its own "message node", who is called [DDP (distributed Data Protocol)](https://www.meteor.com/ddp).
+It has its own "message node", who is called [DDP (distributed Data Protocol)](https://www.meteor.com/ddp).
 
  - [The Service Framework **MUST** avoid any JavaScript conflicts](https://github.com/reTHINK-project/core-framework/issues/43): **Yes**
 
@@ -134,7 +132,7 @@ Meteor is build on top of NodeJs and MongoDB, and both are fast;
 
 **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but **Yes** we can have MVC, in other way:
 
-The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple.
+*"The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple."*
 
 ```
 Model          HTML         What Is Displayed       
@@ -142,10 +140,3 @@ View           CSS          How It Is Displayed
 Controller     Javascript   When It Is Displayed  
 ```
 
-## References
-
-All information contained in this file are from these references:
-
-- [Meteor](http://docs.meteor.com/#/full/quickstart)
-- [Cookbook MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
-- [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
