@@ -86,3 +86,9 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [37] - https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
 [38]	ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
+
+[39] - [Meteor](http://docs.meteor.com/#/full/quickstart)
+
+[40] - [Cookbook MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
+
+[41] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)

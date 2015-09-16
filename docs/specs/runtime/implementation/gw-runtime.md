@@ -2,7 +2,7 @@
 
 NodeJs is considered one of the options for implementing the Runtime API for platforms like Raspberry PI and [Beagle Board](http://beagleboard.org/bone):
 
-### NodeJs Installation
+#### NodeJs Installation
 
 For installing NodeJs on Raspberry Pi, 2 steps are required: download the debian package and then install it (http://weworkweplay.com/play/raspberry-pi-nodejs/)
 
@@ -13,7 +13,7 @@ For installing NodeJs on BeagleBoard (http://beagleboard.org/Support/BoneScript)
 
 An important package based on NodeJs is Cylon (http://cylonjs.com/) supporting 36 hardware platforms and providing APIs to interact with sensors or actuators of the platforms. 
 
-### Design
+#### Design
 
 The goal of the design is to use stable NodeJs open-source or business friendly modules that provide functionality for the components that are part of the architecture of the Runtime.
 
@@ -21,7 +21,7 @@ One of the key functional requirements is security of the Runtime. Thus multiple
 
 For the Runtime UA a module implementing the protocol LWM2M is already available for NodeJs (https://github.com/telefonicaid/lwm2m-node-lib). Special care has to be taken into consideration for having one implementation of the Runtime UA that can also run on the other platforms: browser and H-2-E (Human to Everything) standalone.
 
-### Code Snippets 
+#### Code Snippets 
 
 For creating several sandboxes the following code can be used:
 ```

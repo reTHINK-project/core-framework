@@ -84,11 +84,11 @@ OpenWebRTC is an open sourced project from Ericsson Research : https://github.co
 
 A flexible, mobile-first, cross-platform WebRTC client framework based on GStreamer. OpenWebRTC currently supports iOS, Android, Mac OS X and Linux.
 
-### Selected solutions for the implementation:
+#### Selected solutions for the implementation:
 
-#### Solutions that have already been tested :
+##### Solutions that have already been tested :
 
-##### Android :
+###### Android :
 
 Crosswalk : integrate chromium in the application with different possible integration :
 - Crosswalk embedded in the application
@@ -96,17 +96,17 @@ Crosswalk : integrate chromium in the application with different possible integr
 
 Crosswalk usage should ensure us a compatibility with what is done for browser runtime as it embed Chromium
 
-##### iOS : 
+###### iOS : 
 iOSRTC, cordova plugin : https://github.com/eface2face/cordova-plugin-iosrtc
 
 Usage of Cordova will enables us to reuse the components that will be developped on the browser runtime.
 
-##### Android & iOS :
+###### Android & iOS :
 
 Crosswalk and iosRTC can be embeded in the same application code to support both platform.
 
 Hybrid solution will be selected for the project as it enable to use JavaScript for the runtime
 
-#### Solution to be tested during the implementation :
+##### Solution to be tested during the implementation :
 - Usage of Webviews will be interesting as it should facilitate the integration of WebRTC API.</br>
 - openWebRTC can also be insteresting as it should enable the possibility to build complete native and hybrid application.

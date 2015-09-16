@@ -1,4 +1,4 @@
-#### Bob starts WebRTC API
+##### Bob starts WebRTC API
 
 The sequence for the gathering of the WebRTC resources is the same as the corresponding sequence for an Intradomain communication.
 
