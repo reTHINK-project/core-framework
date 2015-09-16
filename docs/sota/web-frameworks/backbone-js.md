@@ -1,16 +1,17 @@
 
+### BackboneJS Framework
 
-# Overview of the Backbone.js framework (taken from http://backbonejs.org)
+#### Overview
 
-## Models and Views
+##### Models and Views
 
 The model looks as follows:
 
 
-![Figure @sota-messaging-backbone-mv: BackboneJS Framework](backbone-MV.png)
+![Figure @sota-messaging-backbone-mv: BackboneJS Framework](backbone-MV.png "image from  http://backbonejs.org")
 
 
-### Model
+##### Model
 
 * Orchestrates data and business logic,
 * Loads and saves from the server,
@@ -18,7 +19,7 @@ The model looks as follows:
 
 A Model manages an internal table of data attributes, and triggers "change" events when any of its data is modified. Models handle syncing data with a persistence layer — usually a REST API with a backing database. Design your models as the atomic reusable objects containing all of the helpful functions for manipulating their particular bit of data. Models should be able to be passed around throughout your app, and used anywhere that bit of data is needed.
 
-### View
+##### View
 
 * Listens for changes and renders UI.
 * Handles user input and interactivity.
@@ -26,7 +27,7 @@ A Model manages an internal table of data attributes, and triggers "change" even
 
 A View is an atomic chunk of user interface. It often renders the data from a specific model, or number of models — but views can also be data-less chunks of UI that stand alone. Models should be generally unaware of views. Instead, views listen to the model "change" events, and react or re-render themselves appropriately.
 
-### Collections
+##### Collections
 
 
 ![Figure @sota-messaging-backbone-collections: Backbone Collections](backbone-Collections.png)
@@ -34,7 +35,7 @@ A View is an atomic chunk of user interface. It often renders the data from a sp
 
 A Collection helps you deal with a group of related models, handling the loading and saving of new models to the server and providing helper functions for performing aggregations or computations against a list of models. Aside from their own events, collections also proxy through all of the events that occur to models within them, allowing you to listen in one place for any change that might happen to any model in the collection.
 
-## Overall Evaluation
+#### Overall Evaluation
 
 * No concept of separated Controller
 * functionality is basic
@@ -46,25 +47,25 @@ A Collection helps you deal with a group of related models, handling the loading
 * --> changing CSS or modifications in DOM (wrapping, nesting) requires updates in code
 
 
-# Requirement Analysis
+#### Requirement Analysis
 
 Analysis against **Service Framework** Requirements
 
-
-* [Service Framework SHOULD support Model-View-Controller design pattern ](https://github.com/reTHINK-project/core-framework/issues/36)
+- [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **Yes**
+-[Service Framework SHOULD support Model-View-Controller design pattern](https://github.com/reTHINK-project/core-framework/issues/36)
   * NO
   * The Backbone framework provides a MV Pattern with direct interaction between Models and Views.
   * The controller part is mainly done in the code of the models and also the views.
 
 
-* [Service Framework MUST be light weight and fast](https://github.com/reTHINK-project/core-framework/issues/37)
+- [Service Framework MUST be light weight and fast](https://github.com/reTHINK-project/core-framework/issues/37)
   * YES
   * minimized gzipped version is very small (approx 5.6kb)
   * mandatory dependcies to underscore.js (5kb) and jQuery (32kb) or Zepto(9,1kb, a JQuery clone)
   * small memory footprint
 
 
-* [Service Framework should be Supported in all Devices and Operating Systems featuring Hyperty Runtime](https://github.com/reTHINK-project/core-framework/issues/38)
+- [Service Framework **SHOULD** be device agnostic](https://github.com/reTHINK-project/core-framework/issues/38)
   * rather YES
   * every view is tight to its own root-DOM element and responsible for the tree below it
   * Therefore Backbone.js relies on runtimes that provide a DOM tree.
@@ -72,7 +73,7 @@ Analysis against **Service Framework** Requirements
   * --> needs special additions in non-browser runtime environments
 
 
-* [Service Framework MUST be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42)
+- [Service Framework MUST be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42)
   * rather NO
   * Backbone itself lacks a Controller concept and Views and Models are relatively tightly coupled
   * therefore also resulting modules should be tightly coupled to view elements and not easily portable (would need further investigations)
