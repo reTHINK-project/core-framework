@@ -9,6 +9,12 @@ The flexibility of supporting these two scenarios allows the architecture to sup
 * publish-subscribe communication in which a Network Service is used to convey information between two endpoints that need to communicate 
 * and a peer-to-peer communication in which a locally stored resource on the existing device is used to exchange data
 
+After the discovery procedure the new device Runtime User Agent can perform a bootstrap procedure involving one or more hiperty and protostub download and instantion operations associated to the producing hiperties. The Identity Management (IdM) hiperty residing on the existing device will apply policies to enforce access control of the consumer hiperty. The QoS User Agent will assist the Runtime User Agent with information on the connectivity so that the download can be performed efficiently, e.g. requests will be sent only when connectivity on the new device is available. A mechanism for access control will be also enforced on the remote M2M resource directory by contacting the Identity Management management service.
+
+The Context Producer ProtoStub will be used by the existing device to communicate with the local or remote M2M resource directory and the Context Consumer Protostub will be used by the new device to subscribe and receive notifications on data exchanged by the existing device. 
+
+
+
 
 ![Figure @runtime-m2m-comm-runtime-archit-violet: Runtime Main Procedures for M2M Communication](M2M_runtime_Archit_violet.png)
 
