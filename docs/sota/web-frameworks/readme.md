@@ -22,5 +22,3 @@ The following JavaScript have been analyzed.
 
 ### [StapesJS](stapesjs.md)
 
-### [Polymer] (polymer.md)
-
