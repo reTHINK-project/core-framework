@@ -16,6 +16,6 @@ The asset can be used for network QoS.
 
 ### Requirements Analysis
 
-TO use coturn, download the latest official version, at least 4.4.
+To use coturn, download the latest official version, at least 4.4.
 
 TURN-based solution would allow a collaborative approach as it can be placed in a media path and be used for flow steering. It can impact different network types and segments and thanks to its compatibility with existing solutions, it can be introduces incrementally. 
