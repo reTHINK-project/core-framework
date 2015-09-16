@@ -1,21 +1,25 @@
 ## Vertx Specification
 
-*For each [functional block](msg-node-architecture.md) identify existing vertx components that can be reused and extended. If extensions are needed they should be specified by designing api's to be implemented*
 
 ### Core Functionalities
 * Main objective of core functions are to connect, intercept, filter and deliver messages. Messages are JSON objects that should have 2 blocks, HEADER and BODY, and are processed from different components of core.
 Inbound messages should be intercepted and processed in the Pipeline before deliver in to the Message Bus. The sequence is "Session Management" -> "Access Control" -> "Message Bus"
 * Pipeline components will implement a simple interface that we can reuse from io.vertx.core.Handler\<E> replacing E with a PipelineContext object. Using the vertx Handler<E> has the advantage to be compatible with io.vertx.ext.web.Router, that can be a replacement for the Pipeline.
-* Outbound messages should be processed in a Pub/Sub system. If message BODY block are for CRUD operations, there should be a Pub/Sub protocol for object/model subscriptions, where should this be processed? The address scheme of the vertx EventBus is not enough for this functionality. We need to control the Pub/Sub functionality better than what vertx give to us with the address scheme! Hyperties need to subscribe to objects/collections not just addresses.
+* Outbound messages should be processed in a Pub/Sub system. If message BODY block are for CRUD operations, there should be a Pub/Sub protocol for object/model subscriptions, where should this be processed? The address scheme of the vertx EventBus is not enough for this functionality. We need to control the Pub/Sub functionality better than what vertx provides with the address scheme! Hyperties need to subscribe to objects/collections not just addresses.
+
+***it is critical that these modifications will survive as much as possible to new vertx versions to minimise the maintenance effort***
 
 #### Pipeline
-By now, additional components are identified (Pipeline, PipelineContext). This is similar to vertx Router but without the URL addressing scheme. The io.vertx.ext.web.Router class could be a possible candidate for Pipeline functionalities, however the Router is hard coded to work with HTTP protocols, and there is no need for static configurations of routing schemes. The alternative is to implement a simple Pipeline system instead of using the Router, less dependencies and better decoupled from the protocol.
+This is a new component to be developed which is similar to vertx Router but without the URL addressing scheme. The io.vertx.ext.web.Router class could be a possible candidate for Pipeline functionalities, however the Router is hard coded to work with HTTP protocols, and there is no need for static configurations of routing schemes. The alternative is to implement a simple Pipeline system instead of using the Router, less dependencies and better decoupled from the protocol.
 
 #### Session Management
-On of the Pipeline handlers that will intercept messages and verify the sessionID. A session instance is linked to a connection resource (WebSocket, SockJS) if authorized. Every message header is intercepted, session token is verified and if exist, a "user" or other identification URL is replaced in HEADER. The JSON object is forwarded to "Access Control" handler.
+Session Management is one of the Pipeline handlers that will intercept messages and verify the sessionID. A session instance is linked to a connection resource (WebSocket, SockJS) if authorized. Every message header is intercepted, session token is verified and if exist, a "user" or other identification URL is replaced in HEADER. The JSON object is forwarded to "Access Control" handler.
+
+***I don't think this will be a handler but it will be called by access control to create / remove / check sessions according to tokens contained in the messages***
 
 #### Address Allocation Management
 This is not a Pipeline handler (it doesn't process messages), but it's used by the "Session Management" to allocate Hyperty identification URL's that will be linked to a Session when the Hyperty is connected. This will be used to translate Hyperty an URL address into the correspondent Connector Resource.
+
 
 #### Access Control
 This handler is able to analyze the HEADER (identification URL from "Session Management") and BODY blocks and decide if the message should be forwarded to the "Message Bus" or denied. There is a possibility to add a rule engine in this step, but it's not specified for now, what kind of rule engine.
@@ -24,6 +28,10 @@ This handler is able to analyze the HEADER (identification URL from "Session Man
 Main objective of the MB is to process and deliver the message, being independent of the cluster node that has the connection to the destination. Vertx EventBus can be used directly for the Message Bus component. Important headers of the original JSON (like the identification URL) must be forwarded to io.vertx.core.eventbus.Message.headers() map.
 
 ### Protocol Stub Sandbox
+
+The protocol Stub sandbox will be managed by a ProtocolStubManager class that loads, registers and removes protocol stubs on request.
+
+***how will the Protocol Stub Sandbox be implemented***
 
 ### Connectors
 
