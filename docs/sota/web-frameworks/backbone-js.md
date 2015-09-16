@@ -5,7 +5,10 @@
 ## Models and Views
 
 The model looks as follows:
-![image](backbone-MV.png)
+
+
+![Figure @sota-messaging-backbone-mv: BackboneJS Framework](backbone-MV.png)
+
 
 ### Model
 
@@ -25,7 +28,9 @@ A View is an atomic chunk of user interface. It often renders the data from a sp
 
 ### Collections
 
-![image](backbone-Collections.png)
+
+![Figure @sota-messaging-backbone-collections: Backbone Collections](backbone-Collections.png)
+
 
 A Collection helps you deal with a group of related models, handling the loading and saving of new models to the server and providing helper functions for performing aggregations or computations against a list of models. Aside from their own events, collections also proxy through all of the events that occur to models within them, allowing you to listen in one place for any change that might happen to any model in the collection.
 

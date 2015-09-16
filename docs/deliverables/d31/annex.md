@@ -111,7 +111,7 @@ providers to expose device capabilities and network resources in an open
 and programmable way—to any developer community independent of the
 development platform.
 
-![Figure 66: OMNA Network](OMNA-network.png)
+![Figure 67: OMNA Network](OMNA-network.png)
 
 OMA APIs exposes the network assets that developers need—no matter what
 protocols, platforms or other APIs they use. The Core network assets
@@ -230,7 +230,7 @@ Applications to be executed in Web browser.
 The protocols on the wire are exactly the same so it is compatible with
 aaplications written using the current API.
 
-![Figure 67: WebRTC API evolution](webrtc_API_evolution.png)
+![Figure 68: WebRTC API evolution](webrtc_API_evolution.png)
 
 <h2>
 Differences between ORTC and WebRTC 1.0.
@@ -539,11 +539,11 @@ push messages are the following (see figure below):
 -   The user agent delivers the push message to the specific webapp
     intended to receive it.
 
-![Figure 68: Web Push Architecture](web-push-arch.jpg)
+![Figure 69: Web Push Architecture](web-push-arch.jpg)
 
 The main data flows involved in the PUSH API usage are described below:
 
-![Figure 69: Main flows of events for subscription, push message
+![Figure 70: Main flows of events for subscription, push message
 delivery, and unsubscription](push_sequence_diagram.png)
 
 The W3C Push API is a client API that does not provide any standard for
@@ -681,7 +681,7 @@ request to server that resource. This reduce the load time as the
 browser does not have to send GET request to ask for all the resources
 avoiding RTT delays.
 
-![Figure 70: HTTP/2 Push](http2-push.png)
+![Figure 71: HTTP/2 Push](http2-push.png)
 
 Features of HTTP/2
 ------------------
@@ -714,7 +714,7 @@ transport HTTP message bodies and HEADERS frames are used to communicate
 header fields for a stream. The rest of frames are used for control
 tasks and they are called Control Frames.
 
-![Figure 71: HTTP/2 Framing](http2_framing.png)
+![Figure 72: HTTP/2 Framing](http2_framing.png)
 
 ### Multiplexing
 
@@ -725,7 +725,7 @@ concatenated files, image sprites, and domain sharding. It also resultes
 in lower page load times by eliminating unnecessary latency and
 improving utilization of available network capacity.
 
-![Figure 72: HTTP/2 Streams](http2_streams.png)
+![Figure 73: HTTP/2 Streams](http2_streams.png)
 
 ### Priority
 
@@ -1143,7 +1143,7 @@ belonging to different domains. The Hosting peer uses the Domain Channel
 to exchange signalling messages, while other peers use Transient
 Channels that connect to the Hosting Messaging Server.
 
-![Figure 73 signalling on-the-fly concept](sigofly.png)
+![Figure 74 signalling on-the-fly concept](sigofly.png)
 
 The classic Alice and Bob example is used to explain the SigOfly
 concept. We assume that Alice and Bob are registered in different
@@ -1204,7 +1204,7 @@ in [34](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
 A JavaScript framework, the WONDER lib, was designed and implemented to
 validate the SigOfly and Data Codec On-the-fly concepts.
 
-![Figure 74 Wonder Library Main Classes](wonderlib.png)
+![Figure 75 Wonder Library Main Classes](wonderlib.png)
 
 Main WONDER library classes are:
 
@@ -1599,7 +1599,7 @@ signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
 
-![Figure 57: WebRTC.org architecture scheme](webrtc-org-arch.png)
+![Figure 58: WebRTC.org architecture scheme](webrtc-org-arch.png)
 
 ### Software stack organization
 
@@ -1673,7 +1673,7 @@ OpenWebRTC is compatible with most video communication services.
 The OpenWebRTC project is free and Open Source with a permissive BSD-2
 license.
 
-![Figure 58 OpenWebRTC Architecture](openwebrtc.png)
+![Figure 59 OpenWebRTC Architecture](openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer
 multimedia framework](http://gstreamer.freedesktop.org/)\[20\].
@@ -1713,7 +1713,7 @@ inline caching, among many others
 
 ### Architecture
 
-![Figure 59 V8 Architecture](v8-arch.png)
+![Figure 60 V8 Architecture](v8-arch.png)
 
 **Handles & Garbage Collection**
 
@@ -1734,7 +1734,7 @@ scope to be a special one (EscapableHandleScope ).
 
 **Contexts**
 
-![Figure 60 V8 Multiple Contexts](v8-arch2.png)
+![Figure 61 V8 Multiple Contexts](v8-arch2.png)
 
 Contexts are different execution environments that allow separate even
 unrelated Javascript applications to run concurrently on v8. In fact,
@@ -1968,7 +1968,7 @@ approaches such as HTML5 applications, JavaScript, a robust privilege
 model, open web APIs to communicate directly with cellphone hardware,
 and application marketplace.
 
-![Figure @sota.fxos-arch Firefox OS Architecture](fxos-arch.png)
+![Figure 63 Firefox OS Architecture](fxos-arch.png)
 
 The initial development work involves three major software layers:
 
@@ -2066,7 +2066,7 @@ component called Jigasi. There is an OpenSource WebRTC JavaScript
 application, called Jitsi Meet, that uses Jitsi Videobridge to provide
 high quality, scalable video conferences.
 
-![Figure 63 Jitsi Videobridge Architecture](jitsi_arch.png)
+![Figure 64 Jitsi Videobridge Architecture](jitsi_arch.png)
 
 ### Installation Procedures
 
@@ -2093,7 +2093,9 @@ the password, ex: xpassword
 **Jitsi VideoBridge** \* Download and install Jitsi Videobridge from
 https://jitsi.org/Projects/JitsiVideobridge \* Run videobridge with: jvb
 --host=shumybridge --secret=xpassword \* You should see an entry in XMPP
-components like: ![image](openfire_videobridge.png)
+components like:
+
+![Figure 76: Video Bridge Component](openfire_videobridge.png)
 
 **Jicofo Session** \* Clone from "git clone
 https://github.com/jitsi/jicofo.git" \* Ant build with "ant
@@ -2105,7 +2107,11 @@ sip-communicator.properties. In Windows this is located at
 linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
 \* Run videobridge with: jicofo --host=shumybridge --port=5275
 --secret=xpassword \* You should see an entry in XMPP components like:
-![image](openfire_video_jicofo.png)
+
+![Figure 77: OpenFire VideoBridge and Jicofo
+Components](openfire_video_jicofo.png)
+
+(1) OpenFire VideoBridge and Jicofo Components
 
 **NGINX** \* Download and install from http://nginx.org/en/download.html
 \* Change nginx.conf file with:
@@ -2353,8 +2359,7 @@ longer needed.
 
 ### Architecture
 
-![Figure 61 Docker
-Architecture](https://github.com/reTHINK-project/core-framework/blob/master/docs/sota/runtime/docker-arch.png)
+![Figure 62 Docker Architecture](docker-arch.png)
 
 Docker uses a client-server architecture. The Docker client talks to the
 Docker daemon, which does the heavy lifting of building, running, and
@@ -2736,7 +2741,7 @@ some useful examples. There is also a Plugin API which offers potential
 plugin developers an overview of how these plugins are implemented and
 also instructions of how to develop a new one.
 
-![Figure 65 Janus Gateway architecture](janus-arch.png)
+![Figure 66 Janus Gateway architecture](janus-arch.png)
 
 ### Janus Gateway and runtime requirements
 
@@ -2821,7 +2826,7 @@ It can be used to handle different type of communications applications :
 Kurento is mainly composed of the two elements : - Kurento media server
 - Kurento Application
 
-![Figure 64 Kurento Architecture](Architecture-Kurento.png)
+![Figure 65: Kurento Architecture](Architecture-Kurento.png)
 
 Application developers can use Kurento Clients or Kurento API directly
 for creating their multimedia enabled applications. Developpers can use
@@ -3647,7 +3652,8 @@ technology for the **Messaging Node**
 
 Following picture shows the main data flow in a matrix architecture.
 
-![image](matrix-dataflows.png)
+![Figure 79: Main data flow in a matrix
+architecture](matrix-dataflows.png)
 
 The core components are the Home Servers (HS) which can federate to sync
 and maintain the history of shared communication sessions among domains.
@@ -3828,7 +3834,7 @@ for the Messaging Node
 The core component is the **Broker** that routes the messages from the
 **producers** to the **consumers** as depicted in the following image.
 
-![image](rabbitmq_arch2.png)
+![Figure 80: RabbitMQ Architecture2](rabbitmq_arch2.png)
 
 The **Broker** has two main componentes: \* **Exchange**: accepts and
 routes messages from producer to clients based on the message
@@ -3837,7 +3843,9 @@ information such as keys, bindings, filtering or broadcast.
 -   **Queue**: a FIFO queue of messages
 
 Message routing can be based on topic / wild-card, as shown in the
-following image. ![image](rabbitmq_arch.png)
+following image.
+
+![Figure 81: RabbitMQ Architecture](rabbitmq_arch.png)
 
 Image Source:
 [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
@@ -4007,7 +4015,8 @@ It is used as a thin layer between the application and transport layers.
 The following figure represents the six basic types of communication
 patterns that ZeroMQ supports.
 
-![image](zeromq_basic_patterns.png)
+![Figure 82: ZeroMQ types of communication
+patterns](zeromq_basic_patterns.png)
 
 Image Source:
 [http://www.slideshare.net](http://www.slideshare.net/IanBarber/zeromq-is-the-answer)
@@ -4040,7 +4049,7 @@ These can be used as "fabric" to make very powerful architectures. The
 next image shows an example of this modularity. [A pub/sub multi-cluster
 Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
-![image](zeromq_clusters_example.png)
+![Figure 83: ZeroMQ Clusters](zeromq_clusters_example.png)
 
 Image Source:
 [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
@@ -4216,7 +4225,7 @@ sorted sets, bitmaps and hyperloglogs.
 -   The main Redis architecture can be resumed as a in memory key-value
     data-store for service decoupling.
 
-![image](redis_as_cache.png)
+![Figure 84: Redis architecture](redis_as_cache.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4224,7 +4233,7 @@ Image Source:
 -   Another possibility is a PubSub model with message filtering based
     on prefix matching.
 
-![image](redis_pubsub.png)
+![Figure 85: PubSub model](redis_pubsub.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4393,7 +4402,7 @@ addressed using a JabberID (JID). It has the form :
 username@domain/resource where domain is the domain name of the XMPP
 server, and username identifies an account on that server.
 
-![image](xmpp_arch.png)
+![Figure 86: XMPP Architecture](xmpp_arch.png)
 
 Image Source:
 [https://el-tramo.be](https://el-tramo.be/documents/beautiful-xmpp-testing/)
@@ -4401,7 +4410,7 @@ Image Source:
 Server can have adapters/gateways to be able to talk to other protocols
 such as those used by ICQ, AIM, Yahoo and others.
 
-![image](xmpp_protocols.png)
+![Figure 87: XMPP Protocols](xmpp_protocols.png)
 
 Image Source:
 [https://en.wikipedia.org](https://en.wikipedia.org/wiki/XMPP)
@@ -4412,7 +4421,7 @@ Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol
 extension for initiating and managing peer-to-peer media sessions
 between two XMPP entities.
 
-![image](xmpp_jingle.png)
+![Figure 88: XMPP Jingle](xmpp_jingle.png)
 
 Image Source:
 [http://xmppjingle.blogspot.pt](http://xmppjingle.blogspot.pt/2010/09/jingle-nodes-proxy-and-eu-surveillance.html)
@@ -4625,7 +4634,7 @@ multiple topics or use a wildcard matching based subscription.
 MQTT supports three quality of service levels, "Fire and forget",
 "delivered at least once" (QoS1) and "delivered exactly once" (QoS2).
 
-![image](mqtt_arch.jpg)
+![Figure 89: MQTT Architecture](mqtt_arch.jpg)
 
 Image Source:
 [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
@@ -5056,9 +5065,7 @@ working on a fully-distributed end-to-end privacy-enabled solution,
 operating on top of the public-key routing method explained above
 combined with PSYC messaging logic.
 
-![image](psyc_message.png)
-
-Figure 1. PSYC message example
+![Figure 90: PSYC Message](psyc_message.png)
 
 ### Requirements Analysis
 
@@ -5211,7 +5218,7 @@ The core is built in C and C++. It combines Google’s V8 JavaScript
 engine with Node’s Libuv library and protocol bindings including sockets
 and HTTP.
 
-![image](Archi-NodeJs.png)
+![Figure 91: NodeJS Architecture](Archi-NodeJs.png)
 
 More information are avaialble in this document :
 http://mcgill-csus.github.io/student\_projects/Submission2.pdf
@@ -5378,7 +5385,9 @@ module can be shared
 ### Architecture
 
 This subsection highlights the main building blocks of the Vert.x
-architecture. ![image](vertx-architecture-diagram.png)
+architecture.
+
+![Figure 92: Vertx Architecture Diagram](vertx-architecture-diagram.png)
 
 Figure 1. Vert.x Architecture
 
@@ -5697,7 +5706,7 @@ coturn
 
 ### Overview
 
-The TURN \[4\] protocol is defined as an extension of the STUN \[5\]
+The TURN \[39\] protocol is defined as an extension of the STUN \[40\]
 protocol.
 
 TURN servers act as media relays and are directly placed in the media
@@ -5713,59 +5722,23 @@ The study about TURN servers is very up-to-date since there is an
 ongoing work on this subject in IETF. The recently formed IETF group –
 TRAM (TURN Revised and Modernized) focuses on improving TURN
 implementations and features in order to make STUN and TURN more
-suitable for WebRTC \[6\].
+suitable for WebRTC \[41\].
 
-Coturn is an open source TURN server implementation \[1\]. It is a
+Coturn is an open source TURN server implementation \[42\]. It is a
 separate branch of the previous implementation
 rfc5766-turn-server-project, and is dedicated for testing new protocols.
 As a result, it supports more specifications than the previous version.
 
 The asset can be used for network QoS.
 
-### Architecture
-
-Below, the list of supported specs is given, based on coturn codelab
-\[2\]. Based on discussion in discuss-webrtc google forum, information
-about support in Google Chrome is indicated \[3\].
-
-TURN specs: - RFC 5766 - base TURN specs – supported in Chrome - RFC
-6062 - TCP relaying TURN extension – not supported, but unnecessary -
-RFC 6156 - IPv6 extension for TURN – not supported, waiting on SSODA -
-DTLS support
-(http://tools.ietf.org/html/draft-petithuguenin-tram-turn-dtls-00) – not
-supported, but patch in flight - Mobile ICE (MICE) support
-(http://tools.ietf.org/html/draft-wing-tram-turn-mobility-01) – not a WG
-doc - TURN REST API
-(http://tools.ietf.org/html/draft-uberti-behave-turn-rest-00) – can be
-performed by an application - Origin field in TURN (Multi-tenant TURN
-Server) (http://tools.ietf.org/html/draft-johnston-tram-stun-origin-02)
-– not yet supported by Chrome, but there is a patch possible soon - TURN
-Bandwidth draft specs
-(http://tools.ietf.org/html/draft-thomson-tram-turn-bandwidth-00) - not
-a WG doc - SSODA (dual allocation) draft specs
-(http://tools.ietf.org/html/draft-martinsen-tram-ssoda-00) - supported,
-but not yet stable - Third-party authorization support
-(http://tools.ietf.org/html/draft-ietf-tram-turn-third-party-authz-05) –
-not supported yet, there is a need to add support to the W3C specs to
-pass in the access token first; it is on their list to get done soon
-though, not yet
-https://groups.google.com/forum/\#!msg/discuss-webrtc/iLmbX8L5h4Q/IgoaYCIbTLUJ
-- ALPN support (http://tools.ietf.org/html/draft-ietf-tram-alpn-08) STUN
-specs: - RFC 3489 - "classic" STUN - RFC 5389 - base "new" STUN specs -
-RFC 5769 - test vectors for STUN protocol testing - RFC 5780 - NAT
-behavior discovery support
-
-### APIs
-
-Should be implemented and launched on a server.
-
 ### Requirements Analysis
 
-Download the latest official version, at least 4.4. TURN-based solution
-would allow a collaborative approach as it can be placed in a media path
-and be used for flow steering. It can impact different network types and
-segments and thanks to its compatibility with existing solutions, it can
-be introduces incrementally.
+To use coturn, download the latest official version, at least 4.4.
+
+TURN-based solution would allow a collaborative approach as it can be
+placed in a media path and be used for flow steering. It can impact
+different network types and segments and thanks to its compatibility
+with existing solutions, it can be introduces incrementally.
 
 Service Frameworks SOTA
 =======================
@@ -5779,7 +5752,7 @@ It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on Javascript and a client side
 framework. It is supported by multiple browsers.
 
-![image](mvc_angular.png)
+![Figure 93: AngularJS Framework](mvc_angular.png)
 
 Main Concepts
 -------------
@@ -5894,7 +5867,9 @@ Overview of the Backbone.js framework (taken from http://backbonejs.org)
 Models and Views
 ----------------
 
-The model looks as follows: ![image](backbone-MV.png)
+The model looks as follows:
+
+![Figure 94: BackboneJS Framework](backbone-MV.png)
 
 ### Model
 
@@ -5924,7 +5899,7 @@ and react or re-render themselves appropriately.
 
 ### Collections
 
-![image](backbone-Collections.png)
+![Figure 95: Backbone Collections](backbone-Collections.png)
 
 A Collection helps you deal with a group of related models, handling the
 loading and saving of new models to the server and providing helper
@@ -6038,153 +6013,376 @@ Suitability for ReTHINK project
     reduce the overhead in the applications which will help to reduce
     the load time.
 
-(1) WP3 Scope
+### MeteorJS Framework
+
+#### Overview
+
+[Meteor](http://docs.meteor.com/#/full/quickstart) \[39\] is a
+Javascript plataform, offering a complete full-stack framework for
+delivering web and mobile apps;
+
+![Figure 78 Meteor Plataform
+Overview](meteor-platform.png "image from https://www.meteor.com/features")
+
+**Main Features**
+
+-   It allows rapid prototyping and produces cross-platform code (Web,
+    Android, iOS).
+-   Meteor uses Blaze library for the front-end which fulfills the same
+    purpose as Angular, Backbone or Ember but is much simpler to use and
+    can be used with any of these libraries.
+-   Blaze is also faster than Angular in high-throughput
+    rendering tests.
+-   Meteor works well with REST APIs using DDP, a simple protocol for
+    fetching structured data from a server, and receiving live updates
+    when that data changes.
+-   The underlying database is MongoDB which Meteor works in real-time.
+-   While Angular is a front-end library and Sails a backend one, Meteor
+    is a full-stack framework, comparable with Derby.
+-   The MVC model is replaced by MVM (Model-View-Mapper) which replace
+    controller by ORM code that supports what views need to
+    display data. Meteor controllers are on the client side.
+
+#### Special directories
+
+With this directories we can split the server code from the client code,
+for a better code organization, and also, what we want to share from
+what we want to make private;
+
+-   **/client** Any files here are only served to the client. This is a
+    good place to keep your HTML, CSS, and UI-related JavaScript code.
+
+-   **/server** Any files in this directory are only used on the server,
+    and are never sent to the client. Use /server to store source files
+    with sensitive logic or data that should not be visible to
+    the client.
+
+-   **/public** Files in /public are served to the client as-is. Use
+    this to store assets such as images. For example, if you have an
+    image located at /public/background.png, you can include it in your
+    HTML with or in your CSS with
+    background-image: url(/background.png). Note that /public is not
+    part of the image URL.
+
+-   **/private** These files can only be accessed by server code through
+    Assets API and are not accessible to the client.
+
+**or** we can, in same javascript file, wrapping our code in
+
+``` {.javascript}
+app.js
+
+if (Meteor.isClient) {
+  // code will run only on client side
+}
+
+if (Meteor.isServer) {
+  // code will run only on server side
+}
+```
+
+#### Code convention
+
+Client connection:
+
+``` {.javascript}
+Tasks = new Mongo.Collection("tasks");
+```
+
+Insert:
+
+``` {.javascript}
+Template.body.events({
+  "submit .new-task": function (event) {
+    // This function is called when the new task form is submitted
+    var text = event.target.text.value;
+    Tasks.insert({
+      text: text,
+    });
+  }
+```
 
-(2) Chromium sandbox scheme
+Query:
 
-(3) The architecture of a Google Chrome extension
+``` {.javascript}
+Template.body.helpers({
+    tasks: function () {
+      // Show newest tasks first
+    return Tasks.find({}, {sort: {createdAt: -1}});
+    }
+)};
+```
 
-(4) Scheme of a persistent XSS attack
+Delete:
 
-(5) Scheme of a non-persistent XSS attack
+``` {.javascript}
+Template.task.events({
+  "click .delete": function () {
+    Tasks.remove(this._id);
+  }
+)};  
+```
 
-(6) Java Smart Card scheme
+#### Evaluation
 
-(7) CoSE architecture
+##### Positive
 
-(8) Service framework middle layer
+-   Full Stack package system
+-   Mobile version with Cordova/Phonegap
+-   Multiplataform Distribution
+-   Sofisticaded UI
+-   [Atmosphere Tool](https://atmospherejs.com/) list all available
+    packages to MeteorJS
 
-(9) Sippo WAC reference architecture
+##### Negative
 
-(10) Sippo interfaces and APIs
+-   Meteor Development Group has built specifically for a reactive
+    front-end experience
+-   For applications with very large numbers of concurrent connections
+    (like facebook), Meteor might require larger amounts of RAM than
+    other solutions, but can be optimized
 
-(11) Sippo.js abstraction layer
+#### Requirement Analysis
 
-(12) Sippo services and backends
+-   [Service Framework **MUST** be Message Node
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
+    **No**
 
-(13) Sippo WebRTC applications stack
+It has its own "message node", who is called [DDP (distributed Data
+Protocol)](https://www.meteor.com/ddp).
 
-(14) Runtime High Level Architecture
+-   [The Service Framework **MUST** avoid any JavaScript
+    conflicts](https://github.com/reTHINK-project/core-framework/issues/43):
+    **Yes**
 
-(15) Runtime High Level Architecture with Unstrusted Hyperties
+The platform is constructed in pure javascript, don't have any other
+frameworks dependencies;
 
-(16) Runtime High Level Architecture with Policy Enforcer
+-   [Service Framework **MUST** be Modular in
+    nature](https://github.com/reTHINK-project/core-framework/issues/42):
+    **Yes**
 
-(17) Reporter-Observer Communication Pattern
+The platform is complete modular, we can write our own modules or import
+third party modules.
 
-(18) Core Runtime Architecture
+-   [The Service Framework **MUST** be open
+    source](https://github.com/reTHINK-project/core-framework/issues/39):
+    **Yes**
 
-(19) Vulnerability matrix for a dummy platform
+*“Meteor is a complete open source platform for building web and mobile
+apps in pure JavaScript.”*
 
-(20) Stack
+-   [Service Framework **SHOULD** be device
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/38):
+    **Yes**
+-   [Service Framework **MUST** be light weight and
+    fast](https://github.com/reTHINK-project/core-framework/issues/37):
+    **yes**
 
-(21) Browser
+Meteor is build on top of NodeJs and MongoDB, and both are fast;
 
-(22) Security Browser
+-   [Service Framework **SHOULD** support Model-View-Controller design
+    pattern](https://github.com/reTHINK-project/core-framework/issues/36):
+    **Yes/No**
 
-(23) Application platform
+**No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but
+**Yes** we can have MVC, in other way:
 
-(24) Security Application platform
+*"The MVC pattern in Meteor is dead simple. The Model is coded up in
+HTML, the Controller is coded in Javascript, and the View is coded up in
+CSS. It's that simple."*
 
-(25) Deploy Core Runtime Components in the Native Runtime
+    Model          HTML         What Is Displayed       
+    View           CSS          How It Is Displayed        
+    Controller     Javascript   When It Is Displayed  
 
-(26) Deploy Protocol Stub
+(2) WP3 Scope
 
-(27) Deploy Hyperty (part1)
+(3) Chromium sandbox scheme
 
-(28) Deploy Hyperty (part2)
+(4) The architecture of a Google Chrome extension
 
-(29) Register Hyperty
+(5) Scheme of a persistent XSS attack
 
-(30) Message Routing in Message BUS
+(6) Scheme of a non-persistent XSS attack
 
-(31) Intra-domain Local Communication
+(7) Java Smart Card scheme
 
-(32) Intra-domain Remote Communication
+(8) CoSE architecture
 
-(33) Inter-domain Local Communication
+(9) Service framework middle layer
 
-(34) Inter-domain Remote Communication
+(10) Sippo WAC reference architecture
 
-(35) User registration
+(11) Sippo interfaces and APIs
 
-(36) Prepare Discovery
+(12) Sippo.js abstraction layer
 
-(37) Use Discovery
+(13) Sippo services and backends
 
-(38) Domain Login
+(14) Sippo WebRTC applications stack
 
-(39) Associate User Identity to Hyperty Instance
+(15) Runtime High Level Architecture
 
-(40) User identity assertion sequence diagram
+(16) Runtime High Level Architecture with Unstrusted Hyperties
 
-(41) Alice invites Bob for a communication
+(17) Runtime High Level Architecture with Policy Enforcer
 
-(42) Bob receives invitation
+(18) Reporter-Observer Communication Pattern
 
-(43) Aknowledged that Bob received the invitation
+(19) Core Runtime Architecture
 
-(44) notification update
+(20) Vulnerability matrix for a dummy platform
 
-(45) Bob gatheres WebRTC resources
+(21) Stack
 
-(46) Synchronization of Alice's Data object
+(22) Browser
 
-(47) Runtime Main Procedures for M2M Communication
+(23) Security Browser
 
-(48) M2M Device Bootstrap
+(24) Application platform
 
-(49) Context Discovery in M2M Intradomain Communication
+(25) Security Application platform
 
-(50) Communication 4 pub sub 1
+(26) Deploy Core Runtime Components in the Native Runtime
 
-(51) Communication 4 pub sub 2
+(27) Deploy Protocol Stub
 
-(52) Communication 4 pub sub 3
+(28) Deploy Hyperty (part1)
 
-(53) Runtime browser implementation
+(29) Deploy Hyperty (part2)
 
-(54) Crosswalk Architecture
+(30) Register Hyperty
 
-(55) Cordova functionnal schema
+(31) Message Routing in Message BUS
 
-(56) Messaging Node Architecture
+(32) Intra-domain Local Communication
 
-(57) WebRTC.org architecture scheme
+(33) Intra-domain Remote Communication
 
-(58) OpenWebRTC Architecture
+(34) Inter-domain Local Communication
 
-(59) V8 Architecture
+(35) Inter-domain Remote Communication
 
-(60) V8 Multiple Contexts
+(36) User registration
 
-(61) Docker Architecture
+(37) Prepare Discovery
 
-(62) Firefox OS Architecture
+(38) Use Discovery
 
-(63) Jitsi Videobridge Architecture
+(39) Domain Login
 
-(64) Kurento Architecture
+(40) Associate User Identity to Hyperty Instance
 
-(65) Janus Gateway architecture
+(41) User identity assertion sequence diagram
 
-(66) OMNA Network
+(42) Alice invites Bob for a communication
 
-(67) WebRTC API evolution
+(43) Bob receives invitation
 
-(68) Web Push Architecture
+(44) Aknowledged that Bob received the invitation
 
-(69) Main flows of events for subscription, push message delivery, and
+(45) notification update
+
+(46) Bob gatheres WebRTC resources
+
+(47) Synchronization of Alice's Data object
+
+(48) Runtime Main Procedures for M2M Communication
+
+(49) M2M Device Bootstrap
+
+(50) Context Discovery in M2M Intradomain Communication
+
+(51) Communication 4 pub sub 1
+
+(52) Communication 4 pub sub 2
+
+(53) Communication 4 pub sub 3
+
+(54) Runtime browser implementation
+
+(55) Crosswalk Architecture
+
+(56) Cordova functionnal schema
+
+(57) Messaging Node Architecture
+
+(58) WebRTC.org architecture scheme
+
+(59) OpenWebRTC Architecture
+
+(60) V8 Architecture
+
+(61) V8 Multiple Contexts
+
+(62) Docker Architecture
+
+(63) Firefox OS Architecture
+
+(64) Jitsi Videobridge Architecture
+
+(65) Kurento Architecture
+
+(66) Janus Gateway architecture
+
+(67) OMNA Network
+
+(68) WebRTC API evolution
+
+(69) Web Push Architecture
+
+(70) Main flows of events for subscription, push message delivery, and
     unsubscription
 
-(70) HTTP/2 Push
+(71) HTTP/2 Push
 
-(71) HTTP/2 Framing
+(72) HTTP/2 Framing
 
-(72) HTTP/2 Streams
+(73) HTTP/2 Streams
 
-(73) signalling on-the-fly concept
+(74) signalling on-the-fly concept
 
-(74) Wonder Library Main Classes
+(75) Wonder Library Main Classes
+
+(76) Video Bridge Component
+
+(77) OpenFire VideoBridge and Jicofo Components
+
+(78) Meteor Plataform Overview
+
+(79) Main data flow in a matrix architecture
+
+(80) RabbitMQ Architecture2
+
+(81) RabbitMQ Architecture
+
+(82) ZeroMQ types of communication patterns
+
+(83) ZeroMQ Clusters
+
+(84) Redis architecture
+
+(85) PubSub model
+
+(86) XMPP Architecture
+
+(87) XMPP Protocols
+
+(88) XMPP Jingle
+
+(89) MQTT Architecture
+
+(90) PSYC Message
+
+(91) NodeJS Architecture
+
+(92) Vertx Architecture Diagram
+
+(93) AngularJS Framework
+
+(94) BackboneJS Framework
+
+(95) Backbone Collections
 
 
