@@ -3463,8 +3463,6 @@ maintenance, an OSGi container could be used instead.
 This subsection highlights the main building blocks of the Vert.x
 architecture. (diagram not supplied)
 
-Figure 1. Vert.x Architecture
-
 ### Vert.x Runtime (Java 8 only)
 
 Vert.x 3.0 is Java 8 only. This is to take advantage of new language
@@ -3930,7 +3928,7 @@ technology for the **Messaging Node**
 
 Following picture shows the main data flow in a matrix architecture.
 
-![Figure @sota-messaging-matrix-dataflows: Main data flow in a matrix
+![Figure 22: Main data flow in a matrix
 architecture](matrix-dataflows.png)
 
 The core components are the Home Servers (HS) which can federate to sync
@@ -4112,7 +4110,7 @@ for the Messaging Node
 The core component is the **Broker** that routes the messages from the
 **producers** to the **consumers** as depicted in the following image.
 
-![Figure 22: RabbitMQ Architecture2](rabbitmq_arch2.png)
+![Figure 23: RabbitMQ Architecture2](rabbitmq_arch2.png)
 
 The **Broker** has two main componentes: \* **Exchange**: accepts and
 routes messages from producer to clients based on the message
@@ -4123,7 +4121,7 @@ information such as keys, bindings, filtering or broadcast.
 Message routing can be based on topic / wild-card, as shown in the
 following image.
 
-![Figure 23: RabbitMQ Architecture](rabbitmq_arch.png)
+![Figure 24: RabbitMQ Architecture](rabbitmq_arch.png)
 
 Image Source:
 [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
@@ -4293,7 +4291,7 @@ It is used as a thin layer between the application and transport layers.
 The following figure represents the six basic types of communication
 patterns that ZeroMQ supports.
 
-![Figure 24: ZeroMQ types of communication
+![Figure 25: ZeroMQ types of communication
 patterns](zeromq_basic_patterns.png)
 
 Image Source:
@@ -4327,7 +4325,7 @@ These can be used as "fabric" to make very powerful architectures. The
 next image shows an example of this modularity. [A pub/sub multi-cluster
 Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
-![Figure 25: ZeroMQ Clusters](zeromq_clusters_example.png)
+![Figure 26: ZeroMQ Clusters](zeromq_clusters_example.png)
 
 Image Source:
 [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
@@ -4503,7 +4501,7 @@ sorted sets, bitmaps and hyperloglogs.
 -   The main Redis architecture can be resumed as a in memory key-value
     data-store for service decoupling.
 
-![Figure 26: Redis architecture](redis_as_cache.png)
+![Figure 27: Redis architecture](redis_as_cache.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4511,7 +4509,7 @@ Image Source:
 -   Another possibility is a PubSub model with message filtering based
     on prefix matching.
 
-![Figure 27: PubSub model](redis_pubsub.png)
+![Figure 28: PubSub model](redis_pubsub.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4680,7 +4678,7 @@ addressed using a JabberID (JID). It has the form :
 username@domain/resource where domain is the domain name of the XMPP
 server, and username identifies an account on that server.
 
-![Figure 28: XMPP Architecture](xmpp_arch.png)
+![Figure 29: XMPP Architecture](xmpp_arch.png)
 
 Image Source:
 [https://el-tramo.be](https://el-tramo.be/documents/beautiful-xmpp-testing/)
@@ -4688,7 +4686,7 @@ Image Source:
 Server can have adapters/gateways to be able to talk to other protocols
 such as those used by ICQ, AIM, Yahoo and others.
 
-![Figure 29: XMPP Protocols](xmpp_protocols.png)
+![Figure 30: XMPP Protocols](xmpp_protocols.png)
 
 Image Source:
 [https://en.wikipedia.org](https://en.wikipedia.org/wiki/XMPP)
@@ -4699,7 +4697,7 @@ Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol
 extension for initiating and managing peer-to-peer media sessions
 between two XMPP entities.
 
-![Figure 30: XMPP Jingle](xmpp_jingle.png)
+![Figure 31: XMPP Jingle](xmpp_jingle.png)
 
 Image Source:
 [http://xmppjingle.blogspot.pt](http://xmppjingle.blogspot.pt/2010/09/jingle-nodes-proxy-and-eu-surveillance.html)
@@ -4912,7 +4910,7 @@ multiple topics or use a wildcard matching based subscription.
 MQTT supports three quality of service levels, "Fire and forget",
 "delivered at least once" (QoS1) and "delivered exactly once" (QoS2).
 
-![Figure 31: MQTT Architecture](mqtt_arch.jpg)
+![Figure 32: MQTT Architecture](mqtt_arch.jpg)
 
 Image Source:
 [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
@@ -5343,7 +5341,7 @@ working on a fully-distributed end-to-end privacy-enabled solution,
 operating on top of the public-key routing method explained above
 combined with PSYC messaging logic.
 
-![Figure 32: PSYC Message](psyc_message.png)
+![Figure 33: PSYC Message](psyc_message.png)
 
 ### Requirements Analysis
 
@@ -5496,7 +5494,7 @@ The core is built in C and C++. It combines Google’s V8 JavaScript
 engine with Node’s Libuv library and protocol bindings including sockets
 and HTTP.
 
-![Figure 33: NodeJS Architecture](Archi-NodeJs.png)
+![Figure 34: NodeJS Architecture](Archi-NodeJs.png)
 
 More information are avaialble in this document :
 http://mcgill-csus.github.io/student\_projects/Submission2.pdf
@@ -5665,9 +5663,7 @@ module can be shared
 This subsection highlights the main building blocks of the Vert.x
 architecture.
 
-![Figure 34: Vertx Architecture Diagram](vertx-architecture-diagram.png)
-
-Figure 1. Vert.x Architecture
+![Figure 35: Vertx Architecture Diagram](vertx-architecture-diagram.png)
 
 ### Addressing
 
@@ -6031,7 +6027,7 @@ It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on Javascript and a client side
 framework. It is supported by multiple browsers.
 
-![Figure 35: AngularJS Framework](mvc_angular.png)
+![Figure 36: AngularJS Framework](mvc_angular.png)
 
 **Main Features**
 
@@ -6156,7 +6152,7 @@ over a RESTful JSON interface.
 
 The model looks as follows:
 
-![Figure 36: BackboneJS
+![Figure 37: BackboneJS
 Framework](backbone-MV.png "image from http://backbonejs.org")
 
 ##### Model
@@ -6187,7 +6183,7 @@ and react or re-render themselves appropriately.
 
 ##### Collections
 
-![Figure 37: Backbone Collections](backbone-Collections.png)
+![Figure 38: Backbone Collections](backbone-Collections.png)
 
 A Collection helps you deal with a group of related models, handling the
 loading and saving of new models to the server and providing helper
@@ -6261,7 +6257,7 @@ Analysis against **Service Framework** Requirements
 Javascript plataform, offering a complete full-stack framework for
 delivering web and mobile apps;
 
-![Figure 38 Meteor Plataform
+![Figure 39 Meteor Plataform
 Overview](meteor-platform.png "image from https://www.meteor.com/features")
 
 **Main Features**
@@ -6520,38 +6516,40 @@ a short-time.
 
 (21) Kurento Architecture
 
-(22) RabbitMQ Architecture2
+(22) Main data flow in a matrix architecture
 
-(23) RabbitMQ Architecture
+(23) RabbitMQ Architecture2
 
-(24) ZeroMQ types of communication patterns
+(24) RabbitMQ Architecture
 
-(25) ZeroMQ Clusters
+(25) ZeroMQ types of communication patterns
 
-(26) Redis architecture
+(26) ZeroMQ Clusters
 
-(27) PubSub model
+(27) Redis architecture
 
-(28) XMPP Architecture
+(28) PubSub model
 
-(29) XMPP Protocols
+(29) XMPP Architecture
 
-(30) XMPP Jingle
+(30) XMPP Protocols
 
-(31) MQTT Architecture
+(31) XMPP Jingle
 
-(32) PSYC Message
+(32) MQTT Architecture
 
-(33) NodeJS Architecture
+(33) PSYC Message
 
-(34) Vertx Architecture Diagram
+(34) NodeJS Architecture
 
-(35) AngularJS Framework
+(35) Vertx Architecture Diagram
 
-(36) BackboneJS Framework
+(36) AngularJS Framework
 
-(37) Backbone Collections
+(37) BackboneJS Framework
 
-(38) Meteor Plataform Overview
+(38) Backbone Collections
+
+(39) Meteor Plataform Overview
 
 

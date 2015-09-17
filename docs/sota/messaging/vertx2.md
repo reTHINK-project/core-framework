@@ -28,9 +28,6 @@ This subsection highlights the main building blocks of the Vert.x architecture.
 
 ![Figure @sota-messaging-vertx-arch: Vertx Architecture Diagram](vertx-architecture-diagram.png)
 
-
-Figure 1. Vert.x Architecture
-
 ### Addressing
 Messages are sent on the event bus to an address. Vert.x instances are not bound to any addressing schemes. An address is simply a string, any string is valid. Some examples of valid addresses are ```europe.news.feed1```, ```acme.games.pacman```, ```sausages```, and ```X```.
 As a convention the names of the packages that implement certain functionalities should also be represented on the event bus and should be combined with a meaningful event/operation name, e.g. ```org.acme.MyPackage.MyClass.doSomething```

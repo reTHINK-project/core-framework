@@ -38,6 +38,8 @@
 
 (@sota-kurento-arch) Kurento Architecture
 
+(@sota-messaging-matrix-dataflows) Main data flow in a matrix architecture
+
 (@sota-messaging-rabbitmq-arch2) RabbitMQ Architecture2
 
 (@sota-messaging-rabbitmq-arch) RabbitMQ Architecture
