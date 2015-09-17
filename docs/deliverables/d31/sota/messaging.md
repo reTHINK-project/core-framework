@@ -1,6 +1,5 @@
 ## Messaging
-
-In order to evaluate the options to implement the messaging service, different existing solutions have been considered: Matrix, MQTT, Nodejs, Psyc, RabbitMQ, realtime backends (also knwon as noBackends or Backend-as-a-Service), Redis, Vertx, XMPP and ZeroMQ.
+The Messaging Services, as it appears in the architecture, is the server side platform that will support several functions provided by the Service provider. In order to evaluate the options to implement the messaging service, different existing solutions have been considered: Matrix, MQTT, Nodejs, Psyc, RabbitMQ, realtime backends (also knwon as noBackends or Backend-as-a-Service), Redis, Vertx, XMPP and ZeroMQ.
 
 The following criteria are seen as particularly important for the choice of a solution for messaging node implementation:
 - it should support Protocol on-the-fly, to inter-operate with other Messaging Nodes or Back-end servers without having the need to standardize the protocol to be used.
