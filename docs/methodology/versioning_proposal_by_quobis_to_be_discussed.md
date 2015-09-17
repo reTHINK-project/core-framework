@@ -10,7 +10,7 @@ This is the Quobis' proposal for  versioning and code management of the project.
 6. To refer exact point in the project code timeline, we can use tags in master branch. Tags are friendly labels for commits. For example, if you have susscesully tested that some new code implements a feature, after merging and commiting the changes in master branch you will create a label.
 7. We can use for label names the following scheme: *\<project name\>\-\<major version\>.\<medium version\>.\<Minor version\>*
 increasing the numbers respect the version before depending on the changes included in the merge (see version numbering reference below).
-8. When you test your code with projects with other partners by default the code from master branch should be used, however you can be notified that a specific tag should be used. 
+8. When you test your code with projects with other partners by default the code from master branch should be used, however you can be notified that a specific tag should be used. Any contribution to be deployed on the testbed has to be tested using the docker image that WP-6 will provide as a OS-baseline for all testbed deployments.
 9. Partners which are in charge of different projects can keep a coherent versioning numbering in the tags of their master branches.
 10. It is strongly recommended to keep updated the Readme file indicating the tag versions of other projects the code has been tested with (in case the code it applies for that project).
 11. This scheme is intented to be valid during the life of reTHINK project. Once the project is finished and the code is fully functional a branch can be created to keep the final code and master can be left for development.
