@@ -44,4 +44,5 @@ The Extensible Messaging and Presence Protocol (XMPP) is an open technology for 
 ### ZeroMQ
 ZeroMQ is a high-performance, low level, asynchronous messaging library originally written in C++, that now has multiple native Implementations. It is used as a thin layer between the application and transport layers.
 
+### Selected Real time Messaging Solutions
 In the scope of reThink framework, Matrix, Nodejs and vert.X have been selected to implement the messaging node.
