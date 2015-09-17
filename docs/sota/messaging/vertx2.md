@@ -1,13 +1,11 @@
-## Vert.x Evaluation
+## Vert.x 2.0
 
-**Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x
+
 
 ### Overview
 
-*Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
 
-
-Vert.x is an application framework developed by VMWare in 2011. The application framework provides possibilities to develope loosely coupled network service applications.  
+Vert.x 2.0 [57] is an application framework developed by VMWare in 2011. The application framework provides possibilities to develope loosely coupled network service applications.  
 
 The concept of the framework is summarized as follows:
 * **Polyglot (supports several languages)**:
@@ -74,10 +72,10 @@ Messages that you send on the event bus can be as simple as a string, a number o
 It's highly recommended to use JSON messages to communicate between verticles. JSON is easy to create and parse in all the languages that Vert.x supports. 
 For RPC messages, JSON is enforced.
 
-## Verticle
+### Verticle
 The unit of execution for Vert.x applications is called a Verticle. Verticles can be written in multiple languages (JavaScript, Ruby, Java, Groovy or Python). Many verticles can be executed concurrently in the same Vert.x instance. An application might be composed of multiple verticles deployed on different nodes of the network communicating by exchanging messages over the Vert.x Event Bus. For trivial applications verticles can be run directly from the command line, but more usually they are packaged up into modules.
 
-## Module
+### Module
 Applications within the framework comprise of one or more modules.  The framework allows packaging of applications or other re-usable functionality into modules, which can be deployed or used by other code. Module can also by catalogue in the Vert.x module registry so others can discover and use it. The framework offers the possibility to automatically download and install modules from any repository given the module identifier.
 Each module has a unique identifier. The identifier is a string that is composed of three parts:
 A module can contain any number of (including zero) verticles and can depend on other modules (and their verticles) in turn. Creating a module with no verticles makes sense to provide only library support for other modules.  Modules are described by a descriptor file: mod.json. A minimal descriptor looks like this: 
@@ -97,7 +95,7 @@ Indicates the startup routine for this module.
 * ```includes```
 Additional module dependencies as a comma-separated string.
 
-## Event Loop
+### Event Loop
 By default, all verticles run in an asynchronous event loop. When developing a verticle, it is essential not to block the event loop. Blocking here means either doing any kind of blocking I/O or even doing any kind of computational intensive work. Modules that do either of these should indicate that they are so called ```worker``` modules by setting ```"worker": true``` in their *mod.json* file. 
 The advantage of an event loop is that it is enormously scalable. Instead of waiting for I/O operations to complete, the executing thread will rather do other stuff (e.g. servicing the next request) in the meantime. This is achieved by using a callback driven style of programming. Imagine the following scenario: 
 *We want to read some data in an I/O intensive operation (function ```readData```) 
@@ -148,7 +146,7 @@ Vert.x provides the different APIs which are implemented in various languages:
 
 *According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
 
-##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) 
 
 External Authentication and Authorisation are supported through the usage of an Authorisation module:
 
@@ -220,24 +218,24 @@ ServerHook takes some keyword arguments for example:
 
 In this way handlers registration can be controlled.
 
-##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
 
-Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
+Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
-##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
+#### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) 
 * Resilience: Vert.x provides resilience through the "automatic failover" and "HA group" options. When a module is run with HA, if the Vert.x instance where it is running fails, it will be re-started automatically on another node of the cluster. An HA group denotes a logical grouping of nodes in the cluster. Only nodes with the same HA group will failover onto one another. 
 * DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT Vert.x 3.0 provides built-in core functiionality for this core
 * Service Assurance: Modules can be deployed in clusters, and Vert.x provides an internal Load Balancer for routing messages within the cluster. Also the above mentioned "auomatic failover" and "HA group" options contribute to enforce service assurance. 
 
-##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+#### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) 
 Verticle instances, except advanced multi-threaded worker verticles are almost always single threaded. what this implies is that, a single verticle instance can at most utilise one core of the server. In order to scale across cores, several verticles which are responsible for the same task can be instantiated and the runtime will distribute the workload among them (load balancing), this way taking full advantage of all SPU cores without much effort. Verticles can also be distributed between several machines. This will be transparent to the application code. The Verticles use the same mechanisms to communicate as if they would run on the same machine. This makes it very easy to scale applications.
 
-##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+#### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
 * Websockets - Yes  supported
 * SockJS - Yes supported
 * HTTP Long-Polling - Yes 
 * HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+#### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
 No.
 Vert.x uses the Event Bus to send messages through pub/sub mechanism or point-2-point mechanism. In both cases, there is no feedback to the sender if the message was recieved and processed or if it was not recieved at all. In the end reliability will boil down to the application logic service build on top of vert.x. 

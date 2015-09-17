@@ -1,12 +1,10 @@
-## Vert.x 3 Evaluation (Draft)
+## Vert.x 3.0
 
-**Note:** to be reviewed for [v3](http://vert-x3.github.io/) by identifying differences with version 2.x
 
 ### Overview
 
-*Overview of functionalities and type of WP3 component that the asset can be used for ie Messaging Node, Runtime, Network QoS and Framework* 
 
-This SOTA will evidence differences between version 2 and 3 of vert.x. It will not describe all the architecture as in the version 2 evaluation.
+This evaluation will evidence differences between version 2 [57] and 3 [58] of vert.x. It will not describe all the architecture as in the version 2 evaluation.
 
 The concept of the framework is summarized as follows:
 * **Polyglot (supports several languages)**:
@@ -74,15 +72,15 @@ Messages that you send on the event bus can be as simple as a string, a number o
 It's highly recommended to use JSON messages to communicate between verticles. JSON is easy to create and parse in all the languages that Vert.x supports. 
 For RPC messages, JSON is enforced.
 
-## Verticle
+### Verticle
 The unit of execution for Vert.x applications is called a Verticle. Verticles can be written in multiple languages (Java, JavaScript, Groovy and Ruby). Many verticles can be executed concurrently in the same Vert.x instance. An application might be composed of multiple verticles deployed on different nodes of the network communicating by exchanging messages over the Vert.x Event Bus. You can now (version 3) instantiate verticles and deploy verticle instances programmatically.
 The platform manager API has been removed, and methods for deploying verticles have moved to the Vertx interface. The API for deploying verticles is much simpler, so this should simplify things when embedding.
 
-## Module
+### Module
 The Vert.x 3 module system has gone. It's advisable to use already available options like Maven or Gradle.
 Non Java verticles (e.g. JavaScript) can also be packaged in jars and pushed as Maven artifacts. It will also support resolving in other ways and from other places (e.g. at run-time and from npm modules) before 3.0.final.
 
-## Event Loop
+### Event Loop
 By default, all verticles run in an asynchronous event loop. When developing a verticle, it is essential not to block the event loop. Blocking here means either doing any kind of blocking I/O or even doing any kind of computational intensive work. Modules that do either of these should indicate that they are so called ```worker``` modules by setting ```"worker": true``` in their *mod.json* file. 
 The advantage of an event loop is that it is enormously scalable. Instead of waiting for I/O operations to complete, the executing thread will rather do other stuff (e.g. servicing the next request) in the meantime. This is achieved by using a callback driven style of programming. Imagine the following scenario: 
 *We want to read some data in an I/O intensive operation (function ```readData```) 
@@ -134,11 +132,10 @@ Vert.x provides the different APIs which are implemented in various languages. T
 
 ### Requirements Analysis
 
-*According to Component Type addressed by the solution ie Messaging Node, Runtime, Network QoS and Framework*
 
 #### Messaging Node Requirements Analysis
 
-##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
 
 External Authentication and Authorisation are supported through Maven artifacts: vertx-apex and vertx-auth-service
 
@@ -230,25 +227,25 @@ ServerHook takes some keyword arguments for example:
  
 In this way handlers registration can be controlled, and the user information can be sent to the EventBus.
 
-##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
 
-Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
+Since vertx is based on http://hazelcast.org/ we can use it to cache some info including the sessionId
 
-##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features) (FOKUS)
+##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging Node with carrier grade deployment features)
 * Resilience: Vert.x provides resilience through the "automatic failover" and "HA group" options. When a module is run with HA, if the Vert.x instance where it is running fails, it will be re-started automatically on another node of the cluster. An HA group denotes a logical grouping of nodes in the cluster. Only nodes with the same HA group will failover onto one another. 
 * DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT Vert.x 3.0 provides built-in core functiionality for this core
 * Service Assurance: Modules can be deployed in clusters, and Vert.x provides an internal Load Balancer for routing messages within the cluster. Also the above mentioned "auomatic failover" and "HA group" options contribute to enforce service assurance. 
 
-##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) 
 Verticle instances, except advanced multi-threaded worker verticles are almost always single threaded. what this implies is that, a single verticle instance can at most utilise one core of the server. In order to scale across cores, several verticles which are responsible for the same task can be instantiated and the runtime will distribute the workload among them (load balancing), this way taking full advantage of all SPU cores without much effort. Verticles can also be distributed between several machines. This will be transparent to the application code. The Verticles use the same mechanisms to communicate as if they would run on the same machine. This makes it very easy to scale applications.
 
-##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
 * Websockets - Yes  supported
 * SockJS - Yes supported
 * HTTP Long-Polling - Yes 
 * HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
 No.
 Vert.x uses the Event Bus to send messages through pub/sub mechanism or point-2-point mechanism. In both cases, there is no feedback to the sender if the message was recieved and processed or if it was not recieved at all. In the end reliability will boil down to the application logic service build on top of vert.x. 
 

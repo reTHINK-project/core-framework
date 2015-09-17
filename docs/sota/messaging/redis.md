@@ -3,7 +3,7 @@
 
 ### Overview
 
-In the scope of the reTHINK project Redis is a candidate technology for the Messaging Node.
+In the scope of the reTHINK project Redis [63] is a candidate technology for the Messaging Node.
 
 From http://redis.io/:
 > Redis is an open source, BSD licensed, advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.

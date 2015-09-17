@@ -1,6 +1,6 @@
 ## RabbitMQ Evaluation
 
-It is defined as a robust and easy to use messaging platform that can work synchronously an asynchronously.
+RabbitMQ [59] is defined as a robust and easy to use messaging platform that can work synchronously an asynchronously.
 
 From rabbitmq.com:
 > *RabbitMQ is a messaging broker - an intermediary for messaging. It gives your applications a common platform to send and receive messages, and your messages a safe place to live until received.
@@ -41,7 +41,7 @@ Image Source: [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
 
 ### APIs and Documentation
 
-[AMQP Protocol Specification](https://www.rabbitmq.com/protocol.html)
+See [60] for the [AMQP protocol specification](http://www.amqp.org/).
 
 RabbitMQ provides the following APIs:
 * [Java and JVM](https://www.rabbitmq.com/devtools.html#java-dev)

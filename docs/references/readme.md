@@ -117,3 +117,26 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [53] - [StapesJS](https://hay.github.io/stapes/)
 
+[54] - http://en.wikipedia.org/wiki/Real-time_database
+
+[55] - http://www.leggetter.co.uk/real-time-web-technologies-guide/
+
+[56] - http://www.matrix.org/
+
+[57] - http://vertx.io/vertx2/
+
+[58] - http://vertx.io/
+
+[59] - https://www.rabbitmq.com/
+
+[60] - http://www.amqp.org/
+
+[61] - http://mqtt.org/
+
+[62] - http://www.psyced.org/
+
+[63] - http://redis.io/
+
+[64] - http://xmpp.org/
+
+[65] - http://zeromq.org/

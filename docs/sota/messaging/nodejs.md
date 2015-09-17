@@ -1,10 +1,8 @@
 ## Node.js
 
-## Asset Evaluation
-
 ### Overview
 
-In the scope of the reTHINK project NodeJs is a candidate technology for the Messaging Node.
+In the scope of the reTHINK project NodeJs [22] is a candidate technology for the Messaging Node.
 
 From https://nodejs.org/ :
 

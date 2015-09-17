@@ -2,7 +2,7 @@
 
 ### Overview
 
-In the scope of the reTHINK project ZeroMQ is a candidate technology for the Messaging Node.
+In the scope of the reTHINK project ZeroMQ [65] is a candidate technology for the Messaging Node.
 
 It is a  high-performance, low level, asynchronous messaging library originally written in C++, that now has multiple native Implementations.
 It is used as a thin layer between the application and transport layers.

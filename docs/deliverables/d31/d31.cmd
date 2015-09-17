@@ -31,7 +31,6 @@ specs\runtime-basics.md ^
 ..\..\specs\runtime\dynamic-view\basics\inter-remote-comm.md ^
 specs\runtime-idm.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-registration.md ^
-..\..\specs\runtime\dynamic-view\identity-management\discovery.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\domain-login.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-to-hyperty-binding.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-identity-assertion.md ^

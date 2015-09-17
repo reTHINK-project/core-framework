@@ -1,8 +1,8 @@
 
-## XMPP Evaluation
+## XMPP 
 
 
-From http://xmpp.org/:
+From http://xmpp.org/ [64]:
 
 > The Extensible Messaging and Presence Protocol (XMPP) is an open technology for real-time communication, which powers a wide range of applications including instant messaging, presence, multi-party chat, voice and video calls, collaboration, lightweight middleware, content syndication, and generalized routing of XML data. 
 
