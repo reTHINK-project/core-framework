@@ -13,6 +13,7 @@ sota\standards_annex.md ^
 ..\..\sota\standards\standard_summary.md ^
 sota\projects_annex.md ^
 ..\..\sota\projects\wonder.md ^
+..\..\sota\projects\M2M_projects.md ^
 ..\..\sota\projects\wonder-messages.md ^
 sota\runtime_annex.md ^
 ..\..\sota\runtime\webrtc-org.md ^
@@ -42,8 +43,8 @@ sota\qos_annex.md ^
 sota\service-framework_annex.md ^
 ..\..\sota\web-frameworks\angular-js.md ^
 ..\..\sota\web-frameworks\backbone-js.md ^
-..\..\sota\web-frameworks\stapesjs.md ^
 ..\..\sota\web-frameworks\meteor.md ^
+..\..\sota\web-frameworks\stapesjs.md ^
 introduction\figures.md
 
 

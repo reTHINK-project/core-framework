@@ -1621,20 +1621,53 @@ However, the network package doesn't, and it even comes with a README
 file whose content just states that code documentation is a TODO task on
 the network package.
 
-### WebRTC.org and runtime requirements
+### Requirements Analysis
 
-1.  WebRTC is intended to be used on latest browser like Google Chrome,
+Analysis against **Runtime** requirements
+
+-   [The Runtime should be deployable in the most used Devices and
+    Operating
+    Systems](https://github.com/reTHINK-project/core-framework/issues/1)
+-   WebRTC is intended to be used on latest browser like Google Chrome,
     Mozilla Firefox, mobile platforms like Android and iOS and also IoT
     devices like Raspberry Pi.
-2.  WebRTC.org implements the W3C WebRTC APIs.
-3.  Yes, both the WebRTC 1.0 and Media Capture and Streams APIs
+
+-   [The Runtime should support W3C WebRTC
+    APIs](https://github.com/reTHINK-project/core-framework/issues/2)
+-   WebRTC.org implements the W3C WebRTC APIs.
+
+-   [The runtime must support standard
+    Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+-   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs
     use ECMAScript.
-4.  The WebRTC 1.0 API, and concretely its Peer-to-peer Data API for
+-   WebRTC.org is meant to be used within a runtime, providing the
+    WebRTC functionality. The runtime will provide
+    Javascript functionality.
+
+-   [The Runtime should support Web
+    Socket](https://github.com/reTHINK-project/core-framework/issues/4)
+-   The WebRTC 1.0 API, and concretely its Peer-to-peer Data API for
     sending and receiving data models the behaviour of WebSockets
-5.  Yes, WebRTC 1.0 supports Web Messaging Notifications.
-6.  TODO
-7.  TODO
-8.  The effort to perform changes in the runtime like protocols for
+-   WebRTC.org is meant to be used within a runtime, providing the
+    WebRTC functionality. The runtime will provide
+    WebSockets functionality.
+
+-   [The Runtime should support Standardised Messaging
+    Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
+-   Yes, WebRTC 1.0 supports Web Messaging Notifications.
+
+-   [The Runtime must have a good
+    performance](https://github.com/reTHINK-project/core-framework/issues/6)
+-   The WebRTC runtime provided as open-source is used in chromium and
+    google chrome. It's performance is state of the art.
+
+-   [The Runtime must be
+    secured](https://github.com/reTHINK-project/core-framework/issues/7)
+-   WebRTC provides encrypted communications betweens peers.
+
+-   [The effort to introduce new capabilities in the runtime should be
+    reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
+-   The effort to perform changes in the runtime like protocols for
     network I/O, signalling, session management, video capture and audio
     capture/render depends on the package these changes are meant to
     be inserted. The audio and video package is well-documented, despite
@@ -5706,7 +5739,7 @@ coturn
 
 ### Overview
 
-The TURN \[39\] protocol is defined as an extension of the STUN \[40\]
+The TURN \[47\] protocol is defined as an extension of the STUN \[48\]
 protocol.
 
 TURN servers act as media relays and are directly placed in the media
@@ -5722,9 +5755,9 @@ The study about TURN servers is very up-to-date since there is an
 ongoing work on this subject in IETF. The recently formed IETF group –
 TRAM (TURN Revised and Modernized) focuses on improving TURN
 implementations and features in order to make STUN and TURN more
-suitable for WebRTC \[41\].
+suitable for WebRTC \[49\].
 
-Coturn is an open source TURN server implementation \[42\]. It is a
+Coturn is an open source TURN server implementation \[50\]. It is a
 separate branch of the previous implementation
 rfc5766-turn-server-project, and is dedicated for testing new protocols.
 As a result, it supports more specifications than the previous version.
@@ -5743,19 +5776,19 @@ with existing solutions, it can be introduces incrementally.
 Service Frameworks SOTA
 =======================
 
-Overview of the Angular.js framework
-====================================
+### AngularJS Framework
 
-AngularJS is a Javascript MVC Framework developed and promoted by
+#### Overview
+
+AngularJS \[51\] is a Javascript MVC Framework developed and promoted by
 Google, to build well architectured and maintainnable web applications.
 It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on Javascript and a client side
 framework. It is supported by multiple browsers.
 
-![Figure 93: AngularJS Framework](mvc_angular.png)
+![Figure 93: AngularJS Framework](mvc_angular.jpg)
 
-Main Concepts
--------------
+**Main Features**
 
 -   *Compiler* : Compiler is an angular service which traverses the DOM
     looking for attributes. It allows the developer to teach the browser
@@ -5807,10 +5840,9 @@ Modules--\]); \`\`\`
 -   *Filters* : Angular filters format data for display to the user.
     Custon filters can be created as well
 
-Evaluation
-----------
+#### Evaluation
 
-### Pros
+##### Positive
 
 -   Encourages MVC design pattern
 -   Two way data binding allows for automation synchronization of data
@@ -5824,54 +5856,65 @@ Evaluation
 -   Very expressive, leading to less code for same result as with other
     libraries
 
-\#\#\#Cons \* Complex Directives API \* **Good for Single Page Apps
-(SPA), SO, is not the best option to go for Hyperty Developments** \*
+\#\#\#\#\# Negative \* Complex Directives API \* Good for Single Page
+Apps (SPA), SO, is not the best option to go for Hyperty Developments \*
 Complex Directives API \* Runtime configuration only only before
 Bootstrap procedure. No configuration possible after. \* Scopes are easy
 to use but difficult to debug
 
-Requirement Analysis
-====================
+#### Requirement Analysis
 
 Analysis against **Service Framework** Requirements
 
--   [Service Framework SHOULD support Model-View-Controller design
-    pattern](https://github.com/reTHINK-project/core-framework/issues/36)
--   Yes
--   The Angular framework provides a powerful MVC design Pattern
+-   [Service Framework **MUST** be Message Node
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
+    **Yes**
+-   [The Service Framework **MUST** avoid any JavaScript
+    conflicts](https://github.com/reTHINK-project/core-framework/issues/43):
+    **No** This is a namespace issue and potential conflicts with other
+    frameworks are likely to occur
+-   [Service Framework **MUST** be Modular in
+    nature](https://github.com/reTHINK-project/core-framework/issues/42):
+    **Yes** The framework is modular, and offers developers possibility
+    to write their own modules or import third party modules.
+-   [The Service Framework **MUST** be open
+    source](https://github.com/reTHINK-project/core-framework/issues/39):
+    **Yes**
 
--   [Service Framework MUST be light weight and
-    fast](https://github.com/reTHINK-project/core-framework/issues/37)
--   YES
--   Current minimized gzipped web version: 172KB\
--   Current minimized gzipped web app version: 146KB
--   Can gzip compress down to one third and Data per page has small
-    memory footprint
+AngularJS is an open-source framework maintained by Google and by a
+community of individual developers and corporations - [Service Framework
+**SHOULD** be device
+agnostic](https://github.com/reTHINK-project/core-framework/issues/38):
+**Yes** It runs on all devices and operating systems envisioned to host
+the Hyperty Runtime (Android, iOS, Raspberry PI, Linux VM, Windows VM) -
+[Service Framework **MUST** be light weight and
+fast](https://github.com/reTHINK-project/core-framework/issues/37):
+**yes** The current minimized gzipped web version is 172KB while the
+minimized gzipped web app version is 146KB. Gzip compresses it down to
+one third and Data per page has small memory footprint
 
--   [Service Framework should be Supported in all Devices and Operating
-    Systems featuring Hyperty
-    Runtime](https://github.com/reTHINK-project/core-framework/issues/38)
--   Android (Smartphone and Tablet) - YES
--   iOS (Smartphone and Tablet) - YES
--   Raspberry PI - YES
--   Linux VM - YES
--   Windows VM - YES
+-   [Service Framework **SHOULD** support Model-View-Controller design
+    pattern](https://github.com/reTHINK-project/core-framework/issues/36):
+    **Yes** The Angular framework provides a powerful MVC design Pattern
 
--   [Service Framework MUST be Modular in
-    nature](https://github.com/reTHINK-project/core-framework/issues/42)
--   YES
+### BackboneJS Framework
 
-Overview of the Backbone.js framework (taken from http://backbonejs.org)
-========================================================================
+#### Overview
 
-Models and Views
-----------------
+BackboneJS \[52\] is a web frontend framework that provides structure to
+web applications by specifying models with key-value binding and custom
+events, collections with a rich API of enumerable functions, views with
+declarative event handling, and connects it all to your existing API
+over a RESTful JSON interface.
+
+##### Models and Views
 
 The model looks as follows:
 
-![Figure 94: BackboneJS Framework](backbone-MV.png)
+![Figure 94: BackboneJS
+Framework](backbone-MV.png "image from http://backbonejs.org")
 
-### Model
+##### Model
 
 -   Orchestrates data and business logic,
 -   Loads and saves from the server,
@@ -5885,7 +5928,7 @@ all of the helpful functions for manipulating their particular bit of
 data. Models should be able to be passed around throughout your app, and
 used anywhere that bit of data is needed.
 
-### View
+##### View
 
 -   Listens for changes and renders UI.
 -   Handles user input and interactivity.
@@ -5897,7 +5940,7 @@ data-less chunks of UI that stand alone. Models should be generally
 unaware of views. Instead, views listen to the model "change" events,
 and react or re-render themselves appropriately.
 
-### Collections
+##### Collections
 
 ![Figure 95: Backbone Collections](backbone-Collections.png)
 
@@ -5909,8 +5952,7 @@ of the events that occur to models within them, allowing you to listen
 in one place for any change that might happen to any model in the
 collection.
 
-Overall Evaluation
-------------------
+#### Overall Evaluation
 
 -   No concept of separated Controller
 -   functionality is basic
@@ -5922,12 +5964,14 @@ Overall Evaluation
 -   --&gt; changing CSS or modifications in DOM (wrapping, nesting)
     requires updates in code
 
-Requirement Analysis
-====================
+#### Requirement Analysis
 
 Analysis against **Service Framework** Requirements
 
--   [Service Framework SHOULD support Model-View-Controller design
+-   [Service Framework **MUST** be Message Node
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
+    **Yes** -[Service Framework SHOULD support Model-View-Controller
+    design
     pattern](https://github.com/reTHINK-project/core-framework/issues/36)
 -   NO
 -   The Backbone framework provides a MV Pattern with direct interaction
@@ -5943,9 +5987,8 @@ Analysis against **Service Framework** Requirements
     Zepto(9,1kb, a JQuery clone)
 -   small memory footprint
 
--   [Service Framework should be Supported in all Devices and Operating
-    Systems featuring Hyperty
-    Runtime](https://github.com/reTHINK-project/core-framework/issues/38)
+-   [Service Framework **SHOULD** be device
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/38)
 -   rather YES
 -   every view is tight to its own root-DOM element and responsible for
     the tree below it
@@ -5965,20 +6008,17 @@ Analysis against **Service Framework** Requirements
 -   Models stand-alone and their synchronization capabilities with
     backend storages should be portable and fulfill this requirement
 
-StapesJS
-========
+### StapesJS Framework
 
-Introduction
-------------
+#### Overview
 
-Stapes.js is a little web framework designed to be agnostic about the
-setup and style of coding. It is very flexible and it allows to use MVC
-paradigm combined with libraries such as jQuery, Zepto, React and
+StapesJS \[53\] is a little web framework designed to be agnostic about
+the setup and style of coding. It is very flexible and it allows to use
+MVC paradigm combined with libraries such as jQuery, Zepto, React and
 Rivets. Stapes provides the necessary building blocks to build a apps in
 a short-time.
 
-Advantages and main features
-----------------------------
+#### Advantages and main features
 
 -   It allows class creation, custom events, and data methods. It only
     has 20 methods compared to other web-frameworks like Backbone which
@@ -5989,8 +6029,7 @@ Advantages and main features
 -   It has around 600 lines of codes, so if any issue is find or it is
     necessary to add some new feature it can be done at a small cost.
 
-Drawbacks
----------
+#### Drawbacks
 
 -   It is less complete than other frameworks so some functionality may
     require some development.
@@ -5998,8 +6037,7 @@ Drawbacks
     not very active in Github. This may be a problem if any issue
     is found.
 
-Suitability for ReTHINK project
--------------------------------
+#### Requirement Analysis
 
 -   It is an Open Source project. It has MIT license which is a
     permissive free software license. meaning that it permits reuse
