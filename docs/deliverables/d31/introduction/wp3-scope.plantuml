@@ -1,6 +1,6 @@
 
 @startuml "WP3-scope.png"
-
+scale 0.6
 !define SHOW_Management
 
 !define SHOW_IdentityManagement
@@ -21,37 +21,32 @@
 
 !include CoreArchElements.plantuml
 
-Reg <.right.> Rep: Management\nCommunication
-
-IdM <.right.> Rep: Management\nCommunication
-
-IdM <.right.> Reg: Management\nCommunication
 
 
 Bus -up-> ManI
 
 MsgI -up- Bus
 
-ManI -up- Reg: Manage Hyperty\n(Authentication, Authorisation,\nRegister, Discover,\n Catalog Management incl download)
+ManI -up- Reg: Manage Hyperty
 
 ManI -up- Rep
 ManI -up- IdM
 
 Alice -[hidden]right-> Net
 
-Alice <-up-> MsgI: Hyperty\nmessage\ncommunication
+Alice <-up-> MsgI
 
-Net <-up-> MsgI:Hyperty\nmessage\ncommunication
+Net <-up-> MsgI
 
-Alice -down- StreamI: Hyperty\nstream\ncommunication
+Alice -down- StreamI
 
-Net -down- StreamI: Hyperty\nstream\ncommunication
+Net -down- StreamI
 
-NQC -up- StreamI : Hyperty\nstream\ncommunication
+NQC -up- StreamI  
 
-Alice ...[hidden]right- Net: media/data\nstreams
+Alice ...[hidden]right- Net
 
-MsgI <-down-> NQC: Network\nControl
+MsgI <-down-> NQC
 
 
 @enduml

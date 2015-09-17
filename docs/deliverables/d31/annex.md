@@ -139,8 +139,8 @@ project:
     V1.0](http://technical.openmobilealliance.org/Technical/technical-information/oma-api-program/oma-api-inventory/api-details?API_ID=141).
     This API was released in February 2014 and it is a comprehensive
     REST-API for the WebRTC offer/answer signaling model. The payload
-    that is transferred in the requests and responses is defined here
-    as XML.
+    that is transferred in the requests and responses is defined here as
+    XML.
 
 2.  [Authorization Framework for Network
     APIs](http://technical.openmobilealliance.org//Technical/Release_Program/docs/Autho4API/V1_0-20131120-C/OMA-ER-Autho4API-V1_0-20131120-C.pdf).
@@ -165,7 +165,7 @@ LWM2M Client, which is located in a LWM2M Device. The OMA Lightweight
 M2M enabler includes device management and service enablement for LWM2M
 Devices. It is normally used with CoAP. This protocol can be used in
 reTHINK for several components such as the Catalogue as porposed in
-\[Delivery 2 from WP2\].
+[Delivery 2 from WP2].
 
 ### W3C WebRTC API
 
@@ -188,20 +188,20 @@ media Web applications:
     that allow local media, including audio and video, to be requested
     from a platform. This API allows to capture real time audio and
     video from the device which is running the web browsers. It is used
-    by all the WebRTC applications which require capturing audio
-    or video.
+    by all the WebRTC applications which require capturing audio or
+    video.
 -   MediaStream Recording: a recording API for use with MediaStreams as
-    defined in \[GETUSERMEDIA\]
+    defined in [GETUSERMEDIA]
 -   MediaStream Image Capture: specific the takePhoto() and grabFrame()
     methods, and corresponding camera settings for use with MediaStreams
-    as defined in Media Capture and Streams \[GETUSERMEDIA\]
+    as defined in Media Capture and Streams [GETUSERMEDIA]
 -   Media Capture Depth Stream Extensions: extends the Media Capture and
-    Streams specification \[GETUSERMEDIA\] to allow a depth stream to be
+    Streams specification [GETUSERMEDIA] to allow a depth stream to be
     requested from the web platform using APIs familiar to web authors.
 -   Media Capture from DOM Elements: defines how a stream of media can
     be captured from a DOM element, such as a <video>, <audio>, or
     <canvas>
-    element, in the form of a MediaStream \[GETUSERMEDIA\].
+    element, in the form of a MediaStream [GETUSERMEDIA].
 -   Audio output devices API: defines a set of JavaScript APIs that let
     a Web application manage how audio is rendered on the user audio
     output devices.
@@ -210,7 +210,7 @@ media Web applications:
     PeerConnection
 -   Screen Capture: defines how a user's display, or parts thereof, can
     be used as the source of a media stream using getOutputMedia, an
-    extension to the Media Capture API \[GETUSERMEDIA\].
+    extension to the Media Capture API [GETUSERMEDIA].
 
 #### Applicability in reTHINK
 
@@ -401,8 +401,8 @@ if ('serviceWorker' in navigator) {
 Where `/my-app/sw.js` is the location of the ServiceWorker script, and
 it controls pages whose URL begins `/my-app/`.
 
-At this point, your service worker will observe the following lifecycle:
-\* Download \* Install \* Activate
+At this point, your service worker will observe the following
+lifecycle: \* Download \* Install \* Activate
 
 The service worker is immediately downloaded when a user first accesses
 a server worker–controlled site/page. Installation is attempted when the
@@ -521,8 +521,8 @@ use case of waking up an application for a real-time incoming call. The
 API has two logical pieces:
 
 -   a pushRegistrationManager that consults the user agent about which
-    push service to use and returns information (a registration id and
-    a URI) that can be sent to the application server for it to know how
+    push service to use and returns information (a registration id and a
+    URI) that can be sent to the application server for it to know how
     to reach the push service. In general, the URI is where the
     application server can send push messages and the registration id is
     to be provided to the push service to indicate the delivery target
@@ -695,11 +695,11 @@ Features of HTTP/2
 3.  Each message is a logical HTTP message, such as a request, or
     response, which consists of one or more frames.
 4.  The frame is the smallest unit of communication that carries a
-    specific type of data—e.g., HTTP headers, message payload, and
-    so on.
+    specific type of data—e.g., HTTP headers, message payload, and so
+    on.
 5.  Frames from different streams may be interleaved and then
-    reassembled via the embedded stream identifier in the header of
-    each frame.
+    reassembled via the embedded stream identifier in the header of each
+    frame.
 
 ### Framing
 
@@ -1088,8 +1088,8 @@ WONDER Project
 ### Overview
 
 The main motivation of the [OpenLab WONDER experimentation
-project](http://hypercomm.github.io/wonder/) \[32\] was to experiment
-and evaluate some of the P2252 Eurescom Study recommendations. WONDER
+project](http://hypercomm.github.io/wonder/) [32] was to experiment and
+evaluate some of the P2252 Eurescom Study recommendations. WONDER
 evaluated whether to use IMS to deliver services to WebRTC endpoints or
 to use a more disruptive pure Web based approach to deliver services to
 WebRTC endpoints.
@@ -1227,12 +1227,12 @@ Main WONDER library classes are:
     involved in the conversation.
 -   The Resource class representing the digital assets that are shared
     among participants in the conversation including participants’
-    voice, video, screens, photos, video Clips, music clips,
-    documents, etc. These assets are usually managed by the Participant
-    that owns it. For local participants assets are sent (e.g. WebRTC
-    outgoing stream tracks) while for remote participants assets are
-    received (e.g. WebRTC incoming stream tracks). Some Resource types
-    like Chat are not managed by a Participant but by the Conversation.
+    voice, video, screens, photos, video Clips, music clips, documents,
+    etc. These assets are usually managed by the Participant that owns
+    it. For local participants assets are sent (e.g. WebRTC outgoing
+    stream tracks) while for remote participants assets are received
+    (e.g. WebRTC incoming stream tracks). Some Resource types like Chat
+    are not managed by a Participant but by the Conversation.
 -   The Data Codec, which is used by Resources that are shared on top of
     the Data Channel, like file sharing and Textual Chat, to decode and
     encode the data in a consistent way by all the peers. The Data Codec
@@ -1247,7 +1247,7 @@ The [API
 documentation](https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html)
 and the [source
 code](https://github.com/hypercomm/wonder/tree/master/src/libs) were
-published in a public github repository \[35\]\[36\] .
+published in a public github repository [35][36] .
 
 ### Input to reTHINK
 
@@ -1311,8 +1311,8 @@ The following Message Types are defined:
 -   UPDATE - Message to Update conversation by adding or removing a
     Resource
 -   UPDATED - Answer to Message UPDATE
--   CONTEXT - Message used to publish the context and status of
-    an Identity.
+-   CONTEXT - Message used to publish the context and status of an
+    Identity.
 -   SUBSCRIBE - Message to request to receive CONTEXT notifications from
     a certain Identity
 -   MESSAGE - Mainly used to support Pager Mode Chat. But it can be used
@@ -1488,7 +1488,7 @@ as resources in the Repository/Catalogue component.
 ##### Overview
 
 The implementation includes features for receiving and sending CoAP
-requests. It also supports the \[CoRE-link format RFC 6690\]
+requests. It also supports the [CoRE-link format RFC 6690]
 (https://tools.ietf.org/html/rfc6690) to organize the CoAP resources as
 a well-known CORE. It has support for Linux but also Contiki Operating
 Systems.
@@ -1517,8 +1517,8 @@ application, example of code and ETSI tests are included.
 
 ##### Overview
 
-The CoAP User Agent is a JavaScript implemention of \[Constrained
-Application Protocol (CoAP) RFC 7252\]
+The CoAP User Agent is a JavaScript implemention of [Constrained
+Application Protocol (CoAP) RFC 7252]
 (http://tools.ietf.org/html/rfc7252) with support for DTLS, Observe and
 blockwise transfers. A plugin for Mozilla is also included. The project
 is available on github at: https://github.com/mkovatsc/Copper
@@ -1581,7 +1581,7 @@ devices and expose it to applications.
 ### OMA Device Management Projects
 
 For exchanging information on the device properties and also
-monitor/manage connectivity of the device, \[OMA LWM2M standard\]
+monitor/manage connectivity of the device, [OMA LWM2M standard]
 (http://member.openmobilealliance.org/ftp/Public\_documents/DM/LightweightM2M/)
 can be used, as an energy efficient and scalable evolution from OMA DM
 standard.
@@ -1605,7 +1605,7 @@ The project uses Java as programming language.
 The project is hosted on github at: https://github.com/eclipse/leshan
 
 This program and the accompanying materials are made available under the
-terms of the \[Eclipse Public License v1.0\]
+terms of the [Eclipse Public License v1.0]
 (http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution
 License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which
 accompany the distribution. The license is business-friendly. "Neither
@@ -1670,8 +1670,8 @@ The following Message Types are defined:
 -   UPDATE - Message to Update conversation by adding or removing a
     Resource
 -   UPDATED - Answer to Message UPDATE
--   CONTEXT - Message used to publish the context and status of
-    an Identity.
+-   CONTEXT - Message used to publish the context and status of an
+    Identity.
 -   SUBSCRIBE - Message to request to receive CONTEXT notifications from
     a certain Identity
 -   MESSAGE - Mainly used to support Pager Mode Chat. But it can be used
@@ -1712,8 +1712,8 @@ Similar to SIP 200 OK
 
 ##### Not Accepted
 
-Eg Busy, Reject, No\_answer to: - Invitation requests - Update requests
-- Subscription requests
+Eg Busy, Reject, No\_answer to: - Invitation requests - Update
+requests - Subscription requests
 
 This information will go in the message body as a String
 
@@ -1747,7 +1747,7 @@ Runtime SOTA
 WebRTC.org
 ----------
 
-[WebRTC.org](http://www.webrtc.org/)\[18\] is an open-source project
+[WebRTC.org](http://www.webrtc.org/)[18] is an open-source project
 aiming at allowing developers to write applications bringing real-time
 communication capabilities to browsers, mobile platforms and Internet of
 Things (IoT) devices, without installing proprietary plugins or
@@ -1777,9 +1777,9 @@ capture and render, making it possible for application developers to
 make use of it. The second one is the Web API for developers to produce
 applications to interact with WebRTC-powered browsers. Currently,
 several JavaScript APIs are in process of standardization, like [WebRTC
-1.0](http://w3c.github.io/webrtc-pc/)\[16\] and [Media Capture and
-Streams](http://w3c.github.io/mediacapture-main/)\[17\]. In fact, there
-is another abstract layer responsible for session management and
+1.0](http://w3c.github.io/webrtc-pc/)[16] and [Media Capture and
+Streams](http://w3c.github.io/mediacapture-main/)[17]. In fact, there is
+another abstract layer responsible for session management and
 signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
@@ -1821,21 +1821,21 @@ Analysis against **Runtime** requirements
     APIs](https://github.com/reTHINK-project/core-framework/issues/2)
 -   WebRTC.org implements the W3C WebRTC APIs.
 
--   [The runtime must support standard
-    Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
--   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs
-    use ECMAScript.
+-   [The runtime must support standard Javascript
+    (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+-   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs use
+    ECMAScript.
 -   WebRTC.org is meant to be used within a runtime, providing the
-    WebRTC functionality. The runtime will provide
-    Javascript functionality.
+    WebRTC functionality. The runtime will provide Javascript
+    functionality.
 
 -   [The Runtime should support Web
     Socket](https://github.com/reTHINK-project/core-framework/issues/4)
 -   The WebRTC 1.0 API, and concretely its Peer-to-peer Data API for
     sending and receiving data models the behaviour of WebSockets
 -   WebRTC.org is meant to be used within a runtime, providing the
-    WebRTC functionality. The runtime will provide
-    WebSockets functionality.
+    WebRTC functionality. The runtime will provide WebSockets
+    functionality.
 
 -   [The Runtime should support Standardised Messaging
     Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
@@ -1854,8 +1854,8 @@ Analysis against **Runtime** requirements
     reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
 -   The effort to perform changes in the runtime like protocols for
     network I/O, signalling, session management, video capture and audio
-    capture/render depends on the package these changes are meant to
-    be inserted. The audio and video package is well-documented, despite
+    capture/render depends on the package these changes are meant to be
+    inserted. The audio and video package is well-documented, despite
     not having a class diagram. The network package, by its turn, is not
     documented, increasing the effort to understand the functionality
     and to perform changes in the runtime.
@@ -1863,13 +1863,12 @@ Analysis against **Runtime** requirements
 OpenWebRTC
 ----------
 
-[OpenWebRTC](http://www.openwebrtc.org/)\[19\] in another open source
-reference implementation of WebRTC standard \[16\]\[17\] that can be
-used to build native WebRTC apps that communicate with browsers that
-supports the WebRTC standard, such as Chrome, Firefox and Bowser.
-OpenWebRTC is especially focused on mobile platforms, with powerful
-features such as hardware accelerated video coding and OpenGL-based
-video rendering.
+[OpenWebRTC](http://www.openwebrtc.org/)[19] in another open source
+reference implementation of WebRTC standard [16][17] that can be used to
+build native WebRTC apps that communicate with browsers that supports
+the WebRTC standard, such as Chrome, Firefox and Bowser. OpenWebRTC is
+especially focused on mobile platforms, with powerful features such as
+hardware accelerated video coding and OpenGL-based video rendering.
 
 OpenWebRTC architecture is highly modular, enabling easy modifications
 and possible extensions. Since the WebRTC standard is still evolving,
@@ -1894,13 +1893,12 @@ license.
 ![Figure 59 OpenWebRTC Architecture](openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer
-multimedia framework](http://gstreamer.freedesktop.org/)\[20\].
-GStreamer is a set of libraries and plugins that can be used to
-implement various multimedia applications ranging from desktop players,
-audio/video recorders, multimedia servers, transcoders, etc.
-Applications are built by constructing a pipeline composed of elements.
-An element is an object that performs some action on a multimedia stream
-such as:
+multimedia framework](http://gstreamer.freedesktop.org/)[20]. GStreamer
+is a set of libraries and plugins that can be used to implement various
+multimedia applications ranging from desktop players, audio/video
+recorders, multimedia servers, transcoders, etc. Applications are built
+by constructing a pipeline composed of elements. An element is an object
+that performs some action on a multimedia stream such as:
 
 -   read a file
 -   decode or encode between formats
@@ -1916,9 +1914,9 @@ V8 Javascript Engine Evaluation
 
 ### Overview
 
-The [V8 JavaScript Engine](https://developers.google.com/v8/) \[21\] is
-an open source JavaScript engine developed by Google for the Google
-Chrome web browser.
+The [V8 JavaScript Engine](https://developers.google.com/v8/) [21] is an
+open source JavaScript engine developed by Google for the Google Chrome
+web browser.
 
 V8 compiles JavaScript to native machine code (IA-32, x86-64, ARM, or
 MIPS ISAs)before executing it, instead of more traditional techniques
@@ -2039,30 +2037,29 @@ The reasons for these obtained improvements are:
     Java, Javascript like Python is a dynamic programing language. This
     means that properties can be added to and deleted from objects on
     the fly, so likelly to change over time. Most Javascript engines use
-    a dictionary-like data structure as storage for the
-    object properties. The fetching of each property, on access case,
-    involves a dynamic lookup of the property memory location. This
-    approach turns these accesses much slower than accesses in strong
-    type languages. In these languages, the instance variables are
-    located at fixed offsets determined at compile time due to the fixed
-    layout of objects defined by the object's class. In fact, objects
-    are obtained and stored frequently with only a single instruction.
-    V8 does not use dynamic lookup of properties. It creates hidden
-    classes behind the scenes. Each time a change of property occurs in
-    an object a new hidden class is created and the object changes its
-    representative class for the new hidden class. The hierarchy of
-    hidden classes is mantained and shared each time a new object of the
-    refered type is used again.This type of behaviour promotes reuse by
-    sharing off the hierarchy of hidden classes therefore avoiding
-    dictionary lookups and eficiency by the inline caching of the
-    classes in use.
+    a dictionary-like data structure as storage for the object
+    properties. The fetching of each property, on access case, involves
+    a dynamic lookup of the property memory location. This approach
+    turns these accesses much slower than accesses in strong type
+    languages. In these languages, the instance variables are located at
+    fixed offsets determined at compile time due to the fixed layout of
+    objects defined by the object's class. In fact, objects are obtained
+    and stored frequently with only a single instruction. V8 does not
+    use dynamic lookup of properties. It creates hidden classes behind
+    the scenes. Each time a change of property occurs in an object a new
+    hidden class is created and the object changes its representative
+    class for the new hidden class. The hierarchy of hidden classes is
+    mantained and shared each time a new object of the refered type is
+    used again.This type of behaviour promotes reuse by sharing off the
+    hierarchy of hidden classes therefore avoiding dictionary lookups
+    and eficiency by the inline caching of the classes in use.
 
 -   Dynamic Machine Code Generation - V8 generates machine code directly
     from source code the first time the script is executed. A current
-    Javascript engine usually creates intermediate byte code
-    and interpreter. The consequence thus is an object property access
-    is handled with inline cache code in execution that may be patched
-    with further instructions on execution. It may be explained by the
+    Javascript engine usually creates intermediate byte code and
+    interpreter. The consequence thus is an object property access is
+    handled with inline cache code in execution that may be patched with
+    further instructions on execution. It may be explained by the
     execution of an access to an object property, V8 retrieves its
     associated hidden class and optimizes all future property accesses
     using this template, providing they share the same scope. This
@@ -2076,8 +2073,8 @@ The reasons for these obtained improvements are:
 -   Efficient Garbage Collection - V8, like most garbage collecting
     languages, reclaims memory used by objects that are no longer used
     in a process. Obviously garbage collection has known problems like
-    memory fragmentation, pauses for garbage collection and fast
-    object allocation. To avoid those problems as much as possible:
+    memory fragmentation, pauses for garbage collection and fast object
+    allocation. To avoid those problems as much as possible:
 
 -   stops the program execution when in a cycle of garbage collection;
 -   slices the object heap and only operates on part of it during a
@@ -2136,7 +2133,7 @@ equal a callback must be made to challenge acceptable access.
 
 #### Using Sandboxes with Node.js
 
-[Node.js](https://nodejs.org/en/) \[22\] is a platform built on Chrome's
+[Node.js](https://nodejs.org/en/) [22] is a platform built on Chrome's
 JavaScript runtime V8 for easily building fast, scalable network
 applications. Node.js uses an event-driven, non-blocking I/O model that
 makes it lightweight and efficient, perfect for data-intensive real-time
@@ -2157,7 +2154,7 @@ node.js methods, Supports print and console.log.
 
 **Using Docker to run unsafe code on Node.js**
 
-[Docker](https://www.docker.com/) \[23\] has a following on its own.
+[Docker](https://www.docker.com/) [23] has a following on its own.
 Obviously security over docker is a well addressed issue.
 
 #### [Web Messaging Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
@@ -2176,7 +2173,7 @@ Firefox OS
 ### Overview
 
 [Firefox OS](https://www.mozilla.org/en-US/firefox/os/2.0/) (project
-name: Boot to Gecko, also known as B2G) \[24\] is a Linux kernel-based
+name: Boot to Gecko, also known as B2G) [24] is a Linux kernel-based
 open-source operating system for smartphones, tablet computers and smart
 TVs, developed by Mozilla.
 
@@ -2196,7 +2193,7 @@ The initial development work involves three major software layers:
     layer;
 -   Gaia – an HTML5 layer and user-interface system.
 
-[FXOS Web-API status page](https://wiki.mozilla.org/WebAPI) \[25\].
+[FXOS Web-API status page](https://wiki.mozilla.org/WebAPI) [25].
 
 ### Requirements Analysis
 
@@ -2219,12 +2216,12 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   tested basic A/V calls + separate apps that used the DataChannel to
     transport arbitrary files
 
--   [The runtime must support standard
-    Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+-   [The runtime must support standard Javascript
+    (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
 -   YES
 -   "Gecko" is the Javascript interpreter
--   provides Javascript access to a lot of Web APIs
-    (even non-standardized)
+-   provides Javascript access to a lot of Web APIs (even
+    non-standardized)
 -   Whole UI (Gaia) is based on HTML, Javascript, CSS
 
 -   [The Runtime should support Web
@@ -2232,7 +2229,7 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   YES, client side
 -   Websockets clients are supported
 -   Websocket servers are not supported
--   --&gt; same situation as in a browser runtime
+-   --\> same situation as in a browser runtime
 
 -   [The Runtime should support Web Messaging
     Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
@@ -2264,7 +2261,7 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   The effort for low-level extensions will be relatively high.
 
 o\#\# Jitsi Videobridge [Jitsi
-Videobridge](https://jitsi.org/Projects/JitsiVideobridge) \[26\] is a
+Videobridge](https://jitsi.org/Projects/JitsiVideobridge) [26] is a
 WebRTC compatible Selective Forwarding Unit (SFU) that allows for
 multiuser video communication.
 
@@ -2273,16 +2270,16 @@ with DTLS/SRTP and ICE.
 
 ### Architecture
 
-JItsi Video bridge is a [XMPP component](http://xmpp.org/) \[27\] and
-can be integrated with any compliant XMPP Server like eJabberd or
-Openfire. In addition there is another XMPP component, the Jicofo, that
-uses an XMPP extension protocol called COLIBRI (COnferences with
-LIghtweight BRIdging) to provide conferencing focus functionalities
-including channels allocation and add / remove participants from each
-call. Finally, SIP interoperability is provided by a third XMPP
-component called Jigasi. There is an OpenSource WebRTC JavaScript
-application, called Jitsi Meet, that uses Jitsi Videobridge to provide
-high quality, scalable video conferences.
+JItsi Video bridge is a [XMPP component](http://xmpp.org/) [27] and can
+be integrated with any compliant XMPP Server like eJabberd or Openfire.
+In addition there is another XMPP component, the Jicofo, that uses an
+XMPP extension protocol called COLIBRI (COnferences with LIghtweight
+BRIdging) to provide conferencing focus functionalities including
+channels allocation and add / remove participants from each call.
+Finally, SIP interoperability is provided by a third XMPP component
+called Jigasi. There is an OpenSource WebRTC JavaScript application,
+called Jitsi Meet, that uses Jitsi Videobridge to provide high quality,
+scalable video conferences.
 
 ![Figure 64 Jitsi Videobridge Architecture](jitsi_arch.png)
 
@@ -2302,16 +2299,16 @@ http://www.igniterealtime.org/downloads/index.jsp \* Access admin
 console at http://localhost:9090 \* For the machine name and XMPP domain
 is important that you use "shumybridge", server certificates will be
 generated for the domain. \* Select embedded SQLLite database, and an
-admin user account. Just enough for testing. \* On config "Server -&gt;
-Server Settings -&gt; HTTP Binding", enable "Script Syntax -&gt; BOSH"
-and "Provides support for XFF (X-Forwarded-For) headers" \* On config
-"Server -&gt; Server Settings -&gt; External Components" enable and set
-the password, ex: xpassword
+admin user account. Just enough for testing. \* On config "Server -\>
+Server Settings -\> HTTP Binding", enable "Script Syntax -\> BOSH" and
+"Provides support for XFF (X-Forwarded-For) headers" \* On config
+"Server -\> Server Settings -\> External Components" enable and set the
+password, ex: xpassword
 
 **Jitsi VideoBridge** \* Download and install Jitsi Videobridge from
-https://jitsi.org/Projects/JitsiVideobridge \* Run videobridge with: jvb
---host=shumybridge --secret=xpassword \* You should see an entry in XMPP
-components like:
+https://jitsi.org/Projects/JitsiVideobridge \* Run videobridge with:
+jvb --host=shumybridge --secret=xpassword \* You should see an entry in
+XMPP components like:
 
 ![Figure 76: Video Bridge Component](openfire_videobridge.png)
 
@@ -2322,17 +2319,19 @@ dist.{os-name}" \* Add lines
 and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file
 sip-communicator.properties. In Windows this is located at
 "C:\Users"user"\\.sip-communicator\sip-communicator.properties" or in
-linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
-\* Run videobridge with: jicofo --host=shumybridge --port=5275
---secret=xpassword \* You should see an entry in XMPP components like:
+linux
+"/usr/share/jicofo/.sip-communicator/sip-communicator.properties" \* Run
+videobridge with:
+jicofo --host=shumybridge --port=5275 --secret=xpassword \* You should
+see an entry in XMPP components like:
 
 ![Figure 77: OpenFire VideoBridge and Jicofo
 Components](openfire_video_jicofo.png)
 
 (1) OpenFire VideoBridge and Jicofo Components
 
-**NGINX** \* Download and install from http://nginx.org/en/download.html
-\* Change nginx.conf file with:
+**NGINX** \* Download and install from
+http://nginx.org/en/download.html \* Change nginx.conf file with:
 
     server {
       listen       80;
@@ -2541,7 +2540,7 @@ Handle add/remove video/audio streams:
 Docker
 ------
 
-[Docker](https://www.docker.com/) \[23\] is an open platform for
+[Docker](https://www.docker.com/) [23] is an open platform for
 developers and sysadmins to build, ship, and run distributed
 applications. Consisting of Docker Engine, a portable, lightweight
 runtime and packaging tool, and Docker Hub, a cloud service for sharing
@@ -2557,8 +2556,8 @@ Docker consists of:
 -   The Docker Engine - lightweight and powerful open source container
     virtualization technology combined with a work flow for building and
     containerizing your applications.
--   Docker Hub - SaaS service for sharing and managing your
-    application stacks.
+-   Docker Hub - SaaS service for sharing and managing your application
+    stacks.
 
 Docker is a standard container format that lets developers care about
 their applications inside containers while sysadmins and operators can
@@ -2931,7 +2930,7 @@ invisible.
 Janus Gateway
 -------------
 
-[Janus Gateway](https://janus.conf.meetecho.com/) \[29\] is a WebRTC
+[Janus Gateway](https://janus.conf.meetecho.com/) [29] is a WebRTC
 gateway implemented in C, which means it doesn't provide any
 functionality for itself, apart from establishing a WebRTC media
 connection between browsers and server-side applications they might be
@@ -3007,11 +3006,11 @@ Measuring the performance of Janus is a complicated task, since it is
 just a gateway. Thus, the performance of plugins and applications
 written by third-party developers and working with Janus takes an
 important role on the measurements.There was a [recent
-study](http://dl.acm.org/citation.cfm?id=2749223) \[30\] on the
+study](http://dl.acm.org/citation.cfm?id=2749223) [30] on the
 performance of the Janus Gateway, when applied to several use-cases.
 Also, when [comparing the Video MCU conferencing
-plugin](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)\[31\]
-with other similar systems like [Jitsi](https://jitsi.org/) \[26\] and
+plugin](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)[31]
+with other similar systems like [Jitsi](https://jitsi.org/) [26] and
 [Licode](http://lynckia.com/licode/), it revealed strong improvements on
 CPU and memory usage, both on client and server sides.
 
@@ -3041,8 +3040,8 @@ It can be used to handle different type of communications applications :
 
 ### Architecture
 
-Kurento is mainly composed of the two elements : - Kurento media server
-- Kurento Application
+Kurento is mainly composed of the two elements : - Kurento media
+server - Kurento Application
 
 ![Figure 65: Kurento Architecture](Architecture-Kurento.png)
 
@@ -3318,7 +3317,7 @@ Define the command to run our app using CMD which defines our runtime,
 i.e. node, and the path to our app src/index.js (see the step where we
 added the source to the container):
 
-CMD \["node", "/src/index.js"\]
+CMD ["node", "/src/index.js"]
 
 Our Dockerfile should now look like this:
 
@@ -3338,7 +3337,7 @@ COPY . /src \# Install app dependencies
 
 RUN cd /src; npm install
 
-EXPOSE 8080 CMD \["node", "/src/index.js"\]
+EXPOSE 8080 CMD ["node", "/src/index.js"]
 
 Building our image
 
@@ -3389,8 +3388,7 @@ To test our app, get the port of our app that Docker mapped:
 \# Example
 
 ID IMAGE COMMAND ... PORTS ecce33b30ebf
-<your username>/centos-node-hello:latest node /src/index.js
-49160-&gt;8080
+<your username>/centos-node-hello:latest node /src/index.js 49160-\>8080
 
 In the example above, Docker mapped the 8080 port of the container to
 49160.
@@ -3618,10 +3616,10 @@ languages. The two main modules are "Core API" and "Apex API":
 client/Server API \* HTTP client/Server API \* File System Access \* DNS
 client API \* Shared Data \* Event Bus API \* JSON API
 
-**Apex API** \* Routing (based on method, path, etc) \* Event-bus bridge
-\* SockJS support \* Session support - both local (for sticky sessions)
-and clustered (for non sticky) \* Basic Authentication and Redirect
-based authentication \* User/role/permission authorisation
+**Apex API** \* Routing (based on method, path, etc) \* Event-bus
+bridge \* SockJS support \* Session support - both local (for sticky
+sessions) and clustered (for non sticky) \* Basic Authentication and
+Redirect based authentication \* User/role/permission authorisation
 
 ### Requirements Analysis
 
@@ -3657,8 +3655,8 @@ force an authenticated session to send into that address.
 
 **Receive a Message** \* SockJS handler is needed with bridge options.
 
-`java  final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);  sockJSHandler.bridge(options);`
-\* Configure Apex Router with SockJS handler for "/eventbus/\*" uri
+`java  final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);  sockJSHandler.bridge(options);` \*
+Configure Apex Router with SockJS handler for "/eventbus/\*" uri
 
 \`\`\`java //required Cookie and Session handlers for every address
 final Router router = Router.router(vertx);
@@ -3694,8 +3692,8 @@ limitation.
 ServerHook takes some keyword arguments for example: \* pre-register:
 Called before a client handler registration is processed.
 
-`java  public boolean handlePreRegister(SockJSSocket sock, String address) {     out.println("handlePreRegister, sock = " + sock + ", address = " + address);     return true;  }`
-\* message-handler: it's possible in this version to discovery the user
+`java  public boolean handlePreRegister(SockJSSocket sock, String address) {     out.println("handlePreRegister, sock = " + sock + ", address = " + address);     return true;  }` \*
+message-handler: it's possible in this version to discovery the user
 that has sent the message (available in apex Session)
 
 `java  public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {     msg.put("principal", sock.apexSession().getPrincipal());     return true;  }`
@@ -3719,11 +3717,11 @@ use it to cache some info including the sessionId
 -   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
     Vert.x 3.0 provides built-in core functiionality for this core
 -   Service Assurance: Modules can be deployed in clusters, and Vert.x
-    provides an internal Load Balancer for routing messages within
-    the cluster. Also the above mentioned "auomatic failover" and "HA
-    group" options contribute to enforce service assurance.
+    provides an internal Load Balancer for routing messages within the
+    cluster. Also the above mentioned "auomatic failover" and "HA group"
+    options contribute to enforce service assurance.
 
-##### \[Scalability\] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
 
 Verticle instances, except advanced multi-threaded worker verticles are
 almost always single threaded. what this implies is that, a single
@@ -3737,14 +3735,14 @@ code. The Verticles use the same mechanisms to communicate as if they
 would run on the same machine. This makes it very easy to scale
 applications.
 
-##### \[Messaging Transport Protocols\] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
 
 -   Websockets - Yes supported
 -   SockJS - Yes supported
 -   HTTP Long-Polling - Yes
 -   HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### \[Message delivery reliability\] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
 
 No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
 or point-2-point mechanism. In both cases, there is no feedback to the
@@ -3769,9 +3767,9 @@ final NashornScriptEngineFactory factory = new NashornScriptEngineFactory();
 Nashorn is built on top of Java and takes advantage of standard Java
 security measures. Fine-grained security is enabled within applications.
 We can control the class load mechanism, effectively building a sandbox:
-\`\`\`java final ScriptEngine engine = factory.getScriptEngine(name
--&gt; { if(name.equals(TestClass.class.getName())) { return true; //OK,
-Java TestClass available from JavaScript }
+\`\`\`java final ScriptEngine engine = factory.getScriptEngine(name -\>
+{ if(name.equals(TestClass.class.getName())) { return true; //OK, Java
+TestClass available from JavaScript }
 
     return false; //everything else fails...
 
@@ -3818,7 +3816,7 @@ well understood and adopted by a large number of developers.
 
 “Real-Time Web Technologies Guide”, from Phil Leggetter gives an
 overview of the different tools that are currently offered
-\[http://www.leggetter.co.uk/real-time-web-technologies-guide/\]. Among
+[http://www.leggetter.co.uk/real-time-web-technologies-guide/]. Among
 them we can site PubNub, Firebase, recently acquired by Google, and many
 others.
 
@@ -3915,7 +3913,7 @@ http://www.leggetter.co.uk/2013/12/09/choosing-realtime-web-app-tech-stack.html
 Matrix.org
 ----------
 
-From matrix.org spec: &gt; *The end goal of Matrix is to be a ubiquitous
+From matrix.org spec: \> *The end goal of Matrix is to be a ubiquitous
 messaging layer for synchronising arbitrary data between sets of people,
 devices and services - be that for instant messages, VoIP call setups,
 or any other objects that need to be reliably and persistently pushed
@@ -3960,8 +3958,8 @@ are REST APIs using JSON Objects as payload.
 -   well documented, easy to implement
 -   version 2 is currently in development - will be backward compatible
 
--   [Federation API
-    (Server-Server API)](http://www.matrix.org/docs/spec/#id100)
+-   [Federation API (Server-Server
+    API)](http://www.matrix.org/docs/spec/#id100)
 -   API for the inter-domain communication between Home Servers
 -   uses HTTPS GET and PUT requests
 -   transaction based
@@ -3980,8 +3978,8 @@ are identified as: **\#roomalias:host.domain** (with an optional
 FQDN like: **https://host.domain:port**
 
 The Matrix concept includes the concept of an "Identity Server", which
-is intended to map 3rd party entities to matrix ids: \* no documentation
-\* testing didn't work in our lab environment
+is intended to map 3rd party entities to matrix ids: \* no
+documentation \* testing didn't work in our lab environment
 
 ### Requirements Analysis
 
@@ -4053,8 +4051,7 @@ Analysis against **Messaging Node** Requirements
 -   rather Yes (not tested on embedded device yet)
 -   current ref-impl is based on Twisted (Python)
 -   overall installation size 94MB (including python and webclient)
--   ==&gt; environments supporting python should also support a Matrix
-    HS
+-   ==\> environments supporting python should also support a Matrix HS
 
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
@@ -4073,10 +4070,9 @@ RabbitMQ Evaluation
 It is defined as a robust and easy to use messaging platform that can
 work synchronously an asynchronously.
 
-From rabbitmq.com: &gt; \*RabbitMQ is a messaging broker - an
-intermediary for messaging. It gives your applications a common platform
-to send and receive messages, and your messages a safe place to live
-until received.
+From rabbitmq.com: \> \*RabbitMQ is a messaging broker - an intermediary
+for messaging. It gives your applications a common platform to send and
+receive messages, and your messages a safe place to live until received.
 
 ### Overview
 
@@ -4087,13 +4083,13 @@ for the Messaging Node
 
 -   **Reliability** - RabbitMQ offers a variety of features to let you
     trade off performance with reliability, including persistence,
-    delivery acknowledgements, publisher confirms, and
-    high availability.
+    delivery acknowledgements, publisher confirms, and high
+    availability.
 -   **Flexible Routing** - Messages are routed through exchanges before
     arriving at queues. RabbitMQ features several built-in exchange
     types for typical routing logic. For more complex routing you can
-    bind exchanges together or even write your own exchange type as
-    a plugin.
+    bind exchanges together or even write your own exchange type as a
+    plugin.
 -   **Clustering** - Several RabbitMQ servers on a local network can be
     clustered together, forming a single logical broker.
 -   **Federation** - For servers that need to be more loosely and
@@ -4186,8 +4182,8 @@ Analysis against **Messaging Node** Requirements
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes
 -   RabbitMQ has a built-in tracer feature that is able to see every
-    message that is published, and every message that is delivered on
-    a per-node.
+    message that is published, and every message that is delivered on a
+    per-node.
 
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
@@ -4199,8 +4195,8 @@ Analysis against **Messaging Node** Requirements
         the same thing to the producer.
     -   Use of acknowledgements guarantees at-least-once delivery.
         Without acknowledgements, message loss is possible during
-        publish and consume operations and only at-most-once delivery
-        is guaranteed.
+        publish and consume operations and only at-most-once delivery is
+        guaranteed.
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
 -   Yes
@@ -4213,7 +4209,7 @@ Analysis against **Messaging Node** Requirements
 -   Brokers tolerate the failure of individual nodes
 -   1 million messages/second was benchmarked using a cluster of 30
     Nodes
-    [\[Link1\]](http://blog.pivotal.io/pivotal/products/rabbitmq-hits-one-million-messages-per-second-on-google-compute-engine)[\[Link2\]](http://googlecloudplatform.blogspot.pt/2014/06/rabbitmq-on-google-compute-engine.html)
+    [[Link1]](http://blog.pivotal.io/pivotal/products/rabbitmq-hits-one-million-messages-per-second-on-google-compute-engine)[[Link2]](http://googlecloudplatform.blogspot.pt/2014/06/rabbitmq-on-google-compute-engine.html)
 
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
@@ -4231,9 +4227,9 @@ Analysis against **Messaging Node** Requirements
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
 -   Yes
--   Has low latency derived from its Erlang message
-    oriented implementation.
-    [\[Link1\]](http://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/)[\[Link2\]](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/)
+-   Has low latency derived from its Erlang message oriented
+    implementation.
+    [[Link1]](http://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/)[[Link2]](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/)
 
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
@@ -4242,8 +4238,8 @@ Analysis against **Messaging Node** Requirements
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
 -   Depends on the protocol used:
-    -   AMQP,STOMP, HTTP - depends (some computation is needed)
-        (&gt;256K RAM)
+    -   AMQP,STOMP, HTTP - depends (some computation is needed) (\>256K
+        RAM)
     -   MQTT - yes (Designed especially for IoT)
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
@@ -4254,8 +4250,8 @@ Analysis against **Messaging Node** Requirements
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
 -   Yes
--   Core functionality, including topic/wildcard based filtering
-    and broadcasting.
+-   Core functionality, including topic/wildcard based filtering and
+    broadcasting.
 
 ZeroMQ Evaluation
 -----------------
@@ -4485,7 +4481,7 @@ Redis Evaluation
 In the scope of the reTHINK project Redis is a candidate technology for
 the Messaging Node.
 
-From http://redis.io/: &gt; Redis is an open source, BSD licensed,
+From http://redis.io/: \> Redis is an open source, BSD licensed,
 advanced key-value cache and store. It is often referred to as a data
 structure server since keys can contain strings, hashes, lists, sets,
 sorted sets, bitmaps and hyperloglogs.
@@ -4532,8 +4528,8 @@ Image Source:
     with JSON output
 -   [BankersBox](https://github.com/twilio/BankersBox) A redis-like
     wrapper for javascript data storage
--   [Bone](https://github.com/solutious/bone) Rudimentary Redis
-    over HTTP(S)
+-   [Bone](https://github.com/solutious/bone) Rudimentary Redis over
+    HTTP(S)
 
 ### Requirements Analysis
 
@@ -4642,8 +4638,8 @@ the Messaging Node.
     developers are working on these technologies, there are tens of
     thousands of XMPP servers running on the Internet today, and
     millions of people use XMPP for instant messaging through public
-    services such as Google Talk and XMPP deployments at
-    organizations worldwide.
+    services such as Google Talk and XMPP deployments at organizations
+    worldwide.
 
 -   **Decentralized** - the architecture of the XMPP network is similar
     to email; as a result, anyone can run their own XMPP server,
@@ -4745,8 +4741,8 @@ Image Source:
 
 -   [XEP-0343: Signaling WebRTC datachannels in
     Jingle](http://xmpp.org/extensions/xep-0343.html) Defines how to use
-    the ICE-UDP Jingle transport method to send media data using
-    WebRTC DataChannels.
+    the ICE-UDP Jingle transport method to send media data using WebRTC
+    DataChannels.
 
 -   [XEP-0060:
     Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
@@ -4760,11 +4756,10 @@ Image Source:
     XMPP](http://www.xmpp.org/extensions/xep-0072.html) Defines methods
     for transporting SOAP messages over XMPP
 
--   [XEP-0124: Bidirectional-streams Over Synchronous
-    HTTP (BOSH)](http://xmpp.org/extensions/xep-0124.html) bidirectional
-    TCP connection between two entities (such as a client and a server)
-    by efficiently using multiple synchronous HTTP
-    request/response pairs.
+-   [XEP-0124: Bidirectional-streams Over Synchronous HTTP
+    (BOSH)](http://xmpp.org/extensions/xep-0124.html) bidirectional TCP
+    connection between two entities (such as a client and a server) by
+    efficiently using multiple synchronous HTTP request/response pairs.
 
 -   [XMPP over WebSocket](http://tools.ietf.org/html/rfc7395) Binding
     for the XMPP protocol over a WebSocket transport layer. It provides
@@ -4890,10 +4885,10 @@ choices which influenced the way it "looks and feels".
 -   Minimise the on-the-wire footprint. Add an absolute minimum of data
     overhead to any message. Be lightweight and bandwidth efficient.
 -   Expect and cater for frequent network disruption (for low bandwidth,
-    high latency, unreliable, high cost-to-run networks)... -&gt; [Last
+    high latency, unreliable, high cost-to-run networks)... -\> [Last
     Will and
     Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
--   Continuous session awareness -&gt; [Last Will and
+-   Continuous session awareness -\> [Last Will and
     Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
 -   Expect that client applications may have very limited processing
     resources available.
@@ -4935,26 +4930,25 @@ specification](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html)
 -   [mbed](https://github.com/yilun/MQTT-client-on-mbed) ([more
     information](http://ceit.uq.edu.au/content/mqttclient-mbed-version-20))
 
--   [mbed (simple port of the
-    Arduino pubsubclient)](http://mbed.org/users/jwende/code/MQTT/)
+-   [mbed (simple port of the Arduino
+    pubsubclient)](http://mbed.org/users/jwende/code/MQTT/)
 
--   [mbed
-    (native implementation)](http://mbed.org/users/Nim65s/code/niMQTT/)
+-   [mbed (native
+    implementation)](http://mbed.org/users/Nim65s/code/niMQTT/)
 
--   [mbed (Paho Embedded
-    C++ port)](http://developer.mbed.org/teams/mqtt/code/MQTT/) (\[more
-    information\] (https://www.eclipse.org/paho/clients/c/embedded/))
--   [mbed (Paho Embedded
-    C port)](http://developer.mbed.org/teams/mqtt/code/MQTTPacket/)
-    ([more
+-   [mbed (Paho Embedded C++
+    port)](http://developer.mbed.org/teams/mqtt/code/MQTT/) ([more
+    information] (https://www.eclipse.org/paho/clients/c/embedded/))
+-   [mbed (Paho Embedded C
+    port)](http://developer.mbed.org/teams/mqtt/code/MQTTPacket/) ([more
     information](https://www.eclipse.org/paho/clients/c/embedded/))
 
 -   [Nanode](http://github.com/njh/NanodeMQTT/)
 
 -   [Netduino](https://github.com/danielan/NetduinoMQTT)
 
--   [M2MQTT (works with .Net
-    Micro Framework)](https://m2mqtt.codeplex.com/)
+-   [M2MQTT (works with .Net Micro
+    Framework)](https://m2mqtt.codeplex.com/)
 
 (see also [devices](things) page for more on hardware with built-in
 support)
@@ -4969,10 +4963,10 @@ support)
 
 #### C
 
--   \[Eclipse Paho C\] (https://www.eclipse.org/paho/clients/c/)
+-   [Eclipse Paho C] (https://www.eclipse.org/paho/clients/c/)
 
--   \[Eclipse Paho Embedded
-    C\] (https://www.eclipse.org/paho/clients/c/embedded/)
+-   [Eclipse Paho Embedded C]
+    (https://www.eclipse.org/paho/clients/c/embedded/)
 
 -   [libmosquitto](http://mosquitto.org)
 
@@ -4981,12 +4975,12 @@ support)
 
 #### C++
 
--   \[Eclipse Paho C++\] (https://www.eclipse.org/paho/clients/cpp/)
+-   [Eclipse Paho C++] (https://www.eclipse.org/paho/clients/cpp/)
 
 -   [libmosquittopp](http://mosquitto.org)
 
--   \[Eclipse Paho Embedded
-    C++\] (https://www.eclipse.org/paho/clients/c/embedded/)
+-   [Eclipse Paho Embedded C++]
+    (https://www.eclipse.org/paho/clients/c/embedded/)
 
 #### Clojure
 
@@ -5049,15 +5043,14 @@ support)
     Paho](http://www-933.ibm.com/support/fixcentral/swg/selectFix?product=ibm%2FWebSphere%2FWebSphere+MQ&fixids=1.0.0.1-WS-MQCP-MA9B&source=dbluesearch&function=fixId&parent=ibm/WebSphere)
 
 -   [IA92](http://www-01.ibm.com/support/docview.wss?rs=171&uid=swg24006006&loc=en_US&cs=utf-8&lang=en) -
-    *deprecated* IBM IA92 support pack, use Eclipse Paho GUI
-    client instead. A useful MQTT Java swing GUI for publishing
-    & subscribing. The Eclipse Paho GUI is identical but uses newer
-    client code
+    *deprecated* IBM IA92 support pack, use Eclipse Paho GUI client
+    instead. A useful MQTT Java swing GUI for publishing & subscribing.
+    The Eclipse Paho GUI is identical but uses newer client code
 
 #### Javscript / Node.js
 
--   [Eclipse Paho HTML5 JavaScript
-    over WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/)
+-   [Eclipse Paho HTML5 JavaScript over
+    WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/)
 
 -   [mqtt.js](https://github.com/adamvr/MQTT.js)
 
@@ -5091,7 +5084,7 @@ support)
 
 -   [M2MQTT](https://m2mqtt.codeplex.com/)
 
--   \[KittyHawkMQ\] (http://www.kittyhawkmq.com/)
+-   [KittyHawkMQ] (http://www.kittyhawkmq.com/)
 
 #### Objective-C
 
@@ -5165,11 +5158,11 @@ support)
 
 Server | QoS 0 | QoS 1 | QoS 2 | auth | [bridge](bridge_protocol) |
 [\$SYS](conventions#$sys) | SSL | [dynamic topics](are_topics_dynamic) |
-cluster | websockets | plugin system ------ | ----- | ----- | ----- |
----- | ------------------------- | ------------------------ | --- |
------------------------------------- | ------- | ---------- |
-------------- | [mosquitto](mosquitto_message_broker) | ✔ | ✔ | ✔ | ✔ |
-✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ |
+cluster | websockets | plugin system ------ | ----- | ----- | -----
+| ---- | ------------------------- | ------------------------ | ---
+| ------------------------------------ | ------- | ----------
+| ------------- | [mosquitto](mosquitto_message_broker) | ✔ | ✔ | ✔ | ✔
+| ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ |
 [RSMB](http://mqtt.org/wiki/doku.php/really_small_message_broker) | ✔ |
 ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✘ | ✘ | ? | [WebSphere
 MQ](http://www-03.ibm.com/software/products/en/wmq/) | ✔ | ✔ | ✔ | ✔ | ✔
@@ -5356,10 +5349,10 @@ Analysis against **Messaging Node** Requirements
 
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   PSYC has its own authentication method, inherited in
-    PSYC2 specification. A request\_authentication\_method is used to
-    query a UNI if a given network entity is actually a linked location
-    of that UNI. This method can have different arguments (\_location,
+-   PSYC has its own authentication method, inherited in PSYC2
+    specification. A request\_authentication\_method is used to query a
+    UNI if a given network entity is actually a linked location of that
+    UNI. This method can have different arguments (\_location,
     \_host\_IP, \_nonce, \_password) to help the querying entity to take
     a decision. However, there is no evidence in the documentation that
     PSYC is able to accept external authentication/authorisation methods
@@ -5379,16 +5372,15 @@ Analysis against **Messaging Node** Requirements
 
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   PSYC applies some techniques in order to reduce message
-    delivery latency. First, by avoiding negotiations between nodes
-    "talking" the same protocol between them. Since PSYC supports IRC
-    and XMPP, if two nodes are exchanging messages through XMPP
-    protocol, PSYC suggests the protocol switch in order to
-    reduce latency. Also, PSYC avoids resource discovery (disco on XMPP)
-    by pushing information to possibly interested recipients in advance.
-    However, by applying TLS for encrypted PSYC and techniques for DoS
-    prevention on psyced, a certain degree of latency is,
-    therefore, inevitable.
+-   PSYC applies some techniques in order to reduce message delivery
+    latency. First, by avoiding negotiations between nodes "talking" the
+    same protocol between them. Since PSYC supports IRC and XMPP, if two
+    nodes are exchanging messages through XMPP protocol, PSYC suggests
+    the protocol switch in order to reduce latency. Also, PSYC avoids
+    resource discovery (disco on XMPP) by pushing information to
+    possibly interested recipients in advance. However, by applying TLS
+    for encrypted PSYC and techniques for DoS prevention on psyced, a
+    certain degree of latency is, therefore, inevitable.
 
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
@@ -5419,8 +5411,8 @@ Analysis against **Messaging Node** Requirements
     (when a given destination changed its address). Finally, the
     \_warning method family means that a message was processed and sent,
     but maybe not as intended. An example is \_warning\_usage, which
-    indicates a possible mistake on the message syntax, presented
-    on Fig. 1, and has a single variant for each of the syntax fields.
+    indicates a possible mistake on the message syntax, presented on
+    Fig. 1, and has a single variant for each of the syntax fields.
 
 -   [Message Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
@@ -5527,9 +5519,9 @@ https://www.npmjs.com/
 
 -   [Message Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes - Several logging modules available : log4js, winston,
-    bunyan ... Logs can be dispalyed in console, store in file with log
-    rotate, send to a network entity ...
+-   Yes - Several logging modules available : log4js, winston, bunyan
+    ... Logs can be dispalyed in console, store in file with log rotate,
+    send to a network entity ...
 
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
@@ -5645,12 +5637,12 @@ code as a single thread application. That means that the multi-thread
 programming effect can be achieved without synchronization, lock, or
 volatility. However, Vert.x allows to create multiple threads based on
 the number of CPU cores whlie only one process is executed. It handle
-the multi-threading so users can focus on implementing business logic.
-\* **Provides Event Bus**: The main concept of Vert.x is not only to
-produce a ‘one server process DAEMON'. Vert.x aims to make a variety of
-Vert.x-built server programs communicate well with each other. For this,
-Vert.x provides Event Bus. Therefore, functions such as Point to Point
-or Pub/Sub can be used (to provide Event Bus function, Vert.x uses
+the multi-threading so users can focus on implementing business
+logic. \* **Provides Event Bus**: The main concept of Vert.x is not only
+to produce a ‘one server process DAEMON'. Vert.x aims to make a variety
+of Vert.x-built server programs communicate well with each other. For
+this, Vert.x provides Event Bus. Therefore, functions such as Point to
+Point or Pub/Sub can be used (to provide Event Bus function, Vert.x uses
 Hazelcast, an In-Memory Data Grid). With this Event Bus, a server
 application built with different languages can easily communicate with
 each other. \* **Module System & Public Module Repository**: Vert.x has
@@ -5915,8 +5907,8 @@ sockJSServer.setHook(hook);
 
 ServerHook takes some keyword arguments for example:
 
--   pre-register: Called before a client handler registration
-    is processed.
+-   pre-register: Called before a client handler registration is
+    processed.
 
     ``` {.java}
      public boolean handlePreRegister(SockJSSocket sock, String address) {
@@ -5943,11 +5935,11 @@ use it to cache some info including the sessionId
 -   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
     Vert.x 3.0 provides built-in core functiionality for this core
 -   Service Assurance: Modules can be deployed in clusters, and Vert.x
-    provides an internal Load Balancer for routing messages within
-    the cluster. Also the above mentioned "auomatic failover" and "HA
-    group" options contribute to enforce service assurance.
+    provides an internal Load Balancer for routing messages within the
+    cluster. Also the above mentioned "auomatic failover" and "HA group"
+    options contribute to enforce service assurance.
 
-##### \[Scalability\] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
 
 Verticle instances, except advanced multi-threaded worker verticles are
 almost always single threaded. what this implies is that, a single
@@ -5961,14 +5953,14 @@ code. The Verticles use the same mechanisms to communicate as if they
 would run on the same machine. This makes it very easy to scale
 applications.
 
-##### \[Messaging Transport Protocols\] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
 
 -   Websockets - Yes supported
 -   SockJS - Yes supported
 -   HTTP Long-Polling - Yes
 -   HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### \[Message delivery reliability\] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
 
 No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
 or point-2-point mechanism. In both cases, there is no feedback to the
@@ -5984,7 +5976,7 @@ coturn
 
 ### Overview
 
-The TURN \[47\] protocol is defined as an extension of the STUN \[48\]
+The TURN [47] protocol is defined as an extension of the STUN [48]
 protocol.
 
 TURN servers act as media relays and are directly placed in the media
@@ -6000,9 +5992,9 @@ The study about TURN servers is very up-to-date since there is an
 ongoing work on this subject in IETF. The recently formed IETF group –
 TRAM (TURN Revised and Modernized) focuses on improving TURN
 implementations and features in order to make STUN and TURN more
-suitable for WebRTC \[49\].
+suitable for WebRTC [49].
 
-Coturn is an open source TURN server implementation \[50\]. It is a
+Coturn is an open source TURN server implementation [50]. It is a
 separate branch of the previous implementation
 rfc5766-turn-server-project, and is dedicated for testing new protocols.
 As a result, it supports more specifications than the previous version.
@@ -6025,7 +6017,7 @@ Service Frameworks SOTA
 
 #### Overview
 
-AngularJS \[51\] is a Javascript MVC Framework developed and promoted by
+AngularJS [51] is a Javascript MVC Framework developed and promoted by
 Google, to build well architectured and maintainnable web applications.
 It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on Javascript and a client side
@@ -6040,13 +6032,13 @@ framework. It is supported by multiple browsers.
     new HTML syntax. The compiler allows you to attach behavior to any
     HTML element or attribute and even create new HTML elements or
     attributes with custom behavior. Angular calls these behavior
-    extensions directives. The compilation process happens in
-    two phases. Compile: traverse the DOM and collect all of
-    the directives. The result is a linking function. Link: combine the
-    directives with a scope and produce a live view. Any changes in the
-    scope model are reflected in the view, and any user interactions
-    with the view are reflected in the scope model. This makes the scope
-    model the single source of truth.
+    extensions directives. The compilation process happens in two
+    phases. Compile: traverse the DOM and collect all of the directives.
+    The result is a linking function. Link: combine the directives with
+    a scope and produce a live view. Any changes in the scope model are
+    reflected in the view, and any user interactions with the view are
+    reflected in the scope model. This makes the scope model the single
+    source of truth.
 -   *Directive* : Directives can be placed in element names, attributes,
     class names, as well as comments.  Directives are a way to teach
     HTML new tricks. A directive is just a function which executes when
@@ -6054,9 +6046,9 @@ framework. It is supported by multiple browsers.
     is possible to define custom derective
     `<span draggable>Drag ME</span>`.
 
--   ng-app Directive: Angular uses this directive to auto-bootstrp
-    an application. Only one ng-app directive can be used per
-    HTML document. `<html ng-app>`
+-   ng-app Directive: Angular uses this directive to auto-bootstrp an
+    application. Only one ng-app directive can be used per HTML
+    document. `<html ng-app>`
 -   Expression : Expressions are JavaScript-like code snippets that are
     usually placed in bindings such as {{ expression }} \`\`\`
     <body>
@@ -6069,16 +6061,16 @@ framework. It is supported by multiple browsers.
     Modules: Modules declaratively specify how an application should be bootstrapped. There can be multiple modules in an app
     Those could be interdependent too. Modules are configured with routes, controllers, models etc.
 
-var myAppModule = angular.module('myApp', \[--here goes the dependent
-Modules--\]); \`\`\`
+var myAppModule = angular.module('myApp', [--here goes the dependent
+Modules--]); \`\`\`
 
 -   *Routing* : It Is used for deep-linking URLs to controllers and
     views (HTML partials). It watches \$location.url() and tries to map
     the path to an existing route definition.
 -   *Scope* : Scope is an object that refers to the application model.
     It is an execution context for expressions. Scopes are arranged in
-    hierarchical structure which mimic the DOM structure of
-    the application. Scopes can watch expressions and propagate events.
+    hierarchical structure which mimic the DOM structure of the
+    application. Scopes can watch expressions and propagate events.
 -   *Dependency Injection* : Dependency Injection (DI) is a software
     design pattern that deals with how code gets hold of its
     dependencies
@@ -6146,7 +6138,7 @@ one third and Data per page has small memory footprint
 
 #### Overview
 
-BackboneJS \[52\] is a web frontend framework that provides structure to
+BackboneJS [52] is a web frontend framework that provides structure to
 web applications by specifying models with key-value binding and custom
 events, collections with a rich API of enumerable functions, views with
 declarative event handling, and connects it all to your existing API
@@ -6204,9 +6196,9 @@ collection.
 -   provides no "golden pattern" for structuring of an application
 -   leaves lots of structuring decisions to the developer
 -   well suited for creation of own frameworks
--   **no two-way data binding --&gt; lots of boilerplate code required**
+-   **no two-way data binding --\> lots of boilerplate code required**
 -   **views change DOM directly by looking up css class names**
--   --&gt; changing CSS or modifications in DOM (wrapping, nesting)
+-   --\> changing CSS or modifications in DOM (wrapping, nesting)
     requires updates in code
 
 #### Requirement Analysis
@@ -6238,10 +6230,10 @@ Analysis against **Service Framework** Requirements
 -   every view is tight to its own root-DOM element and responsible for
     the tree below it
 -   Therefore Backbone.js relies on runtimes that provide a DOM tree.
--   But this does NOT have to be a "real" DOM tree --&gt; can be used
-    with e.g. React virtual DOM (React has implemented a
-    browser-independent events and DOM system)
--   --&gt; needs special additions in non-browser runtime environments
+-   But this does NOT have to be a "real" DOM tree --\> can be used with
+    e.g. React virtual DOM (React has implemented a browser-independent
+    events and DOM system)
+-   --\> needs special additions in non-browser runtime environments
 
 -   [Service Framework MUST be Modular in
     nature](https://github.com/reTHINK-project/core-framework/issues/42)
@@ -6257,9 +6249,9 @@ Analysis against **Service Framework** Requirements
 
 #### Overview
 
-[Meteor](http://docs.meteor.com/#/full/quickstart) \[39\] is a
-Javascript plataform, offering a complete full-stack framework for
-delivering web and mobile apps;
+[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a Javascript
+plataform, offering a complete full-stack framework for delivering web
+and mobile apps;
 
 ![Figure 78 Meteor Plataform
 Overview](meteor-platform.png "image from https://www.meteor.com/features")
@@ -6271,8 +6263,8 @@ Overview](meteor-platform.png "image from https://www.meteor.com/features")
 -   Meteor uses Blaze library for the front-end which fulfills the same
     purpose as Angular, Backbone or Ember but is much simpler to use and
     can be used with any of these libraries.
--   Blaze is also faster than Angular in high-throughput
-    rendering tests.
+-   Blaze is also faster than Angular in high-throughput rendering
+    tests.
 -   Meteor works well with REST APIs using DDP, a simple protocol for
     fetching structured data from a server, and receiving live updates
     when that data changes.
@@ -6280,8 +6272,8 @@ Overview](meteor-platform.png "image from https://www.meteor.com/features")
 -   While Angular is a front-end library and Sails a backend one, Meteor
     is a full-stack framework, comparable with Derby.
 -   The MVC model is replaced by MVM (Model-View-Mapper) which replace
-    controller by ORM code that supports what views need to
-    display data. Meteor controllers are on the client side.
+    controller by ORM code that supports what views need to display
+    data. Meteor controllers are on the client side.
 
 #### Special directories
 
@@ -6294,15 +6286,15 @@ what we want to make private;
 
 -   **/server** Any files in this directory are only used on the server,
     and are never sent to the client. Use /server to store source files
-    with sensitive logic or data that should not be visible to
-    the client.
+    with sensitive logic or data that should not be visible to the
+    client.
 
 -   **/public** Files in /public are served to the client as-is. Use
     this to store assets such as images. For example, if you have an
     image located at /public/background.png, you can include it in your
-    HTML with or in your CSS with
-    background-image: url(/background.png). Note that /public is not
-    part of the image URL.
+    HTML with or in your CSS with background-image:
+    url(/background.png). Note that /public is not part of the image
+    URL.
 
 -   **/private** These files can only be accessed by server code through
     Assets API and are not accessible to the client.
@@ -6440,7 +6432,7 @@ CSS. It's that simple."*
 
 #### Overview
 
-StapesJS \[53\] is a little web framework designed to be agnostic about
+StapesJS [53] is a little web framework designed to be agnostic about
 the setup and style of coding. It is very flexible and it allows to use
 MVC paradigm combined with libraries such as jQuery, Zepto, React and
 Rivets. Stapes provides the necessary building blocks to build a apps in
@@ -6462,18 +6454,18 @@ a short-time.
 -   It is less complete than other frameworks so some functionality may
     require some development.
 -   The last commit was done the Summer of 2014 so its contributors are
-    not very active in Github. This may be a problem if any issue
-    is found.
+    not very active in Github. This may be a problem if any issue is
+    found.
 
 #### Requirement Analysis
 
 -   It is an Open Source project. It has MIT license which is a
     permissive free software license. meaning that it permits reuse
     within proprietary software provided all copies of the licensed
-    software include a copy of the MIT License terms and the
-    copyright notice. Such proprietary software retains its proprietary
-    nature even though it incorporates software under the MIT License.
-    It can be used without restrictions in the project.
+    software include a copy of the MIT License terms and the copyright
+    notice. Such proprietary software retains its proprietary nature
+    even though it incorporates software under the MIT License. It can
+    be used without restrictions in the project.
 -   ReTHINK develeopments are not expected to be very complex so
     StapesJS could be a right choice. Additionally its small size will
     reduce the overhead in the applications which will help to reduce

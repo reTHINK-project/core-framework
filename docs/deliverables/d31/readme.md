@@ -1,278 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Introduction](#introduction)
-  - [
-Runtime Node Requirements
-](#runtime-node-requirements)
-  - [
-    Network QoS Requirements
-    ](#network-qos-requirements)
-  - [
-    Service Framework Requirements
-    ](#service-framework-requirements)
-  - [Objectives and Overview](#objectives-and-overview)
-  - [Structure](#structure)
-- [Requirements](#requirements)
-- [State of the Art](#state-of-the-art)
-  - [Security in Runtime](#security-in-runtime)
-    - [Web Browsers](#web-browsers)
-      - [Monolithic vs Modular Architectures](#monolithic-vs-modular-architectures)
-      - [Browser Extensions Security](#browser-extensions-security)
-      - [XSS Detection Techniques](#xss-detection-techniques)
-      - [XSS (and Other Types) Prevention Techniques](#xss-and-other-types-prevention-techniques)
-    - [**Automated Analysis of Security-Critical JavaScript APIs**](#automated-analysis-of-security-critical-javascript-apis)
-    - [Secure Elements](#secure-elements)
-      - [Java Card: Internet Computing on a Smart Card](#java-card-internet-computing-on-a-smart-card)
-      - [Cloud of Secure Elements](#cloud-of-secure-elements)
-      - [Defenses against Malicious Code](#defenses-against-malicious-code)
-      - [**Getting malicious code on cards**](#getting-malicious-code-on-cards)
-      - [Dynamic Countermeasures](#dynamic-countermeasures)
-  - [Standards](#standards)
-  - [Runtime](#runtime)
-  - [Messaging](#messaging)
-  - [Service Frameworks](#service-frameworks)
-  - [Projects](#projects)
-  - [Products](#products)
-    - [ApiRTC](#apirtc)
-      - [What is ApiRTC?](#what-is-apirtc)
-      - [Features Overview](#features-overview)
-      - [Architecture Overview](#architecture-overview)
-      - [Architecture](#architecture)
-      - [APIs](#apis)
-      - [Requirements Analysis](#requirements-analysis)
-      - [Integration in Rethink](#integration-in-rethink)
-    - [State of the art of current WebRTC solutions of Quobis](#state-of-the-art-of-current-webrtc-solutions-of-quobis)
-      - [What is Sippo?](#what-is-sippo)
-      - [What is a “WebRTC Application Controller”?](#what-is-a-%E2%80%9Cwebrtc-application-controller%E2%80%9D)
-      - [Reference architecture](#reference-architecture)
-      - [Understanding the role of a WebRTC Application Controller](#understanding-the-role-of-a-webrtc-application-controller)
-      - [Sippo interfaces and API’s](#sippo-interfaces-and-api%E2%80%99s)
-        - [Sippo.js API](#sippojs-api)
-        - [Sippo Service API (SAPI)](#sippo-service-api-sapi)
-        - [Sippo connectors](#sippo-connectors)
-        - [Sippo WebRTC API (WAPI)](#sippo-webrtc-api-wapi)
-      - [Sippo internals: services and backends](#sippo-internals-services-and-backends)
-      - [1.7. Sippo WebRTC applications](#17-sippo-webrtc-applications)
-      - [Potential integration with Wonder proposal](#potential-integration-with-wonder-proposal)
-        - [About signaling-on-the-fly](#about-signaling-on-the-fly)
-        - [Signaling-on-the-fly versus multi-signaling support](#signaling-on-the-fly-versus-multi-signaling-support)
-      - [Requirements Analysis](#requirements-analysis-1)
-- [Hyperty Runtime Specification](#hyperty-runtime-specification)
-  - [Runtime Architecture](#runtime-architecture)
-    - [Service Provider Sandboxes](#service-provider-sandboxes)
-      - [Hyperty](#hyperty)
-      - [Policy Enforcer](#policy-enforcer)
-      - [Protocol Stub](#protocol-stub)
-    - [Core Runtime](#core-runtime)
-      - [Message BUS](#message-bus)
-      - [Policy Decision Point and Message BUS authorisation](#policy-decision-point-and-message-bus-authorisation)
-      - [Message BUS Policy Enforcement Point](#message-bus-policy-enforcement-point)
-      - [Runtime Registry](#runtime-registry)
-      - [Identity Module](#identity-module)
-      - [Runtime User Agent](#runtime-user-agent)
-      - [QoS User Agent](#qos-user-agent)
-    - [Native Runtime](#native-runtime)
-  - [Security analysis of the Hyperty Runtime](#security-analysis-of-the-hyperty-runtime)
-    - [Introduction](#introduction-1)
-    - [Mitigated threats assuming an intact TCB](#mitigated-threats-assuming-an-intact-tcb)
-      - [T1: Unauthorized access by client code](#t1-unauthorized-access-by-client-code)
-      - [T2: Policy subversion](#t2-policy-subversion)
-      - [T3: Threats to client code authenticity](#t3-threats-to-client-code-authenticity)
-      - [T4: Denial of service attacks](#t4-denial-of-service-attacks)
-    - [Vulnerability assessment of the Hyperty Runtime](#vulnerability-assessment-of-the-hyperty-runtime)
-      - [Methodology](#methodology)
-      - [Browser platform](#browser-platform)
-      - [Standalone platform](#standalone-platform)
-      - [M2M standalone application platform](#m2m-standalone-application-platform)
-  - [Runtime APIs](#runtime-apis)
-    - [Runtime User Agent Interface](#runtime-user-agent-interface)
-      - [Local Device Runtime APIs](#local-device-runtime-apis)
-        - [registerHyperty](#registerhyperty)
-        - [loadHyperty](#loadhyperty)
-        - [loadStub](#loadstub)
-        - [checkForUpdate](#checkforupdate)
-        - [discoverHiperty](#discoverhiperty)
-      - [External parties procedures](#external-parties-procedures)
-    - [Runtime Registry Interface](#runtime-registry-interface)
-      - [init](#init)
-      - [registerHyperty](#registerhyperty-1)
-      - [unregisterHyperty](#unregisterhyperty)
-      - [registerStub](#registerstub)
-      - [unregisterStub](#unregisterstub)
-      - [registerPEP](#registerpep)
-      - [unregisterPEP](#unregisterpep)
-      - [onEvent](#onevent)
-      - [discoverProtostub](#discoverprotostub)
-      - [getSandbox](#getsandbox)
-      - [resolve](#resolve)
-    - [Message BUS Interface](#message-bus-interface)
-      - [postMessage](#postmessage)
-      - [addListener](#addlistener)
-      - [removeListener](#removelistener)
-      - [addPEP](#addpep)
-      - [removePEP](#removepep)
-    - [Hyperty Interface](#hyperty-interface)
-      - [init](#init-1)
-      - [postMessage](#postmessage-1)
-    - [Policy Enforcer Interface](#policy-enforcer-interface)
-      - [init](#init-2)
-      - [postMessage](#postmessage-2)
-    - [protoStub Interface](#protostub-interface)
-      - [init](#init-3)
-      - [connect](#connect)
-      - [disconnect](#disconnect)
-      - [postMessage](#postmessage-3)
-    - [Syncher](#syncher)
-      - [setSender](#setsender)
-      - [createAsObserver](#createasobserver)
-      - [createAsReporter](#createasreporter)
-      - [postMessage](#postmessage-4)
-    - [Service Provider Sandbox interface](#service-provider-sandbox-interface)
-      - [postMessage](#postmessage-5)
-    - [Identity Module Interface](#identity-module-interface)
-      - [generateAssertion](#generateassertion)
-      - [validateAssertion](#validateassertion)
-    - [Core Policy Decision Point (PDP) Interface](#core-policy-decision-point-pdp-interface)
-      - [addPolicies](#addpolicies)
-      - [removePolicies](#removepolicies)
-      - [authorise](#authorise)
-    - [Core Policy Enforcement Point (PEP) Interface](#core-policy-enforcement-point-pep-interface)
-      - [enforce](#enforce)
-    - [QoS User Agent Interface](#qos-user-agent-interface)
-      - [getCurrentConnectivityStatistics](#getcurrentconnectivitystatistics)
-      - [sendConnectivityStatisticsToBroker](#sendconnectivitystatisticstobroker)
-  - [Runtime Main Procedures](#runtime-main-procedures)
-    - [Runtime Basic Procedures](#runtime-basic-procedures)
-      - [Deploy Hyperty Runtime](#deploy-hyperty-runtime)
-      - [Deploy Protocol Stub](#deploy-protocol-stub)
-      - [Deploy Hyperty {#header-identifiers-in-html-latex-and-context}](#deploy-hyperty-header-identifiers-in-html-latex-and-context)
-  - [](#)
-  - [](#-1)
-  - [](#-2)
-  - [](#-3)
-      - [Message Routing in Message BUS](#message-routing-in-message-bus)
-      - [Intra-domain Local Communication](#intra-domain-local-communication)
-      - [Intra-domain Remote Communication](#intra-domain-remote-communication)
-      - [Inter-domain Local Communication](#inter-domain-local-communication)
-      - [Inter-domain Remote Communication](#inter-domain-remote-communication)
-    - [Runtime Identity Management Procedures](#runtime-identity-management-procedures)
-      - [User Registration](#user-registration)
-      - [Discovery](#discovery)
-        - [Prepare Discovery](#prepare-discovery)
-        - [Use Discovery](#use-discovery)
-      - [Domain Login](#domain-login)
-      - [Associate User Identity to Hyperty Instance](#associate-user-identity-to-hyperty-instance)
-      - [User identity assertion](#user-identity-assertion)
-    - [Main Runtime Procedures for H2H Communication](#main-runtime-procedures-for-h2h-communication)
-      - [Main Runtime Procedures for Intra-domain H2H Communications](#main-runtime-procedures-for-intra-domain-h2h-communications)
-        - [H2H Intradomain Communication - Alice invites Bob](#h2h-intradomain-communication---alice-invites-bob)
-        - [H2H Intradomain Communication - Bob receives invitation](#h2h-intradomain-communication---bob-receives-invitation)
-        - [H2H Intradomain Communication - Invitation Acknowledgement](#h2h-intradomain-communication---invitation-acknowledgement)
-        - [Incoming call is notified to Bob's application and Alice is updated](#incoming-call-is-notified-to-bobs-application-and-alice-is-updated)
-        - [Bob starts WebRTC API](#bob-starts-webrtc-api)
-        - [Synchronization of Alice's Data Object](#synchronization-of-alices-data-object)
-        - [H2H Interdomain Communication - create communication](#h2h-interdomain-communication---create-communication)
-        - [H2H Interdomain Communication - Bob receives invitation](#h2h-interdomain-communication---bob-receives-invitation)
-        - [H2H Interdomain Communication - Invitation Acknowledgement](#h2h-interdomain-communication---invitation-acknowledgement)
-        - [Incoming call is notified to Bob's application and Alice is updated](#incoming-call-is-notified-to-bobs-application-and-alice-is-updated-1)
-        - [Bob starts WebRTC API](#bob-starts-webrtc-api-1)
-        - [Synchronization of Alice's Data Object](#synchronization-of-alices-data-object-1)
-      - [M2M Device Bootstrap, Registration, Authorization](#m2m-device-bootstrap-registration-authorization)
-      - [M2M Intra Communication : Context Discovery](#m2m-intra-communication--context-discovery)
-      - [M2M Intra Communication : PUB-SUB Communication](#m2m-intra-communication--pub-sub-communication)
-  - [Runtime Implementation Considerations](#runtime-implementation-considerations)
-    - [Browser Runtime Implementation](#browser-runtime-implementation)
-      - [General design considerations](#general-design-considerations)
-      - [Description of the proposed implementation design.](#description-of-the-proposed-implementation-design)
-        - [Service workers.](#service-workers)
-          - [Hyperties and Protocol Stubs](#hyperties-and-protocol-stubs)
-      - [Runtime Message Bus Core Component.](#runtime-message-bus-core-component)
-      - [iFrames](#iframes)
-        - [How to send media stream from the reTHINK iFrame to the Web App.](#how-to-send-media-stream-from-the-rethink-iframe-to-the-web-app)
-          - [Practical implementation](#practical-implementation)
-    - [Considerations about the implementation of Runtime for standalone applications](#considerations-about-the-implementation-of-runtime-for-standalone-applications)
-      - [Crosswalk](#crosswalk)
-      - [Crosswalk Architecture](#crosswalk-architecture)
-      - [cordova /Ionic / phonegap](#cordova-ionic--phonegap)
-      - [Cordova functionnal schema](#cordova-functionnal-schema)
-      - [Cordova plugins](#cordova-plugins)
-      - [Some plugin examples](#some-plugin-examples)
-        - [iosRTC](#iosrtc)
-        - [phoneRTC](#phonertc)
-        - [Crosswalk-based Cordova Android](#crosswalk-based-cordova-android)
-      - [Cordova vs PhoneGap](#cordova-vs-phonegap)
-      - [Cordova vs Ionic](#cordova-vs-ionic)
-      - [Webview](#webview)
-        - [Webview WebRTC support](#webview-webrtc-support)
-        - [Crosswalk vs Webview](#crosswalk-vs-webview)
-      - [OpenWebRTC](#openwebrtc)
-      - [Selected solutions for the implementation:](#selected-solutions-for-the-implementation)
-        - [Solutions that have already been tested :](#solutions-that-have-already-been-tested-)
-          - [Android :](#android-)
-          - [iOS :](#ios-)
-          - [Android & iOS :](#android-&-ios-)
-        - [Solution to be tested during the implementation :](#solution-to-be-tested-during-the-implementation-)
-    - [Runtime implementation M2M standalone application](#runtime-implementation-m2m-standalone-application)
-      - [NodeJs Installation](#nodejs-installation)
-      - [Design](#design)
-      - [Code Snippets](#code-snippets)
-      - [Other evaluated runtimes](#other-evaluated-runtimes)
-- [Message Node Specification](#message-node-specification)
-  - [Messaging Node Architecture](#messaging-node-architecture)
-    - [Core Functionalities](#core-functionalities)
-      - [Message BUS](#message-bus-1)
-      - [Access Control](#access-control)
-      - [Session Management](#session-management)
-      - [Address Allocation Management](#address-allocation-management)
-    - [Protocol Stub](#protocol-stub-1)
-    - [Connectors](#connectors)
-  - [Vertx Specification](#vertx-specification)
-    - [Core Functionalities](#core-functionalities-1)
-      - [Pipeline](#pipeline)
-      - [Session Management](#session-management-1)
-      - [Address Allocation Management](#address-allocation-management-1)
-      - [Access Control](#access-control-1)
-      - [Message BUS](#message-bus-2)
-    - [Protocol Stub Sandbox](#protocol-stub-sandbox)
-    - [Connectors](#connectors-1)
-      - [End User Device Connector](#end-user-device-connector)
-      - [Network Server Connector](#network-server-connector)
-      - [Registry Connector](#registry-connector)
-      - [IdM Connector](#idm-connector)
-  - [NodeJs based Messaging Node Specification](#nodejs-based-messaging-node-specification)
-    - [Core Functionalities](#core-functionalities-2)
-      - [Message BUS](#message-bus-3)
-        - [Usage of Redis with NodeJs](#usage-of-redis-with-nodejs)
-      - [Access Control](#access-control-2)
-      - [Session Management](#session-management-2)
-      - [Address Allocation Management](#address-allocation-management-2)
-      - [Protocol Stub & Connectors](#protocol-stub-&-connectors)
-        - [IdM Connector](#idm-connector-1)
-        - [Registry Connector](#registry-connector-1)
-        - [End-User Device Connector](#end-user-device-connector)
-        - [Network Server Connector](#network-server-connector-1)
-        - [Node Sandbox framework](#node-sandbox-framework)
-    - [NodeJs implementation architecture](#nodejs-implementation-architecture)
-  - [Matrix.org based Messaging Node Specification](#matrixorg-based-messaging-node-specification)
-    - [Protocol Stub and Connectors](#protocol-stub-and-connectors)
-      - [Matrix as Protocol-on-the-fly client](#matrix-as-protocol-on-the-fly-client)
-      - [Matrix as Protocol-on-the-fly server](#matrix-as-protocol-on-the-fly-server)
-      - [Connectors in Matrix](#connectors-in-matrix)
-    - [Core Functionalities](#core-functionalities-3)
-      - [Message Bus](#message-bus)
-      - [Access Control](#access-control-3)
-      - [Session Management](#session-management-3)
-        - [User session control](#user-session-control)
-        - [Communication session control](#communication-session-control)
-        - [Stub and connector management](#stub-and-connector-management)
-      - [Address Allocation Management](#address-allocation-management-3)
-- [Conclusions](#conclusions)
-- [References](#references)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 Introduction
 ============
 
@@ -282,9 +7,9 @@ Objectives and Overview
 This report provides a detailed specification of reTHINK Core Framework
 components comprised by the runtime environment where Hyperties are
 executed and the messaging nodes used to support messages exchange
-between Hyperties. Thus, and according to reTHINK Architecture \[38\],
-the scope of this report includes the specification of the Messaging
-Node providing reTHINK Messaging Services and the specification of the
+between Hyperties. Thus, and according to reTHINK Architecture [38], the
+scope of this report includes the specification of the Messaging Node
+providing reTHINK Messaging Services and the specification of the
 Hyperty Runtime that will be included in User Devices and Application
 Servers to deliver User Hyperties and Network Side Hyperties.
 
@@ -296,11 +21,11 @@ originaly planned.
 
 These specifications are compliant with reTHINK Data Model, Hyperty
 Management interfaces, Stream Interface and Messaging Interface designed
-in \[37\]. It should be noted that, according to Protocol On-the-fly
+in [37]. It should be noted that, according to Protocol On-the-fly
 concept, the Messaging Interface is defined by the Message Model defined
-in \[37\].
+in [37].
 
-Besides the Architecture requirements reported in D2.1 \[38\] additional
+Besides the Architecture requirements reported in D2.1 [38] additional
 specific requirements to Core Framework functionalities were analysed.
 
 The specification of the Hyperty Runtime and the Messaging Node is
@@ -368,199 +93,330 @@ Services) and Hyperty Framework. It should be noted that Hyperty
 Framework will provide developer friendly tools to facilitate the
 development of new Hyperties and Applications.
 
-<h2>
 Runtime Node Requirements
-</h2>
+-------------------------
+
 <p>
-</p>
 **The effort to introduce new capabilities in the runtime should be
-reasonable** :</br> The effort to introduce new capabilities in the
-runtime should be reasonable, for example:
+reasonable**
+</p>
+The effort to introduce new capabilities in the runtime should be
+reasonable, for example:
 
 -   missing WebRTC features eg Identity
 -   Protocol on the fly mechanism
 -   Policy Enforcement Points
--   Hyperty Registry <br/>**The Runtime must be secured** :</br> The
-    runtime must support the execution of entrusted code in
-    isolated sandboxes. It should be possible to take advantage of
-    existing secured elements like SIM cards or embedded SIM
+-   Hyperty Registry
 
-<br/>**The Runtime must have a good performance** :</br> The Runtime
-must have a good performance<br/>**The Runtime should support
-Standardised Messaging Notifications** :</br> The Runtime should support
-standardised W3C [Push Messaging](http://www.w3.org/TR/push-api/) which
-allows applications to receive messages sent by servers regardless
-whether the Application is currently active. Useful to support
-notifications about incoming WebRTC calls.<br/>**The Runtime should
-support Web Socket** :</br> The Runtime should support [Web
-Socket](http://www.w3.org/TR/websockets/).<br/>**The runtime must
-support standard Javascript (ECMAScript)** :</br> The runtime must
-support standard at least [ECMAScript version
+<p>
+**The Runtime must be secured**
+</p>
+The runtime must support the execution of entrusted code in isolated
+sandboxes. It should be possible to take advantage of existing secured
+elements like SIM cards or embedded SIM
+
+<p>
+**The Runtime must have a good performance**
+</p>
+The Runtime must have a good performance
+
+<p>
+**The Runtime should support Standardised Messaging Notifications**
+</p>
+The Runtime should support standardised W3C [Push
+Messaging](http://www.w3.org/TR/push-api/) which allows applications to
+receive messages sent by servers regardless whether the Application is
+currently active. Useful to support notifications about incoming WebRTC
+calls.
+
+<p>
+**The Runtime should support Web Socket**
+</p>
+The Runtime should support [Web
+Socket](http://www.w3.org/TR/websockets/).
+
+<p>
+**The runtime must support standard Javascript (ECMAScript)**
+</p>
+The runtime must support standard at least [ECMAScript version
 5](http://www.ecma-international.org/ecma-262/5.1/) (Javascript).
-<br/>**The Runtime should support W3C WebRTC APIs** :</br> The Runtime
-should support W3C WebRTC APIs including:
+
+<p>
+**The Runtime should support W3C WebRTC APIs**
+</p>
+The Runtime should support W3C WebRTC APIs including:
 
 -   [Media Capture and Streams
     API](http://www.w3.org/TR/mediacapture-streams/)
--   [WebRTC](http://www.w3.org/TR/webrtc/)<br/>**The Runtime should be
-    deployable in the most used Devices and Operating Systems** :</br>
-    The Runtime should be deployable in the most used Devices and
-    Operating Systems, including:
+-   [WebRTC](http://www.w3.org/TR/webrtc/)
+
+<p>
+**The Runtime should be deployable in the most used Devices and
+Operating Systems**
+</p>
+The Runtime should be deployable in the most used Devices and Operating
+Systems, including:
 
 -   Android (Smartphone and Tablet)
 -   iOS (Smartphone and Tablet)
 -   Raspberry PI
 -   Linux
--   Windows<br/> \#\#Messaging Node Requirements\#\#
-    <p>
-    </p>
-    **Messaging Node should be resilient** :</br> Messaging node should
-    be Resilient when operating under overload situations or failures,
-    in general.<br/><br/>**The Messaging Node MUST offer DoS and DDoS
-    Protection** :</br> The MN MUST provide protection against Denial of
-    Service (DoS) and Distributed Denial of Service Attacks
-    (DDoS)<br/><br/>**Messaging Node should support Protocol
-    on-the-fly** :</br> Messaging Node should support Protocol
-    on-the-fly, to inter-operate with other Messaging Nodes or Back-end
-    servers without having the need to standardize the protocol to
-    be used.
+-   Windows
 
-<br/><br/>**Messaging Node should support different Encrypted Messaging
-Transport Protocols** :</br> Messaging Node should support different
-Encrypted Messaging Transport Protocols including:
+Messaging Node Requirements
+---------------------------
+
+<p>
+**Messaging Node should be resilient**
+</p>
+Messaging node should be Resilient when operating under overload
+situations or failures, in general.
+
+<p>
+**The Messaging Node MUST offer DoS and DDoS Protection**
+</p>
+The MN MUST provide protection against Denial of Service (DoS) and
+Distributed Denial of Service Attacks (DDoS)
+
+<p>
+**Messaging Node should support Protocol on-the-fly**
+</p>
+Messaging Node should support Protocol on-the-fly, to inter-operate with
+other Messaging Nodes or Back-end servers without having the need to
+standardize the protocol to be used.
+
+<p>
+**Messaging Node should support different Encrypted Messaging Transport
+Protocols**
+</p>
+Messaging Node should support different Encrypted Messaging Transport
+Protocols including:
 
 -   Encrypted WebSockets
 -   HTTPS Streaming
 -   HTTPS Long-Polling
 -   HTTPS REST
 
-<br/><br/>**Messaging Node should support logging of routed messages**
-:</br> Messaging Node should support logging of routed messages and any
-other event (e.g. connection events) in remote log
-servers<br/><br/>**Message must support delivery reliability** :</br>
-Message must support message delivery reliability. Delivery errors must
-be returned to clients<br/><br/>**Messaging Node must support worldwide
-scale deployments** :</br> If required, by Messaging Node must support
-worldwide scale deployments<br/><br/>**Messaging Node should be tolerant
-to unstable connections ** :</br> When connections to Messaging Node are
-resumed from a short disconnected period of time or when client IP
-address changes eg due to access network handover (eg wifi to LTE),
-should have no impact on the client side service.
+<p>
+**Messaging Node should support logging of routed messages**
+</p>
+Messaging Node should support logging of routed messages and any other
+event (e.g. connection events) in remote log servers
 
-<br/><br/>**Events must be fired when clients connect and disconnect
-from the Messaging Node** :</br> It should be possible to get events
-with information about Messaging Node clients connection and
-disconnection. Such feature is useful for connection status
-purposes.<br/><br/>**Messaging Node must support very low message
-delivery latency** :</br> Messaging Node must support very low message
-delivery latency<br/><br/>**Messaging Node should require minimal
-computing resources** :</br> Messaging Node should require minimal
-computing resources in order to be deployable in constrained computing
-environments eg residential /enterprise gateways.<br/><br/>**Messaging
-Node must support external authentication and Authorisation** :</br>
+<p>
+**Message must support delivery reliability**
+</p>
+Message must support message delivery reliability. Delivery errors must
+be returned to clients
+
+<p>
+**Messaging Node must support worldwide scale deployments**
+</p>
+If required, by Messaging Node must support worldwide scale deployments
+
+<p>
+**Messaging Node should be tolerant to unstable connections **
+</p>
+When connections to Messaging Node are resumed from a short disconnected
+period of time or when client IP address changes eg due to access
+network handover (eg wifi to LTE), should have no impact on the client
+side service.
+
+<p>
+**Events must be fired when clients connect and disconnect from the
+Messaging Node**
+</p>
+It should be possible to get events with information about Messaging
+Node clients connection and disconnection. Such feature is useful for
+connection status purposes.
+
+<p>
+**Messaging Node must support very low message delivery latency**
+</p>
+Messaging Node must support very low message delivery latency
+
+<p>
+**Messaging Node should require minimal computing resources**
+</p>
+Messaging Node should require minimal computing resources in order to be
+deployable in constrained computing environments eg residential
+/enterprise gateways.
+
+<p>
+**Messaging Node must support external authentication and
+Authorisation**
+</p>
 Messaging Node must be able to use an external Authentication Service
 
 Messaging Node must be able to use an external Authorisation Service for
-the following features: \* send/publish a Message \* receive a Message
-\* subscribe / register handlers to be notified about published messages
+the following features: \* send/publish a Message \* receive a
+Message \* subscribe / register handlers to be notified about published
+messages
 
-<br/><br/>**Messaging Node must support multiple message oriented
-communication patterns** :</br> Messaging Node must support multiple
-message oriented communication patterns including:
+<p>
+**Messaging Node must support multiple message oriented communication
+patterns**
+</p>
+Messaging Node must support multiple message oriented communication
+patterns including:
 
 -   pub/sub
 -   broadcast
--   one to one <br/><br/>
-    </p>
-    <h2>
-    Network QoS Requirements
-    </h2>
-    <p>
-    </p>
-    **QoS component should assure collaboration between network and
-    application layer actors** :</br> There should be a collaboration
-    between network operators (Network or Internet Service providers)
-    and communication service providers, e.g. 3rd party communication
-    service providers, since network operators do not have the control
-    over the whole environment.<br/>**QoS component should provide a
-    single contact point for troubleshooting issues** :</br> A single
-    contact point should be assured for troubleshooting issues, i.e. to
-    verify the appropriate level of the quality and make eventual
-    improvements.<br/>**QoS component should enable isolating and
-    valorizing performance improvements** :</br> Segments that
-    contribute to improvement of quality should be identified. The
-    improvements should be valorized and quantified, e.g. for
-    monetization reasons. <br/>**QoS component should leverage IP paths
-    diversity** :</br> The are different possible connection paths, i.e.
-    paths offering best-effort services or managed paths with a certain
-    Service Level agreement. These different possibilities should
-    be considered. <br/>**QoS component should impact different network
-    types and segments** :</br> Should impact mobile, wireline, wifi
-    access networks, but also interconnection. <br/>**QoS component
-    should be compatible with evolution of different standards and
-    terminals** :</br> <br/>**QoS component should be compatible with
-    deployed network technologies** :</br> Eventual improvements should
-    be in line with current technologies. It should not be neccessary to
-    make big changes to existing network deployments, but current
-    technologies should be modified or improved. <br/>**QoS component
-    should be compatible with application layer technologies e.g.
-    WebRTC** :</br> <br/>**QoS component should exploit partially SLA
-    and partially best-effor network segments** :</br> The communication
-    service path can consist of parts provided by different actors. As
-    not all of these actors may be willing to provide quality of
-    service, the communication path may consist of segments with Service
-    Level Agreement or with best effort quality. As a result there is
-    not necessarily end-to-end path, but the quality may vary.<br/>**QoS
-    component should take into account participating and
-    non-participating actors** :</br> Network QoS should take into
-    account a fact that in the communication path there can be
-    participating and non-participating actors, i.e. not all actors will
-    support providing network QoS so it will not always be possible to
-    offer end-to-end quality.<br/>**QoS component should have global
-    reach** :</br> Network QoS should be provided on a global scale<br/>
-    <h2>
-    Service Framework Requirements
-    </h2>
-    <p>
-    </p>
-    **Service Framework MUST be Message Node agnostic.** :</br> Within
-    the reTHINK project, different implementations of the Message Node
-    will be provided. The Service Framework must be compliant across
-    various types of Message Node used.<br/>**The Service Framework MUST
-    avoid any JavaScript conflicts** :</br> The Service Framework must
-    not pose any sort of conflict with other JavaScript Frameworks
-    frequently used by developers. In order words, the Service Framework
-    must be able to co-exist with other JavaScript
-    Frameworks.<br/>**Service Framework MUST be Modular in nature**
-    :</br> Development of modules on the Framework should be loosely
-    coupled, self contained and re-usable by other libraries/modules
-    <br/>**The Service Framework MUST be open source** :</br> No
-    proprietary solution as the project itself demands all components be
-    open source.<br/>**Service Framework should be device agnostic**
-    :</br> The Service Framework should be supported on all devices and
-    operating systems featuring the Hyperty Runtime. The Runtime is
-    envisioned to be deployed on the most used Devices and Operating
-    Systems, including:
--   Android (Smartphone and Tablet)
--   iOS (Smartphone and Tablet)
--   Raspberry PI
--   Linux
--   Windows<br/>**Service Framework MUST be light weight and fast**
-    :</br> The service framework size is important as latency plays an
-    important role and downloading heavy weight files would add overhead
-    thus diminishing the performance and user experience.<br/>**Service
-    Framework SHOULD support Model-View-Controller design pattern**
-    :</br> Model-View-Controller approach: enables easier
-    maintainability and clarity. The view presents data to users through
-    format & layout. The view is rendered by the model. The model
-    handles data & business logic. It also allows for clear separation
-    between the presentation (View) and application logic. Meanwhile the
-    Controller receives user requests and calls back to the model to
-    select a proper view via HTTP GET or POST request to manage
-    the data. Within the Service Framework, more focus will be laid on
-    the Model. The View and Controller will remain flexible for the
-    developers to determine according to their requirements
-    and preferences. <br/>
+-   one to one
+
+Network QoS Requirements
+------------------------
+
+<p>
+**QoS component should assure collaboration between network and
+application layer actors**
+</p>
+There should be a collaboration between network operators (Network or
+Internet Service providers) and communication service providers, e.g.
+3rd party communication service providers, since network operators do
+not have the control over the whole environment.
+
+<p>
+**QoS component should provide a single contact point for
+troubleshooting issues**
+</p>
+A single contact point should be assured for troubleshooting issues,
+i.e. to verify the appropriate level of the quality and make eventual
+improvements. A broker component will be discussed since it cas assure a
+single contact point and collaboration between different actors.
+
+<p>
+**QoS component should enable isolating and valorizing performance
+improvements**
+</p>
+Segments that contribute to improvement of quality should be identified.
+The improvements should be valorized and quantified, e.g. for
+monetization reasons.
+
+<p>
+**QoS component should leverage IP paths diversity**
+</p>
+The are different possible connection paths, i.e. paths offering
+best-effort services or managed paths with a certain Service Level
+agreement. These different possibilities should be considered.
+
+<p>
+**QoS component should impact different network types and segments**
+</p>
+The solution should impact mobile, wireline, wifi access networks, but
+also interconnection. In the discussed architecture there is a focus on
+offering specialized network services for fix and mobile networks and
+for different network segments, i.e. access and interconnection.
+
+<p>
+**QoS component should be compatible with evolution of different
+standards and terminals**
+</p>
+The proposed solution should be in line with evolution of standards and
+adapt to application layer technologies.
+
+<p>
+**QoS component should be compatible with deployed network
+technologies**
+</p>
+Eventual improvements should be in line with current technologies. It
+should not be neccessary to make big changes to existing network
+deployments, but current technologies should be modified or improved.
+
+<p>
+**QoS component should be compatible with application layer technologies
+e.g. WebRTC**
+</p>
+The solution should be in line with application layer technologies, so
+it could be easily adapted by web developers and service providers.
+
+<p>
+**QoS component should exploit partially SLA and partially best-effor
+network segments**
+</p>
+The communication service path can consist of parts provided by
+different actors. As not all of these actors may be willing to provide
+quality of service, the communication path may consist of segments with
+Service Level Agreement or with best effort quality. As a result there
+is not necessarily end-to-end path, but the quality may vary. As a
+result the solution should take into consideration the fact that not all
+network segments in the path can provide QoS.
+
+<p>
+**QoS component should take into account participating and
+non-participating actors**
+</p>
+Network QoS should take into account a fact that in the communication
+path there can be participating and non-participating actors, i.e. not
+all actors will support providing network QoS so it will not always be
+possible to offer end-to-end quality.
+
+<p>
+**QoS component should have global reach**
+</p>
+Network QoS should be provided on a global scale, i.e. it should not be
+limited only to a given territory or a group of clients.
+
+Service Framework Requirements</br></br>
+----------------------------------------
+
+<p>
+**Service Framework MUST be Message Node agnostic.**
+</p>
+Within the reTHINK project, different implementations of the Message
+Node will be provided. The Service Framework must be compliant across
+various types of Message Node used.
+
+<p>
+**The Service Framework MUST avoid any JavaScript conflicts**
+</p>
+The Service Framework must not pose any sort of conflict with other
+JavaScript Frameworks frequently used by developers. In order words, the
+Service Framework must be able to co-exist with other JavaScript
+Frameworks.
+
+<p>
+**Service Framework MUST be Modular in nature**
+</p>
+Development of modules on the Framework should be loosely coupled, self
+contained and re-usable by other libraries/modules
+
+<p>
+**The Service Framework MUST be open source**
+</p>
+No proprietary solution as the project itself demands all components be
+open source.
+
+<p>
+**Service Framework should be device agnostic**
+</p>
+The Service Framework should be supported on all devices and operating
+systems featuring the Hyperty Runtime. The Runtime is envisioned to be
+deployed on the most used Devices and Operating Systems, including: \*
+Android (Smartphone and Tablet) \* iOS (Smartphone and Tablet) \*
+Raspberry PI \* Linux \* Windows
+
+<p>
+**Service Framework MUST be light weight and fast**
+</p>
+The service framework size is important as latency plays an important
+role and downloading heavy weight files would add overhead thus
+diminishing the performance and user experience.
+
+<p>
+**Service Framework SHOULD support Model-View-Controller design
+pattern**
+</p>
+Model-View-Controller approach: enables easier maintainability and
+clarity. The view presents data to users through format & layout. The
+view is rendered by the model. The model handles data & business logic.
+It also allows for clear separation between the presentation (View) and
+application logic. Meanwhile the Controller receives user requests and
+calls back to the model to select a proper view via HTTP GET or POST
+request to manage the data. Within the Service Framework, more focus
+will be laid on the Model. The View and Controller will remain flexible
+for the developers to determine according to their requirements and
+preferences.
 
 State of the Art
 ================
@@ -623,26 +479,26 @@ in these architectures, multiple techniques have been employed:
 
 -   **Sandboxing:** In computer security, a sandbox is a security
     mechanism which allows untrusted programs to run within a trusted
-    environment, without affecting the environment or other
-    co-located programs. This is usually done by restricting the
-    resources (disk, memory, network) the untrusted software can access.
-    An example is creating scratch memory and disk spaces where it can
-    read/write and limiting the network capabilities it can use, in
-    order to prevent the host environment from getting damaged. This is
-    what Chromium browser \[1\] applies to separate the user and the web
-    side in a modular architecture. It features two modules:
+    environment, without affecting the environment or other co-located
+    programs. This is usually done by restricting the resources (disk,
+    memory, network) the untrusted software can access. An example is
+    creating scratch memory and disk spaces where it can read/write and
+    limiting the network capabilities it can use, in order to prevent
+    the host environment from getting damaged. This is what Chromium
+    browser [1] applies to separate the user and the web side in a
+    modular architecture. It features two modules:
 
 -   A **browser kernel module** which acts on behalf of the user and is
-    responsible for implementing the tab-based windowing system of
-    the browser. It stores users' data as its preferences, bookmarks,
+    responsible for implementing the tab-based windowing system of the
+    browser. It stores users' data as its preferences, bookmarks,
     credentials and cookies and also works as middleware between the
     native operating system window manager and every instance of the
     second browser module, the rendering engine.
 -   The **rendering engine** implements the web application behavior. It
     interprets and executes web content, serving calls to the DOM API.
-    It is the unique browser part in contact with the untrusted
-    web content. Apart from that, it is also responsible for enforcing
-    the same-origin policy between the user and a website he's visiting.
+    It is the unique browser part in contact with the untrusted web
+    content. Apart from that, it is also responsible for enforcing the
+    same-origin policy between the user and a website he's visiting.
 
 ![Figure 4: Chromium sandbox scheme](chromium-sandbox.png)
 
@@ -674,7 +530,7 @@ Typically, benign extensions face two types of attackers:
     stealing the browser’s userdata, like credentials. This way, it can
     scale up to attack multiple websites within the same entry point.
 
-According to \[2\], Google Chrome and its extension platform apply three
+According to [2], Google Chrome and its extension platform apply three
 mechanisms to prevent these vulnerabilities: \* **Privilege
 Separation:** Every Chrome extension has two types of components which
 run in separate processes: zero or more content scripts and zero or one
@@ -690,9 +546,9 @@ content script is able to access the user data space. The architecture
 scheme of a Google Chrome extension is on Fig. 5. \* **Isolated Words:**
 This mechanism ensures that content scripts and websites have separate
 JavaScript heaps and DOM objects. Consequently, content scripts never
-exchange pointers with websites, protecting them against web attackers.
-\* **Permissions:** Extension developers have to specify the desired
-permissions in a kind of manifest file that is packaged with the
+exchange pointers with websites, protecting them against web
+attackers. \* **Permissions:** Extension developers have to specify the
+desired permissions in a kind of manifest file that is packaged with the
 extension. For example, the bookmarks permission is needed for the
 extension to be able to read and alter the user's bookmarks. Only core
 extension can use permissions to invoke browser API methods, while
@@ -712,7 +568,7 @@ execute malicious code (usually JavaScript/HTML) within the trusted
 context of a web application. This can result in the attacker being able
 to access any sensitive information associated to the application
 (cookies, session IDs, etc.). The study of XSS attacks can be split into
-two distinct categories, according to \[3\]:
+two distinct categories, according to [3]:
 
 -   **Persistent/Stored attacks:** Occurs when a malicious user
     registers itself into a web application and posts a malicious
@@ -733,14 +589,14 @@ two distinct categories, according to \[3\]:
 -   **Non-persistent/Reflected attacks:** Unlike the first type,
     reflected attacks do not persistently store malicious code in the
     web application data space. Instead of that, the content is
-    automatically reflected back to the user through a
-    third-party mechanism. For example, by using a spoofed email, an
-    attacker can make a user click on a link containing malicious code,
-    which will finally be interpreted by the user’s browser, but within
-    the trusted context of the web application. This type of XSS attacks
-    is often combined with other techniques as phishing, and is the most
-    common type of XSS attacks in web applications. Figure 7 shows a
-    scheme of the architecture of a non-persistent XSS attack.
+    automatically reflected back to the user through a third-party
+    mechanism. For example, by using a spoofed email, an attacker can
+    make a user click on a link containing malicious code, which will
+    finally be interpreted by the user’s browser, but within the trusted
+    context of the web application. This type of XSS attacks is often
+    combined with other techniques as phishing, and is the most common
+    type of XSS attacks in web applications. Figure 7 shows a scheme of
+    the architecture of a non-persistent XSS attack.
 
 ![Figure 7: Scheme of a non-persistent XSS
 attack](xss-nonpersistent.png)
@@ -757,25 +613,25 @@ This technique consists in defining a list of characters or tags which
 users are allowed to exchange with the web application, in the form of
 text inputs, uploaded files, etc. Then, a filtering process simply
 rejects everything that is not part of the list. Other approach,
-reported in \[4\], is having a proxy-server at the web application’s
-site in order to filter both incoming and outgoing requests. This
-filtering takes into account a set of rules defined by the application
-developers. However, a simple use of regular expressions is able to
-evade both the referred methods and proxy-servers can rapidly become a
-performance bottleneck on the application deployment. Pietraszeck et al.
-\[5\] also suggested placing a proxy-server on the server-side of the
-application, but in order to differentiate trusted and untrusted
-traffic, driving each type to separate channels. This partitioning
-process uses Information Flow Control techniques to taint information
-and track it thenceforward.
+reported in [4], is having a proxy-server at the web application’s site
+in order to filter both incoming and outgoing requests. This filtering
+takes into account a set of rules defined by the application developers.
+However, a simple use of regular expressions is able to evade both the
+referred methods and proxy-servers can rapidly become a performance
+bottleneck on the application deployment. Pietraszeck et al. [5] also
+suggested placing a proxy-server on the server-side of the application,
+but in order to differentiate trusted and untrusted traffic, driving
+each type to separate channels. This partitioning process uses
+Information Flow Control techniques to taint information and track it
+thenceforward.
 
-From another point of view, some approaches \[6,7\] propose the content
+From another point of view, some approaches [6,7] propose the content
 filtering to happen at the client-side. On the one hand, Kirda et al.
-\[6\] try to achieve the prevention of XSS attacks by blacklisting links
+[6] try to achieve the prevention of XSS attacks by blacklisting links
 embedded within the web application’s pages, making them unavailable for
 the client. However, the authors say this approach can only detect basic
 XSS attacks based on the violation of same-origin policy. On the other
-hand, Ismail et al. \[7\] present another client-proxy solution that is
+hand, Ismail et al. [7] present another client-proxy solution that is
 intended to detect malicious requests reflected from the attacker to the
 victim (non-persistent XSS attacks). If such a request is detected, the
 malicious characters are re-encoded by the proxy, trying to avoid the
@@ -785,15 +641,15 @@ success of the attack.
 
 There are also other strategies which try to avoid the need for
 intermediate elements like proxy-servers by proposing startegies to
-enforce the runtime context of the web browser. Hallaraker et al. \[8\]
+enforce the runtime context of the web browser. Hallaraker et al. [8]
 propose an auditing system for the JavaScript interpreter of the Mozilla
 Firefox browser, which detects misuses on JS operations and take
 counter-measures to avoid violations on browser’s security. Other
-approach \[9\] presents the use of dynamic taint tracking on JavaScript
+approach [9] presents the use of dynamic taint tracking on JavaScript
 code, in order to detect whether browser’s sensitive resources are going
 to be transferred to an untrusted third-party. In such case, the user is
 warned and can decide whether he allows or denies the transfer. Finally,
-Jim et al. \[10\] propose a policy-based management where a list of
+Jim et al. [10] propose a policy-based management where a list of
 actions is embedded into the documents exchanged between the browser and
 the server. These actions help the browser to decide whether or not a
 script should be executed. Although, a lack of semantics in the
@@ -814,7 +670,7 @@ the trusted code part to the untrusted one. This API encapsulates all
 security-critical resources and guarantees they are only accessed in a
 safe way.
 
-Given this, Taly et al. \[11\] proposed ENCAP, a tool that verifies API
+Given this, Taly et al. [11] proposed ENCAP, a tool that verifies API
 confinement, analyzing the isolation level it can offer to the critical
 objects it is intended to protect. ENCAP relies on a context-insensitive
 and flow-insensitive static analysis method. It analyses the API
@@ -849,7 +705,7 @@ that run on the smart card. The single-chip computer is embedded in a
 plastic chip carrier, and both of them hold several tamper-resistant and
 tamper-detection features.
 
-![Figure 8: Java Smart Card scheme \[11\]](java-smart-card.jpg)
+![Figure 8: Java Smart Card scheme [11]](java-smart-card.jpg)
 
 **Software**
 
@@ -878,7 +734,7 @@ card and that applications are protected from each other.
 
 #### Cloud of Secure Elements
 
-Cloud of Secure Elements (CoSE) \[12\] is an emerging concept whose goal
+Cloud of Secure Elements (CoSE) [12] is an emerging concept whose goal
 is to provide trusted computing resources to mobile and cloud
 applications. To achieve this, it relies on an infrastructure composed
 by multiple secure micro-controllers, named Secure Elements.
@@ -993,8 +849,8 @@ subject to roll-back in the event of a programatically transaction abort
 
 Now we enumerate some dynamic runtime checks implemented by some VMs in
 order to prevent ill-typed code to damage the Java Card platform. These
-were verified by Mostowski et al. \[13\], by performing tests on
-multiple Java Card models of multiple manufacturers against the referred
+were verified by Mostowski et al. [13], by performing tests on multiple
+Java Card models of multiple manufacturers against the referred
 vulnerabilities:
 
 -   Runtime type checking
@@ -1165,22 +1021,112 @@ server side Hyperties providing media related services.
 Messaging
 ---------
 
-*To make a summary of [contributions about messaging
-SOTA](../sota/messaging) including an evaluation on how to be taken into
-account in reTHINK and how. The full contributions will be provided in
-annex*
+The Messaging Services, as it appears in the architecture, is the server
+side platform that will support several functions provided by the
+Service provider. In order to evaluate the options to implement the
+messaging service, different existing solutions have been considered:
+Matrix, MQTT, Nodejs, Psyc, RabbitMQ, realtime backends (also knwon as
+noBackends or Backend-as-a-Service), Redis, Vertx, XMPP and ZeroMQ.
+
+The following criteria are seen as particularly important for the choice
+of a solution for messaging node implementation: - it should support
+Protocol on-the-fly, to inter-operate with other Messaging Nodes or
+Back-end servers without having the need to standardize the protocol to
+be used. - it should support different Encrypted Messaging Transport
+Protocols including: Encrypted WebSockets, HTTPS Streaming, HTTPS
+Long-Polling and HTTPS REST - It must be possible to cache submitted
+messages - it has to support logging of routed messages and any other
+event (e.g. connection events) in remote log servers - it must support
+message delivery reliability. Delivery errors must be returned to
+clients - If required, Messaging Node must support worldwide scale
+deployments - it should be tolerant to unstable connections (e.g. short
+disconnections) - It should be possible to get events with information
+about Messaging node client’s connection and disconnection. Such feature
+is useful for connection status purposes. - Messaging Node must support
+very low message delivery latency - Messaging Node must be deployable in
+the most used Virtual Machines - it should require minimal computing
+resources in order to be deployable in constrained computing
+environments - Messaging Node must support external authentication and
+Authorisation - Messaging Node must support multiple message oriented
+communication patterns including: pub/sub, broadcast, one to one.
+
+The end goal of Matrix is to be a ubiquitous messaging layer for
+synchronising arbitrary data between sets of people, devices and
+services. Matrix doesn’t support external authentication and
+authorisation. It also needs to adapt support of messaging transport
+protocols by wrapping Event/messages in REST messages.
+
+MQ Telemetry Transport (MQTT) is a lightweight broker-based
+publish/subscribe messaging protocol designed to be open, simple,
+lightweight and easy to implement. As it fulfils all the criteria
+defined above MQTT is a potential candidate for messaging node.
+
+Node.js® is a platform built on Chrome's JavaScript runtime for easily
+building fast, scalable network applications. Nodejs doesn’t support
+pub/sub by itself, but it can if it is associated with another Pub/Sub
+mechanism (e.g. Redis).
+
+PSYC is a mostly text-based protocol, aiming at providing a
+decentralized global messaging infrastructure for unicast/multicast
+chatting and social media exchanging. Its goal is to replace the popular
+IRC protocol. There is no evidence in the documentation that PSYC is
+able to accept external authentication/authorisation methods other than
+its own one. Moreover, a certain degree of latency is inevitable, due to
+the use of TLS and DoS techniques.
+
+RabbitMQ is defined as a robust and easy to use messaging platform that
+can work synchronously an asynchronously. It partially supports
+Messaging transport protocols but should not be tolerant to unstable
+connections.
+
+Realtime backends (aka noBackend or BackendAsAService(BaaS)) is a
+concept related to real time databases. The backend and its remote
+framework is taking into account all low level mechanism of
+client-server dialogue, allowing developer to concentrate in service
+logic, in its local runtime. The realtime backend concept would allow
+defining and managing interworking with other services, in a way that
+entirely belongs to each application.
+
+Redis is an open source advanced key-value cache and store. Its
+weaknesses are that Redis has no logging features; they need to be
+implemented externally. Moreover, there is no indication that Redis is
+tolerant to unstable connections.
+
+Vert.x is an application framework providing possibilities to develop
+loosely coupled network service applications. The Extensible Messaging
+and Presence Protocol (XMPP) is an open technology for real-time
+communication, which powers a wide range of applications including
+instant messaging, presence, multi-party chat, voice and video calls,
+collaboration, lightweight middleware, content syndication, and
+generalized routing of XML data.
+
+ZeroMQ is a high-performance, low level, asynchronous messaging library
+originally written in C++, that now has multiple native Implementations.
+It is used as a thin layer between the application and transport layers.
+
+In the scope of reThink framework, Matrix, Nodejs and vert.X have been
+selected to implement the messaging node.
 
 Service Frameworks
 ------------------
 
+Objective of the Service Framework is to develop a JavaScript Framework
+of libraries that can be used to facilitate the development of
+Hyperties. This framework will compliment the features provided by the
+Hyperty Runtime (T3.4) and Network QoS Policy Enforcement (T3.3). The
+end results of the Service Framework should support Hyperty Development
+(T5.2) which further assist in the implmentation of T5.3 Conversational
+Services (audio, video, chat, screen sharing) and T5.4 Context Enabled
+Services (Conversational Services, IoT, context delivery, location).
+
 An analysis of existing JavaScript frameworks based on the reTHINK
-service framework requirements was carried out on some of the popularly
+Service Framework requirements was carried out on some of the popularly
 used frameworks today. These frameworks all endeavor to facilitate the
 development of web applications utilizing the Model-View-Control design
 pattern. For the reTHINK project however, focus was on the data model
 management and routing capabilities of these frameworks.
 
-Even though Angular JS is the most popular framework, which provides
+Even though AngularJS is the most popular framework, which provides
 great two way data-binding allowing for synchronization of data, and has
 a large community base, it was not considered a suitable applicant for
 this project due to its complex directives API and inflexibility on
@@ -1190,7 +1136,7 @@ for Single Page Apps (SPA) unlike a dynamic environment like the reTHINK
 runtime where multiple applications can be downloaded and executed
 concurrently.
 
-Another framework analyzed was Backbone.JS which also did not fit into
+Another framework analyzed was BackboneJS which also did not fit into
 the reTHINK service framework requirements due to the lack of a modular
 structure. Backbone lacks a controller concept and views and Models are
 relatively tightly coupled, resulting to tightly coupled modules which
@@ -1201,40 +1147,35 @@ framework especially suitable of mobile platforms. However it in itself
 offers very little APIs and demands combination with other libraries
 such as JQuery, React and Rivets.
 
-MeteorJS and Polymer on the other hand are good applicants. While
-MeteorJS offers rapid prototyping and produces cross-platform code for
-mobile and fixed platforms, Polymer offers a lightweight shim that uses
-a new faster data-binding system which significantly reduces code size
-for modern browsers.
-
-Polymer provides special features for registering JavaScript elements,
-lifecycle callbacks, property observation and data-binding, which are
-all functionalities to enhance the architecture of the Hyperty Runtime
-environment. MeteorJS offers the distinct advantage to be used both for
-all devices and operating systems featuring the Hyperty Runtime and with
-less complexity with respect to other frameworks. However it has very
+MeteorJS on the other hand is a good applicant. MeteorJS offers rapid
+prototyping and produces cross-platform code for mobile and fixed
+platforms. It offers the distinct advantage to be used on all devices
+and operating systems featuring the Hyperty Runtime. However it has very
 strong dependency to the back end server being NodeJS. What this means
 for the reTHINK project is it will fit in perfectly, if the tool of
 choice for the Messaging Node where NodeJS. This is compatible with the
 other components as NodeJS is one of the tools considered for the
 reTHINK Messaging Node.
 
-To summarize, the main objective of service framework is to provide an
-SDK which developers can utilize to facilitate the development of
-Hyperties. The SDK is envisioned to provide high level APIs on top of
-the Runtime APIs for managing especially the data models. It will also
-provide basic templates for different Hyperty Types which developer can
-use or extend in developing more advanced merged-up Hyperties.
+From the above anaöyzed frameworks, there is no strong conclusive
+statement which one is best to be used to develope the Service Framework
+as they all have advantages and disadvantages. To fulfill the objectives
+of these task, the approach has to be more specific as to what the above
+frameworks have to offer. We will identify the main requirements from
+the selected use cases specified in WP1, identify the data objects and
+interfaces defined in WP2 and provide JavaScript libraries in form of
+SDK to the developers. This SDK will include utility functions, Message
+factories for creating common data objects, templates for defined
+Hyperty types and other high level APIs from the underlying runtime and
+policy enforcement APIs.
+
+The executable Hyperty Runtime will be the basis of all application
+development. With a middle layer of the Service Framework offering
+bulding blocks to choose from, a new ecosystem is formed on top of which
+other frameworks and applications can exist.
 
 ![Figure 10: Service framework middle
 layer](service_framework_middle_layer.png)
-
-The existing web platform (runtime) is the basis of all applicatiion
-development. With the middle layer of web components offering a new set
-of bulding blocks to choose from, a new ecosystem is formed on top of
-which other frameworks and applications exist. From the analyzed
-existing JavaScript Frameworks, MeteorJS and Polymer offer a good
-stepping stone to extend and be used within the reTHINK project.
 
 Projects
 --------
@@ -1343,8 +1284,8 @@ http://apirtc.com/api-docs/
 
 APIS are decomposed with main following classes :<br/> \* ApiRTCSession
 : manage user connection to the platform (presence)<br/> \*
-ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
-\* ApiRTCIMClient : manage Instant messaging feature<br/> \*
+ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
+...<br/> \* ApiRTCIMClient : manage Instant messaging feature<br/> \*
 ApiRTCDataClient: : manage data sending feature<br/> \*
 ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
@@ -1503,11 +1444,11 @@ The following network elements are the basic ones to understand the
 reference architecture (from right to left):
 
 -   Service Provider Network: this block represents the existing UC
-    platform owned by the enterprise (where we might find a
-    corporate PBX) or service provider (where we might find an IMS core
-    or a Class 4/5 softswitch). In the latter case we will also find
-    OSS/BSS systems and other identity management platforms that
-    interact with Sippo in some way.
+    platform owned by the enterprise (where we might find a corporate
+    PBX) or service provider (where we might find an IMS core or a Class
+    4/5 softswitch). In the latter case we will also find OSS/BSS
+    systems and other identity management platforms that interact with
+    Sippo in some way.
 
 -   Third-party WebRTC gateway: in some cases where the UC core does not
     support WebRTC traffic, there is a need for a WebRTC gateway which
@@ -1773,8 +1714,8 @@ Four main types of Runtime procedures are described:
     procedures performed to route messages among Hyperties.
 2.  Identity Management Runtime procedures are the procedures performed
     to register and log in users in the domain, as well as procedures
-    performed to associate identities to Hyperties and assert
-    user identities.
+    performed to associate identities to Hyperties and assert user
+    identities.
 3.  Runtime Procedures to support Human to Human Communication with
     special focus on the validation of the Reporter-Observer
     communication pattern to WebRTC.
@@ -1866,7 +1807,7 @@ Some more details are provided in the following sections.
 
 #### Hyperty
 
-As defined in \[D2.2\] Hyperties communicate through [data object
+As defined in [D2.2] Hyperties communicate through [data object
 synchronisation](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/data-synch/readme.md)
 where different access control policies can be used. The
 Reporter-Observer pattern introduced in D2.2 will be evaluated in order
@@ -1887,7 +1828,7 @@ Only one hyperty instance reporter per Synched object instance.
 
 Such Model is depicted in figure 19. The Reporter-Observer pattern is
 supported by the exchange of messages between Reporter Syncher and
-Observer Syncher as defined in the reTHINK Message Model \[D2.2\].
+Observer Syncher as defined in the reTHINK Message Model [D2.2].
 
 ![Figure 19 Reporter-Observer Communication
 Pattern](reporter-observer-pattern.png)
@@ -2001,7 +1942,7 @@ Service Provider sandboxes including Hyperties, Protocol Stubs and
 Policy Enforcers. It manages the descriptors of deployed components that
 are downloaded from the Service Provider Catalogue via the [Catalogue
 Service
-interface](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface)\[D2.2\].
+interface](https://github.com/reTHINK-project/architecture/blob/master/docs/interface-design/Interface-Design.md#73-catalogue-interface)[D2.2].
 
 #### QoS User Agent
 
@@ -2022,35 +1963,34 @@ Security analysis of the Hyperty Runtime
 
 This document presents the security analysis of the Hyperty Runtime
 architecture
-[\[1\]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
+[[1]](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/runtime-architecture.md).
 
 The Hyperty Runtime depends on a trusted computing base (TCB) that
-consists of several components: the Native Runtime, the Core Sandbox,
-and the underlying JavaScript engine, Operating System, and hardware. If
-the Native Runtime is compromised, so it will be the support for WebRTC
-stream communication between hyperties. Subverting the Core Sandbox
-components may result in (1) incorrect decision and enforcement of
-policies by the PDP, (2) failure in routing messages through the Message
-Bus, (3) flawed registration and discovery of Hyperty and protoStubs by
-the Registry, and (4) incorrect maintenance of identities by the
-Identities Container. Subverting the JavaScript Engine such as V8 can
-undermine the correctness and security of JavaScript code, which
-includes both some the components of the Hyperty Runtime written in
-JavaScript (i.e., PDP, Message Bus, Registry, Identities Container, and
-WebRTC engine) and the client code hosted by the Hyperty runtime, namely
-Hyperty Instances, ProtoStubs, Service Provider Policy Enforcers
-(SPPEs), and Applications. Since the JavaScript Engine depends on
-Operating System and hardware, compromising these components may
-interfere with the correct operation of the JavaScript engine and
-overlying components.
+consists of several components: the Core Sandbox, the Native Runtime,
+and underlying Operating System and hardware. Subverting the Core
+Sandbox components may result in (1) incorrect decision and enforcement
+of policies by the PDP, (2) failure in routing messages through the
+Message Bus, (3) flawed registration and discovery of Hyperty and
+protoStubs by the Registry, and (4) incorrect maintenance of identities
+by the Identities Container. If the Native Runtime is compromised, so it
+will be the support for WebRTC stream communication between hyperties.
+Since the Native Runtime implements the JavaScript engine (e.g., V8),
+tampering with the Native Runtime will undermine the execution of
+components implemented in JavaScript code, namely the components of the
+Core Sandbox (i.e., PDP, Message Bus, Registry, Identities Container,
+and WebRTC engine) and client code instances (i.e., Hyperty Instances,
+ProtoStubs, Service Provider Policy Enforcers (SPPEs), and
+Applications). Lastly, compromising the Operating System or the hardware
+may result in incorrect behavior of any of their overlying components,
+in particular the Native Runtime.
 
 Next, we analyze the security properties of our system assuming that the
 trusted computing base is intact. Then, we assess the security
 vulnerabilities of the Hyperty Runtime when deployed on platforms
 featuring specific software and hardware configuration. In particular,
 we explore three platform configurations: *browser*, *standalone*, and
-*constrained*. We analyze each target platform under its specific threat
-model.
+*M2M standalone application*. We analyze each target platform under its
+specific threat model.
 
 ### Mitigated threats assuming an intact TCB
 
@@ -2060,27 +2000,27 @@ Applications). Isolation is enforced both between different client code
 instances and between client code instances and the environment (e.g.,
 external applications, or OS resources). The Hyperty Runtime enforces
 access control decisions based on policy rules attached to Hyperty code.
-Such policies can regulate different aspects of a Hyperty’s behavior:
-access to local resources (e.g., cookies, files, network, etc), routing,
-charging, and privacy restrictions. The system also ensures the
+Such policies can regulate different aspects of the behavior of a
+Hyperty: access to local resources (e.g., cookies, files, network, etc),
+routing, charging, and privacy restrictions. The system also ensures the
 authenticity of client code and the identity of the involved entities.
 
-In the basic threat model, we assume that an attacker can server
+In the basic threat model, we assume that an attacker can serve
 arbitrary client code to the Hyperty Runtime. The attacker can
-impersonate a legitimate service provider and serve malicious ProtoStub,
-Hyperty, or SPPE code. When instantiated on the Hyperty Runtime, this
-code can attempt to execute JavaScript instructions in order to access
-private data held: by other client code (including applications’), by
-the Hyperty Runtime TCB, or by the surrounding environment (e.g., the
-JavaScript Engine, or the Operating System). Malicious code may also aim
-to tamper with some of the Hyperty Runtime components. For example,
-malicious code may try to tamper with Hyperty policies or with the
-policy enforcement engine in order to escalate privileges. Finally,
-malicious code may launch denial of service attacks (e.g., by executing
-CPU intensive code). Below in this document, we expand on this threat
-model to consider potential vulnerabilities of our system when deployed
-on different environments. Next, we describe how our system defends
-against several classes of potential attacks.
+impersonate a legitimate service provider and deliver malicious
+ProtoStub, Hyperty, or SPPE code. When instantiated on the Hyperty
+Runtime, this code may attempt to execute JavaScript instructions in
+order to access private data held (1) by other client code (including
+applications’), (2) by the Hyperty Runtime TCB, or (3) by the
+surrounding environment (e.g., the JavaScript Engine, or the Operating
+System). Malicious code may also aim to tamper with security-critical
+components, such as Hyperty policies or the policy enforcement engine,
+in order to escalate privileges. Finally, malicious code may launch
+denial of service attacks (e.g., by executing CPU intensive code). Below
+in this document, we expand on this threat model to consider potential
+vulnerabilities of our system when deployed on different environments.
+Next, we describe how our system defends against several classes of
+potential attacks.
 
 #### T1: Unauthorized access by client code
 
@@ -2099,6 +2039,20 @@ instance to communicate with the SPPE, and an API to communicate with
 the Message Bus. The SPPE and the PEE are responsible for enforcing the
 policy associated with the Hyperty instance.
 
+The origin of the client code is validated. An origin is a combination
+of URI scheme, hostname, and port number. The origin can be asserted
+using certificates (e.g. using TLS) thus we only allow client code from
+secure origin.
+
+Client code is subject to Same Origin Policy for direct interactions
+between client code instances. However, this can be relaxed using Cross
+Origin Resource Sharing (CORS) policy declarations. Pieces of client
+code from different origins can still communicate without CORS using the
+Message Bus API. Message exchange must be identified by the origin of
+senders and recipients. Subscription to messaging channels (where
+multiple client codes could publish messages) must be subject to
+authorization.
+
 Note that, in our architecture, sandboxing is also used to secure the
 components of the Hyperty Runtime that are implemented in JavaScript,
 namely the components allocated in the Core Sandbox. The JavaScript
@@ -2108,29 +2062,30 @@ engine implements both the client code sandboxes and the Core Sandbox.
 
 Every Hyperty instance is constrained by a policy. A policy defines a
 set of rules, which can be of several types: access control rules,
-routing rules, charging usage rules, and privacy rules. Altogether, the
+routing rules, charging usage rules, and privacy rules. Altogether, a
 policy's rules are responsible for regulating, supervising, or
 restricting the operations that a Hyperty can perform, e.g., prevent
 access to a local file, enforce a predefined network route, or define
 the usage costs of a service. To prevent a malicious Hyperty instance
-(or ProtoSub) from subverting the policy rules and escalate its
-privileges, the policy decision components and the policy repository are
-protected from the Hyperty instance by the Core Sandbox. As a result,
-policy integrity and enforcement are safe from malicious client code.
+(or ProtoSub) from subverting policy rules and escalate its privileges,
+the policy decision components and the policy repository are protected
+from the Hyperty instance by the Core Sandbox. As a result, policy
+integrity and enforcement are safe from malicious client code.
 
 #### T3: Threats to client code authenticity
 
-The authenticity of client code -- Hyperty, ProtoStub, or SPPE -- can be
-compromised if at least one of two events has occurred without being
-detected before the code is loaded and instantiated into a sandbox: an
-attacker has modified the original code bytes (e.g., by embedding
-malware into a Hyperty code), or (ii) has modified the code identity or
-the manufacturer identity. To prevent such attacks, client code must be
-digitally signed by its manufacturer. By checking these signatures
-before instantiating the Hyperty, ProtoStub, or SPPE code on the
-sandboxes and assuming that the cryptographic primitives are correctly
-implemented, the Hyperty Runtime can guarantee the integrity and
-identity of the code.
+The authenticity of client code -- Application, Hyperty, ProtoStub, or
+SPPE -- can be compromised if at least one of two events has occurred
+without being detected before the code is loaded and instantiated into a
+sandbox: an attacker has modified the original code bytes (e.g., by
+embedding malware into a Hyperty code), or (ii) has modified the code
+identity. To prevent such attacks, client code's origin must be
+digitally signed and transmitted over a secure channel. Additionally the
+client code may be signed by its manufacturer. By checking these
+signatures before instantiating the Hyperty, ProtoStub, or SPPE code on
+the sandboxes and assuming that the cryptographic primitives are
+correctly implemented, the Hyperty Runtime can guarantee the integrity
+and identity of the code.
 
 #### T4: Denial of service attacks
 
@@ -2149,9 +2104,8 @@ previous section so long as the system's TCB remains intact. However,
 when deployed on a specific platform, the Hyperty Runtime may become
 vulnerable to some environment-specific security risks. In this section,
 we study the potential vulnerabilities of the TCB when deployed on three
-different platforms: browser, standalone application, and constrained
-devices. But first, we describe our methodology to ensure a uniform
-vulnerability assessment of the system across platforms.
+different platforms. But first, we describe our methodology to ensure a
+uniform vulnerability assessment of our system across platforms.
 
 #### Methodology
 
@@ -2163,8 +2117,8 @@ successful by achieving one or more goals described in the section
 above: permit unauthorized access by client code (T1), subvert Hyperty
 policies (T2), compromise the authenticity of client code (T3), and
 launch denial of service attacks (T4). We classify the attacks to the
-TCB along two dimensions: (i) the layer of the computer stack where the
-attack is directed to (e.g., the operating system), and (ii) the
+TCB along two dimensions: (1) the layer of the computer stack where the
+attack is directed to (e.g., the operating system), and (2) the
 difficulty level of the attack based on the technical skills and
 resources required by the adversary.
 
@@ -2188,10 +2142,10 @@ stack, as shown in the figure below:
 ![Figure 22: Stack](stack.png)
 
 -   *Sandbox level (L1)*: The attacker has direct access to the sandbox
-    environment, hence to the code and execution state of
-    Hyperty instances. For example, on a browser platform, users
-    typically have access to the JavaScript of a given page. This means
-    that a malicious user can leverage that mechanism to tamper with the
+    environment, hence to the code and execution state of Hyperty
+    instances. For example, on a browser platform, users typically have
+    access to the JavaScript of a given page. This means that a
+    malicious user can leverage that mechanism to tamper with the
     JavaScript code of local Hyperty instances.
 
 -   *Runtime level (L2)*: The attacker has direct access to the code or
@@ -2204,11 +2158,11 @@ stack, as shown in the figure below:
 
 -   *Process level (L3)*: The attacker has access to the execution state
     of the process where the Hyperty Runtime is hosted. Just like the L2
-    attacks, this type of attack can result in
-    catastrophic consequences. Examples of attacks performed at the
-    process level include attaching a debugger to the Hyperty Runtime
-    process and inspect its internal data structures, or dumping its
-    memory state to disk by reading from /dev/mem.
+    attacks, this type of attack can result in catastrophic
+    consequences. Examples of attacks performed at the process level
+    include attaching a debugger to the Hyperty Runtime process and
+    inspect its internal data structures, or dumping its memory state to
+    disk by reading from /dev/mem.
 
 -   *Operating system level (L4)*: The adversary has access to the
     execution state of the operating system, and therefore to the
@@ -2246,8 +2200,8 @@ attack:
     owner abuses superuser privileges to disable the policy enforcement
     mechanisms of the Hyperty Runtime.
 
--   *Medium (D2)*: The attack requires considerable skills and /
-    or resources. It can be launched by mastering the tools presently
+-   *Medium (D2)*: The attack requires considerable skills and / or
+    resources. It can be launched by mastering the tools presently
     available in the system (e.g., tools provided by the operating
     system, debuggers) or by installing new ones that can be found on
     the Internet (including malware or exploits). The attacker has
@@ -2259,10 +2213,10 @@ attack:
 
 -   *Hard (D3)*: The attack is very sophisticated. To mount the attack,
     the attacker must be able to develop its own exploit code, find new
-    vulnerabilities in the system, and / or launch software
-    hardware attacks. For example, finding bugs in a device driver’s
-    code and write software exploits. The attacks performed at the deep
-    hardware level are also considered hard to execute.
+    vulnerabilities in the system, and / or launch software hardware
+    attacks. For example, finding bugs in a device driver’s code and
+    write software exploits. The attacks performed at the deep hardware
+    level are also considered hard to execute.
 
 When drawing a vulnerability matrix, we define *attacker profiles*,
 which define sets of possible attacks that characterize possible attack
@@ -2285,8 +2239,8 @@ represented in the figure below.
 
 ![Figure 23: Browser](browser.png)
 
-In this architecture, the Hyperty Runtime represented by the shaded
-components of the Figure is deployed on an independent browser process.
+In this architecture, the Hyperty Runtime (represented by the shaded
+components of the Figure) is deployed on an independent browser process.
 This process is in fact a "subprocess" of the browser that implements a
 sandboxing mechanism of its own (as in the Chrome browser). This
 mechanism is responsible for isolating the Hyperty Runtime from the
@@ -2294,11 +2248,11 @@ browser's rendering engine. The JavaScript engine is responsible for the
 secure execution of JavaScript code inside individual sandboxes: (1) the
 Core Sandbox of the Hyperty Runtime, (2) service provider sandboxes for
 hosting Hyperty instances, ProtoStubs and SPPEs, and (3) application
-sandboxes for executing guest applications. As expected, the Hyperty
-Runtime process depends on the operating system, which in turn depends
-on the underlying hardware setup. Browser processes run side-by-side
-with other standalone application processes and operating system
-services.
+provider sandboxes for executing guest applications. As expected, the
+Hyperty Runtime process depends on the operating system, which in turn
+depends on the underlying hardware setup. Browser processes run
+side-by-side with other standalone application processes and operating
+system services.
 
 From the security point of view, the threats to the TCB of the Hyperty
 Runtime are mainly caused by an adversarial user. To better characterize
@@ -2314,8 +2268,8 @@ vulnerability matrix as follows:
     browser, and run Hyperty-based applications. A regular user is
     expected to mount the following attacks:
 
--   *A0*: Access and modify client JavaScript code through the
-    browser interface.
+-   *A0*: Access and modify client JavaScript code through the browser
+    interface.
 
 -   *Advanced user*: This profile captures users with superuser
     privileges and some degree of skills and knowledge of the system.
@@ -2330,21 +2284,21 @@ vulnerability matrix as follows:
     user can perform several other attacks at different stack layers
     such as these:
 
--   *A1*: Compromise the runtime by installing a malicious
-    browser extension.
+-   *A1*: Compromise the runtime by installing a malicious browser
+    extension.
 -   *A2*: Dump the memory contents of the process to disk.
 -   *A3*: Install a rootkit on the operating system that keeps track of
     Hyperty instances' communication.
 
 -   *Power user*: This profile corresponds to highly skilled users, who
-    have deep knowledge of the system and can launch
-    sophisticated attacks. A user is able to investigate unknown
-    vulnerabilities in the software (including in the Hyperty Runtime or
-    in the OS) and develop specific software exploits. Moreover, the
-    user has enough resources and tools to launch hardware attacks that
-    involve tampering with silicon. A power user is able to mount not
-    only the attacks described previously, but more sophisticated
-    attacks on various layers of the stack:
+    have deep knowledge of the system and can launch sophisticated
+    attacks. A user is able to investigate unknown vulnerabilities in
+    the software (including in the Hyperty Runtime or in the OS) and
+    develop specific software exploits. Moreover, the user has enough
+    resources and tools to launch hardware attacks that involve
+    tampering with silicon. A power user is able to mount not only the
+    attacks described previously, but more sophisticated attacks on
+    various layers of the stack:
 
 -   *A4*: Find and exploit a bug in the Hyperty Runtime.
 -   *A5*: Attach a debugger to the browser’s subprocess and inspect /
@@ -2368,13 +2322,13 @@ protocols, or Applications that access copyrighted digital data.
 #### Standalone platform
 
 A variant of the browser platform is to deploy the Hyperty Runtime as a
-standalone application, for example to execute as mobile apps on mobile
-devices as smartphones or tablets. The Hyperty Runtime can also be
-packaged as a classical standalone application for desktop platforms
-running Linux or Windows. To allow for the development and maintenance
-of such applications, reTHINK will provide an SDK that will include APIs
-and platform specific libraries for adapting the Hyperty Runtime to the
-underlying operating system platform.
+standalone application, for example to be executed as a mobile app on
+mobile devices such as smartphones or tablets. The Hyperty Runtime can
+also be packaged as a classical standalone application for desktop
+platforms running Linux or Windows. To allow for the development and
+maintenance of such applications, reTHINK will provide an SDK that will
+include APIs and platform specific libraries for adapting the Hyperty
+Runtime to the underlying operating system platform.
 
 ![Figure 25: Application platform](application.png)
 
@@ -2383,7 +2337,7 @@ Android mobile devices. Just like in the browser platform, the Hyperty
 Runtime is wrapped around a host process. The host process is
 responsible for (1) mediating the system calls issued by the Hyperty
 Runtime to the operating system and (2) providing a user interface to
-the Hyperty Runtime and client JavaScript applications (and hyperties).
+the Hyperty Runtime and client JavaScript applications (and Hyperties).
 In addition to the Hyperty Runtime, the host process application
 consists of: a platform-independent adaptation layer, and
 platform-specific libraries, e.g., for IO, storage, and memory
@@ -2418,8 +2372,8 @@ alternative attack examples.
 
 -   *A2*: Find and exploit a bug in the Hyperty Runtime.
 -   *A3*: Find a bug in the host application code and exploit it.
--   *A4*: Monitor the execution of Hyperty Instances by rooting
-    the device.
+-   *A4*: Monitor the execution of Hyperty Instances by rooting the
+    device.
 -   *A5*: Hack the device hardware to extract sensitive Hyperty data
     from memory.
 
@@ -2434,22 +2388,24 @@ will likely deter the regular users. Nevertheless, we recommend prudence
 in deploying client code that the local user has high incentives to
 subvert.
 
-#### M2M standalone application platform
+#### M2M standalone platform
 
-reTHINK also targets M2M communication usecases. For this a standalone
-platform is necessary to run the core runtime and hiperties. The
-targeted devices are namely Raspberry Pi and Beagle Boards. Such devices
-adopt an internal architecture very similar to the standalone platform:
-they can run Linux or even Android operating systems. It is envisioned
-that the devices will run Linux based operating system. Essentially,
-their main differences take place at the implementation level.
-Therefore, our security analysis of the standalone platform applies for
-both cases. As NodeJs was chosen as Core Runtime for the reThink M2M
-standalone application platform, attacks like server side injection
-caused by eval function are well known and there are best practices to
-avoid and protect the software components against such attacks. A
-valuable source of information that will be taken into account during
-the implementation is located at: https://nodesecurity.io/resources.
+reTHINK also targets M2M communication use cases. For this reason, a
+standalone platform is necessary to run the Hyperty Runtime and guest
+client code. The targeted devices consist of Raspberry Pi and Beagle
+Boards. Such devices adopt an internal architecture very similar to the
+standalone platform: they can run Linux or even Android operating
+systems. We envision that these devices will run Linux-based operating
+systems. Essentially, the main difference between M2M and vanilla
+standalone application platform take place at the implementation level.
+Therefore, our security analysis of the standalone platform is
+applicable to both instances. As NodeJs was chosen as Native Runtime for
+the reThink M2M standalone application platform, attacks like server
+side injection caused by eval function are well known and there are best
+practices to avoid and protect the software components against such
+attacks. A valuable source of information that will be taken into
+account during the implementation is located at:
+https://nodesecurity.io/resources.
 
 Runtime APIs
 ------------
@@ -2457,7 +2413,7 @@ Runtime APIs
 This section describes the programmable interfaces to be implemented by
 each Hyperty Runtime Component. These interfaces will evolve according
 to input received from the implementation tasks. Data types defined in
-\[D2.2\] are used as much as possible to describe input and output
+[D2.2] are used as much as possible to describe input and output
 parameters of interface functions.
 
 ### Runtime User Agent Interface
@@ -2837,8 +2793,8 @@ runtime. It includes:
     -   local communication between Hyperties from the same domain
         (running in the same Sandbox)
     -   local communication between Hyperties from different domains
-        (running in different sandboxes but in the same
-        Runtime Instance)
+        (running in different sandboxes but in the same Runtime
+        Instance)
     -   Remote communication between Hyperties from the same domain
     -   Remote communication between Hyperties from different domains
 
@@ -2890,7 +2846,7 @@ there is no protocol stub available in the runtime.
 
 Steps 3 - 5 : the Runtime UA is able to derive the URL to download the
 protocol stub descriptor from the domain url, since it is a well known
-URI defined in the reTHINK Architecture Interfaces \[15\]. The protocol
+URI defined in the reTHINK Architecture Interfaces [15]. The protocol
 stub descriptor contains the url that the Runtime UA uses to download
 and instantiate the protocol stub in the runtime. Depending on the
 Runtime Sandbox implementation, the download and instantiation may have
@@ -3718,7 +3674,7 @@ here(../identity-management/discovery.md).
 
 (Steps 5 - 7) : the Hyperty Instance creates the Connection, the
 LocalConnectionDescription and the LocalIceCandidates data objects as
-defined in \[15\].
+defined in [15].
 
 (Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to
 create and observe these objects. Syncher generates CREATE messages for
@@ -4128,8 +4084,8 @@ object](h2h-intra-comm-6-alice-DO-synch.png)
 1)  Synchronization of Alice's Data object (Step 1) The local Data
     object reports that there have been changes in the connection
     parameters and the Syncher sends a CRUD message through the Policy
-    Enforcer to Update the Remote Data Object at Alice's Hyperty
-    (Step 2).
+    Enforcer to Update the Remote Data Object at Alice's Hyperty (Step
+    2).
 
 (Step 3) the Policy Enforcer checks if the message is compliant with the
 local policies and the message is sent to the ProtoStub (Step 4) to be
@@ -4233,7 +4189,7 @@ here(../identity-management/discovery.md).
 
 (Steps 5 - 7) : the Hyperty Instance creates the Connection, the
 LocalConnectionDescription and the LocalIceCandidates data objects as
-defined in \[15\].
+defined in [15].
 
 (Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to
 create and observe these objects. Syncher generates CREATE messages for
@@ -4664,9 +4620,9 @@ The Context Producer App holds reference to multiple hiperties. The
 first operation is to register the producer hiperties to the Global
 Registry. The new device will first perform a discovery procedure in
 order to retrieve the producing hiperties location, pointing to a: \*
-remote Network Service, named here Messaging Service, dedicated for M2M
-services like storing resources for sensing and actuating (Global M2M
-Resource Directory) \* located on the existing device (Local M2M
+remote Network Service, named here M2M Messaging Service, dedicated for
+M2M services like storing resources for sensing and actuating (Global
+M2M Resource Directory) \* located on the existing device (Local M2M
 Resource Directory), with the same purpose for sensing and actuating
 
 The flexibility of supporting these two scenarios allows the
@@ -4689,9 +4645,10 @@ also enforced on the remote M2M resource directory by contacting the
 Identity Management management service.
 
 The Context Producer ProtoStub will be used by the existing device to
-communicate with the local or remote M2M resource directory and the
-Context Consumer Protostub will be used by the new device to subscribe
-and receive notifications on data exchanged by the existing device.
+communicate with the local or remote M2M resource directory in order to
+push data or subscribe to actions. The Context Consumer Protostub will
+be used by the new device to push actions and subscribe/receive
+notifications on data exchanged by the existing device.
 
 ![Figure 49: Runtime Main Procedures for M2M
 Communication](M2M_runtime_Archit_violet.png)
@@ -4735,7 +4692,13 @@ the Runtime User Agent.
 
 Other Runtime APIs that the Runtime User Agent exposes, like
 loadHiperty() and loadProtoStub() are to be used by the applications
-that are already running on the Runtime and trigger the steps 8-11.
+that are already running on the Runtime. Loading of Hiperties or
+ProtoStubs will trigger the steps 8-18.
+
+It might be the situation that the human intervention is not requested
+when a new Hiperty is to be downloaded by an application that was
+already authorized by the human, in order to improve the Quality of
+Experience.
 
 ![Figure 50: M2M Device Bootstrap](M2M_bootstrap_authentication.png)
 
@@ -5294,8 +5257,8 @@ enables to deploy standard web application for various devices
 
 By using the Crosswalk Project, an application developer can:
 
--   Use all the features available in modern web browsers: HTML5,
-    CSS3, JavaScript.
+-   Use all the features available in modern web browsers: HTML5, CSS3,
+    JavaScript.
 -   Access the latest recommended and emerging web standards.
 -   Use experimental APIs not available in mainstream web browsers.
 -   Control the upgrade cycle of an application by distributing it with
@@ -5734,14 +5697,14 @@ Vertx Specification
 
 ### Core Functionalities
 
--   Main objective of core functions are to connect, intercept, filter
-    and deliver messages. Messages are JSON objects that should have 2
-    blocks, HEADER and BODY, and are processed from different components
-    of core. Inbound messages should be intercepted and processed in the
-    Pipeline before deliver in to the Message Bus. The sequence is
-    "Session Management" -&gt; "Access Control" -&gt; "Message Bus"
+-   Main objective of core functions are to **connect**, **intercept**,
+    **process**, **filter** and **deliver** messages. Messages are JSON
+    objects that should have 2 blocks, HEADER and BODY, and are
+    processed from different components of core. Inbound messages should
+    be intercepted and processed in the Pipeline before deliver in to
+    the Message Bus.
 -   Pipeline components will implement a simple interface that we can
-    reuse from io.vertx.core.Handler&lt;E&gt; replacing E with a
+    reuse from io.vertx.core.Handler\<E\> replacing E with a
     PipelineContext object. Using the vertx Handler<E> has the advantage
     to be compatible with io.vertx.ext.web.Router, that can be a
     replacement for the Pipeline.
@@ -5753,18 +5716,20 @@ Vertx Specification
     better than what vertx provides with the address scheme! Hyperties
     need to subscribe to objects/collections not just addresses.
 
-***it is critical that these modifications will survive as much as
-possible to new vertx versions to minimise the maintenance effort***
-
 #### Pipeline
 
-This is a new component to be developed which is similar to vertx Router
-but without the URL addressing scheme. The io.vertx.ext.web.Router class
-could be a possible candidate for Pipeline functionalities, however the
-Router is hard coded to work with HTTP protocols, and there is no need
-for static configurations of routing schemes. The alternative is to
-implement a simple Pipeline system instead of using the Router, less
-dependencies and better decoupled from the protocol.
+Pipeline functionality is to **intercept**, **process** and **filter**.
+The Pipeline configuration can reflect the concept of activity diagrams,
+controlling the path flow of the message that is dependent of the
+message type. This concept is generic enough to contemplate different
+message flows in the future. This is a new component to be developed
+which is similar to vertx Router but without the URL addressing scheme.
+The io.vertx.ext.web.Router class could be a possible candidate for
+Pipeline functionalities, however the Router is hard coded to work with
+HTTP protocols, and there is no need for static configurations of
+routing schemes. The alternative is to implement a simple Pipeline
+system instead of using the Router, less dependencies and better
+decoupled from the protocol.
 
 #### Session Management
 
@@ -5774,10 +5739,6 @@ connection resource (WebSocket, SockJS) if authorized. Every message
 header is intercepted, session token is verified and if exist, a "user"
 or other identification URL is replaced in HEADER. The JSON object is
 forwarded to "Access Control" handler.
-
-***I don't think this will be a handler but it will be called by access
-control to create / remove / check sessions according to tokens
-contained in the messages***
 
 #### Address Allocation Management
 
@@ -5797,7 +5758,7 @@ kind of rule engine.
 
 #### Message BUS
 
-Main objective of the MB is to process and deliver the message, being
+Main objective of the MB is to **deliver** the message, being
 independent of the cluster node that has the connection to the
 destination. Vertx EventBus can be used directly for the Message Bus
 component. Important headers of the original JSON (like the
@@ -5807,9 +5768,10 @@ io.vertx.core.eventbus.Message.headers() map.
 ### Protocol Stub Sandbox
 
 The protocol Stub sandbox will be managed by a ProtocolStubManager class
-that loads, registers and removes protocol stubs on request.
-
-***how will the Protocol Stub Sandbox be implemented***
+that loads, registers and removes protocol stubs on request. If
+ProtoStubs are in JavaScript, the sandbox model could be implemented
+using the java NashornScriptEngineFactory and controlling the available
+API's with ClassFilter.
 
 ### Connectors
 
@@ -5865,10 +5827,10 @@ secure local repository for identity tokens provided by IdPs
 If the connector is thought to provide authentication and authorisation,
 Vert.x offers Auth APIs (Common, JDBC, JWT and Shiro).
 
-There is also a library for authentication and discorvery,
-\[vertx-pac4j\] (https://github.com/pac4j/vertx-pac4j). This vertx
-module provides multiple authentication mechanisms (OAuh, CAS, HTTP,
-OpenID, SAML2.0 and OpenIDConnect) for different IdPs.
+There is also a library for authentication and discorvery, [vertx-pac4j]
+(https://github.com/pac4j/vertx-pac4j). This vertx module provides
+multiple authentication mechanisms (OAuh, CAS, HTTP, OpenID, SAML2.0 and
+OpenIDConnect) for different IdPs.
 
 NodeJs based Messaging Node Specification
 -----------------------------------------
@@ -6332,68 +6294,68 @@ implementation of scenarios in WP5.
 References
 ==========
 
-\[1\] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008.
+[1] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008.
 The Security Architecture of the Chromium
 Browser.](http://seclab.stanford.edu/websec/chromium/chromium-security-architecture.pdf)
 
-\[2\] - [Nicholas Carlini, Adrienne Porter Felt, and David Wagner. 2012.
+[2] - [Nicholas Carlini, Adrienne Porter Felt, and David Wagner. 2012.
 An evaluation of the Google Chrome extension security architecture. In
 Proceedings of the 21st USENIX conference on Security symposium
 (Security'12). USENIX Association, Berkeley, CA,
 USA.](http://nicholas.carlini.com/papers/2012_usenix_chromeextensions.pdf)
 
-\[3\] - [Garcia-Alfaro, J. and Navarro-Arribas, G. 2007. A Survey on
+[3] - [Garcia-Alfaro, J. and Navarro-Arribas, G. 2007. A Survey on
 Detection Techniques to Prevent Cross-Site Scripting Attacks on Current
 Web Applications., in Javier Lopez & Bernhard M. Hämmerli, ed., 'CRITIS'
 , Springer, , pp. 287-298
 .](http://eprints.uoc.edu/research/bitstream/10363/605/1/JGA01.pdf)
 
-\[4\] - [Scott, D. and Sharp, R. Abstracting application-level web
+[4] - [Scott, D. and Sharp, R. Abstracting application-level web
 security. 11th Internation Conference on the World Wide Web, pp.
 396–407, 2002.](http://rich.recoil.org/publications/websec.pdf)
 
-\[5\] - [Pietraszeck, T. and Vanden-Berghe, C. Defending against
-injection attacks through context-sensitive string evaluation. Recent
-Advances in Intrusion Detection (RAID 2005), pp.124– 145,
+[5] - [Pietraszeck, T. and Vanden-Berghe, C. Defending against injection
+attacks through context-sensitive string evaluation. Recent Advances in
+Intrusion Detection (RAID 2005), pp.124– 145,
 2005.](http://tadek.pietraszek.org/publications/pietraszek05_defending.pdf)
 
-\[6\] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A
+[6] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A
 client-side solution for mitigating cross-site scripting attacks. 21st
 ACM Symposium on Applied Computing,
 2006.](https://iseclab.org/papers/noxes.pdf)
 
-\[7\] - [Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A
+[7] - [Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A
 Proposal and Implementation of Automatic Detection/Collection System for
 Cross-Site Scripting Vulnerability. 18th Int. Conf. on Advanced
 Information Networking and Applications (AINA 2004),
 2004.](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=1283902&abstractAccess=no&userType=instima)
 
-\[8\] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript
-Code in Mozilla. 10th IEEE International Conference on Engineering of
-Complex Computer Systems (ICECCS’05), pp.85–94,
+[8] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript Code
+in Mozilla. 10th IEEE International Conference on Engineering of Complex
+Computer Systems (ICECCS’05), pp.85–94,
 2005.](http://www.cs.ucsb.edu/~vigna/publications/2005_hallaraker_vigna_ICECCS05.pdf)
 
-\[9\] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias
-analysis for static detection of web application vulnerabilities. 2006
-Workshop on Programming Languages and Analysis for Security, pp. 27–36,
-USA, 2006.](https://iseclab.org/papers/pixy2.pdf)
+[9] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias analysis
+for static detection of web application vulnerabilities. 2006 Workshop
+on Programming Languages and Analysis for Security, pp. 27–36, USA,
+2006.](https://iseclab.org/papers/pixy2.pdf)
 
-\[10\] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection
-Attacks with Browser-Enforced Embedded Policies. International World
-Wide Web Conferencem, WWW 2007, May
+[10] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection Attacks
+with Browser-Enforced Embedded Policies. International World Wide Web
+Conferencem, WWW 2007, May
 2007.](http://www2007.org/papers/paper595.pdf)
 
-\[11\] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas
+[11] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas
 Schaeck. 1999. Smart Card Application Development Using Java (1st ed.).
 Springer-Verlag New York, Inc., Secaucus, NJ,
 USA.](http://dl.acm.org/citation.cfm?id=555354)
 
-\[12\] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile
+[12] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile
 and Cloud Applications Security. IEEE Conference on Communications and
 Network Security 2013 - Poster
 Session](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6682733)
 
-\[13\] - [Wojciech Mostowski and Erik Poll. 2008. Malicious Code on Java
+[13] - [Wojciech Mostowski and Erik Poll. 2008. Malicious Code on Java
 Card Smartcards: Attacks and Countermeasures. In Proceedings of the 8th
 IFIP WG 8.8/11.2 international conference on Smart Card Research and
 Advanced Applications (CARDIS '08), Gilles Grimaud and François-Xavier
@@ -6401,93 +6363,107 @@ Standaert (Eds.). Springer-Verlag, Berlin, Heidelberg, 1-16.
 DOI=10.1007/978-3-540-85893-5\_1
 http://dx.doi.org/10.1007/978-3-540-85893-5\_1](http://www.cs.ru.nl/E.Poll/papers/cardis08.pdf)
 
-\[14\] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S.
-Miller, and Jasvir Nagra. 2011. Automated Analysis of Security-Critical
+[14] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S. Miller,
+and Jasvir Nagra. 2011. Automated Analysis of Security-Critical
 JavaScript APIs. In Proceedings of the 2011 IEEE Symposium on Security
 and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA,
 363-378. DOI=10.1109/SP.2011.39
 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-\[15\] - ReTHINK Deliverable D2.2 “Data Models and Interface
-Specification of the Framework ”, 30-09-2015
+[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification
+of the Framework ”, 30-09-2015
 
-\[16\] - http://w3c.github.io/webrtc-pc/
+[16] - http://w3c.github.io/webrtc-pc/
 
-\[17\] - http://w3c.github.io/mediacapture-main/
+[17] - http://w3c.github.io/mediacapture-main/
 
-\[18\] - http://www.webrtc.org/
+[18] - http://www.webrtc.org/
 
-\[19\] - http://www.openwebrtc.org/
+[19] - http://www.openwebrtc.org/
 
-\[20\] - http://gstreamer.freedesktop.org/
+[20] - http://gstreamer.freedesktop.org/
 
-\[21\] - https://developers.google.com/v8/
+[21] - https://developers.google.com/v8/
 
-\[22\] - https://nodejs.org/en/
+[22] - https://nodejs.org/en/
 
-\[23\] - https://www.docker.com/
+[23] - https://www.docker.com/
 
-\[24\] - https://www.mozilla.org/en-US/firefox/os/2.0/
+[24] - https://www.mozilla.org/en-US/firefox/os/2.0/
 
-\[25\] - https://wiki.mozilla.org/WebAPI - Firefox Web-API status. (Last
+[25] - https://wiki.mozilla.org/WebAPI - Firefox Web-API status. (Last
 Update March 2015)
 
-\[26\] - https://jitsi.org/Projects/JitsiVideobridge
+[26] - https://jitsi.org/Projects/JitsiVideobridge
 
-\[27\] - http://xmpp.org/
+[27] - http://xmpp.org/
 
-\[28\] - http://www.kurento.org/
+[28] - http://www.kurento.org/
 
-\[29\] - https://janus.conf.meetecho.com/
+[29] - https://janus.conf.meetecho.com/
 
-\[30\] - [Alessandro Amirante, Tobia Castaldi, Lorenzo Miniero, Simon
+[30] - [Alessandro Amirante, Tobia Castaldi, Lorenzo Miniero, Simon
 Pietro Romano. 2015. Performance analysis of the Janus WebRTC gateway.
 In Proceedings of the 1st Workshop on All-Web Real-Time
 Systems](http://dl.acm.org/citation.cfm?id=2749223)
 
-\[31\] - [Janus: a general purpose WebRTC
+[31] - [Janus: a general purpose WebRTC
 gateway](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)
 
-\[32\] - P. Chainho, et Al, FP7 Open Lab Deliverable D4.15, WONDER
+[32] - P. Chainho, et Al, FP7 Open Lab Deliverable D4.15, WONDER
 Assessment Report, April 2014
 
-\[33\] - Paulo Chainho, Kay Haensge, Steffen Druesedow, Michael
+[33] - Paulo Chainho, Kay Haensge, Steffen Druesedow, Michael
 Maruscheke, “Signalling-On-the-fly: SigOfly, WebRTC Interoperability
 testbed in contradictive Deployement Scenarios”, Proc. 18th Int’l Conf.
 Intelligence in Next Generation Networks (ICIN), 2015.
 
-\[34\] - https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly
+[34] - https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly
 
-\[35\] -
+[35] -
 https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html
 
-\[36\] - https://github.com/hypercomm/wonder/tree/master/src/libs
+[36] - https://github.com/hypercomm/wonder/tree/master/src/libs
 
-\[37\] -
+[37] -
 https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
-\[38\] ReTHINK Deliverable D2.1 “Framework Architecture Definition”,
+[38] ReTHINK Deliverable D2.1 “Framework Architecture Definition”,
 31-07-2015.
 
-\[39\] - [Meteor](http://docs.meteor.com/#/full/quickstart)
+[39] - [Meteor](http://docs.meteor.com/#/full/quickstart)
 
-\[40\] - [Cookbook
+[40] - [Cookbook
 MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-view-controller.md)
 
-\[41\] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
+[41] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
 
-\[42\] - [AngularJS vs. Backbone.js vs.
+[42] - [AngularJS vs. Backbone.js vs.
 Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
 
-\[43\] - \[Why Meteor\] (http://www.meteorpedia.com/read/Why\_Meteor)
+[43] - [Why Meteor] (http://www.meteorpedia.com/read/Why\_Meteor)
 
-\[44\] - [Most Popular JavaScript Frameworks
+[44] - [Most Popular JavaScript Frameworks
 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
 
-\[45\] - [Peering through WebRTC with
+[45] - [Peering through WebRTC with
 SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/)
 
-\[46\] - \[Web Components\] (http://www.w3.org/wiki/WebComponents/)
+[46] - [Web Components] (http://www.w3.org/wiki/WebComponents/)
+
+[47] - TURN rfc, https://tools.ietf.org/html/rfc5766
+
+[48] - STUN rfc, https://tools.ietf.org/html/rfc5389
+
+[49] - IETF TRAM, https://datatracker.ietf.org/wg/tram/documents/
+
+[50] - coturn, https://github.com/coturn/coturn
+
+[51] - [AngularJS](https://angularjs.org/)
+
+[52] - [BackboneJS](http://backbonejs.org)
+
+[53] - [StapesJS](https://hay.github.io/stapes/)
 
 (3) WP3 Scope
 

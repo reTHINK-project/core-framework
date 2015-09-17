@@ -18,7 +18,7 @@ var github = new GitHubApi({
 
 github.authenticate({
     type: "oauth",
-    token: "898f8c5907612cf3add250880814679480e39349"
+    token: "85c24218fcfef098b9276ee7f862c4d3657b51f3"
 });
 
 // collect messaging node requirements
@@ -35,17 +35,16 @@ github.issues.repoIssues({
 }, function(err, res) {
 //    console.log(JSON.stringify(res));
 
-    var requirements = "##Messaging Node Requirements##<p></p>";
+    var requirements = "## Messaging Node Requirements\n";
 //    requirements = requirements + "| **Requirement Name** |</br> **Description** | <br/> | --- | --- |";
 
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "**" + res[i].title + "** :</br> " + res[i].body +"<br/><br/>";
+    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
 
     }
 
-    requirements = requirements + "</p>";
 
    var fs = require('fs');
 
@@ -69,13 +68,13 @@ github.issues.repoIssues({
 }, function(err, res) {
 //    console.log(JSON.stringify(res));
 
-    var requirements = "<h2>Runtime Node Requirements</h2><p></p>";
+    var requirements = "## Runtime Node Requirements\n";
 //    requirements = requirements + "| **Requirement Name** |</br> **Description** | <br/> | --- | --- |";
 
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "**" + res[i].title + "** :</br> " + res[i].body +"<br/>";
+    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
     }
 
    var fs = require('fs');
@@ -101,13 +100,13 @@ github.issues.repoIssues({
 }, function(err, res) {
 //    console.log(JSON.stringify(res));
 
-    var requirements = "<h2>Network QoS  Requirements</h2><p></p>";
+    var requirements = "## Network QoS  Requirements\n";
 //    requirements = requirements + "| **Requirement Name** |</br> **Description** | <br/> | --- | --- |";
 
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "**" + res[i].title + "** :</br> " + res[i].body +"<br/>";
+    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
     }
 
    var fs = require('fs');
@@ -133,13 +132,13 @@ github.issues.repoIssues({
 }, function(err, res) {
 //    console.log(JSON.stringify(res));
 
-    var requirements = "<h2>Service Framework  Requirements</h2><p></p>";
+    var requirements = "## Service Framework  Requirements</br></br>\n";
 //    requirements = requirements + "| **Requirement Name** |</br> **Description** | <br/> | --- | --- |";
 
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "**" + res[i].title + "** :</br> " + res[i].body +"<br/>";
+    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
     }
 
    var fs = require('fs');

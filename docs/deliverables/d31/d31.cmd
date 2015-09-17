@@ -85,7 +85,7 @@ introduction\figures.md
    )
 
 pushd ..\deliverables\d31\introduction
-   for /r %%a in (*.jpg) do (
+   for /r %%a in (*.png) do (
       COPY "%%a" "..\%%~nxa"
    )
 
