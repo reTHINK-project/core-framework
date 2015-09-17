@@ -23,7 +23,6 @@ It seems that this feature is dropped in version 3. There is no more methods lik
 This subsection highlights the main building blocks of the Vert.x architecture. 
 (diagram not supplied)
 
-Figure 1. Vert.x Architecture
 
 ### Vert.x Runtime (Java 8 only)
 Vert.x 3.0 is Java 8 only. This is to take advantage of new language features in Java 8, the most important of which is Lambdas which make developing against event based APIs so much nicer than in previous versions of Java. And is also chosen so that it can use Nashorn - the new high performance JavaScript engine that it contains.
