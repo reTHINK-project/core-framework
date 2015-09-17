@@ -2,7 +2,7 @@
 
 An overview of the M2M End-User runtime components and their interaction with the Management Services and Network Services 
 is presented in the diagram below. There are two devices depicted: an existing one and a new one that is entering the reThink environment. The existing one acts as an information producer and the new one acts as an information consumer. The Context Producer App holds reference to multiple hiperties. The first operation is to register the producer hiperties to the Global Registry. The new device will first perform a discovery procedure in order to retrieve the producing hiperties location, pointing to a: 
-* remote Network Service, named here Messaging Service, dedicated for M2M services like storing resources for sensing and actuating (Global M2M Resource Directory)
+* remote Network Service, named here M2M Messaging Service, dedicated for M2M services like storing resources for sensing and actuating (Global M2M Resource Directory)
 * located on the existing device (Local M2M Resource Directory), with the same purpose for sensing and actuating
 
 The flexibility of supporting these two scenarios allows the architecture to support at the same time a:
