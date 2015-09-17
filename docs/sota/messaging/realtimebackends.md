@@ -4,6 +4,9 @@ The realtime backend concept would allow to define and manage interworking with 
 For instance, in IoT domain, nobody is able now to identify every kind of objects that will be available in a close future, the way they will communicate, their need of security, level of authentication … It’s the reason why a solution that still allows in the future to define or modify data structures is the best way to have an evolving solution, well understood and adopted by a large number of developers.
 
 “Real-Time Web Technologies Guide”, from Phil Leggetter gives an overview of the different tools that are currently offered [http://www.leggetter.co.uk/real-time-web-technologies-guide/]. Among them we can site PubNub, Firebase, recently acquired by Google, and many others.
+
+The main difference with other Messaging Nodes is the fact that all the synchronisation layer is managed by the service, so the developper only manages local objects that are immediatly syncrhonized by the library.
+
 * Here is an example of code given by the firebase site:
 
 >// Use YOUR Firebase URL (not the one below)
