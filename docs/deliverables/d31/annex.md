@@ -111,7 +111,7 @@ providers to expose device capabilities and network resources in an open
 and programmable way—to any developer community independent of the
 development platform.
 
-![Figure 67: OMNA Network](OMNA-network.png)
+![Figure 2: OMNA Network](OMNA-network.png)
 
 OMA APIs exposes the network assets that developers need—no matter what
 protocols, platforms or other APIs they use. The Core network assets
@@ -230,7 +230,7 @@ Applications to be executed in Web browser.
 The protocols on the wire are exactly the same so it is compatible with
 aaplications written using the current API.
 
-![Figure 68: WebRTC API evolution](webrtc_API_evolution.png)
+![Figure 3: WebRTC API evolution](webrtc_API_evolution.png)
 
 <h2>
 Differences between ORTC and WebRTC 1.0.
@@ -539,11 +539,11 @@ push messages are the following (see figure below):
 -   The user agent delivers the push message to the specific webapp
     intended to receive it.
 
-![Figure 69: Web Push Architecture](web-push-arch.jpg)
+![Figure 4: Web Push Architecture](web-push-arch.jpg)
 
 The main data flows involved in the PUSH API usage are described below:
 
-![Figure 70: Main flows of events for subscription, push message
+![Figure 5: Main flows of events for subscription, push message
 delivery, and unsubscription](push_sequence_diagram.png)
 
 The W3C Push API is a client API that does not provide any standard for
@@ -681,7 +681,7 @@ request to server that resource. This reduce the load time as the
 browser does not have to send GET request to ask for all the resources
 avoiding RTT delays.
 
-![Figure 71: HTTP/2 Push](http2-push.png)
+![Figure 6: HTTP/2 Push](http2-push.png)
 
 Features of HTTP/2
 ------------------
@@ -714,7 +714,7 @@ transport HTTP message bodies and HEADERS frames are used to communicate
 header fields for a stream. The rest of frames are used for control
 tasks and they are called Control Frames.
 
-![Figure 72: HTTP/2 Framing](http2_framing.png)
+![Figure 7: HTTP/2 Framing](http2_framing.png)
 
 ### Multiplexing
 
@@ -725,7 +725,7 @@ concatenated files, image sprites, and domain sharding. It also resultes
 in lower page load times by eliminating unnecessary latency and
 improving utilization of available network capacity.
 
-![Figure 73: HTTP/2 Streams](http2_streams.png)
+![Figure 8: HTTP/2 Streams](http2_streams.png)
 
 ### Priority
 
@@ -1143,7 +1143,7 @@ belonging to different domains. The Hosting peer uses the Domain Channel
 to exchange signalling messages, while other peers use Transient
 Channels that connect to the Hosting Messaging Server.
 
-![Figure 74 signalling on-the-fly concept](sigofly.png)
+![Figure 9 signalling on-the-fly concept](sigofly.png)
 
 The classic Alice and Bob example is used to explain the SigOfly
 concept. We assume that Alice and Bob are registered in different
@@ -1204,7 +1204,7 @@ in [34](https://github.com/hypercomm/wonder/wiki/Signalling-on-the-fly).
 A JavaScript framework, the WONDER lib, was designed and implemented to
 validate the SigOfly and Data Codec On-the-fly concepts.
 
-![Figure 75 Wonder Library Main Classes](wonderlib.png)
+![Figure 10 Wonder Library Main Classes](wonderlib.png)
 
 Main WONDER library classes are:
 
@@ -1784,7 +1784,7 @@ signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
 
-![Figure 58: WebRTC.org architecture scheme](webrtc-org-arch.png)
+![Figure 11: WebRTC.org architecture scheme](webrtc-org-arch.png)
 
 ### Software stack organization
 
@@ -1891,7 +1891,7 @@ OpenWebRTC is compatible with most video communication services.
 The OpenWebRTC project is free and Open Source with a permissive BSD-2
 license.
 
-![Figure 59 OpenWebRTC Architecture](openwebrtc.png)
+![Figure 12 OpenWebRTC Architecture](openwebrtc.png)
 
 OpenWebRTC is built on top of widely used and powerful [GStreamer
 multimedia framework](http://gstreamer.freedesktop.org/)\[20\].
@@ -1931,7 +1931,7 @@ inline caching, among many others
 
 ### Architecture
 
-![Figure 60 V8 Architecture](v8-arch.png)
+![Figure 13 V8 Architecture](v8-arch.png)
 
 **Handles & Garbage Collection**
 
@@ -1952,7 +1952,7 @@ scope to be a special one (EscapableHandleScope ).
 
 **Contexts**
 
-![Figure 61 V8 Multiple Contexts](v8-arch2.png)
+![Figure 14 V8 Multiple Contexts](v8-arch2.png)
 
 Contexts are different execution environments that allow separate even
 unrelated Javascript applications to run concurrently on v8. In fact,
@@ -2186,7 +2186,7 @@ approaches such as HTML5 applications, JavaScript, a robust privilege
 model, open web APIs to communicate directly with cellphone hardware,
 and application marketplace.
 
-![Figure 63 Firefox OS Architecture](fxos-arch.png)
+![Figure 15 Firefox OS Architecture](fxos-arch.png)
 
 The initial development work involves three major software layers:
 
@@ -2284,7 +2284,7 @@ component called Jigasi. There is an OpenSource WebRTC JavaScript
 application, called Jitsi Meet, that uses Jitsi Videobridge to provide
 high quality, scalable video conferences.
 
-![Figure 64 Jitsi Videobridge Architecture](jitsi_arch.png)
+![Figure 16 Jitsi Videobridge Architecture](jitsi_arch.png)
 
 ### Installation Procedures
 
@@ -2313,7 +2313,7 @@ https://jitsi.org/Projects/JitsiVideobridge \* Run videobridge with: jvb
 --host=shumybridge --secret=xpassword \* You should see an entry in XMPP
 components like:
 
-![Figure 76: Video Bridge Component](openfire_videobridge.png)
+![Figure 17: Video Bridge Component](openfire_videobridge.png)
 
 **Jicofo Session** \* Clone from "git clone
 https://github.com/jitsi/jicofo.git" \* Ant build with "ant
@@ -2326,7 +2326,7 @@ linux "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"
 \* Run videobridge with: jicofo --host=shumybridge --port=5275
 --secret=xpassword \* You should see an entry in XMPP components like:
 
-![Figure 77: OpenFire VideoBridge and Jicofo
+![Figure 18: OpenFire VideoBridge and Jicofo
 Components](openfire_video_jicofo.png)
 
 (1) OpenFire VideoBridge and Jicofo Components
@@ -2577,7 +2577,7 @@ longer needed.
 
 ### Architecture
 
-![Figure 62 Docker Architecture](docker-arch.png)
+![Figure 19 Docker Architecture](docker-arch.png)
 
 Docker uses a client-server architecture. The Docker client talks to the
 Docker daemon, which does the heavy lifting of building, running, and
@@ -2959,7 +2959,7 @@ some useful examples. There is also a Plugin API which offers potential
 plugin developers an overview of how these plugins are implemented and
 also instructions of how to develop a new one.
 
-![Figure 66 Janus Gateway architecture](janus-arch.png)
+![Figure 20 Janus Gateway architecture](janus-arch.png)
 
 ### Janus Gateway and runtime requirements
 
@@ -3044,7 +3044,7 @@ It can be used to handle different type of communications applications :
 Kurento is mainly composed of the two elements : - Kurento media server
 - Kurento Application
 
-![Figure 65: Kurento Architecture](Architecture-Kurento.png)
+![Figure 21: Kurento Architecture](Architecture-Kurento.png)
 
 Application developers can use Kurento Clients or Kurento API directly
 for creating their multimedia enabled applications. Developpers can use
@@ -3930,7 +3930,7 @@ technology for the **Messaging Node**
 
 Following picture shows the main data flow in a matrix architecture.
 
-![Figure 79: Main data flow in a matrix
+![Figure @sota-messaging-matrix-dataflows: Main data flow in a matrix
 architecture](matrix-dataflows.png)
 
 The core components are the Home Servers (HS) which can federate to sync
@@ -4112,7 +4112,7 @@ for the Messaging Node
 The core component is the **Broker** that routes the messages from the
 **producers** to the **consumers** as depicted in the following image.
 
-![Figure 80: RabbitMQ Architecture2](rabbitmq_arch2.png)
+![Figure 22: RabbitMQ Architecture2](rabbitmq_arch2.png)
 
 The **Broker** has two main componentes: \* **Exchange**: accepts and
 routes messages from producer to clients based on the message
@@ -4123,7 +4123,7 @@ information such as keys, bindings, filtering or broadcast.
 Message routing can be based on topic / wild-card, as shown in the
 following image.
 
-![Figure 81: RabbitMQ Architecture](rabbitmq_arch.png)
+![Figure 23: RabbitMQ Architecture](rabbitmq_arch.png)
 
 Image Source:
 [www.rabbitmq.com](https://www.rabbitmq.com/getstarted.html)
@@ -4293,7 +4293,7 @@ It is used as a thin layer between the application and transport layers.
 The following figure represents the six basic types of communication
 patterns that ZeroMQ supports.
 
-![Figure 82: ZeroMQ types of communication
+![Figure 24: ZeroMQ types of communication
 patterns](zeromq_basic_patterns.png)
 
 Image Source:
@@ -4327,7 +4327,7 @@ These can be used as "fabric" to make very powerful architectures. The
 next image shows an example of this modularity. [A pub/sub multi-cluster
 Architecture](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
 
-![Figure 83: ZeroMQ Clusters](zeromq_clusters_example.png)
+![Figure 25: ZeroMQ Clusters](zeromq_clusters_example.png)
 
 Image Source:
 [http://zguide.zeromq.org](http://zguide.zeromq.org/page:all#Scaling-to-Multiple-Clusters)
@@ -4503,7 +4503,7 @@ sorted sets, bitmaps and hyperloglogs.
 -   The main Redis architecture can be resumed as a in memory key-value
     data-store for service decoupling.
 
-![Figure 84: Redis architecture](redis_as_cache.png)
+![Figure 26: Redis architecture](redis_as_cache.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4511,7 +4511,7 @@ Image Source:
 -   Another possibility is a PubSub model with message filtering based
     on prefix matching.
 
-![Figure 85: PubSub model](redis_pubsub.png)
+![Figure 27: PubSub model](redis_pubsub.png)
 
 Image Source:
 [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/python-realtime.html)
@@ -4680,7 +4680,7 @@ addressed using a JabberID (JID). It has the form :
 username@domain/resource where domain is the domain name of the XMPP
 server, and username identifies an account on that server.
 
-![Figure 86: XMPP Architecture](xmpp_arch.png)
+![Figure 28: XMPP Architecture](xmpp_arch.png)
 
 Image Source:
 [https://el-tramo.be](https://el-tramo.be/documents/beautiful-xmpp-testing/)
@@ -4688,7 +4688,7 @@ Image Source:
 Server can have adapters/gateways to be able to talk to other protocols
 such as those used by ICQ, AIM, Yahoo and others.
 
-![Figure 87: XMPP Protocols](xmpp_protocols.png)
+![Figure 29: XMPP Protocols](xmpp_protocols.png)
 
 Image Source:
 [https://en.wikipedia.org](https://en.wikipedia.org/wiki/XMPP)
@@ -4699,7 +4699,7 @@ Jingle](http://xmpp.org/extensions/xep-0166.html) is a protocol
 extension for initiating and managing peer-to-peer media sessions
 between two XMPP entities.
 
-![Figure 88: XMPP Jingle](xmpp_jingle.png)
+![Figure 30: XMPP Jingle](xmpp_jingle.png)
 
 Image Source:
 [http://xmppjingle.blogspot.pt](http://xmppjingle.blogspot.pt/2010/09/jingle-nodes-proxy-and-eu-surveillance.html)
@@ -4912,7 +4912,7 @@ multiple topics or use a wildcard matching based subscription.
 MQTT supports three quality of service levels, "Fire and forget",
 "delivered at least once" (QoS1) and "delivered exactly once" (QoS2).
 
-![Figure 89: MQTT Architecture](mqtt_arch.jpg)
+![Figure 31: MQTT Architecture](mqtt_arch.jpg)
 
 Image Source:
 [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
@@ -5343,7 +5343,7 @@ working on a fully-distributed end-to-end privacy-enabled solution,
 operating on top of the public-key routing method explained above
 combined with PSYC messaging logic.
 
-![Figure 90: PSYC Message](psyc_message.png)
+![Figure 32: PSYC Message](psyc_message.png)
 
 ### Requirements Analysis
 
@@ -5496,7 +5496,7 @@ The core is built in C and C++. It combines Google’s V8 JavaScript
 engine with Node’s Libuv library and protocol bindings including sockets
 and HTTP.
 
-![Figure 91: NodeJS Architecture](Archi-NodeJs.png)
+![Figure 33: NodeJS Architecture](Archi-NodeJs.png)
 
 More information are avaialble in this document :
 http://mcgill-csus.github.io/student\_projects/Submission2.pdf
@@ -5665,7 +5665,7 @@ module can be shared
 This subsection highlights the main building blocks of the Vert.x
 architecture.
 
-![Figure 92: Vertx Architecture Diagram](vertx-architecture-diagram.png)
+![Figure 34: Vertx Architecture Diagram](vertx-architecture-diagram.png)
 
 Figure 1. Vert.x Architecture
 
@@ -6031,7 +6031,7 @@ It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on Javascript and a client side
 framework. It is supported by multiple browsers.
 
-![Figure 93: AngularJS Framework](mvc_angular.jpg)
+![Figure 35: AngularJS Framework](mvc_angular.png)
 
 **Main Features**
 
@@ -6156,7 +6156,7 @@ over a RESTful JSON interface.
 
 The model looks as follows:
 
-![Figure 94: BackboneJS
+![Figure 36: BackboneJS
 Framework](backbone-MV.png "image from http://backbonejs.org")
 
 ##### Model
@@ -6187,7 +6187,7 @@ and react or re-render themselves appropriately.
 
 ##### Collections
 
-![Figure 95: Backbone Collections](backbone-Collections.png)
+![Figure 37: Backbone Collections](backbone-Collections.png)
 
 A Collection helps you deal with a group of related models, handling the
 loading and saving of new models to the server and providing helper
@@ -6261,7 +6261,7 @@ Analysis against **Service Framework** Requirements
 Javascript plataform, offering a complete full-stack framework for
 delivering web and mobile apps;
 
-![Figure 78 Meteor Plataform
+![Figure 38 Meteor Plataform
 Overview](meteor-platform.png "image from https://www.meteor.com/features")
 
 **Main Features**
@@ -6479,193 +6479,79 @@ a short-time.
     reduce the overhead in the applications which will help to reduce
     the load time.
 
-(2) WP3 Scope
+(2) OMNA Network
 
-(3) Chromium sandbox scheme
+(3) WebRTC API evolution
 
-(4) The architecture of a Google Chrome extension
+(4) Web Push Architecture
 
-(5) Scheme of a persistent XSS attack
-
-(6) Scheme of a non-persistent XSS attack
-
-(7) Java Smart Card scheme
-
-(8) CoSE architecture
-
-(9) Service framework middle layer
-
-(10) Sippo WAC reference architecture
-
-(11) Sippo interfaces and APIs
-
-(12) Sippo.js abstraction layer
-
-(13) Sippo services and backends
-
-(14) Sippo WebRTC applications stack
-
-(15) Runtime High Level Architecture
-
-(16) Runtime High Level Architecture with Unstrusted Hyperties
-
-(17) Runtime High Level Architecture with Policy Enforcer
-
-(18) Reporter-Observer Communication Pattern
-
-(19) Core Runtime Architecture
-
-(20) Vulnerability matrix for a dummy platform
-
-(21) Stack
-
-(22) Browser
-
-(23) Security Browser
-
-(24) Application platform
-
-(25) Security Application platform
-
-(26) Deploy Core Runtime Components in the Native Runtime
-
-(27) Deploy Protocol Stub
-
-(28) Deploy Hyperty (part1)
-
-(29) Deploy Hyperty (part2)
-
-(30) Register Hyperty
-
-(31) Message Routing in Message BUS
-
-(32) Intra-domain Local Communication
-
-(33) Intra-domain Remote Communication
-
-(34) Inter-domain Local Communication
-
-(35) Inter-domain Remote Communication
-
-(36) User registration
-
-(37) Prepare Discovery
-
-(38) Use Discovery
-
-(39) Domain Login
-
-(40) Associate User Identity to Hyperty Instance
-
-(41) User identity assertion sequence diagram
-
-(42) Alice invites Bob for a communication
-
-(43) Bob receives invitation
-
-(44) Aknowledged that Bob received the invitation
-
-(45) notification update
-
-(46) Bob gatheres WebRTC resources
-
-(47) Synchronization of Alice's Data object
-
-(48) Runtime Main Procedures for M2M Communication
-
-(49) M2M Device Bootstrap
-
-(50) Context Discovery in M2M Intradomain Communication
-
-(51) Communication 4 pub sub 1
-
-(52) Communication 4 pub sub 2
-
-(53) Communication 4 pub sub 3
-
-(54) Runtime browser implementation
-
-(55) Crosswalk Architecture
-
-(56) Cordova functionnal schema
-
-(57) Messaging Node Architecture
-
-(58) WebRTC.org architecture scheme
-
-(59) OpenWebRTC Architecture
-
-(60) V8 Architecture
-
-(61) V8 Multiple Contexts
-
-(62) Docker Architecture
-
-(63) Firefox OS Architecture
-
-(64) Jitsi Videobridge Architecture
-
-(65) Kurento Architecture
-
-(66) Janus Gateway architecture
-
-(67) OMNA Network
-
-(68) WebRTC API evolution
-
-(69) Web Push Architecture
-
-(70) Main flows of events for subscription, push message delivery, and
+(5) Main flows of events for subscription, push message delivery, and
     unsubscription
 
-(71) HTTP/2 Push
+(6) HTTP/2 Push
 
-(72) HTTP/2 Framing
+(7) HTTP/2 Framing
 
-(73) HTTP/2 Streams
+(8) HTTP/2 Streams
 
-(74) signalling on-the-fly concept
+(9) signalling on-the-fly concept
 
-(75) Wonder Library Main Classes
+(10) Wonder Library Main Classes
 
-(76) Video Bridge Component
+(11) WebRTC.org architecture scheme
 
-(77) OpenFire VideoBridge and Jicofo Components
+(12) OpenWebRTC Architecture
 
-(78) Meteor Plataform Overview
+(13) V8 Architecture
 
-(79) Main data flow in a matrix architecture
+(14) V8 Multiple Contexts
 
-(80) RabbitMQ Architecture2
+(15) Firefox OS Architecture
 
-(81) RabbitMQ Architecture
+(16) Jitsi Videobridge Architecture
 
-(82) ZeroMQ types of communication patterns
+(17) Video Bridge Component
 
-(83) ZeroMQ Clusters
+(18) OpenFire VideoBridge and Jicofo Components
 
-(84) Redis architecture
+(19) Docker Architecture
 
-(85) PubSub model
+(20) Janus Gateway architecture
 
-(86) XMPP Architecture
+(21) Kurento Architecture
 
-(87) XMPP Protocols
+(22) RabbitMQ Architecture2
 
-(88) XMPP Jingle
+(23) RabbitMQ Architecture
 
-(89) MQTT Architecture
+(24) ZeroMQ types of communication patterns
 
-(90) PSYC Message
+(25) ZeroMQ Clusters
 
-(91) NodeJS Architecture
+(26) Redis architecture
 
-(92) Vertx Architecture Diagram
+(27) PubSub model
 
-(93) AngularJS Framework
+(28) XMPP Architecture
 
-(94) BackboneJS Framework
+(29) XMPP Protocols
 
-(95) Backbone Collections
+(30) XMPP Jingle
+
+(31) MQTT Architecture
+
+(32) PSYC Message
+
+(33) NodeJS Architecture
+
+(34) Vertx Architecture Diagram
+
+(35) AngularJS Framework
+
+(36) BackboneJS Framework
+
+(37) Backbone Collections
+
+(38) Meteor Plataform Overview
 
 
