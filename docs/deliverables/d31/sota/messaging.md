@@ -3,19 +3,19 @@
 In order to evaluate the options to implement the messaging service, different existing solutions have been considered: Matrix, MQTT, Nodejs, Psyc, RabbitMQ, realtime backends (also knwon as noBackends or Backend-as-a-Service), Redis, Vertx, XMPP and ZeroMQ.
 
 The following criteria are seen as particularly important for the choice of a solution for messaging node implementation:
-•	it should support Protocol on-the-fly, to inter-operate with other Messaging Nodes or Back-end servers without having the need to standardize the protocol to be used.
-•	it should support different Encrypted Messaging Transport Protocols including: Encrypted WebSockets, HTTPS Streaming, HTTPS Long-Polling and HTTPS REST
-•	It must be possible to cache submitted messages
-•	it has to support logging of routed messages and any other event (e.g. connection events) in remote log servers
-•	it must support message delivery reliability. Delivery errors must be returned to clients
-•	If required, Messaging Node must support worldwide scale deployments
-•	it should be tolerant to unstable connections (e.g. short disconnections)
-•	It should be possible to get events with information about Messaging node client’s connection and disconnection. Such feature is useful for connection status purposes.
-•	Messaging Node must support very low message delivery latency
-•	Messaging Node must be deployable in the most used Virtual Machines
-•	it should require minimal computing resources in order to be deployable in constrained computing environments
-•	Messaging Node must support external authentication and Authorisation
-•	Messaging Node must support multiple message oriented communication patterns including: pub/sub, broadcast, one to one.
+- it should support Protocol on-the-fly, to inter-operate with other Messaging Nodes or Back-end servers without having the need to standardize the protocol to be used.
+- it should support different Encrypted Messaging Transport Protocols including: Encrypted WebSockets, HTTPS Streaming, HTTPS Long-Polling and HTTPS REST
+- It must be possible to cache submitted messages
+- it has to support logging of routed messages and any other event (e.g. connection events) in remote log servers
+- it must support message delivery reliability. Delivery errors must be returned to clients
+- If required, Messaging Node must support worldwide scale deployments
+- it should be tolerant to unstable connections (e.g. short disconnections)
+- It should be possible to get events with information about Messaging node client’s connection and disconnection. Such feature is useful for connection status purposes.
+- Messaging Node must support very low message delivery latency
+- Messaging Node must be deployable in the most used Virtual Machines
+- it should require minimal computing resources in order to be deployable in constrained computing environments
+- Messaging Node must support external authentication and Authorisation
+- Messaging Node must support multiple message oriented communication patterns including: pub/sub, broadcast, one to one.
 
 The end goal of Matrix is to be a ubiquitous messaging layer for synchronising arbitrary data between sets of people, devices and services. Matrix doesn’t support external authentication and authorisation. It also needs to adapt support of messaging transport protocols by wrapping Event/messages in REST messages. 
 
