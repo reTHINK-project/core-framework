@@ -52,10 +52,4 @@ Service Workers are still an experimental technology only supported in Desktop C
 
 Service Workers provides features that can facilitate the development of some Runtime features including Event BUS, ProtOfly engine, Policy Engine. Its usage to support the Hyperty instance itself should also be evaluated. However it seems this technology is only available in Browsers and not in server side javascript runtime like node.js.
 
-#### References
 
-* http://www.w3.org/TR/workers/
-* https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
-* https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
-* http://www.w3.org/TR/service-workers/
-* https://jakearchibald.github.io/isserviceworkerready/

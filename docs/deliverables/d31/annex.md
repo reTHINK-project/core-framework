@@ -1,98 +1,8 @@
 Standards SOTA
 ==============
 
-<h1>
-IETF Rtcweb Working Group
-</h1>
-<h2>
-Why this was created in the IETF?
-</h2>
-    There are a number of proprietary implementations that provide direct interactive rich communication using audio, video, collaboration,
-    games, etc. between two peers' web-browsers. These are not interoperable, as they require non-standard extensions or plugins to
-    work.  There is a desire to standardize the basis for such communication so that interoperable communication can be established
-    between any compatible browsers. The goal is to enable innovation on top of a set of basic components.  One core component is to enable
-    real-time media like audio and video, a second is to enable data transfer directly between clients.
-
-    This work will be done in collaboration with the W3C.  The IETF WG will produce architecture and requirements for selection and profiling of the on the wire protocols. The architecture needs to be coordinated with W3C.  The IETF WG work will identify state information and events that need to be exposed in the APIs as input to W3C. The W3C will be responsible for defining APIs to ensure that application developers can control the components. We will reach out to the developer community for consultation and early feedback on implementation.
-
-    The security and privacy goals and requirements will be developed by the WG. The security model needs to be coordinated with the W3C. The work will also consider where support for extensibility is needed. RTP functionalities, media formats, security algorithms are example of things that commonly need extensions, additions or replacement, and thus some support for negotiation between clients is required.
-
-<h2>
-Task of the Rtcweb Working Group
-</h2>
-    The WG will perform the following work:
-
-<ol>
-<li>
-Define the communication model in detail, including how session
-management is to occur within the model.
-</li>
-<li>
-Define a security model that describes the security and privacy goals
-and specifies the security protocol mechanisms necessary to achieve
-those goals.
-</li>
-<li>
-Define the solution - protocols and API requirements - for firewall and
-NAT traversal.
-</li>
-<li>
-Define which media functions and extensions shall be supported in the
-client and their usage for real-time media, including media adaptation
-to ensure congestion safe usage.
-</li>
-<li>
-Define what functionalities in the solution, such as media codecs,
-security algorithms, etc., can be extended and how the extensibility
-mechanisms works.
-</li>
-<li>
-Define a set of media formats that must or should be supported by a
-client to improve interoperability.
-</li>
-<li>
-Define how non media data is transported between clients in a secure and
-congestion safe way.
-</li>
-<li>
-Provide W3C input for the APIs that comes from the communication model
-and the selected components and protocols that are part of the solution.
-<li>
-The group will consider options for interworking with legacy VoIP
-equipment.
-</li>
-</ol>
-    This work will be done primarily by using already defined protocols or functionalities. If there is identification of missing protocols or
-    functionalities, such work can be requested to be done in another working group with a suitable charter or by requests for chartering it
-    in this WG or another WG. The following topics will be out of scope for the initial phase of the WG: RTSP, RSVP, NSIS, Location services,    Resource Priority, and IM & Presence specific features.
-
-    The products of the working group will support security and keying as required by BCP 61 and be defined for IPv4, IPv6, and dual stack deployments. The Working Group will consider the possibility of defining a browser component that implements an existing session negotiation and management protocol. The working group cannot explicitly rule out the possibility of adopting encumbered technologies; however, the working group will try to avoid encumbered technologies that require royalties or other encumbrances that would prevent such technologies from being easy to use in web browsers.
-
-<h2>
-Goals and Milestones
-</h2>
-Feb 2014 - Complete Overview (and hold for dependency resolution)
-(draft-ietf-rtcweb-overview) Done - Send Use Cases document
-(draft-ietf-rtcweb-use-cases-and- requirements) to IESG for publication
-as Informational Mar 2014 - Send Security and Privacy Problem Statement
-(draft-ietf- rtcweb-security) to IESG for publication as Informational
-Apr 2014 - Send Media Transport (draft-ietf-rtcweb-rtp-usage) to IESG
-for publication as Proposed Standard Apr 2014 - Audio Processing and
-Audio Codecs (draft-ietf-rtcweb-audio) to IESG for publication as
-Proposed Standard May 2014 - Send Data Stream Transport for non-media
-data (draft-ietf- rtcweb-data-channel) to IESG for publication as
-Proposed Standard Jun 2014 - Send Security Solution
-(draft-ietf-rtcweb-security-arch) to IESG for publication as Proposed
-Standard Jun 2014 - Send Specification of Transport Protocols and their
-NAT Traversal to IESG for publication as Proposed Standard Sep 2014 -
-Send Signalling Negotiation and NAT Traversal (draft-ietf- rtcweb-jsep)
-to IESG for publication as Proposed Standard Sep 2014 - Send STUN Usage
-for Consent Freshness to IESG for publication as proposed standard Dec
-2014 - Video Processing and Video Codecs (draft-ietf-rtcweb-video) to
-IESG for publication as Proposed StandardVideo Processing and Video
-Codecs (draft-ietf-rtcweb-video) to IESG for publication as Proposed
-Standard Dec 2014 - Send Overview (after dependencies are ready) to IESG
-for publication as Applicability Statement
+Open Mobile Alliance (OMA)
+--------------------------
 
 ### Overview
 
@@ -164,8 +74,8 @@ application layer communication protocol between a LWM2M Server and a
 LWM2M Client, which is located in a LWM2M Device. The OMA Lightweight
 M2M enabler includes device management and service enablement for LWM2M
 Devices. It is normally used with CoAP. This protocol can be used in
-reTHINK for several components such as the Catalogue as porposed in
-[Delivery 2 from WP2].
+reTHINK for several components such as the Catalogue as proposed in
+[15].
 
 ### W3C WebRTC API
 
@@ -218,12 +128,11 @@ The WebRTC is going to be intensively used in reTHINK to implement
 hyperties for Human-to-Human scenarios and also M2M scenarios where
 WebRTC Datachannel is used.
 
-<h1>
 ORTC
-</h1>
-<h2>
-Introduction
-</h2>
+----
+
+### Introduction
+
 ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC
 Applications to be executed in Web browser.
 
@@ -232,9 +141,8 @@ aaplications written using the current API.
 
 ![Figure 3: WebRTC API evolution](webrtc_API_evolution.png)
 
-<h2>
-Differences between ORTC and WebRTC 1.0.
-</h2>
+### Differences between ORTC and WebRTC 1.0.
+
 <ol>
 Those are the main differences between ORTC and WebRTC 1.0:
 <li>
@@ -254,9 +162,8 @@ SDP is not the mandatory format to exchange information between
 browsers.
 </li>
 </ol>
-<h2>
-Advantages of ORTC over WebRTC 1.0.
-</h2>
+### Advantages of ORTC over WebRTC 1.0
+
 An example of WebRTC 1.0 limitation it is that is not possible to modify
 parameters on individual media tracks since the SDPs must contain all
 the mediatracks of a mediastream. ORTC includes the RTCRtpSender object
@@ -272,9 +179,8 @@ this is not nececesary.
 Although RTCRtpSender was not included in the WebRTC 1.0 definition,
 this element was planned to be supported by Chrome from version 39.
 
-<h2>
-Compatibility between ORTC and WebRTC 1.0.
-</h2>
+#### Compatibility between ORTC and WebRTC 1.0.
+
 Although SDP is not mandatory but WebRTC 1.0 applications would make it
 compatible thanks to Javasrcipts shims. All the use cases that ORTC
 would enable are already possible but they are more complex to implement
@@ -282,12 +188,14 @@ as they require manual SDP manipulations which are error-prone and may
 require several Offer/Answer SDP exchanges to update the multimedia
 sessions.
 
-<h2>
-ORTC implementations.
-</h2>
+### ORTC implementations
+
 ORTC is the WebRTC API which Microsoft will implement in Internet
 Explorer and Skype will be supported in the Web Browser supporting ORTC
 along as other browsers which supports WebRTC 1.0.
+
+W3C SysApps
+-----------
 
 The W3C SysApps working group was originally chartered to provide a
 runtime and security model however, it has not been possible to reach
@@ -349,13 +257,6 @@ much support by the industry. However, [Chrome Packaged App
 lifecycle](https://developer.chrome.com/apps/app_lifecycle) looks
 similar. [Firefox Add-ons](https://developer.mozilla.org/en-US/Add-ons)
 should also support some kind of App life-cycle.
-
-#### References
-
--   http://www.w3.org/2012/sysapps/app-lifecycle/
--   https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
--   https://www.w3.org/community/trustperms/
--   https://whatwg.org/
 
 ### Service Workers
 
@@ -438,14 +339,6 @@ Engine. Its usage to support the Hyperty instance itself should also be
 evaluated. However it seems this technology is only available in
 Browsers and not in server side javascript runtime like node.js.
 
-#### References
-
--   http://www.w3.org/TR/workers/
--   https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker\_API
--   https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
--   http://www.w3.org/TR/service-workers/
--   https://jakearchibald.github.io/isserviceworkerready/
-
 ### Content Security Policy Level 2
 
 Content Security Policy (CSP) is an added layer of security that helps
@@ -505,12 +398,6 @@ list of directives.
 In a preliminary analysis CSP seems too limited to be applied for the
 runtime policy engine but it may be useful to improve security in the
 protOfly engine.
-
-#### References
-
--   http://www.w3.org/TR/CSP2/
--   https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing\_Content\_Security\_Policy
--   http://en.wikipedia.org/wiki/Content\_Security\_Policy
 
 ### W3C Push API
 
@@ -583,10 +470,9 @@ essential feature that must be supported according to these standards.
 -   http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include\_text=1
 
 HTTP/2
-======
+------
 
-Introduction
-------------
+### Introduction
 
 HTTP/1.1 has served the Web for more than 15 years, but its age is
 starting to show. Web application has evolved a lot from the beginning
@@ -622,8 +508,7 @@ To take advantage of HTTP/2 new features a new transport protocol, QUIC,
 has been designed. Both protocols combined will be extensily used in
 Internet in the next years.
 
-Main differences from HTTP1.1
------------------------------
+### Main differences from HTTP1.1
 
   HTTP/1.1                              HTTP/2
   ------------------------------------- -------------------------------------------------------------------
@@ -633,7 +518,7 @@ Main differences from HTTP1.1
   only content compression              header compression
   not proactive push                    allows servers to “push” responses proactively into client caches
 
-### Binary
+#### Binary
 
 HTTP/2 is a binary protocol, it means that no human-understable ASCII
 chars are sent on the wire. The main advantages of being binary are: \*
@@ -645,7 +530,7 @@ HTTP/1.x with whitespace handling, capitalization, line endings, blank
 links... HTTP/1.1 defines five different ways to parse a message; in
 HTTP/2, there’s just one code path.
 
-### Fully multiplexed
+#### Fully multiplexed
 
 HTTP/1.x suffers “head-of-line blocking” only one request can be
 outstanding on a connection at a time. Pipelining of request is not a
@@ -653,7 +538,7 @@ solution since a large or slow response will block others behind it.
 Additionally, it has been found very difficult to deploy, because many
 intermediaries and servers do not process it correctly.
 
-### One connection for parallelism
+#### One connection for parallelism
 
 With HTTP/1, browsers open between 4 and 8 connections per origin. Since
 many sites use multiple origins, this could mean that a single page load
@@ -665,7 +550,7 @@ will overflow, causing a congestion event and retransmits. Additionally,
 using so many connections unfairly monopolizes network resources,
 “stealing” them from other, better-behaved applications (e.g., VoIP).
 
-### Header compression
+#### Header compression
 
 HTTP/1 supported compression for content but not for headers. Assuming
 an average of 80 assets per page and each request has 1400 bytes of
@@ -674,7 +559,7 @@ headers, it takes at least 7-8 round trips just to get the headers out
 them out of the client. Headers add a lot of overhead traffic and
 increase latency.
 
-### Server push
+#### Server push
 
 In HTTP/2 the server can push resources to the client before receiving a
 request to server that resource. This reduce the load time as the
@@ -683,10 +568,9 @@ avoiding RTT delays.
 
 ![Figure 6: HTTP/2 Push](http2-push.png)
 
-Features of HTTP/2
-------------------
+### Features of HTTP/2
 
-### HTTP/2 key concepts
+#### HTTP/2 key concepts
 
 1.  All communication is performed over a single TCP connection that can
     carry any number of bidirectional streams.
@@ -701,7 +585,7 @@ Features of HTTP/2
     reassembled via the embedded stream identifier in the header of each
     frame.
 
-### Framing
+#### Framing
 
 The frame is the smallest unit of communication in HTTP/2, each
 containing a frame header, which at a minimum identifies the stream to
@@ -716,7 +600,7 @@ tasks and they are called Control Frames.
 
 ![Figure 7: HTTP/2 Framing](http2_framing.png)
 
-### Multiplexing
+#### Multiplexing
 
 HTTP/2 interleave multiple requests and responses in parallel without
 blocking any one using a single connection to deliver and receive them.
@@ -727,7 +611,7 @@ improving utilization of available network capacity.
 
 ![Figure 8: HTTP/2 Streams](http2_streams.png)
 
-### Priority
+#### Priority
 
 Not all the elements of a Web page are equally important for the
 functionality and visualization. An user can start consuming the content
@@ -735,7 +619,7 @@ before loading all the elements. HTTP/2 allows to set different
 priorities to each stream and priority can be specified by the client
 side and it can be changed in runtime.
 
-### Flow control
+#### Flow control
 
 HTTP/2 applies flow control mechanism to the different streams. The flow
 control is directional with overall control provided by the receiver and
@@ -745,8 +629,7 @@ the traffic will transported in DATA frames) so control frames are not
 blocked by flow control. On the other side, flow control cannot be
 disabled according to the HTTP/2 RFC draft.
 
-HTTP/2 encryption
------------------
+### HTTP/2 encryption
 
 The RFC allows HTTP/2 to be sent over unencrypted transport protocols
 like TCP. However Google and Mozilla have officially said that HTTP/2 is
@@ -756,8 +639,7 @@ server. This has an impact in ReTHINK project as if a web site is served
 over TLS or a secure protocol, the rest of elements of that site must be
 served using an encrypted protocol.
 
-Why using for HTTP/2 in ReTHINK project.
-----------------------------------------
+### Why using for HTTP/2 in ReTHINK project.
 
 HTTP/2 is aimed to make the Web more efficient and responsive and it
 advantages are more notable for web sites. However the following points
@@ -777,8 +659,7 @@ All the available implementations of HTTP/2 are gathered in the official
 HTTP/2 WG Github repository:
 https://github.com/http2/http2-spec/wiki/Implementations
 
-Websocket over HTTP/2
----------------------
+### Websocket over HTTP/2
 
 The WebSocket protocol enables two-way communication between a client
 running untrusted code in a controlled environment to a remote host that
@@ -795,10 +676,9 @@ communication over an existing HTTP connection without the need of
 creating additional socket connections.
 
 QUIC (Quick UDP Internet Connection)
-====================================
+------------------------------------
 
-Introduction
-------------
+### Introduction
 
 Internet has evolved a lot since the first version of TCP was designed
 40 years ago. Many RFCs have added functionality to TCP since then and
@@ -820,8 +700,7 @@ Head-of-Line blocking from hapenning. It means that a packet loss which
 affect to a stream will not imply a delay in the rest of streams as it
 would happen if several streams are multiplexed over a TCP connection.
 
-Transport layer replacement
----------------------------
+### Transport layer replacement
 
 Google started the definition, implementation and real filed testing of
 a new transport protocol called QUIC in 2013. QUIC stands for "Quick UDP
@@ -851,7 +730,7 @@ indistinctly. \*TCP requires an extra protocol on top of it (TLS) to
 provide encryptin and authentication. It adds an overhead and delays in
 the connection setup.
 
-### Why not to use SCTP for this?
+#### Why not to use SCTP for this?
 
 SCTP can be considered as an alternative for TCP. It has two main
 features which could make it an atarctive choice:\
@@ -872,8 +751,7 @@ QUIC developer to design a new alternative:
 In contrast the goal of QUIC is to have to perform a connection
 establishment with zero RTT overhead.
 
-QUIC current use
-----------------
+### QUIC current use
 
 QUIC is currently being used by Chrome to interact with Google Apps and
 it is going to be used by more services in short-term. HTTP/2 is going
@@ -883,8 +761,7 @@ Facebook. HTTP/2 performs much better over QUIC since it allows to
 leverage it stream-based designed so QUIC isvery likely to be adopted by
 the IETF in short-term.
 
-QUIC main features
-------------------
+### QUIC main features
 
 QUIC can be deployed in today's internet, actually it is been used in
 many real deployments without having to apply any modification in any
@@ -913,7 +790,7 @@ layer 4 elements (IPs and ports). This fits very well in mobile
 scenarios where the IP of the clients may change due to handover
 mechanism.
 
-### Is it a good choice to use UDP for QUIC?
+#### Is it a good choice to use UDP for QUIC?
 
 QUIC can be considered as an intelligent layer over UDP which provides
 enhanced features. UDP is intensively used by VoIP and gamers for years
@@ -924,8 +801,7 @@ over UDP. It is also necesary to consider NAT unbinding which does not
 happen to TCP. This problem has been addressed internally by QUIC
 designers through the use of keepalives packets.
 
-Applicability to reThink project
---------------------------------
+### Applicability to reThink project
 
 Including the use of QUIC as a requirement or a recommendation could
 help to support more reliably mobility scenarios where the End-User IP
@@ -941,7 +817,7 @@ re-negotiation when a media sessions is ongoing, so we can't leverage
 QUIC features for media. However QUIC would be helpful in all the
 scenarios at signaling level.
 
-### Existing QUIC implementations
+#### Existing QUIC implementations
 
 The QUIC reference library is libquic
 (https://github.com/devsisters/libquic). It has been mainly developed by
@@ -959,8 +835,7 @@ http://src.chromium.org/viewvc/chrome/trunk/src/net/tools/quic/
 In all the imeplementations QUIC is used with SPDY and HTTP/2 so its use
 separated from those protocols has to be investigated.
 
-Drawbacks of using QUIC as transport protocol
----------------------------------------------
+### Drawbacks of using QUIC as transport protocol
 
 QUIC is a very new protocol so it is still not widely used. It means
 that many existing systems and projects does still not support it so
@@ -973,111 +848,6 @@ IETF. This is the official definition document mantained by Google:
 https://docs.google.com/document/d/1RNHkx\_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/edit
 Any implementation made today may not be completely compliant with the
 final protocol.
-
-The reTHINK project describes a framework that provides solutions to
-manage real time communication capabilities. To implement this framework
-the project team tried to use the most suitable existing standards which
-provides compability which existing technoligies. Using consolidated and
-widely used standards also make the development more efficient since
-Open Source libraries can be used in the developments. Addtionally to
-well-known standards, the project team has also tried to find emerging
-standards which can be adapted for ReTHINK requirements. In those cases,
-a tradeoff analysis has been made to determine if the choice of a not
-consolidated standard is optimal in terms of cost of use due to the lack
-of existing libraries and projects which use them.
-
-The IETF has been creating and promoting the Internet standards since
-1986. The IETF is organized in a large number of Working Groups (WG)
-which works on specific areas. For ReTHINK project, the team has focused
-on standards delivered by several WG (namely Rtcweb, TRAM, HTTP/2 and
-Network). The Rtcweb WG has defined a set of RFCs (many of them are
-still drafts) which are used in WebRTC, it defines how WebRTC works on
-the wire. Many of the used protocols already existed but many of them
-were created ad-hoc to meet WebRTC requirements. Other RFCs are
-informational and hes been released to gather the WG knowledge in a
-formal way. The TRAM (TURN Revised and Modernized) working group is
-carrying out a modernization of the protocols used to transport
-real-time media over Internet which is the final function of ReTHINK
-framework.
-
-HTTP/2 is the new version of HTTP/1.1 which has been used in the web for
-the last 16 years. It provides a new low level design to optimize
-current Web applications keeping the semmantic of HTTP/1.1 which is
-still valid. HTTP/1.1 has been historically transported over TCP,
-however to take advantage of all the new features of HTTP/2 a new
-transport protocol build over UDP has been designed: QUIC. HTTP/2 draft
-is based on SPDY but it includes new features and will soon become a
-definitive RFC. The draft belongs to the HTTP WG. QUIC was developed by
-Google but it has been recently become an IETF Draft taking over the
-last changes in the protocol until close the defintiive RFC. HTTP/2 over
-QUIC has been considered as an alternative for messaging in the ReTHINK
-framework as it is optimized to be used over wireless connection and
-minimizes the delay in every communication.
-
-The IETF is in charge of standarizes all the protocols on the wire in
-Internet. In turn, the W3C (WWW Consortium) is the main international
-standards organization for the World Wide Web. It standarizes how the
-browser behave (e.g. WebRTC 1.0 API exposed by the browsers) and and the
-lenguages (e.g. HTML and Javascript) which can be executed by a standar
-browser. It is main role is to promote and homogenize the evolution of
-the Web. During the state of the Art research work we focused on the
-standards susceptible of being used by any element within the ReTHINK
-framework.
-
-The WebRTC 1.0 API has been standarized by the W3C is the way in which a
-Javascript application interacts with the browser to establish real-time
-sessions with other WebRTC endpoints. A comprehensive knowledge of this
-API was necessary to make design decissions and to define the
-architecture and the data model of the framework.
-
-A Community group has been created within the W3C to promote an
-alternative WebRTC API called ORTC (Object Real-Time Communications)
-which gives more control to the WebRTC developer making easier to
-implement some scenarios. There are still not implementations of ORTC in
-production-ready browser, however the features introduced by this
-standard which is likely to become the base of the WebRTC 2.0 API have
-been considered during the design phase.
-
-Another relevant W3C API is the Push API which allows a push service to
-send "push messages" to a webapp regardless of whether the webapp is
-currently active on the user agent. This is specially usefull for
-webapps running on mobile devices where the webapp may need to receive a
-notification while the browser is not in foreground.
-
-The use of another feature supported by browser called Service Workers
-has been already evaluated to be used to implement different parts of
-the Runtime environment. Despite the fact that this specification is
-still a Working Draft of the W3C it is already supported by the most
-important browsers. However, this is feature is not supported by server
-side Javascript-based runtime environment, it only can be used when the
-Runtime is executed by a browser.
-
-There is another interesting W3C Draft called "Application Lifecycle and
-Events" which extends the Service Workers with APIs for managing the
-lifecycle of an application and associated events. This Draft allows web
-developers to create applications that manage the application lifecycle
-and react to system events e.g. email or VoIP application. However, this
-Draft has been not been adopted by many vendors so far.
-
-In this section the standars released by the Open Mobile Alliance (OMA)
-were also reviewed. The OMA is a Mobile Operator driven industry forum
-for the definition of interoperable mobile service enablers. OMA defines
-APIs to offer functionalities and resources of Operator networks to
-developers. Amongst the API and protocols standarized by the OMA the
-team decided to reviewed those which are relevant for the project such
-as the Authorization Framework for Network APIs, the RESTful Network API
-for WebRTC Signaling, Quality of Service API and Notification Channel.
-The OMA LWM2M protocol for endpoint management is based on CoAP,
-designed to be supported by constrained devices has also been considered
-as a suitable alternative to interact with the Catalogue, Registry and
-Discovery services.
-
-Finally, a recent standard the Smart Device Template (SDT) released by
-the HGI (Home Gateway Iniative) has been reviewed. It provides a
-framework to create a consistent representation of Smart Home devices.
-This makes easier the integration of new devices in Home Gateway or in
-the cloud being specially interesting to implement M2M within the
-ReTHINK framework.
 
 Projects SOTA
 =============
@@ -1461,6 +1231,101 @@ Runtime, namely:
 -   DataBroker
 -   DataCodec
 
+### WONDER Messages Format
+
+The WONDER Message class provides good input for the design of Hyperty
+Messages. Wonder Message is a JSON structure and it is comprised by a
+Header and a Body. The following Message Header attributes are defined:
+
+    type            Type of the Message 
+    from            Sender of the message
+    to              Recipients of the message
+    context         identifies a certain context for the message eg the Id of the conversation
+
+The following Message Types are defined:
+
+-   INVITATION - Message to invite a peer to a conversation.
+-   ACCEPTED - Answer for conversation accepted or Context subscription
+    accepted
+-   CONNECTIVITY\_CANDIDATE - Message contains ICE connectivity
+    candidate
+-   NOT\_ACCEPTED - Answer for conversation not accepted or Context
+    subscription not accepted
+-   BYE - Message to finish the communication with a peer
+-   UPDATE - Message to Update conversation by adding or removing a
+    Resource
+-   UPDATED - Answer to Message UPDATE
+-   CONTEXT - Message used to publish the context and status of an
+    Identity.
+-   SUBSCRIBE - Message to request to receive CONTEXT notifications from
+    a certain Identity
+-   MESSAGE - Mainly used to support Pager Mode Chat. But it can be used
+    for other use cases instead of Data Channel eg small files.
+-   CRUD\_OPERATION - Messages to handle data persistence in a resource
+    tree
+
+The Message body will depend on the Message Type. Some of these messages
+and associated bodies are more detailed below.
+
+##### Invitation Message Type
+
+Invitation for a new conversation to be hosted by the inviting identity
+ie to use Messaging Server of the inviting identity which is provided in
+the message body as well as the connection description of the inviting
+identity.
+
+**Invitation Message Body**
+
+        conversationURL;
+        connectionDescription; // SDP
+        subject;
+        hosting; // Identity of who is hosting the conversation
+        agenda;
+        peers;
+        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
+
+##### Accepted Message Type
+
+To accept eg Invitations, Conversation updates or Context Subscription.
+Similar to SIP 200 OK
+
+**Accepted Message Body**
+
+        connectionDescription; // SDP
+        hosting; // Identity of who is hosting the conversation
+        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
+
+##### Not Accepted
+
+Eg Busy, Reject, No\_answer to: - Invitation requests - Update
+requests - Subscription requests
+
+This information will go in the message body as a String
+
+##### CONNECTIVITY\_CANDIDATE Message Type
+
+Messages used to exchange ICE connectivity candidates between peers
+
+**Message Body**
+
+    label - The label of the candidate.
+    id - The id of the candidate.
+    candidate - The ICE candidate string.
+    lastCandidate - Boolean indicating if the candidate is the last one. If true, include the full SDP in the candidate parameter for compatibility with domains that don't support trickling.
+
+##### CRUD\_OPERATION
+
+These Messages are used to handle data persistence in a resource tree by
+using the four basic functions create, read, update and delete.
+
+**Message Body**
+
+    operation   //  create, read, update or delete.
+    syntax      // syntax used for CRUD operation field "criteria" examples: mongoDB, SQL
+    criteria    // some filtering expression used in read and update operations
+    doc     // Contains data for CREATE and UPDATE operations
+    resource;   // Resource URI where the operation is applied
+
 M2M Projects
 ------------
 
@@ -1645,101 +1510,6 @@ The project provides a Web GUI as an addon for Firefox to get the
 user/developer familiarize. The core functionality can be included in
 any software package like a Javascript library and also, the Core
 Framework of the client side for the Rethink project.
-
-### WONDER Messages Format
-
-The WONDER Message class provides good input for the design of Hyperty
-Messages. Wonder Message is a JSON structure and it is comprised by a
-Header and a Body. The following Message Header attributes are defined:
-
-    type            Type of the Message 
-    from            Sender of the message
-    to              Recipients of the message
-    context         identifies a certain context for the message eg the Id of the conversation
-
-The following Message Types are defined:
-
--   INVITATION - Message to invite a peer to a conversation.
--   ACCEPTED - Answer for conversation accepted or Context subscription
-    accepted
--   CONNECTIVITY\_CANDIDATE - Message contains ICE connectivity
-    candidate
--   NOT\_ACCEPTED - Answer for conversation not accepted or Context
-    subscription not accepted
--   BYE - Message to finish the communication with a peer
--   UPDATE - Message to Update conversation by adding or removing a
-    Resource
--   UPDATED - Answer to Message UPDATE
--   CONTEXT - Message used to publish the context and status of an
-    Identity.
--   SUBSCRIBE - Message to request to receive CONTEXT notifications from
-    a certain Identity
--   MESSAGE - Mainly used to support Pager Mode Chat. But it can be used
-    for other use cases instead of Data Channel eg small files.
--   CRUD\_OPERATION - Messages to handle data persistence in a resource
-    tree
-
-The Message body will depend on the Message Type. Some of these messages
-and associated bodies are more detailed below.
-
-##### Invitation Message Type
-
-Invitation for a new conversation to be hosted by the inviting identity
-ie to use Messaging Server of the inviting identity which is provided in
-the message body as well as the connection description of the inviting
-identity.
-
-**Invitation Message Body**
-
-        conversationURL;
-        connectionDescription; // SDP
-        subject;
-        hosting; // Identity of who is hosting the conversation
-        agenda;
-        peers;
-        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
-
-##### Accepted Message Type
-
-To accept eg Invitations, Conversation updates or Context Subscription.
-Similar to SIP 200 OK
-
-**Accepted Message Body**
-
-        connectionDescription; // SDP
-        hosting; // Identity of who is hosting the conversation
-        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
-
-##### Not Accepted
-
-Eg Busy, Reject, No\_answer to: - Invitation requests - Update
-requests - Subscription requests
-
-This information will go in the message body as a String
-
-##### CONNECTIVITY\_CANDIDATE Message Type
-
-Messages used to exchange ICE connectivity candidates between peers
-
-**Message Body**
-
-    label - The label of the candidate.
-    id - The id of the candidate.
-    candidate - The ICE candidate string.
-    lastCandidate - Boolean indicating if the candidate is the last one. If true, include the full SDP in the candidate parameter for compatibility with domains that don't support trickling.
-
-##### CRUD\_OPERATION
-
-These Messages are used to handle data persistence in a resource tree by
-using the four basic functions create, read, update and delete.
-
-**Message Body**
-
-    operation   //  create, read, update or delete.
-    syntax      // syntax used for CRUD operation field "criteria" examples: mongoDB, SQL
-    criteria    // some filtering expression used in read and update operations
-    doc     // Contains data for CREATE and UPDATE operations
-    resource;   // Resource URI where the operation is applied
 
 Runtime SOTA
 ============
@@ -3075,369 +2845,363 @@ Kurento Media Server can be connected through a NodeJs Client : it will
 be possible to add protOfly interface on nodeJs to then connect to the
 MCU.
 
-How to obtain security on standalone components using Docker.
-
-To understand how to obtain security using Docker we have to look at its
-architecture:
-
-The Docker daemon - the Docker daemon runs on a host machine. The user
-does not directly interact with the daemon, but instead through the
-Docker client.
-
-The Docker client - The Docker client, in the form of the docker binary,
-is the primary user interface to Docker. It accepts commands from the
-user and communicates back and forth with a Docker daemon.
-
-Inside Docker
-
-To understand Docker , we need to understand its three components:
-
-Docker images - A Docker image is a read-only template. For example, an
-image could contain an Android minimal operating system with a minimal
-HTTP demon and a web application installed. Images are used to create
-Docker containers. Docker provides a simple way to build new images or
-update existing images, or we can download Docker images that other
-people have created
-
-Docker registries - Docker registries hold images. These are public or
-private stores from which we upload or download images. These can be
-images we create ourselves or we can use images that others have
-previously created.
-
-Docker containers - Docker containers are similar to a directory. A
-Docker container holds everything that is needed for an application to
-run. Each container is created from a Docker image. Docker containers
-can be run, started, stopped, moved, and deleted. Each container is an
-isolated and secure application platform.
-
-Obviously the containers are the base for our security architecture.
-Each container is absolutely independent and each interface for
-comunication must be stricly observed. There is no other way to access
-the container and its content in operation.
-
-How does a Docker image works
-
-We've already seen that Docker images are read-only templates from which
-Docker containers are launched. Each image consists of a series of
-layers. Docker makes use of union file systems to combine these layers
-into a single image. Union file systems allow files and directories of
-separate file systems, known as branches, to be transparently overlaid,
-forming a single coherent file system.
-
-One of the reasons Docker is so lightweight is because of these layers.
-When we change a Docker image—for example, update an application to a
-new version— a new layer gets built. Thus, rather than replacing the
-whole image or entirely rebuilding, as we may do with a virtual machine,
-only that layer is added or updated. Now we don't need to distribute a
-whole new image, just the update, making distributing Docker images
-faster and simpler.
-
-Every image starts from a base image, for example an Android base image.
-Or we can also use images of our own as the basis for a new image, for
-example if we have a base HTTPD image we could use this as the base of
-all our web application images.
-
-How to build a Docker image
-
-Docker images are then built from base images using a set of steps we
-call instructions. Each instruction creates a new layer in our image.
-Instructions include actions like:
-
-Run a command. Add a file or directory. Create an environment variable.
-What process to run when launching a container from this image.
-
-These instructions are stored in a file called a Dockerfile. Docker
-reads this Dockerfile when we request a build of an image, executes the
-instructions, and returns a final image.
-
-How does a Docker registry work
-
-The Docker registry is the store for our Docker images. Once we build a
-Docker image we can push it to a public registry Docker Hub or to our
-own registry running behind our firewall.
-
-Using the Docker client, we can search for already published images and
-then pull them down to our Docker host to build containers from them.
-
-Docker Hub provides both public and private storage for images. Public
-storage is searchable and can be downloaded by anyone. Private storage
-is excluded from search results and only we and our users can pull
-images down and use them to build containers.
-
-How does a container work
-
-A container consists of an operating system, user-added files, and
-meta-data. As we've seen, each container is built from an image. That
-image tells Docker what the container holds, what process to run when
-the container is launched, and a variety of other configuration data.
-The Docker image is read-only. When Docker runs a container from an
-image, it adds a read-write layer on top of the image in which our
-application can then run.
-
-Either by using the docker binary or via the API, the Docker client
-tells the Docker daemon to run a container.
-
-\$ sudo docker run -i -t ubuntu /bin/bash
-
-Let's break down this command. The Docker client is launched using the
-docker binary with the run option telling it to launch a new container.
-The bare minimum the Docker client needs to tell the Docker daemon to
-run the container is:
-
-What Docker image to build the container from, here ubuntu, a base
-Ubuntu image; The command we want to run inside the container when it is
-launched, here /bin/bash, to start the Bash shell inside the new
-container.
-
-when we run this command:
-
-In order, Docker does the following:
-
-1 - Pulls the ubuntu image. Docker checks for the presence of the ubuntu
-image and, if it doesn't exist locally on the host, then Docker
-downloads it from Docker Hub. If the image already exists, then Docker
-uses it for the new container.
-
-2 - Creates a new container. Once Docker has the image, it uses it to
-create a container.
-
-3 - Allocates a filesystem and mounts a read-write layer. The container
-is created in the file system and a read-write layer is added to the
-image.
-
-4 - Allocates a network / bridge interface. Creates a network interface
-that allows the Docker container to talk to the local host.
-
-5 - Sets up an IP address. Finds and attaches an available IP address
-from a pool.
-
-6 - Executes a process that we specify. Runs our application.
-
-7 - Captures and provides application output. Connects and logs standard
-input, outputs and errors for we to see how our application is running.
-
-Why Docker?
-
-Docker containers are lightweight and fast. Containers have sub-second
-launch times, reducing the cycle time of development, testing, and
-deployment.
-
-Docker containers run almost everywhere. We can deploy containers on
-desktops, physical servers, virtual machines, into data centers, and up
-to public and private clouds. Since Docker runs on so many platforms,
-it's easy to move our applications around. We can easily move an
-application from a testing environment into the cloud and back.
-
-Dockerizing a Node.js Web App
-
-The goal of this example is to show how to build your Docker images from
-a parent image using a Dockerfile. We will do that by making a simple
-Node.js hello world web application running on CentOS.
-
-Create Node.js app
-
-First, create a directory src where all the files would live. Then
-create a package.json file that describes your app and its dependencies:
-
-{ "name": "docker-centos-hello", "private": true, "version": "0.0.1",
-"description": "Node.js Hello world app on CentOS using docker",
-"author": "Miguel Mesquita <mesquita@av.it.pt>", "dependencies": {
-"express": "3.2.4" } }
-
-Then we need to create an index.js file that defines a web app using the
-Express.js framework:
-
-var express = require('express');
-
-// Constants
-
-var PORT = 8080;
-
-// App
-
-var app = express();
-
-app.get('/', function (req, res) { res.send('Hello world\n'); });
-
-app.listen(PORT);
-
-console.log('Running on http://localhost:' + PORT);
-
-We'll look at how to run an application inside a CentOS container using
-Docker. First we need to build a Docker image of our app.
-
-Creating a Dockerfile
-
-Create an empty file called Dockerfile:
-
-\$ touch Dockerfile
-
-Open the Dockerfile in your favorite text editor (I'm an old fashioned
-guy, I use vi)
-
-Define the parent image we want to use to build your own image on top
-of. Here, we'll use CentOS (tag: centos6) available on the Docker Hub:
-
-FROM centos:centos6
-
-Since we're building a Node.js app, we have to install Node.js as well
-as npm on your CentOS image. Node.js is required to run our app and npm
-to install our app's dependencies defined in package.json. To install
-the right package for CentOS, we'll use the instructions from the
-Node.js wiki:
-
-\# Enable EPEL for Node.js
-
-RUN rpm -Uvh
-http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-
-\# Install Node.js and npm
-
-RUN yum install -y npm
-
-To bundle our app's source code inside the Docker image, we use the COPY
-command:
-
-\# Bundle app source
-
-COPY . /src
-
-Install our app dependencies using the npm command:
-
-\# Install app dependencies
-
-RUN cd /src; npm install
-
-Our app binds to port 8080 so we use the EXPOSE command to have it
-mapped by the docker daemon:
-
-EXPOSE 8080
-
-Define the command to run our app using CMD which defines our runtime,
-i.e. node, and the path to our app src/index.js (see the step where we
-added the source to the container):
-
-CMD ["node", "/src/index.js"]
-
-Our Dockerfile should now look like this:
-
-FROM centos:centos6
-
-\# Enable EPEL for Node.js
-
-RUN rpm -Uvh
-http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-\# Install Node.js and npm
-
-RUN yum install -y npm
-
-\# Bundle app source
-
-COPY . /src \# Install app dependencies
-
-RUN cd /src; npm install
-
-EXPOSE 8080 CMD ["node", "/src/index.js"]
-
-Building our image
-
-Go to the directory that has our Dockerfile and run the following
-command to build a Docker image. The -t flag adds a tag to our image so
-it's easier to find later using the docker images command:
-
-\$ sudo docker build -t <your username>/centos-node-hello .
-
-Our image will now be listed by Docker:
-
-\$ sudo docker images
-
-\# Example
-
-REPOSITORY TAG ID CREATED centos centos6 539c0211cd76 8 weeks ago
-<your username>/centos-node-hello latest d64d3505b0d2 2 hours ago
-
-Run the image
-
-Running our image with -d runs the container in detached mode, leaving
-the container running in the background. The -p flag redirects a public
-port to a private port in the container. Run the image we previously
-built:
-
-\$ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
-
-To print the output of our app:
-
-\# Get container ID
-
-\$ sudo docker ps
-
-\# Print app output
-
-\$ sudo docker logs <container id>
-
-\# Output
-
-Running on http://localhost:8080
-
-Test
-
-To test our app, get the port of our app that Docker mapped:
-
-\$ sudo docker ps
-
-\# Example
-
-ID IMAGE COMMAND ... PORTS ecce33b30ebf
-<your username>/centos-node-hello:latest node /src/index.js 49160-\>8080
-
-In the example above, Docker mapped the 8080 port of the container to
-49160.
-
-Is our application working? Lets test it with curl (ok install it with
-sudo apt-get install curl)
-
-\$ curl -i localhost:49160
-
-HTTP/1.1 200 OK
-
-X-Powered-By: Express
-
-Content-Type: text/html; charset=utf-8
-
-Content-Length: 12
-
-Date: Sun, 02 Jun 2013 03:53:22 GMT
-
-Connection: keep-alive
-
-Hello world
-
-Yes!!! It's working.
-
-Every application must connect through the port. The code is absolutely
-isolated from misuse. We implicitly have created an internal virtual net
-using docker from a internal pool of IPs docker has assumed on
-instalation. Every new application has a brand new on initiation which
-is relented on finishing the app. For the external user, well, it is
-invisible.
-
 Messaging SOTA
 ==============
 
-Vert.x 3 Evaluation (Draft)
----------------------------
-
-**Note:** to be reviewed for [v3](http://vert-x3.github.io/) by
-identifying differences with version 2.x
+Vert.x 2.0
+----------
 
 ### Overview
 
-*Overview of functionalities and type of WP3 component that the asset
-can be used for ie Messaging Node, Runtime, Network QoS and Framework*
+Vert.x 2.0 [57] is an application framework developed by VMWare in 2011.
+The application framework provides possibilities to develope loosely
+coupled network service applications.
 
-This SOTA will evidence differences between version 2 and 3 of vert.x.
-It will not describe all the architecture as in the version 2
-evaluation.
+The concept of the framework is summarized as follows: \* **Polyglot
+(supports several languages)**: Vert.x framework runs on the Java
+Virtual Machine. However, Java is not required to use Vert.x. As well as
+languages based on JVM operation, such as Java or Groovy, Vert.x can be
+used with Ruby, Python, and even JavaScript. In addition, Scala and
+Closure are planned to be supported. \* **Super Simple Concurrency
+model**: When building an application by using Vert.x, users can write
+code as a single thread application. That means that the multi-thread
+programming effect can be achieved without synchronization, lock, or
+volatility. However, Vert.x allows to create multiple threads based on
+the number of CPU cores whlie only one process is executed. It handle
+the multi-threading so users can focus on implementing business
+logic. \* **Provides Event Bus**: The main concept of Vert.x is not only
+to produce a ‘one server process DAEMON'. Vert.x aims to make a variety
+of Vert.x-built server programs communicate well with each other. For
+this, Vert.x provides Event Bus. Therefore, functions such as Point to
+Point or Pub/Sub can be used (to provide Event Bus function, Vert.x uses
+Hazelcast, an In-Memory Data Grid). With this Event Bus, a server
+application built with different languages can easily communicate with
+each other. \* **Module System & Public Module Repository**: Vert.x has
+a module system. This module system can be understood as a type of
+component. That means the Vert.x-built server application project itself
+is modularized. It aims at reusability. Modules can be registered to
+Public Module Repository. Through the Public Module Repository, the
+module can be shared
+
+### Architecture
+
+This subsection highlights the main building blocks of the Vert.x
+architecture.
+
+![Figure 35: Vertx Architecture Diagram](vertx-architecture-diagram.png)
+
+### Addressing
+
+Messages are sent on the event bus to an address. Vert.x instances are
+not bound to any addressing schemes. An address is simply a string, any
+string is valid. Some examples of valid addresses are
+`europe.news.feed1`, `acme.games.pacman`, `sausages`, and `X`. As a
+convention the names of the packages that implement certain
+functionalities should also be represented on the event bus and should
+be combined with a meaningful event/operation name, e.g.
+`org.acme.MyPackage.MyClass.doSomething`
+
+### Handlers
+
+A handler is an entity that receives messages from the event bus. You
+register a handler at an address. Many different handlers from the same
+or different modules can be registered at the same address. A single
+handler can be registered at many different addresses at the same time.
+
+### Messaging Schemes
+
+The Event Bus supports the following modes of operation: \* *Publish /
+subscribe messaging*: Publishing means delivering the message to all
+handlers that are registered at that address. This is the familiar
+publish/subscribe messaging pattern. \* *Point to point and
+Request-Response messaging*: Messages are routed to just one of the
+handlers registered at an address. They can optionally be replied to. \*
+*Remote Procedure Call (RPC)*: This mode of operation is implemented on
+top of the Request-Response model, basically by enforcing certain
+conventions on requests and responses
+
+This example shows the Event Bus can be instantiated, how a Handler can
+be defined and registered on the Event Bus and how the Event Bus can
+subsequently publish a message for the defined Handler:
+
+    EventBus eb = vertx.eventBus();
+
+    Handler<Message> myHandler = new Handler<Message>(){
+
+        public void handle(Message message){
+            System.out.println("I just recieved a message "+ message.body);
+        }
+    };
+    //test.address is the address at which this handler will be registered
+    eb.registerHandler("test.address", myHandler);
+
+    ...
+    //publishing a message. The message will be delivered to all handlers registered against the address
+    eb.publish("test.address", "hello world");
+    //point-2-point sending of message. 
+    //Only one handler registered at the address receiving the message. 
+    //The handler is chosen in a non strict round-robin fashion
+    eb.send("test.address", "hello world");
+
+    ...
+
+    eb.unregisterHandler("test.address", myHandler);
+
+### Types of Messages
+
+Messages that you send on the event bus can be as simple as a string, a
+number or a boolean. It is also possible to send Vert.x buffers or JSON
+messages. It's highly recommended to use JSON messages to communicate
+between verticles. JSON is easy to create and parse in all the languages
+that Vert.x supports. For RPC messages, JSON is enforced.
+
+### Verticle
+
+The unit of execution for Vert.x applications is called a Verticle.
+Verticles can be written in multiple languages (JavaScript, Ruby, Java,
+Groovy or Python). Many verticles can be executed concurrently in the
+same Vert.x instance. An application might be composed of multiple
+verticles deployed on different nodes of the network communicating by
+exchanging messages over the Vert.x Event Bus. For trivial applications
+verticles can be run directly from the command line, but more usually
+they are packaged up into modules.
+
+### Module
+
+Applications within the framework comprise of one or more modules. The
+framework allows packaging of applications or other re-usable
+functionality into modules, which can be deployed or used by other code.
+Module can also by catalogue in the Vert.x module registry so others can
+discover and use it. The framework offers the possibility to
+automatically download and install modules from any repository given the
+module identifier. Each module has a unique identifier. The identifier
+is a string that is composed of three parts: A module can contain any
+number of (including zero) verticles and can depend on other modules
+(and their verticles) in turn. Creating a module with no verticles makes
+sense to provide only library support for other modules. Modules are
+described by a descriptor file: mod.json. A minimal descriptor looks
+like this:
+
+    {
+      "owner": "org.acmecorp",
+      "name": "myReThinkAdapterModule",
+      "version": "0.1"
+    }
+
+Additionally, three more fields are optionally recognized: \* `worker`
+indicates if this is a worker module. See below under event loop. \*
+`main` Indicates the startup routine for this module. \* `includes`
+Additional module dependencies as a comma-separated string.
+
+### Event Loop
+
+By default, all verticles run in an asynchronous event loop. When
+developing a verticle, it is essential not to block the event loop.
+Blocking here means either doing any kind of blocking I/O or even doing
+any kind of computational intensive work. Modules that do either of
+these should indicate that they are so called `worker` modules by
+setting `"worker": true` in their *mod.json* file. The advantage of an
+event loop is that it is enormously scalable. Instead of waiting for I/O
+operations to complete, the executing thread will rather do other stuff
+(e.g. servicing the next request) in the meantime. This is achieved by
+using a callback driven style of programming. Imagine the following
+scenario: *We want to read some data in an I/O intensive operation
+(function `readData`) *We want to do something with that data (function
+`doSomething`) *We want to do something completely different (function
+`doSomethingUnrelated`) *In the traditional blocking world we would do
+something like the following:
+
+    def doSomething(data):
+        # do something with data
+    data = readData()
+    doSomething(data)
+    doSomethingUnrelated()
+
+What happens here is the following:
+
+After the data is read, the program waits for the operation (`readData`)
+to complete (which is consuming the event loop thread lifetime). As soon
+as `readData` returns, we have our data and can go on to do something
+with it (`doSomething(data)`). Finally, when that is done, we can go on
+and do other stuff (`doSomethingUnrelated`).
+
+    In the asynchronous world, we do something like this: 
+    def doSomething(data):
+        # do something with data
+    readData(callback = doSomething)
+    doSomethingUnrelated()
+
+As can be seen, the result of `readData` is not received in the
+functions return value. Instead `doSomething` is passed in the handler
+method as a callback. The framework will take care that this handler is
+called asynchronously as soon as the data is available
+
+### APIs
+
+Vert.x provides the different APIs which are implemented in various
+languages:
+
+**Core API** \* TCP client/Server API \* HTTP client/Server API \*
+Transport Protocol (Websocket, SockJS(provides websocket-like API
+through http), UDP, TCP) \* File System Access \* DNS client API \*
+Shared Data \* Event Bus API \* JSON API
+
+**Container API** \* Deploy and undeploy verticles \* Deploy and
+undeploy modules \* Retrieve verticle configuration \* Logging
+
+### Requirements Analysis
+
+*According to Component Type addressed by the solution ie Messaging
+Node, Runtime, Network QoS and Framework*
+
+#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
+
+External Authentication and Authorisation are supported through the
+usage of an Authorisation module:
+
+``` {.java}
+container.deployModule("io.vertx~mod-auth-mgr~2.0.0-final");
+```
+
+The Authorisation module can be the front-end to interact with an
+external vertx service eg with restful APIs or could be attached to the
+vertx-io event bus.
+
+**Authorisation to Send/publish a Message**
+
+-   SockJSServer, where we need a bridge configuration
+-   InboudPermitted must have: vertx.basicauthmanager.login and clients
+    handler \`\`\`java JsonArray inboundPermitted = new JsonArray();
+
+JsonObject inboundPermitted1 = new JsonObject().putString("address",
+"vertx.basicauthmanager.login");
+inboundPermitted.add(inboundPermitted1); JsonObject inboundPermitted2 =
+new JsonObject().putString("address",
+"aliceHandler").putBoolean("requires\_auth",true);
+inboundPermitted.add(inboundPermitted2); \`\`\` Inboundpermitted allows
+the use of the "requires\_auth" flag. When it is true, messages will be
+first forwarded to the authorization module, where decisions to send or
+not the messages are taken.
+
+**receive a Message**
+
+-   OutboundPermitted must have: clients handler.
+    `java outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));`
+
+    ``` {.java}
+    sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
+    ```
+
+**Example: communication between two javascript clients connected via
+SockJS**
+
+Both client applications perform log-in on the EventBus.
+
+``` {.javascript}
+eb.login('alice','alice123', function(reply){console.log(reply);});
+```
+
+Then the client A(alice) wants to send messages to the client B(bob), so
+client B(bob) needs to register a handler. Before the client A(alice)
+can send a message to client B(bob), B must first register himself.
+
+``` {.javascript}
+eb.registerHandler('bobHandler', function(reply){console.log(reply);});
+```
+
+After that client A (alice) can publish messages on client B (bob)
+handler
+
+``` {.javascript}
+eb.publish('bobHandler','Hello bob from alice');
+```
+
+When client A publishes a message to client B handler, this message will
+be first forwarded to the authorization module because of
+inbounpermitted configuration.
+
+**subscribe / register handlers to be notified about published
+messages**
+
+In the SockJSServer configuration we can set a Hook (Registers functions
+to be called when certain events occur on an event bus bridge).
+
+``` {.java}
+ServerHook hook = new ServerHook(logger);
+sockJSServer.setHook(hook);
+```
+
+ServerHook takes some keyword arguments for example:
+
+-   pre-register: Called before a client handler registration is
+    processed.
+
+    ``` {.java}
+     public boolean handlePreRegister(SockJSSocket sock, String address) {
+    logger.info("handlePreRegister, sock = " + sock + ", address = " + address);
+    return true;
+      }
+    ```
+
+In this way handlers registration can be controlled.
+
+#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
+
+Since vertx is based on http://hazelcast.org/ we can use it to cache
+some info including the sessionId
+
+#### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features)
+
+-   Resilience: Vert.x provides resilience through the "automatic
+    failover" and "HA group" options. When a module is run with HA, if
+    the Vert.x instance where it is running fails, it will be re-started
+    automatically on another node of the cluster. An HA group denotes a
+    logical grouping of nodes in the cluster. Only nodes with the same
+    HA group will failover onto one another.
+-   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
+    Vert.x 3.0 provides built-in core functiionality for this core
+-   Service Assurance: Modules can be deployed in clusters, and Vert.x
+    provides an internal Load Balancer for routing messages within the
+    cluster. Also the above mentioned "auomatic failover" and "HA group"
+    options contribute to enforce service assurance.
+
+#### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16)
+
+Verticle instances, except advanced multi-threaded worker verticles are
+almost always single threaded. what this implies is that, a single
+verticle instance can at most utilise one core of the server. In order
+to scale across cores, several verticles which are responsible for the
+same task can be instantiated and the runtime will distribute the
+workload among them (load balancing), this way taking full advantage of
+all SPU cores without much effort. Verticles can also be distributed
+between several machines. This will be transparent to the application
+code. The Verticles use the same mechanisms to communicate as if they
+would run on the same machine. This makes it very easy to scale
+applications.
+
+#### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
+
+-   Websockets - Yes supported
+-   SockJS - Yes supported
+-   HTTP Long-Polling - Yes
+-   HTTP Streaming - ? (Not sure what this means, clarification needed)
+
+#### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
+
+No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
+or point-2-point mechanism. In both cases, there is no feedback to the
+sender if the message was recieved and processed or if it was not
+recieved at all. In the end reliability will boil down to the
+application logic service build on top of vert.x.
+
+Vert.x 3.0
+----------
+
+### Overview
+
+This evaluation will evidence differences between version 2 [57] and 3
+[58] of vert.x. It will not describe all the architecture as in the
+version 2 evaluation.
 
 The concept of the framework is summarized as follows: \* **Polyglot
 (supports several languages)**: Vert.x framework runs on the JVM.
@@ -3538,8 +3302,7 @@ messages. It's highly recommended to use JSON messages to communicate
 between verticles. JSON is easy to create and parse in all the languages
 that Vert.x supports. For RPC messages, JSON is enforced.
 
-Verticle
---------
+### Verticle
 
 The unit of execution for Vert.x applications is called a Verticle.
 Verticles can be written in multiple languages (Java, JavaScript, Groovy
@@ -3552,8 +3315,7 @@ manager API has been removed, and methods for deploying verticles have
 moved to the Vertx interface. The API for deploying verticles is much
 simpler, so this should simplify things when embedding.
 
-Module
-------
+### Module
 
 The Vert.x 3 module system has gone. It's advisable to use already
 available options like Maven or Gradle. Non Java verticles (e.g.
@@ -3561,8 +3323,7 @@ JavaScript) can also be packaged in jars and pushed as Maven artifacts.
 It will also support resolving in other ways and from other places (e.g.
 at run-time and from npm modules) before 3.0.final.
 
-Event Loop
-----------
+### Event Loop
 
 By default, all verticles run in an asynchronous event loop. When
 developing a verticle, it is essential not to block the event loop.
@@ -3621,12 +3382,9 @@ Redirect based authentication \* User/role/permission authorisation
 
 ### Requirements Analysis
 
-*According to Component Type addressed by the solution ie Messaging
-Node, Runtime, Network QoS and Framework*
-
 #### Messaging Node Requirements Analysis
 
-##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
+##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
 
 External Authentication and Authorisation are supported through Maven
 artifacts: vertx-apex and vertx-auth-service
@@ -3699,12 +3457,12 @@ that has sent the message (available in apex Session)
 In this way handlers registration can be controlled, and the user
 information can be sent to the EventBus.
 
-##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
+##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
 
-Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can
-use it to cache some info including the sessionId
+Since vertx is based on http://hazelcast.org/ we can use it to cache
+some info including the sessionId
 
-##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features) (FOKUS)
+##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features)
 
 -   Resilience: Vert.x provides resilience through the "automatic
     failover" and "HA group" options. When a module is run with HA, if
@@ -3719,7 +3477,7 @@ use it to cache some info including the sessionId
     cluster. Also the above mentioned "auomatic failover" and "HA group"
     options contribute to enforce service assurance.
 
-##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
+##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16)
 
 Verticle instances, except advanced multi-threaded worker verticles are
 almost always single threaded. what this implies is that, a single
@@ -3733,14 +3491,14 @@ code. The Verticles use the same mechanisms to communicate as if they
 would run on the same machine. This makes it very easy to scale
 applications.
 
-##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
+##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
 
 -   Websockets - Yes supported
 -   SockJS - Yes supported
 -   HTTP Long-Polling - Yes
 -   HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
+##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
 
 No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
 or point-2-point mechanism. In both cases, there is no feedback to the
@@ -3793,17 +3551,20 @@ delegating the actual connection with the Vert.x.
 Found some performance measures on:
 http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
 
+Realtime backends
+-----------------
+
 Realtime backends (aka noBackend or BackendAsAService(BaaS)) is a
 concept related to real time databases. It is a way to build web
 architectures without necessarily defining and standardizing data
 structures or interworking protocols if they are really needed. The
 backend and its remote framework is taking into account all low level
 mechanism of client-server dialogue, allowing developer to concentrate
-in service logic, in its local runtime. The realtime backend concept
-would allow to define and manage interworking with other services, in a
-way that entirely belongs to each application. It can also be a solution
-to manage and maintain user preferences, endpoints registration status …
-and also to manage discovery.
+in service logic, in its local runtime [54]. The realtime backend
+concept would allow to define and manage interworking with other
+services, in a way that entirely belongs to each application. It can
+also be a solution to manage and maintain user preferences, endpoints
+registration status … and also to manage discovery.
 
 For instance, in IoT domain, nobody is able now to identify every kind
 of objects that will be available in a close future, the way they will
@@ -3812,11 +3573,11 @@ reason why a solution that still allows in the future to define or
 modify data structures is the best way to have an evolving solution,
 well understood and adopted by a large number of developers.
 
-“Real-Time Web Technologies Guide”, from Phil Leggetter gives an
-overview of the different tools that are currently offered
-[http://www.leggetter.co.uk/real-time-web-technologies-guide/]. Among
-them we can site PubNub, Firebase, recently acquired by Google, and many
-others.
+[“Real-Time Web Technologies
+Guide”](http://www.leggetter.co.uk/real-time-web-technologies-guide/),
+from Phil Leggetter gives an overview of the different tools that are
+currently offered [55]. Among them we can site PubNub, Firebase,
+recently acquired by Google, and many others.
 
 The main difference with other Messaging Nodes is the fact that all the
 synchronisation layer is managed by the service, so the developper only
@@ -3911,11 +3672,12 @@ http://www.leggetter.co.uk/2013/12/09/choosing-realtime-web-app-tech-stack.html
 Matrix.org
 ----------
 
-From matrix.org spec: \> *The end goal of Matrix is to be a ubiquitous
-messaging layer for synchronising arbitrary data between sets of people,
-devices and services - be that for instant messages, VoIP call setups,
-or any other objects that need to be reliably and persistently pushed
-from A to B in an interoperable and federated manner.*
+From [matrix.org spec](http://www.matrix.org/)[56]: \> *The end goal of
+Matrix is to be a ubiquitous messaging layer for synchronising arbitrary
+data between sets of people, devices and services - be that for instant
+messages, VoIP call setups, or any other objects that need to be
+reliably and persistently pushed from A to B in an interoperable and
+federated manner.*
 
 ### Overview
 
@@ -4065,8 +3827,8 @@ Analysis against **Messaging Node** Requirements
 RabbitMQ Evaluation
 -------------------
 
-It is defined as a robust and easy to use messaging platform that can
-work synchronously an asynchronously.
+RabbitMQ [59] is defined as a robust and easy to use messaging platform
+that can work synchronously an asynchronously.
 
 From rabbitmq.com: \> \*RabbitMQ is a messaging broker - an intermediary
 for messaging. It gives your applications a common platform to send and
@@ -4124,7 +3886,7 @@ Image Source:
 
 ### APIs and Documentation
 
-[AMQP Protocol Specification](https://www.rabbitmq.com/protocol.html)
+See [60] for the [AMQP protocol specification](http://www.amqp.org/).
 
 RabbitMQ provides the following APIs: \* [Java and
 JVM](https://www.rabbitmq.com/devtools.html#java-dev) \* Java \* Spring
@@ -4256,8 +4018,8 @@ ZeroMQ Evaluation
 
 ### Overview
 
-In the scope of the reTHINK project ZeroMQ is a candidate technology for
-the Messaging Node.
+In the scope of the reTHINK project ZeroMQ [65] is a candidate
+technology for the Messaging Node.
 
 It is a high-performance, low level, asynchronous messaging library
 originally written in C++, that now has multiple native Implementations.
@@ -4476,8 +4238,8 @@ Redis Evaluation
 
 ### Overview
 
-In the scope of the reTHINK project Redis is a candidate technology for
-the Messaging Node.
+In the scope of the reTHINK project Redis [63] is a candidate technology
+for the Messaging Node.
 
 From http://redis.io/: \> Redis is an open source, BSD licensed,
 advanced key-value cache and store. It is often referred to as a data
@@ -4601,10 +4363,10 @@ Analysis against **Messaging Node** Requirements
 -   Yes
 -   Core functionality, including prefix filtering
 
-XMPP Evaluation
----------------
+XMPP
+----
 
-From http://xmpp.org/:
+From http://xmpp.org/ [64]:
 
 > The Extensible Messaging and Presence Protocol (XMPP) is an open
 > technology for real-time communication, which powers a wide range of
@@ -4851,7 +4613,7 @@ Analysis against **Messaging Node** Requirements
 MQTT Evaluation
 ---------------
 
-MQ Telemetry Transport (MQTT) is a lightweight broker-based
+MQ Telemetry Transport (MQTT) [61] is a lightweight broker-based
 publish/subscribe messaging protocol designed to be open, simple,
 lightweight and easy to implement. These characteristics make it ideal
 for use in constrained environments such as machine-to-machine
@@ -5268,9 +5030,9 @@ Analysis against **Messaging Node** Requirements
 -   Core Feature
 
 PSYC
-====
+----
 
-PSYC is a mostly text-based protocol, aiming at providing a
+PSYC [62] is a mostly text-based protocol, aiming at providing a
 decentralized global messaging infrastructure for unicast/multicast
 chatting and social media exchanging. Its goal is to replace the popular
 IRC protocol, which currently suffers from unscalability, lack of
@@ -5290,8 +5052,7 @@ Network Identifications (UNI) (e.g. psyc://psyc.kanzlerant.de/\~gerhard)
 or Uniform Network Locations (UNL) in case of a shared messaging room or
 conference.
 
-Architecture and main functions
--------------------------------
+### Architecture and main functions
 
 On a top-level view, PSYC combines an IRC-like topology with the
 concepts of context, logical targets and packet IDs. Multiple PSYC nodes
@@ -5307,8 +5068,7 @@ conference server, the minimalistic control module can be also used to
 deliver group messages in a peer to peer manner, by maintaining on each
 member a list of other members and how to reach them.
 
-Evolution to PSYC2
-------------------
+### Evolution to PSYC2
 
 Due to the deprecated state of some key-concepts PSYC relies on, such as
 its uniform-based routing layer and federation architecture, the PSYC
@@ -5452,13 +5212,10 @@ Analysis against **Messaging Node** Requirements
 Node.js
 -------
 
-Asset Evaluation
-----------------
-
 ### Overview
 
-In the scope of the reTHINK project NodeJs is a candidate technology for
-the Messaging Node.
+In the scope of the reTHINK project NodeJs [22] is a candidate
+technology for the Messaging Node.
 
 From https://nodejs.org/ :
 
@@ -5608,361 +5365,6 @@ The most performante is claimded to be ws.
 
 Socket.io seems to be the most complete regarding feature (connection
 type, acknowledgement, configuration ..)
-
-Vert.x Evaluation
------------------
-
-**Note:** to be reviewed for [v3](http://vert-x3.github.io/) by
-identifying differences with version 2.x
-
-### Overview
-
-*Overview of functionalities and type of WP3 component that the asset
-can be used for ie Messaging Node, Runtime, Network QoS and Framework*
-
-Vert.x is an application framework developed by VMWare in 2011. The
-application framework provides possibilities to develope loosely coupled
-network service applications.
-
-The concept of the framework is summarized as follows: \* **Polyglot
-(supports several languages)**: Vert.x framework runs on the Java
-Virtual Machine. However, Java is not required to use Vert.x. As well as
-languages based on JVM operation, such as Java or Groovy, Vert.x can be
-used with Ruby, Python, and even JavaScript. In addition, Scala and
-Closure are planned to be supported. \* **Super Simple Concurrency
-model**: When building an application by using Vert.x, users can write
-code as a single thread application. That means that the multi-thread
-programming effect can be achieved without synchronization, lock, or
-volatility. However, Vert.x allows to create multiple threads based on
-the number of CPU cores whlie only one process is executed. It handle
-the multi-threading so users can focus on implementing business
-logic. \* **Provides Event Bus**: The main concept of Vert.x is not only
-to produce a ‘one server process DAEMON'. Vert.x aims to make a variety
-of Vert.x-built server programs communicate well with each other. For
-this, Vert.x provides Event Bus. Therefore, functions such as Point to
-Point or Pub/Sub can be used (to provide Event Bus function, Vert.x uses
-Hazelcast, an In-Memory Data Grid). With this Event Bus, a server
-application built with different languages can easily communicate with
-each other. \* **Module System & Public Module Repository**: Vert.x has
-a module system. This module system can be understood as a type of
-component. That means the Vert.x-built server application project itself
-is modularized. It aims at reusability. Modules can be registered to
-Public Module Repository. Through the Public Module Repository, the
-module can be shared
-
-### Architecture
-
-This subsection highlights the main building blocks of the Vert.x
-architecture.
-
-![Figure 35: Vertx Architecture Diagram](vertx-architecture-diagram.png)
-
-### Addressing
-
-Messages are sent on the event bus to an address. Vert.x instances are
-not bound to any addressing schemes. An address is simply a string, any
-string is valid. Some examples of valid addresses are
-`europe.news.feed1`, `acme.games.pacman`, `sausages`, and `X`. As a
-convention the names of the packages that implement certain
-functionalities should also be represented on the event bus and should
-be combined with a meaningful event/operation name, e.g.
-`org.acme.MyPackage.MyClass.doSomething`
-
-### Handlers
-
-A handler is an entity that receives messages from the event bus. You
-register a handler at an address. Many different handlers from the same
-or different modules can be registered at the same address. A single
-handler can be registered at many different addresses at the same time.
-
-### Messaging Schemes
-
-The Event Bus supports the following modes of operation: \* *Publish /
-subscribe messaging*: Publishing means delivering the message to all
-handlers that are registered at that address. This is the familiar
-publish/subscribe messaging pattern. \* *Point to point and
-Request-Response messaging*: Messages are routed to just one of the
-handlers registered at an address. They can optionally be replied to. \*
-*Remote Procedure Call (RPC)*: This mode of operation is implemented on
-top of the Request-Response model, basically by enforcing certain
-conventions on requests and responses
-
-This example shows the Event Bus can be instantiated, how a Handler can
-be defined and registered on the Event Bus and how the Event Bus can
-subsequently publish a message for the defined Handler:
-
-    EventBus eb = vertx.eventBus();
-
-    Handler<Message> myHandler = new Handler<Message>(){
-
-        public void handle(Message message){
-            System.out.println("I just recieved a message "+ message.body);
-        }
-    };
-    //test.address is the address at which this handler will be registered
-    eb.registerHandler("test.address", myHandler);
-
-    ...
-    //publishing a message. The message will be delivered to all handlers registered against the address
-    eb.publish("test.address", "hello world");
-    //point-2-point sending of message. 
-    //Only one handler registered at the address receiving the message. 
-    //The handler is chosen in a non strict round-robin fashion
-    eb.send("test.address", "hello world");
-
-    ...
-
-    eb.unregisterHandler("test.address", myHandler);
-
-### Types of Messages
-
-Messages that you send on the event bus can be as simple as a string, a
-number or a boolean. It is also possible to send Vert.x buffers or JSON
-messages. It's highly recommended to use JSON messages to communicate
-between verticles. JSON is easy to create and parse in all the languages
-that Vert.x supports. For RPC messages, JSON is enforced.
-
-Verticle
---------
-
-The unit of execution for Vert.x applications is called a Verticle.
-Verticles can be written in multiple languages (JavaScript, Ruby, Java,
-Groovy or Python). Many verticles can be executed concurrently in the
-same Vert.x instance. An application might be composed of multiple
-verticles deployed on different nodes of the network communicating by
-exchanging messages over the Vert.x Event Bus. For trivial applications
-verticles can be run directly from the command line, but more usually
-they are packaged up into modules.
-
-Module
-------
-
-Applications within the framework comprise of one or more modules. The
-framework allows packaging of applications or other re-usable
-functionality into modules, which can be deployed or used by other code.
-Module can also by catalogue in the Vert.x module registry so others can
-discover and use it. The framework offers the possibility to
-automatically download and install modules from any repository given the
-module identifier. Each module has a unique identifier. The identifier
-is a string that is composed of three parts: A module can contain any
-number of (including zero) verticles and can depend on other modules
-(and their verticles) in turn. Creating a module with no verticles makes
-sense to provide only library support for other modules. Modules are
-described by a descriptor file: mod.json. A minimal descriptor looks
-like this:
-
-    {
-      "owner": "org.acmecorp",
-      "name": "myReThinkAdapterModule",
-      "version": "0.1"
-    }
-
-Additionally, three more fields are optionally recognized: \* `worker`
-indicates if this is a worker module. See below under event loop. \*
-`main` Indicates the startup routine for this module. \* `includes`
-Additional module dependencies as a comma-separated string.
-
-Event Loop
-----------
-
-By default, all verticles run in an asynchronous event loop. When
-developing a verticle, it is essential not to block the event loop.
-Blocking here means either doing any kind of blocking I/O or even doing
-any kind of computational intensive work. Modules that do either of
-these should indicate that they are so called `worker` modules by
-setting `"worker": true` in their *mod.json* file. The advantage of an
-event loop is that it is enormously scalable. Instead of waiting for I/O
-operations to complete, the executing thread will rather do other stuff
-(e.g. servicing the next request) in the meantime. This is achieved by
-using a callback driven style of programming. Imagine the following
-scenario: *We want to read some data in an I/O intensive operation
-(function `readData`) *We want to do something with that data (function
-`doSomething`) *We want to do something completely different (function
-`doSomethingUnrelated`) *In the traditional blocking world we would do
-something like the following:
-
-    def doSomething(data):
-        # do something with data
-    data = readData()
-    doSomething(data)
-    doSomethingUnrelated()
-
-What happens here is the following:
-
-After the data is read, the program waits for the operation (`readData`)
-to complete (which is consuming the event loop thread lifetime). As soon
-as `readData` returns, we have our data and can go on to do something
-with it (`doSomething(data)`). Finally, when that is done, we can go on
-and do other stuff (`doSomethingUnrelated`).
-
-    In the asynchronous world, we do something like this: 
-    def doSomething(data):
-        # do something with data
-    readData(callback = doSomething)
-    doSomethingUnrelated()
-
-As can be seen, the result of `readData` is not received in the
-functions return value. Instead `doSomething` is passed in the handler
-method as a callback. The framework will take care that this handler is
-called asynchronously as soon as the data is available
-
-### APIs
-
-Vert.x provides the different APIs which are implemented in various
-languages:
-
-**Core API** \* TCP client/Server API \* HTTP client/Server API \*
-Transport Protocol (Websocket, SockJS(provides websocket-like API
-through http), UDP, TCP) \* File System Access \* DNS client API \*
-Shared Data \* Event Bus API \* JSON API
-
-**Container API** \* Deploy and undeploy verticles \* Deploy and
-undeploy modules \* Retrieve verticle configuration \* Logging
-
-### Requirements Analysis
-
-*According to Component Type addressed by the solution ie Messaging
-Node, Runtime, Network QoS and Framework*
-
-##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10) (PTIN)
-
-External Authentication and Authorisation are supported through the
-usage of an Authorisation module:
-
-``` {.java}
-container.deployModule("io.vertx~mod-auth-mgr~2.0.0-final");
-```
-
-The Authorisation module can be the front-end to interact with an
-external vertx service eg with restful APIs or could be attached to the
-vertx-io event bus.
-
-**Authorisation to Send/publish a Message**
-
--   SockJSServer, where we need a bridge configuration
--   InboudPermitted must have: vertx.basicauthmanager.login and clients
-    handler \`\`\`java JsonArray inboundPermitted = new JsonArray();
-
-JsonObject inboundPermitted1 = new JsonObject().putString("address",
-"vertx.basicauthmanager.login");
-inboundPermitted.add(inboundPermitted1); JsonObject inboundPermitted2 =
-new JsonObject().putString("address",
-"aliceHandler").putBoolean("requires\_auth",true);
-inboundPermitted.add(inboundPermitted2); \`\`\` Inboundpermitted allows
-the use of the "requires\_auth" flag. When it is true, messages will be
-first forwarded to the authorization module, where decisions to send or
-not the messages are taken.
-
-**receive a Message**
-
--   OutboundPermitted must have: clients handler.
-    `java outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));`
-
-    ``` {.java}
-    sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
-    ```
-
-**Example: communication between two javascript clients connected via
-SockJS**
-
-Both client applications perform log-in on the EventBus.
-
-``` {.javascript}
-eb.login('alice','alice123', function(reply){console.log(reply);});
-```
-
-Then the client A(alice) wants to send messages to the client B(bob), so
-client B(bob) needs to register a handler. Before the client A(alice)
-can send a message to client B(bob), B must first register himself.
-
-``` {.javascript}
-eb.registerHandler('bobHandler', function(reply){console.log(reply);});
-```
-
-After that client A (alice) can publish messages on client B (bob)
-handler
-
-``` {.javascript}
-eb.publish('bobHandler','Hello bob from alice');
-```
-
-When client A publishes a message to client B handler, this message will
-be first forwarded to the authorization module because of
-inbounpermitted configuration.
-
-**subscribe / register handlers to be notified about published
-messages**
-
-In the SockJSServer configuration we can set a Hook (Registers functions
-to be called when certain events occur on an event bus bridge).
-
-``` {.java}
-ServerHook hook = new ServerHook(logger);
-sockJSServer.setHook(hook);
-```
-
-ServerHook takes some keyword arguments for example:
-
--   pre-register: Called before a client handler registration is
-    processed.
-
-    ``` {.java}
-     public boolean handlePreRegister(SockJSSocket sock, String address) {
-    logger.info("handlePreRegister, sock = " + sock + ", address = " + address);
-    return true;
-      }
-    ```
-
-In this way handlers registration can be controlled.
-
-##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)(PTIN)
-
-Hint from Fokus: Since vertx is based on http://hazelcast.org/ we can
-use it to cache some info including the sessionId
-
-##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features) (FOKUS)
-
--   Resilience: Vert.x provides resilience through the "automatic
-    failover" and "HA group" options. When a module is run with HA, if
-    the Vert.x instance where it is running fails, it will be re-started
-    automatically on another node of the cluster. An HA group denotes a
-    logical grouping of nodes in the cluster. Only nodes with the same
-    HA group will failover onto one another.
--   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
-    Vert.x 3.0 provides built-in core functiionality for this core
--   Service Assurance: Modules can be deployed in clusters, and Vert.x
-    provides an internal Load Balancer for routing messages within the
-    cluster. Also the above mentioned "auomatic failover" and "HA group"
-    options contribute to enforce service assurance.
-
-##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16) (FOKUS)
-
-Verticle instances, except advanced multi-threaded worker verticles are
-almost always single threaded. what this implies is that, a single
-verticle instance can at most utilise one core of the server. In order
-to scale across cores, several verticles which are responsible for the
-same task can be instantiated and the runtime will distribute the
-workload among them (load balancing), this way taking full advantage of
-all SPU cores without much effort. Verticles can also be distributed
-between several machines. This will be transparent to the application
-code. The Verticles use the same mechanisms to communicate as if they
-would run on the same machine. This makes it very easy to scale
-applications.
-
-##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)(FOKUS)
-
--   Websockets - Yes supported
--   SockJS - Yes supported
--   HTTP Long-Polling - Yes
--   HTTP Streaming - ? (Not sure what this means, clarification needed)
-
-##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)(FOKUS)
-
-No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
-or point-2-point mechanism. In both cases, there is no feedback to the
-sender if the message was recieved and processed or if it was not
-recieved at all. In the end reliability will boil down to the
-application logic service build on top of vert.x.
 
 QOS SOTA
 ========

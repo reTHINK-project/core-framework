@@ -140,3 +140,33 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [64] - http://xmpp.org/
 
 [65] - http://zeromq.org/
+
+[66] http://www.w3.org/2012/sysapps/app-lifecycle/
+
+[67] https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
+
+[68] https://www.w3.org/community/trustperms/
+
+[69] https://whatwg.org/
+
+[70] http://www.w3.org/TR/CSP2/
+
+[71] https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
+
+[72] http://en.wikipedia.org/wiki/Content_Security_Policy
+
+[73] http://w3c.github.io/push-api/
+
+[74] http://thenewdialtone.com/webrtc-browser-push-notification/
+
+[75] http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include_text=1
+
+[76] http://www.w3.org/TR/workers/
+
+[77] https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
+
+[78] https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
+
+[79] http://www.w3.org/TR/service-workers/
+
+[80] https://jakearchibald.github.io/isserviceworkerready/

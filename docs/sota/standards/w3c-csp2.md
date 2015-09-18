@@ -35,9 +35,3 @@ A Content Security Policy consists of a U+003B SEMICOLON (;) delimited list of d
 
 In a preliminary analysis CSP seems too limited to be applied for the runtime policy engine but it may be useful to improve security in the protOfly engine.
 
-#### References
-
-* http://www.w3.org/TR/CSP2/
-* https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
-* http://en.wikipedia.org/wiki/Content_Security_Policy
-

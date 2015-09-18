@@ -13,7 +13,7 @@ providing reTHINK Messaging Services and the specification of the
 Hyperty Runtime that will be included in User Devices and Application
 Servers to deliver User Hyperties and Network Side Hyperties.
 
-![Figure 3 - WP3 Scope](WP3-scope.png)
+![Figure 2 - WP3 Scope](WP3-scope.png)
 
 It should be noted that the Network Platform specification supporting
 Specialised Network Services will be reported later in D3.4, as
@@ -500,7 +500,7 @@ in these architectures, multiple techniques have been employed:
     content. Apart from that, it is also responsible for enforcing the
     same-origin policy between the user and a website he's visiting.
 
-![Figure 4: Chromium sandbox scheme](chromium-sandbox.png)
+![Figure 3: Chromium sandbox scheme](chromium-sandbox.png)
 
 #### Browser Extensions Security
 
@@ -543,7 +543,7 @@ own isolated instance of a content script, making content scripts highly
 bound to attacks. However, only the core extension is able to
 communicate with the Chrome extension's API, reducing the risk that a
 content script is able to access the user data space. The architecture
-scheme of a Google Chrome extension is on Fig. 5. \* **Isolated Words:**
+scheme of a Google Chrome extension is on Fig. 4. \* **Isolated Words:**
 This mechanism ensures that content scripts and websites have separate
 JavaScript heaps and DOM objects. Consequently, content scripts never
 exchange pointers with websites, protecting them against web
@@ -557,7 +557,7 @@ the website it is running on. This way, an extension is limited to the
 permissions its developer requested, so an attacker is not able to
 request new permissions for a compromised extension in runtime.
 
-![Figure 5: The architecture of a Google Chrome
+![Figure 4: The architecture of a Google Chrome
 extension](chrome-extension-arch.png)
 
 #### XSS Detection Techniques
@@ -582,9 +582,9 @@ two distinct categories, according to [3]:
     stealing the user’s information, XSS attacks can also be used to
     redirect users to a malicious website which can then perform other
     distinct attacks within its context. A persistent XSS attack scheme
-    is presented on Fig. 6.
+    is presented on Fig. 5.
 
-![Figure 6: Scheme of a persistent XSS attack](xss-persistent.png)
+![Figure 5: Scheme of a persistent XSS attack](xss-persistent.png)
 
 -   **Non-persistent/Reflected attacks:** Unlike the first type,
     reflected attacks do not persistently store malicious code in the
@@ -595,10 +595,10 @@ two distinct categories, according to [3]:
     finally be interpreted by the user’s browser, but within the trusted
     context of the web application. This type of XSS attacks is often
     combined with other techniques as phishing, and is the most common
-    type of XSS attacks in web applications. Figure 7 shows a scheme of
+    type of XSS attacks in web applications. Figure 6 shows a scheme of
     the architecture of a non-persistent XSS attack.
 
-![Figure 7: Scheme of a non-persistent XSS
+![Figure 6: Scheme of a non-persistent XSS
 attack](xss-nonpersistent.png)
 
 #### XSS (and Other Types) Prevention Techniques
@@ -705,7 +705,7 @@ that run on the smart card. The single-chip computer is embedded in a
 plastic chip carrier, and both of them hold several tamper-resistant and
 tamper-detection features.
 
-![Figure 8: Java Smart Card scheme [11]](java-smart-card.jpg)
+![Figure 7: Java Smart Card scheme [11]](java-smart-card.jpg)
 
 **Software**
 
@@ -745,12 +745,12 @@ use their embedded resources. These resources usually target two service
 types: Near Field Communication (NFC) facilities for mobile applications
 and trusted cryptographic features for cloud applications.
 
-![Figure 9: CoSE architecture](cose.png)
+![Figure 8: CoSE architecture](cose.png)
 
 **Architecture**
 
 A Cloud of Secure Elements involves the following stakeholders, as Fig.
-9 shows:
+8 shows:
 
 -   NFC kiosks, typically deliver payment facilities
 -   Users with NFC-enabled devices or terminals needing trusted
@@ -1050,21 +1050,29 @@ environments - Messaging Node must support external authentication and
 Authorisation - Messaging Node must support multiple message oriented
 communication patterns including: pub/sub, broadcast, one to one.
 
+### Matrix
+
 The end goal of Matrix is to be a ubiquitous messaging layer for
 synchronising arbitrary data between sets of people, devices and
 services. Matrix doesn’t support external authentication and
 authorisation. It also needs to adapt support of messaging transport
 protocols by wrapping Event/messages in REST messages.
 
+### MQ Telemetry Transport
+
 MQ Telemetry Transport (MQTT) is a lightweight broker-based
 publish/subscribe messaging protocol designed to be open, simple,
 lightweight and easy to implement. As it fulfils all the criteria
 defined above MQTT is a potential candidate for messaging node.
 
+### Node.js®
+
 Node.js® is a platform built on Chrome's JavaScript runtime for easily
 building fast, scalable network applications. Nodejs doesn’t support
 pub/sub by itself, but it can if it is associated with another Pub/Sub
 mechanism (e.g. Redis).
+
+### PSYC
 
 PSYC is a mostly text-based protocol, aiming at providing a
 decentralized global messaging infrastructure for unicast/multicast
@@ -1074,10 +1082,14 @@ able to accept external authentication/authorisation methods other than
 its own one. Moreover, a certain degree of latency is inevitable, due to
 the use of TLS and DoS techniques.
 
+### RabbitMQ
+
 RabbitMQ is defined as a robust and easy to use messaging platform that
 can work synchronously an asynchronously. It partially supports
 Messaging transport protocols but should not be tolerant to unstable
 connections.
+
+### Realtime backends
 
 Realtime backends (aka noBackend or BackendAsAService(BaaS)) is a
 concept related to real time databases. The backend and its remote
@@ -1087,22 +1099,33 @@ logic, in its local runtime. The realtime backend concept would allow
 defining and managing interworking with other services, in a way that
 entirely belongs to each application.
 
+### Redis
+
 Redis is an open source advanced key-value cache and store. Its
 weaknesses are that Redis has no logging features; they need to be
 implemented externally. Moreover, there is no indication that Redis is
 tolerant to unstable connections.
 
+### Vert.x
+
 Vert.x is an application framework providing possibilities to develop
-loosely coupled network service applications. The Extensible Messaging
-and Presence Protocol (XMPP) is an open technology for real-time
-communication, which powers a wide range of applications including
-instant messaging, presence, multi-party chat, voice and video calls,
-collaboration, lightweight middleware, content syndication, and
-generalized routing of XML data.
+loosely coupled network service applications.
+
+### XMPP
+
+The Extensible Messaging and Presence Protocol (XMPP) is an open
+technology for real-time communication, which powers a wide range of
+applications including instant messaging, presence, multi-party chat,
+voice and video calls, collaboration, lightweight middleware, content
+syndication, and generalized routing of XML data.
+
+### ZeroMQ
 
 ZeroMQ is a high-performance, low level, asynchronous messaging library
 originally written in C++, that now has multiple native Implementations.
 It is used as a thin layer between the application and transport layers.
+
+### Selected Real time Messaging Solutions
 
 In the scope of reThink framework, Matrix, Nodejs and vert.X have been
 selected to implement the messaging node.
@@ -1174,7 +1197,7 @@ development. With a middle layer of the Service Framework offering
 bulding blocks to choose from, a new ecosystem is formed on top of which
 other frameworks and applications can exist.
 
-![Figure 10: Service framework middle
+![Figure 9: Service framework middle
 layer](service_framework_middle_layer.png)
 
 Projects
@@ -1437,7 +1460,7 @@ in close collaboration with the WebRTC gateway. The following picture
 describes how the WAC fits into a service provider or enterprise voice
 network:
 
-![Figure 11: Sippo WAC reference
+![Figure 10: Sippo WAC reference
 architecture](quobis_reference_architecture.png)
 
 The following network elements are the basic ones to understand the
@@ -1518,7 +1541,7 @@ to Call or Sippo GMail Toolbar.
 Sippo offers a set of different API’s and service interfaces that are
 summarised in the picture below:
 
-![Figure 12: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
+![Figure 11: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
 
 ##### Sippo.js API
 
@@ -1536,7 +1559,7 @@ benefit of using Sippo.js API as it hides the complexity of the
 underlying signaling plane and provides a single and simple-to-use
 javascript API to the applications.
 
-![Figure 13: Sippo.js abstraction layer](quobis_abstraction_layer.png)
+![Figure 12: Sippo.js abstraction layer](quobis_abstraction_layer.png)
 
 ##### Sippo Service API (SAPI)
 
@@ -1591,7 +1614,7 @@ the WAC, whereas a backend is a implementation of a specific service. In
 other words, we can say that a services is “what” to do and the backend
 is “how” to do it.
 
-![Figure 14: Sippo services and
+![Figure 13: Sippo services and
 backends](quobis_sippo_services_and_backends.png)
 
 There are thirty-three available services at Sippo WAC that are listed
@@ -1620,7 +1643,7 @@ the Sippo WAC is done by using the WAPI interface, which dispatches the
 incoming messages to the corresponding services, as shown in the picture
 below:
 
-![Figure 15: Sippo WebRTC applications
+![Figure 14: Sippo WebRTC applications
 stack](quobis_webrtc_applications.png)
 
 #### Potential integration with Wonder proposal
@@ -1736,20 +1759,20 @@ among all platforms.
 Runtime Architecture
 --------------------
 
-The main Hyperty runtime architecture is presented in fig. 16. It is
+The main Hyperty runtime architecture is presented in fig. 15. It is
 comprised by different types of components that, for security reasons,
 are executed in isolated sandboxes. Thus, components downloaded from a
-specific Service Provider (e.g. Service Provider 1 from fig. 16) are
+specific Service Provider (e.g. Service Provider 1 from fig. 15) are
 executed in sandboxes that are different from the sandboxes used to
 execute components downloaded from another service provider (e.g.
-Service Provider 2 from fig. 16). In addition, for the same Service
+Service Provider 2 from fig. 15). In addition, for the same Service
 Provider, and also for security reasons, protocol stubs and Hyperties
 are isolated from each other and executed in different sandboxes.
 Communication between components running in different sandboxes are only
 possible through messages exchanged through a message bus functionality
 provided by the Core Sandbox. On the other hand, the protocol stub
 provides the bridge for the Hperty runtime to communicate with
-associated Service Provider. For example, in fig. 16, protostub1 is the
+associated Service Provider. For example, in fig. 15, protostub1 is the
 only way that Hyperty instances have to communicate with Service
 Provider 1. In general, in the Core Sandbox, all required
 functionalities to support the deployment, execution and maintenance of
@@ -1763,19 +1786,19 @@ situations, the Hyperty Core Runtime components are downloaded from the
 Hyperty Runtime Service Provider and are executed in an isolated core
 sandbox.
 
-![Figure 16 High Level Runtime Architecture with trusted
+![Figure 15 High Level Runtime Architecture with trusted
 Hyperties](Runtime_Architecture_high_level.png)
 
-In figure 16, the Application and the Hyperty Instances it consumes, are
+In figure 15, the Application and the Hyperty Instances it consumes, are
 downloaded from the same Service Provider, and they trust each other,
-i.e. they are executed in the same sandbox. In figure 17, it is depicted
+i.e. they are executed in the same sandbox. In figure 16, it is depicted
 the Runtime Architecture where the Application and the Hyperty Instances
 it consumes, don't trust each other, for example, they are downloaded
 from different service providers. In such situation, Hyperties and the
 Application are isolated from each other and they are executed in
 different sandboxes.
 
-![Figure 17 High Level Runtime Architecture with untrusted
+![Figure 16 High Level Runtime Architecture with untrusted
 Hyperties](Runtime_Architecture_high_level_unstrusted.png)
 
 As described below, to prevent cross origin attacks / spy, access to
@@ -1783,10 +1806,10 @@ Core Runtime Message BUS is subject to authorisation, by using
 standardised policies downloaded from each involved Service Provider. In
 addition, the Hyperty Runtime Architecture also supports the enforcement
 of Service Provider policies, with its own Policy Enforcer component
-executed in a dedicated sandbox (see fig. 18) enabling the enforcement
+executed in a dedicated sandbox (see fig. 17) enabling the enforcement
 of proprietary policies.
 
-![Figure 18 High Level Runtime Architecture with domain specific Policy
+![Figure 17 High Level Runtime Architecture with domain specific Policy
 Enforcer](Runtime_Architecture_high_level_pep.png)
 
 The different types of policies to be applied on these different points,
@@ -1826,11 +1849,11 @@ Observer hyperty is not allowed to change objects
 Reporter hyperty creator of the object is allowed to change the object.
 Only one hyperty instance reporter per Synched object instance.
 
-Such Model is depicted in figure 19. The Reporter-Observer pattern is
+Such Model is depicted in figure 18. The Reporter-Observer pattern is
 supported by the exchange of messages between Reporter Syncher and
 Observer Syncher as defined in the reTHINK Message Model [D2.2].
 
-![Figure 19 Reporter-Observer Communication
+![Figure 18 Reporter-Observer Communication
 Pattern](reporter-observer-pattern.png)
 
 Additional, and more sophisticated and proprietary data synchronisation
@@ -1863,9 +1886,9 @@ added or changed including message addresses and identity tokens.
 
 ### Core Runtime
 
-The Core Runtime components are depicted in fig. 20.
+The Core Runtime components are depicted in fig. 19.
 
-![Figure 20 Runtime Core Architecture](Core_Runtime.png)
+![Figure 19 Runtime Core Architecture](Core_Runtime.png)
 
 Runtime Core components should be as much as possible independent on the
 Runtime type. They should be deployed once and executed at the
@@ -2122,7 +2145,7 @@ attack is directed to (e.g., the operating system), and (2) the
 difficulty level of the attack based on the technical skills and
 resources required by the adversary.
 
-![Figure 21: Vulnerability matrix for a dummy platform](dummymatrix.png)
+![Figure 20: Vulnerability matrix for a dummy platform](dummymatrix.png)
 
 The figure above provides an example of a vulnerability matrix for a
 dummy platform. The content of each cell describes examples of attacks
@@ -2139,7 +2162,7 @@ classification for attack layers and difficulty levels:
 ordered top-down, from the highest to the lowest layer of the computer
 stack, as shown in the figure below:
 
-![Figure 22: Stack](stack.png)
+![Figure 21: Stack](stack.png)
 
 -   *Sandbox level (L1)*: The attacker has direct access to the sandbox
     environment, hence to the code and execution state of Hyperty
@@ -2237,7 +2260,7 @@ specific browser version and extensions. In spite of this diversity, a
 Hyperty-enabled browser will tend to follow the general architecture
 represented in the figure below.
 
-![Figure 23: Browser](browser.png)
+![Figure 22: Browser](browser.png)
 
 In this architecture, the Hyperty Runtime (represented by the shaded
 components of the Figure) is deployed on an independent browser process.
@@ -2259,7 +2282,7 @@ Runtime are mainly caused by an adversarial user. To better characterize
 these threats, we define three attacker profiles and draw the
 vulnerability matrix as follows:
 
-![Figure 24: Security Browser](securitybrowser.png)
+![Figure 23: Security Browser](securitybrowser.png)
 
 -   *Regular user*: This attacker profile captures the class of users
     with an average proficiency level in computing, but are willing to
@@ -2330,7 +2353,7 @@ maintenance of such applications, reTHINK will provide an SDK that will
 include APIs and platform specific libraries for adapting the Hyperty
 Runtime to the underlying operating system platform.
 
-![Figure 25: Application platform](application.png)
+![Figure 24: Application platform](application.png)
 
 The figure above illustrates a general standalone platform tailored for
 Android mobile devices. Just like in the browser platform, the Hyperty
@@ -2359,7 +2382,7 @@ A2, respectively, in the browser's vulnerability matrix). Next, we
 present the vulnerability matrix of the standalone platform and provide
 alternative attack examples.
 
-![Figure 26: Security Application platform](securityapplication.png)
+![Figure 25: Security Application platform](securityapplication.png)
 
 -   *Advanced user*: An advanced user can compromise the entire system
     by launching attacks at the OS level:
@@ -2418,9 +2441,7 @@ parameters of interface functions.
 
 ### Runtime User Agent Interface
 
-#### Local Device Runtime APIs
-
-##### registerHyperty
+#### registerHyperty
 
 Register Hyperty deployed by the App that is passed as input parameter.
 To be used when App and Hyperties are from the same domain otherwise the
@@ -2429,19 +2450,19 @@ loadHyperty(..) function.
 
     registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
 
-##### loadHyperty
+#### loadHyperty
 
 Deploy Hiperty from Catalogue URL
 
     loadHyperty( URL.URL hyperty)
 
-##### loadStub
+#### loadStub
 
 Deploy Stub from Catalogue URL or domain url
 
     loadStub( URL.URL stub)
 
-##### checkForUpdate
+#### checkForUpdate
 
 Used to check for updates about components handled in the Catalogue
 including protocol stubs and Hyperties. *check relationship with
@@ -2449,23 +2470,12 @@ lifecycle management provided by Service Workers*
 
     checkForUpdate(CatalogueURL url)
 
-##### discoverHiperty
+#### discoverHiperty
 
 accomodate interoperability in H2H and proto on the fly for newly
 discovered devices in M2M
 
     discoverHiperty( CatalogueDataObject.HypertyDescriptor descriptor) 
-
-#### External parties procedures
-
-Communication with the Catalogue will use the LWM2M protocol. For this
-specific operations are required: registration of the device endpoint to
-the Catalogue, Catalogue-driven creation and instantion of Smart Object
-(Hiperties/ProtoStubs) instances and Access Control rules. This
-functionality maps to the Software Management interface of the LWM2M
-protocol, still to be finalized as specification. The drafts are
-available at:
-http://member.openmobilealliance.org/ftp/Public\_documents/DM/LightweightM2M/Permanent\_documents/
 
 ### Runtime Registry Interface
 
@@ -2807,7 +2817,7 @@ have to be deployed in the Device or in the Server.
 The main data flows to support the deployment of the Hyperty Core
 Runtime is depicted in the diagram below.
 
-![Figure 27: Deploy Core Runtime Components in the Native
+![Figure 26: Deploy Core Runtime Components in the Native
 Runtime](deploy-runtime.png)
 
 Steps 1 - 2 : the Runtime can be explicitly deployed by a specific
@@ -2832,7 +2842,7 @@ The main data flows to support the deployment of protocol stubs required
 to connect the Hyperty Runtime to a specific back-end server, is
 presented in the figure below and described in this section.
 
-![Figure 28: Deploy Protocol Stub](deploy-protostub.png)
+![Figure 27: Deploy Protocol Stub](deploy-protostub.png)
 
 Steps 1-2 : The protocol stub deployment may be triggered by the
 deployment of an Hyperty or by some attempt from a local Hyperty to
@@ -2887,7 +2897,7 @@ Message to publish Protocol Stub Status
 The Runtime procedures to deploy a new Hyperty are described in this
 section.
 
-![Figure 29: Deploy Hyperty (part1)](deploy-hyperty.png)
+![Figure 28: Deploy Hyperty (part1)](deploy-hyperty.png)
 
 Note: The trigger of Hyperty deployment may take advantage of some
 existing libraries like require.js.
@@ -2920,7 +2930,7 @@ Steps 11 - 12 : the new [Hyperty instance is
 registered](register-hyperty.md) by the Runtime Registry. See section ?
 for more details.
 
-![Figure 30: Deploy Hyperty (part2)](deploy-hyperty_001.png)
+![Figure 29: Deploy Hyperty (part2)](deploy-hyperty_001.png)
 
 Steps 13: policies contained in the Hyperty Descriptor, are deployed in
 the BUS Authorisation component
@@ -2967,7 +2977,7 @@ BUS. .
 The Runtime procedures to route a message by the Runtime BUS are
 described in this section.
 
-![Figure 32: Message Routing in Message BUS](bus-msg-routing.png)
+![Figure 31: Message Routing in Message BUS](bus-msg-routing.png)
 
 Steps 1 - 5 : on receiving a message, the Runtime BUS requests the
 Registry to verify if the originator is valid (3) (i.e. its Runtime URL
@@ -3030,7 +3040,7 @@ end
 
 @enduml
 -->
-![Figure 33: Intra-domain Local
+![Figure 32: Intra-domain Local
 Communication](intradomain-local-communication.png)
 
 #### Intra-domain Remote Communication
@@ -3081,7 +3091,7 @@ SP1H@1B <- BUS@1B : postMessage( message )
 
 @enduml
 -->
-![Figure 34: Intra-domain Remote
+![Figure 33: Intra-domain Remote
 Communication](intradomain-remote-communication.png)
 
 #### Inter-domain Local Communication
@@ -3120,7 +3130,7 @@ BUS@A -> SP2H@A : postMessage( message )
 
 @enduml
 -->
-![Figure 35: Inter-domain Local
+![Figure 34: Inter-domain Local
 Communication](interdomain-local-communication.png)
 
 #### Inter-domain Remote Communication
@@ -3173,7 +3183,7 @@ SP2H@B <- BUS@B : postMessage( message )
 
 @enduml
 -->
-![Figure 36: Inter-domain Remote
+![Figure 35: Inter-domain Remote
 Communication](interdomain-remote-communication.png)
 
 ### Runtime Identity Management Procedures
@@ -3183,7 +3193,6 @@ required to manage Identities used by Hyperties. It includes:
 
 -   User Registration in the Domain
 -   Domain Login
--   Discovery of Hyperties and Users
 -   Association between Identities and Hyperty Instances
 -   and Assertion of User Identities
 
@@ -3300,28 +3309,13 @@ end group
 
 @enduml
 -->
-![Figure 37: User registration](user-registration.png)
+![Figure 36: User registration](user-registration.png)
 
 In this use case, it is considered there is a single protocol stub to
 interact with all back-end services including Identity Management.
 Another option is to have different protocol stubs to interact with
 different back-end services including authentication, authorisation and
 messaging services.
-
-#### Discovery
-
-The picture shows Discovery of a Hyperty. The first picture is about the
-preparation or "How comes the HYperty URL into the Discovery service?".
-The second pictury is about "How to find this information?" and "How to
-use it?".
-
-##### Prepare Discovery
-
-![Figure 38: Prepare Discovery](prepare_discovery.png)
-
-##### Use Discovery
-
-![Figure 39: Use Discovery](use_discovery.png)
 
 #### Domain Login
 
@@ -3457,7 +3451,7 @@ SP1H@A <- Router1@A : postMessage(login response message)
 
 @enduml
 -->
-![Figure 40: Domain Login](domain-login.png)
+![Figure 39: Domain Login](domain-login.png)
 
 In this use case, it is considered there is a single protocol stub to
 interact with all back-end services including Identity Management.
@@ -3467,7 +3461,7 @@ messaging services.
 
 #### Associate User Identity to Hyperty Instance
 
-![Figure 41: Associate User Identity to Hyperty
+![Figure 40: Associate User Identity to Hyperty
 Instance](user-to-hyperty-binding-scheme.png)
 
 This sequence details the steps needed to associate the user identity to
@@ -3533,27 +3527,6 @@ option is for the association action to be triggered by the User Agent
 
 Question: Which option should be provided? If both, which should be the
 default one?
-
-#### User identity assertion
-
-![Figure 42: User identity assertion sequence
-diagram](user-identity-assertion.png)
-
-In this sequence, Alice Hyperty receives an Identity Assertion from its
-signaling/backend service. Before prompting the user with the asserted
-identity (e.g. an incoming call notification) it must be verified. The
-hyperty thus uses the Verification API to ask the runtime to verify the
-received assertion. Communication with the Runtime is done through the
-Msg bus.
-
-Upon receiving the verification request, the runtimeUA instantiate an
-IdP Proxy from a URL. This URL is given in the IdToken. Alternatively
-the IdP Proxy may already have been instantiated. Once instantiated, the
-RuntimeUA uses it to verify the IdToken. Communication with the IdP
-Proxy is also done through the Msg bus.
-
-If the IdToken is validated, the RuntimeUA confirms the validity to the
-Hyperty.
 
 ### Main Runtime Procedures for H2H Communication
 
@@ -3665,7 +3638,7 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 
 @enduml
 -->
-![Figure 43: Alice invites Bob for a
+![Figure 42: Alice invites Bob for a
 communication](h2h-intra-comm-1-alice-invites-bob.png)
 
 (Steps 1 - 4) : Alice decides to invite Bob for a communication. The
@@ -3769,7 +3742,7 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 
 @enduml
 -->
-![Figure 44: Bob receives
+![Figure 43: Bob receives
 invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
 (Steps 1 - 4) : Service Provider Back-end Messaginge Service routes the
@@ -3841,7 +3814,7 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 
 @enduml
 -->
-![Figure 45: Aknowledged that Bob received the
+![Figure 44: Aknowledged that Bob received the
 invitation](h2h-intra-comm-3-alice-is-aknowledged.png)
 
 (Step 1 - 3) : Service Provider Back-end Messaginge Service routes the
@@ -3906,7 +3879,7 @@ Sync1@1B -> LocObj@1B : setup Observer Callback
 
 @enduml
 -->
-![Figure 46: notification
+![Figure 45: notification
 update](h2h-intra-comm-4-notification-update.png)
 
 (step 1) : The Application which interacts with the human user setups a
@@ -3991,7 +3964,7 @@ end
 
 @enduml
 -->
-![Figure 47: Bob gatheres WebRTC
+![Figure 46: Bob gatheres WebRTC
 resources](h2h-intra-comm-5-bob-webrtc.png)
 
 (Step 1) : The Hyperty is notified about the added remoteDescription
@@ -4078,7 +4051,7 @@ Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-![Figure 48: Synchronization of Alice's Data
+![Figure 47: Synchronization of Alice's Data
 object](h2h-intra-comm-6-alice-DO-synch.png)
 
 1)  Synchronization of Alice's Data object (Step 1) The local Data
@@ -4089,8 +4062,9 @@ object](h2h-intra-comm-6-alice-DO-synch.png)
 
 (Step 3) the Policy Enforcer checks if the message is compliant with the
 local policies and the message is sent to the ProtoStub (Step 4) to be
-in turn sent to the Service Provider 1 Back-End (Step 5) \#\#\#\# Main
-Runtime Procedures for Inter-domain H2H Communications
+in turn sent to the Service Provider 1 Back-End (Step 5)
+
+#### Main Runtime Procedures for Inter-domain H2H Communications
 
 ##### H2H Interdomain Communication - create communication
 
@@ -4608,396 +4582,7 @@ Alice's Hyperty (Step 2).
 with the local policies and forwards the message the Msg Bus (Step 4)
 
 (Step 5) : The message Bus sends the message to Alice via the SP2 stub,
-deployed in Alice's runtime \#\#\# Runtime Main Procedures for M2M
-Communication
-
-An overview of the M2M End-User runtime components and their interaction
-with the Management Services and Network Services is presented in the
-diagram below. There are two devices depicted: an existing one and a new
-one that is entering the reThink environment. The existing one acts as
-an information producer and the new one acts as an information consumer.
-The Context Producer App holds reference to multiple hiperties. The
-first operation is to register the producer hiperties to the Global
-Registry. The new device will first perform a discovery procedure in
-order to retrieve the producing hiperties location, pointing to a: \*
-remote Network Service, named here M2M Messaging Service, dedicated for
-M2M services like storing resources for sensing and actuating (Global
-M2M Resource Directory) \* located on the existing device (Local M2M
-Resource Directory), with the same purpose for sensing and actuating
-
-The flexibility of supporting these two scenarios allows the
-architecture to support at the same time a: \* publish-subscribe
-communication in which a Network Service is used to convey information
-between two endpoints that need to communicate \* and a peer-to-peer
-communication in which a locally stored resource on the existing device
-is used to exchange data
-
-After the discovery procedure the new device Runtime User Agent can
-perform a bootstrap procedure involving one or more hiperty and
-protostub download and instantion operations associated to the producing
-hiperties. The Identity Management (IdM) hiperty residing on the
-existing device will apply policies to enforce access control of the
-consumer hiperty. The QoS User Agent will assist the Runtime User Agent
-with information on the connectivity so that the download can be
-performed efficiently, e.g. requests will be sent only when connectivity
-on the new device is available. A mechanism for access control will be
-also enforced on the remote M2M resource directory by contacting the
-Identity Management management service.
-
-The Context Producer ProtoStub will be used by the existing device to
-communicate with the local or remote M2M resource directory in order to
-push data or subscribe to actions. The Context Consumer Protostub will
-be used by the new device to push actions and subscribe/receive
-notifications on data exchanged by the existing device.
-
-![Figure 49: Runtime Main Procedures for M2M
-Communication](M2M_runtime_Archit_violet.png)
-
-#### M2M Device Bootstrap, Registration, Authorization
-
-For M2M communication the human presence is limited but still present
-when it comes to accepting that software is installed on his/her
-pertaining device. Thus the bootstrap operation is slightly different
-than the one from the H2H usecase where the human presence is included.
-We consider that the device to be bootstraped is configured to
-communicate with the Catalogue for this operation. The Catalogue will
-perform similar to a Device Management Server exposing the LWM2M
-protocol to the device and applications to which humans have access.
-
-In the following diagram we consider that Alice has just bought a device
-and wants to install a set of hiperties that put the device in use. For
-this, she will press the boot button trigerring as first operation the
-Runtime User Agent instantiation (step 1) and then the Runtime User
-Agent registration to the Catalogue with an unique endpoint (step 2).
-The registration wil permit Alice to visualize the new attached device
-on an application interfacing with the Catalogue (step 3,4). Alice will
-be able to then ask the Catalogue to perform a device bootstrap by
-selecting an application and set of hiperties to install on the device
-(step 5). Steps 6-9 illustrate the operations of creating a software
-component management information on the device. Steps 10,11 creates the
-associated Access Control Rule to govern the access to modify or update
-the software components information. In step 12 Alice will be notified
-of the result of the bootstrap, along with any possible error indication
-(hard disk full, hardware problem, incompatible versions of Runtime User
-Agent and Catalogue). If the software component information transfer is
-successful, Alice can reconsider and not install the software or proceed
-with the installation. This step 13 is essential as it allows a last
-minute option for the user to interrupt installation of a malware. The
-Catalogue can then send a command to the Runtime User Agent to
-instantiate/execute the transmitted artifacts (steps 14, 15).
-Uninstalling software on demand is also envisioned, but not present in
-the diagram. The user will be notified when the artifacts are loaded
-(step 16). Registration of the hiperties is performed automatically by
-the Runtime User Agent.
-
-Other Runtime APIs that the Runtime User Agent exposes, like
-loadHiperty() and loadProtoStub() are to be used by the applications
-that are already running on the Runtime. Loading of Hiperties or
-ProtoStubs will trigger the steps 8-18.
-
-It might be the situation that the human intervention is not requested
-when a new Hiperty is to be downloaded by an application that was
-already authorized by the human, in order to improve the Quality of
-Experience.
-
-![Figure 50: M2M Device Bootstrap](M2M_bootstrap_authentication.png)
-
-#### M2M Intra Communication : Context Discovery
-
-<!--
-@startuml "m2m-intra-comm-3-discovery.png"
-
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_NativeAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-
-!define SHOW_SP1
-
-!include runtime_objects.plantuml
-
-== Discover Home Energy Context ==
-
-SP1H@A -> Router1@A : discover Home\nEnergy Context
-
-Router1@A -> BUS@A : discover Home\nEnergy Context
-
-Proto1@A <- BUS@A : discover Home\nEnergy Context\n+Access Token
-
-SP1 <- Proto1@A : discover Home\nEnergy Context\n+Access Token
-
-SP1 -> SP1 : match Energy Context Consumer\nand Producer descriptors
-
-SP1 -> Proto1@A : Return Home \nEnergy Context URL
-
-Proto1@A -> BUS@A : Return Home \nEnergy Context URL
-
-Router1@A <- BUS@A : Return Home \nEnergy Context URL
-
-SP1H@A <- Router1@A : Return Home \nEnergy Context URL
-
-@enduml
--->
-![Figure 51: Context Discovery in M2M Intradomain
-Communication](m2m-intra-comm-3-discovery.png)
-
-(2) Context Discovery in M2M Intradomain Communication
-
-**[Previous: Device Bootstrap, Authentication
-Registration](m2m-bootstrap-auth-registration.md)**
-
-Steps 1 - 4: The Energy Context Consumer Hyperty requests to Discover
-the Home Energy Context through the Gateway Protocol Stub.
-
-**READ Message**
-
-    "id" : "1"
-    "type" : "READ",
-    "from" : "hyperty-instance://alice.home/washmachinehy123",
-    "to" : "alice.home",
-    "body" : { "resource" : "alice.home/registry/context", 
-                "criteria" : {"tag" : "energy"},
-                "projection" : {"url" : 1} }
-
-Steps 5: The Residential Gateway finds the Energy Context Provider
-(HEMS) instance in its registry. It performs a match between its
-descriptor and the Energy Context Consumer (Wash Machine) descriptor to
-verify that both are compliant.
-
-Steps 6 - 9: The Home Energy Context URL is returned to the Energy
-Context Consumer Hyperty.
-
-**RESPONSE to READ Message**
-
-    "id" : "1"
-    "type" : "RESPONSE",
-    "from" : "alice.home",
-    "to" : "hyperty-instance://alice.home/washmachinehy123",
-    "body" : { "code" : "200" , "description" : "ok",
-            "value" : {"url" : "ctxt://alice.home/energy"}}
-
-#### M2M Intra Communication : PUB-SUB Communication
-
-**[Previous: Context Discovery](m2m-intra-comm-3-discovery.md)**
-
-<!--
-@startuml "m2m-intra-comm-4-pub-sub-1.png"
-
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_NativeAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_ContextObjectAtRuntimeA
-!define SHOW_Syncher1AtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-
-!define SHOW_SP1
-
-!include runtime_objects.plantuml
-
-== M2M PUB-SUB Communication Setup ==
-
-SP1H@A -> Router1@A : postMessage\n(Subscribe Energy Context MSG)
-
-Router1@A -> BUS@A : postMessage\n(Subscribe Energy Context MSG)
-
-Proto1@A <- BUS@A : postMessage\n(Subscribe Energy Context MSG)
-
-SP1 <- Proto1@A : Subscribe Energy Context\n HomeGW Protocol MSG
-
-@enduml-->
-![Figure 52: Communication 4 pub sub 1](m2m-intra-comm-4-pub-sub-1.png)
-
-Steps 1 - 4: The Energy Context Consumer Hyperty requests to Subscribe
-the Home Energy Context through the Gateway Protocol Stub.
-
-**SUBSCRIBE Message**
-
-    "id" : "1"
-    "type" : "SUBSCRIBE",
-    "from" : "hyperty-instance://alice.home/washmachinehy123",
-    "to" : "alice.home",
-    "body" : { "resource" : "ctxt://alice.home/energy" }
-
-<!--
-@startuml "m2m-intra-comm-4-pub-sub-2.png"
-
-autonumber
-
-!define SHOW_SP1
-
-!define SHOW_Runtime1B
-
-!define SHOW_SP1SandboxAtRuntime1B
-!define SHOW_Protostub1AtRuntime1B
-!define SHOW_ServiceProvider1HypertyAtRuntime1B
-!define SHOW_ServiceProvider1RouterAtRuntime1B
-!define SHOW_ContextObjectAtRuntime1B
-
-!define SHOW_CoreRuntime1B
-!define SHOW_MsgBUSAtRuntime1B
-
-!include runtime_objects.plantuml
-group alt Subscription Authorisation enforced in the GW
-
-    SP1 -> SP1 : authorise Energy Context\n Consumer subscription
-
-    SP1 -> Proto1@1B : Read Energy Context Object\n HomeGW Protocol MSG 
-
-    Proto1@1B -> BUS@1B : postMessage\n(Read Energy Context Object MSG)
-
-    Router1@1B <- BUS@1B : postMessage\n(Read Energy Context Object MSG)
-
-    Router1@1B <- Router1@1B : control access to Energy Context by HomeGW
-
-    SP1H@1B <- Router1@1B : postMessage\n(Read Energy Context Object MSG)
-
-else Subscription Authorisation enforced at Context Producer
-
-    SP1 -> Proto1@1B : Subscribe Energy Context\n HomeGW Protocol MSG
-
-    Proto1@1B -> BUS@1B : postMessage\n(Subscribe Energy Context MSG)
-
-    Router1@1B <- BUS@1B : postMessage\n(Subscribe Energy Context MSG)
-
-    Router1@1B <- Router1@1B : control access to Energy Context by New Device
-
-    note left
-        It is assumed the Core Runtime asserts the
-         message ID Token is coming from a trustful device
-         ie it is registered in the GW domain with
-         authorisation by Alice. 
-         We need a diagram from the IdM group to detail this.
-    end note
-
-    Router1@1B -> SP1H@1B : postMessage\n(Subscribe Energy Context MSG)
-
-end
-
-SP1H@1B -> Router1@1B : postMessage\n(Response with Energy Context Object MSG)
-
-Router1@1B -> BUS@1B : postMessage\n(Response with Energy Context Object MSG)
-
-Proto1@1B <- BUS@1B : postMessage\n(Response with Energy Context Object MSG)
-
-SP1 <- Proto1@1B : Response with Energy Context Object\n HomeGW Protocol MSG
-
-@enduml-->
-![Figure 53: Communication 4 pub sub 2](m2m-intra-comm-4-pub-sub-2.png)
-
-Two options to handle with Subscription Auhtorisation:
-
-**Option 1: Authorisation enforced in the GW**
-
-Steps 1 : The Residential Gateway uses local policies to authorise the
-subscription request.
-
-Steps 2 - 6: The Residential GW requests the Device holding the Context
-to retrieve the most updated Energy Context Data object. Through a READ
-message.
-
-**READ Message**
-
-    "id" : "1"
-    "type" : "READ",
-    "from" : "alice.home",
-    "to" : "hyperty-instance://alice.home/hemshy123",
-    "body" : { "resource" : "ctxt://alice.home/energy" }
-
-**Option 2: Authorisation enforced in the Device**
-
-Steps 7 - 11 : The subscription request is forwarded to existing device
-Policy Enforcer which applies local policies to give permission to
-forward the message to the Producer Hyperty. It is assumed the Core
-Runtime asserts the message ID Token is coming from a trustful device ie
-it is registered in the GW domain with authorisation by Alice. (to be
-detailed in a separated IdM related diagram). *question:* should the
-Policy Enforcer respond with the Context Data Object without interacting
-with the Hyperty instance but only with the object?
-
-Steps 12 - 15: The Hyperty responds with the most updated Context Data
-object.
-
-**RESPONSE to READ or SUBSCRIBE Message**
-
-    "id" : "1"
-    "type" : "RESPONSE",
-    "from" : "hyperty-instance://alice.home/hemshy123",
-    "to" : "hyperty-instance://alice.home/washmachinehy123", // for subscribe message response
-    "to" : "alice.home", // for read message response
-    "body" : { "code" : "200" , "description" : "ok",
-            "value" : { <Energy Context Data Object>}}
-
-<!--
-@startuml "m2m-intra-comm-4-pub-sub-3.png"
-
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_NativeAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_ContextObjectAtRuntimeA
-!define SHOW_Syncher1AtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-
-!define SHOW_SP1
-
-!include runtime_objects.plantuml
-
-
-SP1 -> Proto1@A : Response with Energy Context Object\n HomeGW Protocol MSG
-
-Proto1@A -> BUS@A : postMessage\n(Response with Energy Context Object MSG)
-
-Router1@A <- BUS@A : postMessage\n(Response with Energy Context Object MSG)
-
-SP1H@A <- Router1@A : postMessage\n(Response with Energy Context Object MSG)
-
-create CtxtObj@A
-SP1H@A -> CtxtObj@A : new
-
-create Sync1@A
-SP1H@A -> Sync1@A : new
-
-SP1H@A -> Sync1@A : observe(Context Data Object)
-
-SP1H@A -> Router1@A : setReceiver( syncher.postMessage )
-
-
-@enduml
--->
-![Figure 54: Communication 4 pub sub 3](m2m-intra-comm-4-pub-sub-3.png)
-
-Steps 1 - 4: The Subscription Response with Energy Context Data Object
-reachs the Consumer Hyperty.
-
-Steps 5 - 8: Context Consumer Hyperty instantiates the received Energy
-Context Data Object and sets as an observer of it. Then, instantiates an
-Observer Syncher to observe it.
+deployed in Alice's runtime
 
 Runtime Implementation Considerations
 -------------------------------------
@@ -5143,7 +4728,7 @@ The diagram below shows all the elements presents in the runtime
 environment in a browser executing we web application which uses
 hyperties.
 
-![Figure 55: Runtime browser
+![Figure 54: Runtime browser
 implementation](Runtime_Browser_Implementation.png)
 
 The web application labeled as *app.domain* represents the html file
@@ -5270,7 +4855,7 @@ By using the Crosswalk Project, an application developer can:
 
 #### Crosswalk Architecture
 
-![Figure 56: Crosswalk Architecture](./crosswalk.png)
+![Figure 55: Crosswalk Architecture](./crosswalk.png)
 
 Crosswalk supports an efficient way of creating your own Web APIs as
 extensions by writing native Java code. This way the user can expose new
@@ -5288,7 +4873,7 @@ can be provided through the development of plugins
 
 #### Cordova functionnal schema
 
-![Figure 57: Cordova functionnal schema](./cordova_archi.jpg)
+![Figure 56: Cordova functionnal schema](./cordova_archi.jpg)
 
 The application itself is implemented as a web page, by default a local
 file named index.html, that references whatever CSS, JavaScript, images,
@@ -5616,7 +5201,7 @@ Msg2 <-left-> Proto1 : communicate
 
 @enduml
 -->
-![Figure 58: Messaging Node
+![Figure 57: Messaging Node
 Architecture](Messaging_Node_Architecture.png)
 
 ### Core Functionalities
@@ -6465,193 +6050,251 @@ SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-wit
 
 [53] - [StapesJS](https://hay.github.io/stapes/)
 
-(3) WP3 Scope
+[54] - http://en.wikipedia.org/wiki/Real-time\_database
 
-(4) Chromium sandbox scheme
+[55] - http://www.leggetter.co.uk/real-time-web-technologies-guide/
 
-(5) The architecture of a Google Chrome extension
+[56] - http://www.matrix.org/
 
-(6) Scheme of a persistent XSS attack
+[57] - http://vertx.io/vertx2/
 
-(7) Scheme of a non-persistent XSS attack
+[58] - http://vertx.io/
 
-(8) Java Smart Card scheme
+[59] - https://www.rabbitmq.com/
 
-(9) CoSE architecture
+[60] - http://www.amqp.org/
 
-(10) Service framework middle layer
+[61] - http://mqtt.org/
 
-(11) Sippo WAC reference architecture
+[62] - http://www.psyced.org/
 
-(12) Sippo interfaces and APIs
+[63] - http://redis.io/
 
-(13) Sippo.js abstraction layer
+[64] - http://xmpp.org/
 
-(14) Sippo services and backends
+[65] - http://zeromq.org/
 
-(15) Sippo WebRTC applications stack
+[66] http://www.w3.org/2012/sysapps/app-lifecycle/
 
-(16) Runtime High Level Architecture
+[67]
+https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
 
-(17) Runtime High Level Architecture with Unstrusted Hyperties
+[68] https://www.w3.org/community/trustperms/
 
-(18) Runtime High Level Architecture with Policy Enforcer
+[69] https://whatwg.org/
 
-(19) Reporter-Observer Communication Pattern
+[70] http://www.w3.org/TR/CSP2/
 
-(20) Core Runtime Architecture
+[71]
+https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing\_Content\_Security\_Policy
 
-(21) Vulnerability matrix for a dummy platform
+[72] http://en.wikipedia.org/wiki/Content\_Security\_Policy
 
-(22) Stack
+[73] http://w3c.github.io/push-api/
 
-(23) Browser
+[74] http://thenewdialtone.com/webrtc-browser-push-notification/
 
-(24) Security Browser
+[75]
+http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include\_text=1
 
-(25) Application platform
+[76] http://www.w3.org/TR/workers/
 
-(26) Security Application platform
+[77] https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker\_API
 
-(27) Deploy Core Runtime Components in the Native Runtime
+[78]
+https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
 
-(28) Deploy Protocol Stub
+[79] http://www.w3.org/TR/service-workers/
 
-(29) Deploy Hyperty (part1)
+[80] https://jakearchibald.github.io/isserviceworkerready/
 
-(30) Deploy Hyperty (part2)
+(2) WP3 Scope
 
-(31) Register Hyperty
+(3) Chromium sandbox scheme
 
-(32) Message Routing in Message BUS
+(4) The architecture of a Google Chrome extension
 
-(33) Intra-domain Local Communication
+(5) Scheme of a persistent XSS attack
 
-(34) Intra-domain Remote Communication
+(6) Scheme of a non-persistent XSS attack
 
-(35) Inter-domain Local Communication
+(7) Java Smart Card scheme
 
-(36) Inter-domain Remote Communication
+(8) CoSE architecture
 
-(37) User registration
+(9) Service framework middle layer
 
-(38) Prepare Discovery
+(10) Sippo WAC reference architecture
 
-(39) Use Discovery
+(11) Sippo interfaces and APIs
 
-(40) Domain Login
+(12) Sippo.js abstraction layer
 
-(41) Associate User Identity to Hyperty Instance
+(13) Sippo services and backends
 
-(42) User identity assertion sequence diagram
+(14) Sippo WebRTC applications stack
 
-(43) Alice invites Bob for a communication
+(15) Runtime High Level Architecture
 
-(44) Bob receives invitation
+(16) Runtime High Level Architecture with Unstrusted Hyperties
 
-(45) Aknowledged that Bob received the invitation
+(17) Runtime High Level Architecture with Policy Enforcer
 
-(46) notification update
+(18) Reporter-Observer Communication Pattern
 
-(47) Bob gatheres WebRTC resources
+(19) Core Runtime Architecture
 
-(48) Synchronization of Alice's Data object
+(20) Vulnerability matrix for a dummy platform
 
-(49) Runtime Main Procedures for M2M Communication
+(21) Stack
 
-(50) M2M Device Bootstrap
+(22) Browser
 
-(51) Context Discovery in M2M Intradomain Communication
+(23) Security Browser
 
-(52) Communication 4 pub sub 1
+(24) Application platform
 
-(53) Communication 4 pub sub 2
+(25) Security Application platform
 
-(54) Communication 4 pub sub 3
+(26) Deploy Core Runtime Components in the Native Runtime
 
-(55) Runtime browser implementation
+(27) Deploy Protocol Stub
 
-(56) Crosswalk Architecture
+(28) Deploy Hyperty (part1)
 
-(57) Cordova functionnal schema
+(29) Deploy Hyperty (part2)
 
-(58) Messaging Node Architecture
+(30) Register Hyperty
 
-(59) WebRTC.org architecture scheme
+(31) Message Routing in Message BUS
 
-(60) OpenWebRTC Architecture
+(32) Intra-domain Local Communication
 
-(61) V8 Architecture
+(33) Intra-domain Remote Communication
 
-(62) V8 Multiple Contexts
+(34) Inter-domain Local Communication
 
-(63) Docker Architecture
+(35) Inter-domain Remote Communication
 
-(64) Firefox OS Architecture
+(36) User registration
 
-(65) Jitsi Videobridge Architecture
+(37) Prepare Discovery
 
-(66) Kurento Architecture
+(38) Use Discovery
 
-(67) Janus Gateway architecture
+(39) Domain Login
 
-(68) OMNA Network
+(40) Associate User Identity to Hyperty Instance
 
-(69) WebRTC API evolution
+(41) User identity assertion sequence diagram
 
-(70) Web Push Architecture
+(42) Alice invites Bob for a communication
 
-(71) Main flows of events for subscription, push message delivery, and
+(43) Bob receives invitation
+
+(44) Aknowledged that Bob received the invitation
+
+(45) notification update
+
+(46) Bob gatheres WebRTC resources
+
+(47) Synchronization of Alice's Data object
+
+(48) Runtime Main Procedures for M2M Communication
+
+(49) M2M Device Bootstrap
+
+(50) Context Discovery in M2M Intradomain Communication
+
+(51) Communication 4 pub sub 1
+
+(52) Communication 4 pub sub 2
+
+(53) Communication 4 pub sub 3
+
+(54) Runtime browser implementation
+
+(55) Crosswalk Architecture
+
+(56) Cordova functionnal schema
+
+(57) Messaging Node Architecture
+
+(58) WebRTC.org architecture scheme
+
+(59) OpenWebRTC Architecture
+
+(60) V8 Architecture
+
+(61) V8 Multiple Contexts
+
+(62) Docker Architecture
+
+(63) Firefox OS Architecture
+
+(64) Jitsi Videobridge Architecture
+
+(65) Kurento Architecture
+
+(66) Janus Gateway architecture
+
+(67) OMNA Network
+
+(68) WebRTC API evolution
+
+(69) Web Push Architecture
+
+(70) Main flows of events for subscription, push message delivery, and
     unsubscription
 
-(72) HTTP/2 Push
+(71) HTTP/2 Push
 
-(73) HTTP/2 Framing
+(72) HTTP/2 Framing
 
-(74) HTTP/2 Streams
+(73) HTTP/2 Streams
 
-(75) signalling on-the-fly concept
+(74) signalling on-the-fly concept
 
-(76) Wonder Library Main Classes
+(75) Wonder Library Main Classes
 
-(77) Video Bridge Component
+(76) Video Bridge Component
 
-(78) OpenFire VideoBridge and Jicofo Components
+(77) OpenFire VideoBridge and Jicofo Components
 
-(79) Meteor Plataform Overview
+(78) Meteor Plataform Overview
 
-(80) Main data flow in a matrix architecture
+(79) Main data flow in a matrix architecture
 
-(81) RabbitMQ Architecture2
+(80) RabbitMQ Architecture2
 
-(82) RabbitMQ Architecture
+(81) RabbitMQ Architecture
 
-(83) ZeroMQ types of communication patterns
+(82) ZeroMQ types of communication patterns
 
-(84) ZeroMQ Clusters
+(83) ZeroMQ Clusters
 
-(85) Redis architecture
+(84) Redis architecture
 
-(86) PubSub model
+(85) PubSub model
 
-(87) XMPP Architecture
+(86) XMPP Architecture
 
-(88) XMPP Protocols
+(87) XMPP Protocols
 
-(89) XMPP Jingle
+(88) XMPP Jingle
 
-(90) MQTT Architecture
+(89) MQTT Architecture
 
-(91) PSYC Message
+(90) PSYC Message
 
-(92) NodeJS Architecture
+(91) NodeJS Architecture
 
-(93) Vertx Architecture Diagram
+(92) Vertx Architecture Diagram
 
-(94) AngularJS Framework
+(93) AngularJS Framework
 
-(95) BackboneJS Framework
+(94) BackboneJS Framework
 
-(96) Backbone Collections
+(95) Backbone Collections
 
 

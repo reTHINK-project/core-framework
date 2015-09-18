@@ -50,3 +50,4 @@ BUS@1B -> SP2Stub : send CRUD msg. for updated Comm Objt state
 (Steps 3 - 4) : The Policy Enforcer checks if the message is compliant with the local policies and forwards the message the Msg Bus (Step 4)
 
 (Step 5) : The message Bus sends the message to Alice via the SP2 stub, deployed in Alice's runtime
+

@@ -33,7 +33,6 @@ specs\runtime-idm.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-registration.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\domain-login.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-to-hyperty-binding.md ^
-..\..\specs\runtime\dynamic-view\identity-management\user-identity-assertion.md ^
 specs\runtime-h2h.md ^
 specs\runtime-intra-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-1-alice-invites.md ^
@@ -49,10 +48,6 @@ specs\runtime-inter-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-4-notification-update.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-5-bob-webrtc.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-6-alice-DO-synch.md ^
-..\..\specs\runtime\dynamic-view\m2m-communication\m2m-comm-overview.md ^
-..\..\specs\runtime\dynamic-view\m2m-communication\m2m-bootstrap-auth-registration.md ^
-..\..\specs\runtime\dynamic-view\m2m-communication\m2m-intra-comm-3-discovery.md ^
-..\..\specs\runtime\dynamic-view\m2m-communication\m2m-intra-comm-4-pub-sub.md ^
 specs\runtime-implementation.md ^
 ..\..\specs\runtime\implementation\browser-runtime.md ^
 ..\..\specs\runtime\implementation\standalone-runtime.md ^

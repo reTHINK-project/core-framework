@@ -1,3 +1,5 @@
+## W3C SysApps
+
 The W3C SysApps working group was originally chartered to provide a runtime and security model however, it has not been possible to reach such objective. In the meanwhile we may find proprietary web runtimes, FFOS and Chrome, which provide a security model for installed packaged web runtimes.
 
 The WHATWG was formed by individuals of Apple, the Mozilla Foundation, and Opera Software in 2004, in response to the slow development of World Wide Web Consortium (W3C) Web standards and W3C's decision to abandon HTML in favor of XML-based technologies.
@@ -33,11 +35,4 @@ partial interface ServiceWorkerGlobalScope {
 #### Applicability in reTHINK 
 
 Similar to Service Workers, this extension can facilitate the development of some Runtime features notably to govern the  runtime life-cycle of Hyperty instances. However, it seems this draft has not much support by the industry. However, [Chrome Packaged App lifecycle](https://developer.chrome.com/apps/app_lifecycle) looks similar. [Firefox Add-ons](https://developer.mozilla.org/en-US/Add-ons) should also support some kind of App life-cycle.
-
-#### References
-
-* http://www.w3.org/2012/sysapps/app-lifecycle/
-* https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
-* https://www.w3.org/community/trustperms/
-* https://whatwg.org/
 

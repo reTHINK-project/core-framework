@@ -32,9 +32,4 @@ This working group will create an HTTP based protocol that will allow applicatio
 
 The ability to push notifications towards Hyperty runtime is an essential feature that must be supported according to these standards.
 
-### References
-
-* http://w3c.github.io/push-api/
-* http://thenewdialtone.com/webrtc-browser-push-notification/
-* http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include_text=1
 
