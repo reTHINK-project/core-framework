@@ -23,7 +23,7 @@ PTIN
 
 #### [Discovery](discovery.md) : Protocol Stub URL, Hyperty, User
 
-DT 
+DT **pending**
 
 #### [Login into Domain](domain-login.md)
 
@@ -36,7 +36,7 @@ INESC, Orange(?)
 
 #### [Assert User Identity](user-identity-assertion.md)
 
-Quobis, Orange(?) **pending**
+Quobis, Orange(?) 
 
 #### [User Profile Management](user-profile-management.md)
 
