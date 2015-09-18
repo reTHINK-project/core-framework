@@ -1,6 +1,8 @@
 # Methodology and Continuous Integration
 
-* Continous Integration with Jenkins
+The following agreements were achieved accross WP3, WP4, WP5 and WP6 in a meeting occurred on the 17th September 2015:
+
+* Use Jenkins for Continous Integration
 * [Documentation that is not directly related with source code and source code itself, are in separated repos. One Github repository per main component](#github-structure).
 
 * [Quobis Proposal for Versioning](versioning_proposal_by_quobis_to_be_discussed.md).[other options](#version-control)
