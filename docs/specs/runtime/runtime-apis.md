@@ -118,13 +118,9 @@ To send messages with optional call back. This function is accessible outside th
 
 To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
 
-    addListener( listener, URL.URL url )
+    MsgListener addListener( URL.URL url, callback )
 
-#### removeListener
 
-To remove previously added listeners. This function is only accessible by internal Core Components.
-
-    removeListener( listener, URL.URL url )
 
 #### addPEP
 
