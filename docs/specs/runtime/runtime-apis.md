@@ -107,11 +107,11 @@ To verify if source is valid and to resolve target runtime url address if needed
 
 ### Message BUS Interface
 
-To send messages with optional call back. This function is accessible outside the Core runtime.
+To send messages. This function is accessible outside the Core runtime.
 
 #### postMessage
 
-    postMessage( Message.Message message , callback)
+    postMessage( Message.Message message )
 
 
 #### addListener
