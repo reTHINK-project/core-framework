@@ -128,9 +128,9 @@ To send messages. This function is accessible outside the Core runtime.
 
 #### addListener
 
-To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. Messages are routed to input parameter "target". This function is only accessible by internal Core Components.
 
-    MsgListener addListener( URL.URL url, callback )
+    MsgListener addListener( URL.URL url, URL.URL target, callback )
 
 
 
