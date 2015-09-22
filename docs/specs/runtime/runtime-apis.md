@@ -72,7 +72,7 @@ To register a new Policy Enforcer in the runtime including as input parameters t
 
 #### registerDataObject
 
-To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, the URL of the dataObject, other Hyperties instances that are authorised to read the data object and its schema. In addition it may be requested to allocate a new address for the data object (addressAllocationRequired) and to register it at the backend Registry (backendRegistryRequired). This function returns the URL allocated to the new Hyperty in case addressAllocationRequired is true.
+To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, the URL of the dataObject, other Hyperties instances that are authorised to read the data object and its schema. In addition it may be requested to allocate a new address for the data object (addressAllocationRequired) and to register it at the backend Registry (backendRegistryRequired). This function returns the URL allocated to the new Data Object in case addressAllocationRequired is true.
 
     URL.URL registerDataObject( URL.HypertyUrl owner, URL.URL dataObjectUrl (?), HypertyUrlList readers, HypertyCatalogueURL schema (?), boolean addressAllocationRequired (?), boolean backendRegistryRequired (?))
     
@@ -257,7 +257,7 @@ Validates an Identity Assertion
 
     validateAssertion( assertion, origin )
 
-### Core Policy Decision Point (PDP) Interface
+### Core Policy Engine (PDP/PEP) Interface
 
 #### addPolicies
 
@@ -273,19 +273,16 @@ To remove previously added policies for a certain deployed Hyperty Instance.
 
 #### authorise
 
-Authorisation request to send a Message. Returns PolicyAction in the AuthorisationResponse, to be performed in case authorisation is not granted.
+Authorisation request to send a Message. Returns an AuthorisationResponse containing a authorised of boolean type and the Message to be routed in case authorised = true.
 
     AuthorisationResponse authorise( Message.Message message)
 
-### Core Policy Enforcement Point (PEP) Interface
+#### authoriseSubscription
 
-#### enforce
+Authorisation request to accept a Subscription for a certain resource. Returns a Response Message to be returned to Subscription requester.
 
-Enforcement request to perform a PolicyAction in a Message. Returns the Message resulted from the action performed.
-
-    EnforceResponse enforce( PolicyAction action, Message.Message message)
-
-
+    Message.Message authoriseSubscription( Message.Message subscription)
+    
 
 ### QoS User Agent Interface
 
