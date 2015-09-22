@@ -210,7 +210,7 @@ To post messages to be dispatched by the protocol stub to connected back-end ser
 
 #### setSender
 
-To set postMessage() function to be used by the Syncher to send messages, i.e. "Policy Enforcer" or  the MessageBUS. 
+To set postMessage() function to be used by the Syncher to send messages, i.e. the MessageBUS postMessage() function. 
 
     setSender( postMessage )
 
@@ -218,17 +218,17 @@ To set postMessage() function to be used by the Syncher to send messages, i.e. "
 
 Hyperty instance uses this function to provide the object to be changed by the (observer) syncher according to messages received. The Hyperty instance has previsouly used the *Object.observe* javascript api to set as an observer of this object
 
-    Promise <SyncObject> createAsObserver(  receivedMessage )
+    createAsObserver( Message.Message receivedMessage )
 
 #### createAsReporter
 
-To create a new object and ask another Hyperty instance to observe it. A Create Message will be generated and sent by the Syncher. Promise is used to handle Response messages to this object. 
+To start the synchronisation process for the dataObject passed as input parameter. The Syncher will use the *Object.observe* javascript api to set as an observer of this object. Everytime the Hyperty instance changes this object, the syncher will send an Update Message with changed data to ResourceURL address.
 
-    Promise <SyncObject> createAsReporter(  resourceURL, schemaURL, toURL, dataObject?)
+    createAsReporter(  dataObject, URL.URL resourceURL, URL.HypertyCatalogueURL schemaURL )
     
 #### postMessage
 
-To receive messages from other Hyperties that will be reported to the Hyperty.
+To receive Update messages from Reporter Hyperties that will trigger the change of the Object under observation by the Hyperty Instance.
 
     postMessage(Message.Message message)
 
