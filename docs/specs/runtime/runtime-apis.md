@@ -134,18 +134,18 @@ To add "listener" functions to be called when routing messages published on a ce
 
 
 
-#### addPEP
+#### addInterceptor
 
-To add an interceptor Policy Enforcer which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "pepURL" are not intercepted.
+To add an interceptor (eg a Policy Enforcer) which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "interceptorURL" are not intercepted.
 This function is only accessible by internal Core Components.
 
-    addPEP( listener, URL.URL pepURL, URL.URL interceptedURL)
+    addInterceptor( listener, URL.URL interceptorURL, URL.URL interceptedURL)
     
-#### removePEP
+#### removeInterceptor
 
-To remove a previously added interceptor Policy Enforcer. This function is only accessible by internal Core Components.
+To remove a previously added interceptor. This function is only accessible by internal Core Components.
 
-    removePEP( listener, URL.URL pepURL)
+    removeInterceptor( listener, URL.URL interceptorURL)
 
 
 ### Hyperty Interface
