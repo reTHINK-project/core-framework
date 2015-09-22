@@ -74,7 +74,7 @@ To register a new Policy Enforcer in the runtime including as input parameters t
 
 To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, other Hyperties instances that are authorised to read the data object and its schema. This function returns the URL allocated to the new Hyperty.
 
-    URL.URL registerDataObject( URL.HypertyUrl owner, HypertyUrlList to, HypertyCatalogueURL schema)
+    URL.URL registerDataObject( URL.HypertyUrl owner, HypertyUrlList readers, HypertyCatalogueURL schema)
     
 #### unregisterDataObject
 
