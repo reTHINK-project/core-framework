@@ -46,7 +46,7 @@ To initialise the Runtime Registry with the RuntimeURL that will be the basis to
 
 #### registerHyperty
 
-To register a new Hyperty in the runtime which returns the HypertyURL allocated to the new Hyperty.
+To register a new Hyperty in the runtime passing as input parameters the postMessage function to be called to post a message to the hyperty and its descriptor. This function returns the HypertyURL allocated to the new Hyperty.
 
     HypertyURL registerHyperty( postMessage, HypertyCatalogueURL descriptor)
     
@@ -69,6 +69,18 @@ To unregister a previously registered protocol stub
      unregisterStub( HypertyRuntimeURL )
 
 To register a new Policy Enforcer in the runtime including as input parameters the function to postMessage, the HypertyURL associated with the PEP, which returns the RuntimeURL allocated to the new Policy Enforcer component.
+
+#### registerDataObject
+
+To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, other Hyperties instances that are authorised to read the data object and its schema. This function returns the URL allocated to the new Hyperty.
+
+    URL.URL registerDataObject( URL.HypertyUrl owner, HypertyUrlList readers, HypertyCatalogueURL schema)
+    
+#### unregisterDataObject
+
+To unregister a previously registered Data Object
+
+     unregisterDataObject( URL.URL url )
 
 #### registerPEP
 
@@ -107,24 +119,20 @@ To verify if source is valid and to resolve target runtime url address if needed
 
 ### Message BUS Interface
 
-To send messages with optional call back. This function is accessible outside the Core runtime.
+To send messages. This function is accessible outside the Core runtime.
 
 #### postMessage
 
-    postMessage( Message.Message message , callback)
+    postMessage( Message.Message message )
 
 
 #### addListener
 
 To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components.
 
-    addListener( listener, URL.URL url )
+    MsgListener addListener( URL.URL url, callback )
 
-#### removeListener
 
-To remove previously added listeners. This function is only accessible by internal Core Components.
-
-    removeListener( listener, URL.URL url )
 
 #### addPEP
 
