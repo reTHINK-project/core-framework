@@ -128,25 +128,19 @@ To send messages. This function is accessible outside the Core runtime.
 
 #### addListener
 
-To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. Messages are routed to input parameter "target" in case listener is not in the Core Runtime. This function is only accessible by internal Core Components.
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. Messages are routed to input parameter "redirectTo" in case listener is not in the Core Runtime. This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object.
 
-    MsgListener addListener( URL.URL url, listener, URL.URL target )
+    MsgListener addListener( URL.URL url, listener, URL.URL redirectTo )
 
 
 
 #### addInterceptor
 
-To add an interceptor (eg a Policy Enforcer) which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "interceptorURL" are not intercepted.
+To add an interceptor (eg a Policy Enforcer) which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "interceptorURL" are not intercepted. To remove the interceptor just call remove() function from returned object.
 This function is only accessible by internal Core Components.
 
-    addInterceptor( listener, URL.URL interceptorURL, URL.URL interceptedURL)
+    Interceptor addInterceptor( URL.URL interceptedURL, listener, URL.URL interceptorURL, )
     
-#### removeInterceptor
-
-To remove a previously added interceptor. This function is only accessible by internal Core Components.
-
-    removeInterceptor( listener, URL.URL interceptorURL)
-
 
 ### Hyperty Interface
 
