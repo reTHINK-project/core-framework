@@ -202,12 +202,6 @@ To post messages to be dispatched by the protocol stub to connected back-end ser
 
 ### Syncher
 
-#### setSender
-
-To set postMessage() function to be used by the Syncher to send messages, i.e. the MessageBUS postMessage() function. 
-
-    setSender( postMessage )
-
 #### createAsObserver
 
 Hyperty instance uses this function to provide the object to be changed by the (observer) syncher according to messages received. The Hyperty instance has previsouly used the *Object.observe* javascript api to set as an observer of this object
