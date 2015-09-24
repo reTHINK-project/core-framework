@@ -10,11 +10,11 @@ Steps 3 - 5 : the Runtime UA is able to derive the URL to download the protocol 
 
 Steps 6 - 8 : the new protocol stub is registered in the Runtime Registry, which allocates and return the runtime address (RuntimeURL) for the new runtime component. In addition, the runtime Registry requests the runtime BUS to add its listener to receive events about the protocol stub status.
 
-Steps 9  : The Runtime UA initialises the new protocol stub with configuration data contained in its descriptor. Depending on the sandbox implementation, the initialisation may have to be remotely executed by a Execution message type routed by the Message BUS. 
+Steps 9  : The Runtime UA initializes the new protocol stub with configuration data contained in its descriptor. Depending on the sandbox implementation, the initialization may have to be remotely executed by a Execution message type routed by the Message BUS.
 
 Steps 10 : The Runtime UA adds in the runtime BUS the protostub listener to receive messages from the runtime. Protocol stubs are connected by using credentials handled by the Core Runtime Identity Module which are detailed in the [Domain Login].
 
-Steps 11 - 12 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status. 
+Steps 11 - 12 : protocol stub publishes its status (including events about when it is connected or disconnected) in its resource status. Components registered on the protocol stub status resources, like the Registry, are notified about the new protocol status.
 
 Message to publish Protocol Stub Status
 
@@ -26,4 +26,3 @@ Message to publish Protocol Stub Status
 
 "body" : { "value" : "LIVE" }
 ```
-

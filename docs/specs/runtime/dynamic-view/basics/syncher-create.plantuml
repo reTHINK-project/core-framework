@@ -29,13 +29,39 @@ RunAuth@A <- BUS@A : authorise(Create Message)
 
 RunAuth@A -> RunAuth@A : apply authz Policies
 
-opt Data Object has to be registered with address allocated by Registry
-	RunAuth@A -> RunReg@A : registerDataObject(\n hyperty, readers , descriptor)
+opt Policies for Data Object creation enforce its registration
 
-	group Runtime Registry requests address allocation for data object and registers at the backend. Similar to Hyperty registration
+	RunAuth@A -> RunReg@A : registerDataObject(\n hyperty, readers , descriptor,\n addressAllocationRequired,\nBackendRegistryRequired)
+
+	opt addressAllocationRequired = TRUE
 		RunReg@A -> SP1 : allocate address
+
+		note over BUS@A
+			Similar to Hyperty registration
+		end note
 		...
+
+		RunAuth@A <- RunReg@A : return new\n DataObjectURL
+
+		RunAuth@A -> BUS@A : postMsg(\nResponse Msg )
+
+		SP1H@A <- BUS@A : postMsg(\nResponse Msg )
+
+		note right
+			Hyperty owner is informed
+			 about new DataObject URL		
+		end note
+
+		SP1H@A -> Sync1@A : createAsReporter( \nDataObject, resourceURL)
+
+	end
+
+	opt BackendRegistryRequired = TRUE. Similar to Hyperty registration
+
 		RunReg@A -> SP1 : register data object
+		note over BUS@A
+			Similar to Hyperty registration
+		end note
 		...
 	end
 
@@ -46,18 +72,6 @@ opt Data Object has to be registered with address allocated by Registry
 		 the status of the new data object
 	end note
 
-	RunAuth@A <- RunReg@A : return new\n DataObjectURL
-
-	RunAuth@A -> BUS@A : postMsg(\nResponse Msg )
-
-	SP1H@A <- BUS@A : postMsg(\nResponse Msg )
-
-	note right
-		Hyperty owner is informed
-		 about new DataObject URL		
-	end note
-
-	SP1H@A -> Sync1@A : createAsReporter( \nDataObject, resourceURL)
 
 end
 
@@ -66,7 +80,7 @@ opt Hyperty owner / reporter is set as listener of DataObjectObservers resource
 
 	RunAuth@A <- RunReg@A : return\n hypertyOwnerListener
 
-	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerListener)
+	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerListener, hypertyOwnerUrl)
 
 	note right
 		Hyperty onwer will be updated when observers
@@ -129,10 +143,15 @@ opt Authorisation policies requires to check data object is registered
 
 end
 
-RunAuth@A -> BUS@A : addListener(\nDataObj URL, listener)
+RunAuth@A -> BUS@A : addListener(\nDataObj URL, listener, observerUrl)
+
+note right
+	Listeners of new observers are added into message bus,
+	 to receive updates about changes in the data object
+end note
 
 opt
-	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, listener)
+	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, listener, observerUrl)
 
 	RunAuth@A -> BUS@A : postMessage(\n Update Message\nfor DataObjectObservers )
 
@@ -142,7 +161,7 @@ opt
 		the DataObjectObservers resource is updated
 		with information about the new Hyperty observer
 		thus, if Hyperty owner is listening on this resource
-		it will be informed
+		it will be informed about the new Observer.
 	end note
 
 end
@@ -154,6 +173,6 @@ end note
 
 RunAuth@A -> BUS@A : return authorisation\nResponse Message
 
-RunAuth@A -> BUS@A : return authorisation\nResponse Message
+BUS@A ->  : postMessage( Authorisation Response Message)
 
 @enduml
