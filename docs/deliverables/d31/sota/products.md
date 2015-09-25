@@ -9,11 +9,11 @@ ApiRTC is the communication platform developed by Apizee. This includes a commun
 
 Analysis regarding Messaging Node requirements:
 
-**Messaging Node with carrier grade deployment features :**</br> Node.js and Redis enables to buld a resiliante and scalable architecture
+**Messaging Node with carrier grade deployment features:**</br> Node.js and Redis enables to buld a resiliante and scalable architecture
 
-**The Messaging Node MUST offer DoS and DDoS Protection :**</br> User authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
+**The Messaging Node MUST offer DoS and DDoS Protection:**</br> User authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
 
-**It should be possible to support Protocol on-the-fly :**</br>
+**It should be possible to support Protocol on-the-fly:**</br>
 
 ProtOFly connector can be developped. JS connector can be develop on top of Node.js to enable protofly on server side. This connector will be for example reusable to connect an external CSP, Kurento Media Server, or the Identity manager
 
@@ -21,15 +21,15 @@ ProtOFly connector can be developped. JS connector can be develop on top of Node
 
 Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
 
-**Messaging Node logging :**</br>
+**Messaging Node logging:**</br>
 
-Several logging modules are available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
+Several logging modules are available : log4js, Winston, Bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
 
-**Message delivery reliability :**</br> Socket.io enables message acknowledgement
+**Message delivery reliability:**</br> Socket.io enables message acknowledgement
 
-**Messaging Node deployments with carrier grade scalability :**</br>
+**Messaging Node deployments with carrier grade scalability:**</br>
 
-Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mechanism : several Node.js entities can be connected through the redis cluster : this can enable load balancing, redundancy</br>
+Using Redis cluster mode: it is possible to use Redis Cluster with PUB/SUB mechanism: several Node.js entities can be connected through the redis cluster: this can enable load balancing, redundancy</br>
 
 **Messaging Node should be tolerant to unstable connections :**</br>
 
@@ -37,19 +37,19 @@ Socket.io can manage reconnection with different configurable parameters (timeou
 
 reconnectionDelay how long to wait before attempting a new reconnection (1000) reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by the amount specified by reconnectionDelay. timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
 
-**Events about clients connection / disconnection from Messaging Node :**</br>
+**Events about clients connection / disconnection from Messaging Node:**</br>
 
-Using socket.io different events are fired on connection status : connect. Fired upon connecting. error. Fired upon a connection error disconnect. Fired upon a disconnection. reconnect. Fired upon a successful reconnection. reconnect_attempt. Fired upon an attempt to reconnect. reconnecting. Fired upon an attempt to reconnect. reconnect_error. Fired upon a reconnection attempt error. reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
+Using socket.io different events are fired on connection status: connect. Fired upon connecting. error. Fired upon a connection error disconnect. Fired upon a disconnection. reconnect. Fired upon a successful reconnection. reconnect_attempt. Fired upon an attempt to reconnect. reconnecting. Fired upon an attempt to reconnect. reconnect_error. Fired upon a reconnection attempt error. reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 
-**Messaging Node must support very low message delivery latency :**</br>
+**Messaging Node must support very low message delivery latency:**</br>
 
-**Messaging Node must be deployable in the most used Virtual Machines :**</br> Node.js is available on Linux, windows, mac and can be deployed on small virtual machine or devices
+**Messaging Node must be deployable in the most used Virtual Machines:**</br> Node.js is available on Linux, Windows, Mac and can be deployed on small virtual machine or devices.
 
-**Messaging Node should require minimal computing resources :**</br> Messaging nodes components can be isntalled in only one VM
+**Messaging Node should require minimal computing resources:**</br> Messaging nodes components can be isntalled in only one VM.
 
-**Messaging Node must support external authentication and Authorisation :**</br> Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
+**Messaging Node must support external authentication and Authorisation:**</br> Module like Passport: http://passportjs.org/ enables to use external authentication like Facebook, Twitter, Google, etc (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
 
-**Messaging Node must support multiple messaging functionalities :**</br> Several routing can be performed with socket.io. Send message to only one dest, broadcast message to several users
+**Messaging Node must support multiple messaging functionalities:**</br> Several routing can be performed with socket.io. Send message to only one dest, broadcast message to several users.
 
 #### Integration in Rethink
 
@@ -57,10 +57,10 @@ ApiRTC can be used in a Node.js based Messaging Node.
 
 Integration of ApiRTC in Rethink can be done by adding different connectors depending of needs:
 
--	Identity Management : connector to Identity Servers
--	QoS Management : connector to QoS server
--	Other Web communication platform : connector to communication platform using ProtOFly
--	VoIP Platform : Connector to WebRTC GW
+-	Identity Management: connector to Identity Servers
+-	QoS Management: connector to QoS server
+-	Other Web communication platform: connector to communication platform using ProtOFly
+-	VoIP Platform: Connector to WebRTC GW
 -	Connector to Media Servers
 
 A Redis Cluster with Pub/Sub mechanism can be used to manage communications between connectors
