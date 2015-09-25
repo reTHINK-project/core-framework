@@ -33,7 +33,7 @@ sota\messaging_annex.md ^
 ..\..\sota\messaging\xmpp.md ^
 ..\..\sota\messaging\mqtt.md ^
 ..\..\sota\messaging\psyc.md ^
-..\..\sota\messaging\Node.js.md ^
+..\..\sota\messaging\Nodejs.md ^
 sota\qos_annex.md ^
 ..\..\sota\qos\coturn.md ^
 sota\service-framework_annex.md ^
@@ -41,8 +41,10 @@ sota\service-framework_annex.md ^
 ..\..\sota\web-frameworks\backbone-js.md ^
 ..\..\sota\web-frameworks\meteor.md ^
 ..\..\sota\web-frameworks\stapesjs.md ^
+sota\products_annex.md ^
+..\..\sota\products\apirtc.md ^
+..\..\sota\products\sippo.md ^
 introduction\figures-annex.md
 
 
 pandoc --filter pandoc-citeproc -f markdown -t docx --data-dir=. annex.md -o D3.1-annex.docx
-

@@ -33,7 +33,7 @@ But this can be completed thanks to the different packages available on https://
 
 ### Requirements Analysis
 
-#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)\*\*
+#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)
 
 -	[It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
 
@@ -124,6 +124,6 @@ It has extensive benchmarks relative to its overhall performance in node.js.
 
 In fact there are extensive implementations of Web Sockets over node.js: websocket-node faye-websocket-node engine.io socket.io sockjs
 
-The most performante is claimded to be ws.
+websocket-node claims to be the one with best performance.
 
-Socket.io seems to be the most complete regarding feature (connection type, acknowledgement, configuration ..)
+Socket.io seems to be the most complete regarding features (connection type, acknowledgement, configuration ..)

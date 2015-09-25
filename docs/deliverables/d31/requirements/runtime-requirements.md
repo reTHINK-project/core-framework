@@ -13,6 +13,9 @@
 
 
 
+- **The Runtime must support Real-time computing:** in order to support the execution of Hyperties dealing with real-time communication functionalities where computing responses must be in the order of milliseconds.
+
+
 - **The Runtime should support Standardised Messaging Notifications:** The Runtime should support standardised W3C [Push Messaging](http://www.w3.org/TR/push-api/) which allows applications to receive messages sent by servers regardless whether the Application is currently active. Useful to support notifications about incoming WebRTC calls.
 
 

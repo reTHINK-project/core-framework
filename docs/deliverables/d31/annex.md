@@ -463,12 +463,6 @@ W3C’s Web Push API.
 The ability to push notifications towards Hyperty Runtime is an
 essential feature that must be supported according to these standards.
 
-### References
-
--   http://w3c.github.io/push-api/
--   http://thenewdialtone.com/WebRTC-browser-push-notification/
--   http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include\_text=1
-
 HTTP/2
 ------
 
@@ -2159,7 +2153,7 @@ application from projects
 [jingle](https://github.com/estos/strophe.jingle) and
 [strophe](https://github.com/strophe/strophejs):
 
-``` {.JavaScript}
+``` {.javascript}
     <!--add jQuery lib-->
     <script src='strophe/strophe.js'></script><!-- strophe-->
     <script src='strophe/strophe.disco.js'></script><!-- strophe.disco, optional -->
@@ -2171,7 +2165,7 @@ application from projects
 
 Starting the XMMP session is normaly made with:
 
-``` {.JavaScript}
+``` {.javascript}
 var BOSH_SERVICE = '/http-bind';
 var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
@@ -2204,7 +2198,7 @@ getUserMediaWithConstraints(['audio', 'video']);
 **getUserMediaWithConstraints** will fire an event configured with
 jQuery.
 
-``` {.JavaScript}
+``` {.javascript}
 $(document).bind('mediaready.jingle', function (event, stream) {
     localStream = stream;
     connection.jingle.localStream = stream;
@@ -2245,7 +2239,7 @@ $(document).bind('mediaready.jingle', function (event, stream) {
 
 and define presence handlers:
 
-``` {.JavaScript}
+``` {.javascript}
 function onPresence(pres) {
     var from = pres.getAttribute('from');
     var type = pres.getAttribute('type');
@@ -2296,7 +2290,7 @@ function onPresenceError(pres) {
 
 Handle add/remove video/audio streams:
 
-``` {.JavaScript}
+``` {.javascript}
     $(document).bind('remotestreamadded.jingle', function (event, data, sid) {
         var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
             RTC.attachMediaStream(el, data.stream);
@@ -2854,34 +2848,37 @@ Vert.x 2.0
 ### Overview
 
 Vert.x 2.0 [57] is an application framework developed by VMWare in 2011.
-The application framework provides possibilities to develope loosely
+The application framework provides possibilities to develop loosely
 coupled network service applications.
 
-The concept of the framework is summarized as follows: \* **Polyglot
-(supports several languages)**: Vert.x framework runs on the Java
-Virtual Machine. However, Java is not required to use Vert.x. As well as
-languages based on JVM operation, such as Java or Groovy, Vert.x can be
-used with Ruby, Python, and even JavaScript. In addition, Scala and
-Closure are planned to be supported. \* **Super Simple Concurrency
-model**: When building an application by using Vert.x, users can write
-code as a single thread application. That means that the multi-thread
-programming effect can be achieved without synchronization, lock, or
-volatility. However, Vert.x allows to create multiple threads based on
-the number of CPU cores whlie only one process is executed. It handle
-the multi-threading so users can focus on implementing business
-logic. \* **Provides Event Bus**: The main concept of Vert.x is not only
-to produce a ‘one server process DAEMON'. Vert.x aims to make a variety
-of Vert.x-built server programs communicate well with each other. For
-this, Vert.x provides Event Bus. Therefore, functions such as Point to
-Point or Pub/Sub can be used (to provide Event Bus function, Vert.x uses
-Hazelcast, an In-Memory Data Grid). With this Event Bus, a server
-application built with different languages can easily communicate with
-each other. \* **Module System & Public Module Repository**: Vert.x has
-a module system. This module system can be understood as a type of
-component. That means the Vert.x-built server application project itself
-is modularized. It aims at reusability. Modules can be registered to
-Public Module Repository. Through the Public Module Repository, the
-module can be shared
+The concept of the framework is summarized as follows:
+
+-   **Polyglot (supports several languages)**: Vert.x framework runs on
+    the Java Virtual Machine. However, Java is not required to use
+    Vert.x. As well as languages based on JVM operation, such as Java or
+    Groovy, Vert.x can be used with Ruby, Python, and even JavaScript.
+    In addition, Scala and Closure are planned to be supported.
+-   **Super Simple Concurrency model**: When building an application by
+    using Vert.x, users can write code as a single thread application.
+    That means that the multi-thread programming effect can be achieved
+    without synchronization, lock, or volatility. However, Vert.x allows
+    to create multiple threads based on the number of CPU cores while
+    only one process is executed. It handle the multi-threading so users
+    can focus on implementing business logic.
+-   **Provides Event Bus**: The main concept of Vert.x is not only to
+    produce a ‘one server process DAEMON'. Vert.x aims to make a variety
+    of Vert.x-built server programs communicate well with each other.
+    For this, Vert.x provides Event Bus. Therefore, functions such as
+    Point to Point or Pub/Sub can be used (to provide Event Bus
+    function, Vert.x uses Hazelcast, an In-Memory Data Grid). With this
+    Event Bus, a server application built with different languages can
+    easily communicate with each other.
+-   **Module System & Public Module Repository**: Vert.x has a module
+    system. This module system can be understood as a type of component.
+    That means the Vert.x-built server application project itself is
+    modularized. It aims at re-usability. Modules can be registered to
+    Public Module Repository. Through the Public Module Repository, the
+    module can be shared.
 
 ### Architecture
 
@@ -2910,15 +2907,17 @@ handler can be registered at many different addresses at the same time.
 
 ### Messaging Schemes
 
-The Event Bus supports the following modes of operation: \* *Publish /
-subscribe messaging*: Publishing means delivering the message to all
-handlers that are registered at that address. This is the familiar
-publish/subscribe messaging pattern. \* *Point to point and
-Request-Response messaging*: Messages are routed to just one of the
-handlers registered at an address. They can optionally be replied to. \*
-*Remote Procedure Call (RPC)*: This mode of operation is implemented on
-top of the Request-Response model, basically by enforcing certain
-conventions on requests and responses
+The Event Bus supports the following modes of operation:
+
+-   *Publish / subscribe messaging*: Publishing means delivering the
+    message to all handlers that are registered at that address. This is
+    the familiar publish/subscribe messaging pattern.
+-   *Point to point and Request-Response messaging*: Messages are routed
+    to just one of the handlers registered at an address. They can
+    optionally be replied to.
+-   *Remote Procedure Call (RPC)*: This mode of operation is implemented
+    on top of the Request-Response model, basically by enforcing certain
+    conventions on requests and responses
 
 This example shows the Event Bus can be instantiated, how a Handler can
 be defined and registered on the Event Bus and how the Event Bus can
@@ -2938,8 +2937,8 @@ subsequently publish a message for the defined Handler:
     ...
     //publishing a message. The message will be delivered to all handlers registered against the address
     eb.publish("test.address", "hello world");
-    //point-2-point sending of message. 
-    //Only one handler registered at the address receiving the message. 
+    //point-2-point sending of message.
+    //Only one handler registered at the address receiving the message.
     //The handler is chosen in a non strict round-robin fashion
     eb.send("test.address", "hello world");
 
@@ -2988,9 +2987,9 @@ like this:
       "version": "0.1"
     }
 
-Additionally, three more fields are optionally recognized: \* `worker`
-indicates if this is a worker module. See below under event loop. \*
-`main` Indicates the startup routine for this module. \* `includes`
+Additionally, three more fields are optionally recognized:\* `worker`
+indicates if this is a worker module. See below under event loop.\*
+`main` Indicates the startup routine for this module.\* `includes`
 Additional module dependencies as a comma-separated string.
 
 ### Event Loop
@@ -3005,11 +3004,17 @@ event loop is that it is enormously scalable. Instead of waiting for I/O
 operations to complete, the executing thread will rather do other stuff
 (e.g. servicing the next request) in the meantime. This is achieved by
 using a callback driven style of programming. Imagine the following
-scenario: *We want to read some data in an I/O intensive operation
-(function `readData`) *We want to do something with that data (function
-`doSomething`) *We want to do something completely different (function
-`doSomethingUnrelated`) *In the traditional blocking world we would do
-something like the following:
+scenario:
+
+-   We want to read some data in an I/O intensive operation (function
+    `readData`)
+-   We want to do something with that data (function `doSomething`)
+-   We want to do something completely different (function
+    `doSomethingUnrelated`)
+-   In the traditional blocking world we would do something like the
+    following:
+
+<!-- -->
 
     def doSomething(data):
         # do something with data
@@ -3025,7 +3030,8 @@ as `readData` returns, we have our data and can go on to do something
 with it (`doSomething(data)`). Finally, when that is done, we can go on
 and do other stuff (`doSomethingUnrelated`).
 
-    In the asynchronous world, we do something like this: 
+In the asynchronous world, we do something like this:
+
     def doSomething(data):
         # do something with data
     readData(callback = doSomething)
@@ -3041,158 +3047,24 @@ called asynchronously as soon as the data is available
 Vert.x provides the different APIs which are implemented in various
 languages:
 
-**Core API** \* TCP client/Server API \* HTTP client/Server API \*
-Transport Protocol (Websocket, SockJS(provides websocket-like API
-through http), UDP, TCP) \* File System Access \* DNS client API \*
-Shared Data \* Event Bus API \* JSON API
+**Core API**
 
-**Container API** \* Deploy and undeploy verticles \* Deploy and
-undeploy modules \* Retrieve verticle configuration \* Logging
+-   TCP client/Server API
+-   HTTP client/Server API
+-   Transport Protocol (Websocket, SockJS(provides websocket-like API
+    through http), UDP, TCP)
+-   File System Access
+-   DNS client API
+-   Shared Data
+-   Event Bus API
+-   JSON API
 
-### Requirements Analysis
+**Container API**
 
-*According to Component Type addressed by the solution ie Messaging
-Node, Runtime, Network QoS and Framework*
-
-#### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
-
-External Authentication and Authorisation are supported through the
-usage of an Authorisation module:
-
-``` {.java}
-container.deployModule("io.vertx~mod-auth-mgr~2.0.0-final");
-```
-
-The Authorisation module can be the front-end to interact with an
-external vertx service eg with restful APIs or could be attached to the
-vertx-io event bus.
-
-**Authorisation to Send/publish a Message**
-
--   SockJSServer, where we need a bridge configuration
--   InboudPermitted must have: vertx.basicauthmanager.login and clients
-    handler \`\`\`java JsonArray inboundPermitted = new JsonArray();
-
-JsonObject inboundPermitted1 = new JsonObject().putString("address",
-"vertx.basicauthmanager.login");
-inboundPermitted.add(inboundPermitted1); JsonObject inboundPermitted2 =
-new JsonObject().putString("address",
-"aliceHandler").putBoolean("requires\_auth",true);
-inboundPermitted.add(inboundPermitted2); \`\`\` Inboundpermitted allows
-the use of the "requires\_auth" flag. When it is true, messages will be
-first forwarded to the authorization module, where decisions to send or
-not the messages are taken.
-
-**receive a Message**
-
--   OutboundPermitted must have: clients handler.
-    `java outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));`
-
-    ``` {.java}
-    sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
-    ```
-
-**Example: communication between two JavaScript clients connected via
-SockJS**
-
-Both client applications perform log-in on the EventBus.
-
-``` {.JavaScript}
-eb.login('alice','alice123', function(reply){console.log(reply);});
-```
-
-Then the client A(alice) wants to send messages to the client B(bob), so
-client B(bob) needs to register a handler. Before the client A(alice)
-can send a message to client B(bob), B must first register himself.
-
-``` {.JavaScript}
-eb.registerHandler('bobHandler', function(reply){console.log(reply);});
-```
-
-After that client A (alice) can publish messages on client B (bob)
-handler
-
-``` {.JavaScript}
-eb.publish('bobHandler','Hello bob from alice');
-```
-
-When client A publishes a message to client B handler, this message will
-be first forwarded to the authorization module because of
-inbounpermitted configuration.
-
-**subscribe / register handlers to be notified about published
-messages**
-
-In the SockJSServer configuration we can set a Hook (Registers functions
-to be called when certain events occur on an event bus bridge).
-
-``` {.java}
-ServerHook hook = new ServerHook(logger);
-sockJSServer.setHook(hook);
-```
-
-ServerHook takes some keyword arguments for example:
-
--   pre-register: Called before a client handler registration is
-    processed.
-
-    ``` {.java}
-     public boolean handlePreRegister(SockJSSocket sock, String address) {
-    logger.info("handlePreRegister, sock = " + sock + ", address = " + address);
-    return true;
-      }
-    ```
-
-In this way handlers registration can be controlled.
-
-#### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
-
-Since vertx is based on http://hazelcast.org/ we can use it to cache
-some info including the sessionId
-
-#### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features)
-
--   Resilience: Vert.x provides resilience through the "automatic
-    failover" and "HA group" options. When a module is run with HA, if
-    the Vert.x instance where it is running fails, it will be re-started
-    automatically on another node of the cluster. An HA group denotes a
-    logical grouping of nodes in the cluster. Only nodes with the same
-    HA group will failover onto one another.
--   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
-    Vert.x 3.0 provides built-in core functiionality for this core
--   Service Assurance: Modules can be deployed in clusters, and Vert.x
-    provides an internal Load Balancer for routing messages within the
-    cluster. Also the above mentioned "auomatic failover" and "HA group"
-    options contribute to enforce service assurance.
-
-#### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16)
-
-Verticle instances, except advanced multi-threaded worker verticles are
-almost always single threaded. what this implies is that, a single
-verticle instance can at most utilise one core of the server. In order
-to scale across cores, several verticles which are responsible for the
-same task can be instantiated and the runtime will distribute the
-workload among them (load balancing), this way taking full advantage of
-all SPU cores without much effort. Verticles can also be distributed
-between several machines. This will be transparent to the application
-code. The Verticles use the same mechanisms to communicate as if they
-would run on the same machine. This makes it very easy to scale
-applications.
-
-#### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
-
--   Websockets - Yes supported
--   SockJS - Yes supported
--   HTTP Long-Polling - Yes
--   HTTP Streaming - ? (Not sure what this means, clarification needed)
-
-#### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
-
-No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
-or point-2-point mechanism. In both cases, there is no feedback to the
-sender if the message was recieved and processed or if it was not
-recieved at all. In the end reliability will boil down to the
-application logic service build on top of vert.x.
+-   Deploy and undeploy verticles
+-   Deploy and undeploy modules
+-   Retrieve verticle configuration
+-   Logging
 
 Vert.x 3.0
 ----------
@@ -3200,30 +3072,10 @@ Vert.x 3.0
 ### Overview
 
 This evaluation will evidence differences between version 2 [57] and 3
-[58] of vert.x. It will not describe all the architecture as in the
-version 2 evaluation.
+[58] of vert.x.
 
-The concept of the framework is summarized as follows: \* **Polyglot
-(supports several languages)**: Vert.x framework runs on the JVM.
-However, Java is not required to run a Verticle. Main languages
-supported in version 3 are Java, JavaScript, Groovy and Ruby. \*
-**Concurrency model**: Concurrency model has not changed between
-versions. \* **Provides Event Bus**: Event bus is still available and is
-an essential part of vert.x engine for communication between programs,
-even when written in different languages. The event bus even penetrates
-into in-browser JavaScript allowing you to create effortless so-called
-real-time web applications. \* **Module System & Public Module
-Repository**: It seems that this feature is dropped in version 3. There
-is no more methods like deployModule(..) available. Now you create your
-verticles and package them into standard java jars. These jars can be
-pushed to Maven repositories just like any Maven artifact. For static
-module imports this is enough, however if we need dynamic module
-maintenance, an OSGi container could be used instead.
-
-### Architecture
-
-This subsection highlights the main building blocks of the Vert.x
-architecture. (diagram not supplied)
+Since main concepts and architecture are not changed from version 2,
+description provided in the previous is still valid.
 
 ### Vert.x Runtime (Java 8 only)
 
@@ -3235,37 +3087,21 @@ new high performance JavaScript engine that it contains.
 
 ### Addressing
 
-Messages are sent on the event bus to an address. Vert.x instances are
-not bound to any addressing schemes. An address is simply a string, any
-string is valid. Some examples of valid addresses are
-`europe.news.feed1`, `acme.games.pacman`, `sausages`, and `X`. As a
-convention the names of the packages that implement certain
-functionalities should also be represented on the event bus and should
-be combined with a meaningful event/operation name, e.g.
-`org.acme.MyPackage.MyClass.doSomething`
+No change from [version 2.0](vertx2.md).
 
 ### Handlers
 
-A handler is an entity that receives messages from the event bus. You
-register a handler at an address. Many different handlers from the same
-or different modules can be registered at the same address. A single
-handler can be registered at many different addresses at the same time.
+No change from [version 2.0](vertx2.md).
 
 ### Messaging Schemes
 
-The Event Bus supports the following modes of operation: \* *Publish /
-subscribe messaging*: Publishing means delivering the message to all
-handlers that are registered at that address. This is the familiar
-publish/subscribe messaging pattern. \* *Point to point and
-Request-Response messaging*: Messages are routed to just one of the
-handlers registered at an address. They can optionally be replied to. \*
-*Remote Procedure Call (RPC)*: This mode of operation is implemented on
-top of the Request-Response model, basically by enforcing certain
-conventions on requests and responses
+The main modes of messaging supported by Event Bus are not changed from
+[version 2.0](vertx2.md).
 
-This example shows the Event Bus (in version 3) can be instantiated, how
-a Handler can be defined and registered on the Event Bus and how the
-Event Bus can subsequently publish a message for the defined Handler:
+The example below shows how, in version 3, the Event Bus can be
+instantiated, how a Handler can be defined and registered on the Event
+Bus and how the Event Bus can subsequently publish a message for the
+defined Handler:
 
 ``` {.java}
 final EventBus eb = vertx.eventBus();
@@ -3284,8 +3120,8 @@ msgConsumer.handler(message -> {
 //publishing a message. The message will be delivered to all handlers registered against the address
 eb.publish("test.address", "hello world");
 
-//point-2-point sending of message. 
-//Only one handler registered at the address receiving the message. 
+//point-2-point sending of message.
+//Only one handler registered at the address receiving the message.
 //The handler is chosen in a non strict round-robin fashion
 eb.send("test.address", "hello world");
 
@@ -3296,11 +3132,7 @@ msgConsumer.unregister();
 
 ### Types of Messages
 
-Messages that you send on the event bus can be as simple as a string, a
-number or a boolean. It is also possible to send Vert.x buffers or JSON
-messages. It's highly recommended to use JSON messages to communicate
-between verticles. JSON is easy to create and parse in all the languages
-that Vert.x supports. For RPC messages, JSON is enforced.
+No change from [version 2.0](vertx2.md).
 
 ### Verticle
 
@@ -3325,60 +3157,34 @@ at run-time and from npm modules) before 3.0.final.
 
 ### Event Loop
 
-By default, all verticles run in an asynchronous event loop. When
-developing a verticle, it is essential not to block the event loop.
-Blocking here means either doing any kind of blocking I/O or even doing
-any kind of computational intensive work. Modules that do either of
-these should indicate that they are so called `worker` modules by
-setting `"worker": true` in their *mod.json* file. The advantage of an
-event loop is that it is enormously scalable. Instead of waiting for I/O
-operations to complete, the executing thread will rather do other stuff
-(e.g. servicing the next request) in the meantime. This is achieved by
-using a callback driven style of programming. Imagine the following
-scenario: *We want to read some data in an I/O intensive operation
-(function `readData`) *We want to do something with that data (function
-`doSomething`) *We want to do something completely different (function
-`doSomethingUnrelated`) *In the traditional blocking world we would do
-something like the following:
-
-    def doSomething(data):
-        # do something with data
-    data = readData()
-    doSomething(data)
-    doSomethingUnrelated()
-
-What happens here is the following:
-
-After the data is read, the program waits for the operation (`readData`)
-to complete (which is consuming the event loop thread lifetime). As soon
-as `readData` returns, we have our data and can go on to do something
-with it (`doSomething(data)`). Finally, when that is done, we can go on
-and do other stuff (`doSomethingUnrelated`).
-
-    In the asynchronous world, we do something like this: 
-    def doSomething(data):
-        # do something with data
-    readData(callback = doSomething)
-    doSomethingUnrelated()
-
-As can be seen, the result of `readData` is not received in the
-functions return value. Instead `doSomething` is passed in the handler
-method as a callback. The framework will take care that this handler is
-called asynchronously as soon as the data is available
+No change from [version 2.0](vertx2.md).
 
 ### APIs
 
 Vert.x provides the different APIs which are implemented in various
 languages. The two main modules are "Core API" and "Apex API":
 
-**Core API** \* Deploy and undeploy verticles \* Logging \* TCP
-client/Server API \* HTTP client/Server API \* File System Access \* DNS
-client API \* Shared Data \* Event Bus API \* JSON API
+**Core API**
 
-**Apex API** \* Routing (based on method, path, etc) \* Event-bus
-bridge \* SockJS support \* Session support - both local (for sticky
-sessions) and clustered (for non sticky) \* Basic Authentication and
-Redirect based authentication \* User/role/permission authorisation
+-   Deploy and undeploy verticles
+-   Logging
+-   TCP client/Server API
+-   HTTP client/Server API
+-   File System Access
+-   DNS client API
+-   Shared Data
+-   Event Bus API
+-   JSON API
+
+**Apex API**
+
+-   Routing (based on method, path, etc)
+-   Event-bus bridge
+-   SockJS support
+-   Session support - both local (for sticky sessions) and clustered
+    (for non sticky)
+-   Basic Authentication and Redirect based authentication
+-   User/role/permission authorisation
 
 ### Requirements Analysis
 
@@ -3386,57 +3192,83 @@ Redirect based authentication \* User/role/permission authorisation
 
 ##### [Autentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
 
-External Authentication and Authorisation are supported through Maven
-artifacts: vertx-apex and vertx-auth-service
+**Yes** External Authentication and Authorisation are supported through
+Maven artifacts: vertx-apex and vertx-auth-service
 
 The Authorisation module can be the front-end to interact with an
 external vertx service eg with restful APIs or could be attached to the
 vertx-io event bus.
 
-**Authorisation to Send/publish a Message** \* SockJSHandler, where we
-need a bridge configuration \* Inbound and outbound options have
-specific bridge configuration classes.
-`java  final BridgeOptions options = new BridgeOptions();  options.addInboundPermitted(new PermittedOptions().setAddress("chat.to.server").setRequiredPermission("tim"));  options.addOutboundPermitted(new PermittedOptions().setAddress("chat.to.client"));`
+**Authorisation to Send/publish a Message**
+
+SockJSHandler is used, where we need a bridge configuration. Inbound and
+outbound options have specific bridge configuration classes.
+
+``` {.java}
+ final BridgeOptions options = new BridgeOptions();
+ options.addInboundPermitted(new PermittedOptions().setAddress("chat.to.server").setRequiredPermission("tim"));
+ options.addOutboundPermitted(new PermittedOptions().setAddress("chat.to.client"));
+```
+
 Inboundpermitted with "setRequiredPermission" or "setRequiredRole" will
 force an authenticated session to send into that address.
 
 -   Configure authentication handler and provider
-    `java  final AuthProvider authProvider = //implement this interface for authentication and authorization control  final AuthHandler basicAuthHandler = BasicAuthHandler.create(authProvider);`
-    AuthProvider is similar to a SPI (Service Provider Interface) with 3
-    basic methods: login(..), hasRole(..), hasPermission(..). It's
-    available for custom implementations, so that it's possible to
-    interop with other parts of the system (like a database).
-    AuthHandler can also be rewritten, but in this case we use simple
-    browser authentication.
 
-**Receive a Message** \* SockJS handler is needed with bridge options.
+`java     final AuthProvider authProvider = //implement this interface for authentication and authorization control     final AuthHandler basicAuthHandler = BasicAuthHandler.create(authProvider);`
 
-`java  final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);  sockJSHandler.bridge(options);` \*
-Configure Apex Router with SockJS handler for "/eventbus/\*" uri
+    AuthProvider is similar to a SPI (Service Provider Interface) with 3 basic methods: login(..), hasRole(..), hasPermission(..). It's available for custom implementations, so that it's possible to interop with other parts of the system (like a database). AuthHandler can also be rewritten, but in this case we use simple browser authentication.
 
-\`\`\`java //required Cookie and Session handlers for every address
-final Router router = Router.router(vertx);
-router.route().handler(CookieHandler.create());
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)));
+**Receive a Message**
 
-//apply AuthHandler handler to an address (order of this handler is
-important) router.route("/eventbus/\*").handler(basicAuthHandler);
+-   SockJS handler is needed with bridge options.
 
-//apply SockJS handler to an address
-router.route("/eventbus/*").handler(sockJSHandler); \`\`\` * EventBus
-handler for "chat.to.server" address, every message sent to this address
-will be processed in this handler
+``` {.java}
+ final SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
+ sockJSHandler.bridge(options);
+```
 
-`java  final EventBus eb = vertx.eventBus();  eb.consumer("chat.to.server").handler(message -> {     //user code...  });`
+-   Configure Apex Router with SockJS handler for "/eventbus/" uri
+
+``` {.java}
+ //required  Cookie and Session handlers for every address
+ final Router router = Router.router(vertx);
+ router.route().handler(CookieHandler.create());
+ router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)));
+
+ //apply AuthHandler handler to an address (order of this handler is important)
+ router.route("/eventbus/*").handler(basicAuthHandler);
+
+ //apply SockJS handler to an address
+ router.route("/eventbus/*").handler(sockJSHandler);
+```
+
+-   EventBus handler for "chat.to.server" address, every message sent to
+    this address will be processed in this handler
+
+``` {.java}
+ final EventBus eb = vertx.eventBus();
+ eb.consumer("chat.to.server").handler(message -> {
+    //user code...
+ });
+```
 
 **Example: simple communication send/receive in the same client
-connected via SockJS** \* Register handler to receive messages in
-"chat.to.client" address
+connected via SockJS**
 
-`JavaScript  eb.registerHandler('chat.to.client', function(msg) {     console.log('Message Received: ' + msg);  });`
+-   Register handler to receive messages in "chat.to.client" address
+
+``` {.javascript}
+ eb.registerHandler('chat.to.client', function(msg) {
+    console.log('Message Received: ' + msg);
+ });
+```
 
 -   Send message to "chat.to.server" address
-    `JavaScript  eb.send('chat.to.server', {name: 'tim', age: 35});`
+
+``` {.javascript}
+    eb.send('chat.to.server', {name: 'tim', age: 35});
+```
 
 **Subscribe / register handlers to be notified about published
 messages**
@@ -3445,39 +3277,58 @@ EventBusBridgeHook is not yet available in version 3, however it's
 possible to override the SockJSHandlerImpl class and bypass this
 limitation.
 
-ServerHook takes some keyword arguments for example: \* pre-register:
-Called before a client handler registration is processed.
+ServerHook takes some keyword arguments for example:
 
-`java  public boolean handlePreRegister(SockJSSocket sock, String address) {     out.println("handlePreRegister, sock = " + sock + ", address = " + address);     return true;  }` \*
-message-handler: it's possible in this version to discovery the user
-that has sent the message (available in apex Session)
+-   pre-register: Called before a client handler registration is
+    processed.
 
-`java  public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {     msg.put("principal", sock.apexSession().getPrincipal());     return true;  }`
+``` {.java}
+ public boolean handlePreRegister(SockJSSocket sock, String address) {
+    out.println("handlePreRegister, sock = " + sock + ", address = " + address);
+    return true;
+ }
+```
+
+-   message-handler: it's possible in this version to discovery the user
+    that has sent the message (available in apex Session)
+
+``` {.java}
+ public boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {
+    msg.put("principal", sock.apexSession().getPrincipal());
+    return true;
+ }
+```
 
 In this way handlers registration can be controlled, and the user
 information can be sent to the EventBus.
 
 ##### [Unstable Connections](https://github.com/reTHINK-project/core-framework/issues/15)
 
+**Yes**
+
 Since vertx is based on http://hazelcast.org/ we can use it to cache
 some info including the sessionId
 
 ##### [Carrier grade deployment features (Resilience, DoS and DDoS protection, Service Assurance)](Messaging%20Node%20with%20carrier%20grade%20deployment%20features)
+
+**Yes**
 
 -   Resilience: Vert.x provides resilience through the "automatic
     failover" and "HA group" options. When a module is run with HA, if
     the Vert.x instance where it is running fails, it will be re-started
     automatically on another node of the cluster. An HA group denotes a
     logical grouping of nodes in the cluster. Only nodes with the same
-    HA group will failover onto one another.
+    HA group will fail over onto one another.
 -   DoS and DDoS Protection: Vert.x 2.x. has no support for this, BUT
-    Vert.x 3.0 provides built-in core functiionality for this core
+    Vert.x 3.0 provides built-in core functionality for this core
 -   Service Assurance: Modules can be deployed in clusters, and Vert.x
     provides an internal Load Balancer for routing messages within the
-    cluster. Also the above mentioned "auomatic failover" and "HA group"
-    options contribute to enforce service assurance.
+    cluster. Also the above mentioned "automatic fail over" and "HA
+    group" options contribute to enforce service assurance.
 
-##### [Scalability] (https://github.com/reTHINK-project/core-framework/issues/16)
+##### [Scalability](https://github.com/reTHINK-project/core-framework/issues/16)
+
+**Yes**
 
 Verticle instances, except advanced multi-threaded worker verticles are
 almost always single threaded. what this implies is that, a single
@@ -3491,19 +3342,22 @@ code. The Verticles use the same mechanisms to communicate as if they
 would run on the same machine. This makes it very easy to scale
 applications.
 
-##### [Messaging Transport Protocols] (https://github.com/reTHINK-project/core-framework/issues/20)
+##### [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
 
--   Websockets - Yes supported
--   SockJS - Yes supported
+**Yes**
+
+-   Websockets - Yes
+-   SockJS - Yes
 -   HTTP Long-Polling - Yes
--   HTTP Streaming - ? (Not sure what this means, clarification needed)
 
-##### [Message delivery reliability] (https://github.com/reTHINK-project/core-framework/issues/17)
+##### [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
 
-No. Vert.x uses the Event Bus to send messages through pub/sub mechanism
-or point-2-point mechanism. In both cases, there is no feedback to the
-sender if the message was recieved and processed or if it was not
-recieved at all. In the end reliability will boil down to the
+**No**
+
+Vert.x uses the Event Bus to send messages through pub/sub mechanism or
+point-2-point mechanism. In both cases, there is no feedback to the
+sender if the message was received and processed or if it was not
+received at all. In the end reliability will boil down to the
 application logic service build on top of vert.x.
 
 #### Runtime Requirements Analysis
@@ -3523,26 +3377,21 @@ final NashornScriptEngineFactory factory = new NashornScriptEngineFactory();
 Nashorn is built on top of Java and takes advantage of standard Java
 security measures. Fine-grained security is enabled within applications.
 We can control the class load mechanism, effectively building a sandbox:
-\`\`\`java final ScriptEngine engine = factory.getScriptEngine(name -\>
-{ if(name.equals(TestClass.class.getName())) { return true; //OK, Java
-TestClass available from JavaScript }
 
-    return false; //everything else fails...
-
-}); \`\`\`
+``` {.java}
+ final ScriptEngine engine = factory.getScriptEngine(name -> { if(name.equals(TestClass.class.getName())) { return true; //OK, Java TestClass available from JavaScript }
+return false; //everything else fails...
+});
+```
 
 Binding variables to the JavaScript scope is just one line of code. We
 can expose the Vert.x EventBus and use it like if we were in the JVM:
 
-``` {.java}
-engine.getBindings(ScriptContext.ENGINE_SCOPE).put("eb", vertx.eventBus());
-```
+    engine.getBindings(ScriptContext.ENGINE_SCOPE).put("eb", vertx.eventBus());
 
 Running a JavaScript file is also just a line of code:
 
-``` {.java}
-engine.eval(new FileReader(classLoader.getResource("myjs.js").getFile()));
-```
+`java engine.eval(new FileReader(classLoader.getResource("myjs.js").getFile()));`
 
 Although there are no WebSockets in the Nashorn runtime, it's possible
 to simulate a WS interface connecting directly through the EventBus,
@@ -3551,14 +3400,14 @@ delegating the actual connection with the Vert.x.
 Found some performance measures on:
 http://ariya.ofilabs.com/2014/03/nashorn-the-new-rhino-on-the-block.html
 
-Realtime backends
------------------
+Real-Time back-ends [54][55]
+----------------------------
 
-Realtime backends (aka noBackend or BackendAsAService(BaaS)) is a
+Real-time back-ends (aka noBackend or BackendAsAService(BaaS)) is a
 concept related to real time databases. It is a way to build web
 architectures without necessarily defining and standardizing data
-structures or interworking protocols if they are really needed. The
-backend and its remote framework is taking into account all low level
+structures or inter-working protocols if they are really needed. The
+back-end and its remote framework is taking into account all low level
 mechanism of client-server dialogue, allowing developer to concentrate
 in service logic, in its local runtime [54]. The realtime backend
 concept would allow to define and manage interworking with other
@@ -3581,93 +3430,90 @@ recently acquired by Google, and many others.
 
 The main difference with other Messaging Nodes is the fact that all the
 synchronisation layer is managed by the service, so the developper only
-manages local objects that are immediatly syncrhonized by the library.
+manages local objects that are immediately synchronized by the library.
 
 -   Here is an example of code given by the firebase site:
 
-> // Use YOUR Firebase URL (not the one below)
+<!-- -->
 
-> var fb = new Firebase("https://<your-firebase>.firebaseio.com");
+    // Use YOUR Firebase URL (not the one below)
 
-> /\* Remember to include firebase JS Library
+    var fb = new Firebase("https://<your-firebase>.firebaseio.com");
 
-> <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    /* Remember to include firebase JS Library */
 
-> \*/
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
 -   Save data:
 
-> fb.set({ name: "Alex Wolfe" });
+`fb.set({ name: "Alex Wolfe" });`
 
 -   Update in real time
 
-> fb.on("value", function(data) {
+<!-- -->
 
-> var name = data.val() ? data.val().name : "";
-
-> alert("My name is " + name);
-
-> });
-
-Ref: http://en.wikipedia.org/wiki/Real-time\_database
-
-http://www.leggetter.co.uk/real-time-web-technologies-guide/
-
-http://www.leggetter.co.uk/2013/12/09/choosing-realtime-web-app-tech-stack.html
+    > fb.on("value", function(data) {
+    >
+    > var name = data.val() ? data.val().name : "";
+    >
+    > alert("My name is " + name);
+    >
+    > });
 
 ### Requirements Analysis
 
-#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)\*\*
+#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   As protocol on the fly is based on data representation, it is very
-    convient as the realtime back ends are data oriented.
 
+    -   Yes
+    -   As protocol on the fly is based on data representation, it is
+        very convient as the realtime back ends are data oriented.
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   No, as the transport protocol is hidden from the remote machine.
 
+    -   No, as the transport protocol is hidden from the remote machine.
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes - Several logging modules available...
 
+    -   Yes - Several logging modules available...
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Depending of the product.
 
+    -   Depending of the product.
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Depending of the product.
 
+    -   Depending of the product.
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Yes - Depending of the product.
 
+    -   Yes - Depending of the product.
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes - Low level feature taken into account regarding the product
 
+    -   Yes - Low level feature taken into account regarding the product
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
 
+    -   Yes
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes - Depending of the product, some are available in SaaS mode.
 
+    -   Yes - Depending of the product, some are available in SaaS mode.
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes - Depending of the product
 
+    -   Yes - Depending of the product
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   Yes.
 
+    -   Yes.
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
+
+    -   Yes
 
 Matrix.org
 ----------
@@ -3695,12 +3541,12 @@ The core components are the Home Servers (HS) which can federate to sync
 and maintain the history of shared communication sessions among domains.
 Home Servers resolv each other via DNS.
 
-Some general points: \* **Every** communication requires a room. Even
-for a simple chat message to a dedicated receiver a room MUST be created
-first and the receiver MUST be invited and join it \* Rooms are
-persistent. They can be re-entered after successive login sessions. \* A
+Some general points:\* **Every** communication requires a room. Even for
+a simple chat message to a dedicated receiver a room MUST be created
+first and the receiver MUST be invited and join it\* Rooms are
+persistent. They can be re-entered after successive login sessions.\* A
 set of event/message types is defined in the API, own extensions can be
-made. \* Focus of matrix is on federation and consistency and history of
+made.\* Focus of matrix is on federation and consistency and history of
 session states.
 
 ### APIs
@@ -3710,36 +3556,48 @@ are REST APIs using JSON Objects as payload.
 
 -   [Client Server API
     v1](http://www.matrix.org/docs/spec/#client-server-api-v1)
--   for implementation of application frontends
--   functions for:
+
+    -   for implementation of application frontends
+    -   functions for:
     -   Registration and Login
     -   sending and receiving of Events
     -   management of communication rooms
--   well documented, easy to implement
--   version 2 is currently in development - will be backward compatible
-
+    -   well documented, easy to implement
+    -   version 2 is currently in development - will be backward
+        compatible
 -   [Federation API (Server-Server
     API)](http://www.matrix.org/docs/spec/#id100)
--   API for the inter-domain communication between Home Servers
--   uses HTTPS GET and PUT requests
--   transaction based
--   requests are authenticated by PK signatures
 
+    -   API for the inter-domain communication between Home Servers
+    -   uses HTTPS GET and PUT requests
+    -   transaction based
+    -   requests are authenticated by PK signatures
 -   [Application Service API](http://www.matrix.org/docs/spec/#id79)
--   API to provide custom server-side behaviour (e.g. gateways, filters,
-    extensible hooks etc)
--   so far only "Passive Application Services" are specified, i.e.
-    services that can only monitor but not block or modify events
 
-some words about Identifiers: \* Users are identified as:
-**@username:host.domain** (with an optional **:port** suffix) \* Rooms
-are identified as: **\#roomalias:host.domain** (with an optional
-**:port** suffix) \* Home servers are identified and resolved by their
-FQDN like: **https://host.domain:port**
+    -   API to provide custom server-side behaviour (e.g. gateways,
+        filters, extensible hooks etc)
+    -   so far only "Passive Application Services" are specified, i.e.
+        services that can only monitor but not block or modify events
+
+Some words about Identifiers. Users are identified as:
+
+    @username:host.domain
+
+(with an optional **:port** suffix)
+
+Rooms are identified as:
+
+    #roomalias:host.domain
+
+(with an optional **:port** suffix)
+
+Home servers are identified and resolved by their FQDN like:
+
+    https://host.domain:port
 
 The Matrix concept includes the concept of an "Identity Server", which
-is intended to map 3rd party entities to matrix ids: \* no
-documentation \* testing didn't work in our lab environment
+is intended to map 3rd party entities to matrix ids: *no documentation*
+testing didn't work in our lab environment
 
 ### Requirements Analysis
 
@@ -3747,82 +3605,86 @@ Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   Yes
+    -   the Client Server API could be wrapped in a protocol stub, that
+        can be downloaded at runtime
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Partially
--   matrix is based on REST, example client uses long-polling to receive
-    Events
--   wrapping of Events/message in other transport protocols would
-    require potential changes on HomeServer side
--   (since "synapse", the ref-impl of Matrix HS, is implemented on top
-    of Twisted, it should be possible to do that for e.g. Websockets)
 
+    -   Partially
+    -   matrix is based on REST, example client uses long-polling to
+        receive Events
+    -   wrapping of Events/message in other transport protocols would
+        require potential changes on HomeServer side
+    -   (since "synapse", the ref-impl of Matrix HS, is implemented on
+        top of Twisted, it should be possible to do that for e.g.
+        Websockets)
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   this is kind of a core feature
 
+    -   Yes
+    -   this is kind of a core feature
 -   [Messaging Node
-    logging](https://github.com/reTHINK-project/core-framework/issues/18)\
--   Yes
--   could be done via an attached passive Application Service
+    logging](https://github.com/reTHINK-project/core-framework/issues/18)
 
+    -   Yes
+    -   could be done via an attached passive Application Service
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   transmission errors are returned to clients
--   messages are re-delivered to clients from internal history of HS
 
+    -   Yes
+    -   transmission errors are returned to clients
+    -   messages are re-delivered to clients from internal history of HS
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   No/(Perhaps via load balancers)
--   from spec: "HS SHOULD implement rate limiting ..."
--   experiments showed that already simple forwarding of every
-    individual candidate of a WebRTC call can trigger this rate
-    limitiation
 
+    -   No/(Perhaps via load balancers)
+    -   from spec: "HS SHOULD implement rate limiting ..."
+    -   experiments showed that already simple forwarding of every
+        individual candidate of a WebRTC call can trigger this rate
+        limitiation
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Yes
--   since all communication is initiated by the client and HS addressing
-    happens via DNS or static IP:port it is up to the client to
-    re-connect after network interruptions
--   HS always has the complete history of the session - nothing is lost
 
+    -   Yes
+    -   since all communication is initiated by the client and HS
+        addressing happens via DNS or static IP:port it is up to the
+        client to re-connect after network interruptions
+    -   HS always has the complete history of the session - nothing is
+        lost
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
 
+    -   Yes
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   No
--   HTTP(S) is not the most efficient protocol in terms of latency
 
+    -   No
+    -   HTTP(S) is not the most efficient protocol in terms of latency
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   rather Yes (not tested on embedded device yet)
--   current ref-impl is based on Twisted (Python)
--   overall installation size 94MB (including python and webclient)
--   ==\> environments supporting python should also support a Matrix HS
 
+    -   rather Yes (not tested on embedded device yet)
+    -   current ref-impl is based on Twisted (Python)
+    -   overall installation size 94MB (including python and webclient)
+    -   ==\> environments supporting python should also support a Matrix
+        HS
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   No
--   matrix includes concept of external "Identity Server", but only for
-    mapping of 3rd party IDs to internal IDs
--   AA is performed internally
 
+    -   No
+    -   matrix includes concept of external "Identity Server", but only
+        for mapping of 3rd party IDs to internal IDs
+    -   AA is performed internally
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes, via room-IDs
+
+    -   Yes, via room-IDs
 
 RabbitMQ Evaluation
 -------------------
@@ -3830,7 +3692,7 @@ RabbitMQ Evaluation
 RabbitMQ [59] is defined as a robust and easy to use messaging platform
 that can work synchronously an asynchronously.
 
-From rabbitmq.com: \> \*RabbitMQ is a messaging broker - an intermediary
+From rabbitmq.com: \> RabbitMQ is a messaging broker - an intermediary
 for messaging. It gives your applications a common platform to send and
 receive messages, and your messages a safe place to live until received.
 
@@ -3870,7 +3732,7 @@ The core component is the **Broker** that routes the messages from the
 
 ![Figure 23: RabbitMQ Architecture2](rabbitmq_arch2.png)
 
-The **Broker** has two main componentes: \* **Exchange**: accepts and
+The **Broker** has two main componentes:\* **Exchange**: accepts and
 routes messages from producer to clients based on the message
 information such as keys, bindings, filtering or broadcast.
 
@@ -3888,28 +3750,32 @@ Image Source:
 
 See [60] for the [AMQP protocol specification](http://www.amqp.org/).
 
-RabbitMQ provides the following APIs: \* [Java and
-JVM](https://www.rabbitmq.com/devtools.html#java-dev) \* Java \* Spring
-Framework \* Scala \* Groovy \* Grails \* Clojure \* JRuby \*
-[Ruby](https://www.rabbitmq.com/devtools.html#ruby-dev) \*
-[Python](https://www.rabbitmq.com/devtools.html#python-dev) \* [.NET /
-C\#](https://www.rabbitmq.com/devtools.html#dotnet-dev) \*
-[PHP](https://www.rabbitmq.com/devtools.html#php-dev) \*
-[PERL](https://www.rabbitmq.com/devtools.html#perl-dev) \* [C /
-C++](https://www.rabbitmq.com/devtools.html#c-dev) \*
-[Node.js](https://www.rabbitmq.com/devtools.html#node-dev) \*
-[Go](https://www.rabbitmq.com/devtools.html#go-dev) \*
-[Erlang](https://www.rabbitmq.com/devtools.html#erlang-dev) \*
-[Haskell](https://www.rabbitmq.com/devtools.html#haskell-dev) \* **[Web
-Messaging](https://www.rabbitmq.com/devtools.html#web-messaging)** \*
-[SockJS-erlang](https://github.com/sockjs/sockjs-erlang) SockJS-erlang
-is compatible with SockJS client \*
-[rabbitmq-chat](https://github.com/videlalvaro/rabbitmq-chat) A Web chat
-implemented with RabbitMQ and Websockets \*
-[rabbithub](https://github.com/tonyg/rabbithub) RabbitHub provides an
-HTTP-based interface to RabbitMQ. \*
-[VorpalBunny](https://github.com/myYearbook/VorpalBunny) PHP for talking
-to RabbitMQ's JSON-RPC-Channel Plugin
+RabbitMQ provides the following APIs:
+
+-   [Java and JVM](https://www.rabbitmq.com/devtools.html#java-dev)
+-   Java
+-   Spring Framework \* Scala \* Groovy \* Grails \* Clojure
+-   JRuby
+-   [Ruby](https://www.rabbitmq.com/devtools.html#ruby-dev)
+-   [Python](https://www.rabbitmq.com/devtools.html#python-dev)
+-   [.NET / C\#](https://www.rabbitmq.com/devtools.html#dotnet-dev)
+-   [PHP](https://www.rabbitmq.com/devtools.html#php-dev)
+-   [PERL](https://www.rabbitmq.com/devtools.html#perl-dev)
+-   [C / C++](https://www.rabbitmq.com/devtools.html#c-dev)
+-   [Node.js](https://www.rabbitmq.com/devtools.html#node-dev)
+-   [Go](https://www.rabbitmq.com/devtools.html#go-dev)
+-   [Erlang](https://www.rabbitmq.com/devtools.html#erlang-dev)
+-   [Haskell](https://www.rabbitmq.com/devtools.html#haskell-dev)
+-   **[Web
+    Messaging](https://www.rabbitmq.com/devtools.html#web-messaging)**
+-   [SockJS-erlang](https://github.com/sockjs/sockjs-erlang)
+    SockJS-erlang is compatible with SockJS client
+-   [rabbitmq-chat](https://github.com/videlalvaro/rabbitmq-chat) A Web
+    chat implemented with RabbitMQ and Websockets
+-   [rabbithub](https://github.com/tonyg/rabbithub) RabbitHub provides
+    an HTTP-based interface to RabbitMQ.
+-   [VorpalBunny](https://github.com/myYearbook/VorpalBunny) PHP for
+    talking to RabbitMQ's JSON-RPC-Channel Plugin
 
 ### Requirements Analysis
 
@@ -3917,14 +3783,14 @@ Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   No. It would require the integration with a JavaScript enabled
+        server like NodeJS.
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Partially
--   Has support for :
+
+    -   Partially
+    -   Has support for :
     -   AMQP 0.9.1, 0.9, 0.8
     -   STOMP via plugin
     -   MQTT via plugin
@@ -3935,20 +3801,21 @@ Analysis against **Messaging Node** Requirements
     -   JSON-RPC via plugin (synchronous)
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   Core feature
 
+    -   Yes
+    -   Core feature
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes
--   RabbitMQ has a built-in tracer feature that is able to see every
-    message that is published, and every message that is delivered on a
-    per-node.
 
+    -   Yes
+    -   RabbitMQ has a built-in tracer feature that is able to see every
+        message that is published, and every message that is delivered
+        on a per-node.
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   For AMQP:
+
+    -   Yes
+    -   For AMQP:
     -   Acknowledgements can be used in both directions - to allow a
         consumer to indicate to the server that it has
         received/processed a message and to allow the server to indicate
@@ -3959,59 +3826,61 @@ Analysis against **Messaging Node** Requirements
         guaranteed.
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Yes
--   In a RabbitMQ cluster all data/state required for the operation of a
-    broker is replicated across all nodes, for reliability and scaling,
-    with full ACID properties. Queues may be located on a single node,
-    or mirrored across multiple nodes. A client connecting to any node
-    in a cluster can see all queues in the cluster, even if they are not
-    located on that node.
--   Brokers tolerate the failure of individual nodes
--   1 million messages/second was benchmarked using a cluster of 30
-    Nodes
-    [[Link1]](http://blog.pivotal.io/pivotal/products/rabbitmq-hits-one-million-messages-per-second-on-google-compute-engine)[[Link2]](http://googlecloudplatform.blogspot.pt/2014/06/rabbitmq-on-google-compute-engine.html)
 
+    -   Yes
+    -   In a RabbitMQ cluster all data/state required for the operation
+        of a broker is replicated across all nodes, for reliability and
+        scaling, with full ACID properties. Queues may be located on a
+        single node, or mirrored across multiple nodes. A client
+        connecting to any node in a cluster can see all queues in the
+        cluster, even if they are not located on that node.
+    -   Brokers tolerate the failure of individual nodes
+    -   1 million messages/second was benchmarked using a cluster of 30
+        Nodes
+        [[Link1]](http://blog.pivotal.io/pivotal/products/rabbitmq-hits-one-million-messages-per-second-on-google-compute-engine)[[Link2]](http://googlecloudplatform.blogspot.pt/2014/06/rabbitmq-on-google-compute-engine.html)
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   No
--   The client should use heartbeats for detecting dead TCP connections
-    that have a timeout interval.
--   Business logic must be implemented on the application layer in order
-    to deal with this case.
 
+    -   No
+    -   The client should use heartbeats for detecting dead TCP
+        connections that have a timeout interval.
+    -   Business logic must be implemented on the application layer in
+        order to deal with this case.
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
--   Using the HTTP management API
 
+    -   Yes
+    -   Using the HTTP management API
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
--   Has low latency derived from its Erlang message oriented
-    implementation.
-    [[Link1]](http://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/)[[Link2]](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/)
 
+    -   Yes
+    -   Has low latency derived from its Erlang message oriented
+        implementation.
+        [[Link1]](http://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/)[[Link2]](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/)
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Depends on the protocol used:
+
+    -   Depends on the protocol used:
     -   AMQP,STOMP, HTTP - depends (some computation is needed) (\>256K
         RAM)
     -   MQTT - yes (Designed especially for IoT)
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   Yes
--   Using SSL client certificates via plugin
--   Using LDAP and Federation via pugins
 
+    -   Yes
+    -   Using SSL client certificates via plugin
+    -   Using LDAP and Federation via pugins
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
--   Core functionality, including topic/wildcard based filtering and
-    broadcasting.
+
+    -   Yes
+    -   Core functionality, including topic/wildcard based filtering and
+        broadcasting.
 
 ZeroMQ Evaluation
 -----------------
@@ -4148,14 +4017,15 @@ Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   Yes
+    -   the Client Server API could be wrapped in a protocol stub, that
+        can be downloaded at runtime
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Yes
--   Has support for JavaScript and WebSockets using:
+
+    -   Yes
+    -   Has support for JavaScript and WebSockets using:
     -   [JSMQ](https://github.com/zeromq/JSMQ)
     -   [NullMQ](https://github.com/progrium/nullmq)
     -   [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript)
@@ -4165,58 +4035,61 @@ Analysis against **Messaging Node** Requirements
     -   [Zato](https://zato.io/docs/index.html)
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
+    -   Yes
+    -   Using the [Titanic Service
+        Protocol](http://rfc.zeromq.org/spec:9)
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes
--   Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
+    -   Yes
+    -   Using the [Titanic Service
+        Protocol](http://rfc.zeromq.org/spec:9)
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   Using [Reliable
-    Patterns](http://zguide.zeromq.org/page:all#Chapter-Reliable-Request-Reply-Patterns)
 
+    -   Yes
+    -   Using [Reliable
+        Patterns](http://zguide.zeromq.org/page:all#Chapter-Reliable-Request-Reply-Patterns)
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Yes
--   Using scalable patterns such as a [brokerless
-    design](http://zeromq.org/whitepapers:brokerless)
--   9,5 Million Messages / second were benchmarked on a 16 core
-    machine[Link1](http://zeromq.org/results:0mq-tests-v03) [Other
-    Tests](http://zeromq.org/results:_start)
 
+    -   Yes
+    -   Using scalable patterns such as a [brokerless
+        design](http://zeromq.org/whitepapers:brokerless)
+    -   9,5 Million Messages / second were benchmarked on a 16 core
+        machine[Link1](http://zeromq.org/results:0mq-tests-v03) [Other
+        Tests](http://zeromq.org/results:_start)
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Partial
--   Business logic can be developed to deal with this issue
 
+    -   Partial
+    -   Business logic can be developed to deal with this issue
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
 
+    -   Yes
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
--   Very low usec latency
 
+    -   Yes
+    -   Very low usec latency
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes
--   ZeroMQ runs on everything of interest, from 32KB embedded chips to
-    z/OS mainframes running IBM dialects of Unix.
-    [Link](http://zeromq.org/docs:features)
 
+    -   Yes
+    -   ZeroMQ runs on everything of interest, from 32KB embedded chips
+        to z/OS mainframes running IBM dialects of Unix.
+        [Link](http://zeromq.org/docs:features)
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   Yes
--   Implemented:
+
+    -   Yes
+    -   Implemented:
     -   [ZAP - ZeroMQ Authentication Protocol (PAM, LDAP, Kerberos,
         passwd, etc)](http://rfc.zeromq.org/spec:27)
     -   CurveZMQ Authentication and Encryption Protocol
@@ -4225,13 +4098,13 @@ Analysis against **Messaging Node** Requirements
     -   [GSSAPI (Kerberos)](http://rfc.zeromq.org/spec:38) or
         [CURVE](http://curvezmq.org/)
     -   [SRP](http://rfc.zeromq.org/spec:34)
--   Supports the ability to be extended
-
+    -   Supports the ability to be extended
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
--   Using the [ZeroMQ Publish-Subscribe
-    Pattern](http://rfc.zeromq.org/spec:29)
+
+    -   Yes
+    -   Using the [ZeroMQ Publish-Subscribe
+        Pattern](http://rfc.zeromq.org/spec:29)
 
 Redis Evaluation
 ----------------
@@ -4246,7 +4119,7 @@ advanced key-value cache and store. It is often referred to as a data
 structure server since keys can contain strings, hashes, lists, sets,
 sorted sets, bitmaps and hyperloglogs.
 
-##### Highlights:
+#### Highlights:
 
 -   Very Fast in memory data-store
 -   Usually used as Cache or MQ
@@ -4297,34 +4170,35 @@ Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   Yes
+    -   the Client Server API could be wrapped in a protocol stub, that
+        can be downloaded at runtime
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   No
--   An external wrapper should be used
 
+    -   No
+    -   An external wrapper should be used
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   Core feature
 
+    -   Yes
+    -   Core feature
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   No
--   Should be implemented externally
 
+    -   No
+    -   Should be implemented externally
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   Atomic message processing
 
+    -   Yes
+    -   Atomic message processing
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Yes
--   Using:
+
+    -   Yes
+    -   Using:
     -   Clustering [Link1](http://redis.io/topics/cluster-tutorial)
         [Link2](http://redis.io/topics/cluster-spec)
     -   Partitioning [Link1](http://redis.io/topics/partitioning)
@@ -4333,35 +4207,36 @@ Analysis against **Messaging Node** Requirements
     -   Replication [Link1](http://redis.io/topics/replication)
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Partial
--   Business logic can be developed to deal with this issue
 
+    -   Partial
+    -   Business logic can be developed to deal with this issue
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
--   Built-in
 
+    -   Yes
+    -   Built-in
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
--   Very low usec latency [Link1](http://redis.io/topics/benchmarks)
 
+    -   Yes
+    -   Very low usec latency [Link1](http://redis.io/topics/benchmarks)
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes
 
+    -   Yes
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   No
 
+    -   No
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
--   Core functionality, including prefix filtering
+
+    -   Yes
+    -   Core functionality, including prefix filtering
 
 XMPP
 ----
@@ -4379,7 +4254,7 @@ From http://xmpp.org/ [64]:
 In the scope of the reTHINK project XMPP is a candidate technology for
 the Messaging Node.
 
-##### Highlights:
+#### Highlights:
 
 -   **Open** - the XMPP protocols are free, open, public, and easily
     understandable; in addition, multiple implementations exist in the
@@ -4464,32 +4339,75 @@ Image Source:
 
 #### APIs
 
-  Name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Language(s)          Details
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ---------------------------------------------------------------
-  agsXMPPSDK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             C\#/.NET/Mono        [Link](http://www.ag-software.net/agsxmpp-sdk/)
-  AnyEvent::XMPP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Perl                 [Link](http://www.ta-sa.org/projects/net_xmpp2.html)
-  as3xmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Flash/ActionScript   [Link](http://code.google.com/p/seesmic-as3-xmpp/)
-  asmack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Java(Android)        [Link](https://github.com/flowdalic/asmack)
-  AXMPP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Ada                  [Link](http://forge.ada-ru.org/axmpp)
-  Babbler                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Java                 [Link](http://babbler-xmpp.blogspot.de/)
-  Babylon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Ruby                 [Link](https://github.com/bryanwoods/babylon)
-  Blather                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Ruby                 [Link](http://adhearsion.com/blather)
-  cl-xmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Lisp                 [Link](http://common-lisp.net/project/cl-xmpp/)
-  CoversantSoapBoxSDKStudio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              C\#/.NET/Mono/C      [Link](http://www.coversant.com/products/soapbox-sdk)
-  dojox.xmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             JavaScript           [Link](http://api.dojotoolkit.org/jsdoc/1.3/dojox.xmpp)
-  dxmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  C                    [Link](http://deusexmachinae.se/dxmpp)
-  EchomineFeridian                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Java                 [Link](http://freecode.com/projects/feridian)
-  Eiffel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 PHP                  [Link](https://github.com/jocelyn/bricabrac/wiki/Eiffel-XMPP)
-  emite                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Java                 [Link](https://github.com/EmiteGWT)
-  exmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Erlang               [Link](http://exmpp.org/)
-  frabjous                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               JavaScript           [Link](https://github.com/theozaurus/frabjous)
-  gloox                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  C                    [Link](http://camaya.net/gloox)
-  goexmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Go                   [Link](http://code.google.com/p/goexmpp/)
-  headstock                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Python               [Link](https://github.com/Lawouach/headstock)
-  hsxmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Haskell              [Link](http://חנוך.se/hsxmpp/)
-  hxmpp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  haXe                 [Link](http://hxmpp.disktree.net/)
-  iksemel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                C                    [Link](http://code.google.com/p/iksemel/)
-  IP\*WorksInternetToolkit | ActiveX C C\# .NET Mono Delphi Java | [Link](http://www.nsoftware.com/ipworks/) | | Iris | C | [Link](http://delta.affinix.com/iris/) | | jabber-net | C\#/.NET/Mono | [Link](http://code.google.com/p/jabber-net/) | | jabber.py | Python | [Link](http://jabberpy.sourceforge.net/) | | JabberLib | Tcl | [Link](http://coccinella.im/jabberlib) | | JabberStreamObjects(JSO) | Java | [Link](http://java.net/projects/jso/) | | JAXL | PHP | [Link](http://code.google.com/p/jaxl/) | | jQuery-XMPP-plugin | JavaScript | [Link](http://github.com/maxpowel/jQuery-XMPP-plugin) | | Jreen | C/Qt | [Link](http://qutim.org/jreen) | | JSJaC | JavaScript | [Link](http://blog.jwchat.org/jsjac/) | | libstrophe | C | [Link](http://strophe.im/) | | Lightr | PHP | [Link](http://code.google.com/p/lightr/) | | Loudmouth | C | [Link](http://groups.google.com/group/loudmouth-dev) | | Loudmouth | Ruby | [Link](http://groups.google.com/group/loudmouth-dev/web/loudmouth-ruby) | | MatriX | C\#/.NET/Mono | [Link](http://www.ag-software.net/matrix-xmpp-sdk/) | | Net::XMPP | Perl | [Link](http://search.cpan.org/dist/Net-XMPP/) | | node-xmpp | JavaScript | [Link](http://github.com/astro/node-xmpp) | | oajabber | C | [Link](http://www.openaether.org/oajabber.html) | | PontariusXMPP | Haskell | [Link](https://github.com/pontarius/pontarius-xmpp/) | | pyxmpp | Python | [Link](http://pyxmpp.jajcus.net/) | | QXmpp | C | [Link](http://code.google.com/p/qxmpp/) | | seesmic-as3-xmpp | Flash/ActionScript | [Link](http://code.google.com/p/seesmic-as3-xmpp/) | | SleekXMPP | Python | [Link](http://github.com/fritzy/SleekXMPP/wiki) | | Smack | Java | [Link](http://igniterealtime.org/projects/smack/) | | stanza.io | JavaScript | [Link](https://github.com/legastero/stanza.io) | | strophe.js | JavaScript | [Link](http://strophe.im/) | | StropheCappuccino | Objective-J | [Link](http://github.com/primalmotion/strophecappuccino) | | Swiften | C | [Link](http://swift.im/swiften/) | | Tinder | Java | [Link](http://igniterealtime.org/projects/tinder/) | | txmpp | C | [Link](http://github.com/silas/txmpp) | | TwistedWords | Python | [Link](http://twistedmatrix.com/trac/) | | Ubeity | C\# | [Link](https://github.com/ubiety/xmpp) | | Verse | Lua | [Link](http://matthewwild.co.uk/projects/verse/home) | | XIFF | Flash/ActionScript | [Link](http://igniterealtime.org/projects/xiff/) | | xmpp-psn | Python | [Link](http://code.google.com/p/xmpp-psn/) | | jaxmpp2 | Java/Android/GoogleWebToolkit | [Link](https://projects.tigase.org/projects/jaxmpp2) | | xmpp4js | JavaScript | [Link](http://xmpp4js.sourceforge.net/) | | XMPP4R | Ruby | [Link](http://home.gna.org/xmpp4r/) | | xmpp4r-simple | Ruby | [Link](http://code.google.com/p/xmpp4r-simple/) | | xmppframework | ObjectiveC | [Link](https://github.com/robbiehanson/XMPPFramework) | | xmpphp | PHP | [Link](http://code.google.com/p/xmpphp/) | | xmppy | Python | [Link](http://xmpppy.sourceforge.net/) | | XMPP-FTW | JavaScript | [Link](https://github.com/lloydwatkin/xmpp-ftw) | | Z-XMPP | JavaScript | [Link](http://ivan.vucica.net/zxmpp/) |
+  Name                         Language(s)                           Details
+  ---------------------------- ------------------------------------- -------------------------------------------------------------------------
+  agsXMPPSDK                   C\#/.NET/Mono                         [Link](http://www.ag-software.net/agsxmpp-sdk/)
+  AnyEvent::XMPP               Perl                                  [Link](http://www.ta-sa.org/projects/net_xmpp2.html)
+  as3xmpp                      Flash/ActionScript                    [Link](http://code.google.com/p/seesmic-as3-xmpp/)
+  asmack                       Java(Android)                         [Link](https://github.com/flowdalic/asmack)
+  AXMPP                        Ada                                   [Link](http://forge.ada-ru.org/axmpp)
+  Babbler                      Java                                  [Link](http://babbler-xmpp.blogspot.de/)
+  Babylon                      Ruby                                  [Link](https://github.com/bryanwoods/babylon)
+  Blather                      Ruby                                  [Link](http://adhearsion.com/blather)
+  cl-xmpp                      Lisp                                  [Link](http://common-lisp.net/project/cl-xmpp/)
+  CoversantSoapBoxSDKStudio    C\#/.NET/Mono/C                       [Link](http://www.coversant.com/products/soapbox-sdk)
+  dojox.xmpp                   JavaScript                            [Link](http://api.dojotoolkit.org/jsdoc/1.3/dojox.xmpp)
+  dxmpp                        C                                     [Link](http://deusexmachinae.se/dxmpp)
+  EchomineFeridian             Java                                  [Link](http://freecode.com/projects/feridian)
+  Eiffel                       PHP                                   [Link](https://github.com/jocelyn/bricabrac/wiki/Eiffel-XMPP)
+  emite                        Java                                  [Link](https://github.com/EmiteGWT)
+  exmpp                        Erlang                                [Link](http://exmpp.org/)
+  frabjous                     JavaScript                            [Link](https://github.com/theozaurus/frabjous)
+  gloox                        C                                     [Link](http://camaya.net/gloox)
+  goexmpp                      Go                                    [Link](http://code.google.com/p/goexmpp/)
+  headstock                    Python                                [Link](https://github.com/Lawouach/headstock)
+  hsxmpp                       Haskell                               [Link](http://חנוך.se/hsxmpp/)
+  hxmpp                        haXe                                  [Link](http://hxmpp.disktree.net/)
+  iksemel                      C                                     [Link](http://code.google.com/p/iksemel/)
+  IP Works\nInternetToolkit    ActiveX C C\# .NET Mono Delphi Java   [Link](http://www.nsoftware.com/ipworks/)
+  Iris                         C                                     [Link](http://delta.affinix.com/iris/)
+  jabber-net                   C\#/.NET/Mono                         [Link](http://code.google.com/p/jabber-net/)
+  jabber.py                    Python                                [Link](http://jabberpy.sourceforge.net/)
+  JabberLib                    Tcl                                   [Link](http://coccinella.im/jabberlib)
+  JabberStreamObjects(JSO)     Java                                  [Link](http://java.net/projects/jso/)
+  JAXL                         PHP                                   [Link](http://code.google.com/p/jaxl/)
+  jQuery-XMPP-plugin           JavaScript                            [Link](http://github.com/maxpowel/jQuery-XMPP-plugin)
+  Jreen                        C/Qt                                  [Link](http://qutim.org/jreen)
+  JSJaC                        JavaScript                            [Link](http://blog.jwchat.org/jsjac/)
+  libstrophe                   C                                     [Link](http://strophe.im/)
+  Lightr                       PHP                                   [Link](http://code.google.com/p/lightr/)
+  Loudmouth                    C                                     [Link](http://groups.google.com/group/loudmouth-dev)
+  Loudmouth                    Ruby                                  [Link](http://groups.google.com/group/loudmouth-dev/web/loudmouth-ruby)
+  MatriX                       C\#/.NET/Mono                         [Link](http://www.ag-software.net/matrix-xmpp-sdk/)
+  Net::XMPP                    Perl                                  [Link](http://search.cpan.org/dist/Net-XMPP/)
+  node-xmpp                    JavaScript                            [Link](http://github.com/astro/node-xmpp)
+  oajabber                     C                                     [Link](http://www.openaether.org/oajabber.html)
+  PontariusXMPP                Haskell                               [Link](https://github.com/pontarius/pontarius-xmpp/)
+  pyxmpp                       Python                                [Link](http://pyxmpp.jajcus.net/)
+  QXmpp                        C                                     [Link](http://code.google.com/p/qxmpp/)
+  seesmic-as3-xmpp             Flash/ActionScript                    [Link](http://code.google.com/p/seesmic-as3-xmpp/)
+  SleekXMPP                    Python                                [Link](http://github.com/fritzy/SleekXMPP/wiki)
+  Smack                        Java                                  [Link](http://igniterealtime.org/projects/smack/)
+  stanza.io                    JavaScript                            [Link](https://github.com/legastero/stanza.io)
+  strophe.js                   JavaScript                            [Link](http://strophe.im/)
+  StropheCappuccino            Objective-J                           [Link](http://github.com/primalmotion/strophecappuccino)
+  Swiften                      C                                     [Link](http://swift.im/swiften/)
+  Tinder                       Java                                  [Link](http://igniterealtime.org/projects/tinder/)
+  txmpp                        C                                     [Link](http://github.com/silas/txmpp)
+  TwistedWords                 Python                                [Link](http://twistedmatrix.com/trac/)
+  Ubeity                       C\#                                   [Link](https://github.com/ubiety/xmpp)
+  Verse                        Lua                                   [Link](http://matthewwild.co.uk/projects/verse/home)
+  XIFF                         Flash/ActionScript                    [Link](http://igniterealtime.org/projects/xiff/)
+  xmpp-psn                     Python                                [Link](http://code.google.com/p/xmpp-psn/)
+  jaxmpp2                      Java/Android/GoogleWebToolkit         [Link](https://projects.tigase.org/projects/jaxmpp2)
+  xmpp4js                      JavaScript                            [Link](http://xmpp4js.sourceforge.net/)
+  XMPP4R                       Ruby                                  [Link](http://home.gna.org/xmpp4r/)
+  xmpp4r-simple                Ruby                                  [Link](http://code.google.com/p/xmpp4r-simple/)
+  xmppframework                ObjectiveC                            [Link](https://github.com/robbiehanson/XMPPFramework)
+  xmpphp                       PHP                                   [Link](http://code.google.com/p/xmpphp/)
+  xmppy                        Python                                [Link](http://xmpppy.sourceforge.net/)
+  XMPP-FTW                     JavaScript                            [Link](https://github.com/lloydwatkin/xmpp-ftw)
+  Z-XMPP                       JavaScript                            [Link](http://ivan.vucica.net/zxmpp/)
 
 #### Relevant Extensions
 
@@ -4535,80 +4453,80 @@ Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   Depends on Solution
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Yes
 
+    -   Depends on solutions
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   Using [XEP-0203: Delayed
-    Delivery](http://xmpp.org/extensions/xep-0203.html)
 
+    -   Yes
+    -   Using [XEP-0203: Delayed
+        Delivery](http://xmpp.org/extensions/xep-0203.html)
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes
--   Using [XEP-0313: Message Archive
-    Management](http://xmpp.org/extensions/xep-0313.html) and [XEP-0136:
-    Message Archiving](http://xmpp.org/extensions/xep-0136.html)
 
+    -   Yes
+    -   Using [XEP-0313: Message Archive
+        Management](http://xmpp.org/extensions/xep-0313.html) and
+        [XEP-0136: Message
+        Archiving](http://xmpp.org/extensions/xep-0136.html)
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   Using [XEP-0184: Message Delivery
-    Receipts](http://xmpp.org/extensions/xep-0184.html) and/or
-    [XEP-0079: Advanced Message
-    Processing](http://xmpp.org/extensions/xep-0079.html)
--   [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 
+    -   Yes
+    -   Using [XEP-0184: Message Delivery
+        Receipts](http://xmpp.org/extensions/xep-0184.html) and/or
+        [XEP-0079: Advanced Message
+        Processing](http://xmpp.org/extensions/xep-0079.html)
+    -   [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Yes
--   Using scalable Erlang-based servers
-    [mongooseim](https://www.erlang-solutions.com/products/mongooseim-massively-scalable-ejabberd-platform)
-    or [ejabberd](http://docs.ejabberd.im/architect/) clusters can
-    handle tens of millions of users.
 
+    -   Depends on solutions
+    -   Using scalable Erlang-based servers
+        [mongooseim](https://www.erlang-solutions.com/products/mongooseim-massively-scalable-ejabberd-platform)
+        or [ejabberd](http://docs.ejabberd.im/architect/) clusters can
+        handle tens of millions of users.
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Yes
--   If Using [XEP-0198: Stream
-    Management](http://xmpp.org/extensions/xep-0198.html)
--   [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 
+    -   Depends on solutions
+    -   If Using [XEP-0198: Stream
+        Management](http://xmpp.org/extensions/xep-0198.html)
+    -   [More info](http://www.isode.com/whitepapers/reliable-xmpp.html)
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
 
+    -   Depends on solutions
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
--   [ms latency](https://www.ejabberd.im/benchmark)
 
+    -   Yes
+    -   [ms latency](https://www.ejabberd.im/benchmark)
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes
--   Clients based on C libraries can run on embedded systems
 
+    -   Depends on solutions
+    -   Servers based on C libraries can run on embedded systems
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   Yes
--   Using [XEP-0178: Best Practices for Use of SASL
-    EXTERNAL](http://xmpp.org/extensions/xep-0178.html)
 
+    -   Yes
+    -   Using [XEP-0178: Best Practices for Use of SASL
+        EXTERNAL](http://xmpp.org/extensions/xep-0178.html)
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
--   Using [XEP-0060:
-    Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
+
+    -   Yes
+    -   Using [XEP-0060:
+        Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
 
 MQTT Evaluation
 ---------------
@@ -4656,8 +4574,7 @@ choices which influenced the way it "looks and feels".
     environment allows. Provide "quality of service"
 -   Data agnostic. Don't mandate content formats, remain flexible.
 
-Architecture
-------------
+### Architecture
 
 MQTT has a client/server model, where every node is a client that
 connects to a server, know as a broker, over TCP. MQTT is message
@@ -4672,8 +4589,7 @@ MQTT supports three quality of service levels, "Fire and forget",
 Image Source:
 [https://sakshambhatla.wordpress.com](https://sakshambhatla.wordpress.com/2014/08/11/simple-mqtt-broker-and-client-in-python/)
 
-APIs and Bindings
------------------
+### APIs and Bindings
 
 #### Specification
 
@@ -4698,7 +4614,8 @@ specification](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html)
 
 -   [mbed (Paho Embedded C++
     port)](http://developer.mbed.org/teams/mqtt/code/MQTT/) ([more
-    information] (https://www.eclipse.org/paho/clients/c/embedded/))
+    information](https://www.eclipse.org/paho/clients/c/embedded/))
+
 -   [mbed (Paho Embedded C
     port)](http://developer.mbed.org/teams/mqtt/code/MQTTPacket/) ([more
     information](https://www.eclipse.org/paho/clients/c/embedded/))
@@ -4723,10 +4640,10 @@ support)
 
 #### C
 
--   [Eclipse Paho C] (https://www.eclipse.org/paho/clients/c/)
+-   [Eclipse Paho C](https://www.eclipse.org/paho/clients/c/)
 
--   [Eclipse Paho Embedded C]
-    (https://www.eclipse.org/paho/clients/c/embedded/)
+-   [Eclipse Paho Embedded
+    C](https://www.eclipse.org/paho/clients/c/embedded/)
 
 -   [libmosquitto](http://mosquitto.org)
 
@@ -4735,12 +4652,12 @@ support)
 
 #### C++
 
--   [Eclipse Paho C++] (https://www.eclipse.org/paho/clients/cpp/)
+-   [Eclipse Paho C++](https://www.eclipse.org/paho/clients/cpp/)
 
 -   [libmosquittopp](http://mosquitto.org)
 
--   [Eclipse Paho Embedded C++]
-    (https://www.eclipse.org/paho/clients/c/embedded/)
+-   [Eclipse Paho Embedded
+    C++](https://www.eclipse.org/paho/clients/c/embedded/)
 
 #### Clojure
 
@@ -4807,7 +4724,7 @@ support)
     instead. A useful MQTT Java swing GUI for publishing & subscribing.
     The Eclipse Paho GUI is identical but uses newer client code
 
-#### Javscript / Node.js
+#### Javascript / Node.js
 
 -   [Eclipse Paho HTML5 JavaScript over
     WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.JavaScript.git/)
@@ -4836,7 +4753,7 @@ support)
 -   [Eclipse Paho
     Lua](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.lua.git/)
 
-\#\#\#\#.NET / dotNET
+#### .NET / dotNET
 
 -   [MqttDotNet](http://sourceforge.net/projects/mqttdotnet/)
 
@@ -4844,7 +4761,7 @@ support)
 
 -   [M2MQTT](https://m2mqtt.codeplex.com/)
 
--   [KittyHawkMQ] (http://www.kittyhawkmq.com/)
+-   [KittyHawkMQ](http://www.kittyhawkmq.com/)
 
 #### Objective-C
 
@@ -4916,118 +4833,107 @@ support)
 
 ### Brokers
 
-Server | QoS 0 | QoS 1 | QoS 2 | auth | [bridge](bridge_protocol) |
-[\$SYS](conventions#$sys) | SSL | [dynamic topics](are_topics_dynamic) |
-cluster | websockets | plugin system ------ | ----- | ----- | -----
-| ---- | ------------------------- | ------------------------ | ---
-| ------------------------------------ | ------- | ----------
-| ------------- | [mosquitto](mosquitto_message_broker) | ✔ | ✔ | ✔ | ✔
-| ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ |
-[RSMB](http://mqtt.org/wiki/doku.php/really_small_message_broker) | ✔ |
-✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✘ | ✘ | ? | [WebSphere
-MQ](http://www-03.ibm.com/software/products/en/wmq/) | ✔ | ✔ | ✔ | ✔ | ✔
-| ✔ | ✔ | ✔ | ? | ? | ? | [HiveMQ](http://www.hivemq.com) | ✔ | ✔ | ✔ |
-✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | [Apache
-Apollo](http://activemq.apache.org/apollo) | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ |
-✔ | ? | ✔ | ? | [Apache ActiveMQ](http://activemq.apache.org/) | ✔ | ✔ |
-✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | [my-Channels Nirvana
-Messaging](http://www.my-channels.com/products/nirvana.html) | ✔ | ✔ | ✔
-| § | ✘ | ✘ | ✔ | ✘ | ? | ? | ? |
-[RabbitMQ](http://www.rabbitmq.com/blog/2012/09/12/mqtt-adapter/) | ✔ |
-✔ | ✘ | ✔ | ✘ | ✘ | ✔ | ✔ | ? | ? | ? |
-[MQTT.js](https///github.com/adamvr/MQTT.js) | ✔ | ✘ | ✘ | § | ✘ | ✘ | ✔
-| ✔ | ✘ | ? | ✘ | [moquette](http://code.google.com/p/moquette-mqtt/) |
-✔ | ✔ | ✘ | ? | ? | ? | ? | ? | ✘ | ✘ | ✘ | [mosca](mosca) | ✔ | ✔ | ✘ |
-✔ | ? | ? | ? | ? | ✘ | ✔ | ✘ | [IBM
-MessageSight](http://www-03.ibm.com/software/products/en/messagesight/)
-| ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | § | ✔ | ✘ |
-[2lemetry](http://2lemetry.com/platform/) | ✔ | ✔ | ✔ | ✔ | ✔ | § | ✔ |
-✔ | ✔ | ✔ | ✘ | [GnatMQ](http://mqttbroker.codeplex.com/) | ✔ | ✔ | ✔ |
-✔ | ✘ | ✘ | ✘ | ✔ | ✘ | ✘ | ✘ | [JoramMQ](http://mqtt.jorammq.com) | ✔ |
-✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | [ThingMQ](https://thingmq.com) |
-✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | [VerneMQ](https://verne.mq)
-| ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | Key: ✔ supported ✘ not
-supported ? unknown § see limitations
+  Server                                                                              QoS 0   QoS 1   QoS 2   auth   [bridge](bridge_protocol)   [\$SYS](conventions#$sys)   SSL   [dynamic topics](are_topics_dynamic)   cluster   websockets   plugin system
+  ----------------------------------------------------------------------------------- ------- ------- ------- ------ --------------------------- --------------------------- ----- -------------------------------------- --------- ------------ ---------------
+  [mosquitto](mosquitto_message_broker)                                               ✔       ✔       ✔       ✔      ✔                           ✔                           ✔     ✔                                      ✘         ✔            ✔
+  [RSMB](http://mqtt.org/wiki/doku.php/really_small_message_broker)                   ✔       ✔       ✔       ✔      ✔                           ✔                           ✘     ✔                                      ✘         ✘            ?
+  [WebSphere MQ](http://www-03.ibm.com/software/products/en/wmq/)                     ✔       ✔       ✔       ✔      ✔                           ✔                           ✔     ✔                                      ?         ?            ?
+  [HiveMQ](http://www.hivemq.com)                                                     ✔       ✔       ✔       ✔      ✔                           ✔                           ✔     ✔                                      ✔         ✔            ✔
+  [Apache Apollo](http://activemq.apache.org/apollo)                                  ✔       ✔       ✔       ✔      ✘                           ✘                           ✔     ✔                                      ?         ✔            ?
+  [Apache ActiveMQ](http://activemq.apache.org/)                                      ✔       ✔       ✔       ✔      ✘                           ✘                           ✔     ✔                                      ✔         ✔            ✔
+  [my-Channels Nirvana Messaging](http://www.my-channels.com/products/nirvana.html)   ✔       ✔       ✔       §      ✘                           ✘                           ✔     ✘                                      ?         ?            ?
+  [RabbitMQ](http://www.rabbitmq.com/blog/2012/09/12/mqtt-adapter/)                   ✔       ✔       ✘       ✔      ✘                           ✘                           ✔     ✔                                      ?         ?            ?
+  [MQTT.js](https///github.com/adamvr/MQTT.js)                                        ✔       ✘       ✘       §      ✘                           ✘                           ✔     ✔                                      ✘         ?            ✘
+  [moquette](http://code.google.com/p/moquette-mqtt/)                                 ✔       ✔       ✘       ?      ?                           ?                           ?     ?                                      ✘         ✘            ✘
+  [mosca](mosca)                                                                      ✔       ✔       ✘       ✔      ?                           ?                           ?     ?                                      ✘         ✔            ✘
+  [IBM MessageSight](http://www-03.ibm.com/software/products/en/messagesight/)        ✔       ✔       ✔       ✔      ✘                           ✔                           ✔     ✔                                      §         ✔            ✘
+  [2lemetry](http://2lemetry.com/platform/)                                           ✔       ✔       ✔       ✔      ✔                           §                           ✔     ✔                                      ✔         ✔            ✘
+  [GnatMQ](http://mqttbroker.codeplex.com/)                                           ✔       ✔       ✔       ✔      ✘                           ✘                           ✘     ✔                                      ✘         ✘            ✘
+  [JoramMQ](http://mqtt.jorammq.com)                                                  ✔       ✔       ✔       ✔      ✔                           ✔                           ✔     ✔                                      ✔         ✔            ✔
+  [ThingMQ](https://thingmq.com)                                                      ✔       ✔       ✔       ✔      ✔                           ✘                           ✔     ✔                                      ✔         ✔            ✔
+  [VerneMQ](https://verne.mq)                                                         ✔       ✔       ✔       ✔      ✔                           ✔                           ✔     ✔                                      ✔         ✔            ✔
 
-Requirements Analysis
----------------------
+Key: ✔ supported ✘ not supported ? unknown § see limitations
+
+### Requirements Analysis
+
+------------------------------------------------------------------------
 
 Analysis against **Messaging Node** Requirements
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   the Client Server API could be wrapped in a protocol stub, that can
-    be downloaded at runtime
 
+    -   Yes, for Brokers supporting JavaScript.
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Yes
--   Using [MQTT over
-    WebSockets](http://www.hivemq.com/mqtt-essentials-special-mqtt-over-websockets/)
 
+    -   Yes
+    -   Using [MQTT over
+        WebSockets](http://www.hivemq.com/mqtt-essentials-special-mqtt-over-websockets/)
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   Yes
--   Using [Persistence
-    Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 
+    -   Yes
+    -   Using [Persistence
+        Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes
 
+    -   Yes
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes
--   Using a QoS1 or QoS2 level.
--   [More
-    Info](http://www.hivemq.com/mqtt-essentials-part-6-mqtt-quality-of-service-levels/)
 
+    -   Yes
+    -   Using a QoS1 or QoS2 level.
+    -   [More
+        Info](http://www.hivemq.com/mqtt-essentials-part-6-mqtt-quality-of-service-levels/)
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Yes
--   Some Brokers can be clusters
 
+    -   Yes
+    -   Some Brokers can be clusters
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Yes
--   Using [Persistence
-    Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 
+    -   Yes
+    -   Using [Persistence
+        Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes
--   Called : [Last Will and
-    Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
--   And Using [MQTT Keep Alive and Client
-    Take-Over](http://www.hivemq.com/mqtt-essentials-part-10-alive-client-take-over/)
 
+    -   Yes
+    -   Called : [Last Will and
+        Testament](http://www.hivemq.com/mqtt-essentials-part-9-last-will-and-testament/)
+    -   And Using [MQTT Keep Alive and Client
+        Take-Over](http://www.hivemq.com/mqtt-essentials-part-10-alive-client-take-over/)
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes, because of the small overhead and simple architecture
--   [In the usec range and 273M mobile messages/sec per
-    rack](https://mobilebit.wordpress.com/2013/05/03/rest-is-for-sleeping-mqtt-is-for-mobile/)
 
+    -   Yes, because of the small overhead and simple architecture
+    -   [In the usec range and 273M mobile messages/sec per
+        rack](https://mobilebit.wordpress.com/2013/05/03/rest-is-for-sleeping-mqtt-is-for-mobile/)
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes
 
+    -   Yes
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes
--   Core Feature
 
+    -   Yes
+    -   Core Feature
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   [Yes](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718111)
--   Depends on the Broker, can be implemented on a higher abstraction
-    layer [Link1](https://auth0.com/docs/scenarios/mqtt)
-    [LInk2](http://www.hivemq.com/mqtt-security-fundamentals-oauth-2-0-mqtt/)
 
+    -   [partial](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718111)
+    -   Depends on the Broker, can be implemented on a higher
+        abstraction layer [Link1](https://auth0.com/docs/scenarios/mqtt)
+        [LInk2](http://www.hivemq.com/mqtt-security-fundamentals-oauth-2-0-mqtt/)
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   Yes
--   Core Feature
+
+    -   Yes
+    -   Core Feature
 
 PSYC
 ----
@@ -5035,10 +4941,10 @@ PSYC
 PSYC [62] is a mostly text-based protocol, aiming at providing a
 decentralized global messaging infrastructure for unicast/multicast
 chatting and social media exchanging. Its goal is to replace the popular
-IRC protocol, which currently suffers from unscalability, lack of
+IRC protocol, which currently suffers from lack of scalability, lack of
 security and requires complex bureaucracy. This is because in IRC each
 server node may take responsibility over control aspects of a given
-network channel he participates in, adding this way unneccessary
+network channel he participates in, adding this way unnecessary
 complexity and also raising security issues, like when an evil server
 takes the authority of the channel for malicious purposes. PSYC solves
 this by implementing a context master node (or well-known distributed
@@ -5102,112 +5008,108 @@ Analysis against **Messaging Node** Requirements
 
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   The PSYC2 project implementation, Secushare, comes with an [API for
-    pubsub](http://secushare.org/pubsub)
 
+    -   The PSYC2 project implementation, Secushare, comes with an [API
+        for pubsub](http://secushare.org/pubsub)
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   PSYC has its own authentication method, inherited in PSYC2
-    specification. A request\_authentication\_method is used to query a
-    UNI if a given network entity is actually a linked location of that
-    UNI. This method can have different arguments (\_location,
-    \_host\_IP, \_nonce, \_password) to help the querying entity to take
-    a decision. However, there is no evidence in the documentation that
-    PSYC is able to accept external authentication/authorisation methods
-    other than this.
 
+    -   PSYC has its own authentication method, inherited in PSYC2
+        specification. A request\_authentication\_method is used to
+        query a UNI if a given network entity is actually a linked
+        location of that UNI. This method can have different arguments (
+        location, host\_IP, nonce, password) to help the querying entity
+        to take a decision. However, there is no evidence in the
+        documentation that PSYC is able to accept external
+        authentication/authorisation methods other than this.
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   The performance of PSYC has been studied, and its wiki relies on
-    benchmarks to say that PSYC is the fastest, yet extensible
-    text-based protocol they are aware of. However, the benchamrk
-    results are not available at this time.
 
+    -   The performance of PSYC has been studied, and its wiki relies on
+        benchmarks to say that PSYC is the fastest, yet extensible
+        text-based protocol they are aware of. However, the benchamrk
+        results are not available at this time.
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   PSYC server (psyced) can currently be deployed on Linux, Mac OSX and
-    Windows (on a Cygwin environment) systems.
 
+    -   PSYC server (psyced) can currently be deployed on Linux, Mac OSX
+        and Windows (on a Cygwin environment) systems.
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   PSYC applies some techniques in order to reduce message delivery
-    latency. First, by avoiding negotiations between nodes "talking" the
-    same protocol between them. Since PSYC supports IRC and XMPP, if two
-    nodes are exchanging messages through XMPP protocol, PSYC suggests
-    the protocol switch in order to reduce latency. Also, PSYC avoids
-    resource discovery (disco on XMPP) by pushing information to
-    possibly interested recipients in advance. However, by applying TLS
-    for encrypted PSYC and techniques for DoS prevention on psyced, a
-    certain degree of latency is, therefore, inevitable.
 
+    -   PSYC applies some techniques in order to reduce message delivery
+        latency. First, by avoiding negotiations between nodes "talking"
+        the same protocol between them. Since PSYC supports IRC and
+        XMPP, if two nodes are exchanging messages through XMPP
+        protocol, PSYC suggests the protocol switch in order to reduce
+        latency. Also, PSYC avoids resource discovery (disco on XMPP) by
+        pushing information to possibly interested recipients in
+        advance. However, by applying TLS for encrypted PSYC and
+        techniques for DoS prevention on psyced, a certain degree of
+        latency is, therefore, inevitable.
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   PSYC currently features notification interfaces for software
-    versioning systems (CVS and Git), syslog daemon events, MediaWiki
-    page edits, phpBB forum events and IRC chat messages. Currently,
-    there is no reference to notifications on clients' connection to and
-    disconnection from messaging nodes.
 
--   [Messaging Node should be tolerant to unstable
-    connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   TODO
-
--   [Messaging Node deployments with carrier grade
-    scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   TODO
-
+    -   PSYC currently features notification interfaces for software
+        versioning systems (CVS and Git), syslog daemon events,
+        MediaWiki page edits, phpBB forum events and IRC chat messages.
+        Currently, there is no reference to notifications on clients'
+        connection to and disconnection from messaging nodes.
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   PSYC provides three message families to inform clients about
-    problems on message delivery. The \_error method family features
-    methods like \_error\_invalid, \_error\_illegal, \_error\_duplicate
-    and informs the client of a problem occuring on his side, rather on
-    the server side. Basically, it is the server telling a client "It's
-    your fault, not mine". The \_failure method family informs a message
-    sender about a problem on the receiving side. This method family
-    features methods like \_failure\_deliver or \_failure\_redirect
-    (when a given destination changed its address). Finally, the
-    \_warning method family means that a message was processed and sent,
-    but maybe not as intended. An example is \_warning\_usage, which
-    indicates a possible mistake on the message syntax, presented on
-    Fig. 1, and has a single variant for each of the syntax fields.
 
+    -   PSYC provides three message families to inform clients about
+        problems on message delivery. The `_error` method family
+        features methods like `_error_invalid`, `_error_illegal`,
+        `_error_duplicate` and informs the client of a problem occurring
+        on his side, rather on the server side. Basically, it is the
+        server telling a client "It's your fault, not mine". The
+        `_failure` method family informs a message sender about a
+        problem on the receiving side. This method family features
+        methods like `_failure_deliver` or `_failure_redirect` (when a
+        given destination changed its address). Finally, the `_warning`
+        method family means that a message was processed and sent, but
+        maybe not as intended. An example is `_warning_usage`, which
+        indicates a possible mistake on the message syntax, presented on
+        Fig. 1, and has a single variant for each of the syntax fields.
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   On PSYC, each server running psyced implements the concept of "log
-    of last messages" for every UNI registered on that server. It is
-    used to store messages received by the server, and to let every user
-    have its last session backlog whenever he logs in. It is possible to
-    tune the log size for each UNI and to export the chat history of a
-    room to a webpage.
 
+    -   On PSYC, each server running psyced implements the concept of
+        "log of last messages" for every UNI registered on that server.
+        It is used to store messages received by the server, and to let
+        every user have its last session backlog whenever he logs in. It
+        is possible to tune the log size for each UNI and to export the
+        chat history of a room to a webpage.
 -   [Message
     Caching](https://github.com/reTHINK-project/core-framework/issues/19)
--   PSYC does not have any reference to Store and Forward, probably
-    because it goes against real time communication. And about caching
-    in general, it states it's oriented towards using push events
-    instead of caching. So, whenever a push event regarding a given
-    resource is received by the server, anyone accessing the resource at
-    that time will see it refresh, in order to present always the most
-    recent version.
 
+    -   PSYC does not have any reference to Store and Forward, probably
+        because it goes against real time communication. And about
+        caching in general, it states it's oriented towards using push
+        events instead of caching. So, whenever a push event regarding a
+        given resource is received by the server, anyone accessing the
+        resource at that time will see it refresh, in order to present
+        always the most recent version.
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Current implementations of PSYC do not support WebSockets nor HTTP
-    Live Streaming. About HTTP Long-Polling, it does not make much sense
-    in the context of PSYC, since it models all data distribution based
-    on an event push system. So, whenever some potentially interesting
-    information for a recipient is available at the server, it is
-    automatically sent, overcoming this way the need of something like
-    HTTP Long-Polling or even REST.
 
+    -   Current implementations of PSYC do not support WebSockets nor
+        HTTP Live Streaming. About HTTP Long-Polling, it does not make
+        much sense in the context of PSYC, since it models all data
+        distribution based on an event push system. So, whenever some
+        potentially interesting information for a recipient is available
+        at the server, it is automatically sent, overcoming this way the
+        need of something like HTTP Long-Polling or even REST.
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   The psyced implementation of PSYC has a negotiation feature of
-    protocol switch advertising. This way, each node has information
-    about supported protocols on all the nodes it is communicating with.
-    However, this could be achieved, since the Client-Server API could
-    be wrapped in a protocol stub, that can be downloaded at runtime.
+
+    -   The psyced implementation of PSYC has a negotiation feature of
+        protocol switch advertising. This way, each node has information
+        about supported protocols on all the nodes it is communicating
+        with. However, this could be achieved, since the Client-Server
+        API could be wrapped in a protocol stub, that can be downloaded
+        at runtime.
 
 Node.js
 -------
@@ -5219,7 +5121,7 @@ technology for the Messaging Node.
 
 From https://Node.js.org/ :
 
-Node.js® is a platform built on Chrome's JavaScript runtime for easily
+Node.js is a platform built on Chrome's JavaScript runtime for easily
 building fast, scalable network applications. Node.js uses an
 event-driven, non-blocking I/O model that makes it lightweight and
 efficient, perfect for data-intensive real-time applications that run
@@ -5243,103 +5145,118 @@ The core is built in C and C++. It combines Google’s V8 JavaScript
 engine with Node’s Libuv library and protocol bindings including sockets
 and HTTP.
 
-![Figure 34: Node.js Architecture](Archi-Node.js.png)
+![Figure 34: Node.js Architecture](Archi-NodeJS.png)
 
-More information are avaialble in this document :
+More information are available in this document :
 http://mcgill-csus.github.io/student\_projects/Submission2.pdf
 
 ### APIs
 
-Available API are described on Node.js website : https://Node.js.org/api/
+Available API are described on Node.js website :
+https://Node.js.org/api/
 
 But this can be completed thanks to the different packages available on
 https://www.npmjs.com/
 
 ### Requirements Analysis
 
-#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)\*\*
+#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)
 
 -   [It should be possible to support Protocol
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
--   Yes
--   ProtOFly connector can be developped. JS connector can be develop on
-    top of Node.js to enble protofly on server side. This connector will
-    be for example reusable to connect Kurento Media Server
 
+    -   Yes
+    -   ProtOFly connector can be developped. JS connector can be
+        develop on top of Node.js to enble protofly on server side. This
+        connector will be for example reusable to connect Kurento Media
+        Server
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
--   Yes (socket.io). Socket.io enables the usage of different transport
-    protocol to establish connection between user and server. (Long
-    polling, WebSocket ...)
 
+    -   Yes (socket.io). Socket.io enables the usage of different
+        transport protocol to establish connection between user and
+        server. (Long polling, WebSocket ...)
 -   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
--   Yes - Several logging modules available : log4js, winston, bunyan
-    ... Logs can be dispalyed in console, store in file with log rotate,
-    send to a network entity ...
 
+    -   Yes - Several logging modules available : log4js, winston,
+        bunyan ... Logs can be dispalyed in console, store in file with
+        log rotate, send to a network entity ...
 -   [Message delivery
     reliability](https://github.com/reTHINK-project/core-framework/issues/17)
--   Yes - Socket.io enables message acknowledgement
 
+    -   Yes - Socket.io enables message acknowledgement
 -   [Messaging Node deployments with carrier grade
     scalability](https://github.com/reTHINK-project/core-framework/issues/16)
--   Using:
+
+    -   Using:
     -   Cluster Mode
     -   Redis cluster : it is possible to use Redis Cluster with PUB/SUB
-        mechanism : several Node.js entities can be connected through the
-        redis cluster : this can enable load balancing, redundancy
+        mechanism : several Node.js entities can be connected through
+        the redis cluster : this can enable load balancing, redundancy
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
--   Yes - socket.io can manage reconnection with different configurable
-    parameters (timeout, retries ...)
 
+    -   Yes - socket.io can manage reconnection with different
+        configurable parameters (timeout, retries ...)
 -   reconnection whether to reconnect automatically (true)
+
 -   reconnectionDelay how long to wait before attempting a new
     reconnection (1000)
+
 -   reconnectionDelayMax maximum amount of time to wait between
     reconnections (5000). Each attempt increases the reconnection by the
     amount specified by reconnectionDelay.
+
 -   timeout connection timeout before a connect\_error and
     connect\_timeout events are emitted (20000)
 
 -   [Events about clients connection / disconnection from Messaging
     Node](https://github.com/reTHINK-project/core-framework/issues/14)
--   Yes - using socket.io different event are fired on connection status
-    :
+
+    -   Yes - using socket.io different event are fired on connection
+        status :
 -   connect. Fired upon connecting.
+
 -   error. Fired upon a connection error
+
 -   disconnect. Fired upon a disconnection.
+
 -   reconnect. Fired upon a successful reconnection.
+
 -   reconnect\_attempt. Fired upon an attempt to reconnect.
+
 -   reconnecting. Fired upon an attempt to reconnect.
+
 -   reconnect\_error. Fired upon a reconnection attempt error.
+
 -   reconnect\_failed. Fired when couldn’t reconnect within
     reconnectionAttempts
 
 -   [Messaging Node must support very low message delivery
     latency](https://github.com/reTHINK-project/core-framework/issues/13)
--   Yes
 
+    -   Yes
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes - Node.js is available on Linux, windows, mac
 
+    -   Yes - Node.js is available on Linux, windows, mac
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
--   Yes
 
+    -   Yes
 -   [Messaging Node must support external authentication and
     Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
--   Yes. Module like Passport : http://passportjs.org/ enables to use
-    external authentication like facebook, twitter, google .. (We will
-    have to check if passport can be used as it seems to require Express
-    which may not be relevant in rethink case)
 
+    -   Yes. Module like Passport : http://passportjs.org/ enables to
+        use external authentication like facebook, twitter, google ..
+        (We will have to check if passport can be used as it seems to
+        require Express which may not be relevant in rethink case)
 -   [Messaging Node must support
     pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
--   No - Yes with Redis Pub/Sub mechanism :
-    http://redis.io/topics/pubsub
+
+    -   No - Yes with Redis Pub/Sub mechanism :
+        http://redis.io/topics/pubsub
 
 #### [Runtime Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
 
@@ -5361,9 +5278,9 @@ node.js.
 In fact there are extensive implementations of Web Sockets over node.js:
 websocket-node faye-websocket-node engine.io socket.io sockjs
 
-The most performante is claimded to be ws.
+websocket-node claims to be the one with best performance.
 
-Socket.io seems to be the most complete regarding feature (connection
+Socket.io seems to be the most complete regarding features (connection
 type, acknowledgement, configuration ..)
 
 QOS SOTA
@@ -5699,7 +5616,7 @@ what we want to make private;
 
 **or** we can, in same JavaScript file, wrapping our code in
 
-``` {.JavaScript}
+``` {.javascript}
 app.js
 
 if (Meteor.isClient) {
@@ -5715,13 +5632,13 @@ if (Meteor.isServer) {
 
 Client connection:
 
-``` {.JavaScript}
+``` {.javascript}
 Tasks = new Mongo.Collection("tasks");
 ```
 
 Insert:
 
-``` {.JavaScript}
+``` {.javascript}
 Template.body.events({
   "submit .new-task": function (event) {
     // This function is called when the new task form is submitted
@@ -5734,7 +5651,7 @@ Template.body.events({
 
 Query:
 
-``` {.JavaScript}
+``` {.javascript}
 Template.body.helpers({
     tasks: function () {
       // Show newest tasks first
@@ -5745,7 +5662,7 @@ Template.body.helpers({
 
 Delete:
 
-``` {.JavaScript}
+``` {.javascript}
 Template.task.events({
   "click .delete": function () {
     Tasks.remove(this._id);
@@ -5869,6 +5786,497 @@ a short-time.
     reduce the overhead in the applications which will help to reduce
     the load time.
 
+Products SOTA
+-------------
+
+### ApiRTC
+
+#### What is ApiRTC?
+
+ApiRTC is the communication platform developped by Apizee. This includes
+a communication platform and a client JavaScript library that can be
+used by developpers to developped their own applications without having
+to consider the technical aspects of communication. Complete version of
+ApiRTC with tutorials is described on www.apirtc.com
+
+#### Features Overview
+
+ApiRTC Entreprise edition includes following features :
+
+**Session :**
+
+Connexion : long polling , webSocket; HTTP, HTTPS; Presence : group
+connection and subscription; Custom User Data sharing ; Browsers type
+and version detection<br/>
+
+**IMClient :**
+
+Instant Messaging : 1 to 1, Group
+
+**WebRTC Client :**
+
+-   Voice Calls, Voice and Video Calls
+-   Audio, video mute
+-   ScreenSharing
+-   TakeSnapshot
+-   Support of IE and Safari for audio and video calls through a plugin
+-   Network disconnection detection
+-   Network traversal management for media flows
+-   DataChannel
+-   Calls recording
+-   Connection to IMS, RCS, SIP Architecture
+-   Conference calls<br/>
+
+**Data Client :**
+
+Custom data sending and reception
+
+**Compatibility :**
+
+Window, linux, OSx, Android devices through WebRTC compatible
+browsers<br/> Plugin for Android and iOS application development
+
+#### Architecture Overview
+
+ApiRTC solution use different components on server and client side.
+
+**Messaging Node :**
+
+On server side, main used components are Node.js and Redis :
+
+Node.js : https://Node.js.org/ - Description is available :
+http://en.wikipedia.org/wiki/Node.js
+
+Node.js is a JavaScript engine that can be enhanced through diffrent
+existing modules for connections, log, ...
+
+Redis : http://redis.io/ - Description is available :
+http://en.wikipedia.org/wiki/Redis
+
+Redis is a NoSQL database that is really interesting for real time data
+and that provide a publish/subscribe that can be used to establish
+communication between several Node.js process.
+
+**Runtime / Framework :**
+
+ApiRTC use a JavaScript library on client side to provide teh developers
+APIs that enables teh developpesr to use platform feature.
+
+#### Architecture
+
+ApiRTC actual architecture is presented on following diagram :
+<img src="ApiRTC-ReTHINK.png" width="450">
+
+Components such as Node.js, Redis or socket.io are used. ApiRTC uses
+JSON over WebSocket to manage signalling between clients and server.
+
+#### APIs
+
+ApiRTC provides API for developers : complete set of APIs is describe on
+http://apirtc.com/api-docs/
+
+APIS are decomposed with main following classes :<br/> \* ApiRTCSession
+: manage user connection to the platform (presence)<br/> \*
+ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
+...<br/> \* ApiRTCIMClient : manage Instant messaging feature<br/> \*
+ApiRTCDataClient: : manage data sending feature<br/> \*
+ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
+
+#### Requirements Analysis
+
+Analysis regarding WP3 Messaging Node requirements :
+
+**Messaging Node with carrier grade deployment features :**</br> Node.js
+and Redis enables to buld a resiliante and scalable architecture
+
+**The Messaging Node MUST offer DoS and DDoS Protection :**</br> User
+authentication, message rate limitation are example of feature taht may
+be implemented to fulfill this requirement
+
+**It should be possible to support Protocol on-the-fly :**</br>
+
+ProtOFly connector can be developped. JS connector can be develop on top
+of Node.js to enable protofly on server side. This connector will be for
+example reusable to connect an external CSP, Kurento Media Server, or
+the Identity manager
+
+**Messaging Transport Protocols:**</br>
+
+Socket.io enables the usage of different transport protocol to establish
+connection between user and server. (Long polling, WebSocket ...)
+
+**Messaging Node logging :**</br>
+
+Several logging modules are available : log4js, winston, bunyan ... Logs
+can be dispalyed in console, store in file with log rotate, send to a
+network entity ...
+
+**Message delivery reliability :**</br> Socket.io enables message
+acknowledgement
+
+**Messaging Node deployments with carrier grade scalability :**</br>
+
+Using Redis cluster mode : it is possible to use Redis Cluster with
+PUB/SUB mechanism : several Node.js entities can be connected through
+the redis cluster : this can enable load balancing, redundancy</br>
+
+**Messaging Node should be tolerant to unstable connections :**</br>
+
+Socket.io can manage reconnection with different configurable parameters
+(timeout, retries ...) reconnection whether to reconnect automatically
+(true)
+
+reconnectionDelay how long to wait before attempting a new reconnection
+(1000) reconnectionDelayMax maximum amount of time to wait between
+reconnections (5000). Each attempt increases the reconnection by the
+amount specified by reconnectionDelay. timeout connection timeout before
+a connect\_error and connect\_timeout events are emitted (20000)
+
+**Events about clients connection / disconnection from Messaging Node
+:**</br>
+
+Using socket.io different events are fired on connection status :
+connect. Fired upon connecting. error. Fired upon a connection error
+disconnect. Fired upon a disconnection. reconnect. Fired upon a
+successful reconnection. reconnect\_attempt. Fired upon an attempt to
+reconnect. reconnecting. Fired upon an attempt to reconnect.
+reconnect\_error. Fired upon a reconnection attempt error.
+reconnect\_failed. Fired when couldn’t reconnect within
+reconnectionAttempts
+
+**Messaging Node must support very low message delivery latency :**</br>
+
+**Messaging Node must be deployable in the most used Virtual Machines
+:**</br> Node.js is available on Linux, windows, mac and can be deployed
+on small virtual machine or devices
+
+**Messaging Node should require minimal computing resources :**</br>
+Messaging nodes components can be isntalled in only one VM
+
+**Messaging Node must support external authentication and Authorisation
+:**</br> Module like Passport : http://passportjs.org/ enables to use
+external authentication like facebook, twitter, google .. (We will have
+to check if passport can be used as it seems to require Express which
+may not be relevant in rethink case)
+
+**Messaging Node must support multiple messaging functionalities
+:**</br> Several routing can be performed with socket.io. Send message
+to only one dest, broadcast message to several users
+
+#### Integration in Rethink
+
+ApiRTC can be used in a Node.js based Messaging Node.
+
+Integration of ApiRTC in Rethink can be done by adding differents
+connectors depending of needs : - Identity Management : connector to
+Identity server - QoS Management : connector to QoS server - Other Web
+communication platform : connector to communication platform using
+ProtOFly - VoIP Platform : Connector to WebRTC GW - Connector to Media
+Servers
+
+A Redis Cluster with Pub/Sub mechanism can be used to manage
+communications between connectors
+
+<img src="ApiRTC-IntegrationInReTHINK.png" width="450">
+
+For Rethink, Apizee propose the usage of apiRTC, for instance to
+simulate an external CSP connection.
+
+### Sippo
+
+#### What is Sippo?
+
+Sippo is the name of a WebRTC product family authored by Quobis which
+includes the following products: - Sippo WebRTC Application Controller:
+the server which provides the services. - Sippo WebRTC Apps: reference
+web applications which leverage the main features provided why the WAC.
+Two examples: - Sippo WebCollaborator: Reference enterprise WebRTC
+softphone - Sippo Click To Call: Reference customer contact WebRTC
+softphone
+
+#### What is a “WebRTC Application Controller”?
+
+Sippo WebRTC Application Controller (WAC, in short) is a solution that
+allows to deploy WebRTC applications fully-interconnected with existing
+services (AAA, OSS, BSS, etc.) and legacy VoIP or UC systems.
+
+Sippo WAC supports a number of business cases, through its APIs, ranging
+from a simple click-to-dial button to advanced scenarios like RCS-based
+services, integration with existing Web Portals (including Facebook,
+Twitter or GMail), Banking, Health, Logistics, call centers/CRMs, UC,
+etc.
+
+Sippo is standards compliant and has been designed and developed by
+engineers who participate in WebRTC standardization forums like W3C,
+IETF, 3GPP, SIPForum and GSMA. Thanks to its abstraction layer, Sippo
+can include new signaling modules rapidly or even use different
+signaling protocols within the same application (e.g. one signaling
+protocol for audio/video, another for IM/presence, etc.).
+
+Sippo WAC is the right tool to develop, adapt or deploy any WebRTC tool
+in a SDN, in the case of telcos, or corporate architecture, with the
+security that it is going to be interoperable with the existing services
+and WebRTC gateways. In addition it provides features to manage user
+provisioning, store call detail records and provides contextual
+information
+
+Sippo has been developed by Quobis and it's distributed worldwide
+through a network of first-class partners and UC vendors.
+
+#### Reference architecture
+
+Sippo WAC is a network component which sits on the edge of the network,
+in close collaboration with the WebRTC gateway. The following picture
+describes how the WAC fits into a service provider or enterprise voice
+network:
+
+![Figure 40: Sippo WAC reference
+architecture](quobis_reference_architecture.png)
+
+The following network elements are the basic ones to understand the
+reference architecture (from right to left):
+
+-   Service Provider Network: this block represents the existing UC
+    platform owned by the enterprise (where we might find a corporate
+    PBX) or service provider (where we might find an IMS core or a Class
+    4/5 softswitch). In the latter case we will also find OSS/BSS
+    systems and other identity management platforms that interact with
+    Sippo in some way.
+
+-   Third-party WebRTC gateway: in some cases where the UC core does not
+    support WebRTC traffic, there is a need for a WebRTC gateway which
+    takes care of the translation of both the signaling and media plane.
+    Signaling can be standard based (like SIPoWS) or a vendor-specific
+    signaling protocol. The WebRTC gateway can be a standalone network
+    element or it can be a functionality embedded into an existing
+    network element like a SBC or an application server. Sippo excels in
+    interoperability with leading gateway vendors thanks to its
+    award-winning abstraction layer, please consult your sales manager
+    for a complete list of supported vendors.
+
+-   WebRTC Application Controller (WAC): this is the network element
+    where the WebRTC applications are deployed and managed. Applications
+    are downloaded to the browser from the WAC vía HTTP, while the
+    actual media and signaling traffic goes to the customer network
+    through the WebRTC gateway. Sippo runs on a dedicated server which
+    can be installed at the customer premises or in the cloud.
+
+-   Web browsers: the WebRTC applications are downloaded into the web
+    browser after the user has been authenticated. From the point of
+    view of the end-user, this is the only application that he/she will
+    need to use. Sippo applications needs to have HTTP connectivity with
+    the WAC and with the WebRTC gateway.
+
+In a real deployment there are a number of additional network elements
+involved such a Session Border Controller, firewalls, STUN/TURN servers,
+SIP routers, etc… which will interact in some way with the WebRTC
+services and applications.
+
+#### Understanding the role of a WebRTC Application Controller
+
+The term “WebRTC Application Controller” has been coined by Quobis after
+our experience deploying WebRTC projects in large service providers all
+around the world. In a real setup, there are a number of features that
+are not meant to be provided by the service provider network, the WebRTC
+gateway or the browser (for example, authentication, identity management
+or security).
+
+Sippo brings to the market a rich set of features which speeds up the
+deployment of WebRTC into existing networks, as for example:
+
+-   Multi signaling mechanisms
+    -   SIP over WebSockets (RFC 7118)
+    -   JSON-based APIs
+    -   REST-based APIs
+-   Identity Management
+-   User provisioning
+-   Security Control
+-   Policy Control
+-   Statistics and logging
+-   Address book synchronization
+-   Browser abstraction layer
+
+Besides those features, Sippo provides sippo.js, a ORCA.js
+(http://www.orcajs.org) compatible API for application developers hiding
+all the complexities of WebRTC signaling and media, hence enabling
+applications to be developed once and run in different devices, browsers
+and network environments.
+
+Along with Sippo, Quobis has developed a number of WebRTC applications
+for specific verticals such as the Sippo Web Collaborator, Sippo Click
+to Call or Sippo GMail Toolbar.
+
+#### Sippo interfaces and API’s
+
+Sippo offers a set of different API’s and service interfaces that are
+summarised in the picture below:
+
+![Figure 41: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
+
+##### Sippo.js API
+
+Sippo.js is a JavaScript API that is downloaded to the user’s browsers,
+thus containing all the signaling stacks and WebRTC media API calls.
+Sippo applications are built on top of this sippo.js API and it can also
+be used by third-party developers to code their own client applications.
+
+Sippo.js API supports a complete set of signaling stacks, including both
+standards-based (like SIPoWS, authored by Quobis at RFC7118) and
+vendor-specific ones. That means that the applications built on top of
+the Sippo.js API are capable of communicating with different gateways
+from different vendors without changing the code. That’s one of the
+benefit of using Sippo.js API as it hides the complexity of the
+underlying signaling plane and provides a single and simple-to-use
+JavaScript API to the applications.
+
+![Figure 42: Sippo.js abstraction layer](quobis_abstraction_layer.png)
+
+##### Sippo Service API (SAPI)
+
+Sippo Service API (SAPI) is a REST API which allows to connect Sippo WAC
+to different elements from the operator’s core and access network. This
+API can play both client-role and server-role to integrate the Sippo WAC
+and the WebRTC applications into the core.
+
+SAPI is used in server-role between the WebRTC gateway and the WAC. It
+can be used for Identity Management (IdM) checks as part of the
+authentication process and check the permission set of the subscriber.
+When a some requests reach the WebRTC Gateway from a WebRTC Application,
+the gateway in turn verify the identity of the subscriber using the
+WebRTC application by sending an IdM request to the WAC through the
+SAPI.
+
+##### Sippo connectors
+
+Some of the Sippo features requires to connect to external services or
+to behave as a server to third party platforms. Some of those features
+are exposed to the sippo.js API while others are internal to the Sippo
+core.
+
+Sippo connectors available so far in this version are:
+
+-   LDAP connector: Sippo can synchronize with an external LDAP server
+    to retrieve contact lists, phone numbers and related information.
+-   Vendor-specific connectors: Sippo provides specific connectors for
+    some features provided by the gateway vendors. The details of each
+    connector is described in the joint application notes issued by
+    Quobis and each vendor, please contact your sales representative for
+    more information. The configuration of these connector is described
+    in annex documents to this guide.
+
+##### Sippo WebRTC API (WAPI)
+
+This is an internal API offered by the Sippo WAC to the client
+applications, and it’s not intended to be used by third parties. This
+API basically interchanges messages between the application and the WAC
+using WebSockets (JSONoWS) or HTTP.
+
+#### Sippo internals: services and backends
+
+This explains some basic concepts of the Sippo architecture, in order to
+understand how to properly configure the controller and all the services
+provided and also how the different sippo.js API calls are interpreted
+and managed from the WAC depending on the configuration.
+
+There are two key concepts to understand the internal architecture of
+Sippo: services and backends. A service is a functionality provided by
+the WAC, whereas a backend is a implementation of a specific service. In
+other words, we can say that a services is “what” to do and the backend
+is “how” to do it.
+
+![Figure 43: Sippo services and
+backends](quobis_sippo_services_and_backends.png)
+
+There are thirty-three available services at Sippo WAC that are listed
+alphabetically in the table below. Some of those services have a 1-to-1
+implementation at sippo.js API calls while others are internals and not
+exposed to the end user, but are explained here for completeness.
+
+#### 1.7. Sippo WebRTC applications
+
+Services providers and enterprises can deploy their own WebRTC
+applications using Sippo WAC, developed by using the existing Sippo
+JavaScript API sippo.js (which includes the Sippo Abstraction Layer) and
+also making use of all the Sippo services like authentication, contacts,
+etc…
+
+Every Sippo application needs to run connected to a Sippo WAC, as some
+of the features are not implemented on the browser but on the WAC.At the
+current Sippo version, both the applications and the sippo.js libreries
+must be hosted and donwloaded from the WAC. This is mandatory on this
+current version. Please note that, in this scenario, some cross-domain
+issues may arise. Please contact Quobis system engineering department
+for more information on this topic.
+
+Communication between the WebRTC applications running on the browser and
+the Sippo WAC is done by using the WAPI interface, which dispatches the
+incoming messages to the corresponding services, as shown in the picture
+below:
+
+![Figure 44: Sippo WebRTC applications
+stack](quobis_webrtc_applications.png)
+
+#### Potential integration with Wonder proposal
+
+##### About signaling-on-the-fly
+
+The WONDER JavaScript Framework was designed and implemented to address
+the lack of a standard WebRTC signalling protocol by implementing the
+novel Signalling On-the-Fly concept, enabling seamless interoperability
+between different WebRTC Service Provider domains.
+
+The WONDER library assumes there won’t be a standard WebRTC signaling
+protocol to give developers the freedom to select (or invent) the
+protocol that better suits WebRTC Application needs and, at the same
+time, standardization tasks effort are minimized, shortening innovation
+to market timing. This means, the message server and associated protocol
+stack can be selected, loaded and instantiated during runtime. Such
+characteristic enables signaling protocols selected per WebRTC
+Conversation to ensure full Signaling interoperability among peers using
+Triangle based Network topologies. Such mechanism we call Signalling
+on-the-fly.
+
+##### Signaling-on-the-fly versus multi-signaling support
+
+The Sippo WebRTC Application Controller tries to hide the complexity on
+vendors thanks to the support of different signaling stacks. This means
+that while a web client is making a request to the WAC to have access to
+a WebRTC application, the WAC adapts the JS code of the application to
+the type of gateway to use the signaling protocol that the gateway is
+supporting.
+
+The Sippo WAC has a mechanism to deal with different gateways (including
+those from different vendors) in an active way, so high availability and
+scalability can be achieved with no need to use a load balancer for the
+gateways. It’s important to mention that he Sippo WAC does not manage
+real time traffic as this goes from the browser to the other browser (or
+to the gateway in case of interconnection with legacy networks).
+
+In order to leverage the result and proposals of Wonder around signaling
+on the fly we can explore the possibility to move to the application
+(and browser) the complexity of selection the signaling for the call
+(now the abstraction layer is part of the WAC, as described in section
+1.5) or try to adapt the Sippo WAC to manage the rehydration of
+signaling of the clients during a call or session.
+
+The WAPI, as the API that interchanges messages between the application
+and the WAC using WebSockets (JSONoWS) or HTTP, can play an active role
+in both options to manage this approach.
+
+#### Requirements Analysis
+
+Sippo.js provides a high level abstraction layer which allow to build
+WebRTC applications in an easy and quick way. Sippo.js supports many
+signaling protocols for WebRTC and can be used with WebRTC gateways from
+many vendors. This is possible thanks to it implements a static-flavor
+of the protocol-of-the-fly approach used in reTHINK project. This was
+identitified in the early stages of WebRTC as a need to deal with the
+signaling diversity in the WebRTC arena. Sippo.js can be adapted to be
+an intermediate layer between the hyperty and the web application
+hidding all the innecesary complexity to te developer. This will also
+allow that all the applications already build over Sippo.js can be used
+in reTHINK reducing considerably the integration costs.
+
 (2) OMNA Network
 
 (3) WebRTC API evolution
@@ -5945,5 +6353,15 @@ a short-time.
 (38) Backbone Collections
 
 (39) Meteor Plataform Overview
+
+(40) Sippo WAC reference architecture
+
+(41) Sippo interfaces and APIs
+
+(42) Sippo.js abstraction layer
+
+(43) Sippo services and backends
+
+(44) Sippo WebRTC applications stack
 
 

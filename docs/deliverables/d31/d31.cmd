@@ -13,8 +13,6 @@ sota\messaging.md ^
 sota\service-framework.md ^
 sota\projects.md ^
 sota\products.md ^
-..\..\sota\products\apirtc.md ^
-..\..\sota\products\sippo.md ^
 specs\runtime.md ^
 ..\..\specs\runtime\runtime-architecture.md ^
 ..\..\specs\runtime\securityanalysis.md ^

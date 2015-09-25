@@ -1,4 +1,4 @@
-(@introduction-wp3-scope) Specification Scope (@sota-security-chromium-sandbox) Chromium sandbox scheme
+(@sota-security-chromium-sandbox) Chromium sandbox scheme
 
 (@sota-security-chrome-extension) The architecture of a Google Chrome extension
 
@@ -12,15 +12,7 @@
 
 (@service-framework-middle-layer) Service framework middle layer
 
-(@products-quobis-reference-architecture) Sippo WAC reference architecture
-
-(@products-quobis-interfaces-API) Sippo interfaces and APIs
-
-(@products-quobis_abstraction_layer) Sippo.js abstraction layer
-
-(@products-quobis-sippo-services-backends) Sippo services and backends
-
-(@products-quobis-WebRTC-applications) Sippo WebRTC applications stack
+(@sota-products-apirtc-rethink) Possible integration of ApiRTC in reTHINK
 
 (@runtime_arch_high_level) Runtime High Level Architecture
 

@@ -263,8 +263,7 @@ Analysis against **Messaging Node** Requirements
 
 -	[It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
 
-	-	Yes
-	-	the Client Server API could be wrapped in a protocol stub, that can be downloaded at runtime
+	-	Yes, for Brokers supporting JavaScript.
 
 -	[Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
 

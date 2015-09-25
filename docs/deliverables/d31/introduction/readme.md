@@ -6,7 +6,7 @@ Objectives and Overview
 
 This report provides a detailed specification of reTHINK Core Framework components comprised by the runtime environment where Hyperties are executed and the messaging nodes used to support messages exchange between Hyperties. Thus, and according to reTHINK Architecture [38], the scope of this report includes the specification of the Messaging Node providing reTHINK Messaging Services and the specification of the Hyperty Runtime that will be included in User Devices and Application Servers to deliver User Hyperties and Network Side Hyperties.
 
-![Figure @introduction-wp3-scope - Specification Scope](WP3-scope.png)
+![Figure 1 - Specification Scope](WP3-scope.png)
 
 It should be noted that the Network Platform specification supporting Specialised Network Services will be reported later in D3.4, as originally planned.
 
