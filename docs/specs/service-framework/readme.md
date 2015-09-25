@@ -26,17 +26,27 @@ From the above user scenarios specific actors/roles, requirments and use cases w
 ### Data Models
 In D2.2 Data models were specified from 3 different points of view - the service provider view, developer view and consumer view. For the Hyperty Framework, focus will be laid only the developer view. The identified data models for the developer's perspective include the following:
 
-**Hyperty Descriptor Model**
+**Hyperty Descriptor Model**: 
 As described in D2.2, the Hyperty data model is used to model different types of Hyperty provided by the Service Provider. The Hyperty descriptor contains sets of data objects with information to the HypertyCatalogueURL, the type of Hyperty (communicator, identity or context), policies, contrainst and configuration parameters. The Hyperty Framework will provide JavaScript object templates specifying the Hyperty Descriptor Data Objects and extending them to create new Hyperty Types.
 
-**User Identity Model**
+**User Identity Model**: 
 This data model models a user entity within the reTHINK infrastructure. It has a unique identifier (UserUUIDURL) and multiple identifierTypes (UserURL). The user entity is characterised by its profile (UserProfile) which may include informations associated to the user : profile page URL, username, birthdate, picture, etc. 
 To provide management functionalities to the developers to the reTHINK Identity managment, the Hyperty Framework will need to
 interface with the protocol stub for Identity managment.
 
 
-**context Model**
+**Context Model**:
 The context model is used to model different media types for representing simple sensors and device meta data which can be transmited in a protocol such as CoAP or HTTP. The data model contains context information such as id, ContextType, time, tag and a list of context values which can be used in the M2M reTHINK uses cases. The Hyperty Framework will provide factory functionalities for creating and managing these data objects.
+
+
+**Communication Model**: 
+The communication data model will be to model communications within the retHINK architecture for messaging and communicator Hyperties. The data model includes information for identifying a communication (id, owner, duration, etc.), the status of the communication (pending, open, closed, failed, paused), a list of participants (identity), the quality, the connection data object (webRTC connection) and message. The Hyperty Framework should provide a set of functionalities for creation and management of the sessions. Some of these functionalities will be provided by the Hyperty Runtime. It is still to be determined to what abstraction level this should be made available to developers.  
+
+** Message Model** :
+
+** Address Model** :
+
+
 ### Interface Design
 
 ### Utilities
