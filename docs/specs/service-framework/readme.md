@@ -14,7 +14,13 @@ D1.1 – “Use Cases and Sustainable Business Models” specified 15 user scena
 * Apartment Rental Monitoring And Control Application
 * Smart Enterprise –Contextual Enriched Communication in Smart Enterprises 
 
-From the above user scenarios specific use case and requirments in the sense of service logic for these use cases where identified and specified. These information act as information pool upon which the functionalities of the Hyperty Framework will be based.         
+From the above user scenarios specific actors/roles, requirments and use cases where identified and specified. These information acts as information pool upon which the functionalities or APIs the Hyperty Framework could provide for developers. These functionalities include:
+* Communication Service: the Hyperty Runtime already provides an API for H2H and M2M communication. Developers will be able to use this service directly from the Hyperty Runtime API 
+* Identity Service: a provider mechanism to access internal reTHNK IdP services or external IdPs (Google, Facebook, etc.)  
+* Data Storage functions: for stroing persistent data 
+* Location functions: to access device specific context (e.g. GPS) to be used as context for different services
+* User Entity Management: to manage one or multiple user profiles
+* Notification service: for notifying triggerd events
 
 
 ### Data Models
