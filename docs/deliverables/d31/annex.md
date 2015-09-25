@@ -473,14 +473,17 @@ starting to show. Web application has evolved a lot from the beginning
 but the protocol which transport it has not evolved at the same pace.
 
 Loading a Web page is more resource intensive than ever because HTTP
-practically only allows one outstanding request per TCP connection: \*
-Browsers have used multiple TCP connections to issue parallel requests.
-This is counter-productive (TCP congestion control is effectively
-negated leading to congestion events), and unfair (browsers take more
-network resources). \* At the same time, the large number of requests
-means a lot of duplicated data “on the wire”. \* These factors mean that
-HTTP/1.1 requests have a lot of overhead associated with them; the more
-requests are made, the worse performance we get.
+practically only allows one outstanding request per TCP connection:
+
+-   Browsers have used multiple TCP connections to issue parallel
+    requests. This is counter-productive (TCP congestion control is
+    effectively negated leading to congestion events), and unfair
+    (browsers take more network resources).
+-   At the same time, the large number of requests means a lot of
+    duplicated data “on the wire”.
+-   These factors mean that HTTP/1.1 requests have a lot of overhead
+    associated with them; the more requests are made, the worse
+    performance we get.
 
 This problems leaded the industry to consider “Best Practices” things
 like: spriting, data inlining, domain sharding and concatenation which
@@ -493,7 +496,7 @@ connections (high latency, jitter and packet loss) may prevent Web
 applications served with HTTP over TCP from being responsive and even
 usable.
 
-[HTTP/2](https://tools.ietf.org/html/rfc7540), which is already a
+[HTTP/2](https://tools.ietf.org/html/rfc7540) [82], which is already a
 definitive RFC, was designed to be adapted to the new conditions of the
 WWW and its main goal is to improve the user experience. HTTP/2 is an
 evolution of SPDY, experimental protocol mainly developed by Google
@@ -504,7 +507,7 @@ Internet in the next years.
 
 ### Main differences from HTTP1.1
 
-  HTTP/1.1                              HTTP/2
+  **HTTP/1.1**                          **HTTP/2**
   ------------------------------------- -------------------------------------------------------------------
   textual                               binary
   ordered and blocking                  fully multiplexed
@@ -515,14 +518,17 @@ Internet in the next years.
 #### Binary
 
 HTTP/2 is a binary protocol, it means that no human-understable ASCII
-chars are sent on the wire. The main advantages of being binary are: \*
-Binary protocols are more efficient to parse by applications which does
-not have to handle with issues related to text-protocol parsing. \* It
-is more compact “on the wire” since no extra information needs to be
-sent. \* It is much less error-prone, compared to textual protocols like
-HTTP/1.x with whitespace handling, capitalization, line endings, blank
-links... HTTP/1.1 defines five different ways to parse a message; in
-HTTP/2, there’s just one code path.
+chars are sent on the wire. The main advantages of being binary are:
+
+-   Binary protocols are more efficient to parse by applications which
+    does not have to handle with issues related to text-protocol
+    parsing.
+-   It is more compact “on the wire” since no extra information needs to
+    be sent.
+-   It is much less error-prone, compared to textual protocols like
+    HTTP/1.x with whitespace handling, capitalization, line endings,
+    blank links... HTTP/1.1 defines five different ways to parse a
+    message; in HTTP/2, there’s just one code path.
 
 #### Fully multiplexed
 
@@ -638,20 +644,23 @@ served using an encrypted protocol.
 HTTP/2 is aimed to make the Web more efficient and responsive and it
 advantages are more notable for web sites. However the following points
 should be considered when discussing the use of HTTP/2 in the ReTHINK
-project: \* HTTP/2 is going to be massively adopted by Internet
-companies following Google and Twitter movements. \* The most relevant
-projects (Apache, NGINX, ) already supports or plan to support HTTP/2.
-ReTHINK Javscript libraries are expected to be used also in web
-applications so supporting HTTP/2 would avoid mixing HTTP/1.1 and
-HTTP/2. \* ReTHINK will take advantage of the benefits of HTTP/2. \*
-HTTP/2 is normally going to be used over QUIC so we will take advantage
-of using QUIC as the transport protocol. \* Despite the fact of not
-being used to transport media, its characteristics would make it
-possible.
+project:
+
+-   HTTP/2 is going to be massively adopted by Internet companies
+    following Google and Twitter movements.
+-   The most relevant projects (Apache, NGINX, ) already supports or
+    plan to support HTTP/2. ReTHINK Javscript libraries are expected to
+    be used also in web applications so supporting HTTP/2 would avoid
+    mixing HTTP/1.1 and HTTP/2.
+-   ReTHINK will take advantage of the benefits of HTTP/2.
+-   HTTP/2 is normally going to be used over QUIC so we will take
+    advantage of using QUIC as the transport protocol.
+-   Despite the fact of not being used to transport media, its
+    characteristics would make it possible.
 
 All the available implementations of HTTP/2 are gathered in the official
-HTTP/2 WG Github repository:
-https://github.com/http2/http2-spec/wiki/Implementations
+[HTTP/2 WG Github
+repository](https://github.com/http2/http2-spec/wiki/Implementations)[81]
 
 ### Websocket over HTTP/2
 
@@ -1057,7 +1066,7 @@ The WONDER Message class provides good input for the design of Hyperty
 Messages. Wonder Message is a JSON structure and it is comprised by a
 Header and a Body. The following Message Header attributes are defined:
 
-    type            Type of the Message 
+    type            Type of the Message
     from            Sender of the message
     to              Recipients of the message
     context         identifies a certain context for the message eg the Id of the conversation
@@ -1128,14 +1137,14 @@ The main WONDER Identity functions are:
      * This method downloads a messaging stub and keeps a reference to it in a local
      * attribute, if not already done before. That means the download will only be performed once.
      * After download it invokes the given callback with a reference to the downloaded MessagingStub.
-     * 
+     *
      * @param callback {callback(MessagingStub)} callback that is invoked with messagingStub as param; if download failed then the stub param is empty
      */
     Identity.prototype.resolve = function( callback ) {
     };
 
-    /** 
-     * This method subscribes to add a listener to receive status information (CONTEXT message type) from the user associated to this Identity. 
+    /**
+     * This method subscribes to add a listener to receive status information (CONTEXT message type) from the user associated to this Identity.
      * The Signalling on the fly concept is also used to ensure cross domain Presence management interoperability
      * by calling the Identiy.resolve() function
      * @param subscriber :
@@ -1148,9 +1157,9 @@ The main WONDER Identity functions are:
     Identity.prototype.subscribe = function(subscriber) {
     };
 
-    /** 
-     * 
-     * This method removes a listener previously added with "subscribe()"  function to receive status information 
+    /**
+     *
+     * This method removes a listener previously added with "subscribe()"  function to receive status information
      * (CONTEXT message type) from the user associated to this Identity
      * @param subscriber :
      *            Identity ... The identity of the subscriber
@@ -1163,20 +1172,20 @@ The main WONDER Identity functions are:
 
     /**
      * To set Identity context and to publish it by sending a CONTEXT message to address "rtcIdentity.context"
-     * 
+     *
      * @param context :
      *            String ... The context to set
-     * 
+     *
      */
-     
+
     Identity.prototype.setContext = function(context) {
     };
 
     /**
      * getContext
-     * 
+     *
      * @returns ContextData ... gets the context attribute for this Identity
-     * 
+     *
      */
     Identity.prototype.getContext = function() {
     };
@@ -1210,8 +1219,12 @@ Identity. For further discussion.
 
 WONDER library can provide some input for the design and implementation
 of reTHINK JavaScript framework that should facilitate the development
-of Hyperties, namely: \* Conversation \* Participant \* Resource \*
-Identity \* MessageFactory
+of Hyperties, namely:
+
+-   Conversation
+-   Participant
+-   Resource\* Identity
+-   MessageFactory
 
 #### JavaScript Shim Layer for non-compliant reTHINK Runtime
 
@@ -1231,7 +1244,7 @@ The WONDER Message class provides good input for the design of Hyperty
 Messages. Wonder Message is a JSON structure and it is comprised by a
 Header and a Body. The following Message Header attributes are defined:
 
-    type            Type of the Message 
+    type            Type of the Message
     from            Sender of the message
     to              Recipients of the message
     context         identifies a certain context for the message eg the Id of the conversation
@@ -1276,7 +1289,7 @@ identity.
         hosting; // Identity of who is hosting the conversation
         agenda;
         peers;
-        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
+        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout)
 
 ##### Accepted Message Type
 
@@ -1287,7 +1300,7 @@ Similar to SIP 200 OK
 
         connectionDescription; // SDP
         hosting; // Identity of who is hosting the conversation
-        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout) 
+        constraints; // To describe media and data constraints for each resource including Audio, Video constraints and direction (in,out,inout)
 
 ##### Not Accepted
 
@@ -1347,10 +1360,10 @@ as resources in the Repository/Catalogue component.
 ##### Overview
 
 The implementation includes features for receiving and sending CoAP
-requests. It also supports the [CoRE-link format RFC 6690]
-(https://tools.ietf.org/html/rfc6690) to organize the CoAP resources as
-a well-known CORE. It has support for Linux but also Contiki Operating
-Systems.
+requests. It also supports the [CoRE-link format RFC
+6690](https://tools.ietf.org/html/rfc6690) to organize the CoAP
+resources as a well-known CORE. It has support for Linux but also
+Contiki Operating Systems.
 
 The implementation is using C as programming language.
 
@@ -1377,10 +1390,10 @@ application, example of code and ETSI tests are included.
 ##### Overview
 
 The CoAP User Agent is a JavaScript implemention of [Constrained
-Application Protocol (CoAP) RFC 7252]
-(http://tools.ietf.org/html/rfc7252) with support for DTLS, Observe and
-blockwise transfers. A plugin for Mozilla is also included. The project
-is available on github at: https://github.com/mkovatsc/Copper
+Application Protocol (CoAP) RFC
+7252](http://tools.ietf.org/html/rfc7252) with support for DTLS, Observe
+and blockwise transfers. A plugin for Mozilla is also included. The
+project is available on github at: https://github.com/mkovatsc/Copper
 
 The license is 3-Clause BSD with the text available at:
 http://opensource.org/licenses/BSD-3-Clause, and permits redistribution.
@@ -1440,8 +1453,8 @@ devices and expose it to applications.
 ### OMA Device Management Projects
 
 For exchanging information on the device properties and also
-monitor/manage connectivity of the device, [OMA LWM2M standard]
-(http://member.openmobilealliance.org/ftp/Public\_documents/DM/LightweightM2M/)
+monitor/manage connectivity of the device, [OMA LWM2M
+standard](http://member.openmobilealliance.org/ftp/Public_documents/DM/LightweightM2M/)
 can be used, as an energy efficient and scalable evolution from OMA DM
 standard.
 
@@ -1464,13 +1477,14 @@ The project uses Java as programming language.
 The project is hosted on github at: https://github.com/eclipse/leshan
 
 This program and the accompanying materials are made available under the
-terms of the [Eclipse Public License v1.0]
-(http://www.eclipse.org/legal/epl-v10.html) and [Eclipse Distribution
-License v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which
-accompany the distribution. The license is business-friendly. "Neither
-the name of the Eclipse Foundation, Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission."
+terms of the [Eclipse Public License
+v1.0](http://www.eclipse.org/legal/epl-v10.html) and [Eclipse
+Distribution License
+v1.0](http://www.eclipse.org/org/documents/edl-v10.html) which accompany
+the distribution. The license is business-friendly. "Neither the name of
+the Eclipse Foundation, Inc. nor the names of its contributors may be
+used to endorse or promote products derived from this software without
+specific prior written permission."
 
 ##### How to use
 
@@ -1577,52 +1591,54 @@ Analysis against **Runtime** requirements
 -   [The Runtime should be deployable in the most used Devices and
     Operating
     Systems](https://github.com/reTHINK-project/core-framework/issues/1)
--   WebRTC is intended to be used on latest browser like Google Chrome,
-    Mozilla Firefox, mobile platforms like Android and iOS and also IoT
-    devices like Raspberry Pi.
 
+    -   WebRTC is intended to be used on latest browser like Google
+        Chrome, Mozilla Firefox, mobile platforms like Android and iOS
+        and also IoT devices like Raspberry Pi.
 -   [The Runtime should support W3C WebRTC
     APIs](https://github.com/reTHINK-project/core-framework/issues/2)
--   WebRTC.org implements the W3C WebRTC APIs.
 
+    -   WebRTC.org implements the W3C WebRTC APIs.
 -   [The runtime must support standard JavaScript
     (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
--   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs use
-    ECMAScript.
--   WebRTC.org is meant to be used within a runtime, providing the
-    WebRTC functionality. The runtime will provide JavaScript
-    functionality.
 
+    -   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs use
+        ECMAScript.
+    -   WebRTC.org is meant to be used within a runtime, providing the
+        WebRTC functionality. The runtime will provide JavaScript
+        functionality.
 -   [The Runtime should support Web
     Socket](https://github.com/reTHINK-project/core-framework/issues/4)
--   The WebRTC 1.0 API, and concretely its Peer-to-peer Data API for
-    sending and receiving data models the behaviour of WebSockets
--   WebRTC.org is meant to be used within a runtime, providing the
-    WebRTC functionality. The runtime will provide WebSockets
-    functionality.
 
+    -   The WebRTC 1.0 API, and concretely its Peer-to-peer Data API for
+        sending and receiving data models the behaviour of WebSockets
+    -   WebRTC.org is meant to be used within a runtime, providing the
+        WebRTC functionality. The runtime will provide WebSockets
+        functionality.
 -   [The Runtime should support Standardised Messaging
     Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
--   Yes, WebRTC 1.0 supports Web Messaging Notifications.
 
+    -   Yes, WebRTC 1.0 supports Web Messaging Notifications.
 -   [The Runtime must have a good
     performance](https://github.com/reTHINK-project/core-framework/issues/6)
--   The WebRTC runtime provided as open-source is used in chromium and
-    google chrome. It's performance is state of the art.
 
+    -   The WebRTC runtime provided as open-source is used in chromium
+        and google chrome. It's performance is state of the art.
 -   [The Runtime must be
     secured](https://github.com/reTHINK-project/core-framework/issues/7)
--   WebRTC provides encrypted communications betweens peers.
 
+    -   WebRTC provides encrypted communications betweens peers.
 -   [The effort to introduce new capabilities in the runtime should be
     reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
--   The effort to perform changes in the runtime like protocols for
-    network I/O, signalling, session management, video capture and audio
-    capture/render depends on the package these changes are meant to be
-    inserted. The audio and video package is well-documented, despite
-    not having a class diagram. The network package, by its turn, is not
-    documented, increasing the effort to understand the functionality
-    and to perform changes in the runtime.
+
+    -   The effort to perform changes in the runtime like protocols for
+        network I/O, signalling, session management, video capture and
+        audio capture/render depends on the package these changes are
+        meant to be inserted. The audio and video package is
+        well-documented, despite not having a class diagram. The network
+        package, by its turn, is not documented, increasing the effort
+        to understand the functionality and to perform changes in the
+        runtime.
 
 OpenWebRTC
 ----------
@@ -1700,14 +1716,14 @@ inline caching, among many others
 Handles represent a reference for a JavaScript object location on the
 process heap. The Garbage collector deletes any object on the heap with
 no valid reference on the process. The Garbage collector besides
-deleting objectws on the heap frequently moves objects and updates all
+deleting objects on the heap frequently moves objects and updates all
 references to those objects. Obviously the Garbage Collector does not
 operate often, but from time to time it deletes all obsolete objects.
-Handles may come in different flavours inside v8, ranging from local
+Handles may come in different flavors inside v8, ranging from local
 handles, which have limited scope and terminate when the scope finishes,
 therefore susceptible to garbage collection, to persistent and even
 eternal scopes. In fact we can look on scopes as handle containers. Each
-time a scope terminates the objects refered by the handlers, in it
+time a scope terminates the objects referred by the handlers, in it
 residing, are flagged for collection. We always have to be in mind that
 an handle cannot survive its default scope, unless we predetermine its
 scope to be a special one (EscapableHandleScope ).
@@ -1723,7 +1739,7 @@ specified. This happens because JavaScript provides functions and
 objects that may be changed globally and that may turn into unexpected
 results. One of the advantages of V8 is that it gives you an extensive
 cache, so in the first time a context may be expensive in time and
-resources, subsequente times will be substantialy less. Additionally v8
+resources, subsequent times will be substantially less. Additionally v8
 has a snapshot feature that by default has pre-compiled JavaScript code
 on the heap, diminishing time procedures on first context
 initialization.
@@ -1732,8 +1748,8 @@ initialization.
 
 Templates are blueprints for JavaScript functions and objects in a
 context. Templates may be used to wrap c++ code onto JavaScript objects
-permiting its manipulation. One can only have one instance of a template
-on any given context. There are two types of templates:
+permitting its manipulation. One can only have one instance of a
+template on any given context. There are two types of templates:
 
 -   function templates - blueprint for a function;
 -   object templates - each template has associated an object
@@ -1748,13 +1764,15 @@ being manipulated (Static Global Variables or Dynamic Variables).
 **Interceptors**
 
 Interceptors are callbacks used to permit access to an object property.
-They can be: named property interceptors - when accessing by string
-names; indexed property interceptors - when the access is made by index.
+They can be:
+
+-   named property interceptors - when accessing by string names;
+-   indexed property interceptors - when the access is made by index.
 
 **Exceptions**
 
 v8 throws exceptions when an error occurs. In fact v8 returns an empty
-handle on an unsuccessfull call.
+handle on an unsuccessful call.
 
 **Inheritance**
 
@@ -1765,15 +1783,15 @@ both we have to refer to templates in v8.
 
 **V8 Code provided for JavaScript processing**
 
-process.cc - this code provides the capability to extend the proccess of
+process.cc - this code provides the capability to extend the process of
 an HTTP request. The JavaScript argument must provide a method named
-Process() for the execution to succed. This provides an interface for
+Process() for the execution to succeed. This provides an interface for
 HTTP JavaScript introduction on V8 and runtime execution.
 
 shell.cc - this code takes as argument a filename with a JavaScript code
-inside and executes it. It extendes several functionalities to
-JavaScript including a shell capability to run JavaScript snipets and
-their disponibilization to other JavaScript code in runtime.
+inside and executes it. It extends several functionalities to JavaScript
+including a shell capability to run JavaScript snippets and their
+availability to other JavaScript code in runtime.
 
 ### Requirements Analysis
 
@@ -1783,7 +1801,7 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 
 #### [Runtime Performance](https://github.com/reTHINK-project/core-framework/issues/6)
 
-Its aparently clear that V8 provides a significant improvement over
+Its apparently clear that V8 provides a significant improvement over
 previously adopted JavaScript interpretation engines like:
 
 -   JScript from IExplorer;
@@ -1800,7 +1818,7 @@ The reasons for these obtained improvements are:
 -   Fast Property Access - unlike strong type languages like C\# and
     Java, JavaScript like Python is a dynamic programing language. This
     means that properties can be added to and deleted from objects on
-    the fly, so likelly to change over time. Most JavaScript engines use
+    the fly, so likely to change over time. Most JavaScript engines use
     a dictionary-like data structure as storage for the object
     properties. The fetching of each property, on access case, involves
     a dynamic lookup of the property memory location. This approach
@@ -1813,10 +1831,10 @@ The reasons for these obtained improvements are:
     the scenes. Each time a change of property occurs in an object a new
     hidden class is created and the object changes its representative
     class for the new hidden class. The hierarchy of hidden classes is
-    mantained and shared each time a new object of the refered type is
-    used again.This type of behaviour promotes reuse by sharing off the
+    maintained and shared each time a new object of the referred type is
+    used again.This type of behavior promotes reuse by sharing off the
     hierarchy of hidden classes therefore avoiding dictionary lookups
-    and eficiency by the inline caching of the classes in use.
+    and efficiency by the inline caching of the classes in use.
 
 -   Dynamic Machine Code Generation - V8 generates machine code directly
     from source code the first time the script is executed. A current
@@ -1827,11 +1845,11 @@ The reasons for these obtained improvements are:
     execution of an access to an object property, V8 retrieves its
     associated hidden class and optimizes all future property accesses
     using this template, providing they share the same scope. This
-    information is used in code patching of the inline cach code. If the
-    V8 has gessed right, the property value is fetched in one operation,
-    otherwise V8 patches the code to remove the optimization. This kind
-    of optimization mirrors the beneficts of static languages and
-    achieves most benefits the more accesses to properties from an
+    information is used in code patching of the inline cache code. If
+    the V8 has access right, the property value is fetched in one
+    operation, otherwise V8 patches the code to remove the optimization.
+    This kind of optimization mirrors the benefits of static languages
+    and achieves most benefits the more accesses to properties from an
     object in an wider scope.
 
 -   Efficient Garbage Collection - V8, like most garbage collecting
@@ -1841,10 +1859,12 @@ The reasons for these obtained improvements are:
     allocation. To avoid those problems as much as possible:
 
 -   stops the program execution when in a cycle of garbage collection;
+
 -   slices the object heap and only operates on part of it during a
     collecting cycle - lesses the time the application is stopped;
+
 -   correct identification of objects and pointers in memory, avoiding
-    memory leaks by wromg identification.
+    memory leaks by wrong identification.
 
 The V8 separates the heap in two distinct parts. The new space is where
 new objects are created and the old space where objects surviving a
@@ -1854,8 +1874,8 @@ each cycle finishes.
 #### [How to extend and to introduce new Features](https://github.com/reTHINK-project/core-framework/issues/8)
 
 It is possible to extend the functionalities of V8 by adding new modules
-in c++. These new functionalities would be available to any programer in
-JavaScript where this particular v8 engine resides. V8 provides
+in c++. These new functionalities would be available to any programmer
+in JavaScript where this particular v8 engine resides. V8 provides
 functions that permit accessing c++ methods and classes, handling errors
 and enabling security checks. It provides full duality, in which it
 permits access from JavaScript scripts to c++ structures an vice-versa.
@@ -1881,7 +1901,7 @@ Code to add a new JavaScript code to V8
 
     global->Set(String::New("include"), FunctionTemplate::New(Include));
 
-Obviouly we also have to implement load\_file(). It obtains in string
+Obviously we also have to implement load\_file(). It obtains in string
 format the content of a file.
 
 #### [Runtime Security](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
@@ -1889,11 +1909,11 @@ format the content of a file.
 The "Same Origin Policy" is applied and in fact prevents one document
 from changing the properties of another. This means one document has the
 same origin when protocol, domain name and port are the same. This
-provides a usefull protection against malicious alterations. In v8
-origin is defined as its context. To access other context it is
-necessary to use security tokens and callbacks. The security token are
-generated by v8 for each context created. when security tokens are not
-equal a callback must be made to challenge acceptable access.
+provides a useful protection against malicious alterations. In v8 origin
+is defined as its context. To access other context it is necessary to
+use security tokens and callbacks. The security token are generated by
+v8 for each context created. when security tokens are not equal a
+callback must be made to challenge acceptable access.
 
 #### Using Sandboxes with Node.js
 
@@ -1968,65 +1988,70 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   [The Runtime should be deployable in the most used Devices and
     Operating
     Systems](https://github.com/reTHINK-project/core-framework/issues/1)
--   NO
--   Firefox OS is made for a certain set of FXOS devices (phones,
-    tables, smart TVs)
 
+    -   NO
+    -   Firefox OS is made for a certain set of FXOS devices (phones,
+        tables, smart TVs)
 -   [The Runtime should support W3C WebRTC
     APIs](https://github.com/reTHINK-project/core-framework/issues/2)
--   YES
--   Since FXOS version 2.1 this is officially stated as done.
--   Tests with 2.0, showed that it basically worked there already
--   tested basic A/V calls + separate apps that used the DataChannel to
-    transport arbitrary files
 
+    -   YES
+    -   Since FXOS version 2.1 this is officially stated as done.
+    -   Tests with 2.0, showed that it basically worked there already
+    -   tested basic A/V calls + separate apps that used the DataChannel
+        to transport arbitrary files
 -   [The runtime must support standard JavaScript
     (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
--   YES
--   "Gecko" is the JavaScript interpreter
--   provides JavaScript access to a lot of Web APIs (even
-    non-standardized)
--   Whole UI (Gaia) is based on HTML, JavaScript, CSS
 
+    -   YES
+    -   "Gecko" is the JavaScript interpreter
+    -   provides JavaScript access to a lot of Web APIs (even
+        non-standardized)
+    -   Whole UI (Gaia) is based on HTML, JavaScript, CSS
 -   [The Runtime should support Web
     Socket](https://github.com/reTHINK-project/core-framework/issues/4)
--   YES, client side
--   Websockets clients are supported
--   Websocket servers are not supported
--   --\> same situation as in a browser runtime
 
+    -   YES, client side
+    -   Websockets clients are supported
+    -   Websocket servers are not supported
+    -   --\> same situation as in a browser runtime
 -   [The Runtime should support Web Messaging
     Notifications](https://github.com/reTHINK-project/core-framework/issues/5)
--   NO
--   according to Web-API status, no indication of planned support
--   must be double-checked with practical tests
--   what they have is a "Simple Push" API
 
+    -   NO
+    -   according to Web-API status, no indication of planned support
+    -   must be double-checked with practical tests
+    -   what they have is a "Simple Push" API
 -   [The Runtime must have a good
     performance](https://github.com/reTHINK-project/core-framework/issues/6)
--   very subjective, depends on device hardware it is running on
--   tested 3 different devices with rather different experience in terms
-    of performance
 
+    -   very subjective, depends on device hardware it is running on
+    -   tested 3 different devices with rather different experience in
+        terms of performance
 -   [The Runtime must be
     secured](https://github.com/reTHINK-project/core-framework/issues/7)
--   this would require much more analysis and expertise in attacking the
-    device or the running applications
--   general assumptions is that the security is comparable to a browser
--   but because the browser IS the middle layer of the OS a potential
-    breakout of the sandbox might have stronger consequences
 
+    -   this would require much more analysis and expertise in attacking
+        the device or the running applications
+    -   general assumptions is that the security is comparable to a
+        browser
+    -   but because the browser IS the middle layer of the OS a
+        potential breakout of the sandbox might have stronger
+        consequences
 -   [The effort to introduce new capabilities in the runtime should be
     reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
--   YES
--   extension with JavaScript libraries is possible very easy
--   due to the open source nature of the Gecko and Gonk layers it is
-    also possible to add low- and medium-level capabilities there
--   The effort for low-level extensions will be relatively high.
 
-o\#\# Jitsi Videobridge [Jitsi
-Videobridge](https://jitsi.org/Projects/JitsiVideobridge) [26] is a
-WebRTC compatible Selective Forwarding Unit (SFU) that allows for
+    -   YES
+    -   extension with JavaScript libraries is possible very easy
+    -   due to the open source nature of the Gecko and Gonk layers it is
+        also possible to add low- and medium-level capabilities there
+    -   The effort for low-level extensions will be relatively high.
+
+Jitsi Videobridge
+-----------------
+
+[Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) [26] is
+a WebRTC compatible Selective Forwarding Unit (SFU) that allows for
 multiuser video communication.
 
 Jitsi Video bridge supports RTP Relay, audio mixing, Call encryption
@@ -2049,103 +2074,112 @@ scalable video conferences.
 
 ### Installation Procedures
 
-**Required software** \* JVM (select the latest version) \* XMPP Server
-(openfire, prosody.im, Tigase ...) \* Jitsi VideoBridge (stream XMPP
-component) \* Jicofo (Session handler XMPP component) \* NGINX (web
-server and proxy) \* Jitsi Meet App
+**Required software**
 
-**Domain selection** \* Select a name for a domain, "shumybridge" will
-be use for this example. \* Add an entry in DNS hosts file "127.0.0.1
-shumybridge".
+-   JVM (select the latest version)
+-   XMPP Server (openfire, prosody.im, Tigase ...)
+-   Jitsi VideoBridge (stream XMPP component)
+-   Jicofo (Session handler XMPP component)
+-   NGINX (web server and proxy)
+-   Jitsi Meet App
 
-**XMPP Server (using Openfire)** \* Download and install openfire from
-http://www.igniterealtime.org/downloads/index.jsp \* Access admin
-console at http://localhost:9090 \* For the machine name and XMPP domain
-is important that you use "shumybridge", server certificates will be
-generated for the domain. \* Select embedded SQLLite database, and an
-admin user account. Just enough for testing. \* On config "Server -\>
-Server Settings -\> HTTP Binding", enable "Script Syntax -\> BOSH" and
-"Provides support for XFF (X-Forwarded-For) headers" \* On config
-"Server -\> Server Settings -\> External Components" enable and set the
-password, ex: xpassword
+**Domain selection**
 
-**Jitsi VideoBridge** \* Download and install Jitsi Videobridge from
-https://jitsi.org/Projects/JitsiVideobridge \* Run videobridge with:
-jvb --host=shumybridge --secret=xpassword \* You should see an entry in
-XMPP components like:
+-   Select a name for a domain, "shumybridge" will be use for this
+    example.
+-   Add an entry in DNS hosts file "127.0.0.1 shumybridge".
+
+**XMPP Server (using Openfire)**
+
+-   Download and install openfire from
+    http://www.igniterealtime.org/downloads/index.jsp
+-   Access admin console at http://localhost:9090
+-   For the machine name and XMPP domain is important that you use
+    "shumybridge", server certificates will be generated for the domain.
+-   Select embedded SQLLite database, and an admin user account. Just
+    enough for testing.
+-   On config "Server -\> Server Settings -\> HTTP Binding", enable
+    "Script Syntax -\> BOSH" and "Provides support for XFF
+    (X-Forwarded-For) headers"
+-   On config "Server -\> Server Settings -\> External Components"
+    enable and set the password, ex: xpassword
+
+**Jitsi VideoBridge**
+
+-   Download and install Jitsi Videobridge from
+    https://jitsi.org/Projects/JitsiVideobridge
+-   Run videobridge with: jvb --host=shumybridge --secret=xpassword
+-   You should see an entry in XMPP components like:
 
 ![Figure 17: Video Bridge Component](openfire_videobridge.png)
 
-**Jicofo Session** \* Clone from "git clone
-https://github.com/jitsi/jicofo.git" \* Ant build with "ant
-dist.{os-name}" \* Add lines
-"org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false"
-and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file
-sip-communicator.properties. In Windows this is located at
-"C:\Users"user"\\.sip-communicator\sip-communicator.properties" or in
-linux
-"/usr/share/jicofo/.sip-communicator/sip-communicator.properties" \* Run
-videobridge with:
-jicofo --host=shumybridge --port=5275 --secret=xpassword \* You should
-see an entry in XMPP components like:
+**Jicofo Session**
+
+-   Clone from "git clone https://github.com/jitsi/jicofo.git"\* Ant
+    build with "ant dist.{os-name}"
+-   Add lines
+    "org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false"
+    and "org.jitsi.jicofo.auth.URL=XMPP:shumybridge" to the file
+    sip-communicator.properties. In Windows this is located at
+    "C:\Users"user"\\.sip-communicator\sip-communicator.properties" or
+    in linux
+    "/usr/share/jicofo/.sip-communicator/sip-communicator.properties"\*
+    Run videobridge with:
+    jicofo --host=shumybridge --port=5275 --secret=xpassword\* You
+    should see an entry in XMPP components like:
 
 ![Figure 18: OpenFire VideoBridge and Jicofo
 Components](openfire_video_jicofo.png)
 
 (1) OpenFire VideoBridge and Jicofo Components
 
-**NGINX** \* Download and install from
-http://nginx.org/en/download.html \* Change nginx.conf file with:
+**NGINX**
 
-    server {
-      listen       80;
-      server_name  shumybridge;
+-   Download and install from http://nginx.org/en/download.html
+-   Change nginx.conf file with:
 
-        location ~ ^/([a-zA-Z0-9]+)$ {
-            rewrite ^/(.*)$ / break;
-        }
-            
-        location / {
-            root      srv/jitsi.example.com;
-            index     index.html;
-        }
+<!-- -->
 
-        # BOSH
-        location /http-bind {
-            proxy_pass          http://shumybridge:7070/http-bind/;
-            proxy_set_header    X-Forwarded-For $remote_addr;
-            proxy_set_header    Host $http_host;
-        }
-         
-      # redirect server error pages to the static page /50x.html
-      error_page   500 502 503 504  /50x.html;
-      location = /50x.html {
-        root   html;
-      }
+    server { listen 80; server_name shumybridge;
+
+
+    location ~ ^/([a-zA-Z0-9]+)$ {
+        rewrite ^/(.*)$ / break;
     }
 
-**Jitsi Meet App** \* Clone or download Meet App from
-https://github.com/jitsi/jitsi-meet.git \* Copy Meet App to NGINX folder
-./srv/jitsi.example.com \* Change config.js file with:
+    location / {
+        root      srv/jitsi.example.com;
+        index     index.html;
+    }
 
-    var config = {
-      hosts: {
-        domain: 'shumybridge',
-        muc: 'conference.shumybridge',
-        bridge: 'jitsi-videobridge.shumybridge',
-        focus: 'focus.shumybridge'
-      },
+    # BOSH
+    location /http-bind {
+        proxy_pass          http://shumybridge:7070/http-bind/;
+        proxy_set_header    X-Forwarded-For $remote_addr;
+        proxy_set_header    Host $http_host;
+    }
 
-      ...
-      bosh: '//shumybridge/http-bind',
-      clientNode: 'http://shumybridge/jitsimeet',
-      ...
-    };
+
+    redirect server error pages to the static page /50x.html error_page 500 502 503 504 /50x.html; location = /50x.html { root html; } }
+    ==========================================================================================================================================
+
+**Jitsi Meet App**
+
+-   Clone or download Meet App from
+    https://github.com/jitsi/jitsi-meet.git
+-   Copy Meet App to NGINX folder ./srv/jitsi.example.com\* Change
+    config.js file with:
+
+<!-- -->
+
+     var config = { hosts: { domain: 'shumybridge', muc: 'conference.shumybridge', bridge: 'jitsi-videobridge.shumybridge', focus: 'focus.shumybridge' },
+
+    ... bosh: '//shumybridge/http-bind', clientNode: 'http://shumybridge/jitsimeet', ... };
 
 ### Evalusation of Jitsi Meet Application
 
 Jitsi Meet uses strophe.js internally, but it's clustered with UI
-dependencies and other non wanted stuff. **Strophe.js** is an XMPP
+dependencies and other non wanted stuff.**Strophe.js** is an XMPP
 library for JavaScript. Its primary purpose is to enable web-based,
 real-time XMPP applications that run in any browser. There are Jingle
 plugins for strophe.js. You need to include the following files in your
@@ -2161,145 +2195,92 @@ application from projects
     <script src='strophe/strophe.jingle.session.js' charset='utf-8'></script><!-- strophe jingle connection plugin -->
     <script src='strophe/strophe.jingle.sdp.js' charset='utf-8'></script><!-- sdp library -->
     <script src='strophe/strophe.jingle.adapter.js' charset='utf-8'></script><!-- getusermedia cross browser compat layer -->
-```
+` Starting the XMMP session is normaly made with:\`\``JavaScript var BOSH_SERVICE = '/http-bind'; var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
-Starting the XMMP session is normaly made with:
+var DOMAIN = window.location.hostname; var CONFERENCEDOMAIN = 'conference.' + DOMAIN;
 
-``` {.javascript}
-var BOSH_SERVICE = '/http-bind';
-var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
+var connection = null; var rtc = null; var localStream = null;
 
-var DOMAIN = window.location.hostname;
-var CONFERENCEDOMAIN = 'conference.' + DOMAIN;
+var myroomjid = null; var roomjid = null; var listMembers = [];
 
-var connection = null;
-var rtc = null;
-var localStream = null;
+$(document).ready(function () { rtc = setupRTC(); connection = new Strophe.Connection(BOSH_SERVICE); connection.jingle.ice_config = ICE_CONFIG; connection.jingle.pc_constraints = rtc.pc_constraints;
 
-var myroomjid = null;
-var roomjid = null;
-var listMembers = [];
 
-$(document).ready(function () {
-    rtc = setupRTC();
-    connection = new Strophe.Connection(BOSH_SERVICE);
-    connection.jingle.ice_config = ICE_CONFIG;
-    connection.jingle.pc_constraints = rtc.pc_constraints;
-    
-    //nice for debug purposes...
-    connection.xmlInput = function (data) { console.log('RECV: ', data); };
-    connection.xmlOutput = function (data) { console.log('SEND: ', data); };
+//nice for debug purposes...
+connection.xmlInput = function (data) { console.log('RECV: ', data); };
+connection.xmlOutput = function (data) { console.log('SEND: ', data); };
+
+
 });
 
-//call this on a click button (connect)
-getUserMediaWithConstraints(['audio', 'video']);
+//call this on a click button (connect) getUserMediaWithConstraints(['audio', 'video']);
 ```
 
 **getUserMediaWithConstraints** will fire an event configured with
 jQuery.
 
 ``` {.javascript}
-$(document).bind('mediaready.jingle', function (event, stream) {
-    localStream = stream;
-    connection.jingle.localStream = stream;
-    RTC.attachMediaStream($(<video-tag>), localStream);
-    
-    //connect to videobridge
-    connection.connect(<user>, <pasword>, function (event) {
-        //TODO: handle other connection states Strophe.Status
-        if (status == Strophe.Status.DISCONNECTED) {
-            if (localStream) {
-                localStream.stop();
-                localStream = null;
-            }
-        } else if (status == Strophe.Status.CONNECTED) {
-            connection.jingle.getStunAndTurnCredentials();
-        
-            // disco stuff
-            if (connection.disco) {
-                connection.disco.addIdentity('client', 'web');
-                connection.disco.addFeature(Strophe.NS.DISCO_INFO);
-            }
-            
-            //CONNECTED:
-            roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
-            myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
-
-            //config XMPP presence event handlers...
-            connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
-            connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
-            connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
-
-            var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
-            connection.send(pres);
-        }
-    });
-});
+ $(document).bind('mediaready.jingle', function (event, stream) { localStream = stream; connection.jingle.localStream = stream; RTC.attachMediaStream($(<video-tag>), localStream);
 ```
+
+//connect to videobridge connection.connect(<user>, <pasword>, function
+(event) { //TODO: handle other connection states Strophe.Status if
+(status == Strophe.Status.DISCONNECTED) { if (localStream) {
+localStream.stop(); localStream = null; } } else if (status ==
+Strophe.Status.CONNECTED) {
+connection.jingle.getStunAndTurnCredentials();
+
+        // disco stuff
+        if (connection.disco) {
+            connection.disco.addIdentity('client', 'web');
+            connection.disco.addFeature(Strophe.NS.DISCO_INFO);
+        }
+
+        //CONNECTED:
+        roomjid = <hash> + '@' + CONFERENCEDOMAIN; //select room id
+        myroomjid = roomjid + '/' + Strophe.getNodeFromJid(connection.jid);
+
+        //config XMPP presence event handlers...
+        connection.addHandler(onPresence, null, 'presence', null, null, roomjid, {matchBare: true});
+        connection.addHandler(onPresenceUnavailable, null, 'presence', 'unavailable', null, roomjid, {matchBare: true});
+        connection.addHandler(onPresenceError, null, 'presence', 'error', null, roomjid, {matchBare: true});
+
+        var pres = $pres({to: myroomjid }).c('x', {xmlns: 'http://jabber.org/protocol/muc'});
+        connection.send(pres);
+    }
+
+
+    });
+
+
+    });
 
 and define presence handlers:
 
-``` {.javascript}
-function onPresence(pres) {
-    var from = pres.getAttribute('from');
-    var type = pres.getAttribute('type');
-        
-    if (type !== null) {
-        return true;
-    }
-    
-    if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) {
-        // http://xmpp.org/extensions/xep-0045.html#createroom-instant
-        var create = $iq({type: 'set', to: roomjid})
-            .c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'})
-            .c('x', {xmlns: 'jabber:x:data', type: 'submit'});
-        connection.send(create); // fire away
-        }
-        
-        //manage list members
-        if (from == myroomjid) {
-        for (i = 0; i < listMembers.length; i++) {
-            connection.jingle.initiate(listMembers[i], myroomjid);
-        }
-        } else {
-        listMembers.push(from);
-        }
-        
-        return true;
-}
+    JavaScript function onPresence(pres) { var from = pres.getAttribute('from'); var type = pres.getAttribute('type');
 
-function onPresenceUnavailable(pres) {
-    connection.jingle.terminateByJid($(pres).attr('from'));
+    if (type !== null) { return true; }
 
-    //manage list members
-    for (var i = 0; i < listMembers.length; i++) {
-        if (listMembers[i] == $(pres).attr('from')) {
-            listMembers.splice(i, 1);
-            break;
-        }
-    }
-    
+    if ($(pres).find('>x[xmlns="http://jabber.org/protocol/muc#user"]>status[code="201"]').length) { // http://xmpp.org/extensions/xep-0045.html#createroom-instant var create = $iq({type: 'set', to: roomjid}) .c('query', {xmlns: 'http://jabber.org/protocol/muc#owner'}) .c('x', {xmlns: 'jabber:x:data', type: 'submit'}); connection.send(create); // fire away }
+
+    //manage list members if (from == myroomjid) { for (i = 0; i < listMembers.length; i++) { connection.jingle.initiate(listMembers[i], myroomjid); } } else { listMembers.push(from); }
+
     return true;
-}
+    }
 
-function onPresenceError(pres) {
-    //TODO: process error
+    function onPresenceUnavailable(pres) { connection.jingle.terminateByJid($(pres).attr('from'));
+
+
+    //manage list members for (var i = 0; i < listMembers.length; i++) { if (listMembers[i] == $(pres).attr('from')) { listMembers.splice(i, 1); break; } }
+
     return true;
-}
-```
+    }
 
-Handle add/remove video/audio streams:
+    function onPresenceError(pres) { //TODO: process error return true; }\`\`\`
 
-``` {.javascript}
-    $(document).bind('remotestreamadded.jingle', function (event, data, sid) {
-        var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
-            RTC.attachMediaStream(el, data.stream);
-    });
-    
-    $(document).bind('remotestreamremoved.jingle', function (event, data, sid) {
-        //TODO: remove video element
-    });
-```
+    Handle add/remove video/audio streams:\`\``JavaScript $(document).bind('remotestreamadded.jingle', function (event, data, sid) { var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid); RTC.attachMediaStream(el, data.stream); });
+
+    $(document).bind('remotestreamremoved.jingle', function (event, data, sid) { //TODO: remove video element });
 
 Docker
 ------
@@ -2308,8 +2289,8 @@ Docker
 developers and sysadmins to build, ship, and run distributed
 applications. Consisting of Docker Engine, a portable, lightweight
 runtime and packaging tool, and Docker Hub, a cloud service for sharing
-applications and automating workflows, Docker enables apps to be quickly
-assembled from components.
+applications and automating work flows, Docker enables apps to be
+quickly assembled from components.
 
 Docker containers are lightweight and fast. Containers have sub-second
 launch times, reducing the cycle time of development, testing, and
@@ -2434,9 +2415,9 @@ Using the Docker client, we can search for already published images and
 then pull them down to our Docker host to build containers from them.
 
 Docker Hub provides both public and private storage for images. Public
-storage is searchable and can be downloaded by anyone. Private storage
-is excluded from search results and only we and our users can pull
-images down and use them to build containers.
+storage is can be searched and can be downloaded by anyone. Private
+storage is excluded from search results and only we and our users can
+pull images down and use them to build containers.
 
 ### How does a container work
 
@@ -2451,7 +2432,7 @@ application can then run.
 Either by using the docker binary or via the API, the Docker client
 tells the Docker daemon to run a container.
 
-\$ sudo docker run -i -t ubuntu /bin/bash
+`$ sudo docker run -i -t ubuntu /bin/bash`
 
 Let's break down this command. The Docker client is launched using the
 docker binary with the run option telling it to launch a new container.
@@ -2546,7 +2527,7 @@ guy, I use vi)
 Define the parent image we want to use to build your own image on top
 of. Here, we'll use CentOS (tag: centos6) available on the Docker Hub:
 
-    FROM    centos:centos6 
+    FROM    centos:centos6
 
 Since we're building a Node.js app, we have to install Node.js as well
 as npm on your CentOS image. Node.js is required to run our app and npm
@@ -2562,18 +2543,18 @@ Node.js wiki:
 
     RUN     yum install -y npm
 
+**Bundle app source**
+
 To bundle our app's source code inside the Docker image, we use the COPY
 command:
 
-    # Bundle app source
+`COPY . /src`
 
-    COPY . /src
+**Install app dependencies**
 
 Install our app dependencies using the npm command:
 
-    # Install app dependencies
-
-    RUN cd /src; npm install
+`RUN cd /src; npm install`
 
 Our app binds to port 8080 so we use the EXPOSE command to have it
 mapped by the docker daemon:
@@ -2582,33 +2563,33 @@ mapped by the docker daemon:
 
 Define the command to run our app using CMD which defines our runtime,
 i.e. node, and the path to our app src/index.js (see the step where we
-added the source to the container):
+added the source to the container): `CMD ["node", "/src/index.js"]`
 
-    CMD ["node", "/src/index.js"]
+Our Dockerfile should now look like this:
 
-    Our Dockerfile should now look like this:
+    FROM centos:centos6
 
+    Enable EPEL for Node.js
+    =======================
 
-    FROM    centos:centos6
+    RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 
-    # Enable EPEL for Node.js
+    Install Node.js and npm
+    =======================
 
-    RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-    # Install Node.js and npm
+    RUN yum install -y npm
 
-    RUN     yum install -y npm
-
-    # Bundle app source
+    Bundle app source
+    =================
 
     COPY . /src
-    # Install app dependencies
+
+    Install app dependencies
+    ========================
 
     RUN cd /src; npm install
 
-    EXPOSE  8080
-    CMD ["node", "/src/index.js"]
-
-**Building our image**
+    EXPOSE 8080 CMD ["node", "/src/index.js"]\`\`\`**Building our image**
 
 Go to the directory that has our Dockerfile and run the following
 command to build a Docker image. The -t flag adds a tag to our image so
@@ -2620,11 +2601,10 @@ Our image will now be listed by Docker:
 
     $ sudo docker images
 
-    # Example
+    Example
+    =======
 
-    REPOSITORY                          TAG        ID              CREATED
-    centos                              centos6    539c0211cd76    8 weeks ago
-    <your username>/centos-node-hello   latest     d64d3505b0d2    2 hours ago
+    REPOSITORY TAG ID CREATED centos centos6 539c0211cd76 8 weeks ago<your username>/centos-node-hello latest d64d3505b0d2 2 hours ago
 
 **Run the image**
 
@@ -2655,10 +2635,10 @@ To test our app, get the port of our app that Docker mapped:
 
     $ sudo docker ps
 
-    # Example
+    Example
+    =======
 
-    ID            IMAGE                                     COMMAND              ...   PORTS
-    ecce33b30ebf  <your username>/centos-node-hello:latest  node /src/index.js         49160->8080
+    ID IMAGE COMMAND ... PORTS ecce33b30ebf <your username>/centos-node-hello:latest node /src/index.js 49160->8080
 
 In the example above, Docker mapped the 8080 port of the container to
 49160.
@@ -2678,7 +2658,7 @@ sudo apt-get install curl)
 
     Date: Sun, 02 Jun 2013 03:53:22 GMT
 
-    Connection: keep-alive 
+    Connection: keep-alive
 
     Hello world
 
@@ -2687,7 +2667,7 @@ Yes!!! It's working.
 Every application must connect through the port. The code is absolutely
 isolated from misuse. We implicitly have created an internal virtual net
 using docker from a internal pool of IPs docker has assumed on
-instalation. Every new application has a brand new on initiation which
+installation. Every new application has a brand new on initiation which
 is relented on finishing the app. For the external user, well, it is
 invisible.
 
@@ -2769,7 +2749,7 @@ events of interest will be then received through the same channel.
 Measuring the performance of Janus is a complicated task, since it is
 just a gateway. Thus, the performance of plugins and applications
 written by third-party developers and working with Janus takes an
-important role on the measurements.There was a [recent
+important role on the measurements. There was a [recent
 study](http://dl.acm.org/citation.cfm?id=2749223) [30] on the
 performance of the Janus Gateway, when applied to several use-cases.
 Also, when [comparing the Video MCU conferencing
@@ -2782,14 +2762,14 @@ CPU and memory usage, both on client and server sides.
 
 Due to its modular architecture, in which plugins can be seen as
 "bricks" in an application, introducing new features like a policy
-engine or hyperty registry should not be a very hard task.
+engine or Hyperty Registry should not be a very hard task.
 
 Kurento Media Server
 --------------------
 
 ### Overview
 
-[Kurento](http://www.kurento.org/) is an open source Software WebRTC
+[Kurento](http://www.kurento.org/)[28] is an open source Software WebRTC
 media server, that can be used to manage media flows :
 
 -   Send / Receive
@@ -2804,13 +2784,15 @@ It can be used to handle different type of communications applications :
 
 ### Architecture
 
-Kurento is mainly composed of the two elements : - Kurento media
-server - Kurento Application
+Kurento is mainly composed of the two elements :
+
+-   Kurento media server
+-   Kurento Application
 
 ![Figure 21: Kurento Architecture](Architecture-Kurento.png)
 
 Application developers can use Kurento Clients or Kurento API directly
-for creating their multimedia enabled applications. Developpers can use
+for creating their multimedia enabled applications. Developers can use
 JavaScript clients, Java Client or Kurento Protocol. This is interesting
 as it can easily be integrated with Node.js
 
@@ -2832,8 +2814,8 @@ http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-utils-js/index.html
 ### Integration in Rethink
 
 Multiparty conversations supported with MCU/SFU for Star topologies can
-be supported with server side Hyperties running in the MCU/SFU ie there
-would be protofly in the MCU/SFU.
+be supported with server side Hyperties running in the MCU/SFU i.e.
+there would be protofly in the MCU/SFU.
 
 Kurento Media Server can be connected through a Node.js Client : it will
 be possible to add protOfly interface on Node.js to then connect to the
@@ -5793,10 +5775,10 @@ Products SOTA
 
 #### What is ApiRTC?
 
-ApiRTC is the communication platform developped by Apizee. This includes
+ApiRTC is the communication platform developed by Apizee. This includes
 a communication platform and a client JavaScript library that can be
-used by developpers to developped their own applications without having
-to consider the technical aspects of communication. Complete version of
+used by developers to developed their own applications without having to
+consider the technical aspects of communication. Complete version of
 ApiRTC with tutorials is described on www.apirtc.com
 
 #### Features Overview
@@ -5864,8 +5846,8 @@ APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
 
-ApiRTC actual architecture is presented on following diagram :
-<img src="ApiRTC-ReTHINK.png" width="450">
+ApiRTC actual architecture is presented on following diagram
+:<img src="ApiRTC-ReTHINK.png" width="450">
 
 Components such as Node.js, Redis or socket.io are used. ApiRTC uses
 JSON over WebSocket to manage signalling between clients and server.
@@ -5875,112 +5857,12 @@ JSON over WebSocket to manage signalling between clients and server.
 ApiRTC provides API for developers : complete set of APIs is describe on
 http://apirtc.com/api-docs/
 
-APIS are decomposed with main following classes :<br/> \* ApiRTCSession
-: manage user connection to the platform (presence)<br/> \*
+APIS are decomposed with main following classes :<br/>\* ApiRTCSession :
+manage user connection to the platform (presence)<br/>\*
 ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
-...<br/> \* ApiRTCIMClient : manage Instant messaging feature<br/> \*
-ApiRTCDataClient: : manage data sending feature<br/> \*
+...<br/>\* ApiRTCIMClient : manage Instant messaging feature<br/>\*
+ApiRTCDataClient: : manage data sending feature<br/>\*
 ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
-
-#### Requirements Analysis
-
-Analysis regarding WP3 Messaging Node requirements :
-
-**Messaging Node with carrier grade deployment features :**</br> Node.js
-and Redis enables to buld a resiliante and scalable architecture
-
-**The Messaging Node MUST offer DoS and DDoS Protection :**</br> User
-authentication, message rate limitation are example of feature taht may
-be implemented to fulfill this requirement
-
-**It should be possible to support Protocol on-the-fly :**</br>
-
-ProtOFly connector can be developped. JS connector can be develop on top
-of Node.js to enable protofly on server side. This connector will be for
-example reusable to connect an external CSP, Kurento Media Server, or
-the Identity manager
-
-**Messaging Transport Protocols:**</br>
-
-Socket.io enables the usage of different transport protocol to establish
-connection between user and server. (Long polling, WebSocket ...)
-
-**Messaging Node logging :**</br>
-
-Several logging modules are available : log4js, winston, bunyan ... Logs
-can be dispalyed in console, store in file with log rotate, send to a
-network entity ...
-
-**Message delivery reliability :**</br> Socket.io enables message
-acknowledgement
-
-**Messaging Node deployments with carrier grade scalability :**</br>
-
-Using Redis cluster mode : it is possible to use Redis Cluster with
-PUB/SUB mechanism : several Node.js entities can be connected through
-the redis cluster : this can enable load balancing, redundancy</br>
-
-**Messaging Node should be tolerant to unstable connections :**</br>
-
-Socket.io can manage reconnection with different configurable parameters
-(timeout, retries ...) reconnection whether to reconnect automatically
-(true)
-
-reconnectionDelay how long to wait before attempting a new reconnection
-(1000) reconnectionDelayMax maximum amount of time to wait between
-reconnections (5000). Each attempt increases the reconnection by the
-amount specified by reconnectionDelay. timeout connection timeout before
-a connect\_error and connect\_timeout events are emitted (20000)
-
-**Events about clients connection / disconnection from Messaging Node
-:**</br>
-
-Using socket.io different events are fired on connection status :
-connect. Fired upon connecting. error. Fired upon a connection error
-disconnect. Fired upon a disconnection. reconnect. Fired upon a
-successful reconnection. reconnect\_attempt. Fired upon an attempt to
-reconnect. reconnecting. Fired upon an attempt to reconnect.
-reconnect\_error. Fired upon a reconnection attempt error.
-reconnect\_failed. Fired when couldn’t reconnect within
-reconnectionAttempts
-
-**Messaging Node must support very low message delivery latency :**</br>
-
-**Messaging Node must be deployable in the most used Virtual Machines
-:**</br> Node.js is available on Linux, windows, mac and can be deployed
-on small virtual machine or devices
-
-**Messaging Node should require minimal computing resources :**</br>
-Messaging nodes components can be isntalled in only one VM
-
-**Messaging Node must support external authentication and Authorisation
-:**</br> Module like Passport : http://passportjs.org/ enables to use
-external authentication like facebook, twitter, google .. (We will have
-to check if passport can be used as it seems to require Express which
-may not be relevant in rethink case)
-
-**Messaging Node must support multiple messaging functionalities
-:**</br> Several routing can be performed with socket.io. Send message
-to only one dest, broadcast message to several users
-
-#### Integration in Rethink
-
-ApiRTC can be used in a Node.js based Messaging Node.
-
-Integration of ApiRTC in Rethink can be done by adding differents
-connectors depending of needs : - Identity Management : connector to
-Identity server - QoS Management : connector to QoS server - Other Web
-communication platform : connector to communication platform using
-ProtOFly - VoIP Platform : Connector to WebRTC GW - Connector to Media
-Servers
-
-A Redis Cluster with Pub/Sub mechanism can be used to manage
-communications between connectors
-
-<img src="ApiRTC-IntegrationInReTHINK.png" width="450">
-
-For Rethink, Apizee propose the usage of apiRTC, for instance to
-simulate an external CSP connection.
 
 ### Sippo
 

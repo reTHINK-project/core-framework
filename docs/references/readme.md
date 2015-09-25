@@ -1,4 +1,5 @@
-# References
+References
+==========
 
 [1] - [Barth, A.; Jackson, C.; Reis, C. and Team, Google Chrome. 2008. The Security Architecture of the Chromium Browser.](http://seclab.stanford.edu/websec/chromium/chromium-security-architecture.pdf)
 
@@ -6,40 +7,29 @@
 
 [3] - [Garcia-Alfaro, J. and Navarro-Arribas, G. 2007. A Survey on Detection Techniques to Prevent Cross-Site Scripting Attacks on Current Web Applications., in Javier Lopez & Bernhard M. Hämmerli, ed., 'CRITIS' , Springer, , pp. 287-298 .](http://eprints.uoc.edu/research/bitstream/10363/605/1/JGA01.pdf)
 
-[4] -  [Scott, D. and Sharp, R. Abstracting application-level web security. 11th Internation Conference
-on the World Wide Web, pp. 396–407, 2002.](http://rich.recoil.org/publications/websec.pdf)
+[4] - [Scott, D. and Sharp, R. Abstracting application-level web security. 11th Internation Conference on the World Wide Web, pp. 396–407, 2002.](http://rich.recoil.org/publications/websec.pdf)
 
-[5] -  [Pietraszeck, T. and Vanden-Berghe, C. Defending against injection attacks through context-sensitive
-string evaluation. Recent Advances in Intrusion Detection (RAID 2005), pp.124–
-145, 2005.](http://tadek.pietraszek.org/publications/pietraszek05_defending.pdf)
+[5] - [Pietraszeck, T. and Vanden-Berghe, C. Defending against injection attacks through context-sensitive string evaluation. Recent Advances in Intrusion Detection (RAID 2005), pp.124– 145, 2005.](http://tadek.pietraszek.org/publications/pietraszek05_defending.pdf)
 
-[6] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A client-side solution for mitigating
-cross-site scripting attacks. 21st ACM Symposium on Applied Computing, 2006.](https://iseclab.org/papers/noxes.pdf)
+[6] - [Kirda, E., Kruegel, C., Vigna, G., and Jovanovic, N. Noxes: A client-side solution for mitigating cross-site scripting attacks. 21st ACM Symposium on Applied Computing, 2006.](https://iseclab.org/papers/noxes.pdf)
 
-[7] - [ Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A Proposal and Implementation
-of Automatic Detection/Collection System for Cross-Site Scripting Vulnerability. 18th Int.
-Conf. on Advanced Information Networking and Applications (AINA 2004), 2004.](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=1283902&abstractAccess=no&userType=instima)
+[7] - [ Ismail, O., Etoh, M., Kadobayashi, Y., and Yamaguchi, S. A Proposal and Implementation of Automatic Detection/Collection System for Cross-Site Scripting Vulnerability. 18th Int. Conf. on Advanced Information Networking and Applications (AINA 2004), 2004.](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=1283902&abstractAccess=no&userType=instima)
 
-[8] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript Code in Mozilla. 10th IEEE International
-Conference on Engineering of Complex Computer Systems (ICECCS’05), pp.85–94, 2005.](http://www.cs.ucsb.edu/~vigna/publications/2005_hallaraker_vigna_ICECCS05.pdf)
+[8] - [Hallaraker, O. and Vigna, G. Detecting Malicious JavaScript Code in Mozilla. 10th IEEE International Conference on Engineering of Complex Computer Systems (ICECCS’05), pp.85–94, 2005.](http://www.cs.ucsb.edu/~vigna/publications/2005_hallaraker_vigna_ICECCS05.pdf)
 
-[9] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias analysis for static detection of web
-application vulnerabilities. 2006 Workshop on Programming Languages and Analysis for Security, pp. 27–36, USA, 2006.](https://iseclab.org/papers/pixy2.pdf)
+[9] - [Jovanovic, N., Kruegel, C., and Kirda, E. Precise alias analysis for static detection of web application vulnerabilities. 2006 Workshop on Programming Languages and Analysis for Security, pp. 27–36, USA, 2006.](https://iseclab.org/papers/pixy2.pdf)
 
-[10] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection Attacks with Browser-Enforced
-Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.](http://www2007.org/papers/paper595.pdf)
+[10] - [Jim, T., Swamy, N., Hicks M. Defeating Script Injection Attacks with Browser-Enforced Embedded Policies. International World Wide Web Conferencem, WWW 2007, May 2007.](http://www2007.org/papers/paper595.pdf)
 
 [11] - [Uwe Hansmann, Martin S. Nicklous, Frank Seliger, and Thomas Schaeck. 1999. Smart Card Application Development Using Java (1st ed.). Springer-Verlag New York, Inc., Secaucus, NJ, USA.](http://dl.acm.org/citation.cfm?id=555354)
 
-[12] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile and Cloud 
-Applications Security. IEEE Conference on Communications and Network Security 2013 - Poster Session](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6682733)
+[12] - [Pascal Urien. Cloud of Secure Elements Perspectives for Mobile and Cloud Applications Security. IEEE Conference on Communications and Network Security 2013 - Poster Session](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6682733)
 
 [13] - [Wojciech Mostowski and Erik Poll. 2008. Malicious Code on Java Card Smartcards: Attacks and Countermeasures. In Proceedings of the 8th IFIP WG 8.8/11.2 international conference on Smart Card Research and Advanced Applications (CARDIS '08), Gilles Grimaud and François-Xavier Standaert (Eds.). Springer-Verlag, Berlin, Heidelberg, 1-16. DOI=10.1007/978-3-540-85893-5_1 http://dx.doi.org/10.1007/978-3-540-85893-5_1](http://www.cs.ru.nl/E.Poll/papers/cardis08.pdf)
 
 [14] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S. Miller, and Jasvir Nagra. 2011. Automated Analysis of Security-Critical JavaScript APIs. In Proceedings of the 2011 IEEE Symposium on Security and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA, 363-378. DOI=10.1109/SP.2011.39 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification of the Framework
-”, 30-09-2015
+[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification of the Framework ”, 30-09-2015
 
 [16] - http://w3c.github.io/WebRTC-pc/
 
@@ -69,7 +59,7 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [29] - https://janus.conf.meetecho.com/
 
-[30] - [Alessandro Amirante, 	Tobia Castaldi, 	Lorenzo Miniero, 	Simon Pietro Romano. 2015. Performance analysis of the Janus WebRTC gateway. In Proceedings of the 1st Workshop on All-Web Real-Time Systems]( http://dl.acm.org/citation.cfm?id=2749223)
+[30] - [Alessandro Amirante, Tobia Castaldi, Lorenzo Miniero, Simon Pietro Romano. 2015. Performance analysis of the Janus WebRTC gateway. In Proceedings of the 1st Workshop on All-Web Real-Time Systems](http://dl.acm.org/citation.cfm?id=2749223)
 
 [31] - [Janus: a general purpose WebRTC gateway](http://www.rtc-conference.com/wp-content/uploads/gravity_forms/2-2f7a537445fa703985ab4d2372ac42ca/2014/09/Romano_Janus.pdf)
 
@@ -85,7 +75,7 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [37] - https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
-[38]	ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
+[38] ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
 
 [39] - [Meteor](http://docs.meteor.com/#/full/quickstart)
 
@@ -95,13 +85,13 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [42] - [AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/JavaScript-framework-comparison)
 
-[43] - [Why Meteor] (http://www.meteorpedia.com/read/Why_Meteor)
+[43] - [Why Meteor](http://www.meteorpedia.com/read/Why_Meteor)
 
 [44] - [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-JavaScript-frameworks-2015/)
 
 [45] - [Peering through WebRTC with SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-WebRTC-fog-with-socketpeer/)
 
-[46] - [Web Components] (http://www.w3.org/wiki/WebComponents/)
+[46] - [Web Components](http://www.w3.org/wiki/WebComponents/)
 
 [47] - TURN rfc, https://tools.ietf.org/html/rfc5766
 
@@ -170,3 +160,45 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [79] http://www.w3.org/TR/service-workers/
 
 [80] https://jakearchibald.github.io/isserviceworkerready/
+
+[81] https://http2.github.io/
+
+[82] RFC7540 - Hypertext Transfer Protocol version 2
+
+[83] Object RTC - http://ortc.org/
+
+[84] draft-tsvwg-quic-protocol-01 : QUIC: A UDP-Based Secure and Reliable Transport for HTTP/2 - http://tools.ietf.org/html/draft-tsvwg-quic-protocol-01
+
+[85] http://www.w3.org/2012/sysapps/app-lifecycle/
+
+[86] https://whatwg.org/
+
+[87] https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
+
+[88] http://www.w3.org/TR/CSP2/
+
+[89] http://w3c.github.io/push-api/
+
+[90] http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include_text=1
+
+[91] http://www.w3.org/TR/workers/
+
+[92] http://www.w3.org/TR/service-workers/
+
+[93] http://www.w3.org/2011/04/webrtc/
+
+[94] https://w3c.github.io/webrtc-pc/
+
+[95] http://www.w3.org/TR/mediacapture-streams/
+
+[96] http://www.w3.org/TR/mediastream-recording/
+
+[97] http://www.w3.org/TR/image-capture/
+
+[98] http://w3c.github.io/mediacapture-depth/
+
+[99] http://www.w3.org/TR/mediacapture-fromelement/
+
+[100] http://www.w3.org/TR/audio-output/
+
+[101] http://www.w3.org/TR/screen-capture/

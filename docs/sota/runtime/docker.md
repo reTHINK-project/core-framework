@@ -1,19 +1,18 @@
-## Docker
+Docker
+------
 
-[Docker](https://www.docker.com/) [23] is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components.
+[Docker](https://www.docker.com/) [23] is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating work flows, Docker enables apps to be quickly assembled from components.
 
 Docker containers are lightweight and fast. Containers have sub-second launch times, reducing the cycle time of development, testing, and deployment.
 
 Docker consists of:
 
-* The Docker Engine -  lightweight and powerful open source container virtualization technology combined with a work flow for building and containerizing your applications.
-* Docker Hub - SaaS service for sharing and managing your application stacks.
+-	The Docker Engine - lightweight and powerful open source container virtualization technology combined with a work flow for building and containerizing your applications.
+-	Docker Hub - SaaS service for sharing and managing your application stacks.
 
 Docker is a standard container format that lets developers care about their applications inside containers while sysadmins and operators can work on running the container in the deployment environment. This separation of duties streamlines and simplifies the management and deployment of code.
 
-Docker containers run (almost) everywhere including desktops, physical servers, virtual machines, into data centers, and up to public and private clouds.
-Since Docker runs on so many platforms, it's easy to move applications around including moving an application from a testing environment into the cloud and back.
-Docker's lightweight containers also make scaling up and down fast and easy. More containers can be launched when needed and then shut them down easily when they're no longer needed.
+Docker containers run (almost) everywhere including desktops, physical servers, virtual machines, into data centers, and up to public and private clouds. Since Docker runs on so many platforms, it's easy to move applications around including moving an application from a testing environment into the cloud and back. Docker's lightweight containers also make scaling up and down fast and easy. More containers can be launched when needed and then shut them down easily when they're no longer needed.
 
 ### Architecture
 
@@ -23,8 +22,7 @@ Docker uses a client-server architecture. The Docker client talks to the Docker 
 
 #### How to obtain security on standalone components using Docker.
 
-To understand how to obtain security using Docker we have to look at its architecture: 
-
+To understand how to obtain security using Docker we have to look at its architecture:
 
 The Docker daemon - the Docker daemon runs on a host machine. The user does not directly interact with the daemon, but instead through the Docker client.
 
@@ -32,7 +30,7 @@ The Docker client - The Docker client, in the form of the docker binary, is the 
 
 To understand Docker, we need to understand its three components:
 
-Docker images - A Docker image is a read-only template. For example, an image could contain an Android minimal operating system with a minimal HTTP demon and a web application installed. Images are used to create Docker containers.  Docker provides a simple way to build new images or update existing images, or we can download Docker images that other people have created
+Docker images - A Docker image is a read-only template. For example, an image could contain an Android minimal operating system with a minimal HTTP demon and a web application installed. Images are used to create Docker containers. Docker provides a simple way to build new images or update existing images, or we can download Docker images that other people have created
 
 Docker registries - Docker registries hold images. These are public or private stores from which we upload or download images. These can be images we create ourselves or we can use images that others have previously created.
 
@@ -52,10 +50,10 @@ Every image starts from a base image, for example an Android base image. Or we c
 
 Docker images are then built from base images using a set of steps we call instructions. Each instruction creates a new layer in our image. Instructions include actions like:
 
-* Run a command.
-* Add a file or directory.
-* Create an environment variable.
-* What process to run when launching a container from this image.
+-	Run a command.
+-	Add a file or directory.
+-	Create an environment variable.
+-	What process to run when launching a container from this image.
 
 These instructions are stored in a file called a Dockerfile. Docker reads this Dockerfile when we request a build of an image, executes the instructions, and returns a final image.
 
@@ -65,7 +63,7 @@ The Docker registry is the store for our Docker images. Once we build a Docker i
 
 Using the Docker client, we can search for already published images and then pull them down to our Docker host to build containers from them.
 
-Docker Hub provides both public and private storage for images. Public storage is searchable and can be downloaded by anyone. Private storage is excluded from search results and only we and our users can pull images down and use them to build containers. 
+Docker Hub provides both public and private storage for images. Public storage is can be searched and can be downloaded by anyone. Private storage is excluded from search results and only we and our users can pull images down and use them to build containers.
 
 ### How does a container work
 
@@ -73,12 +71,11 @@ A container consists of an operating system, user-added files, and meta-data. As
 
 Either by using the docker binary or via the API, the Docker client tells the Docker daemon to run a container.
 
-  $ sudo docker run -i -t ubuntu /bin/bash
+`$ sudo docker run -i -t ubuntu /bin/bash`
 
 Let's break down this command. The Docker client is launched using the docker binary with the run option telling it to launch a new container. The bare minimum the Docker client needs to tell the Docker daemon to run the container is:
 
-What Docker image to build the container from, here ubuntu, a base Ubuntu image;
-The command we want to run inside the container when it is launched, here /bin/bash, to start the Bash shell inside the new container.
+What Docker image to build the container from, here ubuntu, a base Ubuntu image; The command we want to run inside the container when it is launched, here /bin/bash, to start the Bash shell inside the new container.
 
 when we run this command, the following actions are performed:
 
@@ -98,9 +95,11 @@ when we run this command, the following actions are performed:
 
 ### Dockerizing a Node.js Web App
 
-The goal of this example is to show how to build your Docker images from a parent image using a Dockerfile.  We will do that by making a simple Node.js hello world web application running on CentOS.
+The goal of this example is to show how to build your Docker images from a parent image using a Dockerfile. We will do that by making a simple Node.js hello world web application running on CentOS.
 
-    Create Node.js app
+```
+Create Node.js app
+```
 
 First, create a directory src where all the files would live. Then create a package.json file that describes your app and its dependencies:
 
@@ -116,6 +115,7 @@ First, create a directory src where all the files would live. Then create a pack
   }
 }
 ```
+
 Then we need to create an index.js file that defines a web app using the Express.js framework:
 
 ```
@@ -144,13 +144,17 @@ We'll look at how to run an application inside a CentOS container using Docker. 
 
 Create an empty file called Dockerfile:
 
-    $ touch Dockerfile
+```
+$ touch Dockerfile
+```
 
 Open the Dockerfile in your favorite text editor (I'm an old fashioned guy, I use vi)
 
 Define the parent image we want to use to build your own image on top of. Here, we'll use CentOS (tag: centos6) available on the Docker Hub:
 
-    FROM    centos:centos6 
+```
+FROM    centos:centos6
+```
 
 Since we're building a Node.js app, we have to install Node.js as well as npm on your CentOS image. Node.js is required to run our app and npm to install our app's dependencies defined in package.json. To install the right package for CentOS, we'll use the instructions from the Node.js wiki:
 
@@ -163,69 +167,79 @@ RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-
 
 RUN     yum install -y npm
 ```
+
+**Bundle app source**
+
 To bundle our app's source code inside the Docker image, we use the COPY command:
-```
-# Bundle app source
 
-COPY . /src
-```
+`COPY . /src`
+
+**Install app dependencies**
+
 Install our app dependencies using the npm command:
-```
-# Install app dependencies
 
-RUN cd /src; npm install
-```
+`RUN cd /src; npm install`
+
 Our app binds to port 8080 so we use the EXPOSE command to have it mapped by the docker daemon:
 
-    EXPOSE  8080
-
-Define the command to run our app using CMD which defines our runtime, i.e. node, and the path to our app src/index.js (see the step where we added the source to the container):
 ```
-CMD ["node", "/src/index.js"]
+EXPOSE  8080
+```
+
+Define the command to run our app using CMD which defines our runtime, i.e. node, and the path to our app src/index.js (see the step where we added the source to the container): `CMD ["node", "/src/index.js"]`
 
 Our Dockerfile should now look like this:
 
+```
+FROM centos:centos6
 
-FROM    centos:centos6
+Enable EPEL for Node.js
+=======================
 
-# Enable EPEL for Node.js
+RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 
-RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-# Install Node.js and npm
+Install Node.js and npm
+=======================
 
-RUN     yum install -y npm
+RUN yum install -y npm
 
-# Bundle app source
+Bundle app source
+=================
 
 COPY . /src
-# Install app dependencies
+
+Install app dependencies
+========================
 
 RUN cd /src; npm install
 
-EXPOSE  8080
-CMD ["node", "/src/index.js"]
+EXPOSE 8080 CMD ["node", "/src/index.js"]\`\`\`**Building our image**
 ```
-**Building our image**
 
 Go to the directory that has our Dockerfile and run the following command to build a Docker image. The -t flag adds a tag to our image so it's easier to find later using the docker images command:
 
-    $ sudo docker build -t <your username>/centos-node-hello .
+```
+$ sudo docker build -t <your username>/centos-node-hello .
+```
 
 Our image will now be listed by Docker:
+
 ```
 $ sudo docker images
 
-# Example
+Example
+=======
 
-REPOSITORY                          TAG        ID              CREATED
-centos                              centos6    539c0211cd76    8 weeks ago
-<your username>/centos-node-hello   latest     d64d3505b0d2    2 hours ago
+REPOSITORY TAG ID CREATED centos centos6 539c0211cd76 8 weeks ago<your username>/centos-node-hello latest d64d3505b0d2 2 hours ago
 ```
+
 **Run the image**
 
 Running our image with -d runs the container in detached mode, leaving the container running in the background. The -p flag redirects a public port to a private port in the container. Run the image we previously built:
 
-    $ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
+```
+$ sudo docker run -p 49160:8080 -d <your username>/centos-node-hello
+```
 
 To print the output of our app:
 
@@ -240,22 +254,26 @@ $ sudo docker logs <container id>
 
 # Output
 ```
+
 Running on http://localhost:8080
 
 **Test**
 
 To test our app, get the port of our app that Docker mapped:
+
 ```
 $ sudo docker ps
 
-# Example
+Example
+=======
 
-ID            IMAGE                                     COMMAND              ...   PORTS
-ecce33b30ebf  <your username>/centos-node-hello:latest  node /src/index.js         49160->8080
+ID IMAGE COMMAND ... PORTS ecce33b30ebf <your username>/centos-node-hello:latest node /src/index.js 49160->8080
 ```
+
 In the example above, Docker mapped the 8080 port of the container to 49160.
 
 Is our application working? Lets test it with curl (ok install it with sudo apt-get install curl)
+
 ```
 $ curl -i localhost:49160
 
@@ -269,11 +287,11 @@ Content-Length: 12
 
 Date: Sun, 02 Jun 2013 03:53:22 GMT
 
-Connection: keep-alive 
+Connection: keep-alive
 
 Hello world
 ```
+
 Yes!!! It's working.
 
-Every application must connect through the port. The code is absolutely isolated from misuse. We implicitly have created an internal virtual net using docker from a internal pool of IPs docker has assumed on instalation. Every new application has a brand new on initiation which is relented on finishing the app. For the external user, well, it is invisible.
-
+Every application must connect through the port. The code is absolutely isolated from misuse. We implicitly have created an internal virtual net using docker from a internal pool of IPs docker has assumed on installation. Every new application has a brand new on initiation which is relented on finishing the app. For the external user, well, it is invisible.
