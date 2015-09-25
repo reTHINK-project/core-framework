@@ -1,4 +1,5 @@
-### W3C WebRTC API
+W3C WebRTC API
+--------------
 
 The Web Real-Time Communications Working Group [93] was created in May 2011 within the W3C to define client-side APIs to enable Real-Time Communications in Web browsers.
 
@@ -15,6 +16,6 @@ Together with WebRTC 1.0 API the W3C is working in a series of drafts for which 
 -	[Identifiers for WebRTC's Statistics API](http://www.w3.org/TR/webrtc-stats/)[101]: defines a set of JavaScript APIs that allow access to the statistical information about a PeerConnection
 -	[Screen Capture](http://www.w3.org/TR/screen-capture/) [102]: defines how a user's display, or parts thereof, can be used as the source of a media stream using getOutputMedia, an extension to the Media Capture API [95].
 
-#### Applicability in reTHINK
+### Applicability in reTHINK
 
 The WebRTC is going to be intensively used in reTHINK to implement Hyperties for Human-to-Human scenarios and also M2M scenarios where WebRTC Datachannel is used.
