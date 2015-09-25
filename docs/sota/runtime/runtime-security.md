@@ -73,7 +73,7 @@ Given this, Taly et al. [11] proposed ENCAP, a tool that verifies API confinemen
 
 #### Java Card: Internet Computing on a Smart Card
 
-In secure computing, a smart card is a typical card with a built-in computer chip. Until a few years ago, it was only used to produce credit and debit cards, whose information can only be accessed when in possession of the card itself and a PIN code. Due to the short information on how to communicate and program them, until a few years ago this useful technology wasn't being used on computer security in general.
+In secure computing, a smart card is a typical card with a built-in computer chip. Until a few years ago, it was only used to produce credit and debit cards, whose information can only be accessed when in possession of the card itself and a PIN code. Also, it started being applied in the production of SIM cards to be used in mobile phones, allowing the identification and authentication of users in the network. Due to the short information on how to communicate and program them, until a few years ago this useful technology wasn't being used on computer security in general.
 
 **Hardware**
 
@@ -86,6 +86,13 @@ This single-chip computer is an off-the-shelf **8-bit microcontroller** with add
 The paucity of 8-bit assembly language courses, books and software tools led engineers to break the smart card application bottleneck by building a Java virtual machine with its runtime support into a 12-Kbyte smart card. Java was the natural answer for three reasons: * Java brings smart card programming into the mainstream of software development * Java “safe programming” security model based on a runtime interpreter is a nontrivial side benefit, due to its processor independence. A Java card can be deployed on multiple smart card models. * Java interpreters were tested to the limit, holes had been found, and fixed.
 
 With this in mind, engineers concluded that Java could preserve the required security in the smart card operation, while allowed a more friendly and well-known programming approach. However, available memory was an issue when deploying such heavy language runtime like Java. Features like garbage collection and exceptions handling were not included in Java Card because of that.
+
+SIM Cards Functioning
+
+Common SIM cards used in mobile or satellite phones, use smart cards principles to store and use information which might require higher privacy concerns. Apart from its serial number (ICCID), mobile subscriber number (IMSI) and some contacts inputted by the user, smart cards used in SIM cards also feature security authentication and ciphering information, along with two passwords: The PIN code, a personal identification code, and the PUK code, for PIN unblocking.
+
+Concretely, the ciphering and authentication information contained in the smart card comprises in an **Authentication Key (Ki)**, a 128-bit value which authenticates the SIM card in the network. It is remotely stored in a database managed by the network provider and smart cards' programming interfaces are specifically designed to not allow the access to this key. Instead, the SIM card provides a function that allows the phone to pass data to the SIM card and to be signed with the Ki.
+
 
 **Internet Computing with Java Smart Card**
 
