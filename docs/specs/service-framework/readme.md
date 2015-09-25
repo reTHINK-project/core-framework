@@ -26,7 +26,9 @@ From the above user scenarios specific actors/roles, requirments and use cases w
 ### Data Models
 In D2.2[] Data models were specified from 3 different points of view - the service provider view, developer view and consumer view. For the Hyperty Framework, focus will be laid only the developer view. The identified data models for the developer's perspective include the following:
 
-**Hypety Types**
+**Hypety Descriptor**
+As described in D2.2, the Hyperty data model is used to model different types of Hyperty provided by the Service Provider. The Hyperty descriptor contains sets of data objects with information to the HypertyCatalogueURL, the type of Hyperty (communicator, identity or context), policies, contrainst and configuration parameters. The Hyperty Framework will provide templates specifying the Hyperty Descriptor Data Objects and extending them to create new Hyperty Types.
+
 
 ### Interface Design
 
