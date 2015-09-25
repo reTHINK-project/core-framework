@@ -30,10 +30,13 @@ In D2.2 Data models were specified from 3 different points of view - the service
 As described in D2.2, the Hyperty data model is used to model different types of Hyperty provided by the Service Provider. The Hyperty descriptor contains sets of data objects with information to the HypertyCatalogueURL, the type of Hyperty (communicator, identity or context), policies, contrainst and configuration parameters. The Hyperty Framework will provide JavaScript object templates specifying the Hyperty Descriptor Data Objects and extending them to create new Hyperty Types.
 
 **User Identity Model**
-This data model models a user entity within the reTHINK infrastructure. The user entity is characterised by its profile (UserProfile) which may include informations associated to the user : profile page URL, username, birthdate, picture, etc. 
+This data model models a user entity within the reTHINK infrastructure. It has a unique identifier (UserUUIDURL) and multiple identifierTypes (UserURL). The user entity is characterised by its profile (UserProfile) which may include informations associated to the user : profile page URL, username, birthdate, picture, etc. 
 To provide management functionalities to the developers to the reTHINK Identity managment, the Hyperty Framework will need to
 interface with the protocol stub for Identity managment.
 
+
+**context Model**
+The context model is used to model different media types for representing simple sensors and device meta data which can be transmited in a protocol such as CoAP or HTTP. The data model contains context information such as id, ContextType, time, tag and a list of context values which can be used in the M2M reTHINK uses cases. The Hyperty Framework will provide factory functionalities for creating and managing these data objects.
 ### Interface Design
 
 ### Utilities
