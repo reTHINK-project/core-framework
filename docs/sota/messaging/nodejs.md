@@ -1,4 +1,5 @@
-## Node.js
+Node.js
+-------
 
 ### Overview
 
@@ -6,28 +7,23 @@ In the scope of the reTHINK project Node.js [22] is a candidate technology for t
 
 From https://Node.js.org/ :
 
-Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
 Several additional packages are available to be used with Node.js : https://www.npmjs.com/
 
 It can be used with component like Redis, socket.io to enhance connectivity and redundancy
 
-
 A fork of Node.js exist : iojs but a merge seems to be ongoing.
 
-Node.js is already used in several WebRTC platform or product. (Node.js can be used in front of Kurento) 
-
+Node.js is already used in several WebRTC platform or product. (Node.js can be used in front of Kurento)
 
 ### Architecture
 
 Node.js is divided into two main components: the core and its modules. The core is built in C and C++. It combines Google’s V8 JavaScript engine with Node’s Libuv library and protocol bindings including sockets and HTTP.
 
+![Figure @sota-messaging-arch-node: Node.js Architecture](Archi-NodeJS.png)
 
-![Figure @sota-messaging-arch-node: Node.js Architecture](Archi-Node.js.png)
-
-
-
-More information are avaialble in this document : http://mcgill-csus.github.io/student_projects/Submission2.pdf
+More information are available in this document : http://mcgill-csus.github.io/student_projects/Submission2.pdf
 
 ### APIs
 
@@ -37,62 +33,82 @@ But this can be completed thanks to the different packages available on https://
 
 ### Requirements Analysis
 
-#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)**
+#### [Messaging Node Requirements](https://github.com/reTHINK-project/core-framework/labels/Messaging%20Node%20Requirement)\*\*
 
+-	[It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
 
-* [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
-  * Yes
-  * ProtOFly connector can be developped. JS connector can be develop on top of Node.js to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
+	-	Yes
+	-	ProtOFly connector can be developped. JS connector can be develop on top of Node.js to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
 
-* [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
-  * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
-   
-* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
-  * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
+-	[Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
 
-* [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
-  * Yes - Socket.io enables message acknowledgement
+	-	Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
 
-* [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
-  * Using:
-    * Cluster Mode
-    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several Node.js entities can be connected through the redis cluster : this can enable load balancing, redundancy
-    
-* [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
-  * Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
+-	[Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
 
-- reconnection whether to reconnect automatically (true)
-- reconnectionDelay how long to wait before attempting a new reconnection (1000)
-- reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by
-the amount specified by reconnectionDelay.
-- timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
+	-	Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ...
 
-* [Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
-  * Yes - using socket.io different event are fired on connection status :
-- connect. Fired upon connecting.
-- error. Fired upon a connection error
-- disconnect. Fired upon a disconnection.
-- reconnect. Fired upon a successful reconnection.
-- reconnect_attempt. Fired upon an attempt to reconnect.
-- reconnecting. Fired upon an attempt to reconnect.
-- reconnect_error. Fired upon a reconnection attempt error.
-- reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
+-	[Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
 
-* [Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
-  * Yes 
+	-	Yes - Socket.io enables message acknowledgement
 
-* [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
-  * Yes - Node.js is available on Linux, windows, mac
+-	[Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
 
-* [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
-  * Yes
+	-	Using:
+	-	Cluster Mode
+	-	Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several Node.js entities can be connected through the redis cluster : this can enable load balancing, redundancy
 
-* [Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
-  * Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google ..
-  (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
+-	[Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
 
-* [Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
-  * No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
+	-	Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
+
+-	reconnection whether to reconnect automatically (true)
+
+-	reconnectionDelay how long to wait before attempting a new reconnection (1000)
+
+-	reconnectionDelayMax maximum amount of time to wait between reconnections (5000). Each attempt increases the reconnection by the amount specified by reconnectionDelay.
+
+-	timeout connection timeout before a connect_error and connect_timeout events are emitted (20000)
+
+-	[Events about clients connection / disconnection from Messaging Node](https://github.com/reTHINK-project/core-framework/issues/14)
+
+	-	Yes - using socket.io different event are fired on connection status :
+
+-	connect. Fired upon connecting.
+
+-	error. Fired upon a connection error
+
+-	disconnect. Fired upon a disconnection.
+
+-	reconnect. Fired upon a successful reconnection.
+
+-	reconnect_attempt. Fired upon an attempt to reconnect.
+
+-	reconnecting. Fired upon an attempt to reconnect.
+
+-	reconnect_error. Fired upon a reconnection attempt error.
+
+-	reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
+
+-	[Messaging Node must support very low message delivery latency](https://github.com/reTHINK-project/core-framework/issues/13)
+
+	-	Yes
+
+-	[Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
+
+	-	Yes - Node.js is available on Linux, windows, mac
+
+-	[Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
+
+	-	Yes
+
+-	[Messaging Node must support external authentication and Authorisation](https://github.com/reTHINK-project/core-framework/issues/10)
+
+	-	Yes. Module like Passport : http://passportjs.org/ enables to use external authentication like facebook, twitter, google .. (We will have to check if passport can be used as it seems to require Express which may not be relevant in rethink case)
+
+-	[Messaging Node must support pub/sub](https://github.com/reTHINK-project/core-framework/issues/9)
+
+	-	No - Yes with Redis Pub/Sub mechanism : http://redis.io/topics/pubsub
 
 #### [Runtime Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%20Requirement)
 
@@ -102,21 +118,12 @@ This suplemments the lack of implementation of Web Sockets inside v8.
 
 npm install ws
 
-IT is easy to use, fast and up-to-date against current HyBi protocol drafts.
-IT can send and receive typed arrays (ArrayBuffer, Float32Array) as binary data.
-IT passes the extensible Autobahn test suite: client report ( Autobahn WebSockets v0.4.5.), server report  ( Autobahn WebSockets v0.4.5.).
+IT is easy to use, fast and up-to-date against current HyBi protocol drafts. IT can send and receive typed arrays (ArrayBuffer, Float32Array) as binary data. IT passes the extensible Autobahn test suite: client report ( Autobahn WebSockets v0.4.5.), server report ( Autobahn WebSockets v0.4.5.).
 
 It has extensive benchmarks relative to its overhall performance in node.js.
 
-
-In fact there are extensive implementations of Web Sockets over node.js:
-websocket-node 
-faye-websocket-node 
-engine.io
-socket.io 
-sockjs
+In fact there are extensive implementations of Web Sockets over node.js: websocket-node faye-websocket-node engine.io socket.io sockjs
 
 The most performante is claimded to be ws.
 
 Socket.io seems to be the most complete regarding feature (connection type, acknowledgement, configuration ..)
-
