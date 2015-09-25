@@ -29,7 +29,7 @@ References
 
 [14] - [Ankur Taly, Úlfar Erlingsson, John C. Mitchell, Mark S. Miller, and Jasvir Nagra. 2011. Automated Analysis of Security-Critical JavaScript APIs. In Proceedings of the 2011 IEEE Symposium on Security and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA, 363-378. DOI=10.1109/SP.2011.39 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification of the Framework ”, 30-09-2015
+[15] - Deliverable D2.2 “Data Models and Interface Specification of the Framework ”, 30-08-2015
 
 [16] - http://w3c.github.io/WebRTC-pc/
 
@@ -75,7 +75,7 @@ References
 
 [37] - https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
-[38] ReTHINK Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
+[38] Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
 
 [39] - [Meteor](http://docs.meteor.com/#/full/quickstart)
 
@@ -201,4 +201,18 @@ References
 
 [100] http://www.w3.org/TR/audio-output/
 
-[101] http://www.w3.org/TR/screen-capture/
+[101] http://www.w3.org/TR/webrtc-stats/
+
+[102] http://www.w3.org/TR/screen-capture/
+
+[103] http://apirtc.com/api-docs/
+
+[104] http://www.quobis.com/index.php?option=com_content&task=view&id=285&Itemid=208
+
+[105] http://passportjs.org/
+
+[106] http://www.html5rocks.com/en/tutorials/es7/observe/
+
+[107] http://w3c.github.io/WebRTC-pc/#identity
+
+[108] https://nodesecurity.io/resources

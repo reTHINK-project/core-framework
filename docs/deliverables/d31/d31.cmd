@@ -16,7 +16,6 @@ sota\products.md ^
 specs\runtime.md ^
 ..\..\specs\runtime\runtime-architecture.md ^
 ..\..\specs\runtime\securityanalysis.md ^
-..\..\specs\runtime\runtime-apis.md ^
 specs\runtime-procedures.md ^
 specs\runtime-basics.md ^
 ..\..\specs\runtime\dynamic-view\basics\deploy-runtime.md ^
@@ -46,6 +45,7 @@ specs\runtime-inter-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-4-notification-update.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-5-bob-WebRTC.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-6-alice-DO-synch.md ^
+..\..\specs\runtime\runtime-apis.md ^
 specs\runtime-implementation.md ^
 ..\..\specs\runtime\implementation\browser-runtime.md ^
 ..\..\specs\runtime\implementation\standalone-runtime.md ^
@@ -80,6 +80,11 @@ pushd ..\deliverables\d31\introduction
    for /r %%a in (*.png) do (
       COPY "%%a" "..\%%~nxa"
    )
+
+ pushd ..\sota
+      for /r %%a in (*.png) do (
+         COPY "%%a" "..\%%~nxa"
+      )
 
  pushd ..
 pandoc --filter pandoc-citeproc -f markdown -t docx --data-dir=. readme.md -o D3.1-body.docx

@@ -103,11 +103,10 @@ Runtime Node Requirements
 -   **The effort to introduce new capabilities in the runtime should be
     reasonable:** for example:
 
--   missing WebRTC features eg Identity
--   Protocol on the fly mechanism
--   Policy Enforcement Points
--   Hyperty Registry
-
+    -   missing WebRTC features eg Identity
+    -   Protocol on the fly mechanism
+    -   Policy Enforcement Points
+    -   Hyperty Registry
 -   **The Runtime must be secured:** The runtime must support the
     execution of entrusted code in isolated sandboxes. It should be
     possible to take advantage of existing secured elements like SIM
@@ -133,18 +132,17 @@ Runtime Node Requirements
 
 -   **The Runtime should support W3C WebRTC APIs:** including:
 
--   [Media Capture and Streams
-    API](http://www.w3.org/TR/mediacapture-streams/)
--   [WebRTC](http://www.w3.org/TR/webrtc/)
-
+    -   [Media Capture and Streams
+        API](http://www.w3.org/TR/mediacapture-streams/)
+    -   [WebRTC](http://www.w3.org/TR/webrtc/)
 -   **The Runtime should be deployable in the most used Devices and
     Operating Systems:** including:
 
--   Android (Smartphone and Tablet)
--   iOS (Smartphone and Tablet)
--   Raspberry PI
--   Linux
--   Windows
+    -   Android (Smartphone and Tablet)
+    -   iOS (Smartphone and Tablet)
+    -   Raspberry PI
+    -   Linux
+    -   Windows
 
 Messaging Node Requirements
 ---------------------------
@@ -163,11 +161,10 @@ Messaging Node Requirements
 -   **Messaging Node should support different Encrypted Messaging
     Transport Protocols:** including:
 
--   Encrypted WebSockets
--   HTTPS Streaming
--   HTTPS Long-Polling
--   HTTPS REST
-
+    -   Encrypted WebSockets
+    -   HTTPS Streaming
+    -   HTTPS Long-Polling
+    -   HTTPS REST
 -   **Messaging Node should support logging of routed messages:** and
     any other event (e.g. connection events) in remote log servers
 
@@ -196,21 +193,25 @@ Messaging Node Requirements
 
 -   **Messaging Node must support external authentication and
     Authorisation:** including:
--   send/publish a Message
--   receive a Message
--   subscribe / register handlers to be notified about published
-    messages
 
+    -   send/publish a Message
+    -   receive a Message
+    -   subscribe / register handlers to be notified about published
+        messages
 -   **Messaging Node must support multiple message oriented
     communication patterns:** including:
 
--   pub/sub
--   broadcast
--   one to one
+    -   pub/sub
+    -   broadcast
+    -   one to one
 
 Network QoS Requirements
 ------------------------
 
+-   **QoS required by enterprise, if it is involved in the communication
+    :** Enterprises may have specific requirements for both QoS and
+    security, and may wish to enforce them for special destinations,
+    e.g. critical services or important customers.
 -   **QoS component should assure collaboration between network and
     application layer actors:** There should be collaboration between
     network operators (Network or Internet Service providers) and
@@ -307,12 +308,11 @@ Service Framework Requirements</br></br>
     featuring the Hyperty Runtime. The Runtime is envisioned to be
     deployed on the most used Devices and Operating Systems, including:
 
--   Android (Smartphone and Tablet)
--   iOS (Smartphone and Tablet)
--   Raspberry PI
--   Linux
--   Windows
-
+    -   Android (Smartphone and Tablet)
+    -   iOS (Smartphone and Tablet)
+    -   Raspberry PI
+    -   Linux
+    -   Windows
 -   **Service Framework MUST be light weight and fast:** The service
     framework size is important as latency plays an important role and
     downloading heavy weight files would add overhead thus diminishing
@@ -331,24 +331,27 @@ Service Framework Requirements</br></br>
     developers to determine according to their requirements and
     preferences.
 
-State of the Art
-================
+State of the Art and Procurement
+================================
 
 In this chapter, a summary of the exhaustive work performed in terms of
 research of state of the art and procurement of open source solutions to
 be used in the implementation phase, is provided.
 
-WP3 State of the Art, complements WP2 State of the Art and goes deeper
-in domains addressed by WP3, namely:
+This State of the Art, complements the general architecture State of the
+Art and goes deeper in domains addressed by core framework
+implementation, namely:
 
--   Security in Web Runtime
+-   Security in Web Runtime.
 -   Standards that WP3 should comply with, notably W3C APIs and IETF
-    Protocols
+    Protocols.
 -   Web Runtime solutions including JavaScript runtime and WebRTC
-    implementations
--   Real Time Messaging solutions including Node.js and vertx
--   Partners' Assets that can be leveraged by reTHINK including Quobis
-    and APIZEE products as well as the WONDER library.
+    implementations.
+-   Real Time Messaging solutions including Node.js and Vertx.
+-   Partners' Assets that can be leveraged or integrated with reTHINK
+    testbeds including Quobis [104] and APIZEE [103] products as well as
+    the open source WONDER library [36] prototyped by PTIN and DT in the
+    scope of WONDER project [32].
 
 A detailed report of state of the art and procurement for Standards,
 Messaging, Runtime, QoS, Projects and Web Frameworks are provided in
@@ -357,14 +360,13 @@ Annex A.
 Security in Runtime
 -------------------
 
-In this document, we present the relevant related work on security
+In this section, we present the relevant related work on security
 runtime environments. We focus essentially on two areas: web browsers,
 and secure elements. The web browsers section present security
-mechanisms for JavaScript code protection in fully-featured environments
-(the web browsers themselves). The secure elements section provides an
-overview of code security runtimes for computing devices featuring less
-functionality and computation capabilities but requiring tighter
-security requirements during its operation.
+mechanisms for JavaScript code protection. The secure elements section
+provides an overview of code security runtime for computing devices
+featuring less functionality and computation capabilities but requiring
+tighter security requirements during its operation.
 
 ### Web Browsers
 
@@ -391,27 +393,28 @@ property (e.g., applications' code). In order to achieve this separation
 in these architectures, multiple techniques have been employed:
 
 -   **Sandboxing:** In computer security, a sandbox is a security
-    mechanism which allows untrusted programs to run within a trusted
+    mechanism, which allows untrusted programs to run within a trusted
     environment, without affecting the environment or other co-located
     programs. This is usually done by restricting the resources (disk,
-    memory, network) the untrusted software can access. An example is
-    creating scratch memory and disk spaces where it can read/write and
-    limiting the network capabilities it can use, in order to prevent
-    the host environment from getting damaged. This is what Chromium
-    browser [1] applies to separate the user and the web side in a
-    modular architecture. It features two modules:
+    memory and network) that the untrusted software can access. An
+    example is creating scratch memory and disk spaces where it can
+    read/write and limiting the network capabilities it can use, in
+    order to prevent the host environment from getting damaged. This is
+    what Chromium browser [1] applies to separate the user and the web
+    side in a modular architecture. It features two modules:
 
--   A **browser kernel module** which acts on behalf of the user and is
-    responsible for implementing the tab-based windowing system of the
-    browser. It stores users' data as its preferences, bookmarks,
-    credentials and cookies and also works as middleware between the
-    native operating system window manager and every instance of the
-    second browser module, the rendering engine.
--   The **rendering engine** implements the web application behavior. It
-    interprets and executes web content, serving calls to the DOM API.
-    It is the unique browser part in contact with the untrusted web
-    content. Apart from that, it is also responsible for enforcing the
-    same-origin policy between the user and a website he's visiting.
+    -   A **browser kernel module** that acts on behalf of the user and
+        is responsible for implementing the tab-based windowing system
+        of the browser. It stores users' data as its preferences,
+        bookmarks, credentials and cookies and also works as middleware
+        between the native operating system window manager and every
+        instance of the second browser module, the rendering engine.
+    -   A **rendering engine** that implements the web application
+        behaviour. It interprets and executes web content, serving calls
+        to the DOM API. It is the unique browser part in contact with
+        the untrusted web content. Apart from that, it is also
+        responsible for enforcing the same-origin policy between the
+        user and a website he's visiting.
 
 ![Figure 2: Chromium sandbox scheme](chromium-sandbox.png)
 
@@ -422,13 +425,13 @@ browsers, such as facilitating the access to a website's content or even
 as almost standalone applications running on the browser environment.
 However, these extensions often introduce serious security issues into
 both user’s browser and websites. This is because oftentimes extensions
-are written by well-meaning developers who, however, are not security
-experts. Extensions can read and alter users' bookmarks and preferences,
-websites' content and perform requests over the network, many times on
-behalf of the browser user. Browser extensions are mostly written in
-JavaScript and HTML, and since JavaScript provides methods for
-converting a string to code (e.g. "eval"), an extension may be dangerous
-if misused.
+are written by developers with good programming skills who, however, are
+not security experts. Extensions can read and alter users' bookmarks and
+preferences, websites' content and perform requests over the network,
+many times on behalf of the browser user. Browser extensions are mostly
+written in JavaScript and HTML, and since JavaScript provides methods
+for converting a string to code (e.g. "eval"), an extension may be
+dangerous if misused.
 
 Typically, benign extensions face two types of attackers:
 
@@ -444,31 +447,35 @@ Typically, benign extensions face two types of attackers:
     scale up to attack multiple websites within the same entry point.
 
 According to [2], Google Chrome and its extension platform apply three
-mechanisms to prevent these vulnerabilities: \* **Privilege
-Separation:** Every Chrome extension has two types of components which
-run in separate processes: zero or more content scripts and zero or one
-core extension. Content scripts read and modify websites as needed. The
-core extension implements functionality not directly involving websites,
-like browser UI jobs or long-running background tasks. These two types
-of components communicate by sending structured clones over a trusted
-channel. Each website that an extension communicates with, receives its
-own isolated instance of a content script, making content scripts highly
-bound to attacks. However, only the core extension is able to
-communicate with the Chrome extension's API, reducing the risk that a
-content script is able to access the user data space. The architecture
-scheme of a Google Chrome extension is on Fig. 3. \* **Isolated Words:**
-This mechanism ensures that content scripts and websites have separate
-JavaScript heaps and DOM objects. Consequently, content scripts never
-exchange pointers with websites, protecting them against web
-attackers. \* **Permissions:** Extension developers have to specify the
-desired permissions in a kind of manifest file that is packaged with the
-extension. For example, the bookmarks permission is needed for the
-extension to be able to read and alter the user's bookmarks. Only core
-extension can use permissions to invoke browser API methods, while
-content scripts are limited to interacting with the core extension and
-the website it is running on. This way, an extension is limited to the
-permissions its developer requested, so an attacker is not able to
-request new permissions for a compromised extension in runtime.
+mechanisms to prevent these vulnerabilities:
+
+-   **Privilege Separation:** Every Chrome extension has two types of
+    components which run in separate processes: zero or more content
+    scripts and zero or one core extension. Content scripts read and
+    modify websites as needed. The core extension implements
+    functionality not directly involving websites, like browser UI jobs
+    or long-running background tasks. These two types of components
+    communicate by sending structured clones over a trusted channel.
+    Each website that an extension communicates with, receives its own
+    isolated instance of a content script, making content scripts highly
+    bound to attacks. However, only the core extension is able to
+    communicate with the Chrome extension's API, reducing the risk that
+    a content script is able to access the user data space. The
+    architecture scheme of a Google Chrome extension is on Fig. 3.
+-   **Isolated Words:** This mechanism ensures that content scripts and
+    websites have separate JavaScript heaps and DOM objects.
+    Consequently, content scripts never exchange pointers with websites,
+    protecting them against web attackers.
+-   **Permissions:** Extension developers have to specify the desired
+    permissions in a kind of manifest file that is packaged with the
+    extension. For example, the bookmarks permission is needed for the
+    extension to be able to read and alter the user's bookmarks. Only
+    core extension can use permissions to invoke browser API methods,
+    while content scripts are limited to interacting with the core
+    extension and the website it is running on. This way, an extension
+    is limited to the permissions its developer requested, so an
+    attacker is not able to request new permissions for a compromised
+    extension in runtime.
 
 ![Figure 3: The architecture of a Google Chrome
 extension](chrome-extension-arch.png)
@@ -553,7 +560,7 @@ success of the attack.
 **Security Enforcement on the Web Browser Runtime**
 
 There are also other strategies which try to avoid the need for
-intermediate elements like proxy-servers by proposing startegies to
+intermediate elements like proxy-servers by proposing strategies to
 enforce the runtime context of the web browser. Hallaraker et al. [8]
 propose an auditing system for the JavaScript interpreter of the Mozilla
 Firefox browser, which detects misuses on JS operations and take
@@ -569,7 +576,7 @@ script should be executed. Although, a lack of semantics in the
 policy-language and the restrictiveness of the approach due to the
 sandboxing-like mechanism are some of the drawbacks.
 
-### **Automated Analysis of Security-Critical JavaScript APIs**
+### Automated Analysis of Security-Critical JavaScript APIs
 
 Current web applications usually rely on JavaScript in order to offer
 additional features like maps, widgets or social media content.
@@ -606,9 +613,9 @@ general.
 
 **Hardware**
 
-This single-chip computer is an off-the-shelf **8-bit microcontroller**
+This single-chip computer is an off-the-shelf *8-bit microcontroller*
 with added tamper-safe features. While most 8-bit microcontrollers can
-support at least **64 KBytes** of 8-bit memory, popular smart cards
+support at least *64 KBytes* of 8-bit memory, popular smart cards
 contain 4 to 20 Kbytes of memory, due to size constraints. The memory
 space of a smart card is divided into RAM, EEPROM and ROM. RAM is used
 to store temporary values when a program is running, while EEPROM is
@@ -625,18 +632,22 @@ tamper-detection features.
 The paucity of 8-bit assembly language courses, books and software tools
 led engineers to break the smart card application bottleneck by building
 a Java virtual machine with its runtime support into a 12-Kbyte smart
-card. Java was the natural answer for three reasons: \* Java brings
-smart card programming into the mainstream of software development \*
-Java “safe programming” security model based on a runtime interpreter is
-a nontrivial side benefit, due to its processor independence. A Java
-card can be deployed on multiple smart card models. \* Java interpreters
-were tested to the limit, holes had been found, and fixed.
+card. Java was the natural answer for three reasons:
+
+-   Java brings smart card programming into the mainstream of software
+    development
+-   Java “safe programming” security model based on a runtime
+    interpreter is a nontrivial side benefit, due to its processor
+    independence. A Java card can be deployed on multiple smart card
+    models.
+-   Java interpreters were tested to the limit, holes had been found,
+    and fixed.
 
 With this in mind, engineers concluded that Java could preserve the
 required security in the smart card operation, while allowed a more
-friendly and well-known programming approach. However, available memory
-was an issue when deploying such heavy language runtime like Java.
-Features like garbage collection and exceptions handling were not
+friendlier and well-known programming approach. However, available
+memory was an issue when deploying such heavy language runtime like
+Java. Features like garbage collection and exceptions handling were not
 included in Java Card because of that.
 
 **Internet Computing with Java Smart Card**
@@ -704,7 +715,7 @@ memory safety. On normal Java platform, bytecode verification occurs at
 load time. However, since Java Cards do not support dynamic class
 loading, this verification must occur at the time an applet is installed
 to the card. Nevertheless, most Java Cards do not feature an on-card BCV
-and rely on a digital signature of a third party who is trusted to have
+and rely on a digital signature of a third party that is trusted to have
 performed bytecode verification off-card.
 
 **Applet firewall**
@@ -718,14 +729,14 @@ context is checked. Only the Java Card Runtime Environment (JCRE) has
 unlimited permission, since it executes in root-mode, on a UNIX
 terminology.
 
-#### **Getting malicious code on cards**
+#### Getting malicious code on cards
 
 **CAP File Manipulation**
 
 This is the easiest way of introducing ill-typed code on a Java Card.
 This can be achieved by editing a CAP (Converted APplet) file to
 introduce a type flaw in the bytecode and install it to the card.
-Although, this will only work for cards without an on-card BCV and with
+Despite, this will only work for cards without an on-card BCV and with
 unsigned CAP files. In example, by changing a `baload` (byte load)
 opcode onto a `saload` (short load) one, will make the platform treat a
 byte array as a short array, and can potentially lead to accessing other
@@ -754,9 +765,9 @@ tend to make it not behave as expected. When object references are
 spread around the code, by assignments to instance fields and local
 variables, it becomes difficult for the mechanism to keep track of all
 the references that should be nulled out. The root cause of the problem
-is that stack-allocated variables, such as `short[] localArray` are not
-subject to roll-back in the event of a programatically transaction abort
-(through API method call).
+is that stack-allocated variables, such as *"`short[] localArray`"* are
+not subject to roll-back in the event of a programmatically transaction
+abort (through API method call).
 
 #### Dynamic Countermeasures
 
@@ -778,24 +789,24 @@ Standards
 The reTHINK project describes a framework that provides solutions to
 manage real time communication capabilities. To implement this framework
 the project team tried to use the most suitable existing standards which
-provides compability which existing technolagies. Using consolidated and
+provide compatibility with existing technologies. Using consolidated and
 widely used standards also make the development more efficient since
-open source libraries can be used in the developments. Addtionally to
+open source libraries can be used in the developments. Additionally to
 well-known standards, the project team has also tried to find emerging
-standards which can be adapted for ReTHINK requirements. In those cases,
-a tradeoff analysis has been made to determine if the choice of a not
-consolidated standard is optimal in terms of cost of use due to the lack
-of existing libraries and projects which use them.
+standards, which can be adapted for reTHINK requirements. In those
+cases, a trade-off analysis has been made to determine if the choice of
+a not consolidated standard is optimal in terms of cost of use due to
+the lack of existing libraries and projects, which use them.
 
 The IETF has been creating and promoting the Internet standards since
-1986. The IETF is organized in a large number of Working Groups (WG)
-which works on specific areas. For ReTHINK project, the team has focused
+1986. The IETF is organized in a large number of Working Groups (WG),
+which works on specific areas. For reTHINK project, the team has focused
 on standards delivered by several WG (namely Rtcweb, TRAM, HTTP/2 and
 Network). The Rtcweb WG has defined a set of RFCs (many of them are
-still drafts) which are used in WebRTC, it defines how WebRTC works on
+still drafts), which are used in WebRTC, it defines how WebRTC works on
 the wire. Many of the used protocols already existed but many of them
 were created ad-hoc to meet WebRTC requirements. Other RFCs are
-informational and hes been released to gather the WG knowledge in a
+informational and have been released to gather the WG knowledge in a
 formal way. The TRAM (TURN Revised and Modernized) working group is
 carrying out a modernization of the protocols used to transport
 real-time media over Internet which is the final function of ReTHINK
@@ -803,46 +814,46 @@ framework.
 
 HTTP/2 is the new version of HTTP/1.1 which has been used in the web for
 the last 16 years. It provides a new low level design to optimize
-current Web applications keeping the semmantic of HTTP/1.1 which is
-still valid. HTTP/1.1 has been historically transported over TCP,
-however to take advantage of all the new features of HTTP/2 a new
-transport protocol build over UDP has been designed: QUIC. HTTP/2 draft
-is based on SPDY but it includes new features and will soon become a
-definitive RFC. The draft belongs to the HTTP WG. QUIC was developed by
-Google but it has been recently become an IETF Draft taking over the
-last changes in the protocol until close the defintiive RFC. HTTP/2 over
-QUIC has been considered as an alternative for messaging in the ReTHINK
-framework as it is optimized to be used over wireless connection and
-minimizes the delay in every communication.
+current Web applications keeping the semantic of HTTP/1.1 which is still
+valid. HTTP/1.1 has been historically transported over TCP, however to
+take advantage of all the new features of HTTP/2 a new transport
+protocol build over UDP has been designed: QUIC. HTTP/2 draft is based
+on SPDY but it includes new features and will soon become a definitive
+RFC. The draft belongs to the HTTP WG. QUIC was developed by Google but
+it has been recently become an IETF Draft taking over the last changes
+in the protocol until close the definitive RFC. HTTP/2 over QUIC has
+been considered as an alternative for messaging in the ReTHINK framework
+as it is optimized to be used over wireless connection and minimizes the
+delay in every communication.
 
-The IETF is in charge of standarizes all the protocols on the wire in
+The IETF is in charge of standardizes all the protocols on the wire in
 Internet. In turn, the W3C (WWW Consortium) is the main international
-standards organization for the World Wide Web. It standarizes how the
-browser behave (e.g. WebRTC 1.0 API exposed by the browsers) and and the
-lenguages (e.g. HTML and JavaScript) which can be executed by a standar
-browser. It is main role is to promote and homogenize the evolution of
-the Web. During the state of the Art research work we focused on the
-standards susceptible of being used by any element within the ReTHINK
+standards organization for the World Wide Web. It standardizes how the
+browser behave (e.g. WebRTC 1.0 API exposed by the browsers) and the
+languages (e.g. HTML and JavaScript) which can be executed by a standard
+browser. Its main role is to promote and homogenize the evolution of the
+Web. During the state of the Art research work we focused on the
+standards susceptible of being used by any element within the reTHINK
 framework.
 
-The WebRTC 1.0 API has been standarized by the W3C is the way in which a
-JavaScript application interacts with the browser to establish real-time
-sessions with other WebRTC endpoints. A comprehensive knowledge of this
-API was necessary to make design decissions and to define the
-architecture and the data model of the framework.
+The WebRTC 1.0 API has been standardized by the W3C and is the way in
+which a JavaScript application interacts with the browser to establish
+real-time sessions with other WebRTC endpoints. A comprehensive
+knowledge of this API was necessary to make design decisions and to
+define the architecture and the data model of the framework.
 
 A Community group has been created within the W3C to promote an
-alternative WebRTC API called ORTC (Object Real-Time Communications)
+alternative WebRTC API called ORTC (Object Real-Time Communications),
 which gives more control to the WebRTC developer making easier to
 implement some scenarios. There are still not implementations of ORTC in
 production-ready browser, however the features introduced by this
-standard which is likely to become the base of the WebRTC 2.0 API have
+standard, which is likely to become the base of the WebRTC 2.0 API have
 been considered during the design phase.
 
-Another relevant W3C API is the Push API which allows a push service to
+Another relevant W3C API is the Push API, which allows a push service to
 send "push messages" to a webapp regardless of whether the webapp is
-currently active on the user agent. This is specially usefull for
-webapps running on mobile devices where the webapp may need to receive a
+currently active on the user agent. This is specially useful for webapps
+running on mobile devices where the webapp may need to receive a
 notification while the browser is not in foreground.
 
 The use of another feature supported by browser called Service Workers
@@ -850,8 +861,8 @@ has been already evaluated to be used to implement different parts of
 the Runtime environment. Despite the fact that this specification is
 still a Working Draft of the W3C it is already supported by the most
 important browsers. However, this is feature is not supported by server
-side JavaScript-based runtime environment, it only can be used when the
-Runtime is executed by a browser.
+side JavaScript-based runtime environments. It only can be used when the
+runtime is executed by a browser.
 
 There is another interesting W3C Draft called "Application Lifecycle and
 Events" which extends the Service Workers with APIs for managing the
@@ -862,13 +873,13 @@ Draft has been not been adopted by many vendors so far.
 
 In this section the standards released by the Open Mobile Alliance (OMA)
 were also reviewed. The OMA is a Mobile Operator driven industry forum
-for the definition of interoperable mobile service enablers. OMA defines
-APIs to offer functionalities and resources of Operator networks to
-developers. Amongst the API and protocols standarized by the OMA the
-team decided to reviewed those which are relevant for the project such
-as the Authorization Framework for Network APIs, the RESTful Network API
-for WebRTC Signaling, Quality of Service API and Notification Channel.
-The LWM2M/COAT protocol which was designed to be supported by
+for the definition of inter-operable mobile service enablers. OMA
+defines APIs to offer functionalities and resources of Operator networks
+to developers. Amongst the API and protocols standardized by the OMA the
+team decided to review those which are relevant for the project such as
+the Authorization Framework for Network APIs, the RESTful Network API
+for WebRTC Signalling, Quality of Service API and Notification Channel.
+The LWM2M/COAP protocol which was designed to be supported by
 constrained devices has also been considered as a suitable alternative
 to interact with the Registry and Discovery services.
 
@@ -877,7 +888,7 @@ released by the HGI (Home Gateway Iniative) has been reviewed. It
 provides a framework to create a consistent representation of Smart Home
 devices. This makes easier the integration of new devices in Home
 Gateway or in the cloud being specially interesting to implement M2M
-within the ReTHINK framework.
+within the reTHINK framework.
 
 Runtime
 -------
@@ -889,35 +900,34 @@ In order to evaluate the possibility to modify native implementations of
 WebRTC engines, Ericsson OpenWebRTC and Google WebRTC.org solutions were
 considered. OpenWebRTC is a promising modular WebRTC implementation
 based on popular GStreamer multimedia framework open source solution.
-Unfortunately, OpenWebRTC is not much supported by Ericsson lacking
-required documentation to let it be adapted to fulfil reTHINK new
-requirements. Google WebRTC.org solution is the reference implementation
-of WebRTC specification providing all APIs defined in the standards.
-However, the effort required to change it to fulfill reTHINK
-requirements is estimated to be very high. On the other hand, having an
-extended version of an existing WebRTC implementation would require the
-user to install a new reTHINK Browser. For all the above reasons, it was
-decided to re-use existing native implementations of WebRTC engines
-without modifications.
+Unfortunately, OpenWebRTC support by Ericsson lacks required
+documentation to let it be adapted to fulfill reTHINK requirements.
+Google WebRTC.org solution is the reference implementation of WebRTC
+specification providing all APIs defined in the standards. However, the
+effort required to change it to fulfill reTHINK requirements is
+estimated to be very high. On the other hand, having an extended version
+of an existing WebRTC implementation would require the user to install a
+new reTHINK Browser. For all the above reasons, it was decided to re-use
+existing native implementations of WebRTC engines without modifications.
 
 JavaScript engine solutions were evaluated to analyse the possibility to
 adapt them in order to fulfill reTHINK runtime requirements, notably in
 terms of security (sandboxing). The V8 JavaScript Engine is an open
 source JavaScript engine developed by Google for the Google Chrome web
-browser. It has since seen use in many other solutions and it is
+browser. It has since been used in many other solutions and it is
 considered the most powerful JavaScript engine in terms of features and
 performance. It has mechanisms to facilitate its extension with new
 features but lacks required mechanisms for sandbox creation. One
-evaluated alternative, is to use Node.js that runs on top of V8 as well
+evaluated alternative is to use Node.js that runs on top of V8 as well
 as having Node.js inside Docker taking advantage of its management and
-security features. Both solutions fulfill reTHINK security requirements
+security features. Both solutions fulfil reTHINK security requirements
 and will be considered for reTHINK runtime implementations that are not
 based on browsers.
 
 Firefox OS is a good candidate to implement reTHINK runtime in mobile
-devices supporting this Operating Systems. It natively suports
+devices supporting this Operating System. It natively supports
 JavaScript and HTML APIs 5 (including WebRTC) as programming language,
-and a robust privilege model to communicate directly with cellphone
+and a robust privilege model to communicate directly with cell phone
 hardware, and application marketplace.
 
 Three WebRTC based Media Server solutions were evaluated. Jitsi
@@ -938,30 +948,8 @@ The Messaging Services, as it appears in the architecture, is the server
 side platform that will support several functions provided by the
 Service provider. In order to evaluate the options to implement the
 messaging service, different existing solutions have been considered:
-Matrix, MQTT, Node.js, Psyc, RabbitMQ, realtime backends (also knwon as
-noBackends or Backend-as-a-Service), Redis, Vertx, XMPP and ZeroMQ.
-
-The following criteria are seen as particularly important for the choice
-of a solution for Messaging Node implementation: - it should support
-Protocol on-the-fly, to inter-operate with other Messaging Nodes or
-Back-end servers without having the need to standardize the protocol to
-be used. - it should support different Encrypted Messaging Transport
-Protocols including: Encrypted WebSockets, HTTPS Streaming, HTTPS
-Long-Polling and HTTPS REST - It must be possible to cache submitted
-messages - it has to support logging of routed messages and any other
-event (e.g. connection events) in remote log servers - it must support
-message delivery reliability. Delivery errors must be returned to
-clients - If required, Messaging Node must support worldwide scale
-deployments - it should be tolerant to unstable connections (e.g. short
-disconnections) - It should be possible to get events with information
-about Messaging Node client’s connection and disconnection. Such feature
-is useful for connection status purposes. - Messaging Node must support
-very low message delivery latency - Messaging Node must be deployable in
-the most used Virtual Machines - it should require minimal computing
-resources in order to be deployable in constrained computing
-environments - Messaging Node must support external authentication and
-Authorisation - Messaging Node must support multiple message oriented
-communication patterns including: pub/sub, broadcast, one to one.
+Matrix, MQTT, Node.js, Psyc, RabbitMQ, realtime backends (also kown as
+noBackends or Backend-as-a-Service), Redis, Vert.x, XMPP and ZeroMQ.
 
 ### Matrix
 
@@ -1040,7 +1028,7 @@ It is used as a thin layer between the application and transport layers.
 
 ### Selected Real time Messaging Solutions
 
-In the scope of reThink framework, Matrix, Node.js and vert.X have been
+In the scope of reTHINK framework, Matrix, Node.js and Vert.X have been
 selected to implement the Messaging Node.
 
 Service Frameworks
@@ -1048,16 +1036,17 @@ Service Frameworks
 
 Objective of the Service Framework is to develop a JavaScript Framework
 of libraries that can be used to facilitate the development of
-Hyperties. This framework will compliment the features provided by the
-Hyperty Runtime (T3.4) and Network QoS Policy Enforcement (T3.3). The
-end results of the Service Framework should support Hyperty Development
-(T5.2) which further assist in the implmentation of T5.3 Conversational
-Services (audio, video, chat, screen sharing) and T5.4 Context Enabled
-Services (Conversational Services, IoT, context delivery, location).
+Hyperties. This framework will complement the features provided by the
+Hyperty Runtime and Network QoS Policy Enforcement. The end results of
+the Service Framework should support Hyperty Development which further
+assist in the implementation of Conversational Services (audio, video,
+chat, screen sharing) and Context Enabled Services (Conversational
+Services, IoT, context delivery, location) that will be used in reTHINK
+testbeds.
 
 An analysis of existing JavaScript frameworks based on the reTHINK
 Service Framework requirements was carried out on some of the popularly
-used frameworks today. These frameworks all endeavor to facilitate the
+used frameworks today. These frameworks all endeavour to facilitate the
 development of web applications utilizing the Model-View-Control design
 pattern. For the reTHINK project however, focus was on the data model
 management and routing capabilities of these frameworks.
@@ -1072,13 +1061,13 @@ for Single Page Apps (SPA) unlike a dynamic environment like the reTHINK
 runtime where multiple applications can be downloaded and executed
 concurrently.
 
-Another framework analyzed was BackboneJS which also did not fit into
+Another analyzed framework was BackboneJS which also did not fit into
 the reTHINK service framework requirements due to the lack of a modular
 structure. Backbone lacks a controller concept and views and Models are
-relatively tightly coupled, resulting to tightly coupled modules which
+relatively tightly coupled, resulting too tightly coupled modules which
 are not desirable for the reTHINK project.
 
-StapesJS another framework analyzed offered a lightweight less complex
+StapesJS another analyzed framework offered a lightweight less complex
 framework especially suitable of mobile platforms. However it in itself
 offers very little APIs and demands combination with other libraries
 such as JQuery, React and Rivets.
@@ -1093,8 +1082,8 @@ choice for the Messaging Node where Node.js. This is compatible with the
 other components as Node.js is one of the tools considered for the
 reTHINK Messaging Node.
 
-From the above anaöyzed frameworks, there is no strong conclusive
-statement which one is best to be used to develope the Service Framework
+From the above analyzed frameworks, there is no strong conclusive
+statement which one is best to be used to develop the Service Framework
 as they all have advantages and disadvantages. To fulfill the objectives
 of these task, the approach has to be more specific as to what the above
 frameworks have to offer. We will identify the main requirements from
@@ -1107,8 +1096,8 @@ policy enforcement APIs.
 
 The executable Hyperty Runtime will be the basis of all application
 development. With a middle layer of the Service Framework offering
-bulding blocks to choose from, a new ecosystem is formed on top of which
-other frameworks and applications can exist.
+building blocks to choose from, a new ecosystem is formed on top of
+which other frameworks and applications can exist.
 
 ![Figure 8: Service framework middle
 layer](service_framework_middle_layer.png)
@@ -1145,14 +1134,14 @@ architecture and functionalities are detailed and explained in Annex A.
 
 Analysis regarding Messaging Node requirements:
 
-**Messaging Node with carrier grade deployment features :**</br> Node.js
+**Messaging Node with carrier grade deployment features:**</br> Node.js
 and Redis enables to buld a resiliante and scalable architecture
 
-**The Messaging Node MUST offer DoS and DDoS Protection :**</br> User
+**The Messaging Node MUST offer DoS and DDoS Protection:**</br> User
 authentication, message rate limitation are example of feature taht may
 be implemented to fulfill this requirement
 
-**It should be possible to support Protocol on-the-fly :**</br>
+**It should be possible to support Protocol on-the-fly:**</br>
 
 ProtOFly connector can be developped. JS connector can be develop on top
 of Node.js to enable protofly on server side. This connector will be for
@@ -1164,20 +1153,20 @@ the Identity manager
 Socket.io enables the usage of different transport protocol to establish
 connection between user and server. (Long polling, WebSocket ...)
 
-**Messaging Node logging :**</br>
+**Messaging Node logging:**</br>
 
-Several logging modules are available : log4js, winston, bunyan ... Logs
+Several logging modules are available : log4js, Winston, Bunyan ... Logs
 can be dispalyed in console, store in file with log rotate, send to a
 network entity ...
 
-**Message delivery reliability :**</br> Socket.io enables message
+**Message delivery reliability:**</br> Socket.io enables message
 acknowledgement
 
-**Messaging Node deployments with carrier grade scalability :**</br>
+**Messaging Node deployments with carrier grade scalability:**</br>
 
-Using Redis cluster mode : it is possible to use Redis Cluster with
-PUB/SUB mechanism : several Node.js entities can be connected through
-the redis cluster : this can enable load balancing, redundancy</br>
+Using Redis cluster mode: it is possible to use Redis Cluster with
+PUB/SUB mechanism: several Node.js entities can be connected through the
+redis cluster: this can enable load balancing, redundancy</br>
 
 **Messaging Node should be tolerant to unstable connections :**</br>
 
@@ -1191,10 +1180,10 @@ reconnections (5000). Each attempt increases the reconnection by the
 amount specified by reconnectionDelay. timeout connection timeout before
 a connect\_error and connect\_timeout events are emitted (20000)
 
-**Events about clients connection / disconnection from Messaging Node
-:**</br>
+**Events about clients connection / disconnection from Messaging
+Node:**</br>
 
-Using socket.io different events are fired on connection status :
+Using socket.io different events are fired on connection status:
 connect. Fired upon connecting. error. Fired upon a connection error
 disconnect. Fired upon a disconnection. reconnect. Fired upon a
 successful reconnection. reconnect\_attempt. Fired upon an attempt to
@@ -1203,35 +1192,38 @@ reconnect\_error. Fired upon a reconnection attempt error.
 reconnect\_failed. Fired when couldn’t reconnect within
 reconnectionAttempts
 
-**Messaging Node must support very low message delivery latency :**</br>
+**Messaging Node must support very low message delivery latency:**</br>
 
-**Messaging Node must be deployable in the most used Virtual Machines
-:**</br> Node.js is available on Linux, windows, mac and can be deployed
-on small virtual machine or devices
+**Messaging Node must be deployable in the most used Virtual
+Machines:**</br> Node.js is available on Linux, Windows, Mac and can be
+deployed on small virtual machine or devices.
 
-**Messaging Node should require minimal computing resources :**</br>
-Messaging nodes components can be isntalled in only one VM
+**Messaging Node should require minimal computing resources:**</br>
+Messaging nodes components can be isntalled in only one VM.
 
-**Messaging Node must support external authentication and Authorisation
-:**</br> Module like Passport : http://passportjs.org/ enables to use
-external authentication like facebook, twitter, google .. (We will have
-to check if passport can be used as it seems to require Express which
-may not be relevant in rethink case)
+**Messaging Node must support external authentication and
+Authorisation:**</br> Module like Passport: http://passportjs.org/
+enables to use external authentication like Facebook, Twitter, Google,
+etc (We will have to check if passport can be used as it seems to
+require Express which may not be relevant in rethink case)
 
-**Messaging Node must support multiple messaging functionalities
-:**</br> Several routing can be performed with socket.io. Send message
-to only one dest, broadcast message to several users
+**Messaging Node must support multiple messaging functionalities:**</br>
+Several routing can be performed with socket.io. Send message to only
+one dest, broadcast message to several users.
 
 #### Integration in Rethink
 
 ApiRTC can be used in a Node.js based Messaging Node.
 
-Integration of ApiRTC in Rethink can be done by adding differents
-connectors depending of needs : - Identity Management : connector to
-Identity server - QoS Management : connector to QoS server - Other Web
-communication platform : connector to communication platform using
-ProtOFly - VoIP Platform : Connector to WebRTC GW - Connector to Media
-Servers
+Integration of ApiRTC in Rethink can be done by adding different
+connectors depending of needs:
+
+-   Identity Management: connector to Identity Servers
+-   QoS Management: connector to QoS server
+-   Other Web communication platform: connector to communication
+    platform using ProtOFly
+-   VoIP Platform: Connector to WebRTC GW
+-   Connector to Media Servers
 
 A Redis Cluster with Pub/Sub mechanism can be used to manage
 communications between connectors
@@ -1271,7 +1263,7 @@ new signaling modules or even use different signaling protocols within
 the same application (e.g. one signaling protocol for audio/video,
 another for IM/presence, etc.). Sippo WAC is a tool to develop, adapt or
 deploy any WebRTC tool in a SDN, in the case of telcos, or corporate
-architecture, with the security that it is going to be interoperable
+architecture, with the security that it is going to be inter-operable
 with the existing services and WebRTC gateways. In addition it provides
 features to manage user provisioning, store call detail records and
 provides contextual information. Sippo WAC architecture and
@@ -1436,9 +1428,9 @@ The different types of policies to be applied on these different points,
 namely in the Message BUS, requires further research to avoid
 performance overhead and potential conflicts. In principle, if for a
 specific domain there is Policy Enforcer, it will not be needed to
-enforce policies from that domain in the Mesg BUS PEP.
+enforce policies from that domain in the Core Policy Engine.
 
-In addition, Message BUS PEP should enforce general access control
+In addition, Core Policy Engine should enforce general access control
 policies that are agnostic of sender and target domains, or specific to
 the domain managing the device runtime (Core Runtime Provider). The
 policies used to control the access to synchronised Data Objects used in
@@ -1487,9 +1479,9 @@ API](http://www.html5rocks.com/en/tutorials/es7/observe/).
 
 #### Policy Enforcer
 
-Policy Enforcer complements the Message BUS Policy Enforcer
-functionality enabling the enforcement of proprietary or closed Policies
-in the runtime for a specific Hyperty instance including access control
+Policy Enforcer complements the Core Policy Engine functionality
+enabling the enforcement of proprietary or closed Policies in the
+runtime for a specific Hyperty instance including access control
 policies to synchronised object.
 
 #### Protocol Stub
@@ -1526,7 +1518,7 @@ Runtime instances.
 
 Supports local message communication in a loosely coupled manner between
 Service Provider sandboxes including Hyperty Instances, Protocol Stubs
-and Policy Enforcers. Messages are routed to listeners previsouly added
+and Policy Enforcers. Messages are routed to listeners previously added
 by the Runtime User Agent, to valid Runtime URL addresses handled by the
 Runtime Registry functionality.
 
@@ -1534,21 +1526,17 @@ Access to message BUS is subject to authorisation to prevent cross
 origin attacks / spy from malicious downloaded code including Hyperties,
 Protocol Stubs or Policy Enforcers.
 
-#### Policy Decision Point and Message BUS authorisation
+#### Core Policy Engine
 
-It provides Policy decision functionalities for incoming and outgoing
-messages from / to Service Provider sandboxes, according to Policies
-downloaded and stored locally when associated Hyperties are deployed by
-the Runtime User Agent. The possibility to consult Policies stored
-remotely should also be investigated. It also provides authorisation /
-access control to the Message BUS.
+It provides Policy decision and Policy Enforcement functionalities for
+incoming and outgoing messages from / to Service Provider sandboxes,
+according to Policies downloaded and stored locally when associated
+Hyperties are deployed by the Runtime User Agent. The possibility to
+consult Policies stored remotely should also be investigated. It also
+provides authorisation / access control to the Message BUS.
 
-#### Message BUS Policy Enforcement Point
-
-The Message BUS Policy Enforcement Point, is used by the Message BUS to
-enforce policy actions requested by the Message BUS Policy Decision
-Point e.g. to verify or generate identity assertions, to get valid
-Access tokens.
+The verification or generation of identity assertions, to get valid
+Access tokens, are two examples of actions ruled by policies.
 
 #### Runtime Registry
 
@@ -5577,8 +5565,8 @@ and Privacy (SP '11). IEEE Computer Society, Washington, DC, USA,
 363-378. DOI=10.1109/SP.2011.39
 http://dx.doi.org/10.1109/SP.2011.39](http://www-cs-students.stanford.edu/~ataly/Papers/sp11.pdf)
 
-[15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification
-of the Framework ”, 30-09-2015
+[15] - Deliverable D2.2 “Data Models and Interface Specification of the
+Framework ”, 30-09-2015
 
 [16] - http://w3c.github.io/WebRTC-pc/
 
@@ -5635,8 +5623,7 @@ https://raw.githack.com/hypercomm/wonder/master/docs/api/index.html
 [37] -
 https://raw.githack.com/hypercomm/wonder/master/docs/api/symbols/MessagingStub.html
 
-[38] ReTHINK Deliverable D2.1 “Framework Architecture Definition”,
-31-07-2015.
+[38] Deliverable D2.1 “Framework Architecture Definition”, 31-07-2015.
 
 [39] - [Meteor](http://docs.meteor.com/#/full/quickstart)
 
@@ -5648,7 +5635,7 @@ MVC](https://github.com/awatson1978/meteor-cookbook/blob/master/cookbook/model-v
 [42] - [AngularJS vs. Backbone.js vs.
 Ember.js](https://www.airpair.com/js/JavaScript-framework-comparison)
 
-[43] - [Why Meteor] (http://www.meteorpedia.com/read/Why\_Meteor)
+[43] - [Why Meteor](http://www.meteorpedia.com/read/Why_Meteor)
 
 [44] - [Most Popular JavaScript Frameworks
 2015](http://www.improgrammer.net/most-popular-JavaScript-frameworks-2015/)
@@ -5656,7 +5643,7 @@ Ember.js](https://www.airpair.com/js/JavaScript-framework-comparison)
 [45] - [Peering through WebRTC with
 SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-WebRTC-fog-with-socketpeer/)
 
-[46] - [Web Components] (http://www.w3.org/wiki/WebComponents/)
+[46] - [Web Components](http://www.w3.org/wiki/WebComponents/)
 
 [47] - TURN rfc, https://tools.ietf.org/html/rfc5766
 
@@ -5729,6 +5716,59 @@ https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
 [79] http://www.w3.org/TR/service-workers/
 
 [80] https://jakearchibald.github.io/isserviceworkerready/
+
+[81] https://http2.github.io/
+
+[82] RFC7540 - Hypertext Transfer Protocol version 2
+
+[83] Object RTC - http://ortc.org/
+
+[84] draft-tsvwg-quic-protocol-01 : QUIC: A UDP-Based Secure and
+Reliable Transport for HTTP/2 -
+http://tools.ietf.org/html/draft-tsvwg-quic-protocol-01
+
+[85] http://www.w3.org/2012/sysapps/app-lifecycle/
+
+[86] https://whatwg.org/
+
+[87]
+https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html
+
+[88] http://www.w3.org/TR/CSP2/
+
+[89] http://w3c.github.io/push-api/
+
+[90]
+http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include\_text=1
+
+[91] http://www.w3.org/TR/workers/
+
+[92] http://www.w3.org/TR/service-workers/
+
+[93] http://www.w3.org/2011/04/webrtc/
+
+[94] https://w3c.github.io/webrtc-pc/
+
+[95] http://www.w3.org/TR/mediacapture-streams/
+
+[96] http://www.w3.org/TR/mediastream-recording/
+
+[97] http://www.w3.org/TR/image-capture/
+
+[98] http://w3c.github.io/mediacapture-depth/
+
+[99] http://www.w3.org/TR/mediacapture-fromelement/
+
+[100] http://www.w3.org/TR/audio-output/
+
+[101] http://www.w3.org/TR/webrtc-stats/
+
+[102] http://www.w3.org/TR/screen-capture/
+
+[103] http://apirtc.com/api-docs/
+
+[104]
+http://www.quobis.com/index.php?option=com\_content&task=view&id=285&Itemid=208
 
 (2) Chromium sandbox scheme
 

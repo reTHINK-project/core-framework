@@ -49,10 +49,9 @@ opt Policies for Data Object creation enforce its registration
 
 		note right
 			Hyperty owner is informed
-			 about new DataObject URL		
+			 about new DataObject URL
 		end note
 
-		SP1H@A -> Sync1@A : createAsReporter( \nDataObject, resourceURL)
 
 	end
 
@@ -112,6 +111,8 @@ opt Invited Hyperties can send responses accepting or not to be observer
 
 	...
 end
+
+SP1H@A -> Sync1@A : createAsReporter( \nDataObject, resourceURL)
 
 == Hyperty requests to be Observer of new Data Object ==
 

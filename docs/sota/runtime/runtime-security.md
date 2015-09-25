@@ -1,7 +1,7 @@
 Security in Runtime
 -------------------
 
-In this document, we present the relevant related work on security runtime environments. We focus essentially on two areas: web browsers, and secure elements. The web browsers section present security mechanisms for JavaScript code protection in fully-featured environments (the web browsers themselves). The secure elements section provides an overview of code security runtime for computing devices featuring less functionality and computation capabilities but requiring tighter security requirements during its operation.
+In this section, we present the relevant related work on security runtime environments. We focus essentially on two areas: web browsers, and secure elements. The web browsers section present security mechanisms for JavaScript code protection. The secure elements section provides an overview of code security runtime for computing devices featuring less functionality and computation capabilities but requiring tighter security requirements during its operation.
 
 ### Web Browsers
 
@@ -11,16 +11,16 @@ Traditionally, commercial and open-source web browsers employed a monolithic arc
 
 Nowadays, web browsers evolved into modular architectures, in order to achieve privilege separation and overcome monolithic architectures' limitations. This way, browser developers came up with multiple different architectures to achieve this separation between what is user's property (e.g., credentials, preferences) and what is "web’s" property (e.g., applications' code). In order to achieve this separation in these architectures, multiple techniques have been employed:
 
--	**Sandboxing:** In computer security, a sandbox is a security mechanism which allows untrusted programs to run within a trusted environment, without affecting the environment or other co-located programs. This is usually done by restricting the resources (disk, memory, network) the untrusted software can access. An example is creating scratch memory and disk spaces where it can read/write and limiting the network capabilities it can use, in order to prevent the host environment from getting damaged. This is what Chromium browser [1] applies to separate the user and the web side in a modular architecture. It features two modules:
+-	**Sandboxing:** In computer security, a sandbox is a security mechanism, which allows untrusted programs to run within a trusted environment, without affecting the environment or other co-located programs. This is usually done by restricting the resources (disk, memory and network) that the untrusted software can access. An example is creating scratch memory and disk spaces where it can read/write and limiting the network capabilities it can use, in order to prevent the host environment from getting damaged. This is what Chromium browser [1] applies to separate the user and the web side in a modular architecture. It features two modules:
 
-	-	A **browser kernel module** which acts on behalf of the user and is responsible for implementing the tab-based windowing system of the browser. It stores users' data as its preferences, bookmarks, credentials and cookies and also works as middleware between the native operating system window manager and every instance of the second browser module, the rendering engine.
-	-	The **rendering engine** implements the web application behavior. It interprets and executes web content, serving calls to the DOM API. It is the unique browser part in contact with the untrusted web content. Apart from that, it is also responsible for enforcing the same-origin policy between the user and a website he's visiting.
+	-	A **browser kernel module** that acts on behalf of the user and is responsible for implementing the tab-based windowing system of the browser. It stores users' data as its preferences, bookmarks, credentials and cookies and also works as middleware between the native operating system window manager and every instance of the second browser module, the rendering engine.
+	-	A **rendering engine** that implements the web application behaviour. It interprets and executes web content, serving calls to the DOM API. It is the unique browser part in contact with the untrusted web content. Apart from that, it is also responsible for enforcing the same-origin policy between the user and a website he's visiting.
 
 ![Figure @sota-security-chromium-sandbox: Chromium sandbox scheme](chromium-sandbox.png)
 
 #### Browser Extensions Security
 
-Browser extensions provide useful additional functionality to web browsers, such as facilitating the access to a website's content or even as almost standalone applications running on the browser environment. However, these extensions often introduce serious security issues into both user’s browser and websites. This is because oftentimes extensions are written by well-meaning developers who, however, are not security experts. Extensions can read and alter users' bookmarks and preferences, websites' content and perform requests over the network, many times on behalf of the browser user. Browser extensions are mostly written in JavaScript and HTML, and since JavaScript provides methods for converting a string to code (e.g. "eval"), an extension may be dangerous if misused.
+Browser extensions provide useful additional functionality to web browsers, such as facilitating the access to a website's content or even as almost standalone applications running on the browser environment. However, these extensions often introduce serious security issues into both user’s browser and websites. This is because oftentimes extensions are written by developers with good programming skills who, however, are not security experts. Extensions can read and alter users' bookmarks and preferences, websites' content and perform requests over the network, many times on behalf of the browser user. Browser extensions are mostly written in JavaScript and HTML, and since JavaScript provides methods for converting a string to code (e.g. "eval"), an extension may be dangerous if misused.
 
 Typically, benign extensions face two types of attackers:
 
@@ -77,15 +77,19 @@ In secure computing, a smart card is a typical card with a built-in computer chi
 
 **Hardware**
 
-This single-chip computer is an off-the-shelf **8-bit microcontroller** with added tamper-safe features. While most 8-bit microcontrollers can support at least **64 KBytes** of 8-bit memory, popular smart cards contain 4 to 20 Kbytes of memory, due to size constraints. The memory space of a smart card is divided into RAM, EEPROM and ROM. RAM is used to store temporary values when a program is running, while EEPROM is used to store sensitive data as an encryption key or the account holder info on credit cards. Finally, ROM is used to store the basic programs that run on the smart card. The single-chip computer is embedded in a plastic chip carrier, and both of them hold several tamper-resistant and tamper-detection features.
+This single-chip computer is an off-the-shelf *8-bit microcontroller* with added tamper-safe features. While most 8-bit microcontrollers can support at least *64 KBytes* of 8-bit memory, popular smart cards contain 4 to 20 Kbytes of memory, due to size constraints. The memory space of a smart card is divided into RAM, EEPROM and ROM. RAM is used to store temporary values when a program is running, while EEPROM is used to store sensitive data as an encryption key or the account holder info on credit cards. Finally, ROM is used to store the basic programs that run on the smart card. The single-chip computer is embedded in a plastic chip carrier, and both of them hold several tamper-resistant and tamper-detection features.
 
 ![Figure @sota-security-java-smart-card: Java Smart Card scheme [11]](java-smart-card.jpg)
 
 **Software**
 
-The paucity of 8-bit assembly language courses, books and software tools led engineers to break the smart card application bottleneck by building a Java virtual machine with its runtime support into a 12-Kbyte smart card. Java was the natural answer for three reasons: * Java brings smart card programming into the mainstream of software development * Java “safe programming” security model based on a runtime interpreter is a nontrivial side benefit, due to its processor independence. A Java card can be deployed on multiple smart card models. * Java interpreters were tested to the limit, holes had been found, and fixed.
+The paucity of 8-bit assembly language courses, books and software tools led engineers to break the smart card application bottleneck by building a Java virtual machine with its runtime support into a 12-Kbyte smart card. Java was the natural answer for three reasons:
 
-With this in mind, engineers concluded that Java could preserve the required security in the smart card operation, while allowed a more friendly and well-known programming approach. However, available memory was an issue when deploying such heavy language runtime like Java. Features like garbage collection and exceptions handling were not included in Java Card because of that.
+-	Java brings smart card programming into the mainstream of software development
+-	Java “safe programming” security model based on a runtime interpreter is a nontrivial side benefit, due to its processor independence. A Java card can be deployed on multiple smart card models.
+-	Java interpreters were tested to the limit, holes had been found, and fixed.
+
+With this in mind, engineers concluded that Java could preserve the required security in the smart card operation, while allowed a more friendlier and well-known programming approach. However, available memory was an issue when deploying such heavy language runtime like Java. Features like garbage collection and exceptions handling were not included in Java Card because of that.
 
 **Internet Computing with Java Smart Card**
 
@@ -123,7 +127,7 @@ We present the different mechanisms for protection against malicious code action
 
 **Bytecode verification**
 
-Bytecode verification of Java code guarantees type safety, and thus, memory safety. On normal Java platform, bytecode verification occurs at load time. However, since Java Cards do not support dynamic class loading, this verification must occur at the time an applet is installed to the card. Nevertheless, most Java Cards do not feature an on-card BCV and rely on a digital signature of a third party who is trusted to have performed bytecode verification off-card.
+Bytecode verification of Java code guarantees type safety, and thus, memory safety. On normal Java platform, bytecode verification occurs at load time. However, since Java Cards do not support dynamic class loading, this verification must occur at the time an applet is installed to the card. Nevertheless, most Java Cards do not feature an on-card BCV and rely on a digital signature of a third party that is trusted to have performed bytecode verification off-card.
 
 **Applet firewall**
 
@@ -133,7 +137,7 @@ The applet firewall is an additional defense mechanism present in Java Cards. Th
 
 **CAP File Manipulation**
 
-This is the easiest way of introducing ill-typed code on a Java Card. This can be achieved by editing a CAP (Converted APplet) file to introduce a type flaw in the bytecode and install it to the card. Although, this will only work for cards without an on-card BCV and with unsigned CAP files. In example, by changing a `baload` (byte load) opcode onto a `saload` (short load) one, will make the platform treat a byte array as a short array, and can potentially lead to accessing other applet's memory space.
+This is the easiest way of introducing ill-typed code on a Java Card. This can be achieved by editing a CAP (Converted APplet) file to introduce a type flaw in the bytecode and install it to the card. Despite, this will only work for cards without an on-card BCV and with unsigned CAP files. In example, by changing a `baload` (byte load) opcode onto a `saload` (short load) one, will make the platform treat a byte array as a short array, and can potentially lead to accessing other applet's memory space.
 
 **Abusing Shareable Interface Objects**
 
@@ -141,7 +145,7 @@ The shareable mechanism of Java Card can be used to create type confusion betwee
 
 **Abusing the transaction mechanism**
 
-The Java Card transaction mechanism is probably the trickiest aspect of the Java Card platform. It allows multiple byte-code instructions to be turned into an atomic operation, offering a roll-back mechanism in case the operation is aborted, either through card tear or calling an API method. Buggy implementations of the transaction mechanism in some cards tend to make it not behave as expected. When object references are spread around the code, by assignments to instance fields and local variables, it becomes difficult for the mechanism to keep track of all the references that should be nulled out. The root cause of the problem is that stack-allocated variables, such as `short[] localArray` are not subject to roll-back in the event of a programatically transaction abort (through API method call).
+The Java Card transaction mechanism is probably the trickiest aspect of the Java Card platform. It allows multiple byte-code instructions to be turned into an atomic operation, offering a roll-back mechanism in case the operation is aborted, either through card tear or calling an API method. Buggy implementations of the transaction mechanism in some cards tend to make it not behave as expected. When object references are spread around the code, by assignments to instance fields and local variables, it becomes difficult for the mechanism to keep track of all the references that should be nulled out. The root cause of the problem is that stack-allocated variables, such as *"`short[] localArray`"* are not subject to roll-back in the event of a programmatically transaction abort (through API method call).
 
 #### Dynamic Countermeasures
 

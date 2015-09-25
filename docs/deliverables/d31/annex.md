@@ -37,8 +37,8 @@ As the number of APIs that perform the same functionality proliferate,
 fragmentation occurs. This limits developer access to subscribers, and
 operator and service providers’ choices of development platforms and
 communities. The OMA API Program, through standardization, solves this
-problem. A full OMA API inventory can be found at:
-<http://technical.openmobilealliance.org/Technical/technical-information/oma-api-program/oma-api-inventory>
+problem. A full OMA API inventory can be found
+at:<http://technical.openmobilealliance.org/Technical/technical-information/oma-api-program/oma-api-inventory>
 
 ### Selected APIs with potential relevance for reTHINK
 
@@ -77,55 +77,66 @@ Devices. It is normally used with CoAP. This protocol can be used in
 reTHINK for several components such as the Catalogue as proposed in
 [15].
 
-### W3C WebRTC API
+W3C WebRTC API
+--------------
 
-The Web Real-Time Communications Working Group was created in May 2011
-within the W3C to define client-side APIs to enable Real-Time
+The Web Real-Time Communications Working Group [93] was created in May
+2011 within the W3C to define client-side APIs to enable Real-Time
 Communications in Web browsers.
 
-It has defined a functional WebRTC 1.0 API which is implemented by major
-browser vendors to build real-time media applications in the browser
-without the need of installing any additional plugin. Additionaly to
-real-time media, WebRTC also supports the exchange of generic
-peer-to-peer data thanks to the Datachannel feature. This API is
+It has defined a functional [WebRTC 1.0
+API](https://w3c.github.io/webrtc-pc/) [94] which is implemented by
+major browser vendors to build real-time media applications in the
+browser without the need of installing any additional plugin.
+Additionally to real-time media, WebRTC also supports the exchange of
+generic peer-to-peer data thanks to the Datachannel feature. This API is
 currently supported and production-ready in Firefox, Chrome and Opera.
 
 Together with WebRTC 1.0 API the W3C is working in a series of drafts
 for which can be used toghether with the WebRTC API to create real-time
 media Web applications:
 
--   Media Capture and Streams (getUserMedia): set of JavaScript APIs
-    that allow local media, including audio and video, to be requested
-    from a platform. This API allows to capture real time audio and
-    video from the device which is running the web browsers. It is used
-    by all the WebRTC applications which require capturing audio or
-    video.
--   MediaStream Recording: a recording API for use with MediaStreams as
-    defined in [GETUSERMEDIA]
--   MediaStream Image Capture: specific the takePhoto() and grabFrame()
-    methods, and corresponding camera settings for use with MediaStreams
-    as defined in Media Capture and Streams [GETUSERMEDIA]
--   Media Capture Depth Stream Extensions: extends the Media Capture and
-    Streams specification [GETUSERMEDIA] to allow a depth stream to be
-    requested from the web platform using APIs familiar to web authors.
--   Media Capture from DOM Elements: defines how a stream of media can
-    be captured from a DOM element, such as a <video>, <audio>, or
+-   [Media Capture and
+    Streams](http://www.w3.org/TR/mediacapture-streams/)[95]: set of
+    JavaScript APIs that allow local media, including audio and video,
+    to be requested from a platform. This API allows to capture real
+    time audio and video from the device which is running the web
+    browsers. It is used by all the WebRTC applications which require
+    capturing audio or video.
+-   [MediaStream Recording](http://www.w3.org/TR/mediastream-recording/)
+    [96]: a recording API for use with MediaStreams as defined in [95]
+-   [MediaStream Image
+    Capture](http://www.w3.org/TR/image-capture/)[97]: specific the
+    takePhoto() and grabFrame() methods, and corresponding camera
+    settings for use with MediaStreams as defined in Media Capture and
+    Streams [95]
+-   [Media Capture Depth Stream
+    Extensions](http://w3c.github.io/mediacapture-depth/)[98]: extends
+    the Media Capture and Streams specification [95] to allow a depth
+    stream to be requested from the web platform using APIs familiar to
+    web authors.
+-   [Media Capture from DOM
+    Elements](http://www.w3.org/TR/mediacapture-fromelement/)[99]:
+    defines how a stream of media can be captured from a DOM element,
+    such as a <video>, <audio>, or
     <canvas>
-    element, in the form of a MediaStream [GETUSERMEDIA].
--   Audio output devices API: defines a set of JavaScript APIs that let
-    a Web application manage how audio is rendered on the user audio
-    output devices.
--   Identifiers for WebRTC's Statistics API: defines a set of JavaScript
-    APIs that allow access to the statistical information about a
-    PeerConnection
--   Screen Capture: defines how a user's display, or parts thereof, can
-    be used as the source of a media stream using getOutputMedia, an
-    extension to the Media Capture API [GETUSERMEDIA].
+    element, in the form of a MediaStream [95].
+-   [Audio output devices API](http://www.w3.org/TR/audio-output/)[100]:
+    defines a set of JavaScript APIs that let a Web application manage
+    how audio is rendered on the user audio output devices.
+-   [Identifiers for WebRTC's Statistics
+    API](http://www.w3.org/TR/webrtc-stats/)[101]: defines a set of
+    JavaScript APIs that allow access to the statistical information
+    about a PeerConnection
+-   [Screen Capture](http://www.w3.org/TR/screen-capture/) [102]:
+    defines how a user's display, or parts thereof, can be used as the
+    source of a media stream using getOutputMedia, an extension to the
+    Media Capture API [95].
 
-#### Applicability in reTHINK
+### Applicability in reTHINK
 
 The WebRTC is going to be intensively used in reTHINK to implement
-hyperties for Human-to-Human scenarios and also M2M scenarios where
+Hyperties for Human-to-Human scenarios and also M2M scenarios where
 WebRTC Datachannel is used.
 
 ORTC
@@ -133,11 +144,11 @@ ORTC
 
 ### Introduction
 
-ORTC is an alternative to the current WebRTC API 1.0 to write WebRTC
-Applications to be executed in Web browser.
+[ORTC](http://ortc.org/) [83] is an alternative to the current WebRTC
+API 1.0 to write WebRTC Applications to be executed in Web browser.
 
 The protocols on the wire are exactly the same so it is compatible with
-aaplications written using the current API.
+applications written using the current API.
 
 ![Figure 3: WebRTC API evolution](webrtc_API_evolution.png)
 
@@ -174,7 +185,7 @@ An example of application of this new element is the ability to change
 the bitrate used for a video in-progess session which is being sent over
 a bad-quality connection keeping the parameters of the audio mediatrack.
 In WebRTC 1.0 this changes requires a SDP re-negotiation but with ORTC
-this is not nececesary.
+this is not necessary.
 
 Although RTCRtpSender was not included in the WebRTC 1.0 definition,
 this element was planned to be supported by Chrome from version 39.
@@ -182,9 +193,9 @@ this element was planned to be supported by Chrome from version 39.
 #### Compatibility between ORTC and WebRTC 1.0.
 
 Although SDP is not mandatory but WebRTC 1.0 applications would make it
-compatible thanks to Javasrcipts shims. All the use cases that ORTC
-would enable are already possible but they are more complex to implement
-as they require manual SDP manipulations which are error-prone and may
+compatible thanks to JavaSrcipt shims. All the use cases that ORTC would
+enable are already possible but they are more complex to implement as
+they require manual SDP manipulations which are error-prone and may
 require several Offer/Answer SDP exchanges to update the multimedia
 sessions.
 
@@ -197,46 +208,51 @@ along as other browsers which supports WebRTC 1.0.
 W3C SysApps
 -----------
 
-The W3C SysApps working group was originally chartered to provide a
-runtime and security model however, it has not been possible to reach
-such objective. In the meanwhile we may find proprietary web runtimes,
-FFOS and Chrome, which provide a security model for installed packaged
-web runtimes.
+The [W3C SysApps working
+group](http://www.w3.org/2012/sysapps/app-lifecycle/)[85] was originally
+chartered to provide a runtime and security model however, it has not
+been possible to reach such objective. In the meanwhile we may find
+proprietary Web Runtimes, FFOS and Chrome, which provide a security
+model for installed packaged web Runtimes.
 
-The WHATWG was formed by individuals of Apple, the Mozilla Foundation,
-and Opera Software in 2004, in response to the slow development of World
-Wide Web Consortium (W3C) Web standards and W3C's decision to abandon
-HTML in favor of XML-based technologies.
+The [WHATWG](https://whatwg.org/)[86] was formed by individuals of
+Apple, the Mozilla Foundation, and Opera Software in 2004, in response
+to the slow development of World Wide Web Consortium (W3C) Web standards
+and W3C's decision to abandon HTML in favor of XML-based technologies.
 
 On 10 April 2007, the Mozilla Foundation, Apple, and Opera Software
 proposed that the new HTML working group of the W3C adopt the WHATWG’s
 HTML5 as the starting point of its work and name its future deliverable
 as "HTML5". On 9 May 2007, the new HTML working group resolved to do
-that
+that.
 
 ### W3C Application Lifecycle and Events
 
-The W3C Application Lifecycle and Events draft (last version from 16 May
-2014) extends the [Service Worker](w3c-service-workers.md) global
+The W3C Application Life-cycle and Events draft (last version from 16
+May 2014) extends the [Service Worker](w3c-service-workers.md) global
 execution context, to allow web developers to author applications that
 manage the application lifecycle and react to system events e.g. email
 or voip application. These capabilities allow application developers to
 create applications that integrate closely with the underlying system.
 
-The following functionalities are provided: \* A background App or
-Service can run without a visible user interfaces \* An application is
-able to decide when to show the user interface \* The Application can be
-terminated without user’s consent, and that is able to restore to its
-previous state. \* The application is able to show a different user
-interface given how the app was launched. For example, if launched as a
-photo picker, the application will not show the default application
-window, but instead creates a special purpose user interface. \* The
-Application is only launched for a specific set of events eg the runtime
-uses somekind of events pre-filtering mechanism. For example, if an
-application listens to a "USB plugged" event, it can additionally ask to
-only listen to a specific device connected or a specific port. \* The
-application is able to enumerate windows associated with it, and create
-new windows.
+The following functionalities are provided:
+
+-   A background App or Service can run without a visible user
+    interfaces\* An application is able to decide when to show the user
+    interface
+-   The Application can be terminated without user’s consent, and that
+    is able to restore to its previous state.
+-   The application is able to show a different user interface given how
+    the app was launched. For example, if launched as a photo picker,
+    the application will not show the default application window, but
+    instead creates a special purpose user interface.
+-   The Application is only launched for a specific set of events eg the
+    runtime uses some kind of events pre-filtering mechanism. For
+    example, if an application listens to a "USB plugged" event, it can
+    additionally ask to only listen to a specific device connected or a
+    specific port.
+-   The application is able to enumerate windows associated with it, and
+    create new windows.
 
 This API extends the ServiceWorkerGlobalScope interfaces in the
 following way:
@@ -252,21 +268,24 @@ following way:
 
 Similar to Service Workers, this extension can facilitate the
 development of some Runtime features notably to govern the runtime
-life-cycle of Hyperty instances. However, it seems this draft has not
-much support by the industry. However, [Chrome Packaged App
+life-cycle of Hyperty instances. However, [it seems this draft has not
+much support by the
+industry](https://lists.w3.org/Archives/Public/public-sysapps/2015Apr/0001.html)[87].
+However, [Chrome Packaged App
 lifecycle](https://developer.chrome.com/apps/app_lifecycle) looks
 similar. [Firefox Add-ons](https://developer.mozilla.org/en-US/Add-ons)
 should also support some kind of App life-cycle.
 
 ### Service Workers
 
-Service workers are based on previous [Web
-Worker](http://www.w3.org/TR/workers/) W3C work and they essentially act
-as proxy servers that sit between web applications, and the browser and
-network (when available.) They are intended to (amongst other things)
-enable the creation of effective offline experiences, intercepting
-network requests and taking appropriate action based on whether the
-network is available and updated assets reside on the server.
+[Service workers](http://www.w3.org/TR/service-workers/)[92] are based
+on previous [Web Worker](http://www.w3.org/TR/workers/) W3C work [91]
+and they essentially act as proxy servers that sit between web
+applications, and the browser and network (when available.) They are
+intended to (amongst other things) enable the creation of effective
+offline experiences, intercepting network requests and taking
+appropriate action based on whether the network is available and updated
+assets reside on the server.
 
 A service worker is an event-driven worker registered against an origin
 and a path. It takes the form of a JavaScript file that can control the
@@ -303,7 +322,11 @@ Where `/my-app/sw.js` is the location of the ServiceWorker script, and
 it controls pages whose URL begins `/my-app/`.
 
 At this point, your service worker will observe the following
-lifecycle: \* Download \* Install \* Activate
+life-cycle:
+
+-   Download
+-   Install
+-   Activate
 
 The service worker is immediately downloaded when a user first accesses
 a server worker–controlled site/page. Installation is attempted when the
@@ -323,10 +346,11 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 
-Service Workers provides the basis for other features including: \*
-[Push](http://w3c.github.io/push-api/) \* [Background
-sync](https://github.com/slightlyoff/BackgroundSync) \*
-[Geofencing](https://github.com/slightlyoff/Geofencing)
+Service Workers provides the basis for other features including:
+
+-   [Push](http://w3c.github.io/push-api/)[89]
+-   [Background sync](https://github.com/slightlyoff/BackgroundSync)
+-   [Geofencing](https://github.com/slightlyoff/Geofencing)
 
 Service Workers are still an experimental technology only supported in
 Desktop Chrome and Firefox.
@@ -337,15 +361,15 @@ Service Workers provides features that can facilitate the development of
 some Runtime features including Event BUS, ProtOfly engine, Policy
 Engine. Its usage to support the Hyperty instance itself should also be
 evaluated. However it seems this technology is only available in
-Browsers and not in server side JavaScript runtime like node.js.
+Browsers and not in server side JavaScript runtime like NodeJS.
 
 ### Content Security Policy Level 2
 
-Content Security Policy (CSP) is an added layer of security that helps
-to detect and mitigate certain types of attacks, including Cross Site
-Scripting (XSS) and data injection attacks. These attacks are used for
-everything from data theft to site defacement or distribution of
-malware.
+[Content Security Policy (CSP)](http://www.w3.org/TR/CSP2/)[88] is an
+added layer of security that helps to detect and mitigate certain types
+of attacks, including Cross Site Scripting (XSS) and data injection
+attacks. These attacks are used for everything from data theft to site
+defacement or distribution of malware.
 
 Defines a policy language used to declare a set of content restrictions
 for a web resource, and a mechanism for transmitting the policy from a
@@ -362,18 +386,21 @@ implementations:
 
 Content-Security-Policy — standard header name proposed by the W3C
 document. Google Chrome supports this as of version 25. Firefox supports
-this as of version 23, released on 6 August 2013. X-WebKit-CSP —
-experimental header introduced into Google Chrome and other WebKit-based
-browsers (Safari) in 2011. X-Content-Security-Policy — experimental
-header introduced in Gecko 2 based browsers (Firefox 4 to Firefox 22,
-Thunderbird 3.3, SeaMonkey 2.1). Support for the sandbox directive is
-also available in Internet Explorer 10 and Internet Explorer 11 using
-the experimental X-Content-Security-Policy header.
+this as of version 23, released on 6 August 2013.
+
+X-WebKit-CSP — experimental header introduced into Google Chrome and
+other WebKit-based browsers (Safari) in 2011.
+
+X-Content-Security-Policy — experimental header introduced in Gecko 2
+based browsers (Firefox 4 to Firefox 22, Thunderbird 3.3, SeaMonkey
+2.1). Support for the sandbox directive is also available in Internet
+Explorer 10 and Internet Explorer 11 using the experimental
+X-Content-Security-Policy header.
 
 There's initial support for CSP in some web frameworks such as AngularJS
 and Django.
 
-Example: `script-src 'self'; object-src 'none'`
+Example:`script-src 'self'; object-src 'none'`
 
 Security policies contain a set of security policy directives
 (script-src and object-src in the example above), each responsible for
@@ -387,10 +414,10 @@ follows:
 
 `"Content-Security-Policy:" 1#policy-token`
 
-For example, a response might include the following header field:
-`Content-Security-Policy: script-src 'self'`
+For example, a response might include the following header
+field:`Content-Security-Policy: script-src 'self'`
 
-A Content Security Policy consists of a U+003B SEMICOLON (;) delimited
+A Content Security Policy consists of a `U+003B SEMICOLON (;)` delimited
 list of directives.
 
 #### Applicability in reTHINK
@@ -401,11 +428,12 @@ protOfly engine.
 
 ### W3C Push API
 
-W3C Push API work began in the W3C Web Applications (WEBAPPS) Working
-Group to provide very simple JavaScript APIs for push client registering
-and message receipt. It was in large part, driven by the urgent WebRTC
-use case of waking up an application for a real-time incoming call. The
-API has two logical pieces:
+[W3C Push API](http://w3c.github.io/push-api/)[89] work began in the W3C
+Web Applications (WEBAPPS) Working Group to provide very simple
+JavaScript APIs for push client registering and message receipt. It was
+in large part, driven by the urgent WebRTC use case of waking up an
+application for a real-time incoming call. The API has two logical
+pieces:
 
 -   a pushRegistrationManager that consults the user agent about which
     push service to use and returns information (a registration id and a
@@ -440,11 +468,13 @@ is covered by the IETF WEBPUSH protocol.
 ### IETF Web Push
 
 In order to provide a standard way for push notification to be used on
-the Internet, the IETF WEBPUSH working group was created in late 2014.
-The WEBPUSH WG is developing an HTTP2-based mechanism for applications
-“to request the delivery of data to a device using a consolidated push
-notification service. This protocol will include the ability to push the
-same message to multiple subscribed devices.
+the Internet, the [IETF WEBPUSH working
+group](http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include_text=1)[90]
+was created in late 2014. The WEBPUSH WG is developing an HTTP2-based
+mechanism for applications “to request the delivery of data to a device
+using a consolidated push notification service. This protocol will
+include the ability to push the same message to multiple subscribed
+devices.
 
 Expected clients are both web applications and field gateways that
 consolidate and forward messages to embedded devices. Several models
@@ -686,7 +716,7 @@ QUIC (Quick UDP Internet Connection)
 Internet has evolved a lot since the first version of TCP was designed
 40 years ago. Many RFCs have added functionality to TCP since then and
 it played a vital role being the transport of the WWW for decades. UDP
-was designed to be used in real-time scenarios where the realiability is
+was designed to be used in real-time scenarios where the reliability is
 not so important as getting a very low delay and being tolerant to
 packet losses.
 
@@ -714,32 +744,37 @@ are established over wireless connections and they are established from
 mobile devices.
 
 The features the new protocol must support to meet the today's Internet
-requirements: \* it is necessary to make the web faster and the low
-layer protocols must adapt to the evolution of the web applications. \*
-connection establishment latency must be reduced to improve the user
-experience and to make the web and Internet more usable. \* the web must
-be secyre by default, TCP does not secure the traffic and an optional
-upper layer must be added to provide this security.
+requirements:
 
-QUIC introduces improvement in many aspects of the TCP protocol: \* TCP
-needs a three-handshake to create a connection. If the connection is
-established over TLS more RTT are necessary. \* TCP provides reliable,
-ordered and error-checked delivery based re-tx, acknowledgments and
-checksum. The cost of having this features is that any packet loss will
-trigger retransmissions which will normaly delay the delivery of the
-rest of packets. \* TCP allows to stablish a single full duplex byte
-stream and all the data over that stream will be treated processed
-indistinctly. \*TCP requires an extra protocol on top of it (TLS) to
-provide encryptin and authentication. It adds an overhead and delays in
-the connection setup.
+-   it is necessary to make the web faster and the low layer protocols
+    must adapt to the evolution of the web applications.
+-   connection establishment latency must be reduced to improve the user
+    experience and to make the web and Internet more usable.
+-   the web must be secyre by default, TCP does not secure the traffic
+    and an optional upper layer must be added to provide this security.
+
+QUIC introduces improvement in many aspects of the TCP protocol:
+
+-   TCP needs a three-handshake to create a connection. If the
+    connection is established over TLS more RTT are necessary.
+-   TCP provides reliable, ordered and error-checked delivery based
+    re-tx, acknowledgments and checksum. The cost of having this
+    features is that any packet loss will trigger retransmissions which
+    will usually delay the delivery of the rest of packets.\* TCP allows
+    to establish a single full duplex byte stream and all the data over
+    that stream will be treated processed indistinctly.
+-   TCP requires an extra protocol on top of it (TLS) to provide
+    encryptin and authentication. It adds an overhead and delays in the
+    connection setup.
 
 #### Why not to use SCTP for this?
 
 SCTP can be considered as an alternative for TCP. It has two main
-features which could make it an atarctive choice:\
-\* SCTP also provides stream multiplexing over a single connection. \*
-DTLS provides SSL quality encryption and authentication over UDP in the
-same way as TLS over TCP.
+features which could make it an attractive choice:
+
+-   SCTP also provides stream multiplexing over a single connection.
+-   DTLS provides SSL quality encryption and authentication over UDP in
+    the same way as TLS over TCP.
 
 These features made that SCTP had been chosen to be used internally by
 WebRTC Datachannels however it presents some problems which forced the
@@ -766,7 +801,7 @@ the IETF in short-term.
 
 ### QUIC main features
 
-QUIC can be deployed in today's internet, actually it is been used in
+QUIC can be deployed in today's Internet, actually it is been used in
 many real deployments without having to apply any modification in any
 intermediate node. This is a key point which makes its adoption much
 easier than IPv6.
@@ -779,14 +814,14 @@ It has a reliable-stream support and the packet losses which affect one
 strem does not affect the rest of streams. This reduces the Head Of Line
 (HOL) blocking due to packet loss.
 
-It provides a better congestion avoidance than TCP which implcitly
+It provides a better congestion avoidance than TCP which implicitly
 considered that any packet loss was due to a network congestion which is
 not normally true for wireless connections.
 
 The privacy and Security it provides is comparable to TLS but with a
-much lower delay in the connection setup which can from 0 in the most
-optmistic cas to 2 RTTs in the worst case. This is a key feature of QUIC
-as it allows to improve the user experience.
+much lower delay in the connection setup which can vary from 0, in the
+most optimistic case, to 2 RTTs, in the worst case. This is a key
+feature of QUIC as it allows to improve the user experience.
 
 Connection are identified by a Connection Identifier not by layer 3 and
 layer 4 elements (IPs and ports). This fits very well in mobile
@@ -799,17 +834,17 @@ QUIC can be considered as an intelligent layer over UDP which provides
 enhanced features. UDP is intensively used by VoIP and gamers for years
 in very latency-sensitive applications. On the other side, 91-94% of the
 users which had TCP connectivity with Google can make outbound UDP
-connections so it is possible to build a transport in today's internet
-over UDP. It is also necesary to consider NAT unbinding which does not
+connections so it is possible to build a transport in today's Internet
+over UDP. It is also necessary to consider NAT unbinding which does not
 happen to TCP. This problem has been addressed internally by QUIC
-designers through the use of keepalives packets.
+designers through the use of keep alives packets.
 
 ### Applicability to reThink project
 
 Including the use of QUIC as a requirement or a recommendation could
 help to support more reliably mobility scenarios where the End-User IP
 may be changed during a connection with the Signaling service.
-Additionaly thee transport layer connectivity provided by QUIC is more
+Additionally thee transport layer connectivity provided by QUIC is more
 suitable for wireless connections (longer RTTs, packet lost and changes
 at IP level) than TCP. QUIC has been designed bearing HTTP/2 in mind as
 it improves its performance a lot, however the use of QUIC by other
@@ -828,27 +863,27 @@ Google. This repository and its sources and dependencies were extracted
 from Chromium's QUIC Implementation with a few modifications and patches
 to minimize dependencies needed to build QUIC library. This code can be
 used to be integrated with HTTP Server like Apache and nginx but this
-has not been done so far. This library implementes
+has not been done so far.
 
 In the Chromium repository it is available a standalone client and
 server which can be used as a reference for ReThink project
 implementations.
 http://src.chromium.org/viewvc/chrome/trunk/src/net/tools/quic/
 
-In all the imeplementations QUIC is used with SPDY and HTTP/2 so its use
+In all the implementations QUIC is used with SPDY and HTTP/2 so its use
 separated from those protocols has to be investigated.
 
 ### Drawbacks of using QUIC as transport protocol
 
-QUIC is a very new protocol so it is still not widely used. It means
-that many existing systems and projects does still not support it so
-testing and implementation which requires an additional effrot compared
-to TCP.
+[QUIC is a very new
+protocol](http://tools.ietf.org/html/draft-tsvwg-quic-protocol-01) [84]
+so it is still not widely used. It means that many existing systems and
+projects does still not support it so testing and implementation which
+requires an additional effort compared to TCP.
 
-On the other side, despite the fact that is a protocol likely to become
-an RFC darft in short-term it has not been formally specified by the
-IETF. This is the official definition document mantained by Google:
+This is the official definition document maintained by Google:
 https://docs.google.com/document/d/1RNHkx\_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/edit
+
 Any implementation made today may not be completely compliant with the
 final protocol.
 
@@ -5315,12 +5350,12 @@ Service Frameworks SOTA
 #### Overview
 
 AngularJS [51] is a JavaScript MVC Framework developed and promoted by
-Google, to build well architectured and maintainnable web applications.
+Google, to build well architectured and maintainable web applications.
 It is usually mistaken for a library due to its lightweight than normal
 frameworks. It is entirely based on JavaScript and a client side
 framework. It is supported by multiple browsers.
 
-![Figure 36: AngularJS Framework](mvc_angular.png)
+![Figure 36: AngularJS Framework](mvc_angular.jpg)
 
 **Main Features**
 
@@ -5340,26 +5375,29 @@ framework. It is supported by multiple browsers.
     class names, as well as comments.  Directives are a way to teach
     HTML new tricks. A directive is just a function which executes when
     the compiler encounters it in the DOM `<input ng-model='name'>`. It
-    is possible to define custom derective
-    `<span draggable>Drag ME</span>`.
-
+    is possible to define custom
+    derective`<span draggable>Drag ME</span>`.
 -   ng-app Directive: Angular uses this directive to auto-bootstrp an
     application. Only one ng-app directive can be used per HTML
-    document. `<html ng-app>`
+    document.`<html ng-app>`
 -   Expression : Expressions are JavaScript-like code snippets that are
-    usually placed in bindings such as {{ expression }} \`\`\`
+    usually placed in bindings such as ´{{ expression }}
     <body>
     1+2={{1+2}}
     </body>
+    \`
+-   *Form & Control* : Forms and controls provide validation services,
+    so that the user can be notified of invalid input. This provides a
+    better user experience, because the user gets instant feedback on
+    how to correct the error.
+-   Modules: Modules declaratively specify how an application should be
+    bootstrapped. There can be multiple modules in an app Those could be
+    interdependent too. Modules are configured with routes, controllers,
+    models etc.
 
 <!-- -->
 
-    * *Form & Control* : Forms and controls provide validation services, so that the user can be notified of invalid input. This provides a better user experience, because the user gets instant feedback on how to correct the error.``
-    Modules: Modules declaratively specify how an application should be bootstrapped. There can be multiple modules in an app
-    Those could be interdependent too. Modules are configured with routes, controllers, models etc.
-
-var myAppModule = angular.module('myApp', [--here goes the dependent
-Modules--]); \`\`\`
+    var myAppModule = angular.module('myApp', [--here goes the dependent Modules--]);
 
 -   *Routing* : It Is used for deep-linking URLs to controllers and
     views (HTML partials). It watches \$location.url() and tries to map
@@ -5372,7 +5410,7 @@ Modules--]); \`\`\`
     design pattern that deals with how code gets hold of its
     dependencies
 -   *Filters* : Angular filters format data for display to the user.
-    Custon filters can be created as well
+    custom filters can be created as well
 
 #### Evaluation
 
@@ -5380,21 +5418,25 @@ Modules--]); \`\`\`
 
 -   Encourages MVC design pattern
 -   Two way data binding allows for automation synchronization of data
-    bewteen model and view components
+    between model and view components
 -   Written for testability and with modularized code which enables
-    clarity , extensibiliy and strong built-in-services
+    clarity , extensibility and strong built-in-services
 -   Active project with a large eco-system, leading to higher rates of
-    inquries answered and new developments
+    inquiries answered and new developments
 -   End-to end integration testing and Unit testing
 -   Fast Development once familiar with structure and concept
 -   Very expressive, leading to less code for same result as with other
     libraries
 
-\#\#\#\#\# Negative \* Complex Directives API \* Good for Single Page
-Apps (SPA), SO, is not the best option to go for Hyperty Developments \*
-Complex Directives API \* Runtime configuration only only before
-Bootstrap procedure. No configuration possible after. \* Scopes are easy
-to use but difficult to debug
+##### Negative
+
+-   Complex Directives API
+-   Good for Single Page Apps (SPA), SO, is not the best option to go
+    for Hyperty Developments
+-   Complex Directives API
+-   Runtime configuration only only before Bootstrap procedure. No
+    configuration possible after.
+-   Scopes are easy to use but difficult to debug
 
 #### Requirement Analysis
 
@@ -5403,29 +5445,35 @@ Analysis against **Service Framework** Requirements
 -   [Service Framework **MUST** be Messaging Node
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
     **Yes**
+
 -   [The Service Framework **MUST** avoid any JavaScript
     conflicts](https://github.com/reTHINK-project/core-framework/issues/43):
     **No** This is a namespace issue and potential conflicts with other
     frameworks are likely to occur
+
 -   [Service Framework **MUST** be Modular in
     nature](https://github.com/reTHINK-project/core-framework/issues/42):
     **Yes** The framework is modular, and offers developers possibility
     to write their own modules or import third party modules.
+
 -   [The Service Framework **MUST** be open
     source](https://github.com/reTHINK-project/core-framework/issues/39):
     **Yes**
 
-AngularJS is an open-source framework maintained by Google and by a
-community of individual developers and corporations - [Service Framework
-**SHOULD** be device
-agnostic](https://github.com/reTHINK-project/core-framework/issues/38):
-**Yes** It runs on all devices and operating systems envisioned to host
-the Hyperty Runtime (Android, iOS, Raspberry PI, Linux VM, Windows VM) -
-[Service Framework **MUST** be light weight and
-fast](https://github.com/reTHINK-project/core-framework/issues/37):
-**yes** The current minimized gzipped web version is 172KB while the
-minimized gzipped web app version is 146KB. Gzip compresses it down to
-one third and Data per page has small memory footprint
+    AngularJS is an open-source framework maintained by Google and by a
+    community of individual developers and corporations
+
+-   [Service Framework **SHOULD** be device
+    agnostic](https://github.com/reTHINK-project/core-framework/issues/38):
+    **Yes** It runs on all devices and operating systems envisioned to
+    host the Hyperty Runtime (Android, iOS, Raspberry PI, Linux VM,
+    Windows VM)
+
+-   [Service Framework **MUST** be light weight and
+    fast](https://github.com/reTHINK-project/core-framework/issues/37):
+    **yes** The current minimized gzipped web version is 172KB while the
+    minimized gzipped web app version is 146KB. Gzip compresses it down
+    to one third and Data per page has small memory footprint
 
 -   [Service Framework **SHOULD** support Model-View-Controller design
     pattern](https://github.com/reTHINK-project/core-framework/issues/36):
@@ -5435,7 +5483,7 @@ one third and Data per page has small memory footprint
 
 #### Overview
 
-BackboneJS [52] is a web frontend framework that provides structure to
+BackboneJS [52] is a web front-end framework that provides structure to
 web applications by specifying models with key-value binding and custom
 events, collections with a rich API of enumerable functions, views with
 declarative event handling, and connects it all to your existing API
@@ -5445,8 +5493,7 @@ over a RESTful JSON interface.
 
 The model looks as follows:
 
-![Figure 37: BackboneJS
-Framework](backbone-MV.png "image from http://backbonejs.org")
+![Figure 37: BackboneJS Framework](backbone-MV.png)
 
 ##### Model
 
@@ -5493,10 +5540,10 @@ collection.
 -   provides no "golden pattern" for structuring of an application
 -   leaves lots of structuring decisions to the developer
 -   well suited for creation of own frameworks
--   **no two-way data binding --\> lots of boilerplate code required**
+-   **no two-way data binding** --\> lots of boilerplate code required
 -   **views change DOM directly by looking up css class names**
--   --\> changing CSS or modifications in DOM (wrapping, nesting)
-    requires updates in code
+    -   changing CSS or modifications in DOM (wrapping, nesting)
+        requires updates in code
 
 #### Requirement Analysis
 
@@ -5504,54 +5551,57 @@ Analysis against **Service Framework** Requirements
 
 -   [Service Framework **MUST** be Messaging Node
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
-    **Yes** -[Service Framework SHOULD support Model-View-Controller
-    design
-    pattern](https://github.com/reTHINK-project/core-framework/issues/36)
--   NO
--   The Backbone framework provides a MV Pattern with direct interaction
-    between Models and Views.
--   The controller part is mainly done in the code of the models and
-    also the views.
+    **Yes**
 
+-   [Service Framework SHOULD support Model-View-Controller design
+    pattern](https://github.com/reTHINK-project/core-framework/issues/36)
+    **No**
+
+    -   The Backbone framework provides a MV Pattern with direct
+        interaction between Models and Views.
+    -   The controller part is mainly done in the code of the models and
+        also the views.
 -   [Service Framework MUST be light weight and
     fast](https://github.com/reTHINK-project/core-framework/issues/37)
--   YES
--   minimized gzipped version is very small (approx 5.6kb)
--   mandatory dependcies to underscore.js (5kb) and jQuery (32kb) or
-    Zepto(9,1kb, a JQuery clone)
--   small memory footprint
+    **Yes**
 
+    -   minimized gzipped version is very small (approx 5.6kb)
+    -   mandatory dependcies to underscore.js (5kb) and jQuery (32kb) or
+        Zepto(9,1kb, a JQuery clone)
+    -   small memory footprint
 -   [Service Framework **SHOULD** be device
     agnostic](https://github.com/reTHINK-project/core-framework/issues/38)
--   rather YES
--   every view is tight to its own root-DOM element and responsible for
-    the tree below it
--   Therefore Backbone.js relies on runtimes that provide a DOM tree.
--   But this does NOT have to be a "real" DOM tree --\> can be used with
-    e.g. React virtual DOM (React has implemented a browser-independent
-    events and DOM system)
--   --\> needs special additions in non-browser runtime environments
+    **rather YES**
 
+    -   every view is tight to its own root-DOM element and responsible
+        for the tree below it
+    -   Therefore Backbone.js relies on runtimes that provide a DOM
+        tree.
+    -   But this does NOT have to be a "real" DOM tree --\> can be used
+        with e.g. React virtual DOM (React has implemented a
+        browser-independent events and DOM system)
+    -   --\> needs special additions in non-browser runtime environments
 -   [Service Framework MUST be Modular in
     nature](https://github.com/reTHINK-project/core-framework/issues/42)
--   rather NO
--   Backbone itself lacks a Controller concept and Views and Models are
-    relatively tightly coupled
--   therefore also resulting modules should be tightly coupled to view
-    elements and not easily portable (would need further investigations)
--   Models stand-alone and their synchronization capabilities with
-    backend storages should be portable and fulfill this requirement
+    **rather NO**
+
+    -   Backbone itself lacks a Controller concept and Views and Models
+        are relatively tightly coupled
+    -   therefore also resulting modules should be tightly coupled to
+        view elements and not easily portable (would need further
+        investigations)
+    -   Models stand-alone and their synchronization capabilities with
+        backend storages should be portable and fulfill this requirement
 
 ### MeteorJS Framework
 
 #### Overview
 
 [Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a JavaScript
-plataform, offering a complete full-stack framework for delivering web
+platform, offering a complete full-stack framework for delivering web
 and mobile apps;
 
-![Figure 39 Meteor Plataform
-Overview](meteor-platform.png "image from https://www.meteor.com/features")
+![Figure 39 Meteor Plataform Overview](meteor-platform.png)
 
 **Main Features**
 
@@ -5677,53 +5727,54 @@ Template.task.events({
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
     **No**
 
-It has its own "Messaging Node", who is called [DDP (distributed Data
-Protocol)](https://www.meteor.com/ddp).
+    It has its own "Messaging Node", who is called [DDP (distributed
+    Data Protocol)](https://www.meteor.com/ddp).
 
 -   [The Service Framework **MUST** avoid any JavaScript
     conflicts](https://github.com/reTHINK-project/core-framework/issues/43):
     **Yes**
 
-The platform is constructed in pure JavaScript, don't have any other
-frameworks dependencies;
+    The platform is constructed in pure JavaScript, don't have any other
+    frameworks dependencies;
 
 -   [Service Framework **MUST** be Modular in
     nature](https://github.com/reTHINK-project/core-framework/issues/42):
     **Yes**
 
-The platform is complete modular, we can write our own modules or import
-third party modules.
+    The platform is complete modular, we can write our own modules or
+    import third party modules.
 
 -   [The Service Framework **MUST** be open
     source](https://github.com/reTHINK-project/core-framework/issues/39):
     **Yes**
 
-*“Meteor is a complete open source platform for building web and mobile
-apps in pure JavaScript.”*
+    > “Meteor is a complete open source platform for building web and
+    > mobile apps in pure JavaScript.”
 
 -   [Service Framework **SHOULD** be device
     agnostic](https://github.com/reTHINK-project/core-framework/issues/38):
     **Yes**
+
 -   [Service Framework **MUST** be light weight and
     fast](https://github.com/reTHINK-project/core-framework/issues/37):
     **yes**
 
-Meteor is build on top of Node.js and MongoDB, and both are fast;
+    Meteor is build on top of Node.js and MongoDB, and both are fast;
 
 -   [Service Framework **SHOULD** support Model-View-Controller design
     pattern](https://github.com/reTHINK-project/core-framework/issues/36):
     **Yes/No**
 
-**No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but
-**Yes** we can have MVC, in other way:
+    **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but
+    **Yes** we can have MVC, in other way:
 
-*"The MVC pattern in Meteor is dead simple. The Model is coded up in
-HTML, the Controller is coded in JavaScript, and the View is coded up in
-CSS. It's that simple."*
+    > "The MVC pattern in Meteor is dead simple. The Model is coded up
+    > in HTML, the Controller is coded in JavaScript, and the View is
+    > coded up in CSS. It's that simple."
 
-    Model          HTML         What Is Displayed       
-    View           CSS          How It Is Displayed        
-    Controller     JavaScript   When It Is Displayed  
+        Model          HTML         What Is Displayed       
+        View           CSS          How It Is Displayed        
+        Controller     JavaScript   When It Is Displayed  
 
 ### StapesJS Framework
 

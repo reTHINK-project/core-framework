@@ -10,21 +10,20 @@ node "Service Provider" as SP {
 node "Runtime Device" as rt {
 
 node "Service Provider Sandbox" as SPSand {
-	
+
 }
 
 node "Core Sandbox" as core {
 
 node "" as core1 {
- node "*            Message      BUS                *" as Bus 
+ node "*            Message      BUS                *" as Bus
 
- node "Msg BUS\nPEP" as BusPEP
 
  node "Registry" as Reg
 
  node "Identities\nModule" as ID
 
- node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+ node "Policy Engine (PDP/PEP)\n(incl Authorisation)\n+Policies Repository )" as PDP
 
  node "QoS\nUser Agent" as QoS
 
@@ -39,13 +38,11 @@ node "" as core1 {
 
  RunUA .> core1 : deploy&manage
 
- BusPEP <-up- Bus : enforce
-
  PDP <-left- Bus : authorise
 
- BusPEP -down-> QoS : set QoS
+ PDP -down-> QoS : set QoS
 
- BusPEP -down-> ID : generate or\n verify assertions
+ PDP -down-> ID : generate or\n verify assertions
 
  Reg <-up- Bus: resolve\nmessage
 
