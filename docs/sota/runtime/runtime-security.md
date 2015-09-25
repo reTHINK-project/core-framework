@@ -87,7 +87,7 @@ The paucity of 8-bit assembly language courses, books and software tools led eng
 
 With this in mind, engineers concluded that Java could preserve the required security in the smart card operation, while allowed a more friendly and well-known programming approach. However, available memory was an issue when deploying such heavy language runtime like Java. Features like garbage collection and exceptions handling were not included in Java Card because of that.
 
-SIM Cards Functioning
+#### SIM Cards Functioning
 
 Common SIM cards used in mobile or satellite phones, use smart cards principles to store and use information which might require higher privacy concerns. Apart from its serial number (ICCID), mobile subscriber number (IMSI) and some contacts inputted by the user, smart cards used in SIM cards also feature security authentication and ciphering information, along with two passwords: The PIN code, a personal identification code, and the PUK code, for PIN unblocking.
 
