@@ -24,6 +24,9 @@ From the above user scenarios specific actors/roles, requirments and use cases w
 
 
 ### Data Models
+In D2.2[] Data models were specified from 3 different points of view - the service provider view, developer view and consumer view. For the Hyperty Framework, focus will be laid only the developer view. The identified data models for the developer's perspective include the following:
+
+**Hypety Types**
 
 ### Interface Design
 
