@@ -1,6 +1,6 @@
 ## Service Framework 
 
-Hyperty Framework is a Software Development Toolkit (SDK) aims at facilitating the development of Hyperties to be executed within the reTHINK architecture. The functionalities provided by the Hyperty Framework will complement the functionalities of the Hyperty Runtime and functionalities provided for the Network QoS component. The main objective is to provide JavaScript libraries in speeding up the implementation of conversational services (audio, video, chat, screen sharing) and context enabled services (IoT, context delivery, location). These services will be fully implemented in WP5 and demonstrated in WP6.
+The Service Framework is a Software Development Toolkit (SDK) that will feature a comprehensive set of application program interfaces (APIs) and JavaScript libraries to facilitate the development of Hyperties within the reTHINK architecture. The functionalities provided by the Service Framework will complement the functionalities of the Hyperty Runtime and functionalities provided for the Network QoS component. The main objective is to provide JavaScript libraries in speeding up the implementation of conversational services (audio, video, chat, screen sharing) and context enabled services (IoT, context delivery, location). These services will be fully implemented in WP5 and demonstrated in WP6.
 The requirements from a software perspective have been defined in section 2.4. In this chapter, a preliminary set of requirements from the reTHINK concept will be discussed and a high level capability set for the Framework will be presented. For this input from three different areas of the reTHINK project will be examined namely:
 * Uses Cases as specified in WP1 Task1.1
 * Data Models as specified in WP2 Task 2.3
@@ -14,7 +14,7 @@ D1.1 – “Use Cases and Sustainable Business Models” specified 15 user scena
 * Apartment Rental Monitoring And Control Application
 * Smart Enterprise –Contextual Enriched Communication in Smart Enterprises 
 
-From the above user scenarios specific actors/roles, requirments and use cases where identified and specified. These information acts as information pool upon which the functionalities or APIs the Hyperty Framework could provide for developers. These functionalities include:
+From the above user scenarios specific actors/roles, requirments and use cases where identified and specified. These information acts as information pool upon which the functionalities or APIs the Service Framework could provide for developers. These functionalities include:
 * Communication Service: the Hyperty Runtime already provides an API for H2H and M2M communication. Developers will be able to use this service directly from the Hyperty Runtime API 
 * Identity Service: a provider mechanism to access internal reTHNK IdP services or external IdPs (Google, Facebook, etc.)  
 * Data Storage functions: for stroing persistent data 
@@ -24,10 +24,10 @@ From the above user scenarios specific actors/roles, requirments and use cases w
 
 
 ### Data Models
-In D2.2 Data models were specified from 3 different points of view - the service provider view, developer view and consumer view. For the Hyperty Framework, focus will be laid only the developer view. The identified data models for the developer's perspective include the following:
+In D2.2 Data models were specified from 3 different points of view - the service provider view, developer view and consumer view. For the Service Framework, focus will be laid only the developer view. The identified data models for the developer's perspective include the following:
 
 **Hyperty Descriptor Model**: 
-As described in D2.2, the Hyperty data model is used to model different types of Hyperty provided by the Service Provider. The Hyperty descriptor contains sets of data objects with information to the HypertyCatalogueURL, the type of Hyperty (communicator, identity or context), policies, contrainst and configuration parameters. The Hyperty Framework will provide JavaScript object templates specifying the Hyperty Descriptor Data Objects and extending them to create new Hyperty Types.
+As described in D2.2, the Hyperty data model is used to model different types of Hyperty provided by the Service Provider. The Hyperty descriptor contains sets of data objects with information to the HypertyCatalogueURL, the type of Hyperty (communicator, identity or context), policies, contrainst and configuration parameters. The Service Framework will provide JavaScript object templates specifying the Hyperty Descriptor Data Objects and extending them to create new Hyperty Types.
 
 **User Identity Model**: 
 This data model models a user entity within the reTHINK infrastructure. It has a unique identifier (UserUUIDURL) and multiple identifierTypes (UserURL). The user entity is characterised by its profile (UserProfile) which may include informations associated to the user : profile page URL, username, birthdate, picture, etc. 
@@ -36,11 +36,11 @@ interface with the protocol stub for Identity managment.
 
 
 **Context Model**:
-The context model is used to model different media types for representing simple sensors and device meta data which can be transmited in a protocol such as CoAP or HTTP. The data model contains context information such as id, ContextType, time, tag and a list of context values which can be used in the M2M reTHINK uses cases. The Hyperty Framework will provide factory functionalities for creating and managing these data objects.
+The context model is used to model different media types for representing simple sensors and device meta data which can be transmited in a protocol such as CoAP or HTTP. The data model contains context information such as id, ContextType, time, tag and a list of context values which can be used in the M2M reTHINK uses cases. The Service Framework will provide factory functionalities for creating and managing these data objects.
 
 
 **Communication Model**: 
-The communication data model will be to model communications within the retHINK architecture for messaging and communicator Hyperties. The data model includes information for identifying a communication (id, owner, duration, etc.), the status of the communication (pending, open, closed, failed, paused), a list of participants (identity), the quality, the connection data object (webRTC connection) and message. The Hyperty Framework should provide a set of functionalities for creation and management of the sessions. Some of these functionalities will be provided by the Hyperty Runtime. It is still to be determined to what abstraction level this should be made available to developers.  
+The communication data model will be to model communications within the retHINK architecture for messaging and communicator Hyperties. The data model includes information for identifying a communication (id, owner, duration, etc.), the status of the communication (pending, open, closed, failed, paused), a list of participants (identity), the quality, the connection data object (webRTC connection) and message. The Service Framework should provide a set of functionalities for creation and management of the sessions. Some of these functionalities will be provided by the Hyperty Runtime. It is still to be determined to what abstraction level this should be made available to developers.  
 
 ** Message Model** :
 
