@@ -6,7 +6,7 @@ It has defined a functional [WebRTC 1.0 API](https://w3c.github.io/webrtc-pc/) [
 
 Together with WebRTC 1.0 API the W3C is working in a series of drafts for which can be used toghether with the WebRTC API to create real-time media Web applications:
 
--	[Media Capture and Streams (http://www.w3.org/TR/mediacapture-streams/): set of JavaScript APIs that allow local media, including audio and video, to be requested from a platform. This API allows to capture real time audio and video from the device which is running the web browsers. It is used by all the WebRTC applications which require capturing audio or video.
+-	[Media Capture and Streams](http://www.w3.org/TR/mediacapture-streams/): set of JavaScript APIs that allow local media, including audio and video, to be requested from a platform. This API allows to capture real time audio and video from the device which is running the web browsers. It is used by all the WebRTC applications which require capturing audio or video.
 -	[MediaStream Recording](http://www.w3.org/TR/mediastream-recording/) [96]: a recording API for use with MediaStreams as defined in [95]
 -	[MediaStream Image Capture](http://www.w3.org/TR/image-capture/)[97]: specific the takePhoto() and grabFrame() methods, and corresponding camera settings for use with MediaStreams as defined in Media Capture and Streams [95]
 -	[Media Capture Depth Stream Extensions](http://w3c.github.io/mediacapture-depth/)[98]: extends the Media Capture and Streams specification [95] to allow a depth stream to be requested from the web platform using APIs familiar to web authors.
