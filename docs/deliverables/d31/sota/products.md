@@ -55,7 +55,13 @@ Using socket.io different events are fired on connection status : connect. Fired
 
 ApiRTC can be used in a Node.js based Messaging Node.
 
-Integration of ApiRTC in Rethink can be done by adding differents connectors depending of needs : - Identity Management : connector to Identity server - QoS Management : connector to QoS server - Other Web communication platform : connector to communication platform using ProtOFly - VoIP Platform : Connector to WebRTC GW - Connector to Media Servers
+Integration of ApiRTC in Rethink can be done by adding different connectors depending of needs:
+
+-	Identity Management : connector to Identity Servers
+-	QoS Management : connector to QoS server
+-	Other Web communication platform : connector to communication platform using ProtOFly
+-	VoIP Platform : Connector to WebRTC GW
+-	Connector to Media Servers
 
 A Redis Cluster with Pub/Sub mechanism can be used to manage communications between connectors
 
