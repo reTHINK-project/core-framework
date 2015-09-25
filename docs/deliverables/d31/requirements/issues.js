@@ -21,7 +21,7 @@ github.authenticate({
     token: "85c24218fcfef098b9276ee7f862c4d3657b51f3"
 });
 
-// collect messaging node requirements
+// collect Messaging Node requirements
 
 github.issues.repoIssues({
     // optional:
@@ -41,7 +41,7 @@ github.issues.repoIssues({
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
+    requirements = requirements + "- **" + res[i].title + ":** " + res[i].body +"\n";
 
     }
 
@@ -74,7 +74,7 @@ github.issues.repoIssues({
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
+    requirements = requirements + "- **" + res[i].title + ":** " + res[i].body +"\n";
     }
 
    var fs = require('fs');
@@ -106,7 +106,7 @@ github.issues.repoIssues({
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
+    requirements = requirements + "- **" + res[i].title + ":** " + res[i].body +"\n";
     }
 
    var fs = require('fs');
@@ -138,7 +138,7 @@ github.issues.repoIssues({
     for ( var i = 0 ; i<res.length; i++) {
     console.log(res[i].title);
 
-    requirements = requirements + "<p>**" + res[i].title + "**</p> " + res[i].body +"\n";
+    requirements = requirements + "- **" + res[i].title + ":** " + res[i].body +"\n";
     }
 
    var fs = require('fs');

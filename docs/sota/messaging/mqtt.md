@@ -157,11 +157,11 @@ The current formal protocol specification can be found at:
 
 ####Javscript / Node.js
 
-*  [Eclipse Paho HTML5 JavaScript over WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/)
+*  [Eclipse Paho HTML5 JavaScript over WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.JavaScript.git/)
 
 *  [mqtt.js](https://github.com/adamvr/MQTT.js)
 
-*  [node_mqtt_client](https://github.com/yilun/node_mqtt_client) ([more information](http://ceit.uq.edu.au/content/simple-mqtt-cient-nodejs))
+*  [node_mqtt_client](https://github.com/yilun/node_mqtt_client) ([more information](http://ceit.uq.edu.au/content/simple-mqtt-cient-Node.js))
 
 *  [IBM-provided PhoneGap / Apache Cordova MQTT plug-in for Android](http://www-01.ibm.com/support/docview.wss?rs=171&uid=swg24033580&loc=en_US&cs=utf-8&lang=en) - JavaScript API is identical to Eclipse Paho HTML5 JavaScript
 
@@ -288,7 +288,7 @@ Analysis against **Messaging Node** Requirements
   * Yes
   * Using [Persistence Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)

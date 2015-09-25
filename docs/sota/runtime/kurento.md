@@ -2,7 +2,7 @@
 
 ### Overview
 
-[Kurento](http://www.kurento.org/) is an Open Source Software WebRTC media server, that can be used to manage media flows :
+[Kurento](http://www.kurento.org/) is an open source Software WebRTC media server, that can be used to manage media flows :
 
 - Send / Receive
 - Recording
@@ -24,7 +24,7 @@ Kurento is mainly composed of the two elements :
 ![Figure @sota-kurento-arch: Kurento Architecture](Architecture-Kurento.png) 
 
 Application developers can use Kurento Clients or Kurento API directly for creating their multimedia enabled applications.
-Developpers can use Javascript clients, Java Client or Kurento Protocol. This is interesting as it can easily be integrated with NodeJs
+Developpers can use JavaScript clients, Java Client or Kurento Protocol. This is interesting as it can easily be integrated with Node.js
 
 
 ### APIs
@@ -47,5 +47,5 @@ http://www.kurento.org/docs/current/langdoc/jsdoc/kurento-utils-js/index.html
 
 Multiparty conversations supported with MCU/SFU for Star topologies can be supported with server side Hyperties running in the MCU/SFU ie there would be protofly in the MCU/SFU.
 
-Kurento Media Server can be connected through a NodeJs Client : it will be possible to add protOfly interface on nodeJs to then connect to the MCU.
+Kurento Media Server can be connected through a Node.js Client : it will be possible to add protOfly interface on Node.js to then connect to the MCU.
 

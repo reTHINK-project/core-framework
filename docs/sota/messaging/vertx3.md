@@ -192,14 +192,14 @@ AuthHandler can also be rewritten, but in this case we use simple browser authen
 **Example: simple communication send/receive in the same client connected via SockJS**
  * Register handler to receive messages in "chat.to.client" address
  
- ```javascript
+ ```JavaScript
  eb.registerHandler('chat.to.client', function(msg) {
  	console.log('Message Received: ' + msg);
  });
  ```
 
  * Send message to "chat.to.server" address
- ```javascript
+ ```JavaScript
  eb.send('chat.to.server', {name: 'tim', age: 35});
  ```
 

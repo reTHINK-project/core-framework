@@ -6,8 +6,8 @@ The following agreements were achieved accross WP3, WP4, WP5 and WP6 in a meetin
 * [Documentation that is not directly related with source code and source code itself, are in separated repos. One Github repository per main component](#github-structure).
 
 * [Quobis Proposal for Versioning](versioning_proposal_by_quobis_to_be_discussed.md).[other options](#version-control)
-* [Javascript source code structure](#javascript-source-code-structure)
-* [Javascript development environment](#javascript-environment)
+* [JavaScript source code structure](#JavaScript-source-code-structure)
+* [JavaScript development environment](#JavaScript-environment)
 
 ## Github structure
 
@@ -16,7 +16,7 @@ The following agreements were achieved accross WP3, WP4, WP5 and WP6 in a meetin
 The main rational is not to constrain internal discussions and documentations from the source code and associated documentation that will be later published to the public. Another reason is to be flexible on the selection of the source code versioning methodology eg avoid the need to clone the full documentation in order to contribute to the source code.
 
 **One Github repository per main component**
-Consensus was also agreed on having a repository per component (e.g. one repo for core-runtime, another for the hyperty-framework and another for vertx message node) in order to be more developer friendly (e,g, an Hyperty developer would only need to have access and clone hyperty-framework not eg runtime or message node related repos). 
+Consensus was also agreed on having a repository per component (e.g. one repo for core-runtime, another for the hyperty-framework and another for vertx Messaging Node) in order to be more developer friendly (e,g, an Hyperty developer would only need to have access and clone hyperty-framework not eg runtime or Messaging Node related repos). 
 
 These additional private repos would only be needed during a short period of time ( 3 or 4 months?) while these components are not publicly published.
 
@@ -27,7 +27,7 @@ runtime-core
 runtime-browser // do we need to separate from core
 runtime-node // do we need to separate from core
 vertx-msg-node
-nodejs-msg-node
+Node.js-msg-node
 matrix-msg-node
 hyperty-framework // will we have more than one?
 hyperty-catalogue // will we have more than one?
@@ -92,7 +92,7 @@ Each developer make a fork from the main repository and develop on the top of hi
 
 ---
 
-## Javascript Source code structure
+## JavaScript Source code structure
 ```
 ├── core
 │   ├── dist
@@ -162,7 +162,7 @@ npm*.log.*
 
 ##### <a id="karma"></a>karma.conf.js
 inside this file, you can add other folders
-```javascript
+```JavaScript
 // Karma configuration
 // Generated on Tue Aug 25 2015 10:41:43 GMT+0100 (WEST)
 
@@ -191,13 +191,13 @@ module.exports = function(config) {
 ```
 ---
 
-## Javascript Environment
+## JavaScript Environment
 
-We have an direct dependencies from nodejs and npm, they can be installed separately or both with [nvm](https://github.com/creationix/nvm)
+We have an direct dependencies from Node.js and npm, they can be installed separately or both with [nvm](https://github.com/creationix/nvm)
 
 ### dependencies:
 
-* nodejs 
+* Node.js 
 * npm
 * karma - Make the comunication with karma and jenkins. See more on [karma](http://karma-runner.github.io/0.13/index.html)
 * mocha - Unit test tool. See more on [http://mochajs.org](http://mochajs.org/)

@@ -14,9 +14,9 @@ sota\projects_annex.md ^
 ..\..\sota\projects\wonder-messages.md ^
 ..\..\sota\projects\M2M_projects.md ^
 sota\runtime_annex.md ^
-..\..\sota\runtime\webrtc-org.md ^
+..\..\sota\runtime\WebRTC-org.md ^
 ..\..\sota\runtime\openwebrtc.md ^
-..\..\sota\runtime\v8-javascript-engine.md ^
+..\..\sota\runtime\v8-JavaScript-engine.md ^
 ..\..\sota\runtime\fxos.md ^
 ..\..\sota\runtime\jitsi.md ^
 ..\..\sota\runtime\docker.md ^
@@ -33,7 +33,7 @@ sota\messaging_annex.md ^
 ..\..\sota\messaging\xmpp.md ^
 ..\..\sota\messaging\mqtt.md ^
 ..\..\sota\messaging\psyc.md ^
-..\..\sota\messaging\nodejs.md ^
+..\..\sota\messaging\Node.js.md ^
 sota\qos_annex.md ^
 ..\..\sota\qos\coturn.md ^
 sota\service-framework_annex.md ^

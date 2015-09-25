@@ -2,28 +2,28 @@
 
 ### Overview
 
-In the scope of the reTHINK project NodeJs [22] is a candidate technology for the Messaging Node.
+In the scope of the reTHINK project Node.js [22] is a candidate technology for the Messaging Node.
 
-From https://nodejs.org/ :
+From https://Node.js.org/ :
 
 Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
-Several additional packages are available to be used with nodeJs : https://www.npmjs.com/
+Several additional packages are available to be used with Node.js : https://www.npmjs.com/
 
 It can be used with component like Redis, socket.io to enhance connectivity and redundancy
 
 
-A fork of nodejs exist : iojs but a merge seems to be ongoing.
+A fork of Node.js exist : iojs but a merge seems to be ongoing.
 
-NodeJs is already used in several WebRTC platform or product. (NodeJs can be used in front of Kurento) 
+Node.js is already used in several WebRTC platform or product. (Node.js can be used in front of Kurento) 
 
 
 ### Architecture
 
-NodeJS is divided into two main components: the core and its modules. The core is built in C and C++. It combines Google’s V8 JavaScript engine with Node’s Libuv library and protocol bindings including sockets and HTTP.
+Node.js is divided into two main components: the core and its modules. The core is built in C and C++. It combines Google’s V8 JavaScript engine with Node’s Libuv library and protocol bindings including sockets and HTTP.
 
 
-![Figure @sota-messaging-arch-node: NodeJS Architecture](Archi-NodeJs.png)
+![Figure @sota-messaging-arch-node: Node.js Architecture](Archi-Node.js.png)
 
 
 
@@ -31,7 +31,7 @@ More information are avaialble in this document : http://mcgill-csus.github.io/s
 
 ### APIs
 
-Available API are described on nodejs website : https://nodejs.org/api/
+Available API are described on Node.js website : https://Node.js.org/api/
 
 But this can be completed thanks to the different packages available on https://www.npmjs.com/
 
@@ -42,12 +42,12 @@ But this can be completed thanks to the different packages available on https://
 
 * [It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
   * Yes
-  * ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
+  * ProtOFly connector can be developped. JS connector can be develop on top of Node.js to enble protofly on server side. This connector will be for example reusable to connect Kurento Media Server
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
   * Yes (socket.io). Socket.io enables the usage of different transport protocol to establish connection between user and server. (Long polling, WebSocket ...)
    
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes - Several logging modules available : log4js, winston, bunyan ... Logs can be dispalyed in console, store in file with log rotate, send to a network entity ... 
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
@@ -56,7 +56,7 @@ But this can be completed thanks to the different packages available on https://
 * [Messaging Node deployments with carrier grade scalability](https://github.com/reTHINK-project/core-framework/issues/16)
   * Using:
     * Cluster Mode
-    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy
+    * Redis cluster : it is possible to use Redis Cluster with PUB/SUB mechanism : several Node.js entities can be connected through the redis cluster : this can enable load balancing, redundancy
     
 * [Messaging Node should be tolerant to unstable connections](https://github.com/reTHINK-project/core-framework/issues/15)
   * Yes - socket.io can manage reconnection with different configurable parameters (timeout, retries ...)
@@ -82,7 +82,7 @@ the amount specified by reconnectionDelay.
   * Yes 
 
 * [Messaging Node must be deployable in the most used Virtual Machines](https://github.com/reTHINK-project/core-framework/issues/12)
-  * Yes - NodeJs is available on Linux, windows, mac
+  * Yes - Node.js is available on Linux, windows, mac
 
 * [Messaging Node should require minimal computing resources](https://github.com/reTHINK-project/core-framework/issues/11)
   * Yes

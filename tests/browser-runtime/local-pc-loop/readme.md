@@ -1,6 +1,6 @@
 Verifing and testing [browser runtime](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/implementation/browser-runtime.md)
 
-This testings are made with Javascript ES6 by the way, we need installing some extra packages;
+This testings are made with JavaScript ES6 by the way, we need installing some extra packages;
 We are using [materializecss](http://materializecss.com/) probably have some issues;
 
 This code is made for testing and can be more optimized, at this moment can be a bit confused;
@@ -13,7 +13,7 @@ The agent folder contains:
 * [main.js](agent/js/main.js) - have all logic and how to use for [Demo](agent/demo.html) (without streaming throught iframe);
 
 #### requirements:
-* nodejs
+* Node.js
 * npm
 * gulp - npm install gulp-cli -g
 * bower - npm install bower -g
@@ -38,9 +38,9 @@ http://127.0.0.1:8080/demo.html - to see how it works, duplicate window and make
 
 ### Runtime Folder
 
-The runtime only have a index.html to show how to work the webRTC through an iframe.
+The runtime only have a index.html to show how to work the WebRTC through an iframe.
 
-You need to have a nodejs installed and live-server to run this demo;
+You need to have a Node.js installed and live-server to run this demo;
 
 ```
 live-server --no-browser --port=4000

@@ -2,7 +2,7 @@
 
 #### Overview
 
-[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a Javascript plataform, offering a complete full-stack framework for delivering web and mobile apps;
+[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a JavaScript plataform, offering a complete full-stack framework for delivering web and mobile apps;
 
 
 ![Figure @sota-meteor Meteor Plataform Overview](meteor-platform.png "image from https://www.meteor.com/features")
@@ -34,10 +34,10 @@ url(/background.png). Note that /public is not part of the image URL.
 - **/private**
 These files can only be accessed by server code through Assets API and are not accessible to the client.
 
-**or** we can, in same javascript file, wrapping our code in
+**or** we can, in same JavaScript file, wrapping our code in
 
 
-```javascript
+```JavaScript
 app.js
 
 if (Meteor.isClient) {
@@ -53,13 +53,13 @@ if (Meteor.isServer) {
 
 Client connection:
 
-```javascript
+```JavaScript
 Tasks = new Mongo.Collection("tasks");
 ```
 
 Insert:
 
-```javascript
+```JavaScript
 Template.body.events({
   "submit .new-task": function (event) {
     // This function is called when the new task form is submitted
@@ -72,7 +72,7 @@ Template.body.events({
 
 Query:
 
-```javascript
+```JavaScript
 Template.body.helpers({
     tasks: function () {
       // Show newest tasks first
@@ -83,7 +83,7 @@ Template.body.helpers({
 
 Delete:
 
-```javascript
+```JavaScript
 Template.task.events({
   "click .delete": function () {
     Tasks.remove(this._id);
@@ -107,13 +107,13 @@ Template.task.events({
 
 #### Requirement Analysis
 
- - [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **No**
+ - [Service Framework **MUST** be Messaging Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **No**
 
-It has its own "message node", who is called [DDP (distributed Data Protocol)](https://www.meteor.com/ddp).
+It has its own "Messaging Node", who is called [DDP (distributed Data Protocol)](https://www.meteor.com/ddp).
 
  - [The Service Framework **MUST** avoid any JavaScript conflicts](https://github.com/reTHINK-project/core-framework/issues/43): **Yes**
 
-The platform is constructed in pure javascript, don't have any other frameworks dependencies;
+The platform is constructed in pure JavaScript, don't have any other frameworks dependencies;
 
  - [Service Framework **MUST** be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42): **Yes**
 
@@ -126,17 +126,17 @@ The platform is complete modular, we can write our own modules or import third p
  - [Service Framework **SHOULD** be device agnostic](https://github.com/reTHINK-project/core-framework/issues/38): **Yes**
  - [Service Framework **MUST** be light weight and fast](https://github.com/reTHINK-project/core-framework/issues/37): **yes**
 
-Meteor is build on top of NodeJs and MongoDB, and both are fast;
+Meteor is build on top of Node.js and MongoDB, and both are fast;
 
  - [Service Framework **SHOULD** support Model-View-Controller design pattern](https://github.com/reTHINK-project/core-framework/issues/36): **Yes/No**
 
 **No**, it isn't MVC pattern is more a MVM(Model-View-Mapper), but **Yes** we can have MVC, in other way:
 
-*"The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in Javascript, and the View is coded up in CSS. It's that simple."*
+*"The MVC pattern in Meteor is dead simple. The Model is coded up in HTML, the Controller is coded in JavaScript, and the View is coded up in CSS. It's that simple."*
 
 ```
 Model          HTML         What Is Displayed       
 View           CSS          How It Is Displayed        
-Controller     Javascript   When It Is Displayed  
+Controller     JavaScript   When It Is Displayed  
 ```
 

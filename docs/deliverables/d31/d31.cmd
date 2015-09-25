@@ -39,14 +39,14 @@ specs\runtime-intra-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-2-bob-receives-invitation.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-3-alice-is-aknowledged-invitation-received.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-4-notification-update.md ^
-..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-5-bob-webrtc.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-5-bob-WebRTC.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-intra-comm-6-alice-DO-synch.md ^
 specs\runtime-inter-h2h.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-1-alice-invites.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-2-bob-receives-invitation.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-3-alice-is-aknowledged-invitation-received.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-4-notification-update.md ^
-..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-5-bob-webrtc.md ^
+..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-5-bob-WebRTC.md ^
 ..\..\specs\runtime\dynamic-view\h2h-communication\h2h-inter-comm-6-alice-DO-synch.md ^
 specs\runtime-implementation.md ^
 ..\..\specs\runtime\implementation\browser-runtime.md ^

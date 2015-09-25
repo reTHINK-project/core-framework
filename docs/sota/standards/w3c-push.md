@@ -30,6 +30,6 @@ This working group will create an HTTP based protocol that will allow applicatio
 
 ### Applicability to reTHINK
 
-The ability to push notifications towards Hyperty runtime is an essential feature that must be supported according to these standards.
+The ability to push notifications towards Hyperty Runtime is an essential feature that must be supported according to these standards.
 
 

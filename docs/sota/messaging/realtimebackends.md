@@ -55,7 +55,7 @@ http://www.leggetter.co.uk/2013/12/09/choosing-realtime-web-app-tech-stack.html
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
   * No, as the transport protocol is hidden from the remote machine.
    
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes - Several logging modules available... 
 
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)

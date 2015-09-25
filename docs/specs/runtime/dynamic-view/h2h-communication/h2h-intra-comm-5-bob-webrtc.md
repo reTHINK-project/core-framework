@@ -2,7 +2,7 @@
 
 
 <!--
-@startuml "h2h-intra-comm-5-bob-webrtc.png"
+@startuml "h2h-intra-comm-5-bob-WebRTC.png"
 
 	autonumber
 !define SHOW_Runtime1B
@@ -61,7 +61,7 @@ end
 @enduml
 -->
 
-![Figure @runtime-h2h-intra-comm-5-bob-webrtc: Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-webrtc.png)
+![Figure @runtime-h2h-intra-comm-5-bob-WebRTC: Bob gatheres WebRTC resources](h2h-intra-comm-5-bob-WebRTC.png)
 
 
 

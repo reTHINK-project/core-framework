@@ -1,9 +1,9 @@
 // Type definitions for WebRTC
-// Project: http://dev.w3.org/2011/webrtc/
+// Project: http://dev.w3.org/2011/WebRTC/
 // Definitions by: Ken Smith <https://github.com/smithkl42/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-// Taken from http://dev.w3.org/2011/webrtc/editor/getusermedia.html
+// Taken from http://dev.w3.org/2011/WebRTC/editor/getusermedia.html
 
 interface MediaStreamConstraints {
   audio: any;

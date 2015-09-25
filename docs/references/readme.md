@@ -41,11 +41,11 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 [15] - ReTHINK Deliverable D2.2 “Data Models and Interface Specification of the Framework
 ”, 30-09-2015
 
-[16] - http://w3c.github.io/webrtc-pc/
+[16] - http://w3c.github.io/WebRTC-pc/
 
 [17] - http://w3c.github.io/mediacapture-main/
 
-[18] - http://www.webrtc.org/
+[18] - http://www.WebRTC.org/
 
 [19] - http://www.openwebrtc.org/
 
@@ -53,7 +53,7 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [21] - https://developers.google.com/v8/
 
-[22] - https://nodejs.org/en/
+[22] - https://Node.js.org/en/
 
 [23] - https://www.docker.com/
 
@@ -93,13 +93,13 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [41] - [Meteorpedia](http://www.meteorpedia.com/read/Why_Meteor)
 
-[42] - [AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/javascript-framework-comparison)
+[42] - [AngularJS vs. Backbone.js vs. Ember.js](https://www.airpair.com/js/JavaScript-framework-comparison)
 
 [43] - [Why Meteor] (http://www.meteorpedia.com/read/Why_Meteor)
 
-[44] - [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-javascript-frameworks-2015/)
+[44] - [Most Popular JavaScript Frameworks 2015](http://www.improgrammer.net/most-popular-JavaScript-frameworks-2015/)
 
-[45] - [Peering through WebRTC with SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-webrtc-fog-with-socketpeer/)
+[45] - [Peering through WebRTC with SocketPeer](https://hacks.mozilla.org/2015/04/peering-through-the-WebRTC-fog-with-socketpeer/)
 
 [46] - [Web Components] (http://www.w3.org/wiki/WebComponents/)
 
@@ -157,7 +157,7 @@ Applications Security. IEEE Conference on Communications and Network Security 20
 
 [73] http://w3c.github.io/push-api/
 
-[74] http://thenewdialtone.com/webrtc-browser-push-notification/
+[74] http://thenewdialtone.com/WebRTC-browser-push-notification/
 
 [75] http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include_text=1
 

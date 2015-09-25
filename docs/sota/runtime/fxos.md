@@ -34,11 +34,11 @@ Analysis against [Hyperty Runtime Requirements](https://github.com/reTHINK-proje
   * tested basic A/V calls + separate apps that used the DataChannel to transport arbitrary files
 
 
-* [The runtime must support standard Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+* [The runtime must support standard JavaScript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
   * YES
-  * "Gecko" is the Javascript interpreter
-  * provides Javascript access to a lot of Web APIs (even non-standardized)
-  * Whole UI (Gaia) is based on HTML, Javascript, CSS
+  * "Gecko" is the JavaScript interpreter
+  * provides JavaScript access to a lot of Web APIs (even non-standardized)
+  * Whole UI (Gaia) is based on HTML, JavaScript, CSS
 
 
 * [The Runtime should support Web Socket](https://github.com/reTHINK-project/core-framework/issues/4)
@@ -68,6 +68,6 @@ Analysis against [Hyperty Runtime Requirements](https://github.com/reTHINK-proje
 
 * [The effort to introduce new capabilities in the runtime should be reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
   * YES
-  * extension with Javascript libraries is possible very easy
+  * extension with JavaScript libraries is possible very easy
   * due to the open source nature of the Gecko and Gonk layers it is also possible to add low- and medium-level capabilities there
   * The effort for low-level extensions will be relatively high.

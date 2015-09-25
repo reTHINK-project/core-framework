@@ -221,7 +221,7 @@ if (typeof window === 'undefined' || !window.navigator) {
   // The RTCPeerConnection object.
   window.RTCPeerConnection = function(pcConfig, pcConstraints) {
     // Translate iceTransportPolicy to iceTransports,
-    // see https://code.google.com/p/webrtc/issues/detail?id=4869
+    // see https://code.google.com/p/WebRTC/issues/detail?id=4869
     if (pcConfig && pcConfig.iceTransportPolicy) {
       pcConfig.iceTransports = pcConfig.iceTransportPolicy;
     }

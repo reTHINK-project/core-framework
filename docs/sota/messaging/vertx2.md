@@ -180,20 +180,20 @@ outboundPermitted.add(new JsonObject().putString("address", "aliceHandler"));
 sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
 ```
 
-**Example: communication between two javascript clients connected via SockJS**
+**Example: communication between two JavaScript clients connected via SockJS**
 
 Both client applications perform log-in on the EventBus.
-```javascript
+```JavaScript
 eb.login('alice','alice123', function(reply){console.log(reply);});
 ```
 
 Then the client A(alice) wants to send messages to the client B(bob), so client B(bob) needs to register a handler. 
 Before the client A(alice) can send a message to client B(bob), B must first register himself.
-```javascript
+```JavaScript
 eb.registerHandler('bobHandler', function(reply){console.log(reply);});
 ```
 After that client A (alice) can publish messages on client B (bob) handler
-```javascript 
+```JavaScript 
 eb.publish('bobHandler','Hello bob from alice');
 ```
 When client A publishes a message to client B handler, this message will be first forwarded to the authorization module because of inbounpermitted configuration.

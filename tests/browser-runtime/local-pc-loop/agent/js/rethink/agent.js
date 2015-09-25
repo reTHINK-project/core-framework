@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-import 'webrtc-adapter';
+import 'WebRTC-adapter';
 import ObjectEvent from './utils/objectEvent';
 import config from '../configs/config';
 

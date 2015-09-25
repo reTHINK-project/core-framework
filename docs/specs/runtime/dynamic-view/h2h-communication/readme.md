@@ -12,7 +12,7 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 #### [Bob's App interaction and Alice's connection update] (h2h-intra-comm-4-notification-update.md)
 
-#### [Bob gathers WebRTC resources] (h2h-intra-comm-5-bob-webrtc.md)
+#### [Bob gathers WebRTC resources] (h2h-intra-comm-5-bob-WebRTC.md)
 
 #### [Synchronization of Alice's Data Object] (h2h-intra-comm-6-alice-DO-synch.md)
 
@@ -28,6 +28,6 @@ As agreed in the conf call of 13th July, this use case is splitted into 2 diagra
 
 #### [Bob's App interaction and Alice's connection update] (h2h-inter-comm-4-notification-update.md)
 
-#### [Bob gathers WebRTC resources] (h2h-inter-comm-5-bob-webrtc.md)
+#### [Bob gathers WebRTC resources] (h2h-inter-comm-5-bob-WebRTC.md)
 
 #### [Synchronization of Alice's Data Object] (h2h-inter-comm-6-alice-DO-synch.md)

@@ -173,7 +173,7 @@ Analysis against **Messaging Node** Requirements
   * Yes
   * Using [XEP-0203: Delayed Delivery](http://xmpp.org/extensions/xep-0203.html)
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes
   * Using [XEP-0313: Message Archive Management](http://xmpp.org/extensions/xep-0313.html) and [XEP-0136: Message Archiving](http://xmpp.org/extensions/xep-0136.html)
 

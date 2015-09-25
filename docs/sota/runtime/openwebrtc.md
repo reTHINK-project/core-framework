@@ -11,7 +11,7 @@ It is built on the expectation that several browsers will be able to support its
 
 With support for both H.264 (OpenH264) and VP8 (libvpx) video codecs, OpenWebRTC is compatible with most video communication services. 
 
-The OpenWebRTC project is free and Open Source with a permissive BSD-2 license. 
+The OpenWebRTC project is free and open source with a permissive BSD-2 license. 
 
 ![Figure @sota-openwebrtc-arch OpenWebRTC Architecture](openwebrtc.png)
 

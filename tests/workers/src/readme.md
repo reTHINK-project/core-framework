@@ -2,7 +2,7 @@
 
 the following tools have to be installed:
 
- - [`nodejs`](https://nodejs.org/download/)
+ - [`Node.js`](https://Node.js.org/download/)
  - [`npm`](https://docs.npmjs.com/getting-started/installing-node)
  - [`compass`](http://compass-style.org/install/) have [`gem`](https://rubygems.org/pages/download) [`ruby`](https://rvm.io/rvm/install) dependency;
 

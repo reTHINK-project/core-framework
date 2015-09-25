@@ -1836,7 +1836,7 @@ var requirejs, require, define;
         var node = config.xhtml ?
                 document.createElementNS('http://www.w3.org/1999/xhtml', 'html:script') :
                 document.createElement('script');
-        node.type = config.scriptType || 'text/javascript';
+        node.type = config.scriptType || 'text/JavaScript';
         node.charset = 'utf-8';
         node.async = true;
         return node;

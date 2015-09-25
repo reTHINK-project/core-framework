@@ -39,6 +39,6 @@ public class MsgNode extends AbstractVerticle {
 		final HttpServer server = vertx.createHttpServer(httpOptions);
 		WebSocketServer.init(server, pipeline);
 		server.listen(9090);
-		System.out.println("Message Node -> port(9090)");
+		System.out.println("Messaging Node -> port(9090)");
 	}
 }

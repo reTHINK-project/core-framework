@@ -37,6 +37,6 @@ http://mqtt.org/
 
 http://about.psyc.eu/
 
-#### [Nodejs](nodejs.md) (Apizee)
+#### [Node.js](Node.js.md) (Apizee)
 
-https://github.com/js-platform/node-webrtc
+https://github.com/js-platform/node-WebRTC

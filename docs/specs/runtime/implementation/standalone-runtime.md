@@ -32,7 +32,7 @@ Apache Cordova is a library used to create native mobile applications using Web 
 
 The application itself is implemented as a web page, by default a local file named index.html, that references whatever CSS, JavaScript, images, media files, or other resources are necessary for it to run. The app executes as a WebView within the native application wrapper, which you distribute to app stores.
 
-At its core, Cordova offers a simple but powerful API to call Javascript functions that map to native code or plugins. This means you can transfer any kind of data from native land into web land.
+At its core, Cordova offers a simple but powerful API to call JavaScript functions that map to native code or plugins. This means you can transfer any kind of data from native land into web land.
 Cordova can do almost a native app can do, it just needs the right plugins that send the right data to your web code
 
 

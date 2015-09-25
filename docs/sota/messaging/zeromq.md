@@ -72,7 +72,7 @@ The internal Architecture in more detail can be found [here.](http://zeromq.org/
 
 #### Web Clients/Servers
 
-* [JSMQ](https://github.com/zeromq/JSMQ) Javascript client for ZeroMQ/NetMQ over WebSockets
+* [JSMQ](https://github.com/zeromq/JSMQ) JavaScript client for ZeroMQ/NetMQ over WebSockets
 * [NullMQ](https://github.com/progrium/nullmq) ZeroMQ semantics in the browser [Link1](http://www.slideshare.net/progrium/nullmq-pdx) [Link2](http://avalanche123.com/blog/2012/02/25/interacting-with-zeromq-from-the-browser/)
 * [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript) talk to zmq sockets from your JavaScript code.
 * [SockJSProxy](https://bitbucket.org/vladev/sockjsproxy/) a simple proxy server that proxies message from SockJS to a ZeroMQ.
@@ -95,7 +95,7 @@ Analysis against **Messaging Node** Requirements
 
 * [Messaging Transport Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
   * Yes
-  * Has support for Javascript and WebSockets using:
+  * Has support for JavaScript and WebSockets using:
     * [JSMQ](https://github.com/zeromq/JSMQ)
     * [NullMQ](https://github.com/progrium/nullmq)
     * [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript)
@@ -108,7 +108,7 @@ Analysis against **Messaging Node** Requirements
   * Yes
   * Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * Yes
   * Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 

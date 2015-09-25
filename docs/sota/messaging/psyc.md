@@ -46,7 +46,7 @@ Analysis against **Messaging Node** Requirements
 * [Message delivery reliability](https://github.com/reTHINK-project/core-framework/issues/17)
  * PSYC provides three message families to inform clients about problems on message delivery. The _error method family features methods like _error_invalid, _error_illegal, _error_duplicate and informs the client of a problem occuring on his side, rather on the server side. Basically, it is the server telling a client "It's your fault, not mine". The _failure method family informs a message sender about a problem on the receiving side. This method family features methods like _failure_deliver or _failure_redirect (when a given destination changed its address). Finally, the _warning method family means that a message was processed and sent, but maybe not as intended. An example is _warning_usage, which indicates a possible mistake on the message syntax, presented on Fig. 1, and has a single variant for each of the syntax fields.
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
  * On PSYC, each server running psyced implements the concept of "log of last messages" for every UNI registered on that server. It is used to store messages received by the server, and to let every user have its last session backlog whenever he logs in. It is possible to tune the log size for each UNI and to export the chat history of a room to a webpage.
 
 * [Message Caching](https://github.com/reTHINK-project/core-framework/issues/19)

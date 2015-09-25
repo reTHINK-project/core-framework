@@ -4,7 +4,7 @@ Objective of the Service Framework is to develop a JavaScript Framework of libra
 
 This section analyses popularly used JavaScript Frameworks. The analysis of these frameworks is based on the above identified requirments for the Service Framework:
 
-* Service Framework MUST be Message Node agnostic
+* Service Framework MUST be Messaging Node agnostic
 * Service Framework SHOULD be device agnostic
 * Service Framework MUST avoid any JavaScript conflicts
 * Service Framework MUST be Modular in nature

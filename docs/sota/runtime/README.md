@@ -1,10 +1,10 @@
 #### [Runtime Security(INESC-ID)](runtime-security.md)
 
-#### [WebRTC.org (Google)(INESC-ID)](webrtc-org.md)
+#### [WebRTC.org (Google)(INESC-ID)](WebRTC-org.md)
 
 #### [OpenWebRTC](openwebrtc.md) (Ericsson)(PTIN)
 
-#### [V8 Javascript Engine (Google)(PTIN)](v8-javascript-engine.md)
+#### [V8 JavaScript Engine (Google)(PTIN)](v8-JavaScript-engine.md)
 
 #### [Firefox OS (DT)](fxos.md)
 

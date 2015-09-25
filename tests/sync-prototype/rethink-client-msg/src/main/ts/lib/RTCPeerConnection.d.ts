@@ -1,23 +1,23 @@
 // Type definitions for WebRTC
-// Project: http://dev.w3.org/2011/webrtc/
+// Project: http://dev.w3.org/2011/WebRTC/
 // Definitions by: Ken Smith <https://github.com/smithkl42/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 //
-// Definitions taken from http://dev.w3.org/2011/webrtc/editor/webrtc.html
+// Definitions taken from http://dev.w3.org/2011/WebRTC/editor/WebRTC.html
 //
 // For example code see:
-//   https://code.google.com/p/webrtc/source/browse/stable/samples/js/apprtc/js/main.js
+//   https://code.google.com/p/WebRTC/source/browse/stable/samples/js/apprtc/js/main.js
 //
 // For a generic implementation see that deals with browser differences, see:
-//   https://code.google.com/p/webrtc/source/browse/stable/samples/js/base/adapter.js
+//   https://code.google.com/p/WebRTC/source/browse/stable/samples/js/base/adapter.js
 
 /// <reference path='MediaStream.d.ts' />
 
-// TODO(1): Get Typescript to have string-enum types as WebRtc is full of string
+// TODO(1): Get Typescript to have string-enum types as WebRTC is full of string
 // enums.
 // https://typescript.codeplex.com/discussions/549207
 
-// TODO(2): get Typescript to have union types as WebRtc uses them.
+// TODO(2): get Typescript to have union types as WebRTC uses them.
 // https://typescript.codeplex.com/workitem/1364
 
 interface RTCConfiguration {
@@ -55,7 +55,7 @@ declare var webkitRTCPeerConnection: {
 };
 
 // For Chrome, look at the code here:
-// https://code.google.com/p/chromium/codesearch#chromium/src/third_party/libjingle/source/talk/app/webrtc/webrtcsession.cc&sq=package:chromium&dr=C&l=63
+// https://code.google.com/p/chromium/codesearch#chromium/src/third_party/libjingle/source/talk/app/WebRTC/webrtcsession.cc&sq=package:chromium&dr=C&l=63
 interface RTCOptionalMediaConstraint {
   // When true, will use DTLS/SCTP data channels
   DtlsSrtpKeyAgreement?: boolean;
@@ -64,7 +64,7 @@ interface RTCOptionalMediaConstraint {
 }
 
 // ks 12/20/12 - There's more here that doesn't seem to be documented very well yet.
-// http://www.w3.org/TR/2013/WD-webrtc-20130910/
+// http://www.w3.org/TR/2013/WD-WebRTC-20130910/
 interface RTCMediaConstraints {
   mandatory?: RTCMediaOfferConstraints;
   optional?: RTCOptionalMediaConstraint[]
@@ -88,7 +88,7 @@ declare var RTCSessionDescription: {
   prototype: RTCSessionDescription;
   new (descriptionInitDict?: RTCSessionDescriptionInit): RTCSessionDescription;
   // TODO: Add serializer.
-  // See: http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCSdpType)
+  // See: http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#idl-def-RTCSdpType)
 };
 
 interface webkitRTCSessionDescription extends RTCSessionDescription{
@@ -122,14 +122,14 @@ interface RTCDataChannelInit {
 
 // TODO(1)
 declare enum RTCSdpType {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcsdptype
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#rtcsdptype
   'offer',
   'pranswer',
   'answer'
 }
 
 interface RTCMessageEvent {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#event-datachannel-message
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#event-datachannel-message
   // At present, this can be an: ArrayBuffer, a string, or a Blob.
   // See TODO(2)
   data: any;
@@ -137,7 +137,7 @@ interface RTCMessageEvent {
 
 // TODO(1)
 declare enum RTCDataChannelState {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelState
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#idl-def-RTCDataChannelState
   'connecting',
   'open',
   'closing',
@@ -203,7 +203,7 @@ interface RTCPeerConnectionErrorCallback {
 
 // TODO(1)
 declare enum RTCIceGatheringState {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcicegatheringstate-enum
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#rtcicegatheringstate-enum
   'new',
   'gathering',
   'complete'
@@ -211,7 +211,7 @@ declare enum RTCIceGatheringState {
 
 // TODO(1)
 declare enum RTCIceConnectionState {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCIceConnectionState
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#idl-def-RTCIceConnectionState
   'new',
   'checking',
   'connected',
@@ -223,7 +223,7 @@ declare enum RTCIceConnectionState {
 
 // TODO(1)
 declare enum RTCSignalingState {
-  // http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCSignalingState
+  // http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#idl-def-RTCSignalingState
   'stable',
   'have-local-offer',
   'have-remote-offer',
@@ -232,9 +232,9 @@ declare enum RTCSignalingState {
   'closed'
 }
 
-// This is based on the current implementation of WebRtc in Chrome; the spec is
+// This is based on the current implementation of WebRTC in Chrome; the spec is
 // a little unclear on this.
-// http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCStatsReport
+// http://dev.w3.org/2011/WebRTC/editor/WebRTC.html#idl-def-RTCStatsReport
 interface RTCStatsReport {
   stat(id: string): string;
 }

@@ -115,7 +115,7 @@ media Web applications:
 -   Audio output devices API: defines a set of JavaScript APIs that let
     a Web application manage how audio is rendered on the user audio
     output devices.
--   Identifiers for WebRTC's Statistics API: defines a set of Javascript
+-   Identifiers for WebRTC's Statistics API: defines a set of JavaScript
     APIs that allow access to the statistical information about a
     PeerConnection
 -   Screen Capture: defines how a user's display, or parts thereof, can
@@ -337,7 +337,7 @@ Service Workers provides features that can facilitate the development of
 some Runtime features including Event BUS, ProtOfly engine, Policy
 Engine. Its usage to support the Hyperty instance itself should also be
 evaluated. However it seems this technology is only available in
-Browsers and not in server side javascript runtime like node.js.
+Browsers and not in server side JavaScript runtime like node.js.
 
 ### Content Security Policy Level 2
 
@@ -460,13 +460,13 @@ W3C’s Web Push API.
 
 ### Applicability to reTHINK
 
-The ability to push notifications towards Hyperty runtime is an
+The ability to push notifications towards Hyperty Runtime is an
 essential feature that must be supported according to these standards.
 
 ### References
 
 -   http://w3c.github.io/push-api/
--   http://thenewdialtone.com/webrtc-browser-push-notification/
+-   http://thenewdialtone.com/WebRTC-browser-push-notification/
 -   http://datatracker.ietf.org/doc/draft-thomson-webpush-protocol/?include\_text=1
 
 HTTP/2
@@ -886,7 +886,7 @@ selected per WebRTC Conversation to ensure full signalling
 interoperability among peers using Triangle based Network topologies.
 The SigOfly procedures should be applied at the end-user client to
 benefit from WebRTC model. However, the concept is also feasible between
-Messaging Servers supporting Javascript execution engines (e.g. nodejs
+Messaging Servers supporting JavaScript execution engines (e.g. Node.js
 or vertx.io).
 
 Before the SigOfly concept is described in detail, some terms require a
@@ -1026,7 +1026,7 @@ detailed in the following sections.
 
 #### Runtime Messaging API
 
-The MessagingStub API is a good starting point to design the Javascript
+The MessagingStub API is a good starting point to design the JavaScript
 API to support Hyperty Message communication which is comprised by the
 following functions:
 
@@ -1212,17 +1212,17 @@ The "resolve(..)" function should be handled by the Runtime itself but
 all the others could be implemented by an Hyperty representing the
 Identity. For further discussion.
 
-#### Javascript Framework
+#### JavaScript Framework
 
 WONDER library can provide some input for the design and implementation
-of reTHINK Javascript framework that should facilitate the development
+of reTHINK JavaScript framework that should facilitate the development
 of Hyperties, namely: \* Conversation \* Participant \* Resource \*
 Identity \* MessageFactory
 
-#### Javascript Shim Layer for non-compliant reTHINK Runtime
+#### JavaScript Shim Layer for non-compliant reTHINK Runtime
 
 WONDER library can provide some input for the design and implementation
-of reTHINK Javascript Shim Layer to be used in non-compliant reTHINK
+of reTHINK JavaScript Shim Layer to be used in non-compliant reTHINK
 Runtime, namely:
 
 -   MessagingStub
@@ -1344,7 +1344,7 @@ implementations for
 If Hyperties, Codecs, Protostub and other artifacts to be provisioned on
 the end devices are to be regarded as resources with attributes
 describing: capabilities (audio, video, text), running platform (OS),
-configuration (DNS name of the messaging node, DNS server),
+configuration (DNS name of the Messaging Node, DNS server),
 implementation (code/script, codecs), these artifacts can be organized
 as resources in the Repository/Catalogue component.
 
@@ -1495,7 +1495,7 @@ The supported features include interfaces: Registration, Device
 Management and Service Enablement Interface, Information Reporting
 Interface.
 
-The programming language is Javascript.
+The programming language is JavaScript.
 
 The homepage can be found on:
 https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
@@ -1508,7 +1508,7 @@ the name of the project has to be mentioned in the redistribution.
 
 The project provides a Web GUI as an addon for Firefox to get the
 user/developer familiarize. The core functionality can be included in
-any software package like a Javascript library and also, the Core
+any software package like a JavaScript library and also, the Core
 Framework of the client side for the Rethink project.
 
 Runtime SOTA
@@ -1517,7 +1517,7 @@ Runtime SOTA
 WebRTC.org
 ----------
 
-[WebRTC.org](http://www.webrtc.org/)[18] is an open-source project
+[WebRTC.org](http://www.WebRTC.org/)[18] is an open-source project
 aiming at allowing developers to write applications bringing real-time
 communication capabilities to browsers, mobile platforms and Internet of
 Things (IoT) devices, without installing proprietary plugins or
@@ -1547,14 +1547,14 @@ capture and render, making it possible for application developers to
 make use of it. The second one is the Web API for developers to produce
 applications to interact with WebRTC-powered browsers. Currently,
 several JavaScript APIs are in process of standardization, like [WebRTC
-1.0](http://w3c.github.io/webrtc-pc/)[16] and [Media Capture and
+1.0](http://w3c.github.io/WebRTC-pc/)[16] and [Media Capture and
 Streams](http://w3c.github.io/mediacapture-main/)[17]. In fact, there is
 another abstract layer responsible for session management and
 signalling, leaving the signalling protocol implementation up to the
 application developer, who has to choose between currently existing
 alternatives.
 
-![Figure 11: WebRTC.org architecture scheme](webrtc-org-arch.png)
+![Figure 11: WebRTC.org architecture scheme](WebRTC-org-arch.png)
 
 ### Software stack organization
 
@@ -1565,7 +1565,7 @@ itself into a network package, an audio package and a video package.
 
 The different packages can be easily identifiable on the WebRTC source
 code tree. The network package is under src/net and both the audio and
-video packages are under src/webrtc/, with some mixed up classes. Also,
+video packages are under src/WebRTC/, with some mixed up classes. Also,
 there is not a class diagram which helps developers to get the big
 picture on this code's organization.
 
@@ -1591,12 +1591,12 @@ Analysis against **Runtime** requirements
     APIs](https://github.com/reTHINK-project/core-framework/issues/2)
 -   WebRTC.org implements the W3C WebRTC APIs.
 
--   [The runtime must support standard Javascript
+-   [The runtime must support standard JavaScript
     (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
 -   Yes, both the WebRTC 1.0 and Media Capture and Streams APIs use
     ECMAScript.
 -   WebRTC.org is meant to be used within a runtime, providing the
-    WebRTC functionality. The runtime will provide Javascript
+    WebRTC functionality. The runtime will provide JavaScript
     functionality.
 
 -   [The Runtime should support Web
@@ -1657,7 +1657,7 @@ rapid developping application environment.
 With support for both H.264 (OpenH264) and VP8 (libvpx) video codecs,
 OpenWebRTC is compatible with most video communication services.
 
-The OpenWebRTC project is free and Open Source with a permissive BSD-2
+The OpenWebRTC project is free and open source with a permissive BSD-2
 license.
 
 ![Figure 12 OpenWebRTC Architecture](openwebrtc.png)
@@ -1679,7 +1679,7 @@ that performs some action on a multimedia stream such as:
 Unfortunately, OpenWebRTC has very few available information making it
 hard to use and extend it.
 
-V8 Javascript Engine Evaluation
+V8 JavaScript Engine Evaluation
 -------------------------------
 
 ### Overview
@@ -1703,7 +1703,7 @@ inline caching, among many others
 
 **Handles & Garbage Collection**
 
-Handles represent a reference for a Javascript object location on the
+Handles represent a reference for a JavaScript object location on the
 process heap. The Garbage collector deletes any object on the heap with
 no valid reference on the process. The Garbage collector besides
 deleting objectws on the heap frequently moves objects and updates all
@@ -1723,21 +1723,21 @@ scope to be a special one (EscapableHandleScope ).
 ![Figure 14 V8 Multiple Contexts](v8-arch2.png)
 
 Contexts are different execution environments that allow separate even
-unrelated Javascript applications to run concurrently on v8. In fact,
-the context in which a Javascript code is run must be explicitly
-specified. This happens because Javascript provides functions and
+unrelated JavaScript applications to run concurrently on v8. In fact,
+the context in which a JavaScript code is run must be explicitly
+specified. This happens because JavaScript provides functions and
 objects that may be changed globally and that may turn into unexpected
 results. One of the advantages of V8 is that it gives you an extensive
 cache, so in the first time a context may be expensive in time and
 resources, subsequente times will be substantialy less. Additionally v8
-has a snapshot feature that by default has pre-compiled Javascript code
+has a snapshot feature that by default has pre-compiled JavaScript code
 on the heap, diminishing time procedures on first context
 initialization.
 
 **Templates**
 
-Templates are blueprints for Javascript functions and objects in a
-context. Templates may be used to wrap c++ code onto Javascript objects
+Templates are blueprints for JavaScript functions and objects in a
+context. Templates may be used to wrap c++ code onto JavaScript objects
 permiting its manipulation. One can only have one instance of a template
 on any given context. There are two types of templates:
 
@@ -1747,7 +1747,7 @@ on any given context. There are two types of templates:
 **Accessors**
 
 Accessors are c++ callbacks that obtain and return a value when an
-object property is accessed by Javascript. Obviously then can be used to
+object property is accessed by JavaScript. Obviously then can be used to
 set or read these values. The complexity of them depends on the data
 being manipulated (Static Global Variables or Dynamic Variables).
 
@@ -1764,22 +1764,22 @@ handle on an unsuccessfull call.
 
 **Inheritance**
 
-While Javascript is a class free language, c++ has classes and
+While JavaScript is a class free language, c++ has classes and
 instances. It is important to take this in consideration because
-Javascript only has objects, it is a prototype based language. To adapt
+JavaScript only has objects, it is a prototype based language. To adapt
 both we have to refer to templates in v8.
 
-**V8 Code provided for Javascript processing**
+**V8 Code provided for JavaScript processing**
 
 process.cc - this code provides the capability to extend the proccess of
-an HTTP request. The Javascript argument must provide a method named
+an HTTP request. The JavaScript argument must provide a method named
 Process() for the execution to succed. This provides an interface for
-HTTP Javascript introduction on V8 and runtime execution.
+HTTP JavaScript introduction on V8 and runtime execution.
 
-shell.cc - this code takes as argument a filename with a Javascript code
+shell.cc - this code takes as argument a filename with a JavaScript code
 inside and executes it. It extendes several functionalities to
-Javascript including a shell capability to run Javascript snipets and
-their disponibilization to other Javascript code in runtime.
+JavaScript including a shell capability to run JavaScript snipets and
+their disponibilization to other JavaScript code in runtime.
 
 ### Requirements Analysis
 
@@ -1804,9 +1804,9 @@ exponentially.
 The reasons for these obtained improvements are:
 
 -   Fast Property Access - unlike strong type languages like C\# and
-    Java, Javascript like Python is a dynamic programing language. This
+    Java, JavaScript like Python is a dynamic programing language. This
     means that properties can be added to and deleted from objects on
-    the fly, so likelly to change over time. Most Javascript engines use
+    the fly, so likelly to change over time. Most JavaScript engines use
     a dictionary-like data structure as storage for the object
     properties. The fetching of each property, on access case, involves
     a dynamic lookup of the property memory location. This approach
@@ -1826,7 +1826,7 @@ The reasons for these obtained improvements are:
 
 -   Dynamic Machine Code Generation - V8 generates machine code directly
     from source code the first time the script is executed. A current
-    Javascript engine usually creates intermediate byte code and
+    JavaScript engine usually creates intermediate byte code and
     interpreter. The consequence thus is an object property access is
     handled with inline cache code in execution that may be patched with
     further instructions on execution. It may be explained by the
@@ -1861,12 +1861,12 @@ each cycle finishes.
 
 It is possible to extend the functionalities of V8 by adding new modules
 in c++. These new functionalities would be available to any programer in
-Javascript where this particular v8 engine resides. V8 provides
+JavaScript where this particular v8 engine resides. V8 provides
 functions that permit accessing c++ methods and classes, handling errors
 and enabling security checks. It provides full duality, in which it
-permits access from javascript scripts to c++ structures an vice-versa.
+permits access from JavaScript scripts to c++ structures an vice-versa.
 
-Code to add a new Javascript code to V8
+Code to add a new JavaScript code to V8
 
     Handle<Value> Include(const Arguments& args) {
         for (int i = 0; i < args.Length(); i++) {
@@ -1903,7 +1903,7 @@ equal a callback must be made to challenge acceptable access.
 
 #### Using Sandboxes with Node.js
 
-[Node.js](https://nodejs.org/en/) [22] is a platform built on Chrome's
+[Node.js](https://Node.js.org/en/) [22] is a platform built on Chrome's
 JavaScript runtime V8 for easily building fast, scalable network
 applications. Node.js uses an event-driven, non-blocking I/O model that
 makes it lightweight and efficient, perfect for data-intensive real-time
@@ -1986,13 +1986,13 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   tested basic A/V calls + separate apps that used the DataChannel to
     transport arbitrary files
 
--   [The runtime must support standard Javascript
+-   [The runtime must support standard JavaScript
     (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
 -   YES
--   "Gecko" is the Javascript interpreter
--   provides Javascript access to a lot of Web APIs (even
+-   "Gecko" is the JavaScript interpreter
+-   provides JavaScript access to a lot of Web APIs (even
     non-standardized)
--   Whole UI (Gaia) is based on HTML, Javascript, CSS
+-   Whole UI (Gaia) is based on HTML, JavaScript, CSS
 
 -   [The Runtime should support Web
     Socket](https://github.com/reTHINK-project/core-framework/issues/4)
@@ -2025,7 +2025,7 @@ Requirements](https://github.com/reTHINK-project/core-framework/labels/Runtime%2
 -   [The effort to introduce new capabilities in the runtime should be
     reasonable](https://github.com/reTHINK-project/core-framework/issues/8)
 -   YES
--   extension with Javascript libraries is possible very easy
+-   extension with JavaScript libraries is possible very easy
 -   due to the open source nature of the Gecko and Gonk layers it is
     also possible to add low- and medium-level capabilities there
 -   The effort for low-level extensions will be relatively high.
@@ -2159,7 +2159,7 @@ application from projects
 [jingle](https://github.com/estos/strophe.jingle) and
 [strophe](https://github.com/strophe/strophejs):
 
-``` {.javascript}
+``` {.JavaScript}
     <!--add jQuery lib-->
     <script src='strophe/strophe.js'></script><!-- strophe-->
     <script src='strophe/strophe.disco.js'></script><!-- strophe.disco, optional -->
@@ -2171,7 +2171,7 @@ application from projects
 
 Starting the XMMP session is normaly made with:
 
-``` {.javascript}
+``` {.JavaScript}
 var BOSH_SERVICE = '/http-bind';
 var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
@@ -2204,7 +2204,7 @@ getUserMediaWithConstraints(['audio', 'video']);
 **getUserMediaWithConstraints** will fire an event configured with
 jQuery.
 
-``` {.javascript}
+``` {.JavaScript}
 $(document).bind('mediaready.jingle', function (event, stream) {
     localStream = stream;
     connection.jingle.localStream = stream;
@@ -2245,7 +2245,7 @@ $(document).bind('mediaready.jingle', function (event, stream) {
 
 and define presence handlers:
 
-``` {.javascript}
+``` {.JavaScript}
 function onPresence(pres) {
     var from = pres.getAttribute('from');
     var type = pres.getAttribute('type');
@@ -2296,7 +2296,7 @@ function onPresenceError(pres) {
 
 Handle add/remove video/audio streams:
 
-``` {.javascript}
+``` {.JavaScript}
     $(document).bind('remotestreamadded.jingle', function (event, data, sid) {
         var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
             RTC.attachMediaStream(el, data.stream);
@@ -2744,7 +2744,7 @@ browsers.
 Janus Gateway implementation of the WebRTC stack supports the W3C WebRTC
 APIs.
 
-#### [The runtime must support standard Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+#### [The runtime must support standard JavaScript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
 
 Janus Gateway supports standard JavaScript in its implementation.
 Concretely, it offers a JavaScript library (janus.js) which allows
@@ -2795,7 +2795,7 @@ Kurento Media Server
 
 ### Overview
 
-[Kurento](http://www.kurento.org/) is an Open Source Software WebRTC
+[Kurento](http://www.kurento.org/) is an open source Software WebRTC
 media server, that can be used to manage media flows :
 
 -   Send / Receive
@@ -2817,8 +2817,8 @@ server - Kurento Application
 
 Application developers can use Kurento Clients or Kurento API directly
 for creating their multimedia enabled applications. Developpers can use
-Javascript clients, Java Client or Kurento Protocol. This is interesting
-as it can easily be integrated with NodeJs
+JavaScript clients, Java Client or Kurento Protocol. This is interesting
+as it can easily be integrated with Node.js
 
 ### APIs
 
@@ -2841,8 +2841,8 @@ Multiparty conversations supported with MCU/SFU for Star topologies can
 be supported with server side Hyperties running in the MCU/SFU ie there
 would be protofly in the MCU/SFU.
 
-Kurento Media Server can be connected through a NodeJs Client : it will
-be possible to add protOfly interface on nodeJs to then connect to the
+Kurento Media Server can be connected through a Node.js Client : it will
+be possible to add protOfly interface on Node.js to then connect to the
 MCU.
 
 Messaging SOTA
@@ -3092,12 +3092,12 @@ not the messages are taken.
     sockJSServer.bridge(new JsonObject().putString("prefix", "/eventbus"), inboundPermitted, outboundPermitted);
     ```
 
-**Example: communication between two javascript clients connected via
+**Example: communication between two JavaScript clients connected via
 SockJS**
 
 Both client applications perform log-in on the EventBus.
 
-``` {.javascript}
+``` {.JavaScript}
 eb.login('alice','alice123', function(reply){console.log(reply);});
 ```
 
@@ -3105,14 +3105,14 @@ Then the client A(alice) wants to send messages to the client B(bob), so
 client B(bob) needs to register a handler. Before the client A(alice)
 can send a message to client B(bob), B must first register himself.
 
-``` {.javascript}
+``` {.JavaScript}
 eb.registerHandler('bobHandler', function(reply){console.log(reply);});
 ```
 
 After that client A (alice) can publish messages on client B (bob)
 handler
 
-``` {.javascript}
+``` {.JavaScript}
 eb.publish('bobHandler','Hello bob from alice');
 ```
 
@@ -3433,10 +3433,10 @@ will be processed in this handler
 connected via SockJS** \* Register handler to receive messages in
 "chat.to.client" address
 
-`javascript  eb.registerHandler('chat.to.client', function(msg) {     console.log('Message Received: ' + msg);  });`
+`JavaScript  eb.registerHandler('chat.to.client', function(msg) {     console.log('Message Received: ' + msg);  });`
 
 -   Send message to "chat.to.server" address
-    `javascript  eb.send('chat.to.server', {name: 'tim', age: 35});`
+    `JavaScript  eb.send('chat.to.server', {name: 'tim', age: 35});`
 
 **Subscribe / register handlers to be notified about published
 messages**
@@ -3629,7 +3629,7 @@ http://www.leggetter.co.uk/2013/12/09/choosing-realtime-web-app-tech-stack.html
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
 -   No, as the transport protocol is hidden from the remote machine.
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes - Several logging modules available...
 
@@ -3766,7 +3766,7 @@ Analysis against **Messaging Node** Requirements
 -   Yes
 -   this is kind of a core feature
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)\
 -   Yes
 -   could be done via an attached passive Application Service
@@ -3938,7 +3938,7 @@ Analysis against **Messaging Node** Requirements
 -   Yes
 -   Core feature
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes
 -   RabbitMQ has a built-in tracer feature that is able to see every
@@ -4121,7 +4121,7 @@ The internal Architecture in more detail can be found
 
 #### Web Clients/Servers
 
--   [JSMQ](https://github.com/zeromq/JSMQ) Javascript client for
+-   [JSMQ](https://github.com/zeromq/JSMQ) JavaScript client for
     ZeroMQ/NetMQ over WebSockets
 -   [NullMQ](https://github.com/progrium/nullmq) ZeroMQ semantics in the
     browser [Link1](http://www.slideshare.net/progrium/nullmq-pdx)
@@ -4155,7 +4155,7 @@ Analysis against **Messaging Node** Requirements
 -   [Messaging Transport
     Protocols](https://github.com/reTHINK-project/core-framework/issues/20)
 -   Yes
--   Has support for Javascript and WebSockets using:
+-   Has support for JavaScript and WebSockets using:
     -   [JSMQ](https://github.com/zeromq/JSMQ)
     -   [NullMQ](https://github.com/progrium/nullmq)
     -   [ZmqSocket.js](http://zeromq.org/bindings%3ajavascript)
@@ -4168,7 +4168,7 @@ Analysis against **Messaging Node** Requirements
 -   Yes
 -   Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes
 -   Using the [Titanic Service Protocol](http://rfc.zeromq.org/spec:9)
@@ -4287,7 +4287,7 @@ Image Source:
 -   [webdis](https://github.com/nicolasff/webdis) A Redis HTTP interface
     with JSON output
 -   [BankersBox](https://github.com/twilio/BankersBox) A redis-like
-    wrapper for javascript data storage
+    wrapper for JavaScript data storage
 -   [Bone](https://github.com/solutious/bone) Rudimentary Redis over
     HTTP(S)
 
@@ -4311,7 +4311,7 @@ Analysis against **Messaging Node** Requirements
 -   Yes
 -   Core feature
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   No
 -   Should be implemented externally
@@ -4549,7 +4549,7 @@ Analysis against **Messaging Node** Requirements
 -   Using [XEP-0203: Delayed
     Delivery](http://xmpp.org/extensions/xep-0203.html)
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes
 -   Using [XEP-0313: Message Archive
@@ -4810,13 +4810,13 @@ support)
 #### Javscript / Node.js
 
 -   [Eclipse Paho HTML5 JavaScript over
-    WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/)
+    WebSocket.](http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.JavaScript.git/)
 
 -   [mqtt.js](https://github.com/adamvr/MQTT.js)
 
 -   [node\_mqtt\_client](https://github.com/yilun/node_mqtt_client)
     ([more
-    information](http://ceit.uq.edu.au/content/simple-mqtt-cient-nodejs))
+    information](http://ceit.uq.edu.au/content/simple-mqtt-cient-Node.js))
 
 -   [IBM-provided PhoneGap / Apache Cordova MQTT plug-in for
     Android](http://www-01.ibm.com/support/docview.wss?rs=171&uid=swg24033580&loc=en_US&cs=utf-8&lang=en) -
@@ -4972,7 +4972,7 @@ Analysis against **Messaging Node** Requirements
 -   Using [Persistence
     Sessions](http://www.hivemq.com/mqtt-essentials-part-7-persistent-session-queuing-messages/)
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes
 
@@ -5172,7 +5172,7 @@ Analysis against **Messaging Node** Requirements
     indicates a possible mistake on the message syntax, presented on
     Fig. 1, and has a single variant for each of the syntax fields.
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   On PSYC, each server running psyced implements the concept of "log
     of last messages" for every UNI registered on that server. It is
@@ -5214,10 +5214,10 @@ Node.js
 
 ### Overview
 
-In the scope of the reTHINK project NodeJs [22] is a candidate
+In the scope of the reTHINK project Node.js [22] is a candidate
 technology for the Messaging Node.
 
-From https://nodejs.org/ :
+From https://Node.js.org/ :
 
 Node.js® is a platform built on Chrome's JavaScript runtime for easily
 building fast, scalable network applications. Node.js uses an
@@ -5225,32 +5225,32 @@ event-driven, non-blocking I/O model that makes it lightweight and
 efficient, perfect for data-intensive real-time applications that run
 across distributed devices.
 
-Several additional packages are available to be used with nodeJs :
+Several additional packages are available to be used with Node.js :
 https://www.npmjs.com/
 
 It can be used with component like Redis, socket.io to enhance
 connectivity and redundancy
 
-A fork of nodejs exist : iojs but a merge seems to be ongoing.
+A fork of Node.js exist : iojs but a merge seems to be ongoing.
 
-NodeJs is already used in several WebRTC platform or product. (NodeJs
+Node.js is already used in several WebRTC platform or product. (Node.js
 can be used in front of Kurento)
 
 ### Architecture
 
-NodeJS is divided into two main components: the core and its modules.
+Node.js is divided into two main components: the core and its modules.
 The core is built in C and C++. It combines Google’s V8 JavaScript
 engine with Node’s Libuv library and protocol bindings including sockets
 and HTTP.
 
-![Figure 34: NodeJS Architecture](Archi-NodeJs.png)
+![Figure 34: Node.js Architecture](Archi-Node.js.png)
 
 More information are avaialble in this document :
 http://mcgill-csus.github.io/student\_projects/Submission2.pdf
 
 ### APIs
 
-Available API are described on nodejs website : https://nodejs.org/api/
+Available API are described on Node.js website : https://Node.js.org/api/
 
 But this can be completed thanks to the different packages available on
 https://www.npmjs.com/
@@ -5263,7 +5263,7 @@ https://www.npmjs.com/
     on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
 -   Yes
 -   ProtOFly connector can be developped. JS connector can be develop on
-    top of NodeJs to enble protofly on server side. This connector will
+    top of Node.js to enble protofly on server side. This connector will
     be for example reusable to connect Kurento Media Server
 
 -   [Messaging Transport
@@ -5272,7 +5272,7 @@ https://www.npmjs.com/
     protocol to establish connection between user and server. (Long
     polling, WebSocket ...)
 
--   [Message Node
+-   [Messaging Node
     logging](https://github.com/reTHINK-project/core-framework/issues/18)
 -   Yes - Several logging modules available : log4js, winston, bunyan
     ... Logs can be dispalyed in console, store in file with log rotate,
@@ -5287,7 +5287,7 @@ https://www.npmjs.com/
 -   Using:
     -   Cluster Mode
     -   Redis cluster : it is possible to use Redis Cluster with PUB/SUB
-        mechanism : several NodeJs entities can be connected through the
+        mechanism : several Node.js entities can be connected through the
         redis cluster : this can enable load balancing, redundancy
 -   [Messaging Node should be tolerant to unstable
     connections](https://github.com/reTHINK-project/core-framework/issues/15)
@@ -5323,7 +5323,7 @@ https://www.npmjs.com/
 
 -   [Messaging Node must be deployable in the most used Virtual
     Machines](https://github.com/reTHINK-project/core-framework/issues/12)
--   Yes - NodeJs is available on Linux, windows, mac
+-   Yes - Node.js is available on Linux, windows, mac
 
 -   [Messaging Node should require minimal computing
     resources](https://github.com/reTHINK-project/core-framework/issues/11)
@@ -5415,10 +5415,10 @@ Service Frameworks SOTA
 
 #### Overview
 
-AngularJS [51] is a Javascript MVC Framework developed and promoted by
+AngularJS [51] is a JavaScript MVC Framework developed and promoted by
 Google, to build well architectured and maintainnable web applications.
 It is usually mistaken for a library due to its lightweight than normal
-frameworks. It is entirely based on Javascript and a client side
+frameworks. It is entirely based on JavaScript and a client side
 framework. It is supported by multiple browsers.
 
 ![Figure 36: AngularJS Framework](mvc_angular.png)
@@ -5501,7 +5501,7 @@ to use but difficult to debug
 
 Analysis against **Service Framework** Requirements
 
--   [Service Framework **MUST** be Message Node
+-   [Service Framework **MUST** be Messaging Node
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
     **Yes**
 -   [The Service Framework **MUST** avoid any JavaScript
@@ -5603,7 +5603,7 @@ collection.
 
 Analysis against **Service Framework** Requirements
 
--   [Service Framework **MUST** be Message Node
+-   [Service Framework **MUST** be Messaging Node
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
     **Yes** -[Service Framework SHOULD support Model-View-Controller
     design
@@ -5647,7 +5647,7 @@ Analysis against **Service Framework** Requirements
 
 #### Overview
 
-[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a Javascript
+[Meteor](http://docs.meteor.com/#/full/quickstart) [39] is a JavaScript
 plataform, offering a complete full-stack framework for delivering web
 and mobile apps;
 
@@ -5697,9 +5697,9 @@ what we want to make private;
 -   **/private** These files can only be accessed by server code through
     Assets API and are not accessible to the client.
 
-**or** we can, in same javascript file, wrapping our code in
+**or** we can, in same JavaScript file, wrapping our code in
 
-``` {.javascript}
+``` {.JavaScript}
 app.js
 
 if (Meteor.isClient) {
@@ -5715,13 +5715,13 @@ if (Meteor.isServer) {
 
 Client connection:
 
-``` {.javascript}
+``` {.JavaScript}
 Tasks = new Mongo.Collection("tasks");
 ```
 
 Insert:
 
-``` {.javascript}
+``` {.JavaScript}
 Template.body.events({
   "submit .new-task": function (event) {
     // This function is called when the new task form is submitted
@@ -5734,7 +5734,7 @@ Template.body.events({
 
 Query:
 
-``` {.javascript}
+``` {.JavaScript}
 Template.body.helpers({
     tasks: function () {
       // Show newest tasks first
@@ -5745,7 +5745,7 @@ Template.body.helpers({
 
 Delete:
 
-``` {.javascript}
+``` {.JavaScript}
 Template.task.events({
   "click .delete": function () {
     Tasks.remove(this._id);
@@ -5774,18 +5774,18 @@ Template.task.events({
 
 #### Requirement Analysis
 
--   [Service Framework **MUST** be Message Node
+-   [Service Framework **MUST** be Messaging Node
     agnostic](https://github.com/reTHINK-project/core-framework/issues/44):
     **No**
 
-It has its own "message node", who is called [DDP (distributed Data
+It has its own "Messaging Node", who is called [DDP (distributed Data
 Protocol)](https://www.meteor.com/ddp).
 
 -   [The Service Framework **MUST** avoid any JavaScript
     conflicts](https://github.com/reTHINK-project/core-framework/issues/43):
     **Yes**
 
-The platform is constructed in pure javascript, don't have any other
+The platform is constructed in pure JavaScript, don't have any other
 frameworks dependencies;
 
 -   [Service Framework **MUST** be Modular in
@@ -5809,7 +5809,7 @@ apps in pure JavaScript.”*
     fast](https://github.com/reTHINK-project/core-framework/issues/37):
     **yes**
 
-Meteor is build on top of NodeJs and MongoDB, and both are fast;
+Meteor is build on top of Node.js and MongoDB, and both are fast;
 
 -   [Service Framework **SHOULD** support Model-View-Controller design
     pattern](https://github.com/reTHINK-project/core-framework/issues/36):
@@ -5819,12 +5819,12 @@ Meteor is build on top of NodeJs and MongoDB, and both are fast;
 **Yes** we can have MVC, in other way:
 
 *"The MVC pattern in Meteor is dead simple. The Model is coded up in
-HTML, the Controller is coded in Javascript, and the View is coded up in
+HTML, the Controller is coded in JavaScript, and the View is coded up in
 CSS. It's that simple."*
 
     Model          HTML         What Is Displayed       
     View           CSS          How It Is Displayed        
-    Controller     Javascript   When It Is Displayed  
+    Controller     JavaScript   When It Is Displayed  
 
 ### StapesJS Framework
 
@@ -5857,7 +5857,7 @@ a short-time.
 
 #### Requirement Analysis
 
--   It is an Open Source project. It has MIT license which is a
+-   It is an open source project. It has MIT license which is a
     permissive free software license. meaning that it permits reuse
     within proprietary software provided all copies of the licensed
     software include a copy of the MIT License terms and the copyright
@@ -5934,7 +5934,7 @@ a short-time.
 
 (33) PSYC Message
 
-(34) NodeJS Architecture
+(34) Node.js Architecture
 
 (35) Vertx Architecture Diagram
 

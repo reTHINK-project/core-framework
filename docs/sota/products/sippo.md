@@ -72,9 +72,9 @@ Sippo offers a set of different API’s and service interfaces that are summaris
 
 ##### Sippo.js API 
 
-Sippo.js is a Javascript API that is downloaded to the user’s browsers, thus containing all the signaling stacks and WebRTC media API calls. Sippo applications are built on top of this sippo.js API and it can also be used by third-party developers to code their own client applications.
+Sippo.js is a JavaScript API that is downloaded to the user’s browsers, thus containing all the signaling stacks and WebRTC media API calls. Sippo applications are built on top of this sippo.js API and it can also be used by third-party developers to code their own client applications.
 
-Sippo.js API supports a complete set of signaling stacks, including both standards-based (like SIPoWS, authored by Quobis at RFC7118) and vendor-specific ones. That means that the applications built on top of the Sippo.js API are capable of communicating with different gateways from different vendors without changing the code. That’s one of the benefit of using Sippo.js API as it hides the complexity of the underlying signaling plane and provides a single and simple-to-use javascript API to the applications.
+Sippo.js API supports a complete set of signaling stacks, including both standards-based (like SIPoWS, authored by Quobis at RFC7118) and vendor-specific ones. That means that the applications built on top of the Sippo.js API are capable of communicating with different gateways from different vendors without changing the code. That’s one of the benefit of using Sippo.js API as it hides the complexity of the underlying signaling plane and provides a single and simple-to-use JavaScript API to the applications.
 
 ![Figure @products-quobis_abstraction_layer: Sippo.js abstraction layer](quobis_abstraction_layer.png)
 
@@ -105,19 +105,19 @@ There are thirty-three available services at Sippo WAC that are listed alphabeti
 
 
 #### 1.7. Sippo WebRTC applications
-Services providers and enterprises can deploy their own WebRTC applications using Sippo WAC, developed by using the existing Sippo Javascript API sippo.js (which includes the Sippo Abstraction Layer) and also making use of all the Sippo services like authentication, contacts, etc… 
+Services providers and enterprises can deploy their own WebRTC applications using Sippo WAC, developed by using the existing Sippo JavaScript API sippo.js (which includes the Sippo Abstraction Layer) and also making use of all the Sippo services like authentication, contacts, etc… 
 
 Every Sippo application needs to run connected to a Sippo WAC, as some of the features are not implemented on the browser but on the WAC.At the current Sippo version, both the applications and the sippo.js libreries must be hosted and donwloaded from the WAC. This is mandatory on this current  version. Please note that, in this scenario, some cross-domain issues may arise. Please contact  Quobis system engineering department for more information on this topic.
 
 Communication between the WebRTC applications running on the browser and the Sippo WAC is done by using the WAPI interface, which dispatches the incoming messages to the corresponding services, as shown in the picture below:
 
-![Figure @products-quobis-webrtc-applications: Sippo WebRTC applications stack](quobis_webrtc_applications.png)
+![Figure @products-quobis-WebRTC-applications: Sippo WebRTC applications stack](quobis_webrtc_applications.png)
 
 #### Potential integration with Wonder proposal
 
 ##### About signaling-on-the-fly
 
-The WONDER Javascript Framework was designed and implemented to address the lack of a standard WebRTC signalling protocol by implementing the novel Signalling On-the-Fly concept, enabling seamless interoperability between different WebRTC Service Provider domains. 
+The WONDER JavaScript Framework was designed and implemented to address the lack of a standard WebRTC signalling protocol by implementing the novel Signalling On-the-Fly concept, enabling seamless interoperability between different WebRTC Service Provider domains. 
 
 The WONDER library assumes there won’t be a standard WebRTC signaling protocol to give developers the freedom to select (or invent) the protocol that better suits WebRTC Application needs and, at the same time, standardization tasks effort are minimized, shortening innovation to market timing. 
 This means, the message server and associated protocol stack can be selected, loaded and instantiated during runtime. Such characteristic enables signaling protocols selected per WebRTC Conversation to ensure full Signaling interoperability among peers using Triangle based Network topologies. Such mechanism we call Signalling on-the-fly.

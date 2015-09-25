@@ -42,7 +42,7 @@ Image Source: [http://mrjoes.github.io](http://mrjoes.github.io/2013/06/21/pytho
 #### Other
 
 * [webdis](https://github.com/nicolasff/webdis) A Redis HTTP interface with JSON output
-* [BankersBox](https://github.com/twilio/BankersBox) A redis-like wrapper for javascript data storage
+* [BankersBox](https://github.com/twilio/BankersBox) A redis-like wrapper for JavaScript data storage
 * [Bone](https://github.com/solutious/bone) Rudimentary Redis over HTTP(S)
 
 
@@ -62,7 +62,7 @@ Analysis against **Messaging Node** Requirements
   * Yes
   * Core feature
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)
   * No
   * Should be implemented externally
 

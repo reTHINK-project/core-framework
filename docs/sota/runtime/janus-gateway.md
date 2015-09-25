@@ -19,7 +19,7 @@ Janus Gateway web servers can currently be deployed on Linux systems only, and a
 
  Janus Gateway implementation of the WebRTC stack supports the W3C WebRTC APIs.
 
-#### [The runtime must support standard Javascript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
+#### [The runtime must support standard JavaScript (ECMAScript)](https://github.com/reTHINK-project/core-framework/issues/3)
 
 Janus Gateway supports standard JavaScript in its implementation. Concretely, it offers a JavaScript library (janus.js) which allows developers to access both the REST and WebSocket interfaces. This library facilitates the task of establishing sessions between clients and the gateway, attaching plugins to clients, exchange events between them and so on.
 

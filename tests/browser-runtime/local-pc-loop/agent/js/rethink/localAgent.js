@@ -1,4 +1,4 @@
-import 'webrtc-adapter';
+import 'WebRTC-adapter';
 import Agent from './agent';
 import util from './utils/utils';
 import ObjectEvent from './utils/objectEvent';

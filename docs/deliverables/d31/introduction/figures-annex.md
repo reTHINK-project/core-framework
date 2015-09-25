@@ -1,6 +1,6 @@
 (@sota-standards-omna) OMNA Network
 
-(@sota-standards-webrtc-evo) WebRTC API evolution
+(@sota-standards-WebRTC-evo) WebRTC API evolution
 
 (@sota-standards-web-push-arch) Web Push Architecture
 
@@ -16,7 +16,7 @@
 
 (@sota-wonder-lib) Wonder Library Main Classes
 
-(@sota-webrtc-org-arch) WebRTC.org architecture scheme
+(@sota-WebRTC-org-arch) WebRTC.org architecture scheme
 
 (@sota-openwebrtc-arch) OpenWebRTC Architecture
 
@@ -62,7 +62,7 @@
 
 (@sota-messaging-psyc-message) PSYC Message
 
-(@sota-messaging-arch-node) NodeJS Architecture
+(@sota-messaging-arch-node) Node.js Architecture
 
 (@sota-messaging-vertx-arch) Vertx Architecture Diagram
 

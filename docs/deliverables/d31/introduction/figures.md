@@ -1,6 +1,4 @@
-(@introduction-wp3-scope) WP3 Scope
-
-(@sota-security-chromium-sandbox) Chromium sandbox scheme
+(@introduction-wp3-scope) Specification Scope (@sota-security-chromium-sandbox) Chromium sandbox scheme
 
 (@sota-security-chrome-extension) The architecture of a Google Chrome extension
 
@@ -22,7 +20,7 @@
 
 (@products-quobis-sippo-services-backends) Sippo services and backends
 
-(@products-quobis-webrtc-applications) Sippo WebRTC applications stack
+(@products-quobis-WebRTC-applications) Sippo WebRTC applications stack
 
 (@runtime_arch_high_level) Runtime High Level Architecture
 
@@ -86,7 +84,7 @@
 
 (@runtime-h2h-intra-comm-4-notification-update) notification update
 
-(@runtime-h2h-intra-comm-5-bob-webrtc) Bob gatheres WebRTC resources
+(@runtime-h2h-intra-comm-5-bob-WebRTC) Bob gatheres WebRTC resources
 
 (@runtime-h2h-intra-comm-6-alice-DO-synch) Synchronization of Alice's Data object
 
@@ -110,7 +108,7 @@
 
 (@msg-node-architecture-messaging-node-architecture) Messaging Node Architecture
 
-(@sota-webrtc-org-arch) WebRTC.org architecture scheme
+(@sota-WebRTC-org-arch) WebRTC.org architecture scheme
 
 (@sota-openwebrtc-arch) OpenWebRTC Architecture
 
@@ -130,7 +128,7 @@
 
 (@sota-standards-omna) OMNA Network
 
-(@sota-standards-webrtc-evo) WebRTC API evolution
+(@sota-standards-WebRTC-evo) WebRTC API evolution
 
 (@sota-standards-web-push-arch) Web Push Architecture
 
@@ -176,7 +174,7 @@
 
 (@sota-messaging-psyc-message) PSYC Message
 
-(@sota-messaging-arch-node) NodeJS Architecture
+(@sota-messaging-arch-node) Node.js Architecture
 
 (@sota-messaging-vertx-arch) Vertx Architecture Diagram
 

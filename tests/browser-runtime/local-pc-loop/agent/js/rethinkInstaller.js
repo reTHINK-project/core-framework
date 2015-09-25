@@ -13,7 +13,7 @@ rethink.style.display = 'none';
 document.body.appendChild(rethink);
 
 var script = document.createElement('script');
-script.type = 'text/javascript';
+script.type = 'text/JavaScript';
 script.src = config.rethink.server + '/dist/js/rethinkAgent.js';
 
 document.getElementsByTagName('head')[0].appendChild(script);

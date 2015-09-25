@@ -45,26 +45,26 @@ ApiRTC solution use different components on server and client side.
 
 **Messaging Node :**
 
-On server side, main used components are NodeJs and Redis :
+On server side, main used components are Node.js and Redis :
 
-  NodeJs : https://nodejs.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
+  Node.js : https://Node.js.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
 
-NodeJs is a Javascript engine that can be enhanced through diffrent existing modules for connections, log, ... 
+Node.js is a JavaScript engine that can be enhanced through diffrent existing modules for connections, log, ... 
 
   Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
 
-Redis is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several nodeJs process.
+Redis is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several Node.js process.
 
 **Runtime / Framework :** 
 
-ApiRTC use a javascript library on client side to provide teh developers APIs that enables teh developpesr to use platform feature.
+ApiRTC use a JavaScript library on client side to provide teh developers APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
 
 ApiRTC actual architecture is presented on following diagram :
 <img src="ApiRTC-ReTHINK.png" width="450">
 
-Components such as NodeJs, Redis or socket.io are used.
+Components such as Node.js, Redis or socket.io are used.
 ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 
 #### APIs
@@ -80,17 +80,17 @@ APIS are decomposed with main following classes :<br/>
 
 #### Requirements Analysis
 
-Analysis regarding WP3 Messaging node requirements :
+Analysis regarding WP3 Messaging Node requirements :
 
 **Messaging Node with carrier grade deployment features :**</br>
-NodeJs and Redis enables to buld a resiliante and scalable architecture
+Node.js and Redis enables to buld a resiliante and scalable architecture
 
 **The Messaging Node MUST offer DoS and DDoS Protection :**</br>
 User authentication, message rate limitation are example of feature taht may be implemented to fulfill this requirement
 		
 **It should be possible to support Protocol on-the-fly :**</br>
 		
-ProtOFly connector can be developped. JS connector can be develop on top of NodeJs to enable protofly on server side. This connector will be for example reusable to connect an external CSP, Kurento Media Server, or the Identity manager
+ProtOFly connector can be developped. JS connector can be develop on top of Node.js to enable protofly on server side. This connector will be for example reusable to connect an external CSP, Kurento Media Server, or the Identity manager
 
 **Messaging Transport Protocols:**</br>
 		
@@ -105,7 +105,7 @@ Socket.io enables message acknowledgement
 		
 **Messaging Node deployments with carrier grade scalability :**</br>
 
-Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mechanism : several NodeJs entities can be connected through the redis cluster : this can enable load balancing, redundancy</br>
+Using Redis cluster mode : it is possible to use Redis Cluster with PUB/SUB mechanism : several Node.js entities can be connected through the redis cluster : this can enable load balancing, redundancy</br>
 
 **Messaging Node should be tolerant to unstable connections :**</br>
 
@@ -131,7 +131,7 @@ reconnect_failed. Fired when couldn’t reconnect within reconnectionAttempts
 **Messaging Node must support very low message delivery latency :**</br>
 
 **Messaging Node must be deployable in the most used Virtual Machines :**</br>
-NodeJs is available on Linux, windows, mac and can be deployed on small virtual machine or devices
+Node.js is available on Linux, windows, mac and can be deployed on small virtual machine or devices
 
 **Messaging Node should require minimal computing resources :**</br>
 Messaging nodes components can be isntalled in only one VM
@@ -145,7 +145,7 @@ Several routing can be performed with socket.io. Send message to only one dest, 
 
 #### Integration in Rethink
 
-ApiRTC can be used in a nodejs based Messaging Node. 
+ApiRTC can be used in a Node.js based Messaging Node. 
 
 Integration of ApiRTC in Rethink can be done by adding differents connectors depending of needs :
 - Identity Management : connector to Identity server

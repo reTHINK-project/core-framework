@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Caja host page</title>
-    <script type="text/javascript" src="//caja.appspot.com/caja.js"></script>
+    <script type="text/JavaScript" src="//caja.appspot.com/caja.js"></script>
     <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
     <script src="bower_components/adapter.js/adapter.js" charset="utf-8"></script>
   </head>
@@ -16,7 +16,7 @@
     <canvas></canvas>
 
 
-    <script type="text/javascript">
+    <script type="text/JavaScript">
 
     caja.initialize({
         server: 'http://caja.appspot.com/',
@@ -51,7 +51,7 @@
 
       caja.load(document.getElementById('guest'), caja.policy.net.NO_NETWORK, function (frame) {
 
-        frame.code('guest.js', 'application/javascript')
+        frame.code('guest.js', 'application/JavaScript')
           .api(_api)
           .run();
 

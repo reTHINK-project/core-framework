@@ -76,7 +76,7 @@ Analysis against **Messaging Node** Requirements
   * Yes
   * this is kind of a core feature
 
-* [Message Node logging](https://github.com/reTHINK-project/core-framework/issues/18)  
+* [Messaging Node logging](https://github.com/reTHINK-project/core-framework/issues/18)  
   * Yes
   * could be done via an attached passive Application Service
 

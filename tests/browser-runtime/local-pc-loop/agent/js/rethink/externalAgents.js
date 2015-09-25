@@ -1,4 +1,4 @@
-import 'webrtc-adapter';
+import 'WebRTC-adapter';
 import Agent from './agent';
 import util from './utils/utils';
 import ObjectEvent from './utils/objectEvent';
@@ -27,7 +27,7 @@ export class ExternalAgents extends ObjectEvent {
     /* var rethinkIframe = document.getElementById('rethink-iframe');
 
     if (rethinkIframe) {
-      var hypertyWebRTCAgent = new Worker(config.rethink.server + 'dist/hyperties/hyperty.webrtc.agent.js');
+      var hypertyWebRTCAgent = new Worker(config.rethink.server + 'dist/hyperties/hyperty.WebRTC.agent.js');
       console.log('asdasda: ', hypertyWebRTCAgent);
 
       _this.hypertyWebRTCAgent = hypertyWebRTCAgent;

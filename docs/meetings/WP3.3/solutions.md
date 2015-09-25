@@ -36,7 +36,7 @@ Using TDF with the rules detecting WebRTC flows.
 ![alt tag](https://github.com/reTHINK-project/core-framework/blob/master/docs/meetings/WP3.3/arch2.png)
 
 #####Main elements and their functions:
-* UE - User equipment with a WebRTc application
+* UE - User equipment with a WebRTC application
 * PDN Gateway
 * TDF (Traffic Detection Function) - must have detection rules that would allow it to recognize flows supposed to be prioritized. For example if there are known TURN servers their addresses can be used as a filter, i.e. if there is a flow with TURN server address as a destination address, it can be eligible for prioritization.
 * PCRF - based on the information provided by the TDF, it can provide QoS rules

@@ -52,7 +52,7 @@ A Collection helps you deal with a group of related models, handling the loading
 
 Analysis against **Service Framework** Requirements
 
-- [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **Yes**
+- [Service Framework **MUST** be Messaging Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **Yes**
 -[Service Framework SHOULD support Model-View-Controller design pattern](https://github.com/reTHINK-project/core-framework/issues/36)
   * NO
   * The Backbone framework provides a MV Pattern with direct interaction between Models and Views.

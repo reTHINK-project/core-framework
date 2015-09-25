@@ -27,27 +27,27 @@ node "Service Provider Support Services" as Man {
 
 !ifdef SHOW_Registry
 	 node Registry as Reg{
-	 
+
 	 }
 !endif
 
 !ifdef SHOW_Discovery
 	 node Discovery as Dis{
-	 
+
 	 }
 !endif
 
 }
 !endif
 
-interface "Hyperty Management Interface (WP2)" as ManI
+interface "Hyperty Management Interface" as ManI
 
-component "Core Framework (WP3 Scope)" as wp3 {
+component "Core Framework" as wp3 {
 
 
-interface "Message Service Interface (WP2)" as MsgI
+interface "Message Service Interface" as MsgI
 
-interface "Stream Interface (WP2)" as StreamI
+interface "Stream Interface" as StreamI
 
 
 node "Messaging Node" {

@@ -112,7 +112,7 @@ var config = {
 Jitsi Meet uses strophe.js internally, but it's clustered with UI dependencies and other non wanted stuff.
 **Strophe.js** is an XMPP library for JavaScript. Its primary purpose is to enable web-based, real-time XMPP applications that run in any browser. There are Jingle plugins for strophe.js.
 You need to include the following files in your application from projects [jingle](https://github.com/estos/strophe.jingle) and [strophe](https://github.com/strophe/strophejs):
-```javascript
+```JavaScript
     <!--add jQuery lib-->
     <script src='strophe/strophe.js'></script><!-- strophe-->
     <script src='strophe/strophe.disco.js'></script><!-- strophe.disco, optional -->
@@ -122,7 +122,7 @@ You need to include the following files in your application from projects [jingl
     <script src='strophe/strophe.jingle.adapter.js' charset='utf-8'></script><!-- getusermedia cross browser compat layer -->
 ```
 Starting the XMMP session is normaly made with:
-```javascript
+```JavaScript
 var BOSH_SERVICE = '/http-bind';
 var ICE_CONFIG = {iceServers: [{url: 'stun:stun.l.google.com:19302'}]};
 
@@ -153,7 +153,7 @@ getUserMediaWithConstraints(['audio', 'video']);
 ```
 
 **getUserMediaWithConstraints** will fire an event configured with jQuery.
-```javascript
+```JavaScript
 $(document).bind('mediaready.jingle', function (event, stream) {
 	localStream = stream;
 	connection.jingle.localStream = stream;
@@ -193,7 +193,7 @@ $(document).bind('mediaready.jingle', function (event, stream) {
 ```
 
 and define presence handlers:
-```javascript
+```JavaScript
 function onPresence(pres) {
 	var from = pres.getAttribute('from');
 	var type = pres.getAttribute('type');
@@ -243,7 +243,7 @@ function onPresenceError(pres) {
 ```
 
 Handle add/remove video/audio streams:
-```javascript
+```JavaScript
 	$(document).bind('remotestreamadded.jingle', function (event, data, sid) {
 		var el = $("<video autoplay='autoplay' style='display:none'/>").attr('id', 'largevideo_' + sid);
     		RTC.attachMediaStream(el, data.stream);

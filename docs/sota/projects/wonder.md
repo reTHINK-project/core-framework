@@ -16,7 +16,7 @@ WONDER experimentation involved Portugal Telecom and Deutsche Telekom.
 The SigOfly concept leverages the use of scripts (JavaScript) by WebRTC Applications to implement signalling protocol stacks. This means, the signalling protocol stack can be selected, loaded and instantiated during runtime. 
 Such characteristic enables signalling protocols to be selected per WebRTC Conversation to ensure full signalling interoperability among peers using Triangle based Network topologies. 
 The SigOfly procedures should be applied at the end-user client to benefit from WebRTC model.
-However, the concept is also feasible between Messaging Servers supporting Javascript execution engines (e.g. nodejs or vertx.io). 
+However, the concept is also feasible between Messaging Servers supporting JavaScript execution engines (e.g. Node.js or vertx.io). 
 
 Before the SigOfly concept is described in detail, some terms require a definition:
 
@@ -81,7 +81,7 @@ WONDER Library can be used in reTHINK in different ways that are detailed in the
 
 #### Runtime Messaging API
 
-The MessagingStub API is a good starting point to design the Javascript API to support Hyperty Message communication which is comprised by the following functions:
+The MessagingStub API is a good starting point to design the JavaScript API to support Hyperty Message communication which is comprised by the following functions:
 
 ```
 connect(ownRtcIdentity, credentials, callbackFunction) {
@@ -250,9 +250,9 @@ Identity.prototype.removeListener = function( listener, rtcIdentity ){
 
 The "resolve(..)" function should be handled by the Runtime itself but all the others could be implemented by an Hyperty representing the Identity. For further discussion.
 
-#### Javascript Framework
+#### JavaScript Framework
 
-WONDER library can provide some input for the design and implementation of reTHINK Javascript framework that should facilitate the development of Hyperties, namely:
+WONDER library can provide some input for the design and implementation of reTHINK JavaScript framework that should facilitate the development of Hyperties, namely:
 * Conversation
 * Participant
 * Resource
@@ -260,9 +260,9 @@ WONDER library can provide some input for the design and implementation of reTHI
 * MessageFactory
 
 
-####Javascript Shim Layer for non-compliant reTHINK Runtime
+####JavaScript Shim Layer for non-compliant reTHINK Runtime
 
-WONDER library can provide some input for the design and implementation of reTHINK Javascript Shim Layer to be used in non-compliant reTHINK Runtime, namely:
+WONDER library can provide some input for the design and implementation of reTHINK JavaScript Shim Layer to be used in non-compliant reTHINK Runtime, namely:
 
 * MessagingStub
 * Idp

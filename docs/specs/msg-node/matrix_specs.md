@@ -1,6 +1,6 @@
 ## Matrix.org based Messaging Node Specification
 
-This section matches the requirements for the functional blocks of the Message Node architecture to features and functional blocks of the matrix.org architecture. Functional gaps are identified and proposals for extensions to the standard Matrix.org Homeserver are made in order to fill these gaps.
+This section matches the requirements for the functional blocks of the Messaging Node architecture to features and functional blocks of the matrix.org architecture. Functional gaps are identified and proposals for extensions to the standard Matrix.org Homeserver are made in order to fill these gaps.
 
 ### Protocol Stub and Connectors
 
@@ -8,7 +8,7 @@ Protocol Stubs and Connectors are means to make a Messaging Node interoperable w
 
 A protocol stub is the core entity of the Protocol-on-the-fly concept. It is a downloadable piece of JavaScript code that is executed in the client's runtime and performs the required adaptations on the messaging protocol. In a Protocol-on-the-fly based communication relation there is always one side in the client role (i.e. the side that downloads the stub) and the other side in the server role (the side that the stub connects to).
 
-A Messaging node has to support both operation modes in order to provide full bi-directional interoperability.
+A Messaging Node has to support both operation modes in order to provide full bi-directional interoperability.
 
 #### Matrix as Protocol-on-the-fly client
 

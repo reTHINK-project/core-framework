@@ -210,13 +210,13 @@ To set postMessage() function to be used by the Syncher to send messages, i.e. t
 
 #### createAsObserver
 
-Hyperty instance uses this function to provide the object to be changed by the (observer) syncher according to messages received. The Hyperty instance has previsouly used the *Object.observe* javascript api to set as an observer of this object
+Hyperty instance uses this function to provide the object to be changed by the (observer) syncher according to messages received. The Hyperty instance has previsouly used the *Object.observe* JavaScript api to set as an observer of this object
 
     createAsObserver( Message.Message receivedMessage )
 
 #### createAsReporter
 
-To start the synchronisation process for the dataObject passed as input parameter. The Syncher will use the *Object.observe* javascript api to set as an observer of this object. Everytime the Hyperty instance changes this object, the syncher will send an Update Message with changed data to ResourceURL address.
+To start the synchronisation process for the dataObject passed as input parameter. The Syncher will use the *Object.observe* JavaScript api to set as an observer of this object. Everytime the Hyperty instance changes this object, the syncher will send an Update Message with changed data to ResourceURL address.
 
     createAsReporter(  dataObject, URL.URL resourceURL, URL.HypertyCatalogueURL schemaURL )
     
@@ -237,7 +237,7 @@ To send messages to components running in the sandbox
 
 ### Identity Module Interface
 
-Functions to deal with assertions compliant with [WebRTC RTCIdentityProvider](http://w3c.github.io/webrtc-pc/#identity-provider-interaction)
+Functions to deal with assertions compliant with [WebRTC RTCIdentityProvider](http://w3c.github.io/WebRTC-pc/#identity-provider-interaction)
 
 #### generateAssertion
 

@@ -8,7 +8,7 @@ var config = require('./config.json');
   } else if (typeof window !== 'undefined') {
     all = window; // Browser
   } else if (typeof global !== 'undefined') {
-    all = global; // NodeJS
+    all = global; // Node.js
   }
 
   all.config = config;

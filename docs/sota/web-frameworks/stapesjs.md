@@ -15,5 +15,5 @@ It only has 20 methods compared to other web-frameworks like Backbone which has 
 * The last commit was done the Summer of 2014 so its contributors are not very active in Github. This may be a problem if any issue is found.
 
 #### Requirement Analysis
-* It is an Open Source project. It has MIT license which is a permissive free software license. meaning that it permits reuse within proprietary software provided all copies of the licensed software include a copy of the MIT License terms and the copyright notice. Such proprietary software retains its proprietary nature even though it incorporates software under the MIT License. It can be used without restrictions in the project.
+* It is an open source project. It has MIT license which is a permissive free software license. meaning that it permits reuse within proprietary software provided all copies of the licensed software include a copy of the MIT License terms and the copyright notice. Such proprietary software retains its proprietary nature even though it incorporates software under the MIT License. It can be used without restrictions in the project.
 * ReTHINK develeopments are not expected to be very complex so StapesJS could be a right choice. Additionally its small size will reduce the overhead in the applications which will help to reduce the load time. 

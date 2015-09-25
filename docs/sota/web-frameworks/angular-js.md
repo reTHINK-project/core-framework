@@ -1,9 +1,9 @@
 ### AngularJS Framework 
 
 #### Overview
-AngularJS [51] is a Javascript MVC Framework developed and promoted by Google, to build well architectured and maintainnable web applications. 
+AngularJS [51] is a JavaScript MVC Framework developed and promoted by Google, to build well architectured and maintainnable web applications. 
 It is usually mistaken for a library due to its lightweight than normal frameworks. It is entirely based on 
-Javascript and a client side framework. It is supported by multiple browsers. 
+JavaScript and a client side framework. It is supported by multiple browsers. 
 
 
 ![Figure @sota-messaging-mvc-angular: AngularJS Framework](mvc_angular.png)
@@ -66,7 +66,7 @@ Scopes can watch expressions and propagate events.
 
 Analysis against **Service Framework** Requirements
 
- - [Service Framework **MUST** be Message Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **Yes**
+ - [Service Framework **MUST** be Messaging Node agnostic](https://github.com/reTHINK-project/core-framework/issues/44): **Yes**
  - [The Service Framework **MUST** avoid any JavaScript conflicts](https://github.com/reTHINK-project/core-framework/issues/43): **No**
  This is a namespace issue and potential conflicts with other frameworks are likely to occur 
  - [Service Framework **MUST** be Modular in nature](https://github.com/reTHINK-project/core-framework/issues/42): **Yes**

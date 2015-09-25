@@ -12,11 +12,11 @@ For each of these runtime types we should analyse the best strategy to support H
 
 Possible Strategies:
 * Browser Extensions
-* Docker+NodeJs
+* Docker+Node.js
 * Docker+JDK8
-* NodeJs
+* Node.js
 * JDK8
-* Javascript shim layer to be used in Browsers without extensions ie files implementing the Shim layer would be downloaded with the Hyperty
+* JavaScript shim layer to be used in Browsers without extensions ie files implementing the Shim layer would be downloaded with the Hyperty
 
 ##### [Browser Runtime](browser-runtime.md)
 

@@ -8,7 +8,7 @@ Several (open source) projects implement key functionality that may be potential
 
 ### CoAP/ Well-known CoRE Projects
 
-If Hyperties, Codecs, Protostub and other artifacts to be provisioned on the end devices are to be regarded as resources with attributes describing: capabilities (audio, video, text), running platform (OS), configuration (DNS name of the messaging node, DNS server), implementation (code/script, codecs), these artifacts can be organized as resources in the Repository/Catalogue component.
+If Hyperties, Codecs, Protostub and other artifacts to be provisioned on the end devices are to be regarded as resources with attributes describing: capabilities (audio, video, text), running platform (OS), configuration (DNS name of the Messaging Node, DNS server), implementation (code/script, codecs), these artifacts can be organized as resources in the Repository/Catalogue component.
 
 #### LibCoap Project
 
@@ -106,7 +106,7 @@ The project can act as multiple virtual OMA LWM2M clients by connecting to a rem
 
 The supported features include interfaces:  Registration, Device Management and Service Enablement Interface, Information Reporting Interface.
 
-The programming language is Javascript.
+The programming language is JavaScript.
 
 The homepage can be found on: https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
 
@@ -114,6 +114,6 @@ The license is [BSD-like](https://github.com/OpenMobileAlliance/OMA-LWM2M-DevKit
 
 ##### How to use
 
-The project provides a Web GUI as an addon for Firefox to get the user/developer familiarize. The core functionality can be included in any software package like a Javascript library and also, the Core Framework of the client side for the Rethink project.
+The project provides a Web GUI as an addon for Firefox to get the user/developer familiarize. The core functionality can be included in any software package like a JavaScript library and also, the Core Framework of the client side for the Rethink project.
 
 
