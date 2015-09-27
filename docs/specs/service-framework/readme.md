@@ -48,6 +48,8 @@ This model specifies messages exchanged between Hyperties. It uses the Reporter-
 **Address Model** :
 Different address URL have been proposed for the reTHNK platform with respect to the different componnents. For example  user://<idpdomain>/<user-identifier> for Idp, hyperty-runtime://<runtime-provider-domain>/<runtime-identifier> for the Hyperty Runtime and hyperty://<registry-domain>/<hyperty-instance-identifier> for the Hyperty Instance. The Service Framework will provide factory classes for creation of different address URL types 
 
-### Interface Design
+### Interfaces 
+D2.2 specified network interfaces (Registry, Catalogue, Identity Management, Messaging service) for performing CRUD operations over various Data Objects. The Proto-on-the-fly and the protocol stubs from the different components could directly be used here without implementing extra functionalities to the Service Framework.   
 
-### Utilities
+
+
