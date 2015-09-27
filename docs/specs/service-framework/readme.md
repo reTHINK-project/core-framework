@@ -42,10 +42,11 @@ The context model is used to model different media types for representing simple
 **Communication Model**: 
 The communication data model will be to model communications within the retHINK architecture for messaging and communicator Hyperties. The data model includes information for identifying a communication (id, owner, duration, etc.), the status of the communication (pending, open, closed, failed, paused), a list of participants (identity), the quality, the connection data object (webRTC connection) and message. The Service Framework should provide a set of functionalities for creation and management of the sessions. Some of these functionalities will be provided by the Hyperty Runtime. It is still to be determined to what abstraction level this should be made available to developers.  
 
-** Message Model** :
+**Message Model** :
+This model specifies messages exchanged between Hyperties. It uses the Reporter-Observer communication pattern to create and synchronize object state changes amongst each other. The Hyperty Runtime includes this functionality which will be exposes to the developers through factory creation interfaces. 
 
-** Address Model** :
-
+**Address Model** :
+Different address URL have been proposed for the reTHNK platform with respect to the different componnents. For example  user://<idpdomain>/<user-identifier> for Idp, hyperty-runtime://<runtime-provider-domain>/<runtime-identifier> for the Hyperty Runtime and hyperty://<registry-domain>/<hyperty-instance-identifier> for the Hyperty Instance. The Service Framework will provide factory classes for creation of different address URL types 
 
 ### Interface Design
 
