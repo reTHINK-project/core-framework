@@ -2,7 +2,7 @@
 
 #### What is ApiRTC?
 
-ApiRTC is the communication platform developed by Apizee. This includes a communication platform and a client JavaScript library that can be used by developers to developed their own applications without having to consider the technical aspects of communication. Complete version of ApiRTC with tutorials is described on www.apirtc.com
+ApiRTC [103] is the communication platform developed by Apizee. This includes a communication platform and a client JavaScript library that can be used by developers to developed their own applications without having to consider the technical aspects of communication.
 
 #### Features Overview
 
@@ -46,13 +46,9 @@ ApiRTC solution use different components on server and client side.
 
 On server side, main used components are Node.js and Redis :
 
-Node.js : https://Node.js.org/ - Description is available : http://en.wikipedia.org/wiki/Node.js
+Node.js [22] is a JavaScript engine that can be enhanced through different existing modules for connections, log, ...
 
-Node.js is a JavaScript engine that can be enhanced through diffrent existing modules for connections, log, ...
-
-Redis : http://redis.io/ - Description is available : http://en.wikipedia.org/wiki/Redis
-
-Redis is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several Node.js process.
+Redis [63] is a NoSQL database that is really interesting for real time data and that provide a publish/subscribe that can be used to establish communication between several Node.js process.
 
 **Runtime / Framework :**
 
@@ -66,6 +62,14 @@ Components such as Node.js, Redis or socket.io are used. ApiRTC uses JSON over W
 
 #### APIs
 
-ApiRTC provides API for developers : complete set of APIs is describe on http://apirtc.com/api-docs/
+ApiRTC provides API for developers that are decomposed with the main following classes :<br/>
 
-APIS are decomposed with main following classes :<br/>* ApiRTCSession : manage user connection to the platform (presence)<br/>* ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>* ApiRTCIMClient : manage Instant messaging feature<br/>* ApiRTCDataClient: : manage data sending feature<br/>* ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
+-	ApiRTCSession : manage user connection to the platform (presence)<br/>
+
+-	ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel ...<br/>
+
+-	ApiRTCIMClient : manage Instant messaging feature<br/>
+
+-	ApiRTCDataClient: : manage data sending feature<br/>
+
+-	ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
