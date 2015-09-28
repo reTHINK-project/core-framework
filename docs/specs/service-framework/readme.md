@@ -19,7 +19,8 @@ From the above user scenarios specific actors/roles, requirements and use cases 
 *	Data Storage functions: for storing persistent data
 *	Location functions: to access device specific context (e.g. GPS) to be used as context for different services
 *	User Entity Management: to manage one or multiple user profiles
-*	Notification service: for notifying triggered events
+*Notification service: for notifying triggered events
+
 For the Service Framework focus will be laid on functionalities that are not available on other open source JavaScript libraries.
 
 
