@@ -4,15 +4,13 @@ The Runtime procedures to register a new Hyperty are described in this section.
 
 ![Figure @runtime-register-hyperty: Register Hyperty](register-hyperty.png)
 
+Step 1: the Hyperty registration is requested by the Runtime UA triggered by the [Hyperty Deployment process](deploy-hyperty.md) (section ?).
 
-Step 1 : the Hyperty registration is requested by the Runtime UA triggered by the [Hyperty Deployment process](deploy-hyperty.md) (section ?).
+Steps 2 and 3: The Hyperty is associated to a certain [identity](../identity-management/user-to-hyperty-binding.md)(section 4.3.2.3)
 
-Steps 2 and 3 : The Hyperty is associated to a certain [identity](../identity-management/user-to-hyperty-binding.md)(section ?)
-
-Steps 4 - 10 : an Hyperty URL address is allocated in cooperation with the Msg Node Address Allocation functionality.
+Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg Node Address Allocation functionality.
 
 **Message to request address allocated for new Hyperty Instance**
-
 
 ```
 "id" : "1"
@@ -32,7 +30,7 @@ Steps 4 - 10 : an Hyperty URL address is allocated in cooperation with the Msg N
 "body" : { "hypertyInstanceURL" : "hyperty-instance://sp1/alice/hy123" }
 ```
 
-Steps 11 - 15 : the Hyperty instance is registered in the back-end Registry
+Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
 
 **Message to Register new Hyperty Instance**
 
@@ -46,4 +44,4 @@ Steps 11 - 15 : the Hyperty instance is registered in the back-end Registry
 ...}
 ```
 
-Steps 16 - 17 : The runtime Registry adds its listener to be notified about Hyperty instance status and returns the Hyperty URL to the runtime UA
+Steps 16 - 17: The runtime Registry adds its listener to be notified about Hyperty instance status and returns the Hyperty URL to the runtime UA

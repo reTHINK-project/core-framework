@@ -1,6 +1,6 @@
 ##### H2H Intradomain Communication - Bob receives invitation
 
-This MSC diagrams shows how Bob receives invitation from Bob.
+This MSC diagrams shows how Bob receives invitation from Alice.
 
 <!--
 @startuml "h2h-intra-comm-2-bob-receives-invitation.png"
@@ -33,7 +33,7 @@ BUS@1B <- Proto1@1B : postMsg(Create MSG)
 
 group assert Alice ID Token as defined in IDM/User Id Assertion diagram
 
-	BUS@1B -> BUS@1B : assert Alice's identity
+    BUS@1B -> BUS@1B : assert Alice's identity
 
 end group
 
@@ -67,17 +67,15 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 @enduml
 -->
 
-
 ![Figure @runtime-h2h-intra-comm-2-bob-receives-invitation: Bob receives invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
-
-(Steps 1 - 4) : Service Provider Back-end Messaginge Service routes the message to Bob's Message BUS, asserts Alice's identity and forwards the message to Bobs Router reaching Bob's PEP component
+(Steps 1 - 4): Service Provider Back-end Messaging Service routes the message to Bob's Message BUS, asserts Alice's identity and forwards the message to Bobs Router reaching Bob's PEP component
 
 (Step 4) : Bob's PEP applies local policies if required including incoming communication request access control
 
 (Steps 5 - 8) : the message is forwarded to Bob's Syncher which creates the requested new objects and reports to Bob's Hyperty Instance the new created objects.
 
-(Steps 9 - 13) : As soon as the new Objects were created by Bob's syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody).
+(Steps 9 - 13) : As soon as the new Objects were created by Bob's Syncher, it responds back to Alice to confirm the objects were created with a [Response Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody).
 
 ```
 "id" : "1"

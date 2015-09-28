@@ -9,7 +9,7 @@ The Runtime Main procedures are also described in detail in this chapter using U
 
 Four main types of Runtime procedures are described:
 
-1.	Basic Runtime procedures are in general performed independently of the Hyperty or protocol stub executed in the runtime including procedures for the deployment of protocol stubs and Hyperties, and procedures performed to route messages among Hyperties.
+1.	Basic Runtime procedures are in general performed independently of the Hyperty or Protocol Stub executed in the runtime including procedures for the deployment of protocol stubs and Hyperties, and procedures performed to route messages among Hyperties.
 2.	Identity Management Runtime procedures are the procedures performed to register and log in users in the domain, as well as procedures performed to associate identities to Hyperties and asserts user identities.
 3.	Runtime Procedures to support Human to Human Communication with special focus on the validation of the Reporter-Observer communication pattern to WebRTC.
 

@@ -2,7 +2,7 @@
 
 #### [deploy runtime](deploy-runtime.md)
 
-#### [deploy protocol Stub](deploy-protostub.md)
+#### [deploy Protocol Stub](deploy-protostub.md)
 
 #### [deploy Hyperty](deploy-hyperty.md)
 

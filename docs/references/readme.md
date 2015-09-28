@@ -218,3 +218,9 @@ References
 [108] https://nodesecurity.io/resources
 
 [109] Deliverable D4.1, “Management and Security features specifications”, 30-09-2015.
+
+[110] http://requirejs.org/
+
+[111] https://github.com/eface2face/cordova-plugin-iosrtc
+
+[112] https://github.com/alongubkin/phonertc

@@ -41,7 +41,7 @@ RunUA@A -> RunReg@A : registerHyperty(\npostMessage,\nHypertyDescriptor )
 
 		Proto1@A -> SP1 : read hyperty\nAddress Allocation\nSP1 MSG Protocol
 
-		group option: connect protocol stub to the domain in case it is still not connected yet
+		group option: connect Protocol Stub to the domain in case it is still not connected yet
 
 		...
 

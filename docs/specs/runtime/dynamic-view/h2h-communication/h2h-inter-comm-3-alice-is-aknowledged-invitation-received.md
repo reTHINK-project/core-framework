@@ -1,6 +1,6 @@
 ##### H2H Interdomain Communication - Invitation Acknowledgement
 
-This MSC diagrams shows how Alice is aknowledged that Bob received the invitation
+This MSC diagrams shows how Alice is acknowledged that Bob received the invitation
 
 <!--
 @startuml "h2h-inter-comm-3-alice-is-aknowledged.png"
@@ -46,11 +46,10 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 @enduml
 -->
 
+![Figure @runtime-h2h-inter-comm-3-alice-is-aknowledged-invitation-received: H2H Interdomain Communication : Alice is Acknowledged](h2h-inter-comm-3-alice-is-aknowledged.png)
 
-![H2H Interdomain Communication : Alice is Aknowledged](h2h-inter-comm-3-alice-is-aknowledged.png)
+(Step 1 - 3): Service Provider Back-end Messaginge Service sends the OK Message to via the SP2 Protocol Stub to Bob's Message BUS which forwards it to its PEP
 
-(Step 1 - 3) : Service Provider Back-end Messaginge Service sends the OK Message to via the SP2 protocol Stub to Bob's Message BUS which forwards it to its PEP
+(Step 4): Bob's PEP applies local policies if required
 
-(Step 4) : Bob's PEP applies local policies if required
-
-(Steps 5 - 6) : the message is forwarded to Alice's Syncher which updates the Data Object and reports the change to Alice's Hyperty Instance
+(Steps 5 - 6): the message is forwarded to Alice's Syncher which updates the Data Object and reports the change to Alice's Hyperty Instance

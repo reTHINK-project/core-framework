@@ -81,7 +81,7 @@ HypertyRuntimeURL registerStub( postMessage, DomainURL )
 
 #### unregisterStub
 
-To unregister a previously registered protocol stub
+To unregister a previously registered Protocol Stub
 
 ```
  unregisterStub( HypertyRuntimeURL )
@@ -113,7 +113,7 @@ HypertyRuntimeURL registerPEP( postMessage, HypertyURL hyperty )
 
 #### unregisterPEP
 
-To unregister a previously registered protocol stub
+To unregister a previously registered Protocol Stub
 
 ```
  unregisterPEP( HypertyRuntimeURL )
@@ -129,7 +129,7 @@ onEvent( Message.Message event )
 
 #### discoverProtostub
 
-This function is used to discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime URL for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers.
+This function is used to discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime URL for the Protocol Stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers.
 
 ```
 RuntimeURL discoverProtostub( DomainURL url)
@@ -217,7 +217,7 @@ postMessage(Message.Message message)
 
 #### init
 
-To initialise the protocol stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the protocol stub and required configuration retrieved from protocolStub descriptor.
+To initialise the Protocol Stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the Protocol Stub and required configuration retrieved from protocolStub descriptor.
 
 ```
 init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
@@ -225,7 +225,7 @@ init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.Co
 
 #### connect
 
-To connect the protocol stub to the back-end server
+To connect the Protocol Stub to the back-end server
 
 ```
 connect( identity )
@@ -233,7 +233,7 @@ connect( identity )
 
 #### disconnect
 
-To disconnect the protocol stub.
+To disconnect the Protocol Stub.
 
 ```
 disconnect(  )
@@ -241,7 +241,7 @@ disconnect(  )
 
 #### postMessage
 
-To post messages to be dispatched by the protocol stub to connected back-end server.
+To post messages to be dispatched by the Protocol Stub to connected back-end server.
 
 ```
 postMessage(Message.Message message)

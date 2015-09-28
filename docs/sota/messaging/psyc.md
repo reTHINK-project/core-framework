@@ -59,4 +59,4 @@ Analysis against **Messaging Node** Requirements
 
 -	[It should be possible to support Protocol on-the-fly](https://github.com/reTHINK-project/core-framework/issues/21)
 
-	-	The psyced implementation of PSYC has a negotiation feature of protocol switch advertising. This way, each node has information about supported protocols on all the nodes it is communicating with. However, this could be achieved, since the Client-Server API could be wrapped in a protocol stub, that can be downloaded at runtime.
+	-	The psyced implementation of PSYC has a negotiation feature of protocol switch advertising. This way, each node has information about supported protocols on all the nodes it is communicating with. However, this could be achieved, since the Client-Server API could be wrapped in a Protocol Stub, that can be downloaded at runtime.

@@ -22,12 +22,12 @@ RunReg@A -> RunReg@A  : verify source(association Id Token)
 
 RunReg@A -> RunReg@A  : resolve targed address
 
-group option :unregistered protocol stub for external address
+group option :unregistered Protocol Stub for external address
 
-	group discover protocol stub URL
+	group discover Protocol Stub URL
 	end
 
-	group deploy protocol stub
+	group deploy Protocol Stub
 	end
 
 end

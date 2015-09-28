@@ -1344,7 +1344,7 @@ described in WP1.
 Four main types of Runtime procedures are described:
 
 1.  Basic Runtime procedures are in general performed independently of
-    the Hyperty or protocol stub executed in the runtime including
+    the Hyperty or Protocol Stub executed in the runtime including
     procedures for the deployment of protocol stubs and hyperties, and
     procedures performed to route messages among Hyperties.
 2.  Identity Management Runtime procedures are the procedures performed
@@ -1382,7 +1382,7 @@ Provider, and also for security reasons, protocol stubs and Hyperties
 are isolated from each other and executed in different sandboxes.
 Communication between components running in different sandboxes are only
 possible through messages exchanged through a message bus functionality
-provided by the Core Sandbox. On the other hand, the protocol stub
+provided by the Core Sandbox. On the other hand, the Protocol Stub
 provides the bridge for the Hperty runtime to communicate with
 associated Service Provider. For example, in fig. 10, protostub1 is the
 only way that Hyperty instances have to communicate with Service
@@ -1486,7 +1486,7 @@ policies to synchronised object.
 
 #### Protocol Stub
 
-The protocol stub implements a Protocol Stack to be used to communicate
+The Protocol Stub implements a Protocol Stack to be used to communicate
 with Service Provider Backend Servers (including Messaging Server or
 other functionalities like IdM) according to Protocol on the Fly and
 codec on the fly concept as introduced in D2.2.
@@ -2123,7 +2123,7 @@ ProtocolStub.
 
 #### unregisterStub
 
-To unregister a previously registered protocol stub
+To unregister a previously registered Protocol Stub
 
      unregisterStub( HypertyRuntimeURL )
 
@@ -2157,7 +2157,7 @@ To unregister a previously registered Data Object
 
 #### unregisterPEP
 
-To unregister a previously registered protocol stub
+To unregister a previously registered Protocol Stub
 
      unregisterPEP( HypertyRuntimeURL )
 
@@ -2170,7 +2170,7 @@ To receive status events from components registered in the Registry
 #### discoverProtostub
 
 To discover protocol stubs available in the runtime for a certain
-domain. If available, it returns the runtime url for the protocol stub
+domain. If available, it returns the runtime url for the Protocol Stub
 that connects to the requested domain. Required by the runtime BUS to
 route messages to remote servers or peers (*do we need something similar
 for Hyperties?*).
@@ -2261,28 +2261,28 @@ To receive messages from the message BUS
 
 #### init
 
-To initialise the protocol stub including as input parameters its
+To initialise the Protocol Stub including as input parameters its
 allocated component runtime url, the runtime BUS postMessage function to
-be invoked on messages received by the protocol stub and required
+be invoked on messages received by the Protocol Stub and required
 configuration retrieved from protocolStub descriptor.
 
     init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 
 #### connect
 
-To connect the protocol stub to the back-end server
+To connect the Protocol Stub to the back-end server
 
     connect( identity )
 
 #### disconnect
 
-To disconnect the protocol stub.
+To disconnect the Protocol Stub.
 
     disconnect(  )
 
 #### postMessage
 
-To post messages to be dispatched by the protocol stub to connected
+To post messages to be dispatched by the Protocol Stub to connected
 back-end server.
 
     postMessage(Message.Message message)
@@ -2454,31 +2454,31 @@ presented in the figure below and described in this section.
 
 ![Figure 22: Deploy Protocol Stub](deploy-protostub.png)
 
-Steps 1-2 : The protocol stub deployment may be triggered by the
+Steps 1-2 : The Protocol Stub deployment may be triggered by the
 deployment of an Hyperty or by some attempt from a local Hyperty to
 communicate with a remote Hyperty running in the domain served by the
-protocol Stub. In this case the Runtime Registry would take the
-initiative to start the protocol stub deploy (FFS). Such trigger may
+Protocol Stub. In this case the Runtime Registry would take the
+initiative to start the Protocol Stub deploy (FFS). Such trigger may
 take advantage of some existing libraries like require.js (to be
 validated with experimentations). The Runtime UA only downloads and
-deploys requested protocol stub after checking in the Registry that
-there is no protocol stub available in the runtime.
+deploys requested Protocol Stub after checking in the Registry that
+there is no Protocol Stub available in the runtime.
 
 Steps 3 - 5 : the Runtime UA is able to derive the URL to download the
-protocol stub descriptor from the domain url, since it is a well known
+Protocol Stub descriptor from the domain url, since it is a well known
 URI defined in the reTHINK Architecture Interfaces [15]. The protocol
 stub descriptor contains the url that the Runtime UA uses to download
-and instantiate the protocol stub in the runtime. Depending on the
+and instantiate the Protocol Stub in the runtime. Depending on the
 Runtime Sandbox implementation, the download and instantiation may have
 to be performed inside the Sandbox.
 
-Steps 6 - 8 : the new protocol stub is registered in the Runtime
+Steps 6 - 8 : the new Protocol Stub is registered in the Runtime
 Registry, which allocates and return the runtime address (RuntimeURL)
 for the new runtime component. In addition, the runtime Registry
 requests the runtime BUS to add its listener to receive events about the
-protocol stub status.
+Protocol Stub status.
 
-Steps 9 : The Runtime UA initializes the new protocol stub with
+Steps 9 : The Runtime UA initializes the new Protocol Stub with
 configuration data contained in its descriptor. Depending on the sandbox
 implementation, the initialization may have to be remotely executed by a
 Execution message type routed by the Message BUS.
@@ -2488,9 +2488,9 @@ to receive messages from the runtime. Protocol stubs are connected by
 using credentials handled by the Core Runtime Identity Module which are
 detailed in the [Domain Login](#domain-login).
 
-Steps 11 - 12 : protocol stub publishes its status (including events
+Steps 11 - 12 : Protocol Stub publishes its status (including events
 about when it is connected or disconnected) in its resource status.
-Components registered on the protocol stub status resources, like the
+Components registered on the Protocol Stub status resources, like the
 Registry, are notified about the new protocol status.
 
 Message to publish Protocol Stub Status
@@ -2593,7 +2593,7 @@ Steps 1 - 5 : on receiving a message, the Runtime BUS requests the
 Registry to verify if the originator is valid (3) (i.e. its Runtime URL
 has been previously registered) and checks if the target address is
 external to the Runtime. If yes, it looks for the protostub Runtime URL
-to be used. The process to [deploy the protocol Stub in the
+to be used. The process to [deploy the Protocol Stub in the
 runtime](deploy-protostub.md) (section ?) is triggered, in case it is
 not available yet.
 
@@ -2838,7 +2838,7 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-== Deploy protocol stub and Registration Hyperty ==
+== Deploy Protocol Stub and Registration Hyperty ==
 
 Alice -> HTTP_UAC@A : download\nRegistration App
 
@@ -2847,9 +2847,9 @@ HTTP_UAC@A -> SP1 : download Registration App
 create App@A
 JS@A -> App@A : new
 
-group deploy protocol stub
+group deploy Protocol Stub
 
-    App@A -> RunUA@A : download protocol stub
+    App@A -> RunUA@A : download Protocol Stub
 
     note right
         detailed in a separated diagram
@@ -2921,7 +2921,7 @@ end group
 -->
 ![Figure 31: User registration](user-registration.png)
 
-In this use case, it is considered there is a single protocol stub to
+In this use case, it is considered there is a single Protocol Stub to
 interact with all back-end services including Identity Management.
 Another option is to have different protocol stubs to interact with
 different back-end services including authentication, authorisation and
@@ -2954,7 +2954,7 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-== Deploy protocol stub and Service Provider Hyperty ==
+== Deploy Protocol Stub and Service Provider Hyperty ==
 
 group Deploy Protocol Stub diagram included in the Basics 
 
@@ -3063,7 +3063,7 @@ SP1H@A <- Router1@A : postMessage(login response message)
 -->
 ![Figure 34: Domain Login](domain-login.png)
 
-In this use case, it is considered there is a single protocol stub to
+In this use case, it is considered there is a single Protocol Stub to
 interact with all back-end services including Identity Management.
 Another option is to have different protocol stubs to interact with
 different back-end services including authentication, authorisation and
@@ -3751,7 +3751,7 @@ Router1@A -> Router1@A : apply policies
 
 Router1@A -> BUS@A : postMsg(Create MSG)
 
-group deploy SP2 protocol Stub as defined at basics/deploy-protostub.md
+group deploy SP2 Protocol Stub as defined at basics/deploy-protostub.md
 
 create Proto2@A
 BUS@A -> Proto2@A : new
@@ -3950,7 +3950,7 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 Aknowledged](h2h-inter-comm-3-alice-is-aknowledged.png)
 
 (Step 1 - 3) : Service Provider Back-end Messaginge Service sends the OK
-Message to via the SP2 protocol Stub to Bob's Message BUS which forwards
+Message to via the SP2 Protocol Stub to Bob's Message BUS which forwards
 it to its PEP
 
 (Step 4) : Bob's PEP applies local policies if required
@@ -4962,7 +4962,7 @@ io.vertx.core.eventbus.Message.headers() map.
 
 ### Protocol Stub Sandbox
 
-The protocol Stub sandbox will be managed by a ProtocolStubManager class
+The Protocol Stub sandbox will be managed by a ProtocolStubManager class
 that loads, registers and removes protocol stubs on request. If
 ProtoStubs are in JavaScript, the sandbox model could be implemented
 using the java NashornScriptEngineFactory and controlling the available
@@ -5197,7 +5197,7 @@ to fill these gaps.
 Protocol Stubs and Connectors are means to make a Messaging Node
 interoperable with foreign signalling protocols.
 
-A protocol stub is the core entity of the Protocol-on-the-fly concept.
+A Protocol Stub is the core entity of the Protocol-on-the-fly concept.
 It is a downloadable piece of JavaScript code that is executed in the
 client's runtime and performs the required adaptations on the messaging
 protocol. In a Protocol-on-the-fly based communication relation there is
@@ -5230,7 +5230,7 @@ collaboration.
 #### Matrix as Protocol-on-the-fly server
 
 In order to support the server role in the Protocol-on-the-fly
-architecture, a specialized Matrix protocol stub needs to be implemented
+architecture, a specialized Matrix Protocol Stub needs to be implemented
 that connects to a Homeserver. Since the Matrix Homeserver has a
 well-documented API and the Matrix message format allows the transport
 of arbitrary payload, this implementation should be straight forward.

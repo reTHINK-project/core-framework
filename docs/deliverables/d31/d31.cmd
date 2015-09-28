@@ -21,6 +21,7 @@ specs\runtime-basics.md ^
 ..\..\specs\runtime\dynamic-view\basics\deploy-runtime.md ^
 ..\..\specs\runtime\dynamic-view\basics\deploy-protostub.md ^
 ..\..\specs\runtime\dynamic-view\basics\deploy-hyperty.md ^
+..\..\specs\runtime\dynamic-view\basics\register-hyperty.md ^
 ..\..\specs\runtime\dynamic-view\basics\bus-msg-routing.md ^
 ..\..\specs\runtime\dynamic-view\basics\intra-local-comm.md ^
 ..\..\specs\runtime\dynamic-view\basics\intra-remote-comm.md ^

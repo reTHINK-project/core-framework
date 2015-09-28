@@ -28,7 +28,7 @@ alt Stub Not Available in Registry
 	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/
 
 		note over BUS@A
-			as defined in the data model the protocol stub is a well know URI.
+			as defined in the data model the Protocol Stub is a well know URI.
 			**open issue:** should it be the protostub URL a well known URI?
 		end note
 
@@ -39,7 +39,7 @@ alt Stub Not Available in Registry
 
 	RunUA@A -> RunReg@A : registerStub(domainURL)
 
-	opt protocol stub instance is registered in the remote back-end Registry
+	opt Protocol Stub instance is registered in the remote back-end Registry
 		...
 	end
 
@@ -51,7 +51,7 @@ alt Stub Not Available in Registry
 
 	BUS@A <- RunUA@A : addListener( \nprotostubListener, \nRuntimeProtoStubURL)
 
-	group protocol stub connection to domain: see Domain Registration in the Identity Management diagrams
+	group Protocol Stub connection to domain: see Domain Registration in the Identity Management diagrams
 
 	...
 

@@ -30,7 +30,7 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-== Deploy protocol stub and Registration Hyperty ==
+== Deploy Protocol Stub and Registration Hyperty ==
 
 Alice -> HTTP_UAC@A : download\nRegistration App
 
@@ -39,31 +39,31 @@ HTTP_UAC@A -> SP1 : download Registration App
 create App@A
 JS@A -> App@A : new
 
-group deploy protocol stub
+group deploy Protocol Stub
 
-	App@A -> RunUA@A : download protocol stub
+    App@A -> RunUA@A : download Protocol Stub
 
-	note right
-		detailed in a separated diagram
-	end note
+    note right
+        detailed in a separated diagram
+    end note
 
-	create Proto1@A
-	RunUA@A -> Proto1@A : new
+    create Proto1@A
+    RunUA@A -> Proto1@A : new
 end
 
 group deploy Hyperty
 
-	App@A -> RunUA@A : download hyperty
+    App@A -> RunUA@A : download hyperty
 
-	note right
-		detailed in a separated diagram
-	end note
+    note right
+        detailed in a separated diagram
+    end note
 
-	create SP1H@A
-	RunUA@A -> SP1H@A : new
+    create SP1H@A
+    RunUA@A -> SP1H@A : new
 
-	create Router1@A
-	RunUA@A -> Router1@A : new
+    create Router1@A
+    RunUA@A -> Router1@A : new
 end
 
 == Create Identity Account ==
@@ -101,10 +101,10 @@ Router1@A -> SP1H@A : Success
 
 IDObj@A x<- SP1H@A : Delete Obj
 
-group Hyperty Instance Registration 
-	Proto1@A <- RunReg@A : register Hyperty\n+ID Token
+group Hyperty Instance Registration
+    Proto1@A <- RunReg@A : register Hyperty\n+ID Token
 
-	Proto1@A -> SP1 : register Hyperty\n+ID Token
+    Proto1@A -> SP1 : register Hyperty\n+ID Token
 end group
 
 
@@ -112,7 +112,6 @@ end group
 @enduml
 -->
 
-
 ![Figure @runtime-ident-man-user-registration: User registration](user-registration.png)
 
-In this use case, it is considered there is a single protocol stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services including authentication, authorisation and messaging services.
+In this use case, it is considered there is a single Protocol Stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services, for example, one Protocol Stub for Identity Management services and another Protocol Stub for messaging services. In this use case, the Service Provider also plays the role of a Identity Provider. The Use Case where Service Provider and Identity Provider are played by different stakeholders are described in D4.1 [109].

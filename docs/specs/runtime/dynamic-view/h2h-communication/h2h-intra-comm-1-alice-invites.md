@@ -44,8 +44,8 @@ group discover Remote Hyperty URL
 SP1H@A -> SP1H@A : discover Bob
 
 note right
-	returned address set that Bob is
-	in the same domain.
+    returned address set that Bob is
+    in the same domain.
 end note
 
 end group
@@ -72,7 +72,7 @@ Router1@A -> BUS@A : postMsg(Create MSG)
 
 group insert Alice ID Token as defined in IDM/User Id Assertion diagram
 
-	BUS@A -> BUS@A : add ID Token to Message
+    BUS@A -> BUS@A : add ID Token to Message
 
 end group
 
@@ -83,15 +83,13 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 @enduml
 -->
 
-
 ![Figure @runtime-h2h-comm-intra-comm-1-alice-invites-bob: Alice invites Bob for a communication](h2h-intra-comm-1-alice-invites-bob.png)
 
-
-(Steps 1 - 4) : Alice decides to invite Bob for a communication. The discovery of Bob's Hyperty Instance URL is described here(../identity-management/discovery.md).
+(Steps 1 - 4): Alice decides to invite Bob for a communication.
 
 (Steps 5 - 7) : the Hyperty Instance creates the Connection, the LocalConnectionDescription and the LocalIceCandidates data objects as defined in [15].
 
-(Steps 8 - 9) : the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
+(Steps 8 - 9): the Hyperty Instance requests the Syncher to ask Bob to create and observe these objects. Syncher generates CREATE messages for each object and puts it in the Body in JSON format. For simplification purposes we assume the CREATE msg contains the Connection object plus local SDP and local IceCandidates:
 
 **[Create Message](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
 
@@ -104,8 +102,8 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object with connection, sdp and ice candidates>"}
 ```
 
-(Steps 10) : Alice's PEP applies local policies if required including outgoing communication request access control
+(Steps 10): Alice's PEP applies local policies if required including outgoing communication request access control
 
-(Steps 11) : Alice ID Token assertion is added to the message (see chapter "User identity assertion" for more details).
+(Steps 11): Alice ID Token assertion is added to the message (see chapter "User identity assertion" for more details).
 
-(Steps 12 - 14) : the message is routed through Alice Message BUS reaching Service Provider Back-end Messaginge Service.
+(Steps 12 - 14): the message is routed through Alice Message BUS reaching Service Provider Back-end Messaging Service.

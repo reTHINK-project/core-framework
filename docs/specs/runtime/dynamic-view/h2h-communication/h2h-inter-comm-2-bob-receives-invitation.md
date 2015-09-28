@@ -32,7 +32,7 @@ SP2Stub -> BUS@1B : postMsg(Create MSG)
 
 group assert Alice ID Token as defined in IDM/User Id Assertion diagram
 
-	BUS@1B -> BUS@1B : assert Alice's identity
+    BUS@1B -> BUS@1B : assert Alice's identity
 
 end group
 
@@ -64,9 +64,7 @@ BUS@1B -> SP2Stub : postMsg(OK MSG)
 @enduml
 -->
 
-
-![H2H Interdomain Communication : bob receives invitation](h2h-inter-comm-2-bob-receives-invitation.png)
-
+![Figure @@runtime-h2h-inter-comm-2-bob-receives-invitation: H2H Interdomain Communication: bob receives invitation](h2h-inter-comm-2-bob-receives-invitation.png)
 
 (Steps 1 - 3) : The Service Provider 2 Stub that has been deployed in Alice's Runtime sends the message to Bob's Message BUS, asserts Alice's identity and forwards the message to Bobs Router reaching Bob's PEP component
 
@@ -84,6 +82,5 @@ BUS@1B -> SP2Stub : postMsg(OK MSG)
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "200" , "description" : "ok"}
 ```
-
 
 (Step 11) : The message Bus sends the message to Alice via the SP2 stub, deployed in Alice's runtime

@@ -80,6 +80,18 @@
 
 (@runtime-h2h-intra-comm-6-alice-DO-synch) Synchronization of Alice's Data object
 
+(@runtime-h2h-comm-inter-comm-1-alice-invites-bob) Alice invites Bob for a communication
+
+(@runtime-h2h-inter-comm-2-bob-receives-invitation) Bob receives invitation
+
+(@runtime-h2h-inter-comm-3-alice-is-aknowledged-invitation-received) Aknowledged that Bob received the invitation
+
+(@runtime-h2h-inter-comm-4-notification-update) notification update
+
+(@runtime-h2h-inter-comm-5-bob-WebRTC) Bob gatheres WebRTC resources
+
+(@runtime-h2h-inter-comm-6-alice-DO-synch) Synchronization of Alice's Data object
+
 (@runtime-m2m-comm-runtime-archit-violet) Runtime Main Procedures for M2M Communication
 
 (@runtime-m2m-comm-bootstrap-auth-registration) M2M Device Bootstrap
