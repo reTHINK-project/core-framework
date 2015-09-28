@@ -129,7 +129,7 @@ onEvent( Message.Message event )
 
 #### discoverProtostub
 
-This function is used to discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime url for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers.
+This function is used to discover protocol stubs available in the runtime for a certain domain. If available, it returns the runtime URL for the protocol stub that connects to the requested domain. Required by the runtime BUS to route messages to remote servers or peers.
 
 ```
 RuntimeURL discoverProtostub( DomainURL url)
@@ -137,7 +137,7 @@ RuntimeURL discoverProtostub( DomainURL url)
 
 #### getSandbox
 
-This function is used to discover sandboxes available in the runtime for a certain domain. Required by the runtime UA to avoid more than one sandbox for the same domain.
+This function is used to discover sandboxes available in the runtime for a certain domain. It is required by the runtime UA to avoid more than one sandbox for the same domain.
 
 ```
 RuntimeSandbox getSandbox( DomainURL url )
@@ -145,7 +145,7 @@ RuntimeSandbox getSandbox( DomainURL url )
 
 #### resolve
 
-This function is used to verify if source is valid and to resolve target runtime url address if needed (eg ProtoStub runtime url in case the message is to be dispatched to a remote endpoint ).
+This function is used to verify if source is valid and to resolve target runtime url address if needed (e.g. ProtoStub runtime url in case the message is to be dispatched to a remote endpoint ).
 
 ```
 Promise <URL.URL> resolve( URL.URL url )

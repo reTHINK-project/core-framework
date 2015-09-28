@@ -72,7 +72,9 @@
 
 (@sota-messaging-backbone-collections) Backbone Collections
 
-(@sota-meteor) Meteor Plataform Overview
+(@sota-meteor) Meteor Platform Overview
+
+(@products-apirtc-reference-architecture) apiRTC Architecture
 
 (@products-quobis-reference-architecture) Sippo WAC reference architecture
 

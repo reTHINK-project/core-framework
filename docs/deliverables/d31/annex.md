@@ -4258,7 +4258,7 @@ Analysis against **Messaging Node** Requirements
 XMPP
 ----
 
-From http://xmpp.org/ [64]:
+From [[27](http://xmpp.org/)]:
 
 > The Extensible Messaging and Presence Protocol (XMPP) is an open
 > technology for real-time communication, which powers a wide range of
@@ -4356,75 +4356,10 @@ Image Source:
 
 #### APIs
 
-  Name                         Language(s)                           Details
-  ---------------------------- ------------------------------------- -------------------------------------------------------------------------
-  agsXMPPSDK                   C\#/.NET/Mono                         [Link](http://www.ag-software.net/agsxmpp-sdk/)
-  AnyEvent::XMPP               Perl                                  [Link](http://www.ta-sa.org/projects/net_xmpp2.html)
-  as3xmpp                      Flash/ActionScript                    [Link](http://code.google.com/p/seesmic-as3-xmpp/)
-  asmack                       Java(Android)                         [Link](https://github.com/flowdalic/asmack)
-  AXMPP                        Ada                                   [Link](http://forge.ada-ru.org/axmpp)
-  Babbler                      Java                                  [Link](http://babbler-xmpp.blogspot.de/)
-  Babylon                      Ruby                                  [Link](https://github.com/bryanwoods/babylon)
-  Blather                      Ruby                                  [Link](http://adhearsion.com/blather)
-  cl-xmpp                      Lisp                                  [Link](http://common-lisp.net/project/cl-xmpp/)
-  CoversantSoapBoxSDKStudio    C\#/.NET/Mono/C                       [Link](http://www.coversant.com/products/soapbox-sdk)
-  dojox.xmpp                   JavaScript                            [Link](http://api.dojotoolkit.org/jsdoc/1.3/dojox.xmpp)
-  dxmpp                        C                                     [Link](http://deusexmachinae.se/dxmpp)
-  EchomineFeridian             Java                                  [Link](http://freecode.com/projects/feridian)
-  Eiffel                       PHP                                   [Link](https://github.com/jocelyn/bricabrac/wiki/Eiffel-XMPP)
-  emite                        Java                                  [Link](https://github.com/EmiteGWT)
-  exmpp                        Erlang                                [Link](http://exmpp.org/)
-  frabjous                     JavaScript                            [Link](https://github.com/theozaurus/frabjous)
-  gloox                        C                                     [Link](http://camaya.net/gloox)
-  goexmpp                      Go                                    [Link](http://code.google.com/p/goexmpp/)
-  headstock                    Python                                [Link](https://github.com/Lawouach/headstock)
-  hsxmpp                       Haskell                               [Link](http://חנוך.se/hsxmpp/)
-  hxmpp                        haXe                                  [Link](http://hxmpp.disktree.net/)
-  iksemel                      C                                     [Link](http://code.google.com/p/iksemel/)
-  IP Works\nInternetToolkit    ActiveX C C\# .NET Mono Delphi Java   [Link](http://www.nsoftware.com/ipworks/)
-  Iris                         C                                     [Link](http://delta.affinix.com/iris/)
-  jabber-net                   C\#/.NET/Mono                         [Link](http://code.google.com/p/jabber-net/)
-  jabber.py                    Python                                [Link](http://jabberpy.sourceforge.net/)
-  JabberLib                    Tcl                                   [Link](http://coccinella.im/jabberlib)
-  JabberStreamObjects(JSO)     Java                                  [Link](http://java.net/projects/jso/)
-  JAXL                         PHP                                   [Link](http://code.google.com/p/jaxl/)
-  jQuery-XMPP-plugin           JavaScript                            [Link](http://github.com/maxpowel/jQuery-XMPP-plugin)
-  Jreen                        C/Qt                                  [Link](http://qutim.org/jreen)
-  JSJaC                        JavaScript                            [Link](http://blog.jwchat.org/jsjac/)
-  libstrophe                   C                                     [Link](http://strophe.im/)
-  Lightr                       PHP                                   [Link](http://code.google.com/p/lightr/)
-  Loudmouth                    C                                     [Link](http://groups.google.com/group/loudmouth-dev)
-  Loudmouth                    Ruby                                  [Link](http://groups.google.com/group/loudmouth-dev/web/loudmouth-ruby)
-  MatriX                       C\#/.NET/Mono                         [Link](http://www.ag-software.net/matrix-xmpp-sdk/)
-  Net::XMPP                    Perl                                  [Link](http://search.cpan.org/dist/Net-XMPP/)
-  node-xmpp                    JavaScript                            [Link](http://github.com/astro/node-xmpp)
-  oajabber                     C                                     [Link](http://www.openaether.org/oajabber.html)
-  PontariusXMPP                Haskell                               [Link](https://github.com/pontarius/pontarius-xmpp/)
-  pyxmpp                       Python                                [Link](http://pyxmpp.jajcus.net/)
-  QXmpp                        C                                     [Link](http://code.google.com/p/qxmpp/)
-  seesmic-as3-xmpp             Flash/ActionScript                    [Link](http://code.google.com/p/seesmic-as3-xmpp/)
-  SleekXMPP                    Python                                [Link](http://github.com/fritzy/SleekXMPP/wiki)
-  Smack                        Java                                  [Link](http://igniterealtime.org/projects/smack/)
-  stanza.io                    JavaScript                            [Link](https://github.com/legastero/stanza.io)
-  strophe.js                   JavaScript                            [Link](http://strophe.im/)
-  StropheCappuccino            Objective-J                           [Link](http://github.com/primalmotion/strophecappuccino)
-  Swiften                      C                                     [Link](http://swift.im/swiften/)
-  Tinder                       Java                                  [Link](http://igniterealtime.org/projects/tinder/)
-  txmpp                        C                                     [Link](http://github.com/silas/txmpp)
-  TwistedWords                 Python                                [Link](http://twistedmatrix.com/trac/)
-  Ubeity                       C\#                                   [Link](https://github.com/ubiety/xmpp)
-  Verse                        Lua                                   [Link](http://matthewwild.co.uk/projects/verse/home)
-  XIFF                         Flash/ActionScript                    [Link](http://igniterealtime.org/projects/xiff/)
-  xmpp-psn                     Python                                [Link](http://code.google.com/p/xmpp-psn/)
-  jaxmpp2                      Java/Android/GoogleWebToolkit         [Link](https://projects.tigase.org/projects/jaxmpp2)
-  xmpp4js                      JavaScript                            [Link](http://xmpp4js.sourceforge.net/)
-  XMPP4R                       Ruby                                  [Link](http://home.gna.org/xmpp4r/)
-  xmpp4r-simple                Ruby                                  [Link](http://code.google.com/p/xmpp4r-simple/)
-  xmppframework                ObjectiveC                            [Link](https://github.com/robbiehanson/XMPPFramework)
-  xmpphp                       PHP                                   [Link](http://code.google.com/p/xmpphp/)
-  xmppy                        Python                                [Link](http://xmpppy.sourceforge.net/)
-  XMPP-FTW                     JavaScript                            [Link](https://github.com/lloydwatkin/xmpp-ftw)
-  Z-XMPP                       JavaScript                            [Link](http://ivan.vucica.net/zxmpp/)
+Code libraries are available for many different programming languages,
+thus enabling developers to build a wide variety of XMPP-enabled
+applications. More further information is provided in
+[[64](https://xmpp.org/xmpp-software/libraries/)].
 
 #### Relevant Extensions
 
@@ -5826,11 +5761,10 @@ Products SOTA
 
 #### What is ApiRTC?
 
-ApiRTC is the communication platform developed by Apizee. This includes
-a communication platform and a client JavaScript library that can be
-used by developers to developed their own applications without having to
-consider the technical aspects of communication. Complete version of
-ApiRTC with tutorials is described on www.apirtc.com
+ApiRTC [103] is the communication platform developed by Apizee. This
+includes a communication platform and a client JavaScript library that
+can be used by developers to developed their own applications without
+having to consider the technical aspects of communication.
 
 #### Features Overview
 
@@ -5877,17 +5811,11 @@ ApiRTC solution use different components on server and client side.
 
 On server side, main used components are Node.js and Redis :
 
-Node.js : https://Node.js.org/ - Description is available :
-http://en.wikipedia.org/wiki/Node.js
+Node.js [22] is a JavaScript engine that can be enhanced through
+different existing modules for connections, log, ...
 
-Node.js is a JavaScript engine that can be enhanced through diffrent
-existing modules for connections, log, ...
-
-Redis : http://redis.io/ - Description is available :
-http://en.wikipedia.org/wiki/Redis
-
-Redis is a NoSQL database that is really interesting for real time data
-and that provide a publish/subscribe that can be used to establish
+Redis [63] is a NoSQL database that is really interesting for real time
+data and that provide a publish/subscribe that can be used to establish
 communication between several Node.js process.
 
 **Runtime / Framework :**
@@ -5897,23 +5825,29 @@ APIs that enables teh developpesr to use platform feature.
 
 #### Architecture
 
-ApiRTC actual architecture is presented on following diagram
-:<img src="ApiRTC-ReTHINK.png" width="450">
+ApiRTC actual architecture is presented on following diagram :
+
+![Figure 40: apiRTC Architecture](ApiRTC-ReTHINK.png)
 
 Components such as Node.js, Redis or socket.io are used. ApiRTC uses
 JSON over WebSocket to manage signalling between clients and server.
 
 #### APIs
 
-ApiRTC provides API for developers : complete set of APIs is describe on
-http://apirtc.com/api-docs/
+ApiRTC provides API for developers that are decomposed with the main
+following classes :<br/>
 
-APIS are decomposed with main following classes :<br/>\* ApiRTCSession :
-manage user connection to the platform (presence)<br/>\*
-ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
-...<br/>\* ApiRTCIMClient : manage Instant messaging feature<br/>\*
-ApiRTCDataClient: : manage data sending feature<br/>\*
-ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
+-   ApiRTCSession : manage user connection to the platform
+    (presence)<br/>
+
+-   ApiRTCWebRTCClient : manage WebRTC feature : call, dataChannel
+    ...<br/>
+
+-   ApiRTCIMClient : manage Instant messaging feature<br/>
+
+-   ApiRTCDataClient: : manage data sending feature<br/>
+
+-   ApiRTCWhiteBoardClient : manage Whiteboard feature<br/>
 
 ### Sippo
 
@@ -5965,7 +5899,7 @@ in close collaboration with the WebRTC gateway. The following picture
 describes how the WAC fits into a service provider or enterprise voice
 network:
 
-![Figure 40: Sippo WAC reference
+![Figure 41: Sippo WAC reference
 architecture](quobis_reference_architecture.png)
 
 The following network elements are the basic ones to understand the
@@ -6046,7 +5980,7 @@ to Call or Sippo GMail Toolbar.
 Sippo offers a set of different API’s and service interfaces that are
 summarised in the picture below:
 
-![Figure 41: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
+![Figure 42: Sippo interfaces and APIs](quobis_interfaces_and_API.png)
 
 ##### Sippo.js API
 
@@ -6064,7 +5998,7 @@ benefit of using Sippo.js API as it hides the complexity of the
 underlying signaling plane and provides a single and simple-to-use
 JavaScript API to the applications.
 
-![Figure 42: Sippo.js abstraction layer](quobis_abstraction_layer.png)
+![Figure 43: Sippo.js abstraction layer](quobis_abstraction_layer.png)
 
 ##### Sippo Service API (SAPI)
 
@@ -6119,7 +6053,7 @@ the WAC, whereas a backend is a implementation of a specific service. In
 other words, we can say that a services is “what” to do and the backend
 is “how” to do it.
 
-![Figure 43: Sippo services and
+![Figure 44: Sippo services and
 backends](quobis_sippo_services_and_backends.png)
 
 There are thirty-three available services at Sippo WAC that are listed
@@ -6148,7 +6082,7 @@ the Sippo WAC is done by using the WAPI interface, which dispatches the
 incoming messages to the corresponding services, as shown in the picture
 below:
 
-![Figure 44: Sippo WebRTC applications
+![Figure 45: Sippo WebRTC applications
 stack](quobis_webrtc_applications.png)
 
 #### Potential integration with Wonder proposal
@@ -6289,14 +6223,16 @@ reducing considerably the integration costs.
 
 (39) Meteor Plataform Overview
 
-(40) Sippo WAC reference architecture
+(40) apiRTC Architecture
 
-(41) Sippo interfaces and APIs
+(41) Sippo WAC reference architecture
 
-(42) Sippo.js abstraction layer
+(42) Sippo interfaces and APIs
 
-(43) Sippo services and backends
+(43) Sippo.js abstraction layer
 
-(44) Sippo WebRTC applications stack
+(44) Sippo services and backends
+
+(45) Sippo WebRTC applications stack
 
 

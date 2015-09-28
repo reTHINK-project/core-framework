@@ -127,7 +127,7 @@ References
 
 [63] - http://redis.io/
 
-[64] - http://xmpp.org/
+[64] - https://xmpp.org/xmpp-software/libraries/
 
 [65] - http://zeromq.org/
 
@@ -216,3 +216,5 @@ References
 [107] http://w3c.github.io/WebRTC-pc/#identity
 
 [108] https://nodesecurity.io/resources
+
+[109] Deliverable D4.1, “Management and Security features specifications”, 30-09-2015.

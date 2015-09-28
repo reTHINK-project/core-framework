@@ -56,7 +56,9 @@ ApiRTC use a JavaScript library on client side to provide teh developers APIs th
 
 #### Architecture
 
-ApiRTC actual architecture is presented on following diagram :<img src="ApiRTC-ReTHINK.png" width="450">
+ApiRTC actual architecture is presented on following diagram :
+
+![Figure @products-apirtc-reference-architecture: apiRTC Architecture](ApiRTC-ReTHINK.png)
 
 Components such as Node.js, Redis or socket.io are used. ApiRTC uses JSON over WebSocket to manage signalling between clients and server.
 

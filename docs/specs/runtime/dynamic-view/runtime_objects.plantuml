@@ -39,7 +39,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_AuthAtRuntimeA
-				participant "Core PDP" as RunAuth@A
+				participant "Policy\nEngine" as RunAuth@A
 			!endif
 
 			!ifdef SHOW_PEPAtRuntimeA
