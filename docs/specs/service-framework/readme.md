@@ -1,6 +1,22 @@
 ## Service Framework 
 
-The Service Framework is a Software Development Toolkit (SDK) that will feature a comprehensive set of application program interfaces (APIs) and JavaScript libraries to facilitate the development of Hyperties within the reTHINK architecture. The functionalities provided by the Service Framework will complement the functionalities of the Hyperty Runtime and functionalities provided for the Network QoS component. The main objective is to provide JavaScript libraries in speeding up the implementation of conversational services (audio, video, chat, screen sharing) and context enabled services (IoT, context delivery, location). These services will be fully implemented in WP5 and demonstrated in WP6. The requirements from a software perspective have been defined in section 2.4. In this chapter, preliminary analysis of functionalities to be provided by the framework will be discussed and a high level capability set for the Framework will be presented. For this input from three different areas of the reTHINK project will be examined namely:
+The Hyperty Runtime APIs to be used by Hyperty Developers are mainly the:
+
+* MsgBUS.postMessage() that is used to post messages in order to communicate with other remote Hyperty Instances and with back-end reTHINK Support Services
+* Syncher API that is used to communicate through the Reporter-Observer communication pattern
+
+On the other hand, Hyperty Developers would have to implement the Hyperty API, which is mainly the init() function - used to activate the Hyperty Instance with required configuration parameters - and the postMessage() function that is used to receive messages from the Hyperty Runtime Message BUS.
+
+This means, the Hyperty Developer would still have to handle with the setup of data object synchronisation, the instantiation of Data Objects and Messages according to reTHINK Data Model.
+
+The Hyperty Service Framework aims to free, as much as possible, the Hyperty Developer from development tasks that are expected not to change much according to the specific service logic to be implemented for each Hyperty, like the ones mentioned above. Thus, the Hyperty Service Framework is a Software Development Toolkit (SDK) that will feature a comprehensive set of application program interfaces (APIs) and JavaScript libraries to facilitate the development of Hyperties within the reTHINK architecture. 
+
+Thus, the Hyperty Service Framework should provide:
+
+* factory functionalities for creating and managing the reTHINK Messages and Data Objects
+* templates for creating Hyperty Data Objects for the basic specified Hyperty Types (Communication, Identity, Context)
+
+In addition, the Hyperty Service Framework will provide JavaScript libraries to speed up the implementation of conversational services (audio, video, chat, screen sharing) and context enabled services (IoT, context delivery, location). These services will be fully implemented in the scenarios implementation tasks and demonstrated in reTHINK testbes. The requirements from a software perspective have been defined in section 2.4. In this chapter, preliminary analysis of functionalities to be provided by the framework will be discussed and a high level capability set for the Framework will be presented. For this input from three different areas of the reTHINK project will be examined namely:
 * Uses Cases as specified in WP1 Task1.1
 * Data Models as specified in WP2 Task 2.3
 * Interface Design  as specified in WP2 Task 2.4
@@ -51,12 +67,4 @@ Different address URL has been proposed for the reTHNK platform with respect to 
 D2.2 specified network interfaces (Registry, Catalogue, Identity Management, Messaging service) for performing CRUD operations over various Data Objects. The Proto-on-the-fly and the protocol stubs from the different components could directly be used here without implementing extra functionalities to the Service Framework.   
 
 
-### APIs
-There are APIs that Hyperty developers will use directly from the Hyperty Runtime namely:
-* MsgBUS.postMessage()
-* Syncher API
-
-APIs that the developers can use to develop Hyperties will include: 
-* factory functionalities for creating and managing the above described Data Objects
-* templates for creating Hyperty Data Objects for the basic specified Hyperty Types (Communication, Identity, Context)
 
