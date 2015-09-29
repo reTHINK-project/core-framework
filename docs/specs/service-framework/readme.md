@@ -54,7 +54,7 @@ D2.2 specified network interfaces (Registry, Catalogue, Identity Management, Mes
 ### APIs
 There are APIs that Hyperty developers will use directly from the Hyperty Runtime namely:
 * MsgBUS.postMessage()
-* Syncher API
+* Syncher API ()
 
 APIs that the developers can use to develop Hyperties will include: 
 * factory functionalities for creating and managing the above described Data Objects
