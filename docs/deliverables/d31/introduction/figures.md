@@ -116,6 +116,14 @@
 
 (@msg-node-architecture-messaging-node-architecture) Messaging Node Architecture
 
+(@msg-node-nodejs-redis-implementation) Messaging Node implementation with Node.Js and Redis
+
+(@msg-node-nodejs-rethink) Integration of Node.Js based Messaging Node implementation with reTHINK
+
+(@msg-node-nodejs-rethink-partners) Integration of Node.Js based Messaging Node implementation with reTHINK partners
+
+(@msg-node-matrix-implementation) Matrix Messaging Node Architecture
+
 (@sota-WebRTC-org-arch) WebRTC.org architecture scheme
 
 (@sota-openwebrtc-arch) OpenWebRTC Architecture

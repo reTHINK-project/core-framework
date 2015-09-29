@@ -1,4 +1,5 @@
-## Matrix.org based Messaging Node Specification
+Matrix.org based Messaging Node Specification
+---------------------------------------------
 
 This section matches the requirements for the functional blocks of the Messaging Node architecture to features and functional blocks of the matrix.org architecture. Functional gaps are identified and proposals for extensions to the standard Matrix.org Homeserver are made in order to fill these gaps.
 
@@ -20,13 +21,11 @@ A special dedicated Application Service is proposed that will implement a Protoc
 
 In order to support the server role in the Protocol-on-the-fly architecture, a specialized Matrix Protocol Stub needs to be implemented that connects to a Homeserver. Since the Matrix Homeserver has a well-documented API and the Matrix message format allows the transport of arbitrary payload, this implementation should be straight forward. The implementation can make use of the SDK's that are available for Matrix client developers. These SDK's encapsulate a lot of the internal complexity for REST based communication.
 
-
 #### Connectors in Matrix
 
 Connectors also play the role of protocol adapters, which makes them comparable to protocol stubs. The difference is that they are not downloaded to the Messaging Node clients. Instead they are executed in the scope of the Messaging Node itself. Such Connectors are intended to connect with different "legacy" clients that don't support the Protocol-on-the-fly concept.
 
 Also for the implementation of such connectors the concept of Application Services seems well suited. The matrix.org developer community has implemented this as a proof of concept that connects the Matrix ecosystem with the Internet Relay Chat (IRC) world. Messages that contain a specially prefixed address are filtered out, converted to IRC messages, forwarded to the corresponding IRC client and vice versa. This can be used as pattern for the implementation of additional adapters.
-
 
 ### Core Functionalities
 
@@ -48,7 +47,6 @@ In order to achieve a "per message"-policy enforcement without deeper changes in
 
 The design of this message proxy component should be closely coordinated with the MessagingStub that is used to connect to this Matrix based Messaging Node, because the proxy will be the first contact point for the stub.
 
-
 The following figure gives an overview of the intended architecture of the Matrix based Messaging Node.
 
 <!--
@@ -56,40 +54,40 @@ The following figure gives an overview of the intended architecture of the Matri
 
 
 node "Management Services" as Man1 {
-	node "Registry" as Server1
-	node "Identity Management" as IdM1
+    node "Registry" as Server1
+    node "Identity Management" as IdM1
 
 }
 
 node "Service Provider 2\n(ProtOFly-Server)" as SP2 {
-	node "Messaging\nNode" as Msg2
-	node "Repository\nServer" as Repo2
+    node "Messaging\nNode" as Msg2
+    node "Repository\nServer" as Repo2
 }
 
 node "End-User Device 1" as User1 {
-	node "Hyperty" as H1
+    node "Hyperty" as H1
 }
 
 node "Network Server" as Net {
-	node "Hyperty" as H3
+    node "Hyperty" as H3
 }
 
 node "Service Provider 1\n(ProtOFly-Client)" as SP1 {
-	node "Messaging\nNode" as Msg1
-	node "Repository\nServer" as Repo1
+    node "Messaging\nNode" as Msg1
+    node "Repository\nServer" as Repo1
 }
 
 node "Matrix based Messaging Node" as msg {
 
  node "Application Services" as AppServices {
    node "Connectors" as Conn {
-   	node "IdM\nConnector" as ConnIdM
-   	node "Registry\nConnector" as ConnMan
-   	node "End-User Device\nConnector" as ConnUser
-   	node "Network Server\nConnector" as ConnNet
+    node "IdM\nConnector" as ConnIdM
+    node "Registry\nConnector" as ConnMan
+    node "End-User Device\nConnector" as ConnUser
+    node "Network Server\nConnector" as ConnNet
    }
    node "ProtOFly-client" as Proto1Sand {
-  	 node "SP2 ProtoStub" as Proto1
+     node "SP2 ProtoStub" as Proto1
    }
    node "Address Allocation\nManagement" as ID
  }
@@ -135,40 +133,41 @@ Msg2 <-left-> Proto1 : communicate
 
  Bus <-up-> ConnMan : communicate
  ConnMan <-up-> Server1 : communicate
- 	}
+    }
 
 @enduml
 -->
-![Matrix Messaging Node Architecture](matrix_messaging_node_architecture.png)
+
+![Figure @msg-node-matrix-implementation: Matrix Messaging Node Architecture](matrix_messaging_node_architecture.png)
 
 #### Session Management
 
 The requirements regarding session management as described in the Messaging Node architecture can be separated in three aspects which are handled in the following sub-chapters:
-* User session control,
-* Communication session control, and
-* Stub and connector management.
 
+-	User session control,
+-	Communication session control, and
+-	Stub and connector management.
 
 ##### User session control
+
 In order to use matrix based messaging users have to be registered/subscribed with a matrix HomeServer. Matrix provides an API for the subscription of new users with their HomeServers. This API can be used to provision accounts also programmatically, when required.
 
-In order to establish a communication session with other peers, users have to pass a login sequence. During this sequence an access token is generated which is valid for this login session. This access token must be present in all sub-sequent requests during this user session.
-No mandatory authentication methods are specified. This is left as implementation specific for the particular HomeServers.
-The specification lists following standard methods:
+In order to establish a communication session with other peers, users have to pass a login sequence. During this sequence an access token is generated which is valid for this login session. This access token must be present in all sub-sequent requests during this user session. No mandatory authentication methods are specified. This is left as implementation specific for the particular HomeServers. The specification lists following standard methods:
 
-* m.login.password,
-* m.login.recaptcha,
-* m.login.oauth2,
-* m.login.email.identity, and
-* m.login.dummy.
+-	m.login.password,
+-	m.login.recaptcha,
+-	m.login.oauth2,
+-	m.login.email.identity, and
+-	m.login.dummy.
 
 The HomeServer Client API provides means to request the supported methods before login.
 
 ##### Communication session control
-Communication sessions between two or more users require a valid user session. Communication sessions are always based on "rooms". Each room is identified by a unique room-id. Messages are sent to room-ids and not to individual users. Users must explicitly create or join rooms in order to send and receive messages. Some rooms might be open - others may require an invitation by the creator of the room.
-Rooms are persistent, i.e. they exist also if not all room members are currently logged in. The message history is maintained by the Matrix HomeServers and can be requested by clients.
+
+Communication sessions between two or more users require a valid user session. Communication sessions are always based on "rooms". Each room is identified by a unique room-id. Messages are sent to room-ids and not to individual users. Users must explicitly create or join rooms in order to send and receive messages. Some rooms might be open - others may require an invitation by the creator of the room. Rooms are persistent, i.e. they exist also if not all room members are currently logged in. The message history is maintained by the Matrix HomeServers and can be requested by clients.
 
 ##### Stub and connector management
+
 Matrix.org provides powerful means to connect, federate, and synchronise Matrix HomeServers from different domains. The resolution of the peer HomeServers connectivity is done via DNS. The message exchange between them is secured by encryption mechanisms.
 
 However - for the interoperability with non-Matrix infrastructures there is no "golden" way. The selected and most appropriate approach is via Application Services, as described before.

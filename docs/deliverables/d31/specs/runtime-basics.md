@@ -6,6 +6,7 @@ This section, describes in detail the Basic Runtime procedures that are required
 -	Deployment of protocol stubs
 -	Deployment of Hyperties
 -	Generic procedure to route messages
+-	Generic procedure to setup a Reporter-Observer data object synchronisation communication.
 -	Four different Hyperty communication situations namely:
 	-	local communication between Hyperties from the same domain (running in the same Sandbox)
 	-	local communication between Hyperties from different domains (running in different sandboxes but in the same Runtime Instance)

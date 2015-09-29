@@ -1,4 +1,4 @@
-##### H2H Interdomain Communication - create communication
+#### Setup of Data Object Synchronisation with Reporter-Observer communication pattern
 
 This MSC diagrams shows the most relevant steps to support the setup of data object synchronisation.
 
