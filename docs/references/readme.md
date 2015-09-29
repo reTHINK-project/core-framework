@@ -221,6 +221,10 @@ References
 
 [110] http://requirejs.org/
 
-[111] https://github.com/eface2face/cordova-plugin-iosrtc
+[111] https://github.com/crosswalk-project/crosswalk
 
-[112] https://github.com/alongubkin/phonertc
+[112] http://cordova.apache.org/
+
+[113] https://github.com/eface2face/cordova-plugin-iosrtc
+
+[114] https://github.com/alongubkin/phonertc
