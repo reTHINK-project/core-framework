@@ -48,6 +48,10 @@
 
 (@runtime-bus-msg-routing) Message Routing in Message BUS
 
+(@runtime-basic-create-sync1) Request to create a Sync Data Object
+
+(@runtime-basic-create-sync2) Data Object synchronisation is authorised and Observers added
+
 (@runtime-intra-local-comm) Intra-domain Local Communication
 
 (@runtime-intra-remote-comm) Intra-domain Remote Communication

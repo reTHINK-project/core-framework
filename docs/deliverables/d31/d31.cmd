@@ -27,6 +27,7 @@ specs\runtime-basics.md ^
 ..\..\specs\runtime\dynamic-view\basics\intra-remote-comm.md ^
 ..\..\specs\runtime\dynamic-view\basics\inter-local-comm.md ^
 ..\..\specs\runtime\dynamic-view\basics\inter-remote-comm.md ^
+..\..\specs\runtime\dynamic-view\basics\create-sync-data-object.md ^
 specs\runtime-idm.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\user-registration.md ^
 ..\..\specs\runtime\dynamic-view\identity-management\domain-login.md ^

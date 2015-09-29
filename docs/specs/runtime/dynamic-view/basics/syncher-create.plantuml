@@ -87,6 +87,8 @@ opt Hyperty owner / reporter is set as listener of DataObjectObservers resource
 	end note
 end
 
+newpage
+
 RunAuth@A -> BUS@A : authorised( Message + URL )
 
 BUS@A ->  : postMsg( Create Msg )
