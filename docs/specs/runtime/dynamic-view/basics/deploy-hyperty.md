@@ -1,96 +1,47 @@
-### Deploy Hyperty
+#### Deploy Hyperty {#header-identifiers-in-html-latex-and-context}
 
-<!--
-@startuml "deploy-hyperty.png"
+The Runtime procedures to deploy a new Hyperty are described in this section.
 
-autonumber
+![Figure @runtime-deploy-hyperty1: Deploy Hyperty (part1)](deploy-hyperty.png)
 
-!define SHOW_RuntimeA
+Note: The trigger of Hyperty deployment may take advantage of some existing libraries like require.js.
 
-!define SHOW_AppAtRuntimeA
+Step 1: As discussed in the Runtime Architecture, and according to security policies, Hyperties and the Application can be deployed in the same sandbox or in separated domains.
 
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
+---
 
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
+**Hyperty and App deployed in the same sandbox**
 
-!define SHOW_SP1
+Steps 2 - 5: In this situation, the App and the Hyperty are running in the same isolated sandbox which is different from the Hyperty Core Runtime Sandbox. This means the download and instantiation of the Hyperty has first to be performed by the Application. Then the App asks the Runtime UA to register and activate the new Hyperty in the runtime.
 
-!include ../runtime_objects.plantuml
+**Hyperty and App deployed in different sandboxes**
 
-group discover Hyperty URL: to be designed in a separated diagram by the Id Management Group
+Steps 6 - 10: In this situation, the App and the Hyperty must run in different isolated sandboxes. In this case the Hyperty sandbox is managed by the runtime UA which means the runtime UA can download and instantiated the Hyperty. The runtime UA should avoid the creation of new sandboxes in case there is already a sandbox for the same domain
 
-	... ...
-	RunUA@A <- App@A : deploy Hyperty(URL)
+---
 
-end group
+Steps 11 - 12: the new [Hyperty instance is registered](register-hyperty.md) by the Runtime Registry. See section 4.3.1.4 for more details.
 
-RunUA@A -> SP1 : download Hyperty(URL)
+![Figure @runtime-deploy-hyperty2: Deploy Hyperty (part2)](deploy-hyperty_001.png)
 
-create SP1H@A
-RunUA@A -> SP1H@A : new
+Steps 13: policies contained in the Hyperty Descriptor, are deployed in the BUS Authorisation component
 
-SP1H@A -> SP1H@A : Router?
+Steps 14: the runtime UA checks in the Hyperty Descriptor if a Policy Enforcer is required
 
-SP1H@A -> RunUA@A : get Router
+---
 
-RunUA@A -> SP1 : get Router
+**Hyperty PEP deployment is required**
 
-create Router1@A
-RunUA@A -> Router1@A : new
+Steps 15 - 16: the runtime UA downloads and instantiates the Hyperty PEP in an isolated sandbox.
 
-SP1H@A -> Router1@A : register Hyperty
+Steps 17 - 18: the Runtime UA register in the runtime Registry the new PEP for the new deployed Hyperty and the Registry returns PEP Runtime component URL
 
-Router1@A -> Router1@A : Apply SP1 policies
+Steps 19: the runtime UA adds PEP intercepting listener to the runtime BUS to receive messages targeting the Hyperty URL.
 
-BUS@A <- Router1@A : register Hyperty
+Step 20: The Runtime UA activates the Hyperty PEP with its RuntimeURL, the postMessage function to be called to send messages to BUS and the Hyperty instance URL the PEP is intercepting. Depending on the sandbox implementation, the initialisation may have to be remotely executed by an Execution message type routed by the Message BUS.
 
-BUS@A -> RunReg@A : register Hyperty
+---
 
-group associate to Identity : to be designed in a separate diagram by Id Management Group
+Steps 21: the runtime UA adds Hyperty listener to the runtime BUS to receive messages targeting the Hyperty URL. It should be noted in case there is an intercepting PEP, the Hyperty listener will only be called for Messages forwarded by PEP.
 
-	RunID@A <- RunReg@A : get Identity
-
-	... ...
-
-	RunReg@A <- RunReg@A : set Identity
-
-end group
-
-group register Hyperty at SP1 Registry
-	RunReg@A <- RunReg@A : collect Hyperty runtime Context data
-	RunReg@A <- RunReg@A : resolve protoStub URL
-	RunReg@A -> BUS@A : register Hyperty/n(ID Token)
-	BUS@A -> Proto1@A : register Hyperty/n(ID Token)
-	Proto1@A -> SP1 : register Hyperty
-
-	group option: connect protocol stub to the domain in case it is still not connected yet
-	
-	end group
-
-end group
-
-@enduml
--->
-
-
-![Deploy Hyperty](deploy-hyperty.png)
-
-
-The Hyperty deployment may be triggered by an App or by some attempt from a local Hyperty to communicate with a remote User. In this case the Runtime Registry would take the initiative to start the protocol stub deploy (FFS). Such trigger may take advantage of some existing libraries like require.js (to be validated with experimentations).
-
-**Open Issue:** In the diagram above, the Hyperty is instantiated by the native Javascript engine as a normal javascript function/object, and in its constructor the registration process is performed. Another option, is to have in the Core Runtime, a Hyperty loader functionality (a Service/Web Worker?) that would handle the instantiation of the Hyperty and its registration in the runtime.
-
-
-Hyperties are reachable through domain routers (should we change the name?) to:
-1- enable enforcement of domain proprietary policies
-2- the Hyperty (data synch) communication model would be implemented by the router (connector is a better name?) and not by the Hyperty itself
-
-When registered, Hyperties are associated with an Identity by the Registry / Identities container. Then all, messages sent by the Hyperty will be signed with a token according to the Identity associated to the Hyperty. To be designed by the Identity Manager group.
+Steps 22: the runtime UA activates the Hyperty instance with its Hyperty URL instance, the postMessage function to be called to send messages to BUS and configuration data contained in its descriptor. Depending on the sandbox implementation, the initialisation may have to be remotely executed by a Execution message type routed by the Message BUS.

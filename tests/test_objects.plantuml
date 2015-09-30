@@ -19,7 +19,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntimeA
-				participant "Javascript Runtime" as JS@A
+				participant "JavaScript Runtime" as JS@A
 			!endif
 		end box
 	!endif
@@ -124,7 +124,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntime1B
-				participant "Javascript Runtime" as JS
+				participant "JavaScript Runtime" as JS
 			!endif
 		end box
 	!endif

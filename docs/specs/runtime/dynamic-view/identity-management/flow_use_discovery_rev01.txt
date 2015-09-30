@@ -1,0 +1,40 @@
+#!>>
+#! Usage of Smart Discovery Service
+#! Alice is looking for Bob. All she knows about him is that Bob is from the city of "Bersabon" and that he works for "ABC Telecom"
+#! Alice opens the Smart Discovery Website directly or uses her Client Software (open discovery)
+#! to send the search query: "Bob";"Bersabon";"ABC" Telecom"
+#! The Smart Discovery Service provides two UUIDs. One is pointing to a Hyperty of Bob running in his office environment and another one running in his private ones.
+#! Alice clicks the office UUID. This one is resolved by the REGISTRY to a Hyperty URI.
+#! Alices client software uses this URI to connect to Bobs Hyperty.
+#!
+#!<<
+
+#![using discovery]
+# Version 0.2
+# 15.09.2015
+
+user:Actor
+run:runtime[pa]
+locreg:local Registry[pa]
+csp:CSPApp[pa]
+cat:catalog[pa]
+msg:MNode[pa]
+reg:Registry[pa]
+disco:Discovery[pa]
+idp:IdP[pa]
+
+
+user:run.open discovery
+run:disco.open discovery
+disco:run.show search UI
+run:user.show search UI
+user:run.search for "Bob", "Bersabon", "ABC Telecom"
+run:disco.send search query "Bob", "Bersabon", "ABC Telecom"
+disco:run.send UUID with additional tag OFFICE
+disco:run.send UUID with additional tag PRIVATE
+run:user.show results
+user:run.choose OFFICE UUID
+run:locreg.resolve UUID
+locreg:reg.resolve UUID
+reg:run.return URI(HypertyID,HypertyType,Stub-URL,etc.)
+run:csp.start call.....

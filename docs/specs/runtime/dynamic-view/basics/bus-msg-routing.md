@@ -1,70 +1,17 @@
-### Message Routing in Message BUS
+#### Message Routing in Message BUS
 
-<!--
-@startuml "bus-msg-routing.png"
+The Runtime procedures to route a message by the Runtime BUS are described in this section.
 
-autonumber
+![Figure @runtime-bus-msg-routing: Message Routing in Message BUS](bus-msg-routing.png)
 
-!define SHOW_RuntimeA
+Steps 1 - 5: on receiving a message, the Runtime BUS requests the Registry to verify if the originator is valid (3) (i.e. its Runtime URL has been previously registered) and checks if the target address is external to the Runtime. If yes, it looks for the protostub Runtime URL to be used. The process to [deploy the Protocol Stub in the runtime](deploy-protostub.md) (section 4.3.1.2) is triggered, in case it is not available yet.
 
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
+Steps 6 - 7: in case the message requires authorisation, the Core PDP applies applicable policies to authorise its routing.
 
+Steps 8 - 12: The Core Policy Enforcer enforces authorisation policies (including generation of Assertions or verification of assertions) in case the Runtime PDP requests it. In case policy enforcement is performed successfully, routing authorisation is requested again (step 6).
 
-!include ../runtime_objects.plantuml
+Step 13: the application of authorisation policies by the PDP can result in different types of final errors including:
 
-BUS@A <-  : send msg
-
-RunAuth@A <- BUS@A : Authz request(Message)
-
-RunReg@A <- RunAuth@A : Resolve(Message)
-
-RunReg@A -> RunID@A : get Identity token
-
-RunReg@A -> RunReg@A  : add ID Token to Msg
-
-RunReg@A -> RunReg@A  : resolve addresses
-
-group option :unregistered protocol stub for external address
-
-	group discover protocol stub URL
-	end
-
-	group deploy protocol stub
-	end
-
-end
-
-RunReg@A -> RunAuth@A : return(ResolvedMessage)
-
-group enforce policies
-	RunAuth@A -> RunAuth@A : enforce source policies
-
-	RunAuth@A -> RunAuth@A : enforce target policies
-end
-
-alt
-	RunAuth@A -> BUS@A : authorised(ResolvedMessage)
-
-	BUS@A ->  : send msg
-else Error : unknown source
-
-else Error : target not found
-
-else Error : not associated with Identity
-
-else Error : blocked by source policy
-
-else Error : blocked by target policy
-
-end
-
-@enduml
--->
-
-
-![Routing messages in Message BUS](bus-msg-routing.png)
-
+-	target does not exist
+-	Hyperty instance that is sending the message is not associated with an appropriate Identity
+-	the message is blocked by a source or target policy

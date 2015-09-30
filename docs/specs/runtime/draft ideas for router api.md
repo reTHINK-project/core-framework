@@ -1,18 +1,18 @@
 Some considerations about the API for the architecture components.
 Defining some aspects of the API and simulate some use case scenarios could help to envision architecture changes in the future.
 
-[TypeScript](http://www.typescriptlang.org/) is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open Source.
+[TypeScript](http://www.typescriptlang.org/) is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. open source.
 I will use it here for API definitions, but it's not decided if it will be used in the project.  
 
 ##Router (Draft)
 The main responsibility of the Router is to select the appropriate channel for communication between Hyperties.
 The Hyperty will select the channel, for example with a call to 
-```javascript
+```JavaScript
 var channel = router.select('address', 'p2p', 'video\audio', {send: true, receive: true})
 ```
 
 Definition for **select** function could be: 
-```javascript
+```JavaScript
 select(address: string, delivery: string, data: string, direction: {send: boolean; receive: boolean} = {send: true, receive: true}): Channel
 ```
 * address -> signal server, hyperty end point address, multi channel name to subcribe
@@ -20,21 +20,21 @@ select(address: string, delivery: string, data: string, direction: {send: boolea
 * data -> data type to send/receive (video/audio stream, message, binary, ...)
 * direction -> available direction offer send/receive
 
-```javascript
+```JavaScript
 interface Channel {
 	config: Config; //read only values reflecting the channel selection
 }
 ```
 
 TypeScript has method overloading that depends on parameter values. This is a nice functionality and can be used here for example:
-```javascript
+```JavaScript
 select(address: string, delivery: string, data: "message", direction: {send: boolean; receive: boolean} = {send: true, receive: true}): MessageChannel;
 
 select(address: string, delivery: string, data: "stream", direction: {send: boolean; receive: boolean} = {send: true, receive: true}): StreamChannel;
 ```
 
 The diference here is that for **stream** data type it will return a **StreamChannel** and **message** returns **MessageChannel**. There are diferences between StreamChannel an MessageChannel interfaces:
-```javascript
+```JavaScript
 interface MessageChannel extends Channel {
 	on(event: "message", callback: (msg: Message) => void): void;
 	on(event: "error", callback: (msg: Error) => void): void;
@@ -43,7 +43,7 @@ interface MessageChannel extends Channel {
 }
 ```
 
-```javascript
+```JavaScript
 interface StreamChannel extends Channel {
 	getOutputStream(): any;
 	getInputStream(): any;
@@ -57,7 +57,7 @@ If hyperty address doesn't have any reference to domain, maybe should be necessa
 ###Router Extensions
 Extending the Router API is possible with TypeScript, with the mechanism called [declaration merging](http://www.typescriptlang.org/Handbook#declaration-merging)
 With declaration merging it's possible to extend an already available interface, ex:
-```javascript
+```JavaScript
 //define IRouter with a simple select method
 export interface IRouter {
     select(address: string, delivery: string, data: string, direct?: Direction): IChannel;
@@ -65,7 +65,7 @@ export interface IRouter {
 }
 ```
 
-```javascript
+```JavaScript
 //extend by "declaration merging", declaration from a different domain
 export interface IRouter {
     select(address: string, delivery: string, data: "message", direct?: Direction): IMessageChannel;
@@ -74,7 +74,7 @@ export interface IRouter {
 ```
 
 ###Final Proposal
-```javascript
+```JavaScript
 //core.d.ts
 export declare enum DataOrigin {LOCAL, REMOTE}
 
@@ -89,7 +89,7 @@ export interface Error extends IData {
 }
 ```
 
-```javascript 
+```JavaScript 
 //router.d.ts
 import core = require("core");
 
@@ -147,19 +147,19 @@ export interface IRouter {
 
 ###Examples
 Hyperty request a channel with 
-```javascript 
+```JavaScript 
 select("hyperty-address", "p2p", "stream");
 ```
 This will select an internal implementation of IStreamChannel that uses WebRTC in a P2P connection. Selecting
-```javascript 
+```JavaScript 
 select("room-address", "multi", "stream");
 ```
 will return an implementation of the same interface but with a different implementation, WebRTC with MCU. Selecting
-```javascript 
+```JavaScript 
 select("hyperty-address", "p2p", "message");
 ```
 will return a IMessageChannel implemented over WebRTC, but selecting
-```javascript 
+```JavaScript 
 select("room-address", "multi", "message");
 ```
 the messages will be routed by the message server.

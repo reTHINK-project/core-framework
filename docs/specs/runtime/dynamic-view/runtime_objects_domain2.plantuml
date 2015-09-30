@@ -22,7 +22,7 @@
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntimeB
-				participant "Javascript Runtime" as JS
+				participant "JavaScript Runtime" as JS
 			!endif
 		end box
 	!endif

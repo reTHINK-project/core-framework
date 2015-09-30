@@ -19,13 +19,13 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntimeA
-				participant "Javascript Runtime" as JS@A
+				participant "JavaScript Runtime" as JS@A
 			!endif
 		end box
 	!endif
 
 	!ifdef SHOW_CoreRuntimeA
-		box "Alice's Device Core Runtime"
+		box "Alice's Device\nCore Runtime"
 			!ifdef SHOW_CoreAgentAtRuntimeA
 				participant "RuntimeUA" as RunUA@A
 			!endif
@@ -35,12 +35,17 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_IdentitiesAtRuntimeA
-				participant "Identities" as RunID@A
+				participant "Identity\nModule" as RunID@A
 			!endif
 
 			!ifdef SHOW_AuthAtRuntimeA
-				participant "Authorisation" as RunAuth@A
+				participant "Policy\nEngine" as RunAuth@A
 			!endif
+
+			!ifdef SHOW_PEPAtRuntimeA
+				participant "Core PEP" as RunPEP@A
+			!endif
+
 			!ifdef SHOW_MsgBUSAtRuntimeA
 				participant "Msg BUS" as BUS@A
 			!endif
@@ -48,7 +53,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntimeA
-		box "Service Provider 1 Sandbox at Alice Device"
+		box "Service Provider 1\nSandbox at Alice Device"
 
 			!ifdef SHOW_ServiceProvider1HypertyAtRuntimeA
 			participant "Service Provider1\nHyperty" as SP1H@A
@@ -59,7 +64,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_ServiceProvider1RouterAtRuntimeA
-			participant "Service Provider1\nRouter" as Router1@A
+			participant "Service Provider1\nPEP" as Router1@A
 			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntimeA
@@ -70,12 +75,16 @@ actor "Alice" as Alice
 			participant "Connection\nData Object" as CommObj@A
 			!endif
 
-			!ifdef SHOW_ReceiverObjectAtRuntimeA
-			participant "Receiver\nData Object" as RecvObj@A
+			!ifdef SHOW_LocalObjectAtRuntimeA
+			participant "Local\nData Objects" as LocObj@A
 			!endif
 
-			!ifdef SHOW_SenderObjectAtRuntimeA
-			participant "Sender\nData Object" as SendObj@A
+			!ifdef SHOW_RemoteObjectAtRuntimeA
+			participant "Remote\nData Objects" as RemObj@A
+			!endif
+
+			!ifdef SHOW_Syncher1AtRuntimeA
+			participant "Syncher" as Sync1@A
 			!endif
 
 			!ifdef SHOW_Protostub1AtRuntimeA
@@ -85,7 +94,7 @@ actor "Alice" as Alice
 	!endif
 
 	!ifdef SHOW_SP2SandboxAtRuntimeA
-		box "Service Provider 2 Sandbox at Alice Device"
+		box "Service Provider 2\n Sandbox at Alice Device"
 			!ifdef SHOW_Protostub2AtRuntimeA
 			participant "SP2\nprotoStub" as Proto2@A
 			!endif
@@ -95,16 +104,22 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_ServiceProvider2RouterAtRuntimeA
-			participant "Service Provider2\nRouter" as Router2@A
+			participant "Service Provider2\nPEP" as Router2@A
 			!endif
+
+			!ifdef SHOW_Syncher2AtRuntimeA
+			participant "Syncher" as Sync2@A
+			!endif
+
 		end box
 	!endif
 !endif
 
 !ifdef SHOW_CoreRuntimeProvider
 	box "Core Runtime Service Provider"
-		participant "Catalog" as CoreRunProvider
+		participant "Back-end Service" as CoreRunSP
 	end box
+
 !endif
 
 
@@ -116,6 +131,12 @@ actor "Alice" as Alice
 			participant "Msg Service" as Msg1
 		!endif
 
+	end box
+!endif
+
+!ifdef SHOW_SP1_WITH_SP2Stub
+	box "Service Provider 1"
+		participant "SP2 protoStub" as SP2Stub
 	end box
 !endif
 
@@ -132,7 +153,7 @@ actor "Alice" as Alice
 			!endif
 
 			!ifdef SHOW_JavascriptEngineAtRuntime1B
-				participant "Javascript Runtime" as JS
+				participant "JavaScript Runtime" as JS
 			!endif
 		end box
 	!endif
@@ -175,18 +196,21 @@ actor "Alice" as Alice
 			participant "Connection\nData Object" as CommObj@1B
 			!endif
 
-			!ifdef SHOW_ReceiverObjectAtRuntime1B
-			participant "Receiver\nData Object" as RecvObj@1B
+			!ifdef SHOW_LocalObjectAtRuntime1B
+			participant "Local\nData Object" as LocObj@1B
 			!endif
 
-			!ifdef SHOW_SenderObjectAtRuntime1B
-			participant "Sender\nData Object" as SendObj@1B
+			!ifdef SHOW_RemoteObjectAtRuntime1B
+			participant "Remote\nData Object" as RemObj@1B
 			!endif
 
 			!ifdef SHOW_IdentityObjectAtRuntime1B
 			participant "Identity\nData Object" as IDObj@1B
 			!endif
 
+			!ifdef SHOW_Syncher1AtRuntime1B
+			participant "Syncher" as Sync1@1B
+			!endif
 
 		end box
 	!endif

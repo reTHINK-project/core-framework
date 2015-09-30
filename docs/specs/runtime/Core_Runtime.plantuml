@@ -1,0 +1,69 @@
+@startuml "Core_Runtime.png"
+
+node "Service Provider" as SP {
+}
+
+() "Service Provider\nCatalogue Interface" as CatI
+
+
+
+node "Runtime Device" as rt {
+
+node "Service Provider Sandbox" as SPSand {
+
+}
+
+node "Core Sandbox" as core {
+
+node "" as core1 {
+ node "*            Message      BUS                *" as Bus
+
+
+ node "Registry" as Reg
+
+ node "Identities\nModule" as ID
+
+ node "Policy Engine (PDP/PEP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+
+ node "QoS\nUser Agent" as QoS
+
+ node "Graph\nConnector" as Graph
+}
+
+ node "Runtime\nUser Agent" as RunUA {
+	node "CatalogueProtoStub" as RepUA
+ }
+
+ RunUA -> Reg : Register Hyperties\nand protostubs
+ }
+
+ RunUA .> core1 : deploy&manage
+
+ PDP <-left- Bus : authorise
+
+ PDP -down-> QoS : set QoS
+
+ PDP -down-> ID : generate or\n verify assertions
+
+ PDP -down-> Graph : is Trustful?
+
+ Reg <-up- Bus: resolve\nmessage
+
+ RunUA -> Bus : add listener
+
+ RunUA .up-> SPSand : deploy&manage
+
+ SPSand <-> Bus : post Message
+
+ 	}
+
+RepUA -up-> CatI : query and\n download \nCatalogue\n Objects
+
+rt -[hidden]up- SP
+
+SPSand -[hidden]up- CatI
+
+CatI -up- SP
+
+
+@enduml

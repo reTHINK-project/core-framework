@@ -1,68 +1,13 @@
-### Deploy runtime
+#### Deploy Hyperty Runtime
 
-<!--
-@startuml "deploy-runtime.png"
+In case the device does not support the Hyperty Core Runtime components e.g. an existing browser like Chrome or a Network Node.js Server, they have to be deployed in the Device or in the Server.
 
-autonumber
+The main data flow to support the deployment of the Hyperty Core Runtime is depicted in the diagram below.
 
-!define SHOW_RuntimeA
+![Figure @runtime-deploy-runtime: Deploy Core Runtime Components in the Native Runtime](deploy-runtime.png)
 
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
+Steps 1 - 2: the Runtime can be explicitly deployed by a specific Application or can be implicitly deployed when an Hyperty or Protocol Stub is required. The usage of existing libraries like require.js [110] will be evaluated.
 
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
+Steps 3 - 8: the Runtime User Agent handles the download, instantiation and initialisation of required Runtime Core components including the Runtime Registry, Identity Module, Runtime Policy Engine and the Message BUS.
 
-!define SHOW_CoreRuntimeProvider
-
-!include ../runtime_objects.plantuml
-
-== Deploy Core Runtime ==
-
-group option : these steps won't be needed in case the Run User Agent is already running in the device
-
-Alice -> HTTP_UAC@A : download App with Core Runtime
-
-HTTP_UAC@A -> CoreRunProvider : download App with Core Runtime
-
-create RunUA@A
-JS@A -> RunUA@A : new
-end group 
-
-RunUA@A -> HTTP_UAC@A : download Core Runtime\n(runtime profile)
-
-HTTP_UAC@A -> CoreRunProvider : download Core Runtime\n(runtime profile)
-
-create BUS@A
-JS@A -> BUS@A : new
-
-create RunReg@A
-JS@A -> RunReg@A : new
-
-create RunID@A
-JS@A -> RunID@A : new
-
-create RunAuth@A
-JS@A -> RunAuth@A : new
-
-@enduml
--->
-
-
-![Deploy Core Runtime Components in the Native Runtime](deploy-runtime.png)
-
-In case the device does not support the Hyperty Core Runtime components eg an existing browser like Chrome or a Network Node.js Server, they have to be deployed in the Device.
-
-**Notes from 6th July H2H Comm Work Session:**
-
-Runtime Core components should be as much as possible independent on the Runtime type. 
-They should be deployed once and executed at the background. The next time the runtime is started there should be no need to download the core runtime again unless there is a new version. Runtime core components should be singletons (?) shared by different Apps and Hyperty instances. In order to support these characteristics for the Browser, Runtime Core components should be implemented with Web/Service Workers (FFS).
-
-The Core Runtime is provided by a specific Service Provider that handles a central repository or catalog of the needed Core Runtime components.
-
-This process may be triggered by the deployment of an Hyperty or Protocol Stub using some existing libraries like require.js. Such possibility has to be validated with experimentations.
+Steps 9 - 10: the Runtime User Agent registers the Runtime Instance into the remote Registry Service of the Hyperty Runtime Service Provider which returns the RuntimeURL allocated to the new Runtime. Then, the Registry is initialised with the previously returned RuntimeURL that will be used to derive the internal runtime addresses to be allocated to runtime components.

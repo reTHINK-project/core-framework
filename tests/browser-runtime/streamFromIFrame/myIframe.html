@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>myIframe</title>
+</head>
+<body>
+    This is the iFrame
+
+    <script>
+    'use strict';
+
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+        var constraints = {
+            audio: false,
+            video: true
+        };
+
+        function successCallback(stream) {
+
+            console.log("successCallback");
+
+            var type = "streamAvailable";
+
+            var detail = {
+                    "eventType" : "streamAvailable",
+                    "stream" : stream
+                };
+
+            var event = new CustomEvent(type, {
+                detail: detail,
+                bubbles: true,
+                cancelable: true
+            });
+
+            //window.dispatchEvent(event);
+
+            //Dispatching event to parent
+            parent.window.dispatchEvent(event);
+        }
+
+        function errorCallback(error) {
+            console.log('navigator.getUserMedia error: ', error);
+        }
+
+        navigator.getUserMedia(constraints, successCallback, errorCallback);
+    </script>
+</body>
+</html>

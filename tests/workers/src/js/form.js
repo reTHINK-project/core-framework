@@ -13,7 +13,8 @@ var $form = $("#messages");
 var $message = $form.find('.message-textarea');
 
 // Instance a Worker to Process information
-var worker = new Worker('worker.js');
+var worker1 = new Worker('worker.js');
+var worker2 = new Worker('worker.js');
 
 // Instance a SharedWorker to comunicate with other window/separator
 var myWorker = new SharedWorker("sharedWorker.js", 'rethink');
@@ -32,12 +33,21 @@ myWorker.port.addEventListener('message', function(e){
 
 }, false);
 
-worker.addEventListener('message', function(e){
+worker1.addEventListener('message', function(e){
 
   console.log("postajs worker:", e);
 
   localStorage.setItem("postal-worker1-" + getLastIndex(), JSON.stringify(e));
   renderPostalMessage(e);
+
+}, false);
+
+worker2.addEventListener('message', function(e){
+
+  console.log("postajs worker 2:", e);
+
+  // localStorage.setItem("postal-worker2-" + getLastIndex(), JSON.stringify(e));
+  // renderPostalMessage(e);
 
 }, false);
 
@@ -79,7 +89,8 @@ $form.on('submit', function(e){
 
 function sendMessage(message) {
 
-  worker.postMessage(message);
+  worker1.postMessage(message);
+  worker2.postMessage(message);
   myWorker.port.postMessage(message);
 
   resetForm();

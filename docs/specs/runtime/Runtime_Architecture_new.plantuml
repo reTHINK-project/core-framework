@@ -1,0 +1,136 @@
+@startuml "Runtime_Architecture_new.png"
+
+
+node "Service Provider 1" as SP1 {
+	node Catalogue as Repo1
+	node "Backend\nServer" as Msg1
+
+	Repo1 -[hidden]left- Msg1
+}
+
+
+node "Service Provider 2" as SP2 {
+	node Catalogue as Repo2
+	node "Backend\nServer" as Msg2
+
+	Repo2 -[hidden]right- Msg2
+}
+
+node "Runtime Device" as rt {
+
+ node "ASP Sandbox" as ASPSand {
+	 node "Application" as App 
+	}
+
+ SP1 -[hidden]down- App
+ SP2 -[hidden]right- App
+
+ node "Service Provider 1 Sandboxes" as SP1Sand {
+
+ node "Hyperties\nSandbox" as H1Sand {
+	 node "Hyperty1\nInstance" as H1
+	 node "Syncer" as Sync1
+	 H1 -down-> Sync1
+	 }
+
+ node "ProtoStub1\nSandbox" as Proto1Sand {
+
+	 node "ProtoStub" as Proto1
+ }
+
+ node "Router1\nSandbox" as PEP1Sand {
+	 node "Connector\nPEP" as PEP1
+ }
+
+  Sync1 -> PEP1
+
+
+ }
+
+node "Service Provider 2 Sandboxes" as SP2Sand {
+
+ node "Hyperties\nSandbox" as H2Sand {
+	 node "Hyperty2\nInstance" as H2
+	 node "Syncer" as Sync2
+	 H2 -down-> Sync2
+	 }
+
+ node "Router2\nSandbox" as PEP2Sand {
+	 node "Connector\nPEP" as PEP2
+	 }
+
+ node "ProtoStub2\nSandbox" as Proto2Sand {
+
+  node "ProtoStub" as Proto2
+  }
+
+
+  Sync2 -> PEP2
+
+ }
+
+ App -down-> H1
+
+ App -down-> H2
+
+
+Msg1 <-down-> Proto1 : communicate
+
+Msg2 <-down-> Proto2 : communicate
+
+node "Core Sandbox" as core {
+
+ node "*            Message      BUS                *" as Bus 
+
+ node "Msg BUS\nPEP" as BusPEP
+
+ node "Registry" as Reg
+
+ node "Identities\nContainer" as ID
+
+ node "Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+
+ node "Runtime\nUser Agent" as RunUA
+
+ RunUA -[hidden]left- Reg
+ }
+ 
+App -down-> RunUA: bootstrap
+Repo1 ..down-> RunUA: provide
+
+Repo2 ..down-> RunUA: provide
+'Reg -right-> RunUA: discover  Catalogue Hiperties and protoStubs
+
+
+node "Native\nRuntime" as native {
+node "WebRTC Engine" as WRTC
+	
+}
+
+ 
+
+
+ Bus <-up-> Proto1
+
+ Bus <-up-> Proto2
+
+ BusPEP ..right-> Bus : enforce
+
+ PDP ..right-> BusPEP : authorise
+
+ PDP .down-> Reg
+
+ PEP1 <-down-> Bus
+
+ PEP2 <-down-> Bus
+
+ Reg .left. ID
+
+ Reg <-up. Bus: register or discover\n local or remote \nHyperties and\n protoStubs
+
+ WRTC <-up- SP1Sand
+
+ WRTC <-up- SP2Sand
+ 	}
+
+@enduml

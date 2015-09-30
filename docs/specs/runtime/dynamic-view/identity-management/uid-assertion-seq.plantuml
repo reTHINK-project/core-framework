@@ -1,0 +1,61 @@
+@startuml "user-identity-assertion.png"
+autonumber
+
+box "Alice Device Runtime"
+        participant "Id Module" as runtime
+        participant "Msg BUS" as msgbus
+end box
+box "IdP Proxy Sandbox at Alice"
+        participant "Identity Proxy" as idpproxy
+end box
+box "Service Provider Sandbox at Alice"
+        participant "Service Provider Hyperty" as hyperty
+end box
+participant "Service Provider" as backend
+participant "Identity service Provider" as idp
+
+backend  -> hyperty     : Send(IdAssertion)
+note right
+        Bob's IdAssertion received through
+        signaling of the Service Provider.
+end note
+
+hyperty  -> msgbus      : Verify(IdAssertion)
+msgbus   -> runtime     : Verify(IdAssertion)
+runtime  -> idp         : GetProxy(IdAssertion.proxy)
+idp      -> runtime     : return(proxy)
+create idpproxy
+runtime  -> idpproxy    : <<create>>\n new IdPProxy(proxy)
+
+note over idp
+        May be two different server
+        (repository and verify backend)
+        but are shown here as the same
+        participant.
+end note
+
+runtime  -> msgbus      : Verify(IdAssertion)
+msgbus   -> idpproxy    : Verify(IdAssertion)
+idpproxy -> idp         : Verify(IdAssertion)
+activate idp
+idp      -> idpproxy    : Verified(IdAssertion, validity)
+deactivate idp
+idpproxy -> msgbus      : Verified(IdAssertion, validity)
+msgbus   -> runtime     : Verified(IdAssertion, validity)
+note over runtime
+        Received and validated IdAssertion
+        could be stored for future reference.
+        (e.g. last known assertion)
+end note
+
+runtime  -> msgbus      : Confirm(IdAssertion)
+msgbus   -> hyperty     : Confirm(IdAssertion)
+
+opt Refresh Trust
+end
+
+opt Negotiate Trust
+end
+
+
+@enduml

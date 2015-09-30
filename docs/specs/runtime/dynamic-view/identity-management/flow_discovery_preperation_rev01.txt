@@ -1,0 +1,125 @@
+#![preparation of discovery]
+# Version 0.2
+# 15.09.2015
+
+#!>>
+#! Connecting a Hyperty URI with Discover Tags and policies
+#! 
+#! Bob wants to configure his Smart Discovery results. So he has to connect the UUID of his Hyperties and tag one with "OFFICE" and the other one with "PRIVATE"
+#! Bob starts his device/app/runtime. This connects with the Communication Service Provider (CSP).
+#! The CSP asks for authentication. Either Bob has to authenticate with his IdP or the is already a stored ID token (alternative 1 or 2)
+#! Now the Bob or his app starts to download the hyperty for the first time. While starting the hyperty is registered with its URI in the Registry Service.
+#! As a result a UUID is provided.Bob connect this UUID with certain tags in the discovery service directly or via CSP or client app.
+#!<<
+
+user:Actor
+run:runtime[pa]
+locreg:local Registry[pa]
+csp:CSPApp[pa]
+cat:catalog[pa]
+msg:MNode[pa]
+reg:Registry[pa]
+disco:Disco[pa]
+idp:IdP[pa]
+
+user:run.start using device/app/runtime
+run:csp.visit CSP (user wants to communicate)
+csp:run.request authentication
+run:user.request authentication
+user:run.choose role/IdP
+
+[calt 1 authentication against IdP (e.g. using OpenIDConnect)]
+run:idp.authentication request
+idp:user.request user authentication (and consent)
+user:idp.provide authentication and consent (e.g username/password)
+idp:run.authentication response with IDToken
+*4 run
+store token
+*4
+run:csp.provide IDtoken
+[/c]
+
+[calt 2 reuse stored IDToken]
+
+user:run.choose IDToken (according to the chosen Identity)
+run:csp.provide token
+[/c]
+
+
+user:cat.choose Hyperty type (direct or via application)
+cat:run.download/instanciate hyperty
+*4 run
+
+assemble URI from,
+1: HypertyType from catalog
+2: InstanceID
+ 
+*4
+
+run:locreg.register Hyperty with URI (part 1,2) with local registry
+locreg:msg.register Hyperty URI add (runtimeID)
+msg:reg.register Hyperty URI add Protocol Stub URL
+*1 reg
+The Hyperty URI consist of:
+1. HypertyType (type of hyperty)
+2. HypertyID (dynamic part for the instance)
+3. runtimeID
+4. StubURL
+5. timeout token
+*1
+
+reg:csp.provide UUID refering to the Hyperty-URI
+csp:run.show UUID(with link to discovery)
+
+
+*5 csp
+now the runtime or the CSP can offer to make a connection btw
+REGISTRY-KEY (UUID) and discover service
+*5
+
+run:disco.start using discovery service
+disco:run.request authentication
+user:run.choose identity for the disco service
+
+[calt Authentication against IdP (e.g. using OpenIDConnect)]
+run:idp.request authentication
+idp:user.request user authentication (and consent)
+user:idp.provide authentication and consent (e.g username/password)
+idp:run.authentication response with IDToken
+
+*6 run
+store token
+*6
+run:disco.provide IDtoken
+[/c]
+
+[calt reuse stored IDToken]
+
+user:run.choose IDToken (according to the chosen Identity)
+run:disco.provide token
+[/c]
+
+*2 csp
+The user or the CSP (with help of the user)
+connects his UUID with #hashtags like "#office" etc.
+sets policies
+*2
+
+user:run.provide discovery with current UUID
+run:disco.provide current UUID
+user:disco.provide #OFFICE for the given UUID with tags #Frank #T-Labs #Berlin
+user:disco.set policies for UUID 
+
+
+*2 run
+Smart discovery connects UUID, 
+Policies and other MetaData for smart discovery/search
+*2
+
+
+[cupdate/refresh URI]
+run:locreg.trigger the refresh of the time out token
+locreg:reg.trigger the refresh of the time out token
+reg:run.provide new URI
+run:disco.refresh URI in discovery
+[/c]

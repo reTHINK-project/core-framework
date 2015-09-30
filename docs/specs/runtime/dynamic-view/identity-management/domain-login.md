@@ -1,114 +1,23 @@
-### Domain Login
+#### Domain Login
 
-<!--
-@startuml "domain-login.png"
+This section describes the main procedures to support domain login.
 
-autonumber
+![Figure @runtime-ident-man-domain-login-explicit: Explict Domain Login](domain-login-explicit.png)
 
-!define SHOW_RuntimeA
+A first option is the Hyperty to explicitly ask to connect (see Figure above):
 
+Steps 1-3: Hyperty requests to connect to domain with a GET message sent to DomainURL which is subject for Authorisation by the Core Policy Engine.
 
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
+Steps 4-5: according to applicable policies the Policy Engine request the Identity Module for an Access Token to be used in the login message, providing the Identity identifier associated to the hyperty and the scope (login to domain).
 
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_IdentityObjectAtRuntimeA
+Steps 6-7: Identity Module returns a valid Access Token to be used in the domain login. To be noted that this may imply the generation of a new token in case there is no valid token stored in the Identity Module. In this case, the Identity Module may have to interact with an IdP back-end server through an IdP (proxy) Protocol Stub. The Access Token generation is described in D4.1.
 
-!define SHOW_SP1
+Steps 8-10: the returned token is added to the login message by the Policy Engine, which is forwarded to the Protocol Stub by the Message BUS.
 
-!include ../runtime_objects.plantuml
+Steps 11-13: the Protocol Stub uses the Access Token to request to connect to the domain back-end server. If successful a Session Token is granted and returned back to the Protocol Stub. (it is assumed the session token is handled by the Protocol Stub and not by Core Runtime)
 
-== Deploy protocol stub and Service Provider Hyperty ==
+Steps 14-16: as soon as the Protocol Stub is connected, its status is updated (UPDATE message posted to its status URL resource) and Response message is sent back to the Hyperty.
 
-group Deploy Protocol Stub diagram included in the Basics 
+![Figure @runtime-ident-man-domain-login-implicit: Implict Domain Login](domain-login-implicit.png)
 
-	create Proto1@A
-	RunUA@A -> Proto1@A : new
-end
-
-group Deploy Hyperty diagram included in the Basics 
-
-	create SP1H@A
-	RunUA@A -> SP1H@A : new
-
-	create Router1@A
-	RunUA@A -> Router1@A : new
-end
-
-group Associate Hyperty with Identity diagram included in the IdM 
-	RunUA@A -> RunReg@A : set Identity
-end
-
-alt explicit Login
-
-	note over RunUA@A
-		A first option is to provide a function
-		to explicitely connect to the domain
-		to be called by the Runtime User Agent.
-	end note
-
-	RunUA@A -> Proto1@A : connect(ID Token)
-
-	Proto1@A -> SP1 : connect(ID Token)
-
-	SP1 -> SP1 : validate ID Token
-
-	Proto1@A <- SP1 : Success\nSession Token Granted
-
-	note over Proto1@A
-		session token is handled by the protoStub
-		or by the Registry?
-	end note
-
-else implicit Login
-
-	note over RunUA@A
-		In second option, the protostub only
-		connects when requested to send a message
-		eg to register a new Hyperty Instance.
-		In this case the ID Token contained in the
-		message is used in the connection.
-	end note
-
-	group Register Hyperty in Deploy Hyperty diagram included in the Basic
-		RunUA@A -> RunReg@A : register Hyperty
-
-		BUS@A <- RunReg@A : register Hyperty\n(+ID Token)
-
-		Proto1@A <- BUS@A : register Hyperty\n(+ID Token)
-
-	end
-
-
-	Proto1@A -> Proto1@A : not connected yet
-
-	Proto1@A -> SP1 : connect(ID Token)
-
-	SP1 -> SP1 : validate ID Token)
-
-	Proto1@A <- SP1 : Success\nSession Token Granted
-
-	note over Proto1@A
-		session token is handled by the protoStub
-		or by the Registry?
-	end note
-
-end
-
-Proto1@A -> SP1 : register Hyperty\nSession Token
-
-
-@enduml
--->
-
-
-![Domain Login](domain-login.png)
-
-In this use case, it is considered there is a single protocol stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services including authentication, authorisation and messaging services.
+In a second option (see Figure above), the ProtoStub only connects when requested to send the first message. The Access Token used in the connection request is provided like it is in the first option.

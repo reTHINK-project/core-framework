@@ -1,6 +1,6 @@
 ### Service Workers
 
-Service workers are based on previous [Web Worker](http://www.w3.org/TR/workers/) W3C work and they essentially act as proxy servers that sit between web applications, and the browser and network (when available.) They are intended to (amongst other things) enable the creation of effective offline experiences, intercepting network requests and taking appropriate action based on whether the network is available and updated assets reside on the server. 
+[Service workers](http://www.w3.org/TR/service-workers/)[92] are based on previous [Web Worker](http://www.w3.org/TR/workers/) W3C work [91] and they essentially act as proxy servers that sit between web applications, and the browser and network (when available.) They are intended to (amongst other things) enable the creation of effective offline experiences, intercepting network requests and taking appropriate action based on whether the network is available and updated assets reside on the server.
 
 A service worker is an event-driven worker registered against an origin and a path. It takes the form of a JavaScript file that can control the web page/site it is associated with, intercepting and modifying navigation and resource requests, and caching resources in a very granular fashion to give you complete control over how your app behaves in certain situations (the most obvious one being when the network is not available.)
 
@@ -24,10 +24,11 @@ if ('serviceWorker' in navigator) {
 
 Where `/my-app/sw.js` is the location of the ServiceWorker script, and it controls pages whose URL begins `/my-app/`.
 
-At this point, your service worker will observe the following lifecycle:
-* Download
-* Install
-* Activate
+At this point, your service worker will observe the following life-cycle:
+
+-	Download
+-	Install
+-	Activate
 
 The service worker is immediately downloaded when a user first accesses a server worker–controlled site/page. Installation is attempted when the downloaded file is found to be new — either different to an existing service worker (byte-wise compared), or the first service worker encountered for this page/site.
 
@@ -42,20 +43,13 @@ self.addEventListener('fetch', function(event) {
 ```
 
 Service Workers provides the basis for other features including:
-* [Push](http://w3c.github.io/push-api/)
-* [Background sync](https://github.com/slightlyoff/BackgroundSync)
-* [Geofencing](https://github.com/slightlyoff/Geofencing)
+
+-	[Push](http://w3c.github.io/push-api/)[89]
+-	[Background sync](https://github.com/slightlyoff/BackgroundSync)
+-	[Geofencing](https://github.com/slightlyoff/Geofencing)
 
 Service Workers are still an experimental technology only supported in Desktop Chrome and Firefox.
 
-#### Applicability in reTHINK 
+#### Applicability in reTHINK
 
-Service Workers provides features that can facilitate the development of some Runtime features including Event BUS, ProtOfly engine, Policy Engine. Its usage to support the Hyperty instance itself should also be evaluated. However it seems this technology is only available in Browsers and not in server side javascript runtime like node.js.
-
-#### References
-
-* http://www.w3.org/TR/workers/
-* https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
-* https://github.com/slightlyoff/ServiceWorker/blob/master/explainer.md
-* http://www.w3.org/TR/service-workers/
-* https://jakearchibald.github.io/isserviceworkerready/
+Service Workers provides features that can facilitate the development of some Runtime features including Event BUS, ProtOfly engine, Policy Engine. Its usage to support the Hyperty instance itself should also be evaluated. However it seems this technology is only available in Browsers and not in server side JavaScript runtime like NodeJS.
