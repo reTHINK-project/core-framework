@@ -1,117 +1,15 @@
-#### User Registration
+#### User Identity Registration
 
-<!--
-@startuml "user-registration.png"
-
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_AppAtRuntimeA
-
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_IdentityObjectAtRuntimeA
-
-!define SHOW_SP1
-
-!include ../runtime_objects.plantuml
-
-== Deploy Protocol Stub and Registration Hyperty ==
-
-Alice -> HTTP_UAC@A : download\nRegistration App
-
-HTTP_UAC@A -> SP1 : download Registration App
-
-create App@A
-JS@A -> App@A : new
-
-group deploy Protocol Stub
-
-    App@A -> RunUA@A : download Protocol Stub
-
-    note right
-        detailed in a separated diagram
-    end note
-
-    create Proto1@A
-    RunUA@A -> Proto1@A : new
-end
-
-group deploy Hyperty
-
-    App@A -> RunUA@A : download hyperty
-
-    note right
-        detailed in a separated diagram
-    end note
-
-    create SP1H@A
-    RunUA@A -> SP1H@A : new
-
-    create Router1@A
-    RunUA@A -> Router1@A : new
-end
-
-== Create Identity Account ==
-
-App@A -> Alice : request\nRegistration\nData
-
-App@A <- Alice : Registration\nData\nprovided
-
-App@A -> SP1H@A : Registration Data provided
-
-create IDObj@A
-SP1H@A -> IDObj@A : new(data collected)
-
-SP1H@A -> Router1@A : report Identity Data to backend
-
-Router1@A -> Router1@A : enforce SP1\nIdentity Creation \nPolicies
-
-BUS@A <- Router1@A : send Identity Obj Msg
-
-Proto1@A <- BUS@A : send Identity Obj Msg
-
-Proto1@A -> SP1 : send Identity Obj Msg
-
-Proto1@A <- SP1 : Success\nID Token
-
-Proto1@A -> BUS@A : Success\nID Token
-
-RunReg@A <- BUS@A : Register Hyperty
-
-RunReg@A -> RunID@A : Set ID Token
-
-BUS@A -> Router1@A : Success
-
-Router1@A -> SP1H@A : Success
-
-IDObj@A x<- SP1H@A : Delete Obj
-
-group Hyperty Instance Registration
-    Proto1@A <- RunReg@A : register Hyperty\n+ID Token
-
-    Proto1@A -> SP1 : register Hyperty\n+ID Token
-end group
-
-
-
-@enduml
--->
+This section, describes the main procedures for the registration of a new Identity in the Hyperty Runtime. It is assumed that an account was already created by the user on the IdP through an out of scope mechanism.
 
 ![Figure @runtime-ident-man-user-registration: User registration](user-registration.png)
 
-In this use case, it is considered there is a single Protocol Stub to interact with all back-end services including Identity Management. Another option is to have different protocol stubs to interact with different back-end services, for example, one Protocol Stub for Identity Management services and another Protocol Stub for messaging services. In this use case, the Service Provider also plays the role of a Identity Provider. The Use Case where Service Provider and Identity Provider are played by different stakeholders are described in D4.1 [109].
+Steps 1: the App request the RuntimeUA to register the new Identity, providing the IdP URL and the IdP user identifier.
+
+Steps 2-3: The RuntimeUA [deploys the IdP Proxy protocol stub](../basics/deploy-protostub.md)(see section 4.3.3.2) required to support the connection with back-end IdP server.
+
+Steps 4-7: the RuntimeUA requests the IdModule to register a new Identity. The IdModule requests the Service Provider back-end IdM to authorise the new Identity creation by sending a message through IdP Proxy Protocol Stub.
+
+Steps 8 - 9: optionally, the back-end IdM requests the user to authenticate and authorise the new identity set in the Runtime via a separated channel (e.g. SMS)
+
+Steps 10 - 13: assuming the identity set in the runtime is successfully authorised, the IdM back-end service returns a set of tokens, which are stored by the IdModule.
