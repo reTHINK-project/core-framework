@@ -1,0 +1,35 @@
+autonumber
+actor Alice #red
+box "Alice's Device Core Runtime" #LightGrey
+participant RuntimeUA
+participant Registry
+participant Identities
+participant Authorisation
+participant MsgBus
+end box
+box "Service Provider 1 Sandbox at Alice Device" #LightGrey
+create SP1ProtoStub
+RuntimeUA -> SP1ProtoStub : new
+create SP1Hyperty
+RuntimeUA -> SP1Hyperty : new
+create SP1Router
+RuntimeUA -> SP1Router : new
+
+== Associate hyperty instance with user identity ==
+
+SP1Hyperty -> SP1Router : set ID
+SP1Router -> SP1Router : enforce/verify ID policies
+SP1Router -> MsgBus : req. ID association (+ Hyperty ID)
+MsgBus -> RuntimeUA : req. ID association (+ Hyperty ID)
+RuntimeUA -> Registry : Set association (Hyperty ID + User ID)
+Registry -> Identities : getID Token
+Identities -> Registry : ID Token
+Registry -> Authorisation : verify ID policy association
+Authorisation -> Registry : success
+Registry -> Registry : associate ID token w/ hyperty ID (generate ID association token)
+Registry -> SP1Router : send ID association token
+SP1Router -> SP1Hyperty : ID association token
+create IDAssociationToken
+SP1Hyperty -> IDAssociationToken : new
+end box
+
