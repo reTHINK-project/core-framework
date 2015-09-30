@@ -66,7 +66,9 @@
 
 (@runtime-ident-man-use-discovery) Use Discovery
 
-(@runtime-ident-man-domain-login) Domain Login
+(@runtime-ident-man-domain-login-explicit) Explicit Domain Login
+
+(@runtime-ident-man-domain-login-implicit) Implicit Domain Login
 
 (@runtime-ident-man-user-to-hyperty-binding-scheme) Associate User Identity to Hyperty Instance
 
