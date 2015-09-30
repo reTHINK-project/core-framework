@@ -18,3 +18,33 @@ criterion to match a specific rule:
 * used protocol.
 
 Illustrated in the Figure above is the handling of application flows from the UE via the EPC components towards the end points in the external network. The Default Bearer serves the IP traffic of application 1 and 2. However application 3 has its own Dedicated Bearer to handle the traffic from the UE to the external endpoint according to the specified QoS parameters. The Bearer concept is only operating from the TFT of the UE until the exit port of the PDN. QoS flow management with similar Bearer properties in external networks has to be performed by the respective domain operators. Therefore E2E QoS can only be performed if the external domains are enforcing the QoS requirements in every network node.
+
+## Quality of Service Class Identifier for EPS Bearer ##
+To indicate which service or traffic class the Bearer should refer to, the EPS is aware of 9 QCI values, see the Table. Which QCI each Bearer has is depending on the used application and the requested parameter set. If the Default Bearer is set up, low-prioritised or no QoS treatment should be assigned to the user data path which can be indicated by setting up such Bearers with a high valued QCI (such as 5 to 9). In this range no Guaranteed Bit Rate (GBR) is enforced inside the network.
+
+| QCI | Resource Type | Priority | Packet Delay Budget | Packet Error Loss Rate | Example Service                           |
+|-----|---------------|----------|---------------------|------------------------|-------------------------------------------|
+| 1   |      GBR      | 2        | 100 ms              | 10^-2                  | Conversational Voice                      |
+| 2   |      GBR      | 4        | 150 ms              | 10^-3                  | Conversational Video (Live Steam)         |
+| 3   |      GBR      | 3        | 50 ms               | 10^-3                  | Real Time Gaming                          |
+| 4   |      GBR      | 5        | 300 ms              | 10^-6                  | Non-Conversational Video (Buffered Video) |
+| 5   |    Non-GBR    | 1        | 100 ms              | 10^-6                  | IMS Signalling                            |
+| 6   |    Non-GBR    | 6        | 300 ms              | 10^-6                  | Video (Buffered Streaming), TCP           |
+| 7   |    Non-GBR    | 7        | 100 ms              | 10^-3                  | Voice, Video (Live Streaming)             |
+| 8   |    Non-GBR    | 8        | 300 ms              | 10^-6                  | Video (Buffered Streaming)                |
+| 9   |    Non-GBR    | 9        | 300 ms              | 10^-6                  | Video (Buffered Streaming)                |
+(Source: 3GPP TS 23.203, Rel. 13)
+
+Since 3GPP Rel. 13 further QCI characteristics have been added and address the mission critical user data.
+
+| QCI | Resource Type | Priority | Packet Delay Budget | Packet Error Loss Rate | Example Service                           |
+|-----|---------------|----------|---------------------|------------------------|-------------------------------------------|
+| 65  |      GBR      | 0.7      | 75 ms               | 10^-2                  | Mission Critical user plane Push To Talk voice (e.g., MCPTT)|
+| 66  |      GBR      | 2        | 100 ms              | 10^-2                  | Non-Mission-Critical user plane Push To Talk voice         |
+| 69  |     Non-GBR   | 0.5      | 60 ms               | 10^-6                  | Mission Critical delay sensitive signalling (e.g., MC-PTT signalling)|
+| 70  |     Non-GBR   | 5.5      | 200 ms              | 10^-6                  | Mission Critical Data (e.g. example services are the same as QCI 6/8/9) |
+(Source: 3GPP TS 23.203, Rel. 13)
+
+
+
+## Triggering QoS Treatment of IP Flows ##
