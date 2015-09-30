@@ -303,6 +303,22 @@ Validates an Identity Assertion
 validateAssertion( assertion, origin )
 ```
 
+#### registerIdentity
+
+Registers a previously created Identity in the Identity Module providing the IdP URL and the user identifier.
+
+```
+registerIdentity( URL.DomainURL IdP, Identity.identifier user )
+```
+
+#### unregisterIdentity
+
+Removes a previously registered Identity in the Identity Module providing its identifier.
+
+```
+removeIdentity( Identity.identifier user )
+```
+
 ### Core Policy Engine (PDP/PEP) Interface
 
 #### addPolicies
