@@ -308,7 +308,7 @@ validateAssertion( assertion, origin )
 Registers a previously created Identity in the Identity Module providing the IdP URL and the user identifier.
 
 ```
-registerIdentity( URL.DomainURL IdP, Identity.identifier user )
+registerIdentity( URL.DomainURL IdP, Identity.AuthenticationData.IDToken user )
 ```
 
 #### unregisterIdentity
