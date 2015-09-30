@@ -1019,7 +1019,7 @@ messaging service, different existing solutions have been considered:
 Matrix, MQTT, Node.js, Psyc, RabbitMQ, realtime backends (also kown as
 noBackends or Backend-as-a-Service), Redis, Vert.x, XMPP and ZeroMQ.
 
-### Matrix
+**Matrix**
 
 The end goal of Matrix is to be a ubiquitous messaging layer for
 synchronising arbitrary data between sets of people, devices and
@@ -1027,21 +1027,21 @@ services. Matrix doesn’t support external authentication and
 authorisation. It also needs to adapt support of messaging transport
 protocols by wrapping Event/messages in REST messages.
 
-### MQ Telemetry Transport
+**MQ Telemetry Transport**
 
 MQ Telemetry Transport (MQTT) is a lightweight broker-based
 publish/subscribe messaging protocol designed to be open, simple,
 lightweight and easy to implement. As it fulfils all the criteria
 defined above MQTT is a potential candidate for Messaging Node.
 
-### Node.js®
+**Node.js**
 
-Node.js® is a platform built on Chrome's JavaScript runtime for easily
+Node.js is a platform built on Chrome's JavaScript runtime for easily
 building fast, scalable network applications. Node.js doesn’t support
 pub/sub by itself, but it can if it is associated with another Pub/Sub
 mechanism (e.g. Redis).
 
-### PSYC
+**PSYC**
 
 PSYC is a mostly text-based protocol, aiming at providing a
 decentralized global messaging infrastructure for unicast/multicast
@@ -1051,14 +1051,14 @@ able to accept external authentication/authorisation methods other than
 its own one. Moreover, a certain degree of latency is inevitable, due to
 the use of TLS and DoS techniques.
 
-### RabbitMQ
+**RabbitMQ**
 
 RabbitMQ is defined as a robust and easy to use messaging platform that
 can work synchronously an asynchronously. It partially supports
 Messaging transport protocols but should not be tolerant to unstable
 connections.
 
-### Realtime backends
+**Realtime backends**
 
 Realtime backends (aka noBackend or BackendAsAService(BaaS)) is a
 concept related to real time databases. The backend and its remote
@@ -1068,19 +1068,27 @@ logic, in its local runtime. The realtime backend concept would allow
 defining and managing interworking with other services, in a way that
 entirely belongs to each application.
 
-### Redis
+**Redis**
 
 Redis is an open source advanced key-value cache and store. Its
 weaknesses are that Redis has no logging features; they need to be
 implemented externally. Moreover, there is no indication that Redis is
 tolerant to unstable connections.
 
-### Vert.x
+**Vert.x**
 
-Vert.x is an application framework providing possibilities to develop
-loosely coupled network service applications.
+Vert.x is a Java server framework providing an event-based programming
+model that is very much influenced by Node.js design. However, Vert.x
+also has its own unique philosophy, different from Node.js, including:
 
-### XMPP
+-   Polyglot - supports several languages including Java, JavaScript,
+    Groovy and Ruby.
+-   Super Simple Concurrency model: multi-thread programming effect can
+    be achieved without synchronization, lock, or volatility.
+-   Provides Event Bus: MQ functions such as Point to Point or Pub/Sub
+    can be used.
+
+**XMPP**
 
 The Extensible Messaging and Presence Protocol (XMPP) is an open
 technology for real-time communication, which powers a wide range of
@@ -1088,16 +1096,17 @@ applications including instant messaging, presence, multi-party chat,
 voice and video calls, collaboration, lightweight middleware, content
 syndication, and generalized routing of XML data.
 
-### ZeroMQ
+**ZeroMQ**
 
 ZeroMQ is a high-performance, low level, asynchronous messaging library
 originally written in C++, that now has multiple native Implementations.
 It is used as a thin layer between the application and transport layers.
 
-### Selected Real time Messaging Solutions
+**Selected Real time Messaging Solutions**
 
-In the scope of reTHINK framework, Matrix, Node.js and Vert.X have been
-selected to implement the Messaging Node.
+In the scope of reTHINK Core Framework, and according to the Messaging
+Node requirements evaluation reported in Annex A, Matrix, Node.js and
+Vert.X, have been selected to implement the Messaging Node.
 
 Service Frameworks
 ------------------
@@ -2743,278 +2752,82 @@ required to manage Identities used by Hyperties. It includes:
 -   Association between Identities and Hyperty Instances
 -   and Assertion of User Identities
 
-#### User Registration
+#### User Identity Registration
 
-<!--
-@startuml "user-registration.png"
+This section, describes the main procedures for the registration of a
+new Identity in the Hyperty Runtime. It is assumed that an account was
+already created by the user on the IdP through an out of scope
+mechanism.
 
-autonumber
-
-!define SHOW_RuntimeA
-
-!define SHOW_AppAtRuntimeA
-
-!define SHOW_NativeAtRuntimeA
-!define SHOW_JavascriptEngineAtRuntimeA
-!define SHOW_HTTPClientAtRuntimeA
-
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
-
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_IdentityObjectAtRuntimeA
-
-!define SHOW_SP1
-
-!include ../runtime_objects.plantuml
-
-== Deploy Protocol Stub and Registration Hyperty ==
-
-Alice -> HTTP_UAC@A : download\nRegistration App
-
-HTTP_UAC@A -> SP1 : download Registration App
-
-create App@A
-JS@A -> App@A : new
-
-group deploy Protocol Stub
-
-    App@A -> RunUA@A : download Protocol Stub
-
-    note right
-        detailed in a separated diagram
-    end note
-
-    create Proto1@A
-    RunUA@A -> Proto1@A : new
-end
-
-group deploy Hyperty
-
-    App@A -> RunUA@A : download hyperty
-
-    note right
-        detailed in a separated diagram
-    end note
-
-    create SP1H@A
-    RunUA@A -> SP1H@A : new
-
-    create Router1@A
-    RunUA@A -> Router1@A : new
-end
-
-== Create Identity Account ==
-
-App@A -> Alice : request\nRegistration\nData
-
-App@A <- Alice : Registration\nData\nprovided
-
-App@A -> SP1H@A : Registration Data provided
-
-create IDObj@A
-SP1H@A -> IDObj@A : new(data collected)
-
-SP1H@A -> Router1@A : report Identity Data to backend
-
-Router1@A -> Router1@A : enforce SP1\nIdentity Creation \nPolicies
-
-BUS@A <- Router1@A : send Identity Obj Msg
-
-Proto1@A <- BUS@A : send Identity Obj Msg
-
-Proto1@A -> SP1 : send Identity Obj Msg
-
-Proto1@A <- SP1 : Success\nID Token
-
-Proto1@A -> BUS@A : Success\nID Token
-
-RunReg@A <- BUS@A : Register Hyperty
-
-RunReg@A -> RunID@A : Set ID Token
-
-BUS@A -> Router1@A : Success
-
-Router1@A -> SP1H@A : Success
-
-IDObj@A x<- SP1H@A : Delete Obj
-
-group Hyperty Instance Registration
-    Proto1@A <- RunReg@A : register Hyperty\n+ID Token
-
-    Proto1@A -> SP1 : register Hyperty\n+ID Token
-end group
-
-
-
-@enduml
--->
 ![Figure 32: User registration](user-registration.png)
 
-In this use case, it is considered there is a single Protocol Stub to
-interact with all back-end services including Identity Management.
-Another option is to have different protocol stubs to interact with
-different back-end services, for example, one Protocol Stub for Identity
-Management services and another Protocol Stub for messaging services. In
-this use case, the Service Provider also plays the role of a Identity
-Provider. The Use Case where Service Provider and Identity Provider are
-played by different stakeholders are described in D4.1 [109].
+Steps 1: the App request the RuntimeUA to register the new Identity,
+providing the IdP URL and the IdP user identifier.
+
+Steps 2-3: The RuntimeUA [deploys the IdP Proxy protocol
+stub](../basics/deploy-protostub.md)(see section 4.3.3.2) required to
+support the connection with back-end IdP server.
+
+Steps 4-7: the RuntimeUA requests the IdModule to register a new
+Identity. The IdModule requests the Service Provider back-end IdM to
+authorise the new Identity creation by sending a message through IdP
+Proxy Protocol Stub.
+
+Steps 8 - 9: optionally, the back-end IdM requests the user to
+authenticate and authorise the new identity set in the Runtime via a
+separated channel (e.g. SMS)
+
+Steps 10 - 13: assuming the identity set in the runtime is successfully
+authorised, the IdM back-end service returns a set of tokens, which are
+stored by the IdModule.
 
 #### Domain Login
 
-<!--
-@startuml "domain-login.png"
+This section describes the main procedures to support domain login.
 
-autonumber
+![Figure 35: Explict Domain Login](domain-login-explicit.png)
 
-!define SHOW_RuntimeA
+A first option is the Hyperty to explicitly ask to connect (see Figure
+above):
 
+Steps 1-3: Hyperty requests to connect to domain with a GET message sent
+to DomainURL which is subject for Authorisation by the Core Policy
+Engine.
 
-!define SHOW_CoreRuntimeA
-!define SHOW_MsgBUSAtRuntimeA
-!define SHOW_RegistryAtRuntimeA
-!define SHOW_IdentitiesAtRuntimeA
-!define SHOW_AuthAtRuntimeA
-!define SHOW_CoreAgentAtRuntimeA
+Steps 4-5: according to applicable policies the Policy Engine request
+the Identity Module for an Access Token to be used in the login message,
+providing the Identity identifier associated to the hyperty and the
+scope (login to domain).
 
-!define SHOW_SP1SandboxAtRuntimeA
-!define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1HypertyAtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
-!define SHOW_IdentityObjectAtRuntimeA
+Steps 6-7: Identity Module returns a valid Access Token to be used in
+the domain login. To be noted that this may imply the generation of a
+new token in case there is no valid token stored in the Identity Module.
+In this case, the Identity Module may have to interact with an IdP
+back-end server through an IdP (proxy) Protocol Stub. The Access Token
+generation is described in D4.1.
 
-!define SHOW_SP1
+Steps 8-10: the returned token is added to the login message by the
+Policy Engine, which is forwarded to the Protocol Stub by the Message
+BUS.
 
-!include ../runtime_objects.plantuml
+Steps 11-13: the Protocol Stub uses the Access Token to request to
+connect to the domain back-end server. If successful a Session Token is
+granted and returned back to the Protocol Stub. (it is assumed the
+session token is handled by the Protocol Stub and not by Core Runtime)
 
-== Deploy Protocol Stub and Service Provider Hyperty ==
+Steps 14-16: as soon as the Protocol Stub is connected, its status is
+updated (UPDATE message posted to its status URL resource) and Response
+message is sent back to the Hyperty.
 
-group Deploy Protocol Stub diagram included in the Basics
+![Figure 36: Implict Domain Login](domain-login-implicit.png)
 
-    create Proto1@A
-    RunUA@A -> Proto1@A : new
-end
-
-group Deploy Hyperty diagram included in the Basics
-
-    create SP1H@A
-    RunUA@A -> SP1H@A : new
-
-    create Router1@A
-    RunUA@A -> Router1@A : new
-end
-
-group Associate Hyperty with Identity diagram included in the IdM
-    RunUA@A -> RunReg@A : set Identity
-end
-
-    RunUA@A -> SP1H@A : start
-
-alt explicit Login
-    note over RunUA@A
-        A first option is the Hyperty
-        to explicitely ask to connect
-        with a certain Id.
-    end note
-
-    SP1H@A -> Router1@A : postMessage(login message)
-
-    BUS@A <- Router1@A : postMessage(login message)
-
-    BUS@A -> RunReg@A : setIdentity(HypertyURL, Identity.Identifier)
-
-    BUS@A -> RunReg@A : getToken(HypertyURL)
-
-    RunReg@A -> RunID@A : getToken(Identifier)
-
-    RunReg@A <- RunID@A : IDToken
-
-    BUS@A <- RunReg@A : IDToken
-
-    BUS@A -> BUS@A : add Token to message
-
-    BUS@A  -> Proto1@A : postMessage( connect message with ID Token)
-
-    Proto1@A -> SP1 : connect(ID Token)
-
-    SP1 -> SP1 : validate ID Token
-
-    Proto1@A <- SP1 : Success\nSession Token Granted
-
-    note over Proto1@A
-        session token is handled by the protoStub
-        or by the Registry?
-    end note
-
-else implicit Login
-
-    note over RunUA@A
-        In second option, the protostub only
-        connects when requested to send a message
-        eg to register a new Hyperty Instance.
-        In this case the ID Token contained in the
-        message is used in the connection.
-    end note
-
-    group Register Hyperty in Deploy Hyperty diagram included in the Basic
-        RunUA@A -> RunReg@A : register Hyperty
-
-        BUS@A <- RunReg@A : register Hyperty\n(+ID Token)
-
-        Proto1@A <- BUS@A : register Hyperty\n(+ID Token)
-
-    end
-
-
-    Proto1@A -> Proto1@A : not connected yet
-
-    Proto1@A -> SP1 : connect(ID Token)
-
-    SP1 -> SP1 : validate ID Token)
-
-    Proto1@A <- SP1 : Success\nSession Token Granted
-
-    note over Proto1@A
-        session token is handled by the protoStub
-        or by the Registry?
-    end note
-
-    Proto1@A -> SP1 : register Hyperty\nSession Token
-
-end
-
-Proto1@A -> BUS@A : Session Token Granted
-
-BUS@A -> RunReg@A : setStatus(protostubURL, status, session token)
-
-BUS@A -> Router1@A : postMessage(login response message)
-
-SP1H@A <- Router1@A : postMessage(login response message)
-
-
-@enduml
--->
-![Figure 35: Domain Login](domain-login.png)
-
-In this use case, it is considered there is a single Protocol Stub to
-interact with all back-end services including Identity Management.
-Another option is to have different protocol stubs to interact with
-different back-end services, for example, one Protocol Stub for Identity
-Management services and another Protocol Stub for messaging services. In
-this use case, the Service Provider also plays the role of a Identity
-Provider. The Use Case where Service Provider and Identity Provider are
-played by different stakeholders are described in D4.1 [109].
+In a second option (see Figure above), the ProtoStub only connects when
+requested to send the first message. The Access Token used in the
+connection request is provided like it is in the first option.
 
 #### Associate User Identity to Hyperty Instance
 
-![Figure 36: Associate User Identity to Hyperty
+![Figure 37: Associate User Identity to Hyperty
 Instance](user-to-hyperty-binding-scheme.png)
 
 This sequence details the steps needed to associate the user identity to
@@ -3190,7 +3003,7 @@ Proto1@A -> SP1 : postMsg(Create MSG)
 
 @enduml
 -->
-![Figure 38: Alice invites Bob for a
+![Figure 39: Alice invites Bob for a
 communication](h2h-intra-comm-1-alice-invites-bob.png)
 
 (Steps 1 - 4): Alice decides to invite Bob for a communication.
@@ -3292,7 +3105,7 @@ Proto1@1B -> SP1 : postMsg(OK MSG)
 
 @enduml
 -->
-![Figure 39: Bob receives
+![Figure 40: Bob receives
 invitation](h2h-intra-comm-2-bob-receives-invitation.png)
 
 (Steps 1 - 4): Service Provider Back-end Messaging Service routes the
@@ -3364,7 +3177,7 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 
 @enduml
 -->
-![Figure 40: Acknowledged that Bob received the
+![Figure 41: Acknowledged that Bob received the
 invitation](h2h-intra-comm-3-alice-is-aknowledged.png)
 
 (Step 1 - 3) : Service Provider Back-end Messaging Service routes the OK
@@ -3429,7 +3242,7 @@ Sync1@1B -> LocObj@1B : setup Observer Callback
 
 @enduml
 -->
-![Figure 41: notification
+![Figure 42: notification
 update](h2h-intra-comm-4-notification-update.png)
 
 (step 1): The Application which interacts with the human user setups a
@@ -3514,7 +3327,7 @@ end
 
 @enduml
 -->
-![Figure 42: Bob gathers WebRTC
+![Figure 43: Bob gathers WebRTC
 resources](h2h-intra-comm-5-bob-WebRTC.png)
 
 (Step 1): The Hyperty is notified about the added remoteDescription
@@ -3601,7 +3414,7 @@ Proto1@1B -> SP1 : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-![Figure 43: Synchronization of Alice's Data
+![Figure 44: Synchronization of Alice's Data
 object](h2h-intra-comm-6-alice-DO-synch.png)
 
 (Step 1): The local Data object reports that there have been changes in
@@ -3703,7 +3516,7 @@ Proto2@A -> SP2 : postMsg(Create MSG)
 
 @enduml
 -->
-![Figure 44 H2H Inter domain Communication : create
+![Figure 45 H2H Inter domain Communication : create
 communication](h2h-inter-comm-1-alice-invites-bob.png)
 
 (Steps 1 - 4): Alice decides to invite Bob for a communication. The
@@ -3807,7 +3620,7 @@ BUS@1B -> SP2Stub : postMsg(OK MSG)
 
 @enduml
 -->
-![Figure @45: H2H Interdomain Communication: bob receives
+![Figure @46: H2H Interdomain Communication: bob receives
 invitation](h2h-inter-comm-2-bob-receives-invitation.png)
 
 (Steps 1 - 3) : The Service Provider 2 Stub that has been deployed in
@@ -3885,7 +3698,7 @@ SP1H@A <- Sync1@A : Create MSG promise executed
 
 @enduml
 -->
-![Figure 46: H2H Interdomain Communication : Alice is
+![Figure 47: H2H Interdomain Communication : Alice is
 Acknowledged](h2h-inter-comm-3-alice-is-aknowledged.png)
 
 (Step 1 - 3): Service Provider Back-end Messaginge Service sends the OK
@@ -3953,7 +3766,7 @@ Sync1@1B -> LocObj@1B : setup Observer Callback
 
 @enduml
 -->
-![Figure 47: H2H Interdomain Communication : notification
+![Figure 48: H2H Interdomain Communication : notification
 update](h2h-inter-comm-4-notification-update.png)
 
 (Step 1): The Application which interacts with the human user setups a
@@ -4041,7 +3854,7 @@ end
 
 @enduml
 -->
-![Figure 48: H2H Interdomain Communication: Bob gathers WebRTC
+![Figure 49: H2H Interdomain Communication: Bob gathers WebRTC
 resources](h2h-inter-comm-5-bob-WebRTC.png)
 
 (Step 1): The Hyperty is notified about the added remoteDescription
@@ -4118,7 +3931,7 @@ BUS@1B -> SP2Stub : send CRUD msg. for updated Comm Objt state
 
 @enduml
 -->
-![Figure 49: H2H Interdomain Communication: Synchronization of Alice's
+![Figure 50: H2H Interdomain Communication: Synchronization of Alice's
 Data object](h2h-inter-comm-6-alice-DO-synch.png)
 
 (Steps 1 - 2): The local Data object reports that there have been
@@ -4433,6 +4246,20 @@ Validates an Identity Assertion
 
     validateAssertion( assertion, origin )
 
+#### registerIdentity
+
+Registers a previously created Identity in the Identity Module providing
+the IdP URL and the user identifier.
+
+    registerIdentity( URL.DomainURL IdP, Identity.identifier user )
+
+#### unregisterIdentity
+
+Removes a previously registered Identity in the Identity Module
+providing its identifier.
+
+    removeIdentity( Identity.identifier user )
+
 ### Core Policy Engine (PDP/PEP) Interface
 
 #### addPolicies
@@ -4621,7 +4448,7 @@ The diagram below shows all the elements presents in the runtime
 environment in a browser executing the web application which uses
 Hyperties.
 
-![Figure 56: Runtime browser
+![Figure 57: Runtime browser
 implementation](Runtime_Browser_Implementation.png)
 
 The web application labeled as *app.domain* represents the html file
@@ -4751,7 +4578,7 @@ By using the Crosswalk Project, an application developer can:
 
 #### Crosswalk Architecture
 
-![Figure 57: Crosswalk Architecture](./crosswalk.png)
+![Figure 58: Crosswalk Architecture](./crosswalk.png)
 
 Crosswalk supports an efficient way of creating your own Web APIs as
 extensions by writing native Java code. This way the user can expose new
@@ -4769,7 +4596,7 @@ can be provided through the development of plugins
 
 #### Cordova functional schema
 
-![Figure 58: Cordova functional schema](./cordova_archi.jpg)
+![Figure 59: Cordova functional schema](./cordova_archi.jpg)
 
 The application itself is implemented as a web page, by default a local
 file named index.html, that references whatever CSS, JavaScript, images,
@@ -4911,26 +4738,27 @@ JavaScript for the runtime.
 
 Node.js is considered one of the options for implementing the Runtime
 API for platforms like Raspberry PI and [Beagle
-Board](http://beagleboard.org/bone):
+Board](http://beagleboard.org/bone) [115]:
 
 #### Node.js Installation
 
-For installing Node.js on Raspberry Pi, 2 steps are required: download
-the debian package and then install it
-(http://weworkweplay.com/play/raspberry-pi-Node.js/)
+For [installing Node.js on Raspberry
+Pi](http://weworkweplay.com/play/raspberry-pi-Node.js/) [116], 2 steps
+are required:
 
-    wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+download the debian package and then install it:
+
+    wget http://node-arm.herokuapp.com/node_latest_armhf.deb
     sudo dpkg -i node_latest_armhf.deb
 
-For installing Node.js on BeagleBoard
-(http://beagleboard.org/Support/BoneScript) one can compile it from
-scratch (http://www.armhf.com/node-js-for-the-beaglebone-black/) or
-install it in a similar way as for Raspberry using one of the versions
-from the download page: http://www.armhf.com/download/
+The [installation of Node.js on
+BeagleBoard](http://beagleboard.org/Support/BoneScript)[117] requires to
+compile it from scratch [118] or install it in a similar way as for
+Raspberry using one of the versions from the download page [119].
 
-An important package based on Node.js is Cylon (http://cylonjs.com/)
-supporting 36 hardware platforms and providing APIs to interact with
-sensors or actuators of the platforms.
+An important package based on Node.js is [Cylon](http://cylonjs.com/)
+[120] supporting 36 hardware platforms and providing APIs to interact
+with sensors or actuators of the platforms.
 
 #### Design
 
@@ -4942,23 +4770,17 @@ One of the key functional requirements is security of the Runtime. Thus
 multiple sandboxes to separate code is present in the Runtime
 architecture as a security by design feature. There are 3 types of
 sandboxes to be used: Core Sandbox, Service Provider Sandbox and Hyperty
-Sandbox (http://gf3.github.io/sandbox/).
+Sandbox. One possible Node,js solution is provided in
+[gf3](http://gf3.github.io/sandbox/) [121].
 
-For the Runtime UA a module implementing the protocol LWM2M is already
-available for Node.js (https://github.com/telefonicaid/lwm2m-node-lib).
-Special care has to be taken into consideration for having one
-implementation of the Runtime UA that can also run on the other
-platforms: browser and H-2-E (Human to Everything) standalone.
+For the Runtime UA a module implementing the protocol LWM2M [is already
+available for Node.js](https://github.com/telefonicaid/lwm2m-node-lib)
+[122].
 
 #### Code Snippets
 
-For creating several sandboxes the following code can be used:
-
-    var s = new Sandbox()
-    s.run( '1 + 1 + " apples"', function( output ) {
-      // output.result == "2 apples"
-    })
-
+For creating several sandboxes using gf3 the following code can be
+used:`var s = new Sandbox() s.run( '1 + 1 + " apples"', function( output ) {   // output.result == "2 apples" })`
 with the basic syntax: sandbox\_instance.run( code, hollaback ), where
 
 code is the string of JavaScript to be executed.
@@ -4971,16 +4793,15 @@ console property is an array of all console output.
 
 #### Other evaluated runtimes
 
-Another platform that was evaluated was IotJs
-(http://samsung.github.io/iotjs/). It currently supports Raspberry Pie2
-and STM32F4-Discovery + BB as hardware platforms and Linux and
-Nuttx(http://nuttx.org/) Real-Time Operating System using C++ to build
-the runtime JavaScript Environment. Although supported by an important
-device manufacturer, it is still in its infancy and cannot be used in
-the development of reThink in which fast-prototyping of new paradigms is
-intended. During the development allignment with the iotJs is considered
-and tests of the components to validate the support of ioJs is
-envisioned.
+Another platform that was evaluated was
+[IotJs](http://samsung.github.io/iotjs/) [123]. It currently supports
+Raspberry Pi2 and STM32F4-Discovery + BB as hardware platforms and Linux
+and [Nuttx](http://nuttx.org/) [124] Real-Time Operating System using
+C++ to build the runtime JavaScript Environment. Although supported by
+an important device manufacturer, it is still in its infancy and
+probably it won't be used in reTHINK prototype. Nevertheless, during the
+development phase, the iotJs will be considered and tests will be
+performed to validate the support of ioJs are envisioned.
 
 Messaging Node Specification
 ============================
@@ -5091,7 +4912,7 @@ Msg2 <-left-> Proto1 : communicate
 
 @enduml
 -->
-![Figure 59: Messaging Node
+![Figure 60: Messaging Node
 Architecture](Messaging_Node_Architecture.png)
 
 ### Core Functionalities
@@ -5180,9 +5001,9 @@ Vertx Specification
     the Message Bus.
 -   Pipeline components will implement a simple interface that we can
     reuse from io.vertx.core.Handler\<E\> replacing E with a
-    PipelineContext object. Using the vertx Handler<E> has the advantage
-    to be compatible with io.vertx.ext.web.Router, that can be a
-    replacement for the Pipeline.
+    PipelineContext object. Using the Vert.x Handler<E> has the
+    advantage to be compatible with io.vertx.ext.web.Router, that can be
+    a replacement for the Pipeline.
 -   Outbound messages should be processed in a Pub/Sub system. If
     message BODY block are for CRUD operations, there should be a
     Pub/Sub protocol for object/model subscriptions, where should this
@@ -5198,12 +5019,12 @@ The Pipeline configuration can reflect the concept of activity diagrams,
 controlling the path flow of the message that is dependent of the
 message type. This concept is generic enough to contemplate different
 message flows in the future. This is a new component to be developed
-which is similar to vertx Router but without the URL addressing scheme.
+which is similar to Vert.x Router but without the URL addressing scheme.
 The io.vertx.ext.web.Router class could be a possible candidate for
 Pipeline functionalities, however the Router is hard coded to work with
 HTTP protocols, and there is no need for static configurations of
 routing schemes. The alternative is to implement a simple Pipeline
-system instead of using the Router, less dependencies and better
+system instead of using the Router, fewer dependencies and better
 decoupled from the protocol.
 
 #### Session Management
@@ -5220,7 +5041,7 @@ forwarded to "Access Control" handler.
 This is not a Pipeline handler (it doesn't process messages), but it's
 used by the "Session Management" to allocate Hyperty identification
 URL's that will be linked to a Session when the Hyperty is connected.
-This will be used to translate Hyperty an URL address into the
+This will be used to translate Hyperty and URL address into the
 correspondent Connector Resource.
 
 #### Access Control
@@ -5235,7 +5056,7 @@ kind of rule engine.
 
 Main objective of the MB is to **deliver** the message, being
 independent of the cluster node that has the connection to the
-destination. Vertx EventBus can be used directly for the Message Bus
+destination. Vert.x EventBus can be used directly for the Message Bus
 component. Important headers of the original JSON (like the
 identification URL) must be forwarded to
 io.vertx.core.eventbus.Message.headers() map.
@@ -5257,9 +5078,9 @@ instances running in the end-user device. This component will need to
 interact somehow with the Protocol Stub sandbox to achieve this, since
 the communication protocol will not be standardized. It will need to
 implement a simple protocol for sending and receiving requests. In
-itself it is not responsible for processing communication requests, that
-is left to the protocol stack. It merely forwards messages to and from
-the Hyperty instance.
+itself it is not responsible for processing communication requests,
+which is left to the protocol stack. It merely forwards messages to and
+from the Hyperty instance.
 
 #### Network Server Connector
 
@@ -5268,9 +5089,9 @@ instances running in a network server. This component will need to
 interact somehow with the Protocol Stub sandbox to achieve this, since
 the communication protocol will not be standardized. It will need to
 implement a simple protocol for sending and receiving requests. In
-itself it is not responsible for processing communication requests, that
-is left to the protocol stack. It merely forwards messages to and from
-the Network server.
+itself it is not responsible for processing communication requests,
+which is left to the protocol stack. It merely forwards messages to and
+from the Network server.
 
 #### Registry Connector
 
@@ -5281,14 +5102,14 @@ location, type, description, start-time, presence information of user)
 that enables other applications to contact it. The implementation of the
 Registry service is thought to be basically a distributed database. It
 will provide service interfaces for CRUD operations to allow users to
-retrieve data for a given GraphID, publish (i.e. create, update, and
+retrieve data for a given GUID, publish (i.e. create, update, and
 delete) their own information on the ring. To verify authenticity and
 integrity of the published data, digital signatures will be applied. The
-Connector will exposed the available interfaces of the Registry Services
+Connector will expose the available interfaces of the Registry Services
 to users of managing Hyperty instances. This will have to be implemented
 as a standalone application with an adapter interface to the Event Bus
-for encoding and decoding messages and deployed as a fat executable jar
-which contain all the dependencies it needs to run on vertx.
+for encoding and decoding messages and deployed as a fat executable JAR
+which contains all the dependencies it needs to run on Vert.x.
 
 #### IdM Connector
 
@@ -5302,17 +5123,16 @@ secure local repository for identity tokens provided by IdPs
 If the connector is thought to provide authentication and authorisation,
 Vert.x offers Auth APIs (Common, JDBC, JWT and Shiro).
 
-There is also a library for authentication and discorvery, [vertx-pac4j]
-(https://github.com/pac4j/vertx-pac4j). This vertx module provides
-multiple authentication mechanisms (OAuh, CAS, HTTP, OpenID, SAML2.0 and
-OpenIDConnect) for different IdPs.
+There is also a library for authentication and discorvery,
+[vertx-pac4j](https://github.com/pac4j/vertx-pac4j) [125]. This vertx
+module provides multiple authentication mechanisms (OAuh, CAS, HTTP,
+OpenID, SAML2.0 and OpenIDConnect) for different IdPs.
 
 Node.js based Messaging Node Specification
 ------------------------------------------
 
-For each [functional block](msg-node-architecture.md) the WP3 team has
-identified existing Node.js modules which can be either reused or
-extended.
+For each [functional block](msg-node-architecture.md) existing Node.js
+modules were identified, which can be either reused or extended.
 
 ### Core Functionalities
 
@@ -5322,8 +5142,7 @@ Redis architecture.
 
 #### Message BUS
 
-The message bus can be implemented with Redis. http://redis.io
-
+The message bus can be implemented with [Redis](http://redis.io) [63].
 Redis is an open source (BSD licensed), in-memory data structure store,
 used as database, cache and message broker. It supports data structures
 such as strings, hashes, lists, sets, sorted sets with range queries,
@@ -5334,7 +5153,8 @@ via Redis Sentinel and automatic partitioning with Redis Cluster.
 
 ##### Usage of Redis with Node.js
 
-Redis integrate a PUB/SUB mechanism : http://redis.io/topics/pubsub
+[Redis integrate a PUB/SUB mechanism](http://redis.io/topics/pubsub)
+[126]:
 
 SUBSCRIBE, UNSUBSCRIBE and PUBLISH implement the Publish/Subscribe
 messaging paradigm where (citing Wikipedia) senders (publishers) are not
@@ -5347,73 +5167,58 @@ decoupling of publishers and subscribers can allow for greater
 scalability and a more dynamic network topology.
 
 Redis can be used to add scalability/redundancy to the Messaging Node as
-the different components of the architecture can easily be splitted on
+the different components of the architecture can easily be splited on
 different servers. This Pub/Sub mechanism is simple to use and It can
 also facilitate the development and the integration of new
 connectors</br>
 
-Communication between Node.js and Redis can be managed by a NodesJs
-Redis client module : https://github.com/NodeRedis/node\_redis
-
+Communication between Node.js and Redis can be managed by a Nodes.Js
+Redis [client module](https://github.com/NodeRedis/node_redis) [127].
 Redis instance can be a single instance or a Redis cluster.
 
 #### Access Control
 
-User connection to Node.js connectors can be authentified on the Node.js
-module. Socket.io integrate a way to authenticate incoming request,
-authenication component will have to be develop on Node.js connectors.
+User connection to Node.js connectors can be authenticated on the
+Node.js module. Socket.io integrate a way to authenticate incoming
+request, authenication component will have to be develop on Node.js
+connectors.
 
-This component is able to analyze HEADER (identification URL from
+This component is able to analyse HEADER (identification URL from
 "Session Management") and DATA blocks and decide if the message should
 be forwarded to the "Message Bus" or denied.
 
-PassportJs, which is an intesreting middleware, that could enable us to
-add third party authentication should be used : http://passportjs.org/
-
-An authentication can also be done between Node.js and Redis.
+[PassportJs](http://passportjs.org/) [105], which is an interesting
+middleware that could enable us to add third party authentication should
+be used. An authentication can also be done between Node.js and Redis.
 
 #### Session Management
 
 For a complete session management on Node.js, it will be interesting to
-use express which is a Web framework for Node.js : http://expressjs.com/
+use [ExpressJS](http://expressjs.com/) [128] which is a Web framework
+for Node.js.
 
 #### Address Allocation Management
 
-This component will have to be developped on a Node.js server
+This component will have to be developed on a Node.js server
 
 #### Protocol Stub & Connectors
 
-Connectors will be Node.js process to be developped.
-
-Goal will be to mutualize connectors by using the protoStub/protoFly
-mechanism : this will add flexibility to connect other GWs, CSP ...
+Connectors will be Node.js processes to be developed. The
+protoStub/protoFly mechanism Goal can be used to facilitate the
+integration with other servers.
 
 ##### IdM Connector
 
 This Connector is to provide functionalities for interacting with the
-remote Identity Management Functionailities. Node.js can easily interact
+remote Identity Management Functionalities. Node.js can easily interact
 with OAuth servers in order to authenticate and authorize users.
 
-It this is for authentication purpose the authentication agqinst the IdP
-has to be done at the begining. If the CRUD operations have to be
-authorized on a per identity basis (e.g. user A, correctly
-authenticated, is only allowed to do 'RU' over a Data Objet) we should
-get
+The authentication against the Identity Provider has to be done at the
+beginning.
 
 ##### Registry Connector
 
-The Registry provides an interface for registration and deregistration
-of Hyperty instances, as well as for keeping the published information
-up to date. For each Hyperty instance, the Registry stores data (hyperty
-location, type, description, start-time, presence information of user)
-that enables other applications to contact it. The implementation of the
-Registry service is thought to be basically a distributed database. It
-will provide service interfaces for CRUD operations to allow users to
-retrieve data for a given GraphID, publish (i.e. create, update, and
-delete) their own information on the ring. To verify authenticity and
-integrity of the published data, digital signatures will be applied. The
-Connector will exposed the available interfaces of the Registry Services
-to users of managing Hyperty instances.
+The implementation of this Connector requires further study.
 
 ##### End-User Device Connector
 
@@ -5424,44 +5229,41 @@ automatically if WS connectivity is not possible.
 
 ##### Network Server Connector
 
-The aim of this Connector is to enable interaction with Hyperty
-instances running in a network server. This component will need to
-interact somehow with the Protocol Stub sandbox to achieve this, since
-the communication protocol will not be standardized. It will need to
-implement a simple protocol for sending and receiving requests. In
-itself it is not responsible for processing communication requests, that
-is left to the protocol stack. It merely forwards messages to and from
-the Network server.
+The implementation of this Connector requires further study.
 
 ##### Node Sandbox framework
 
-[Node-sandbox](https://www.npmjs.com/package/node-sandbox) allows to run
-untrusted code outside of the main node process. The code can be
-interfaced with code running in the sandbox via RPC (or any library that
-works over the node Stream API).
+[Node-sandbox](https://www.npmjs.com/package/node-sandbox) module [129]
+allows to run untrusted code outside of the main node process. The code
+can be interfaced with code running in the sandbox via RPC (or any
+library that works over the node Stream API).
 
 ### Node.js implementation architecture
 
 **Architecture : Node.js and Redis :**
 
-Here is decription of the architecure with Redis :
+Here is the description of the architecture with Redis :
 
-<img src="MessagingNode-Node.js.png" width="600">
+![Figure 61: Messaging Node implementation with Node.Js and
+Redis](MessagingNode-NodeJs.png)
 
 **Architecture : Integration in ReThink :**
 
 Following architecture shows the target integration with the different
-components of the ReThink projet :
+components of the ReTHINK projet:
 
-<img src="MessagingNode-Node.js-Integration_In_Rethink.png" width="600">
+![Figure 62: Integration of Node.Js based Messaging Node implementation
+with reTHINK](MessagingNode-NodeJs-Integration_In_Rethink.png)
 
 **Architecture : Integration in ReThink with Actors:**
 
 Following architecture shows the actors in the architecture to
-unsderstand the decomposition of work to be done and the interaction
-with other partners :
+understand the decomposition of work to be done and the interaction with
+other partners :
 
-<img src="MessagingNode-Node.js-Integration_In_Rethink_With_Actors.png" width="600">
+![Figure 63: Integration of Node.Js based Messaging Node implementation
+with reTHINK
+partners](MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png)
 
 Matrix.org based Messaging Node Specification
 ---------------------------------------------
@@ -5670,15 +5472,18 @@ Msg2 <-left-> Proto1 : communicate
 
 @enduml
 -->
-![Matrix Messaging Node
+![Figure 64: Matrix Messaging Node
 Architecture](matrix_messaging_node_architecture.png)
 
 #### Session Management
 
 The requirements regarding session management as described in the
 Messaging Node architecture can be separated in three aspects which are
-handled in the following sub-chapters: \* User session control, \*
-Communication session control, and \* Stub and connector management.
+handled in the following sub-chapters:
+
+-   User session control,
+-   Communication session control, and
+-   Stub and connector management.
 
 ##### User session control
 
@@ -5764,7 +5569,7 @@ instances running in different devices.
 The core of the document (Chapter 4 and 5) provided a detailed
 specification of the Hyperty Runtime architecture and the Core Runtime
 components required to support the execution of Hyperties. The Hyperty
-Runtime architecture was designed from a security by design approach
+Runtime architecture was designed with a security by design approach
 where different types of components can be executed in isolated
 sandboxes.
 
@@ -5774,12 +5579,12 @@ Runtime, namely basic procedures (e.g. message routing and Hyperty
 deployment), Identity Management Procedures (e.g. registration and login
 of users) and Human to Human communication procedures.
 
-At the end, such detailed design has also validated the data models and
+At the end, detailed design was also validated from the data models and
 interfaces design specified in D2.2 and a few improvements were made.
 
 The reTHINK Core Framework specification is sustained by a comprehensive
 state of the art research on web runtime and real-time messaging with
-special attention given to Security as well as by an exhaustive work in
+special attention given to security as well as by an exhaustive work in
 terms of procurement of existing open source solutions to be used to
 prototype reTHINK Core Framework components. Taking as input the
 procurement report, some solutions were selected and some implementation
@@ -5795,17 +5600,22 @@ be also completed with the definition of additional procedures required
 by the scenarios implementation tasks. Thus, additional procedures are
 expected to be defined to handle Machine to Machine communication and
 Human to Machine communication use cases (partial done at the time of
-this writing), as well as trust and context management procedures. The
-specification of the Hyperty Service Framework, which is a Software
-Development Toolkit (SDK) to facilitate the development of Hyperties,
-will also be completed according to feedback received from the scenarios
-implementation task. All this expected additional specification material
-will be fully reported together with phase 1 Core Framework software
-components release in D3.2.
+this writing), as well as trust and context management procedures.
 
-Finally, the Network Platform specification supporting Specialised
-Network Services is an ongoing work that will be reported later in D3.4,
-as originally planned.
+The Hyperty Runtime APIs were designed to be Developer friendly hiding
+many complexities from the developer. For example, the complex
+mechanisms required to manage ID and Access tokens is provided out of
+the box by the Core Runtime. The same applies to the mechanisms
+implemented by the Core Runtime to enable out of the box seamless
+interoperability by using the ProtOFly concept. Developers only have to
+deal with a couple of functions MessageBUS.postMessage() and the Syncher
+API. Nevertheless, the Hyperty Service Framework - an Hyperty Software
+Development Toolkit (SDK) - was also introduced in this report in order
+to further increase the levels of productivity of Hyperty developers.
+
+The Network Platform specification supporting Specialised Network
+Services is an ongoing work that will be reported later in D3.4, as
+originally planned.
 
 References
 ==========
@@ -6112,6 +5922,36 @@ specifications”, 30-09-2015.
 
 [114] https://github.com/alongubkin/phonertc
 
+[115] http://beagleboard.org/bone
+
+[116] http://weworkweplay.com/play/raspberry-pi-Node.js/
+
+[117] http://beagleboard.org/Support/BoneScript
+
+[118] http://www.armhf.com/node-js-for-the-beaglebone-black/
+
+[119] http://www.armhf.com/download/
+
+[120] http://cylonjs.com/
+
+[121] http://gf3.github.io/sandbox/
+
+[122] https://github.com/telefonicaid/lwm2m-node-lib
+
+[123] http://samsung.github.io/iotjs/
+
+[124] http://nuttx.org/
+
+[125] https://github.com/pac4j/vertx-pac4j
+
+[126] http://redis.io/topics/pubsub
+
+[127] https://github.com/NodeRedis/node\_redis)
+
+[128] http://expressjs.com/
+
+[129] https://www.npmjs.com/package/node-sandbox
+
 (1) Chromium sandbox scheme
 
 (2) The architecture of a Google Chrome extension
@@ -6180,131 +6020,143 @@ specifications”, 30-09-2015.
 
 (34) Use Discovery
 
-(35) Domain Login
+(35) Explicit Domain Login
 
-(36) Associate User Identity to Hyperty Instance
+(36) Implicit Domain Login
 
-(37) User identity assertion sequence diagram
+(37) Associate User Identity to Hyperty Instance
 
-(38) Alice invites Bob for a communication
+(38) User identity assertion sequence diagram
 
-(39) Bob receives invitation
+(39) Alice invites Bob for a communication
 
-(40) Aknowledged that Bob received the invitation
+(40) Bob receives invitation
 
-(41) notification update
+(41) Aknowledged that Bob received the invitation
 
-(42) Bob gatheres WebRTC resources
+(42) notification update
 
-(43) Synchronization of Alice's Data object
+(43) Bob gatheres WebRTC resources
 
-(44) Alice invites Bob for a communication
+(44) Synchronization of Alice's Data object
 
-(45) Bob receives invitation
+(45) Alice invites Bob for a communication
 
-(46) Aknowledged that Bob received the invitation
+(46) Bob receives invitation
 
-(47) notification update
+(47) Aknowledged that Bob received the invitation
 
-(48) Bob gatheres WebRTC resources
+(48) notification update
 
-(49) Synchronization of Alice's Data object
+(49) Bob gatheres WebRTC resources
 
-(50) Runtime Main Procedures for M2M Communication
+(50) Synchronization of Alice's Data object
 
-(51) M2M Device Bootstrap
+(51) Runtime Main Procedures for M2M Communication
 
-(52) Context Discovery in M2M Intradomain Communication
+(52) M2M Device Bootstrap
 
-(53) Communication 4 pub sub 1
+(53) Context Discovery in M2M Intradomain Communication
 
-(54) Communication 4 pub sub 2
+(54) Communication 4 pub sub 1
 
-(55) Communication 4 pub sub 3
+(55) Communication 4 pub sub 2
 
-(56) Runtime browser implementation
+(56) Communication 4 pub sub 3
 
-(57) Crosswalk Architecture
+(57) Runtime browser implementation
 
-(58) Cordova functionnal schema
+(58) Crosswalk Architecture
 
-(59) Messaging Node Architecture
+(59) Cordova functionnal schema
 
-(60) WebRTC.org architecture scheme
+(60) Messaging Node Architecture
 
-(61) OpenWebRTC Architecture
+(61) Messaging Node implementation with Node.Js and Redis
 
-(62) V8 Architecture
+(62) Integration of Node.Js based Messaging Node implementation with
+    reTHINK
 
-(63) V8 Multiple Contexts
+(63) Integration of Node.Js based Messaging Node implementation with
+    reTHINK partners
 
-(64) Docker Architecture
+(64) Matrix Messaging Node Architecture
 
-(65) Firefox OS Architecture
+(65) WebRTC.org architecture scheme
 
-(66) Jitsi Videobridge Architecture
+(66) OpenWebRTC Architecture
 
-(67) Kurento Architecture
+(67) V8 Architecture
 
-(68) Janus Gateway architecture
+(68) V8 Multiple Contexts
 
-(69) OMNA Network
+(69) Docker Architecture
 
-(70) WebRTC API evolution
+(70) Firefox OS Architecture
 
-(71) Web Push Architecture
+(71) Jitsi Videobridge Architecture
 
-(72) Main flows of events for subscription, push message delivery, and
+(72) Kurento Architecture
+
+(73) Janus Gateway architecture
+
+(74) OMNA Network
+
+(75) WebRTC API evolution
+
+(76) Web Push Architecture
+
+(77) Main flows of events for subscription, push message delivery, and
     unsubscription
 
-(73) HTTP/2 Push
+(78) HTTP/2 Push
 
-(74) HTTP/2 Framing
+(79) HTTP/2 Framing
 
-(75) HTTP/2 Streams
+(80) HTTP/2 Streams
 
-(76) signalling on-the-fly concept
+(81) signalling on-the-fly concept
 
-(77) Wonder Library Main Classes
+(82) Wonder Library Main Classes
 
-(78) Video Bridge Component
+(83) Video Bridge Component
 
-(79) OpenFire VideoBridge and Jicofo Components
+(84) OpenFire VideoBridge and Jicofo Components
 
-(80) Meteor Plataform Overview
+(85) Meteor Plataform Overview
 
-(81) Main data flow in a matrix architecture
+(86) Main data flow in a matrix architecture
 
-(82) RabbitMQ Architecture2
+(87) RabbitMQ Architecture2
 
-(83) RabbitMQ Architecture
+(88) RabbitMQ Architecture
 
-(84) ZeroMQ types of communication patterns
+(89) ZeroMQ types of communication patterns
 
-(85) ZeroMQ Clusters
+(90) ZeroMQ Clusters
 
-(86) Redis architecture
+(91) Redis architecture
 
-(87) PubSub model
+(92) PubSub model
 
-(88) XMPP Architecture
+(93) XMPP Architecture
 
-(89) XMPP Protocols
+(94) XMPP Protocols
 
-(90) XMPP Jingle
+(95) XMPP Jingle
 
-(91) MQTT Architecture
+(96) MQTT Architecture
 
-(92) PSYC Message
+(97) PSYC Message
 
-(93) Node.js Architecture
+(98) Node.js Architecture
 
-(94) Vertx Architecture Diagram
+(99) Vertx Architecture Diagram
 
-(95) AngularJS Framework
+(100) AngularJS Framework
 
-(96) BackboneJS Framework
+(101) BackboneJS Framework
 
-(97) Backbone Collections
+(102) Backbone Collections
 
 

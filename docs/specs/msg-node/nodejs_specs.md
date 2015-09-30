@@ -69,16 +69,16 @@ The implementation of this Connector requires further study.
 
 Here is the description of the architecture with Redis :
 
-![Figure @msg-node-nodejs-redis-implementation: Messaging Node implementation with Node.Js and Redis](MessagingNode-Node.js)
+![Figure @msg-node-nodejs-redis-implementation: Messaging Node implementation with Node.Js and Redis](MessagingNode-NodeJs.png)
 
 **Architecture : Integration in ReThink :**
 
 Following architecture shows the target integration with the different components of the ReTHINK projet:
 
-![Figure @msg-node-nodejs-rethink: Integration of Node.Js based Messaging Node implementation with reTHINK](MessagingNode-Node.js-Integration_In_Rethink.png)
+![Figure @msg-node-nodejs-rethink: Integration of Node.Js based Messaging Node implementation with reTHINK](MessagingNode-NodeJs-Integration_In_Rethink.png)
 
 **Architecture : Integration in ReThink with Actors:**
 
 Following architecture shows the actors in the architecture to understand the decomposition of work to be done and the interaction with other partners :
 
-![Figure @msg-node-nodejs-rethink-partners: Integration of Node.Js based Messaging Node implementation with reTHINK partners]MessagingNode-Node.js-Integration_In_Rethink_With_Actors.png)
+![Figure @msg-node-nodejs-rethink-partners: Integration of Node.Js based Messaging Node implementation with reTHINK partners](MessagingNode-NodeJs-Integration_In_Rethink_With_Actors.png)
