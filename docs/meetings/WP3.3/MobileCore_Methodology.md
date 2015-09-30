@@ -79,3 +79,15 @@ For QoS resource reservation, it is useful to transmit the local identity, the r
     }
 
 Several flows may be requested at once, e.g., with different media types.
+
+## Policy Rules ##
+
+Inside the PCRF, rules can be added to the rule set for QoS resource reservation. The following table explains example matching criteria as well as the performed action for each of the mapped rules. Audio will be prioritised with the best possible QCI value (1) with a guaranteed data rate, which is sufficient as described in chapter. Video streams will receive the QCI value 2 and a higher guaranteed bit rate. If the data channel is used during a conversation, the QCI value will be set to 4 with another guaranteed data rate for data such as images, texts or audio files, within the conversation.
+
+| Rule name    | Rule condition                                       | Rule actions (example values)                                                  |
+|--------------|------------------------------------------------------|---------------------------------------------------------------|
+| WebRTC Audio | AF-Application-Identifier=”webrtc” && Media-Type=”0” | QCI=1, Bandwidth-Upload=1000000, Bandwidth-Download=1000000   |
+| WebRTC Video | AF-Application-Identifier=”webrtc” && Media-Type=”1” | QCI=2, Bandwidth-Upload=10000000, Bandwidth-Download=10000000 |
+| WebRTC Data  | AF-Application-Identifier=”webrtc” && Media-Type=”2” | QCI=4, Bandwidth-Upload=2000000, Bandwidth-Download=2000000   |
+
+These parameters for WebRTC (or other communication patterns) may easily be enhanced or can be feed from the information based on the given request from the Application Function.
