@@ -4,7 +4,7 @@ This section, describes the main procedures for the registration of a new Identi
 
 ![Figure @runtime-ident-man-user-registration: User registration](user-registration.png)
 
-Steps 1: the App request the RuntimeUA to register the new Identity, providing the IdP URL and the IdP user identifier.
+Steps 1: the App request the RuntimeUA to register the new Identity, providing the IdP URL and the user ID Token.
 
 Steps 2-3: The RuntimeUA [deploys the IdP Proxy protocol stub](../basics/deploy-protostub.md)(see section 4.3.3.2) required to support the connection with back-end IdP server.
 
