@@ -4,38 +4,12 @@
 
 This sequence details the steps needed to associate the user identity to a given Hyperty instance.
 
-*1*- Create ProtoSutb1 sandbox.
+Steps 1-2: During the Hyperty Registration process, the Runtime User Agent requests the Identity Module for all available identities that can be associated to the Hyperty Instance.
 
-*2*- Create Hyperty 1 instance for Service Provider 1.
+Steps 3-4: optionally, the RuntimeUA requests the Policy Engine to authorise the User Identity association.
 
-*3*- Create SP1 router and the respective PEP connector.
+Steps 5-6: in case there is more than one possible Identity, Alice can be asked to select one (should this step be performed by the IdModule?)
 
-*4*- The application using Hyperty 1, triggers a request to set the Identity to be associated to this Hyperty instance. This request is sent to the SP1 router to be touted to the RunTime UA
+Steps 7-9: the RuntimeUA requests the Identity Module, which replies with the identity token (ID Token) for the selected user. This step assumes that an identity Token has already exists for the requested user. If it does not, a new Identity Token has to be generated.
 
-*5*- Optimally the SP1 router checks the policies of the application itself in regard to the internal identity rule/policies. Note that, this verification is internal and not related with the verification performed by the Core Runtime.
-
-*6*- SP1Router send the request (if authorized by the Application internal rules) to associate an identity to the Hyperty 1 instance. This request is sent to the Core Runtime Message Bus. This request includes the Identification Token of Hyperty 1.
-
-*7*- The MsgBus sends the Hyperty-user association to the RunTime UserAgent.
-
-*8*- The RunTime UserAgent 'selects' the user identity to be used (eventually by asking Alice which used ID to use) and sends it to the Registry.
-
-*9*- The registry sends a request to the Identities Engine.
-
-*10*- The Identities Engine replies with the identity token (ID Token) for the selected user. This step assumes that an identity Token has already exists for the requested user. If it does not, a [Domain Login](domain-login.md) must be performed.
-
-*11*- The Registry sends a request to the Authorization/Policy engine to verify if the User Identity association request by the Hyperty Instance is authorized by the existing Policies.
-
-*12*- If the association is allowed a success message is replied to the registry. If not a reject message is replied (not depicted in the figure).
-
-*13*- The Register Engine generates an Association Token. This Association Token will allow the Hyperty instance to use the requested ID Token.
-
-*14*- The created ID Association Token is sent to the SP1 router.
-
-*15*- The router forwards the ID Association Token to the Hyperty instance (how requested it).
-
-*16*- Hyperty 1 created a new ID Association Token object.
-
-Note: This association protocol is assuming that the request for the ID association is triggered by the Application/Hyperty instance. The Second option is for the association action to be triggered by the User Agent (RuntimeUA). In this case steps 4 to 7 need to be changed.
-
-This question has to be further investigated.
+Steps 10- The RuntimeUA requests the Registry to bind the selected ID Token to the Hyperty Instance. The HypertyURL works like an Association ID which will allow the Runtime Core to sign messages sent by the Hyperty instance with its associated ID Token.

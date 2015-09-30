@@ -12,24 +12,31 @@ box "Service Provider 1 Sandbox at Alice Device" #LightGrey
 
 == Associate hyperty instance with user identity ==
 
-RuntimeUA -> IdModule : selectIdentity(HypertyURL)
+RuntimeUA -> IdModule : getIdentities
 
-opt Identity Selection is intercepted\n by Policy Enforcer\n which enforces applicable policies
+RuntimeUA <- IdModule : Identities returned
 
-PolicyEngine <- IdModule: selectIdentity(HypertyURL)
+opt Policy Enforcer is requested\n to authorise ID Selection
 
+PolicyEngine <- RuntimeUA: authoriseIDHypertyBind\n(Identities)
+
+PolicyEngine <- PolicyEngine: apply policies
+
+alt IdModule has more than one Identity\nloaded and user has to select one.
+
+Alice <- PolicyEngine: request to select Identity
+
+Alice -> PolicyEngine: return selected Identity
 
 end
 
-alt IdModule has more than one Identity loaded and user has to select one.
-
-Alice <- IdModule: request to select Identity
-
-Alice -> IdModule: return selected Identity
+PolicyEngine -> RuntimeUA: return authorised Identity
 
 end
 
-RuntimeUA <- IdModule : IDToken returned
+RuntimeUA -> IdModule: getIDToken(Identifier, scope)
+
+RuntimeUA <- IdModule: ID Token returned
 
 RuntimeUA -> Registry : bindIdentity(HypertyURL, IDToken)
 
