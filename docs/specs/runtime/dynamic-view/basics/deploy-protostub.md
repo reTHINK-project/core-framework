@@ -26,3 +26,9 @@ Message to publish Protocol Stub Status
 
 "body" : { "value" : "LIVE" }
 ```
+
+##### Discussion items
+
+1. Need to rename back-end service to catalogue to make relation between components clear
+2. Who is initiating message 1 (loadstub)? It it coming from the same or from different sandbox? --> several components might initiate message;  can come from same or from other sandbox
+3. 
