@@ -31,4 +31,6 @@ Message to publish Protocol Stub Status
 
 1. Need to rename back-end service to catalogue to make relation between components clear
 2. Who is initiating message 1 (loadstub)? It it coming from the same or from different sandbox? --> several components might initiate message;  can come from same or from other sandbox
-3. 
+3. For message 3, the "sp-domain" is coming from message 1 --> rename domain in message 1 and 2 to sp-domain
+4. Message 3 incomplete.  path in url not correct.  likely need to include /default.  Align with agreed fromat per Aveiro meeting.
+4. Missing message 3a (response + what is in there = the protocol stub descriptor of the default protocol stub)
