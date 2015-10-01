@@ -2,7 +2,7 @@
 
 ![Figure @runtime-ident-man-user-to-hyperty-binding-scheme: Associate User Identity to Hyperty Instance](user-to-hyperty-binding-scheme.png)
 
-This sequence details the steps needed to associate the user identity to a given Hyperty instance.
+This sequence details the steps needed to associate the user identity to a given Hyperty instance. These steps are usually triggered by the [Hyperty Registration](../basics/register-hyperty.md) procedure but can be triggered anytime it is decided to change the Identity.
 
 Steps 1-2: During the Hyperty Registration process, the Runtime User Agent requests the Identity Module for all available identities that can be associated to the Hyperty Instance.
 
