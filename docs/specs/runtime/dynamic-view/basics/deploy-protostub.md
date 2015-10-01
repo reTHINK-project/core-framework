@@ -36,4 +36,6 @@ Message to publish Protocol Stub Status
 5. Missing message 3a (response + what is in there = the protocol stub descriptor of the default protocol stub)
 6. missing message 4a (response + what is included)
 7. message 5 does not specify the sandbox to use for instantiating the proto sub. -- Question here is how to have the implementation of the UA agnostic of the sandbox --  also, the downloading of the protocol sub and the instantiation has to be done wihtin the sandbox the protostub later on runs in
-8. 
+8. messages 4 and 5 will have to be initiated within the Sanbox at Alice Device
+9. Sandbox at Alice Device will likely have to have a dedicated management component that is automatically initiated upon cration of the sandbox
+10. 
