@@ -29,6 +29,8 @@ Message to publish Protocol Stub Status
 
 ##### Discussion items
 
+*to be move to discussion issues*
+
 1. Need to rename back-end service to catalogue to make relation between components clear
 2. Who is initiating message 1 (loadstub)? It it coming from the same or from different sandbox? --> several components might initiate message;  can come from same or from other sandbox
 3. For message 3, the "sp-domain" is coming from message 1 --> rename domain in message 1 and 2 to sp-domain
@@ -39,3 +41,7 @@ Message to publish Protocol Stub Status
 8. messages 4 and 5 will have to be initiated within the Sanbox at Alice Device
 9. Sandbox at Alice Device will likely have to have a dedicated management component that is automatically initiated upon cration of the sandbox
 10. Instantiate protostub after you have allocated URL
+11. Define conditions to be met by url address allocation algorithms eg address plan of protostub URL are runtime local since they are not used outside the runtime scope. Do the same for Hyperty Address Allocation and Data Object address allocation
+12. Describe protostub registration
+12. Define the possibility to have allocation of blocks of addresses delivered by the msg node to a runtime instance when it connects, to avoid runtime - msg node transactions everytime a new address is needed.
+13. 
