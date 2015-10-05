@@ -47,6 +47,8 @@ alt Stub Not Available in Registry
 		...
 		end
 
+		RunReg@A -> BUS@A : addListener(\n registryListener,\n RuntimeProtoStubURL\status)
+
 		RunUA@A <-- RunReg@A : return RuntimeProtoStubURL
 	end
 
@@ -66,7 +68,6 @@ alt Stub Not Available in Registry
 
 == configure core msg bus to route messages to new protocol stub ==
 
-	RunReg@A -> BUS@A : addListener(\n registryListener,\n RuntimeProtoStubURL\status)
 
 	BUS@A <- RunUA@A : addListener( \nprotostubListener, \nRuntimeProtoStubURL)
 
