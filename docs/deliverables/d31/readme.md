@@ -2263,6 +2263,32 @@ Message to publish Protocol Stub Status
 
     "body" : { "value" : "LIVE" }
 
+##### Discussion items
+
+1.  Need to rename back-end service to catalogue to make relation
+    between components clear
+2.  Who is initiating message 1 (loadstub)? It it coming from the same
+    or from different sandbox? --\> several components might initiate
+    message; can come from same or from other sandbox
+3.  For message 3, the "sp-domain" is coming from message 1 --\> rename
+    domain in message 1 and 2 to sp-domain
+4.  Message 3 incomplete. path in url not correct. likely need to
+    include /default. Align with agreed fromat per Aveiro meeting.
+5.  Missing message 3a (response + what is in there = the protocol stub
+    descriptor of the default protocol stub)
+6.  missing message 4a (response + what is included)
+7.  message 5 does not specify the sandbox to use for instantiating the
+    proto sub. -- Question here is how to have the implementation of the
+    UA agnostic of the sandbox -- also, the downloading of the protocol
+    sub and the instantiation has to be done wihtin the sandbox the
+    protostub later on runs in
+8.  messages 4 and 5 will have to be initiated within the Sanbox at
+    Alice Device
+9.  Sandbox at Alice Device will likely have to have a dedicated
+    management component that is automatically initiated upon cration of
+    the sandbox
+10. Instantiate protostub after you have allocated URL
+
 #### Deploy Hyperty {#header-identifiers-in-html-latex-and-context}
 
 The Runtime procedures to deploy a new Hyperty are described in this
@@ -2742,6 +2768,13 @@ DataObjectObserversURL with information about the new added Observer.
 Steps 33-34: the subscription requester is informed about the
 subscription authorisation with a RESPONSE message.
 
+**notes for changes**
+
+-   subscription to data object has to reach the protostub in order to
+    add listener at messaging node level. To check with address
+    allocation to other entities like protostub and hyperties.
+-   
+
 ### Runtime Identity Management Procedures
 
 This section, describes in detail the Runtime procedures that are
@@ -2762,7 +2795,7 @@ mechanism.
 ![Figure 32: User registration](user-registration.png)
 
 Steps 1: the App request the RuntimeUA to register the new Identity,
-providing the IdP URL and the IdP user identifier.
+providing the IdP URL and the user ID Token.
 
 Steps 2-3: The RuntimeUA [deploys the IdP Proxy protocol
 stub](../basics/deploy-protostub.md)(see section 4.3.3.2) required to
@@ -2831,67 +2864,30 @@ connection request is provided like it is in the first option.
 Instance](user-to-hyperty-binding-scheme.png)
 
 This sequence details the steps needed to associate the user identity to
-a given Hyperty instance.
+a given Hyperty instance. These steps are usually triggered by the
+[Hyperty Registration](../basics/register-hyperty.md) procedure but can
+be triggered anytime it is decided to change the Identity.
 
-*1*- Create ProtoSutb1 sandbox.
+Steps 1-3: During the [Hyperty
+Registration](../basics/register-hyperty.md) process, triggered by the
+Runtime User Agent, the Runtime Registry request the Identity Module for
+all available identities that can be associated to the Hyperty Instance.
 
-*2*- Create Hyperty 1 instance for Service Provider 1.
+Steps 4-5: optionally, the RuntimeUA requests the Policy Engine to
+authorise the User Identity association.
 
-*3*- Create SP1 router and the respective PEP connector.
+Steps 6-7: in case there is more than one possible Identity, Alice can
+be asked to select one (should this step be performed by the IdModule?)
 
-*4*- The application using Hyperty 1, triggers a request to set the
-Identity to be associated to this Hyperty instance. This request is sent
-to the SP1 router to be touted to the RunTime UA
+Steps 8-10: the RuntimeUA requests the Identity Module, which replies
+with the identity token (ID Token) for the selected user. This step
+assumes that an identity Token has already exists for the requested
+user. If it does not, a new Identity Token has to be generated.
 
-*5*- Optimally the SP1 router checks the policies of the application
-itself in regard to the internal identity rule/policies. Note that, this
-verification is internal and not related with the verification performed
-by the Core Runtime.
-
-*6*- SP1Router send the request (if authorized by the Application
-internal rules) to associate an identity to the Hyperty 1 instance. This
-request is sent to the Core Runtime Message Bus. This request includes
-the Identification Token of Hyperty 1.
-
-*7*- The MsgBus sends the Hyperty-user association to the RunTime
-UserAgent.
-
-*8*- The RunTime UserAgent 'selects' the user identity to be used
-(eventually by asking Alice which used ID to use) and sends it to the
-Registry.
-
-*9*- The registry sends a request to the Identities Engine.
-
-*10*- The Identities Engine replies with the identity token (ID Token)
-for the selected user. This step assumes that an identity Token has
-already exists for the requested user. If it does not, a [Domain
-Login](domain-login.md) must be performed.
-
-*11*- The Registry sends a request to the Authorization/Policy engine to
-verify if the User Identity association request by the Hyperty Instance
-is authorized by the existing Policies.
-
-*12*- If the association is allowed a success message is replied to the
-registry. If not a reject message is replied (not depicted in the
-figure).
-
-*13*- The Register Engine generates an Association Token. This
-Association Token will allow the Hyperty instance to use the requested
-ID Token.
-
-*14*- The created ID Association Token is sent to the SP1 router.
-
-*15*- The router forwards the ID Association Token to the Hyperty
-instance (how requested it).
-
-*16*- Hyperty 1 created a new ID Association Token object.
-
-Note: This association protocol is assuming that the request for the ID
-association is triggered by the Application/Hyperty instance. The Second
-option is for the association action to be triggered by the User Agent
-(RuntimeUA). In this case steps 4 to 7 need to be changed.
-
-This question has to be further investigated.
+Steps 11- The RuntimeUA requests the Registry to bind the selected ID
+Token to the Hyperty Instance. The HypertyURL works like an Association
+ID which will allow the Runtime Core to sign messages sent by the
+Hyperty instance with its associated ID Token.
 
 ### Main Runtime Procedures for H2H Communication
 
@@ -4251,7 +4247,7 @@ Validates an Identity Assertion
 Registers a previously created Identity in the Identity Module providing
 the IdP URL and the user identifier.
 
-    registerIdentity( URL.DomainURL IdP, Identity.identifier user )
+    registerIdentity( URL.DomainURL IdP, Identity.AuthenticationData.IDToken user )
 
 #### unregisterIdentity
 
@@ -5557,6 +5553,154 @@ such virtual transient addresses is in the responsibility of the
 corresponding Application Service. Each Application Service itself has
 to maintain an own namespace of virtual users and must be able to
 operate (send/receive) "on behalf" of such a virtual user.
+
+Service Framework
+-----------------
+
+The Hyperty Runtime APIs were designed to be Developer friendly and they
+only have to deal with a few functions namely:
+
+-   MsgBUS.postMessage() that is used to post messages in order to
+    communicate with other remote Hyperty Instances and with back-end
+    reTHINK Support Services
+-   Syncher API that is used to communicate through the
+    Reporter-Observer communication pattern
+
+In addition, Hyperty Developers would have to implement the Hyperty API,
+which is mainly the init() function, used to activate the Hyperty
+Instance with required configuration parameters, and the postMessage()
+function that is used to receive messages from the Hyperty Runtime
+Message BUS.
+
+However, Hyperty Developer would still have to handle with a few tasks
+that could be automated in order to increase its productivity, namely
+the setup of data object synchronisation, and the instantiation of Data
+Objects and Messages according to reTHINK Data Model.
+
+The Hyperty Service Framework is a Software Development Toolkit (SDK)
+that will feature a comprehensive set of application program interfaces
+(APIs) and JavaScript libraries to facilitate the development of
+Hyperties within the reTHINK architecture.
+
+Thus, the Hyperty Service Framework should provide:
+
+-   factory functionalities for creating and managing the reTHINK
+    Messages and Data Objects
+-   templates for creating Hyperty Data Objects for the basic specified
+    Hyperty Types (Communication, Identity, Context)
+
+In addition, the Hyperty Service Framework will provide JavaScript
+libraries to speed up the implementation of conversational services
+(audio, video, chat, screen sharing) and context enabled services (IoT,
+context delivery, location). These services will be fully implemented in
+the scenarios implementation tasks and demonstrated in reTHINK testbes.
+The requirements from a software perspective have been defined in
+section 2.4.
+
+A preliminary analysis of functionalities to be provided by the
+framework will be discussed and a high level capability set for the
+Framework will be presented in the next sections. For this input from
+three different areas of the reTHINK project will be examined namely:
+
+-   Uses Cases as specified in WP1 Task1.1
+-   Data Models as specified in WP2 Task 2.3
+-   Interface Design as specified in WP2 Task 2.4
+
+### Use Cases
+
+D1.1 – “Use Cases and Sustainable Business Models” specified 15 user
+scenarios from which 5 have been selected as the main scenarios for the
+development of Hyperties in WP5. Details of these user scenarios can be
+found in D1.1.
+
+-   Daily life in a Smart City – Human-To-Human Communication
+-   Daily Life In A Smart City – Individual Contextual Services
+-   Hotel Guest Web Application\* Apartment Rental Monitoring And
+    Control Application
+-   Smart Enterprise –Contextual Enriched Communication in Smart
+    Enterprises
+
+From the above user scenarios specific actors/roles, requirements and
+use cases where identified and specified. These functionalities include:
+
+-   Communication Service: the Hyperty Runtime already provides an API
+    for H2H and M2M communication. Developers will be able to use this
+    service directly from the Hyperty Runtime API
+-   Identity Service: a provider mechanism to access internal reTHNK IdP
+    services or external IdPs (Google, Facebook, etc.)
+-   Data Storage functions: for storing persistent data
+-   Location functions: to access device specific context (e.g. GPS) to
+    be used as context for different services
+-   User Entity Management: to manage one or multiple user
+    profiles\*Notification service: for notifying triggered events
+
+For the Service Framework focus will be laid on functionalities that are
+not available on other open source JavaScript libraries.
+
+### Data Models
+
+In D2.2 Data models were specified from 3 different points of view - the
+service provider view, developer view and consumer view. For the Service
+Framework, focus will be laid only the developer view. The identified
+data models for the developer's perspective include the following:
+
+**Hyperty Descriptor Model**: As described in D2.2, the Hyperty data
+model is used to model different types of Hyperty provided by the
+Service Provider. The Hyperty descriptor contains sets of data objects
+with information to the HypertyCatalogueURL, the type of Hyperty
+(communicator, identity or context), policies, constraints and
+configuration parameters. The Service Framework will provide JavaScript
+object templates specifying the Hyperty Descriptor Data Objects and
+extending them to create new Hyperty Types.
+
+**User Identity Model**: This data model models a user entity within the
+reTHINK infrastructure. It has a unique identifier (UserUUIDURL) and
+multiple identifier Types (UserURL). The user entity is characterized by
+its profile (UserProfile) which may include information associated to
+the user : profile page URL, username, birthdate, picture, etc. To
+provide management functionalities to the developers to the reTHINK
+Identity management, the Hyperty Framework will need to interface with
+the Protocol Stub for Identity management.
+
+**Context Model**: The context model is used to model different media
+types for representing simple sensors and device meta data which can be
+transmitted in a protocol such as CoAP or HTTP. The data model contains
+context information such as id, context type, time, tag and a list of
+context values which can be used in the M2M reTHINK uses cases. The
+Service Framework will provide factory functionalities for creating and
+managing these data objects.
+
+**Communication Model**: The communication data model will be to model
+communications within the retHINK architecture for messaging and
+communicator Hyperties. The data model includes information for
+identifying a communication (id, owner, duration, etc.), the status of
+the communication (pending, open, closed, failed, paused), a list of
+participants (identity), the quality, the connection data object (webRTC
+connection) and message. The Service Framework should provide a set of
+functionalities for creation and management of the sessions. Some of
+these functionalities will be provided by the Hyperty Runtime. It is
+still to be determined to what abstraction level this should be made
+available to developers.
+
+**Message Model** : This model specifies messages exchanged between
+Hyperties. It uses the Reporter-Observer communication pattern to create
+and synchronize object state changes amongst each other. The Hyperty
+Runtime includes this functionality which will be exposes to the
+developers through factory creation interfaces.
+
+**Address Model** : Different address URL has been proposed for the
+reTHNK platform with respect to the different components. For example
+user:/// for Idp, hyperty-runtime:/// for the Hyperty Runtime and
+hyperty:/// for the Hyperty Instance. The Service Framework will provide
+factory classes for creation of different address URL types.
+
+### Interfaces
+
+D2.2 specified network interfaces (Registry, Catalogue, Identity
+Management, Messaging service) for performing CRUD operations over
+various Data Objects. The Proto-on-the-fly and the protocol stubs from
+the different components could directly be used here without
+implementing extra functionalities to the Service Framework.
 
 Conclusions
 ===========

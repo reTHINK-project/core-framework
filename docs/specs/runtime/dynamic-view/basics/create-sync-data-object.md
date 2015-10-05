@@ -94,3 +94,8 @@ Step 30: optionally, the new Observer listener is added in the Message BUS to be
 Steps 31-32: optionally, it is posted an UPDATE message into the DataObjectObserversURL with information about the new added Observer.
 
 Steps 33-34: the subscription requester is informed about the subscription authorisation with a RESPONSE message.
+
+**notes for changes**
+
+-	subscription to data object has to reach the protostub in order to add listener at messaging node level. To check with address allocation to other entities like protostub and hyperties.
+-

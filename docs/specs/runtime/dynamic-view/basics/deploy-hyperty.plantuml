@@ -57,10 +57,16 @@ else No, App and Hyperty are executed in different sandboxes
 
 	RunUA@A -> SP1 : get\nHypertyDescriptorURL
 
+	alt sandbox exists
+
+	else sandbox does not existing
+
+	end
+
 	note right
 		according to the runtime type
-		(eg web worker in browsers) 
-		the Hyperty download may have 
+		(eg web worker in browsers)
+		the Hyperty download may have
 		to be downloaded inside the sandbox
 	end note
 
@@ -83,7 +89,7 @@ else No, App and Hyperty are executed in different sandboxes
 end group
 
 
-group register Hyperty (designed at register-hyperty.md)          
+group register Hyperty (designed at register-hyperty.md)
 
 RunUA@A -> RunReg@A : registerHyperty(\npostMessage,\nHypertyDescriptor )
 

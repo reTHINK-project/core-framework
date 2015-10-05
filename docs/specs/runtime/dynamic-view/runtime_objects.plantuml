@@ -1,8 +1,9 @@
-actor "Alice" as Alice
+
+!ifdef SHOW_Alice
+	actor "Alice" as Alice
+	!endif
 
 !ifdef SHOW_RuntimeA
-
-
 
 	!ifdef SHOW_AppAtRuntimeA
 		participant "App" as App@A
@@ -54,6 +55,11 @@ actor "Alice" as Alice
 
 	!ifdef SHOW_SP1SandboxAtRuntimeA
 		box "Service Provider 1\nSandbox at Alice Device"
+
+			!ifdef SHOW_ServiceProvider1SandboxManagerAtRuntimeA
+			participant "Service Provider1\nSandbox Manager" as Sand1@A
+			!endif
+
 
 			!ifdef SHOW_ServiceProvider1HypertyAtRuntimeA
 			participant "Service Provider1\nHyperty" as SP1H@A
@@ -131,6 +137,9 @@ actor "Alice" as Alice
 			participant "Msg Service" as Msg1
 		!endif
 
+		!ifdef SHOW_Cat1
+			participant "Catalogue\nSupport Service" as Cat1
+		!endif
 	end box
 !endif
 

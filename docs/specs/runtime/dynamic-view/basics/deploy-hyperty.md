@@ -45,3 +45,7 @@ Step 20: The Runtime UA activates the Hyperty PEP with its RuntimeURL, the postM
 Steps 21: the runtime UA adds Hyperty listener to the runtime BUS to receive messages targeting the Hyperty URL. It should be noted in case there is an intercepting PEP, the Hyperty listener will only be called for Messages forwarded by PEP.
 
 Steps 22: the runtime UA activates the Hyperty instance with its Hyperty URL instance, the postMessage function to be called to send messages to BUS and configuration data contained in its descriptor. Depending on the sandbox implementation, the initialisation may have to be remotely executed by a Execution message type routed by the Message BUS.
+
+**to do**
+
+1.	Proposal to make components agnostic of sandbox: - use a minibus as the interface communication with components that may run in a Sandbox - each minibus may serve more than one component

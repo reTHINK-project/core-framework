@@ -13,43 +13,66 @@ autonumber
 
 !define SHOW_SP1SandboxAtRuntimeA
 !define SHOW_Protostub1AtRuntimeA
-!define SHOW_ServiceProvider1RouterAtRuntimeA
+!define SHOW_ServiceProvider1SandboxManagerAtRuntimeA
 
 !define SHOW_SP1
+!define SHOW_Cat1
 
 !include ../runtime_objects.plantuml
 
--> RunUA@A : loadStub( domain )
+-> RunUA@A : loadStub( sp-domain )
 
-RunUA@A -> RunReg@A : discoverStub( domain )
+RunUA@A -> RunReg@A : discoverStub( sp-domain )
 
 alt Stub Not Available in Registry
 
-	RunUA@A -> SP1 : get <sp-domain>/.well-known/protostub/
+== get protocol stub descriptor ==
+
+	RunUA@A -> Cat1 : get <sp-domain>/.well-known/protostub/default/
 
 		note over BUS@A
-			as defined in the data model the Protocol Stub is a well know URI.
-			**open issue:** should it be the protostub URL a well known URI?
+			as defined in the data model the
+			Protocol Stub Descriptor is located
+			 in a well known URI.
 		end note
 
-	RunUA@A -> SP1 : get protocolStubSourceCode
+	RunUA@A <-- Cat1 : returned protostub descriptor
 
-	create Proto1@A
-	RunUA@A -> Proto1@A : new
+	== get protocol stub URL ==
 
-	RunUA@A -> RunReg@A : registerStub(domainURL)
+	group Protocol Stub instance is registered
+		RunUA@A -> RunReg@A : registerStub(domainURL)
 
-	opt Protocol Stub instance is registered in the remote back-end Registry
+		opt Protocol Stub instance is registered in the remote Domain Registry
 		...
+		end
+
+		RunUA@A <-- RunReg@A : return RuntimeProtoStubURL
 	end
 
-	RunUA@A <- RunReg@A : return RuntimeProtoStubURL
+== Instantiate Sandbox with Protocol Stub ==
+
+	create Sand1@A
+	RunUA@A -> Sand1@A : new( protostubURL,\nmsgBus.postMsg,\nconfiguration )
+
+	Sand1@A -> SP1 : get protocolStubSourceCode
+
+	Sand1@A <-- SP1 : return protostub.js
+
+	create Proto1@A
+	Sand1@A -> Proto1@A : new
+
+	RunUA@A <-- Sand1@A : return sandboxListener
+
+== configure core msg bus to route messages to new protocol stub ==
 
 	RunReg@A -> BUS@A : addListener(\n registryListener,\n RuntimeProtoStubURL\status)
 
-	RunUA@A -> Proto1@A : init(\nRuntimeProtoStubURL,\n BUS.postMessage,\nprotoStubConfigurationData)
-
 	BUS@A <- RunUA@A : addListener( \nprotostubListener, \nRuntimeProtoStubURL)
+
+	 <- RunUA@A : successful
+
+== Protocol Stub connects to domain ==
 
 	group Protocol Stub connection to domain: see Domain Registration in the Identity Management diagrams
 

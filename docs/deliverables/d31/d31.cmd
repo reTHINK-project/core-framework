@@ -57,6 +57,7 @@ specs\msg-node.md ^
 ..\..\specs\msg-node\vertx_specs.md ^
 ..\..\specs\msg-node\nodejs_specs.md ^
 ..\..\specs\msg-node\matrix_specs.md ^
+..\..\specs\service-framework\readme.md ^
 conclusions\readme.md ^
 ..\..\references\readme.md ^
 introduction\figures.md
