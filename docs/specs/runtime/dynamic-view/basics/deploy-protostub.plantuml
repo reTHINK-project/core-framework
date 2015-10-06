@@ -41,7 +41,16 @@ alt Stub Not Available in Registry
 	== get protocol stub URL ==
 
 	group Protocol Stub instance is registered
-		RunUA@A -> RunReg@A : registerStub(domainURL)
+		RunUA@A -> RunReg@A : registerStub(sp-domain)
+
+		note right
+			protostub can be generated locally
+			by the Runtime Registry ensuring
+			the address is unique in the Runtime namespace
+			since it only has to be reached by Runtime components
+		end note
+
+		RunReg@A -> RunReg@A : generateStubURL(sp-domain)
 
 		opt Protocol Stub instance is registered in the remote Domain Registry
 		...
@@ -64,12 +73,12 @@ alt Stub Not Available in Registry
 	create Proto1@A
 	Sand1@A -> Proto1@A : new
 
-	RunUA@A <-- Sand1@A : return sandboxListener
+	RunUA@A <-- Sand1@A : return sandboxInstance
 
 == configure core msg bus to route messages to new protocol stub ==
 
 
-	BUS@A <- RunUA@A : addListener( \nprotostubListener, \nRuntimeProtoStubURL)
+	BUS@A <- RunUA@A : addListener( sandboxInstance.postMessage, RuntimeProtoStubURL)
 
 	 <- RunUA@A : successful
 
