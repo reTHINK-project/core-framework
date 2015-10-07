@@ -1,0 +1,4 @@
+###MessageFactory
+
+The MessageFactory creates messages according to the (Message Data Model)[https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message] to be send through the Runtime Message Bus. 
+It also provides functionalities is to parse received messages from the Message Bus to extract new objects or to "feed" existing objects.
