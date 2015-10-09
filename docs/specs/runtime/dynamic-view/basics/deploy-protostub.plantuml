@@ -26,7 +26,10 @@ RunUA@A -> RunReg@A : discoverStub( sp-domain )
 
 alt Stub Not Available in Registry
 
+RunUA@A <-- RunReg@A : returns null
+
 == get protocol stub descriptor ==
+
 
 	RunUA@A -> Cat1 : get <sp-domain>/.well-known/protostub/default/
 
@@ -64,7 +67,16 @@ alt Stub Not Available in Registry
 == Instantiate Sandbox with Protocol Stub ==
 
 	create Sand1@A
-	RunUA@A -> Sand1@A : new( protostubURL,\nmsgBus.postMsg,\nconfiguration )
+	RunUA@A -> Sand1@A : new( msgBus )
+
+	RunUA@A <-- Sand1@A : return sandboxInstance
+
+	RunUA@A -> RunReg@A : registerSandbox\n( sandboxInstance, domainURL )
+
+	RunUA@A <-- RunReg@A : return RuntimeSandboxURL
+
+	RunUA@A -> Sand1@A : deployComponent( ProtoStubDownloadURL, RuntimeProtoStubURL,configuration )
+
 
 	Sand1@A -> SP1 : get protocolStubSourceCode
 
@@ -73,7 +85,8 @@ alt Stub Not Available in Registry
 	create Proto1@A
 	Sand1@A -> Proto1@A : new
 
-	RunUA@A <-- Sand1@A : return sandboxInstance
+	RunUA@A <-- Sand1@A : return componet is deployed
+
 
 == configure core msg bus to route messages to new protocol stub ==
 

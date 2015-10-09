@@ -57,7 +57,7 @@
 		box "Service Provider 1\nSandbox at Alice Device"
 
 			!ifdef SHOW_ServiceProvider1SandboxManagerAtRuntimeA
-			participant "Service Provider1\nSandbox Manager" as Sand1@A
+			participant "Service Provider1\nSandbox" as Sand1@A
 			!endif
 
 
