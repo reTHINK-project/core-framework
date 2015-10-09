@@ -135,6 +135,15 @@ This function is used to discover protocol stubs available in the runtime for a 
 RuntimeURL discoverProtostub( DomainURL url)
 ```
 
+#### registerSandbox
+
+This function is used to register a new runtime sandboxes passing as input the sandbox instance and the domain URL associated to the sandbox instance.
+
+```
+RuntimeSandbox getSandbox( DomainURL url )
+```
+
+
 #### getSandbox
 
 This function is used to discover sandboxes available in the runtime for a certain domain. It is required by the runtime UA to avoid more than one sandbox for the same domain.
@@ -277,10 +286,10 @@ postMessage(Message.Message message)
 
 #### constructor
 
-Constructor to instantiate a sandbox passing as input parameter the sandbox Type (Protostub, Hyperty, Interceptor and Applicaion) Message Bus instance that the sandbox will use to send messages to components outside the sandbox.
+Constructor to instantiate a sandbox passing as input parameter the Message Bus instance that the sandbox will use to send messages to components outside the sandbox.
 
 ```
-Sandbox( SandboxType type, MessageBUS msgbus )
+Sandbox( MessageBUS msgbus )
 ```
 
 ####  deployComponent
@@ -289,6 +298,22 @@ To download and deploy a new component in the sandbox passing as input parameter
 
 ```
 deployComponent( URL.URL componentDownloadURL, URL.URL componentURL, Object configuration )
+```
+
+####  removeComponent
+
+To remove a component from the sandbox passing as input parameters its URL.
+
+```
+removeComponent( URL.URL componentURL )
+```
+
+####  deployInterceptor
+
+To download and deploy a new interceptor in the sandbox passing as input parameters the url from where the interceptor is downloaded, the interceptorURL address previously allocated to the interceptor, its configuration and the intercepted sandbox.
+
+```
+deployInterceptor( URL.URL interceptorDownloadURL, URL.URL interceptorURL, RuntimeSandbox intercepted, Object configuration )
 ```
 
 ####  removeComponent
