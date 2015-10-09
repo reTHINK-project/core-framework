@@ -273,7 +273,31 @@ To receive Update messages from Reporter Hyperties that will trigger the change 
 postMessage(Message.Message message)
 ```
 
-### Service Provider Sandbox interface
+### Sandbox interface
+
+#### constructor
+
+Constructor to instantiate a sandbox passing as input parameter the sandbox Type (Protostub, Hyperty, Interceptor and Applicaion) Message Bus instance that the sandbox will use to send messages to components outside the sandbox.
+
+```
+Sandbox( SandboxType type, MessageBUS msgbus )
+```
+
+####  deployComponent
+
+To download and deploy a new component in the sandbox passing as input parameters the url from where the components is downloaded, the componentURL address previously allocated to the component and its configuration.
+
+```
+deployComponent( URL.URL componentDownloadURL, URL.URL componentURL, Object configuration )
+```
+
+####  removeComponent
+
+To remove a component from the sandbox passing as input parameters its URL.
+
+```
+removeComponent( URL.URL componentURL )
+```
 
 #### postMessage
 
