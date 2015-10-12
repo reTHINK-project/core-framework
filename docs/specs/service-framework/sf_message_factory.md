@@ -59,7 +59,7 @@ createOutgoingMessageResponse(URL.URLList to, ResponseCode code, String value )
 Parses a given message and sets values of headers in an array (key, value) which can be retrieved through another method  getHeader(headerKey) to access different portions of the message.  It returns an instance of MessageRequest, a MessageResponse or undefined.
 
 ```
-Parser.parseMessage(data)
+Parser.parseMessage(Message data)
 ```
 
 #### getHeader
