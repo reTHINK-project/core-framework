@@ -1,51 +1,35 @@
-#### Deploy Hyperty {#header-identifiers-in-html-latex-and-context}
+#### Deploy Hyperty
 
 The Runtime procedures to deploy a new Hyperty are described in this section.
 
-![Figure @runtime-deploy-hyperty1: Deploy Hyperty (part1)](deploy-hyperty.png)
+![Figure @runtime-deploy-hyperty: Deploy Hyperty](deploy-hyperty.png)
 
-Note: The trigger of Hyperty deployment may take advantage of some existing libraries like require.js.
+Steps 1 - 5: the Runtime UA is invoked by the App to load a new Hyperty from a specific URL. The Runtime UA downloads the protostub source code, extracting the HypertyDownloadURL from the Hyperty descriptor.
 
-Step 1: As discussed in the Runtime Architecture, and according to security policies, Hyperties and the Application can be deployed in the same sandbox or in separated domains.
+Steps 6 - 7: the new Hyperty is [registered in the Runtime Registry](register-hyperty.md), which returns the Hyperty Instance address (HypertyURL).
+
+Steps 8: policies contained in the Hyperty Descriptor, are deployed in the Core Policy Engine.
+
+Steps 9: the runtime UA checks in the Hyperty Descriptor if a Policy Enforcer is required. If Yes a Policy Enforcer is deployed.
+
+Steps 10: the runtime UA adds Hyperty listener to the runtime BUS to receive messages targeting the Hyperty URL. It should be noted in case there is an intercepting PEP, the Hyperty listener will only be called for Messages forwarded by PEP.
+
+Steps 11-12: the Runtime UA asks the Policy Engine about Hyperty sandboxing policy. As discussed in the Runtime Architecture, and according to security policies, Hyperties and the Application can be deployed in the same sandbox or in separated domains.
 
 ---
 
 **Hyperty and App deployed in the same sandbox**
 
-Steps 2 - 5: In this situation, the App and the Hyperty are running in the same isolated sandbox which is different from the Hyperty Core Runtime Sandbox. This means the download and instantiation of the Hyperty has first to be performed by the Application. Then the App asks the Runtime UA to register and activate the new Hyperty in the runtime.
+Steps 13 - 14: In this situation, the App and the Hyperty are running in the same isolated sandbox which is different from the Hyperty Core Runtime Sandbox. This means the Runtime UA returns to the App the Hyperty Source Code and the App instantiates the Hyperty..
 
 **Hyperty and App deployed in different sandboxes**
 
-Steps 6 - 10: In this situation, the App and the Hyperty must run in different isolated sandboxes. In this case the Hyperty sandbox is managed by the runtime UA which means the runtime UA can download and instantiated the Hyperty. The runtime UA should avoid the creation of new sandboxes in case there is already a sandbox for the same domain
+Steps 15: In this situation, the App and the Hyperty must run in different isolated sandboxes. In this case the Hyperty sandbox is managed by the runtime UA which means the runtime UA can download and instantiated the Hyperty. The runtime UA should avoid the creation of new sandboxes in case there is already a sandbox for the same domain
+
+**Sandbox does not exist**
+
+Steps 16-19: In case no sandbox exists, the Runtime UA instantiates a new sandbox through the Sandbox interface which is registered in the Registry
 
 ---
 
-Steps 11 - 12: the new [Hyperty instance is registered](register-hyperty.md) by the Runtime Registry. See section 4.3.1.4 for more details.
-
-![Figure @runtime-deploy-hyperty2: Deploy Hyperty (part2)](deploy-hyperty_001.png)
-
-Steps 13: policies contained in the Hyperty Descriptor, are deployed in the BUS Authorisation component
-
-Steps 14: the runtime UA checks in the Hyperty Descriptor if a Policy Enforcer is required
-
----
-
-**Hyperty PEP deployment is required**
-
-Steps 15 - 16: the runtime UA downloads and instantiates the Hyperty PEP in an isolated sandbox.
-
-Steps 17 - 18: the Runtime UA register in the runtime Registry the new PEP for the new deployed Hyperty and the Registry returns PEP Runtime component URL
-
-Steps 19: the runtime UA adds PEP intercepting listener to the runtime BUS to receive messages targeting the Hyperty URL.
-
-Step 20: The Runtime UA activates the Hyperty PEP with its RuntimeURL, the postMessage function to be called to send messages to BUS and the Hyperty instance URL the PEP is intercepting. Depending on the sandbox implementation, the initialisation may have to be remotely executed by an Execution message type routed by the Message BUS.
-
----
-
-Steps 21: the runtime UA adds Hyperty listener to the runtime BUS to receive messages targeting the Hyperty URL. It should be noted in case there is an intercepting PEP, the Hyperty listener will only be called for Messages forwarded by PEP.
-
-Steps 22: the runtime UA activates the Hyperty instance with its Hyperty URL instance, the postMessage function to be called to send messages to BUS and configuration data contained in its descriptor. Depending on the sandbox implementation, the initialisation may have to be remotely executed by a Execution message type routed by the Message BUS.
-
-**to do**
-
-1.	Proposal to make components agnostic of sandbox: - use a minibus as the interface communication with components that may run in a Sandbox - each minibus may serve more than one component
+Steps 20-23: The Runtime UA requests the new sandbox to instantiate the Hyperty source code, extracting the configuration data from the Hyperty descriptor, and it returns the Hyperty instance API stub to the App.

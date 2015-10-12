@@ -41,6 +41,12 @@ RunUA@A <-- RunReg@A : returns null
 
 	RunUA@A <-- Cat1 : returned protostub descriptor
 
+	== get protocol stub source code ==
+
+	RunUA@A -> SP1 : get protocolStubSourceCode
+
+	RunUA@A <-- SP1 : return protostub.js
+
 	== get protocol stub URL ==
 
 	group Protocol Stub instance is registered
@@ -75,12 +81,9 @@ RunUA@A <-- RunReg@A : returns null
 
 	RunUA@A <-- RunReg@A : return RuntimeSandboxURL
 
-	RunUA@A -> Sand1@A : deployComponent( ProtoStubDownloadURL, RuntimeProtoStubURL,configuration )
+	RunUA@A -> Sand1@A : deployComponent( protostub.js, RuntimeProtoStubURL,configuration )
 
 
-	Sand1@A -> SP1 : get protocolStubSourceCode
-
-	Sand1@A <-- SP1 : return protostub.js
 
 	create Proto1@A
 	Sand1@A -> Proto1@A : new
