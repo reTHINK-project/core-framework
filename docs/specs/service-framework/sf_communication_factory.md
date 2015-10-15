@@ -16,7 +16,7 @@ The Communication Object has following class object attributes:
 * ```comunicationQuality```- 
 
 
-####Participant Data Object
+#####Participant Data Object
 * ```identityObject``` - Identity Data Object as defined in the [User Identity Data Model](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/user-identity/readme.md)
 * ```connectionObject``` -  optional attribute (JWT) for access control purpose
 
