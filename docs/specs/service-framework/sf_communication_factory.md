@@ -2,7 +2,7 @@
 
 The CommunicationFactory creates communication objects according to the [Communication Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/communication/readme.md). 
 
-####Communication Object
+####Communication Data Object
 --------------------------------------
 The Communication Object has following class object attributes:
 * ```id``` - the identifier of the created comunication
@@ -24,39 +24,30 @@ The Communication Object has following class object attributes:
 #####Connection Data Object
 * ```status``` - 
 * ``` owner``` - Communication. participant
-* ``` localIceCandidates``` - IceCandidate object 
-* ``` remoteIceCandidates``` - 
-* ``` localConnectionDescription``` - String representation of local SDP (offer)
-* ``` remoteConnectionDescription``` - String representation of remote SDP (answer)
-* ``` remoteRtpTransportParameters``` - to be used for ORTC compliant browsers 
-* ``` localRtpTransportParameters``` - to be used for ORTC compliant browsers
+* ``` localIceCandidates``` - status of the local IceCandidates (NEW|CHECKING|CONNECTED|COMPLETED|FAILED|DISCONNECTED|CLOSED) 
+* ``` remoteIceCandidates``` - status of the remote IceCandidates (NEW|CHECKING|CONNECTED|COMPLETED|FAILED|DISCONNECTED|CLOSED)
+* ``` localConnectionDescription``` - String representation of local SDP (offer) - Reporter DataObject (Reports changes made locally)
+* ``` remoteConnectionDescription``` - String representation of remote SDP (answer) - Observation DataObject (Observes changes made remotely)
+* ``` remoteRtpTransportParameters``` - to be used for ORTC compliant browsers - Observation DataObject (Observes changes made remotely)
+* ``` localRtpTransportParameters``` - to be used for ORTC compliant browsers - Reporter DataObject (Reports changes made locally)
  
 ###Functions
 -----------------------
-#### MessageReqeust
-Creates an outgoing Message request taking as parameter the URLList of the recipient(s), the message type (CREATE|UPDATE|DELETE|READ|SUBSCRIBE|UNSUBSCRIBE) and body according to the message type as input. The extraHeaders object can include other  optional headers (resource, signature, contextId etc.) you wish to have included in the message.  
-
+#### createCommunicationDataObject
+Generates a class object of the communication data object
 ```
-createOutgoingMessageRequest(URL.URLList to, MessageType type, Object extraHeaders, MessageBody body )
-```
-
-#### MessageResponse
-Creates an outgoing Message response taking as parameter the URLList of the recipient(s), response code and value according RFC7231. Implicitly includes RESPONSE as MessageType.   
-
-```
-createOutgoingMessageResponse(URL.URLList to, ResponseCode code, String value )
+createCommunicationDataObject(Paricipant owner, Participantlist participants)
 ```
 
-#### Parser
-Parses a given message and sets values of headers in an array (key, value) which can be retrieved through another method  getHeader(headerKey) to access different portions of the message.  It returns an instance of MessageRequest, a MessageResponse or undefined.
+#### createConversationResource
+Creates a new Hyperty Resource of type Connection
+```
+createConversationResource(Participant owner )
+```
 
+#### addConversationParticipant
+Adds a new participant to the list of participants. Note that each participant has a connectionDataObject which should be created as well (thinking: use the createConversationResource) 
 ```
-Parser.parseMessage(Message data)
+addConversationParticipant(Identity participant, HypertyResource.Connection, ,String participantStatus )
 ```
 
-#### getHeader
-This returns the value of the given key header from the MessageRequest or Messageresponse object
-
-```
-getHeader(Message data, String key)
-```
