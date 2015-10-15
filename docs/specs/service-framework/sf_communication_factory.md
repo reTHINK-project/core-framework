@@ -39,15 +39,21 @@ Generates a class object of the communication data object
 createCommunicationDataObject(Paricipant owner, Participantlist participants)
 ```
 
-#### createConversationResource
-Creates a new Hyperty Resource of type Connection
+ #### createConversationResource
+Creates a new Hyperty Resource of type ConnectionDataObject
 ```
-createConversationResource(Participant owner )
+createConversationResource(Participant owner)
 ```
 
 #### addConversationParticipant
 Adds a new participant to the list of participants. Note that each participant has a connectionDataObject which should be created as well (thinking: use the createConversationResource) 
 ```
-addConversationParticipant(Identity participant, HypertyResource.Connection connection, String participantStatus )
+addConversationParticipant(Identity participant, HypertyResource.Connection connection, String participantStatus)
+```
+
+#### removeParticipant
+Removes the given participant from the list of participants.  
+```
+removeParticipant(Identity participant, HypertyResource.Connection connection, String participantStatus)
 ```
 
