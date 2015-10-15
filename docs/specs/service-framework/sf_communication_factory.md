@@ -3,6 +3,7 @@
 The CommunicationFactory creates communication objects according to the [Communication Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/communication/readme.md). 
 
 ####Communication Object
+--------------------------------------
 The Communication Object has following class object attributes:
 * ```id``` - the identifier of the created comunication
 * ```host``` - 
@@ -30,21 +31,8 @@ The Communication Object has following class object attributes:
 * ``` remoteRtpTransportParameters``` - to be used for ORTC compliant browsers 
 * ``` localRtpTransportParameters``` - to be used for ORTC compliant browsers
  
-#####ReadMessageBody
-* ```attribute```- attribute in the object to be read
-* ```value``` - value of the read attribute
-
-#####DeleteMessageBody
-* ```attribute```- attribute in the object to be deleted
-
-#####UpdateMessageBody
-* ```attribute```- attribute in the object to be modified
-* ```value``` - new value of the attribute
-
-#####ResponseMessageBody
-* ```code```- a response code complaint to HTTP response codes (RFC7231)
-* ```value``` - data value in JSON format (used as value to read message requests)
-
+###Functions
+-----------------------
 #### MessageReqeust
 Creates an outgoing Message request taking as parameter the URLList of the recipient(s), the message type (CREATE|UPDATE|DELETE|READ|SUBSCRIBE|UNSUBSCRIBE) and body according to the message type as input. The extraHeaders object can include other  optional headers (resource, signature, contextId etc.) you wish to have included in the message.  
 
