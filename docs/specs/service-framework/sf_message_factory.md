@@ -1,7 +1,3 @@
-Service Framework APIs
------------------------
-This section describes the programmable interfaces to be implemented by the Service Framework for Hyperty Developers. These interfaces will evolve according to input received from the implementation tasks. The main functionalities of the Service Framework provide implementation of the Data types defined in D2.2.
-
 ### MessageFactory
 
 The MessageFactory creates messages according to the [Message Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message) to be send through the Runtime Message Bus. 
