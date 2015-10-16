@@ -22,6 +22,11 @@ The Communication Object has following class object attributes:
 
 #####[Connection Data Object](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_connection_factory.md)
 
+#####Hyperty Resource Data Model
+Used to model Resources shared such as audio, video, files, chat etc. for Communicator type Hyperties
+```resourceType``` String representation of CHAT|AUDIO|VIDEO|AV|SCREEN|FILE|MIDI
+```direction```String representation of IN|OUT|INOUT
+
 ###Functions
 -----------------------
 ####createCommunicationDataObject
@@ -36,7 +41,7 @@ Creates a new Hyperty Resource of type ConnectionDataObject
 createConversationResource(Participant owner)
 ```
 
-#### addConversationParticipant
+#### addParticipant
 Adds a new participant to the list of participants. Note that each participant has a connectionDataObject which should be created as well (thinking: use the createConversationResource) 
 ```
 addConversationParticipant(Identity participant, HypertyResource.Connection connection)
@@ -45,6 +50,6 @@ addConversationParticipant(Identity participant, HypertyResource.Connection conn
 #### removeParticipant
 Removes the given participant from the list of participants.  
 ```
-removeParticipant(Identity participant, HypertyResource.Connection connection, String participantStatus)
+removeParticipant(Identity participant, HypertyResource.Connection connection)
 ```
 
