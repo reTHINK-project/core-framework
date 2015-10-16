@@ -39,7 +39,7 @@ createConversationResource(Participant owner)
 #### addConversationParticipant
 Adds a new participant to the list of participants. Note that each participant has a connectionDataObject which should be created as well (thinking: use the createConversationResource) 
 ```
-addConversationParticipant(Identity participant, HypertyResource.Connection connection, String participantStatus)
+addConversationParticipant(Identity participant, HypertyResource.Connection connection)
 ```
 
 #### removeParticipant
