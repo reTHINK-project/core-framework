@@ -20,26 +20,17 @@ The Communication Object has following class object attributes:
 * ```identityObject``` - Identity Data Object as defined in the [User Identity Data Model](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/user-identity/readme.md)
 * ```connectionObject``` -  optional attribute (JWT) for access control purpose
 
+#####[Connection Data Object](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_connection_factory.md)
 
-#####Connection Data Object
-* ```status``` - 
-* ``` owner``` - Communication. participant
-* ``` localIceCandidates``` - status of the local IceCandidates (NEW|CHECKING|CONNECTED|COMPLETED|FAILED|DISCONNECTED|CLOSED) 
-* ``` remoteIceCandidates``` - status of the remote IceCandidates (NEW|CHECKING|CONNECTED|COMPLETED|FAILED|DISCONNECTED|CLOSED)
-* ``` localConnectionDescription``` - String representation of local SDP (offer) - Reporter DataObject (Reports changes made locally)
-* ``` remoteConnectionDescription``` - String representation of remote SDP (answer) - Observation DataObject (Observes changes made remotely)
-* ``` remoteRtpTransportParameters``` - to be used for ORTC compliant browsers - Observation DataObject (Observes changes made remotely)
-* ``` localRtpTransportParameters``` - to be used for ORTC compliant browsers - Reporter DataObject (Reports changes made locally)
- 
 ###Functions
 -----------------------
-#### createCommunicationDataObject
+####createCommunicationDataObject
 Generates a class object of the communication data object
 ```
 createCommunicationDataObject(Paricipant owner, Participantlist participants)
 ```
 
- #### createConversationResource
+####createConversationResource
 Creates a new Hyperty Resource of type ConnectionDataObject
 ```
 createConversationResource(Participant owner)
