@@ -6,3 +6,7 @@ The Identity Data Model is used to model the reTHINK User entity according to th
 The Identity Object has following class object attributes:
 * ```guid``` - a global unique identifier
 * ```identifiers``` -  identifiers of type UserURL
+
+###Functions
+-----------------------
+Define and specify functionalities from the [dynamic views](https://github.com/reTHINK-project/core-framework/tree/master/docs/specs/runtime/dynamic-view) that relate in creating and managing the Data Objects.
