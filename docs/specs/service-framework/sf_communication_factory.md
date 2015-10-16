@@ -18,17 +18,17 @@ The Communication Object has following class object attributes:
 
 #####Participant Data Object
 * ```identityObject``` - Identity Data Object as defined in the [User Identity Data Model](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/user-identity/readme.md)
-* ```connectionObject``` -  optional attribute (JWT) for access control purpose
+* ```resourceObject``` -  Hyperty Resource Data Object
 
 #####[Connection Data Object](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_connection_factory.md)
 
-#####Hyperty Resource Data Model
-Used to model Resources shared such as audio, video, files, chat etc. for Communicator type Hyperties
-```resourceType``` String representation of CHAT|AUDIO|VIDEO|AV|SCREEN|FILE|MIDI
-```direction```String representation of IN|OUT|INOUT
+#####[Hyperty Resource Data Model](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_hyperty_resource_factory.md)
 
 ###Functions
 -----------------------
+Define and specify functionalities from the [dynamic views](https://github.com/reTHINK-project/core-framework/tree/master/docs/specs/runtime/dynamic-view) that relate in creating and managing Hyperty Resource Data Objects.
+
+
 ####createCommunicationDataObject
 Generates a class object of the communication data object
 ```
