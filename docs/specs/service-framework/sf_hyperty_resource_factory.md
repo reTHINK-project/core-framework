@@ -1,6 +1,6 @@
 ### Hyperty Resource Factory
 
-The Hyperty Resource Factory creates [Resource Data Objects]https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md) used in the [Communication Data Factory](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_communication_factory.md). 
+The Hyperty Resource Factory creates [Resource Data Objects](https://github.com/reTHINK-project/architecture/blob/master/docs/datamodel/communication/readme.md) used in the [Communication Data Factory](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/service-framework/sf_communication_factory.md). 
 
 #####Hyperty Resource Data Model
 Used to model Resources shared such as audio, video, files, chat etc. for Communicator type Hyperties
