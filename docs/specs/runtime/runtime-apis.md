@@ -140,7 +140,7 @@ RuntimeURL discoverProtostub( DomainURL url)
 This function is used to register a new runtime sandboxes passing as input the sandbox instance and the domain URL associated to the sandbox instance.
 
 ```
-RuntimeSandbox getSandbox( DomainURL url )
+RuntimeSandbox registerSandbox( Sandbox sandbox, DomainURL url )
 ```
 
 #### getSandbox
