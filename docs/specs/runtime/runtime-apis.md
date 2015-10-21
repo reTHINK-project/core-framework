@@ -15,10 +15,10 @@ registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
 
 #### loadHyperty
 
-Deploy Hyperty from Catalogue URL
+Deploy Hyperty from Catalogue URL passing the App sandbox that will use the Hyperty.
 
 ```
-loadHyperty( URL.URL hyperty)
+loadHyperty( URL.URL hyperty, app)
 ```
 
 #### loadStub
@@ -142,7 +142,6 @@ This function is used to register a new runtime sandboxes passing as input the s
 ```
 RuntimeSandbox getSandbox( DomainURL url )
 ```
-
 
 #### getSandbox
 
@@ -292,7 +291,7 @@ Constructor to instantiate a sandbox passing as input parameter the Message Bus 
 Sandbox( MessageBUS msgbus )
 ```
 
-####  deployComponent
+#### deployComponent
 
 To download and deploy a new component in the sandbox passing as input parameters the url from where the components is downloaded, the componentURL address previously allocated to the component and its configuration.
 
@@ -300,7 +299,7 @@ To download and deploy a new component in the sandbox passing as input parameter
 deployComponent( URL.URL componentDownloadURL, URL.URL componentURL, Object configuration )
 ```
 
-####  removeComponent
+#### removeComponent
 
 To remove a component from the sandbox passing as input parameters its URL.
 
@@ -308,7 +307,7 @@ To remove a component from the sandbox passing as input parameters its URL.
 removeComponent( URL.URL componentURL )
 ```
 
-####  deployInterceptor
+#### deployInterceptor
 
 To download and deploy a new interceptor in the sandbox passing as input parameters the url from where the interceptor is downloaded, the interceptorURL address previously allocated to the interceptor, its configuration and the intercepted sandbox.
 
@@ -316,7 +315,7 @@ To download and deploy a new interceptor in the sandbox passing as input paramet
 deployInterceptor( URL.URL interceptorDownloadURL, URL.URL interceptorURL, RuntimeSandbox intercepted, Object configuration )
 ```
 
-####  removeComponent
+#### removeComponent
 
 To remove a component from the sandbox passing as input parameters its URL.
 

@@ -24,7 +24,7 @@ autonumber
 !include ../runtime_objects.plantuml
 
 
-RunUA@A <- App@A : loadHyperty\n(HypertyDescriptorURL)
+RunUA@A <- App@A : loadHyperty\n(HypertyDescriptorURL, appSandbox)
 
 == get Hyperty descriptor ==
 
@@ -61,7 +61,6 @@ alt deploy policy enforcer (see separated diagram)
 end
 
 
-BUS@A <- RunUA@A : addListener(\n hypertyListener, \nhypertyURL)
 
 RunUA@A -> RunAuth@A : sandboxing(HypertyDescriptorURL) ?
 
@@ -124,5 +123,8 @@ RunUA@A <-- Sand1@A : return component is deployed
 RunUA@A --> App@A : return Hyperty instance API stub
 
 end
+
+BUS@A <- RunUA@A : addListener(\nhypertySandbox, \nhypertyURL)
+
 
 @enduml
