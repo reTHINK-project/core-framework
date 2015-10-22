@@ -6,7 +6,11 @@
 !ifdef SHOW_RuntimeA
 
 	!ifdef SHOW_AppAtRuntimeA
-		participant "App" as App@A
+		participant "AppCoreStub" as App@A
+	!endif
+
+	!ifdef SHOW_AppSandboxAtRuntimeA
+		participant "AppSandbox" as AppSand@A
 	!endif
 
 	!ifdef SHOW_NativeAtRuntimeA
