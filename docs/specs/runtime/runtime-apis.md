@@ -5,20 +5,12 @@ This section describes the programmable interfaces to be implemented by each Hyp
 
 ### Runtime User Agent Interface
 
-#### registerHyperty
-
-Register Hyperty deployed by the App that is passed as input parameter. To be used when App and Hyperties are from the same domain otherwise the RuntimeUA will raise an exception and the App has to use the loadHyperty(..) function.
-
-```
-registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
-```
-
 #### loadHyperty
 
-Deploy Hyperty from Catalogue URL passing the App sandbox that will use the Hyperty.
+Deploy Hyperty from Catalogue URL.
 
 ```
-loadHyperty( URL.URL hyperty, app)
+loadHyperty( URL.URL hyperty)
 ```
 
 #### loadStub
@@ -47,12 +39,12 @@ discoverHyperty( CatalogueDataObject.HypertyDescriptor descriptor)
 
 ### Runtime Registry Interface
 
-#### init
+#### Constructor
 
-To initialise the Runtime Registry with the RuntimeURL that will be the basis to derive the internal runtime addresses when allocating addresses to internal runtime component. In addition, the Registry domain back-end to be used to remotely register Runtime components, is also passed as input parameter.
+To initialise the Runtime Registry with the RuntimeURL that will be the basis to derive the internal runtime addresses when allocating addresses to internal runtime component as well as the sandbox where the App is running (it is assumed there is just one App per Runtime instance). In addition, the Registry domain back-end to be used to remotely register Runtime components, is also passed as input parameter.
 
 ```
-init( HypertyRuntimeURL runtimeURL, DomainURL remoteRegistry )
+Registry( HypertyRuntimeURL runtimeURL, Sandbox app, DomainURL remoteRegistry )
 ```
 
 #### registerHyperty
@@ -150,6 +142,15 @@ This function is used to discover sandboxes available in the runtime for a certa
 ```
 RuntimeSandbox getSandbox( DomainURL url )
 ```
+
+#### getAppSandbox
+
+This function is used to return the sandbox instance where the Application is executing. It is assumed there is just one App per Runtime instance.
+
+```
+RuntimeSandbox getSandbox( DomainURL url )
+```
+
 
 #### resolve
 
