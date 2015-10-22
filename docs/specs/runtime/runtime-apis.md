@@ -5,14 +5,6 @@ This section describes the programmable interfaces to be implemented by each Hyp
 
 ### Runtime User Agent Interface
 
-#### registerHyperty
-
-Register Hyperty deployed by the App that is passed as input parameter. To be used when App and Hyperties are from the same domain otherwise the RuntimeUA will raise an exception and the App has to use the loadHyperty(..) function.
-
-```
-registerHyperty( Object hypertyInstance, URL.HypertyCatalogueURL descriptor )
-```
-
 #### loadHyperty
 
 Deploy Hyperty from Catalogue URL.
