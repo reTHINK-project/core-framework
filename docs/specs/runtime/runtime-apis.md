@@ -44,7 +44,7 @@ discoverHyperty( CatalogueDataObject.HypertyDescriptor descriptor)
 To initialise the Runtime Registry with the RuntimeURL that will be the basis to derive the internal runtime addresses when allocating addresses to internal runtime component as well as the sandbox where the App is running (it is assumed there is just one App per Runtime instance). In addition, the Registry domain back-end to be used to remotely register Runtime components, is also passed as input parameter.
 
 ```
-Registry( HypertyRuntimeURL runtimeURL, Sandbox app, DomainURL remoteRegistry )
+Registry( Object msgbus, HypertyRuntimeURL runtimeURL, Sandbox app, DomainURL remoteRegistry )
 ```
 
 #### registerHyperty
