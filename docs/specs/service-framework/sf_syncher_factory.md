@@ -88,13 +88,14 @@ stop()
 Create observations for Data Objects created by Reporter defining the Data Object URL and its schema and, optionaly, it passes a handler to process observation/reporting events (eg new report, report end, report error)
 
 ```
-<Promise> DataObjectObservation(schema, URL.URL object, (?) Object handler)
+DataObjectObservation(schema, URL.URL object, (?) Object handler)
 ```
 
 Create observations for Data Objects as invited by its reporter passing a handler to process observation/reporting events (eg new report, report end, report error)
+**MICAEL** if the create/invitation or subscription-response messages are handled by the SynchManager, this alternative doesn't make sense to exist!
 
 ```
-<Promise> DataObjectObservation(Message.CreateMessage invitation, (?) Object handler)
+DataObjectObservation(Message.CreateMessage invitation, (?) Object handler)
 ```
 
 Question: Do not quite understand how this ties to Promise Object
