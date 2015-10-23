@@ -17,13 +17,13 @@ Ask for a DataObjectReport creation, a creation request should be sent to the Po
 Promise<DataObjectReport> createReporter(Object schema, URL[] observers, (?) Object initData)
 ```
 
-##### onMessage
+##### on
 ```
-onMessage(String msgType, callback)
+on(String msgType, callback)
 ```
 Registration point for some types of events, like for example a **creation** event that can be processed like:
 ```
-onMessage('create', (evt) => {
+on('create', (evt) => {
  //decide what to do. Creation is an automatic invitation
  
  //evt.obj is of type DataObjectObservation
