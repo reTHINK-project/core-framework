@@ -1,16 +1,45 @@
-### Syncher Factory (Suggestion from Paulo-PTIN)
+### SyncherManager
 
-The Syncher Factory provides data object synchronisation for Local Data Object for reporting and Remote Data Objects for observing as described  by the [Reporter-Observer communication pattern](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/dynamic-view/basics/create-sync-data-object.md). 
+The SyncherManager provides data object synchronisation for Local Data Object for reporting and Remote Data Objects for observing as described  by the [Reporter-Observer communication pattern](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/dynamic-view/basics/create-sync-data-object.md). 
+
+##### Constructor
+```
+SyncherManager(url, postMessage)
+```
+##### postMessage
+```
+postMessage(msg)
+```
+
+##### createReporter
+Ask for a DataObjectReport creation, a creation request should be sent to the Policy Enforcer, if accepted the Promise will return the object. The same message should be forward to the observers.
+```
+Promise<DataObjectReport> createReporter(Object schema, URL[] observers, (?) Object initData)
+```
+
+##### onMessage
+```
+onMessage(String msgType, callback)
+```
+Registration point for some types of events, like for example a **creation** event that can be processed like:
+```
+onMessage('create', (evt) => {
+ //decide what to do. Creation is an automatic invitation
+ 
+ //evt.obj is of type DataObjectObservation
+ evt.obj.accept() or evt.obj.reject()
+});
+```
+It's useful to delegate some decisions to the Hyperty, User or other external system to the SyncherManager.
 
 #### DataObjectReport (or DataObjectReporting?)
 - Question: Has this been defined anywhere in the Model? 
 
 ##### Constructor
-
 Reporter creates a data object report passing as input parameters invited observers, the data object schema and, optionaly, the handler that will process events from observers (e.g. observer added, observer removed, observation request by a non invited observer). An initialisation data object may also be passed.
 
 ```
- <Promise> DataObjectReport(schema, Object observers, (?) handler, (?) Object initialisation)
+ DataObjectReport(schema, URL[] observers, (?) handler, (?) Object initialisation)
 ```
 Question: Do not quite understand how this ties to Promise Object
 
