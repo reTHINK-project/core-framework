@@ -75,3 +75,4 @@ All events listed on the class diagram are intercepted in an event handler. From
 * **SyncData** is used to access the synchronized data, and make changes on it. It's able to register listeners for data changes, based on some kind of filter.
 * **SyncSubscription** is used to get and control the status of a DataObject (local, remote, reporter or observer).
 
+**TODO** Maybe some kind of state machine diagram is needed to define better all the status, and the actions that activate the status transitions.
