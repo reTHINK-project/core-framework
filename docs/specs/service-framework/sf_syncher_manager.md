@@ -17,7 +17,7 @@ The main class for the package. Should only be available one per Hyperty/URL. It
 * subscribe(url: URL): Promise<DataObjectObserver>
 
 With these methods it's able to create Reporters or subscribe to existing ones, giving Observers.
-It has postMessage method and handler to send/receive messages.
+It has a postMessage method and handler to send/receive messages.
 
 ##### Event Handlers
 * onInvite(eventType: string, callback: (event: CreateEvent | DeleteEvent) => void): void
@@ -34,7 +34,7 @@ Read/Write reporter object. Syncronization is shared with other observers.
 * (inherited) data: JSON
 * subscriptions: [SyncSubscription]
 
-
+In addition to the inherited properties, it has a registry of all remote observers subscriptions. Since all subscriptions are instances of SyncSubscription, it's possible to read the status of the subscription and act on it (pause, resume, stop). For example, in a chat room it will be possible to kick out someone executing the stop().
 
 ##### Methods
 * (inherited) pause(): void
@@ -42,9 +42,13 @@ Read/Write reporter object. Syncronization is shared with other observers.
 * (inherited) stop(): void
 * invite(invitations: URL | [URL]): void
 
+In addition to the inherited methods, a reporter can invite an Hyperty to observe this object.
+
 ##### Event Handlers
-* onSubscription(callback: (event: SubscribeEvent | UnSubscribeEvent) => void)
 * (inherited) onChange(filter: string, callback: (event: ChangeEvent) => void): void
+* onSubscription(callback: (event: SubscribeEvent | UnSubscribeEvent) => void)
+
+In addition to the inherited handlers, the reporter can listen to subscriptions/unsubscriptions. An invitation accept can also be considered has a subscription.
 
 ### DataObjectObserver
 Read only observer object, giving a data view of a remote reporter object.
