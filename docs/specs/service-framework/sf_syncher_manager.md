@@ -20,7 +20,7 @@ With these methods it's able to create Reporters or subscribe to existing ones, 
 It has a postMessage method and handler to send/receive messages.
 
 ##### Event Handlers
-* onInvite(eventType: string, callback: (event: CreateEvent | DeleteEvent) => void): void
+* onInvite(callback: (event: CreateEvent | DeleteEvent) => void): void
 
 Receive invitations from Reporter objects. Hyperties should listen and respond accordingly, using the event methods.
 
