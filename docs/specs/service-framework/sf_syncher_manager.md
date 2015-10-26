@@ -13,8 +13,8 @@ The main class for the package. Should only be available one per Hyperty/URL. It
 ##### Methods
 * constructor(owner: URL, postMessage: (msg: Message) => void)
 * postMessage(msg: Message): void
-* create(schema: Schema, invitations?: URL | [URL], initialData?: JSON): Promise<DataObjectReporter>
-* subscribe(url: URL): Promise<DataObjectObserver>
+* create(schema: Schema, invitations?: URL | [URL], initialData?: JSON): Promise\<DataObjectReporter\>
+* subscribe(url: URL): Promise\<DataObjectObserver\>
 
 With these methods it's able to create Reporters or subscribe to existing ones, giving Observers.
 It has a postMessage method and handler to send/receive messages.
