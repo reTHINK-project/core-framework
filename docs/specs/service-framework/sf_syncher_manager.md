@@ -36,6 +36,8 @@ Read/Write reporter object. Syncronization is shared with other observers.
 
 In addition to the inherited properties, it has a registry of all remote observers subscriptions. Since all subscriptions are instances of SyncSubscription, it's possible to read the status of the subscription and act on it (pause, resume, stop). For example, in a chat room it will be possible to kick out someone executing the stop().
 
+The url of a subscription should point to the owner of the remote object, the url that is passed in the SyncherManager constructor.
+
 ##### Methods
 * (inherited) pause(): void
 * (inherited) resume(): void
@@ -43,6 +45,7 @@ In addition to the inherited properties, it has a registry of all remote observe
 * invite(invitations: URL | [URL]): void
 
 In addition to the inherited methods, a reporter can invite an Hyperty to observe this object.
+SyncSubscription methods of the reporter are used to act on all subscriptions. It's just a shortcut to call the same method in all subscriptions.
 
 ##### Event Handlers
 * (inherited) onChange(filter: string, callback: (event: ChangeEvent) => void): void
@@ -69,7 +72,9 @@ Read only observer object, giving a data view of a remote reporter object.
 
 ### Events and Handlers
 Methods fire actions and Handlers react to actions and respond accordingly.
-All events listed on the class diagram are intercepted in an event handler. From a functional perspective, methods like (accept, reject, wait, ...) are responses to an action. Since actions are represented by events, it makes sense that responses are directly related to them.
+All events listed on the class diagram are intercepted in an event handler. From a functional perspective, methods like (accept, reject, wait, ...) are responses to an action. Since actions are represented by events, it makes sense that responses are directly related to them. Some rules:
+* All events are inherited from the Event interface
+* All handlers have method signature of "on\<classifier\>(..., callback)"
 
 ### Interfaces (SyncData, SyncSubscription)
 * **SyncData** is used to access the synchronized data, and make changes on it. It's able to register listeners for data changes, based on some kind of filter.
