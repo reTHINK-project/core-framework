@@ -4,7 +4,18 @@ However Network Service Providers (NSP) can offer new functionalities that would
 
 The collaborative solution that was chosen to be tested consists of providing TURN servers by network operators with focus on API and interconnection issues. It is a pertinent solution that would allow coupling of application layer and network later, since it is based on cooperation between CSPs and NSPs. This solution would also allow steering media flow through specialized network paths even without the whole information about the signalling, since thanks to TURN a NSP can distinguish the flows. 
 
-The 
+The simplified architecture is presented below:
+                           +------+                  +------+
++----+                     |      |                  |      |                   +----+
+|    +---------------------+      +------------------+      +-------------------+    |
+|    | Access Specialized  |      |  Interco         |      | Access Specialized|    |
++----+ Network Services    |      |  Specialized     |      | Network Services  +----+
+User A                     |      |  Network Services|      |                   User B
+                           +------+                  +------+
+                            TURN                      TURN
+                            Server                    Server
+
+
 
 
 However, several aspects stay important:
