@@ -8,7 +8,7 @@ The
 
 
 However, several aspects stay important:
--To prove the relevance of specialized network paths and QoS treatment:
+*To prove the relevance of specialized network paths and QoS treatment:
     * Comparison of communication when using TURN servers versus simple communication peer-to-peer.
     * Assessment of QoS impact. Comparison of routing with QoS and without in the presence of different network conditions. 
 -Brokering and universal API issues. 
