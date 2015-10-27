@@ -7,11 +7,12 @@ Although some properties, methods and event handlers are subject to change. The 
 The main class for the package. Should only be available one per Hyperty/URL. It's the owner of all kind of DataObjects.
 
 ##### Properties
+* owner: URL
 * observers: [DataObjectObserver]
 * reporters: [DataObjectReporter]
 
 ##### Methods
-* constructor(owner: URL, postMessage: (msg: Message) => void)
+* constructor(owner: URL, config: Config, postMessage: (msg: Message) => void)
 * postMessage(msg: Message): void
 * create(schema: Schema, invitations?: URL | [URL], initialData?: JSON): Promise\<DataObjectReporter\>
 * subscribe(url: URL): Promise\<DataObjectObserver\>
