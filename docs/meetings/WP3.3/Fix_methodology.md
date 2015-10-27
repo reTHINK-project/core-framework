@@ -8,13 +8,13 @@ The
 
 
 However, several aspects stay important:
-*To prove the relevance of specialized network paths and QoS treatment:
+- To prove the relevance of specialized network paths and QoS treatment:
     * Comparison of communication when using TURN servers versus simple communication peer-to-peer.
     * Assessment of QoS impact. Comparison of routing with QoS and without in the presence of different network conditions. 
--Brokering and universal API issues. 
--Usage of TURN servers 
+- Brokering and universal API issues. 
+- Usage of TURN servers 
 That is why a Proof of Concept was created. Its principal objectives are:
--Assessment of feasibility and relevance of using TURN-based value added network services offered by network service providers. 
--Possibility of analysing business models and relations between different actors.
+- Assessment of feasibility and relevance of using TURN-based value added network services offered by network service providers. 
+- Possibility of analysing business models and relations between different actors.
 
 
