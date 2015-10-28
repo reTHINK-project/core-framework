@@ -42,24 +42,24 @@ The implementation consists of:
 - Two users participating in a WebRTC call. 
       - Users use Chrome browser since it allows DSCP packet marking. Users have a choice between best-effort and specialized service.
 - TURN server used for flow identification and authorisation.
-      - So far normal authentification is used (based on user credentials) but later OAuth is preferred.  
-- HomeGateway differantiating the flows.
-      - Different queue management mechanisms can be used. The objective is to fined an optimal configuration.
+      - So far normal authentication is used (based on user credentials) but later OAuth is preferred.  
+- HomeGateway differentiating the flows.
+      - Different queue management mechanisms can be used. The objective is to find an optimal configuration.
 - PC sending the concurrent traffic.
       - Upload server based on nodejs is used. Also other options of concurrent traffic are possible, e.g. torrent, private cloud, etc.
 
 ![General demo architecture](./images/demo_architecture.png)
  
- Furthermore after each call, the statistics are collected. getStats function is used to get application layer statistics. Additionally Wireshark can be used to measuter network performances, e.g. bandwidth share.
+ Furthermore after each call, the statistics are collected. getStats function is used to get application layer statistics. Additionally Wireshark can be used to measure network performances, e.g. bandwidth share.
  
 ## Without Specialized Network Services
-First part of the demo consists of observing how the WebRTC traffic behaves withouth Specialized Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same queue at the HomeGateway.
+First part of the demo consists of observing how the WebRTC traffic behaves without Specialized Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurrent traffic are put in the same queue at the HomeGateway.
 In this case the degradation of the WebRTC quality can be observed, e.g. video frame becomes smaller, different freezes or disconnections can be seen.
 ![Demo - scenario without Specialized Network Services](./images/demo_part1.png)
 
 ## With Specialized Network Services
-Thesecond part of the demos consists of observing how the WebRTC traffic behaves with Specialized Network Services, i.e. when there is a differentiated treatlent of WebRTC and best-effort traffic. That means that at the HomeGateway, WebRTC traffic is in different queue than the concurrent traffic. Already the separation of the traffic improves the quality but additinally WebRTC queue has a slightly better priorirty.
-In this case the WebRTC quality does not get as degradated as previously.
+The second part of the demos consists of observing how the WebRTC traffic behaves with Specialized Network Services, i.e. when there is a differentiated treatment of WebRTC and best-effort traffic. That means that at the HomeGateway, WebRTC traffic is in different queue than the concurrent traffic. Already the separation of the traffic improves the quality but additionally WebRTC queue has a slightly better priority.
+In this case the WebRTC quality does not get as degraded as previously.
 ![Demo - scenario with Specialized Network Services](./images/demo_part2.png)
 
 
