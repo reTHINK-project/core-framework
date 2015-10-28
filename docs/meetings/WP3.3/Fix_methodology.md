@@ -42,6 +42,9 @@ The implementation consists of:
 - HomeGateway differantiating the flows.
 - PC sending the concurrent traffic.
 
-- PUT THE PICTURE OF THE DEMP
+- PUT THE PICTURE OF THE DEMO
+## Without Specialized Network Services
+First part of the demo consists of observing how the WebRTC traffic behaves withouth Specializen Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same buffer at the HomeGateway.
 
+##
 
