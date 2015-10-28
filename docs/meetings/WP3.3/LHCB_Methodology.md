@@ -16,5 +16,10 @@ The client continiously updates its information, i.e. its attribute's context, a
 
 ## Obtaining Information about a Client ##
 
+In order to obtain connectivity information, independent from the underlying network core technology, from a client, any reThink compnent may contact the reThink Registry Service querying the latter based on the client's identity for the Hyperty ID of the LHCB that the cient choose to provide its connectivity information.  Using this Hyperty ID, the reThink components obtains from a Catalogue the corresponding Hyperty which in turn privides the same access information of the LHCB that the client obtained previsously.
+
+As a result, the reThink component may contact the LHCB and read the information about the client; it may even subscribe to the information to avoid contineously pulling the LCHB to detect any changes in the client's connectivity related attributes.  
 
 ## Triggering Connection Suggestions ##
+
+Once the component whishes to suggest using an alternative connection means for the client, it may update a corresponding attribute in the LHCB, which is propagated to the client who may evantually choose to follow the suggested connection change.
