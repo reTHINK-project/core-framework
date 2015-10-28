@@ -5,6 +5,12 @@ In reThink, the methodolgoy for last hop connectivity brokerage is based on dyna
 
 ## Architectural components of the LHCB ##
 
+## LHCB Use Cases ##
+
+The following figure provides on overview of the LHCB Use Cases considered in reThink.
+
+[LHCH UseCases](LHCB_UseCases)
+
 ## Client registration at the LHCB ##
 
 The client registers at the LHCB if it chooses to provide information about avialable, alternative connectivity means to connect to the network.
