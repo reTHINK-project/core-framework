@@ -9,7 +9,7 @@ However Network Service Providers (NSP) can offer new functionalities that would
 The collaborative solution that was chosen to be tested consists of providing TURN servers by network operators with focus on API and interconnection issues. It is a pertinent solution that would allow coupling of application layer and network later, since it is based on cooperation between CSPs and NSPs. This solution would also allow steering media flow through specialized network paths even without the whole information about the signalling, since thanks to TURN a NSP can distinguish the flows. 
 
 The simplified architecture is presented below:
-- PUT THE PICTURE TURN/BROKER ARCHITECTURE
+![Simplified architecture of a collaborative solution based on TURN servers](./images/architecture_turn.png)
 
 The advantages of this solution:
 - Collaborative approach with focus on B2B2C business model and on “in-network” collaborative approach.
@@ -43,17 +43,17 @@ The implementation consists of:
 - HomeGateway differantiating the flows.
 - PC sending the concurrent traffic.
 
-- PUT THE general PICTURE OF THE DEMO
-- 
+![General demo architecture](./images/demo_architecture.png)
+ 
 ## Without Specialized Network Services
 First part of the demo consists of observing how the WebRTC traffic behaves withouth Specialized Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same queue at the HomeGateway.
 In this case the degradation of the WebRTC quality can be observed, e.g. video frame becomes smaller, different freezes or disconnections can be seen.
-- PUT THE PICTURE OF THE DEMO part 1
+![Demo - scenario without Specialized Network Services](./images/demo_part1.png)
 
 ## With Specialized Network Services
 Thesecond part of the demos consists of observing how the WebRTC traffic behaves with Specialized Network Services, i.e. when there is a differentiated treatlent of WebRTC and best-effort traffic. That means that at the HomeGateway, WebRTC traffic is in different queue than the concurrent traffic. Already the separation of the traffic improves the quality but additinally WebRTC queue has a slightly better priorirty.
 In this case the WebRTC quality does not get as degradated as previously.
-- PUT THE PICTURE OF THE DEMO part 2
+![Demo - scenario with Specialized Network Services](./images/demo_part2.png)
 
 
 
