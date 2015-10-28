@@ -35,6 +35,7 @@ There are several reasons why offering Specialized Network Services to fix netwo
 - Congestion is mostly caused by peer to peer traffic that changes throughout the day, but also by Content Delivery Network (CDN) providers that assure routing management at the application layer based on their own criteria.
 - Even in the absence of congestion, when the global demand of bandwidth is satisfied, there may still be insufficient web real-time communication services that are processed as best-effort, hence dedicated specialized network service offered by network operators may fill the gap.
 
+##Architecture
 The implementation consists of: 
 - Web CSP providing WebRTC application. 
 - Two users participating in a WebRTC call. 
@@ -42,9 +43,19 @@ The implementation consists of:
 - HomeGateway differantiating the flows.
 - PC sending the concurrent traffic.
 
-- PUT THE PICTURE OF THE DEMO
+- PUT THE general PICTURE OF THE DEMO
+- 
 ## Without Specialized Network Services
-First part of the demo consists of observing how the WebRTC traffic behaves withouth Specializen Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same buffer at the HomeGateway.
+First part of the demo consists of observing how the WebRTC traffic behaves withouth Specialized Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same queue at the HomeGateway.
+In this case the degradation of the WebRTC quality can be observed, e.g. video frame becomes smaller, different freezes or disconnections can be seen.
+- PUT THE PICTURE OF THE DEMO part 1
 
-##
+## With Specialized Network Services
+Thesecond part of the demos consists of observing how the WebRTC traffic behaves with Specialized Network Services, i.e. when there is a differentiated treatlent of WebRTC and best-effort traffic. That means that at the HomeGateway, WebRTC traffic is in different queue than the concurrent traffic. Already the separation of the traffic improves the quality but additinally WebRTC queue has a slightly better priorirty.
+In this case the WebRTC quality does not get as degradated as previously.
+- PUT THE PICTURE OF THE DEMO part 2
+
+
+
+
 
