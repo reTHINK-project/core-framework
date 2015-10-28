@@ -12,11 +12,10 @@ The simplified architecture is presented below:
 - put picture TURN/broker architecture
 
 The advantages of this solution:
-•	Collaborative approach with focus on B2B2C business model and on “in-network” collaborative approach.
-•	Impacts different network types and segments.
-•	Compatible with existing solutions, can be introduced incrementally.
-•	In line with technological choices of web companies and with evolution of different standards and terminals.
-
+- Collaborative approach with focus on B2B2C business model and on “in-network” collaborative approach.
+- Impacts different network types and segments.
+- Compatible with existing solutions, can be introduced incrementally.
+- In line with technological choices of web companies and with evolution of different standards and terminals.
 
 Several aspects stay important:
 - To prove the relevance of specialized network paths and QoS treatment:
@@ -29,7 +28,14 @@ That is why a Proof of Concept was created. Its principal objectives are:
 - Assessment of feasibility and relevance of using TURN-based value added network services offered by network service providers. 
 - Possibility of analysing business models and relations between different actors.
 
-The Proofof Concept focuses on access, fix networks. 
+#Proof of Concept
+The Proof of Concept focuses on access, fix networks. 
+There are several reasons why offering Specialized Network Services to fix networks is important.
+- The number of devices on a single link in wireline access networks is increasing. These devices are mostly used for peer to peer applications with video and rich media content. Since there is no overprovisioning at this point, congestions can be created.
+- Congestion is mostly caused by peer to peer traffic that changes throughout the day, but also by Content Delivery Network (CDN) providers that assure routing management at the application layer based on their own criteria.
+- Even in the absence of congestion, when the global demand of bandwidth is satisfied, there may still be insufficient web real-time communication services that are processed as best-effort, hence dedicated specialized network service offered by network operators may fill the gap.
+
+
 The implementation consists of CSP: 
 - Web Server providing WebRTC application. 
 - Two users participating in a WebRTC call. 
