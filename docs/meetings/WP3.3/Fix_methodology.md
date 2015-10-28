@@ -31,19 +31,26 @@ That is why a Proof of Concept was created. Its principal objectives are:
 #Proof of Concept
 The Proof of Concept focuses on access, fix networks. 
 There are several reasons why offering Specialized Network Services to fix networks is important.
-- The number of devices on a single link in wireline access networks is increasing. These devices are mostly used for peer to peer applications with video and rich media content. Since there is no overprovisioning at this point, congestions can be created.
+- The number of devices on a single link in wireline access networks is increasing. These devices are mostly used for peer to peer applications with video and rich media content. Since there is no overprovisioning in this network segment, congestions can be created.
 - Congestion is mostly caused by peer to peer traffic that changes throughout the day, but also by Content Delivery Network (CDN) providers that assure routing management at the application layer based on their own criteria.
 - Even in the absence of congestion, when the global demand of bandwidth is satisfied, there may still be insufficient web real-time communication services that are processed as best-effort, hence dedicated specialized network service offered by network operators may fill the gap.
 
 ##Architecture
 The implementation consists of: 
-- Web CSP providing WebRTC application. 
+- Web CSP providing WebRTC application
+      - nodejs is used to create a simple WebRTC server 
 - Two users participating in a WebRTC call. 
+      - Users use Chrome browser since it allows DSCP packet marking. Users have a choice between best-effort and specialized service.
 - TURN server used for flow identification and authorisation.
+      - So far normal authentification is used (based on user credentials) but later OAuth is preferred.  
 - HomeGateway differantiating the flows.
+      - Different queue management mechanisms can be used. The objective is to fined an optimal configuration.
 - PC sending the concurrent traffic.
+      - Upload server based on nodejs is used. Also other options of concurrent traffic are possible, e.g. torrent, private cloud, etc.
 
 ![General demo architecture](./images/demo_architecture.png)
+ 
+ Furthermore after each call, the statistics are collected. getStats function is used to get application layer statistics. Additionally Wireshark can be used to measuter network performances, e.g. bandwidth share.
  
 ## Without Specialized Network Services
 First part of the demo consists of observing how the WebRTC traffic behaves withouth Specialized Network Services, i.e. when the WebRTC traffic is treated as any other best-effort traffic. That means that WebRTC traffic and concurent traffic are put in the same queue at the HomeGateway.
