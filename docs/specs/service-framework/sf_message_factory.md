@@ -2,8 +2,9 @@
 
 The MessageFactory creates messages according to the [Message Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message) to be send through the Runtime Message Bus. 
 
-####Message Object
-The Message Object has following class object attributes:
+
+####Class Message
+The Message Class has following class attributes:
 * ```id``` - the identifier to be used to associate Response messages to the initial request message
 * ```type``` - the type of message (CREATE|UPDATE|DELETE|READ|SUBSCRIBE|UNSUBSCRIBE|RESPONSE)
 * ```contextID``` - GUID used to identify the context for example communication session
@@ -12,28 +13,31 @@ The Message Object has following class object attributes:
 * ```resourceURL``` - the URL of the reTHINK Data Object resource associated with this message. Used for routing purposes.
 * ```messageBody``` - from the MessageBody data object
 
-####MessageBody Object
+####MessageType (Enumeration)
+``` 
+var MessageType = new enums.Enum("CREATE", "UPDATE", "DELETE", "READ", "SUBSCRIBE", "UNSUBSCRIBE", "RESPONSE");
+```
+
+####Class MessageBody
 * ```idToken``` - optional attribute (JWT) for Identity assertion purpose
 * ```accessToken``` -  optional attribute (JWT) for access control purpose
-* ```messageBodyType``` - Object representing the body type (CREATE|UPDAE|DELETE|READ|SUBSCRIBE|UNSUBSCRIBE|RESPONSE)
 
-Five different type of MessageBodyType Objects have been specified
-#####CreateMessageBody
+#####Class CreateMessageBody extends MessageBody
 * ```policyURL``` - URL from where to download the access policy control
 * ```value``` - JSON formatted data to create (TODO: has this been specified on any document so far?)
  
-#####ReadMessageBody
+#####Class ReadMessageBody extends MessageBody
 * ```attribute```- attribute in the object to be read
 * ```value``` - value of the read attribute
 
-#####DeleteMessageBody
+#####Class DeleteMessageBody extends MessageBody
 * ```attribute```- attribute in the object to be deleted
 
-#####UpdateMessageBody
+#####Class UpdateMessageBody extends MessageBody
 * ```attribute```- attribute in the object to be modified
 * ```value``` - new value of the attribute
 
-#####ResponseMessageBody
+#####Class ResponseMessageBody extends MessageBody
 * ```code```- a response code complaint to HTTP response codes (RFC7231)
 * ```value``` - data value in JSON format (used as value to read message requests)
 
