@@ -48,8 +48,8 @@ The MessageFactory creates messages according to the [Message Data Model](https:
 * ```constructor(...)```
 * ```createMessageRequest(URL.URLList to, MessageType type, Object extraHeaders, MessageBody body )```
 * ```createDeleteMessageRequest(Message data)```
-* ```createUpdateMessageRequest(Message, String attribute, String value)```
-* ```createReadMessageRequest(Message, String attribute, String criteria, String criteriaSyntax)```
-* ```createResponse(URL.URLList to, ResponseCode code, String value )```
-* ```getHeader(Message data, String key)```
-* ```getBody(Message data) -> returns the message body```
+* ```createUpdateMessageRequest(Message data, String attribute, String value)```
+* ```createReadMessageRequest(Message data, String attribute, String criteria, String criteriaSyntax)```
+* ```createResponse(Message data, ResponseCode code)```
+* ```getHeader(Message data, String key) returns String```
+* ```getBody(Message data): returns JSON object```
