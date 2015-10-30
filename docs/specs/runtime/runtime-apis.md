@@ -129,12 +129,12 @@ RuntimeURL discoverProtostub( DomainURL url)
 
 #### registerSandbox
 
-This function is used to register a new runtime sandboxes passing as input the sandbox instance and the domain URL associated to the sandbox instance.
+This function is used to register a new runtime sandboxes passing as input the sandbox instance and the sandbox type ("hyperty", "protostub", "app", "interceptor").
 
 ```
-RuntimeSandbox registerSandbox( Sandbox sandbox, DomainURL url )
+RuntimeSandbox registerSandbox( Sandbox sandbox, String type )
 ```
-
+a
 #### getSandbox
 
 This function is used to discover sandboxes available in the runtime for a certain domain. It is required by the runtime UA to avoid more than one sandbox for the same domain.
@@ -194,14 +194,6 @@ To initialise the Hyperty instance including as input parameters its allocated H
 
 ```
 init( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
-```
-
-#### postMessage
-
-To post messages to be received by the Hyperty instance
-
-```
-postMessage(Message.Message message)
 ```
 
 ### Policy Enforcer Interface
