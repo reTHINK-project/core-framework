@@ -1,5 +1,6 @@
 ### Message and MessageFactory
 
+![Message Module Package](message module.png)
 ####Class Message
 The Message Class has following class attributes:
 * ```id``` - the identifier to be used to associate Response messages to the initial request message
