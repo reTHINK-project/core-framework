@@ -172,18 +172,10 @@ postMessage( Message.Message message )
 
 #### addListener
 
-To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. Messages are routed to input parameter "redirectTo" in case listener is not in the Core Runtime. This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object.
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url.  This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object. In case ```url = "*"``` the listener is called in case there is no other listener registered for the ```Message.to```.
 
 ```
-MsgListener addListener( URL.URL url, listener, URL.URL redirectTo )
-```
-
-#### addInterceptor
-
-To add an interceptor (eg a Policy Enforcer) which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "interceptorURL" are not intercepted. To remove the interceptor just call remove() function from returned object. This function is only accessible by internal Core Components.
-
-```
-Interceptor addInterceptor( URL.URL interceptedURL, listener, URL.URL interceptorURL, )
+MsgListener addListener( URL.URL url, listener )
 ```
 
 ### Hyperty Interface
@@ -196,32 +188,26 @@ To initialise the Hyperty instance including as input parameters its allocated H
 init( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 ```
 
-### Policy Enforcer Interface
+### Interceptor Interface
 
-#### init
+*probably this interface won't be need and all the procedures will be handled by the sandbox.deployInterceptor(). to be further studied*
 
-To initialise the Policy Enforcer including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked to send messages and the url of the Hyperty associated to the Policy Enforcer (it will forward received and processed messages to this address).
+#### Constructor
 
-```
-init( URL.RuntimeURL pepURL, bus.postMessage , HypertyURL hyperty)
-```
-
-#### postMessage
-
-To receive messages from the message BUS
+To create an Interceptor it is required as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked to send messages and the url of the Hyperty associated to the Policy Enforcer (it will forward received and processed messages to this address).
 
 ```
-postMessage(Message.Message message)
+Interceptor( URL.RuntimeURL pepURL, postMessageFunction , HypertyURL hyperty)
 ```
 
 ### protoStub Interface
 
-#### init
+#### Construtor
 
 To initialise the Protocol Stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the Protocol Stub and required configuration retrieved from protocolStub descriptor.
 
 ```
-init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+protostub( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 ```
 
 #### connect
