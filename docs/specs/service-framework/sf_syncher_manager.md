@@ -12,8 +12,7 @@ The main class for the package. Should only be available one per Hyperty/URL. It
 * reporters: [DataObjectReporter]
 
 ##### Methods
-* constructor(owner: URL, config: Config, postMessage: (msg: Message) => void)
-* postMessage(msg: Message): void
+* constructor(owner: URL, bus: MiniBus, config: Config)
 * create(schema: Schema, invitations?: URL | [URL], initialData?: JSON): Promise\<DataObjectReporter\>
 * subscribe(url: URL): Promise\<DataObjectObserver\>
 
@@ -21,7 +20,7 @@ With these methods it's able to create Reporters or subscribe to existing ones, 
 It has a postMessage method and handler to send/receive messages.
 
 ##### Event Handlers
-* onInvite(callback: (event: CreateEvent | DeleteEvent) => void): void
+* onInvite(callback: (event: CreateEvent | DeleteEvent | ReplyEvent) => void): void
 
 Receive invitations from Reporter objects. Hyperties should listen and respond accordingly, using the event methods.
 
