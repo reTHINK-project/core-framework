@@ -1,7 +1,7 @@
 ### Hyperty Decriptor, Catalogue Data Objects
 The Hyperty Decriptor module implements a couple of classes from the specified [CatalogueDataObject](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue) in D2.2.
 
-####Class CatalogueDataObject
+####class CatalogueDataObject
 The CatalogueDataObject Class has following class attributes:
 * ```guid``` - string
 * ```id``` - string
@@ -16,19 +16,19 @@ The CatalogueDataObject Class has following class attributes:
 var HypertyType = new enums.Enum("COMMUNICATOR", "IDENTITY", "CONTEXT");
 ```
 
-####Class HypertyDescriptor extends CatalogueDataObject
+####class HypertyDescriptor extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
  
-#####Class ProtoStubDescriptor extends CatalogueDataObject (Sync with Steffen)
+####class ProtoStubDescriptor extends CatalogueDataObject (Sync with Steffen)
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
-#####Class HypertyRuntimeDescriptor extends CatalogueDataObject
+####class HypertyRuntimeDescriptor extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
-#####Class PolicyEnforcerDescriptor extends CatalogueDataObject
+####class PolicyEnforcerDescriptor extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
-#####Class DataObjectsSchema extends CatalogueDataObject
+####Class DataObjectsSchema extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
 
