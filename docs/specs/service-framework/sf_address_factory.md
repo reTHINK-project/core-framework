@@ -7,7 +7,7 @@ The Address Resource Factory creates the different types of URLs required as spe
 All the attributes below are internally getter/setters functions. In the setter functions value validation will be included. 
 
 * ```href``` - It allows to get and set the complete URL string.
-* ```scheme``` - It allows to get and set the scheme of the URL. In traditional URL it defines the protocol for which the URL was intended for.
+* ```scheme``` - It allows to get and set the scheme of the URL. In traditional URL it defines the protocol for which the URL was intended for. It can be any of the schemes defined in reTHINK: domain, hyperty, hyperty-catalogue, hyperty-runtime, comm, ctxt, acct, user-uuid and user. 
 * ```username``` - It allows to get and set the username of the URL.
 * ```password``` - It allows to get and set the password of the URL.
 * ```host``` - It allows to get and set the host of the URL.
