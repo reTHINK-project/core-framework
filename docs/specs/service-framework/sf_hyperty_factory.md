@@ -37,10 +37,10 @@ The CatalogueDataObjectFactory creates data objects according to the [Catalogue 
 
 ####Methods
 * ```constructor()```
-* ```<CatalogueDataObject> createCatalogueDataObject(String jsonString)```
-* ```<HypertyDescriptor> createHypertyDescriptorObject(String jsonString)```
-* ```<ProtoStubDescriptor> createProtoStubDescriptorObject(string jsonString)```
-* ```<HypertRuntimeDescriptor> createHypertRuntimeDescriptorObject(jsonString)```
-* ```<PolicyEnforcerDescriptor> createPolicyEnforcerDescriptorObject(jsonString)```
-* ```<DataObjectsSchema> createDataObjectSchema(jsonString) ```
+* ```createCatalogueDataObject(String jsonString) : <CatalogueDataObject> ```
+* ```createHypertyDescriptorObject(String jsonString) : <HypertyDescriptor> ```
+* ```createProtoStubDescriptorObject(string jsonString) : <ProtoStubDescriptor> ```
+* ```createHypertRuntimeDescriptorObject(jsonString) : <HypertRuntimeDescriptor> ```
+* ```createPolicyEnforcerDescriptorObject(jsonString) : <PolicyEnforcerDescriptor>```
+* ```createDataObjectSchema(jsonString) : <DataObjectsSchema>```
 
