@@ -9,14 +9,23 @@ The Identity Object has following class object attributes:
 
 ####IdAssertion Object
 The IdAssertion  Object has following class object attributes:
-* ```assertion``` - 
-* ```idp``` -  
-* ```scope``` -  
+* ```assertion``` - An identity assertion. This is an opaque string that must contain all information necessary to assert identity. This value is consumed by the validating IdP. (defined in http://w3c.github.io/webrtc-pc/)
+* ```idp``` -  An IdP provides these details to identify the IdP that validates the identity assertion. This struct contains the same information that is provided to setIdentityProvider. (defined in http://w3c.github.io/webrtc-pc/)
+* ```scope``` -  type string
+
+Identity may also handle Identity Assertions (IdAssertion) to validate some of its identitiers (IdValidation) in certain scopes e.g. in a communication.
+
+IdentityAssertion should be compliant with WebRTC RTCIdentityAssertionResult
+
 
 #####IdValidation Object
 The IdValidation Object has following class object attributes:
-* ```identity``` - 
-* ```contents``` -  
+* ```identity``` -  The validated identity of the peer. (defined in http://w3c.github.io/webrtc-pc/)
+* ```contents``` -  The payload of the identity assertion. (defined in http://w3c.github.io/webrtc-pc/). An IdP that validates an identity assertion must return the same string that was provided to the original IdP that generated the assertion.
+The user agent uses the contents string to determine if the identity assertion matches the session description.
+
+
+IdValidation should be compliant with WebRTC RTCIdentityValidationResult.
 
 ####ServiceAddress Object
 The ServiceAddress Object has following class object attributes:
