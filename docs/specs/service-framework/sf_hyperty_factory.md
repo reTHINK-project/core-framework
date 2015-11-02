@@ -4,10 +4,10 @@ The Hyperty Decriptor module implements a couple of classes from the specified [
 ####class CatalogueDataObject
 The CatalogueDataObject Class has following class attributes:
 * ```guid``` - string
-* ```id``` - string (to be renamed to name based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
-* ```classname``` - string (to be removed based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
+* ```id ?``` - string (to be renamed to name based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
+* ```classname ?``` - string (to be removed based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
 * ```description``` - string
-* ```domain``` - URL.DomainURL string (to be removed based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
+* ```domain ?``` - URL.DomainURL string (to be removed based on discussions [here](https://github.com/reTHINK-project/architecture/issues/64#issuecomment-152624482))
 * ```sourceCode``` - URL.URL
 
 
