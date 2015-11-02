@@ -19,9 +19,9 @@ All the attributes below are internally getter/setters functions. In the setter 
 
 ###Functions
 * ```constructor(url, base)``` - Constructor function
-* ```validateScheme()``` - this function allows to validate if the URL is totally compliant with any of the schemes define for reTHINK. 
-* ```urlToASCII(domain)``` - This function return the URL in ASCII code
-* ```urlToUnicode(domain)``` - This function returns the URL in unicode
+* ```validateScheme()``` - this function validates if the URL is syntactically compliant with any of the schemes defined for reTHINK. It will also validate standard schemes.
+* ```urlToASCII(domain)``` - This function return the URL in ASCII code (to be discussed if it's necessary)
+* ```urlToUnicode(domain)``` - This function returns the URL in unicode (to be discussed if it's  necessary)
 
 
 -----------------------
