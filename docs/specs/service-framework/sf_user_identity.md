@@ -13,20 +13,24 @@ The IdAssertion  Object has following class object attributes:
 * ```idp``` -  
 * ```scope``` -  
 
-####IdValidation Object
+#####IdValidation Object
 The IdValidation Object has following class object attributes:
 * ```identity``` - 
 * ```contents``` -  
 
 ####ServiceAddress Object
 The ServiceAddress Object has following class object attributes:
-* ```address``` - 
+* ```address``` -
+
+#####ServiceType Object
+The ServiceType can be : E164_TELEPHONY, VOIP_SIP, EMAIL, W3C_PUSH, TWITTER
 
 ####AuthenticationData Object
 
 #####IDToken
 
-
+#####JWT
+JSON Web Token
 
 ####AuthorisationData Object
 
@@ -39,3 +43,15 @@ The UserProfile Object has following class object attributes:
 ###Functions
 -----------------------
 Define and specify functionalities from the [dynamic views](https://github.com/reTHINK-project/core-framework/tree/master/docs/specs/runtime/dynamic-view) that relate in creating and managing the Data Objects.
+
+User registration
+
+Discovery
+
+Domain login
+
+User Identity assertion
+
+User to hyperty binding
+
+
