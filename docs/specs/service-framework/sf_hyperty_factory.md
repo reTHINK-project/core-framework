@@ -28,7 +28,7 @@ var HypertyType = new enums.Enum("COMMUNICATOR", "IDENTITY", "CONTEXT");
 ####class PolicyEnforcerDescriptor extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
-####Class DataObjectsSchema extends CatalogueDataObject
+####class DataObjectsSchema extends CatalogueDataObject
 * class attributes as specified in [D2.2 Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/hyperty-catalogue)
 
 
@@ -37,10 +37,10 @@ The CatalogueDataObjectFactory creates data objects according to the [Catalogue 
 
 ####Methods
 * ```constructor()```
-* ```createCatalogueDataObject(String jsonString)```
-* ```createHypertyDescriptorObject(String jsonString)```
-* ```createProtoStubDescriptorObject(string jsonString)```
-* ```createHypertRuntimeDescriptor(jsonString)```
-* ```createPolicyEnforcerDescriptor(jsonString)```
-* ```createDataObjectSchema(jsonString) ```
+* ```<CatalogueDataObject> createCatalogueDataObject(String jsonString)```
+* ```<HypertyDescriptor> createHypertyDescriptorObject(String jsonString)```
+* ```<ProtoStubDescriptor> createProtoStubDescriptorObject(string jsonString)```
+* ```<HypertRuntimeDescriptor> createHypertRuntimeDescriptorObject(jsonString)```
+* ```<PolicyEnforcerDescriptor> createPolicyEnforcerDescriptorObject(jsonString)```
+* ```<DataObjectsSchema> createDataObjectSchema(jsonString) ```
 
