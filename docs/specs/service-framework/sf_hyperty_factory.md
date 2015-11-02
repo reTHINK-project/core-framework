@@ -35,7 +35,7 @@ var HypertyType = new enums.Enum("COMMUNICATOR", "IDENTITY", "CONTEXT");
 #### class CatalogueDataObjectFactory
 The CatalogueDataObjectFactory creates data objects according to the [Catalogue Data Object Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message) and the different descriptor sub classed. 
 
-####Methods
+####Functions
 * ```constructor()```
 * ```createCatalogueDataObject(String jsonString) : <CatalogueDataObject> ```
 * ```createHypertyDescriptorObject(String jsonString) : <HypertyDescriptor> ```
