@@ -49,10 +49,10 @@ Registry( Object msgbus, HypertyRuntimeURL runtimeURL, Sandbox app, DomainURL re
 
 #### registerHyperty
 
-To register a new Hyperty in the runtime passing as input parameters the postMessage function to be called to post a message to the hyperty and its descriptor. This function returns the HypertyURL allocated to the new Hyperty.
+To register a new Hyperty in the runtime passing as input parameters the sandbox instance where the Hyperty is deployed and its descriptor URL. This function returns the HypertyURL allocated to the new Hyperty.
 
 ```
-HypertyURL registerHyperty( postMessage, HypertyCatalogueURL descriptor)
+HypertyURL registerHyperty( Sandbox sandbox, HypertyCatalogueURL descriptorURL)
 ```
 
 #### unregisterHyperty
@@ -65,10 +65,10 @@ To unregister a previously registered Hyperty
 
 #### registerStub
 
-To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
+To register a new Protocol Stub in the runtime including as input parameters the sandbox where ProtocolStub is deployed, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
 
 ```
-HypertyRuntimeURL registerStub( postMessage, DomainURL )
+HypertyRuntimeURL registerStub( sandbox, DomainURL )
 ```
 
 #### unregisterStub
@@ -95,20 +95,20 @@ To unregister a previously registered Data Object
  unregisterDataObject( URL.URL url )
 ```
 
-#### registerPEP
+#### registerInterceptor
 
-To register a new Policy Enforcer in the Hyperty Runtime including as input parameters the function to postMessage, the HypertyURL associated with the PEP, which returns the RuntimeURL allocated to the new Policy Enforcer component.
+To register a new Interceptor in the Hyperty Runtime including as input parameters the sandbox where the Interceptor is deployed, the URL associated with the intercepted component, which returns the RuntimeURL allocated to the new Interceptor component.
 
 ```
-HypertyRuntimeURL registerPEP( postMessage, HypertyURL hyperty )
+HypertyRuntimeURL registerInterceptor( sandbox, HypertyURL hyperty )
 ```
 
-#### unregisterPEP
+#### unregisterInterceptor
 
 To unregister a previously registered Protocol Stub
 
 ```
- unregisterPEP( HypertyRuntimeURL )
+ unregisterInterceptor( HypertyRuntimeURL )
 ```
 
 #### onEvent
@@ -134,13 +134,13 @@ This function is used to register a new runtime sandboxes passing as input the s
 ```
 RuntimeSandbox registerSandbox( Sandbox sandbox, String type )
 ```
-a
+
 #### getSandbox
 
-This function is used to discover sandboxes available in the runtime for a certain domain. It is required by the runtime UA to avoid more than one sandbox for the same domain.
+This function is used to discover sandboxes available in the runtime for a certain URL. It is required by the runtime UA to avoid the creation of more than one protocol stub sandbox or to discover the sandbox where an component identified by the "url" is executing.
 
 ```
-RuntimeSandbox getSandbox( DomainURL url )
+Sandbox getSandbox( URL.URL url )
 ```
 
 #### getAppSandbox
@@ -148,9 +148,8 @@ RuntimeSandbox getSandbox( DomainURL url )
 This function is used to return the sandbox instance where the Application is executing. It is assumed there is just one App per Runtime instance.
 
 ```
-RuntimeSandbox getSandbox( DomainURL url )
+Sandbox getAppSandbox( )
 ```
-
 
 #### resolve
 
@@ -172,20 +171,20 @@ postMessage( Message.Message message )
 
 #### addListener
 
-To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url.  This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object. In case ```url = "*"``` the listener is called in case there is no other listener registered for the ```Message.to```.
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object. In case `url = "*"` the listener is called in case there is no other listener registered for the `Message.to`.
 
 ```
-MsgListener addListener( URL.URL url, listener )
+MsgListener addListener( URL.URL url, Object listenerFunction )
 ```
 
 ### Hyperty Interface
 
-#### init
+#### Constructor
 
 To initialise the Hyperty instance including as input parameters its allocated Hyperty url, the runtime BUS postMessage function to be invoked to send messages and required configuration retrieved from Hyperty descriptor.
 
 ```
-init( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+Hyperty( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 ```
 
 ### Interceptor Interface
@@ -288,10 +287,38 @@ removeComponent( URL.URL componentURL )
 
 #### deployInterceptor
 
-To download and deploy a new interceptor in the sandbox passing as input parameters the url from where the interceptor is downloaded, the interceptorURL address previously allocated to the interceptor, its configuration and the intercepted sandbox.
+To download and deploy a new interceptor in the sandbox passing as input parameters the interceptor source code, the interceptorURL address previously allocated to the interceptor, its configuration, the intercepted sandbox, the intercepted component URL (eg Hyperty URL), the listener registered in the MsgBUS for the intercepted component and the listener registered in the intercepted component sandbox for the MessageBUS.
 
 ```
-deployInterceptor( URL.URL interceptorDownloadURL, URL.URL interceptorURL, RuntimeSandbox intercepted, Object configuration )
+deployInterceptor( Object interceptorSource, URL.URL interceptorURL, Object configuration, RuntimeSandbox interceptedSandbox, URL.URL interceptedUrl, MsgListener interceptedMsgBusListener, MsgListener interceptedSandboxListener )
+```
+
+The following steps should be performed:
+
+Replace in the MessageBUS the intercepted sandbox listener by the interceptor sandbox listener:
+
+```
+ MessageBUS.addListener( interceptedUrl, this.postMessage )
+ interceptedMsgBusListener.remove()
+```
+
+Replace in the intercepted sandbox the "\*" listener by the interceptor sandbox listener:
+
+```
+ interceptedSandbox.addListener( "\*", this.postMessage )
+ interceptedSandboxListener.remove()
+```
+
+Adds the interceptor component listener (inMiniBUS listener inside the sandbox) to the Sandbox Minibus:
+
+```
+this.addListener( interceptedUrl, mini.postMessage )
+```
+
+Adds the intercepted sandbox listener to the minibus listener inside the sandbox:
+
+```
+mini.addListener( interceptedUrl, interceptedSandbox.postMessage )
 ```
 
 #### removeComponent

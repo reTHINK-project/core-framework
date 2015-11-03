@@ -78,9 +78,8 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 "id" : "1"
 "type" : "SUBSCRIPTION",
 "from" : "hyperty-instance://sp2/bobhy123",
-"to" : "hyperty-runtime://sp1/core/pep",
-"contextId" : "qwertyuiopasdfghjkl",
-"body" : { "listener" : "bobhy123.postMessage"  }
+"to" : "comm://sp1-msg-node/alice/123456",
+"contextId" : "qwertyuiopasdfghjkl"
 ```
 
 Steps 26-27: in case subscription requester has not been previously authorised, and according to applicable policies, the subscription request message can be forwarded to the Reporter Hyperty that will take the final decision.
@@ -97,5 +96,4 @@ Steps 33-34: the subscription requester is informed about the subscription autho
 
 **notes for changes**
 
--	subscription to data object has to reach the protostub in order to add listener at messaging node level. To check with address allocation to other entities like protostub and hyperties.
--
+-	subscription to data object has to reach the protostub in order to add listener at messaging node level. To check with address allocation to other entities like protostub and hyperties. -
