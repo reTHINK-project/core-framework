@@ -127,17 +127,9 @@ This function is used to discover protocol stubs available in the runtime for a 
 RuntimeURL discoverProtostub( DomainURL url)
 ```
 
-#### registerSandbox
-
-This function is used to register a new runtime sandboxes passing as input the sandbox instance and the sandbox type ("hyperty", "protostub", "app", "interceptor").
-
-```
-RuntimeSandbox registerSandbox( Sandbox sandbox, String type )
-```
-
 #### getSandbox
 
-This function is used to discover sandboxes available in the runtime for a certain URL. It is required by the runtime UA to avoid the creation of more than one protocol stub sandbox or to discover the sandbox where an component identified by the "url" is executing.
+This function is used to discover sandboxes available in the runtime for a certain URL. It is required by the runtime UA to avoid the creation of more than one protocol stub sandbox, to discover the sandbox where an component identified by the "url" is executing or to discover the sandbox where a component described with the url descriptor should be deployed.
 
 ```
 Sandbox getSandbox( URL.URL url )
