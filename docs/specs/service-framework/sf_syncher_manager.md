@@ -3,6 +3,8 @@
 
 Although some properties, methods and event handlers are subject to change. The most important is the structure of the framework, because structure is much harder to change than changing method, properties, etc.
 
+MiniBus is a core component that represents a view of the MessageBus, and it's inserted as a dependency. When an object (Reporter or Observed) is created, the SyncherManager will add a listener in the MiniBus to receive/send Messages of that object.
+
 ### SyncherManager
 The main class for the package. Should only be available one per Hyperty/URL. It's the owner of all kind of DataObjects.
 
