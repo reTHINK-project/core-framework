@@ -14,7 +14,7 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 "from" : "hyperty-instance://sp1/alicehy123",
 "to" : "hyperty-instance://sp2/bobhy123",
 "contextId" : "qwertyuiopasdfghjkl",
-"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
+"body" : { "resource" : "comm://sp1/alice/123456", "subscription" : "comm://sp1/alice/123456/subscription", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
 
 Steps 3-4: The Core Police Engine applies policies to check whether Alice has permissions to create the data object.
@@ -78,7 +78,7 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 "id" : "1"
 "type" : "SUBSCRIPTION",
 "from" : "hyperty-instance://sp2/bobhy123",
-"to" : "comm://sp1-msg-node/alice/123456",
+"to" : "comm://sp1-msg-node/alice/123456/subscription",
 "contextId" : "qwertyuiopasdfghjkl"
 ```
 
