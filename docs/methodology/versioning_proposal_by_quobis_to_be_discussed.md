@@ -5,7 +5,8 @@ This is the Quobis' proposal for  versioning and code management of the project.
 1. For each project wthere will be a master branch as usual.
 2. The code in this master branch will stable and tested code, which will include the unit tests associated to it. During the first weeks/months the code in master may not be usable, but after this brief period the code there should be usable. 
 3. To add new features, development branches should be created. 
-4. A proposal for the dev branch names could be: *dev-\<partner name\>-\<significative name of the branch: new feature, issue number\>*
+4. A proposal for the dev branch names could be: *dev-\<milestone\>*
+5. *just push with dev branche when tests are success*
 5. Dev branches should be used just for development tasks or internal tests but they shouldn't be used by other partners if their are not involved in the development of that project.
 6. To refer exact point in the project code timeline, we can use tags in master branch. Tags are friendly labels for commits. For example, if you have susscesully tested that some new code implements a feature, after merging and commiting the changes in master branch you will create a label.
 7. We can use for label names the following scheme: *\<project name\>\-\<major version\>.\<medium version\>.\<Minor version\>*
