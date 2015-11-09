@@ -15,7 +15,7 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty-runtime://sp1/runalice/registry",
+"from" : "hyperty-runtime://sp1/runalice/registry/allocation",
 "to" : "domain://msg-node.sp1/hyperty-address-allocation",
 "body" : { "number" : 5 }
 ```
@@ -26,7 +26,7 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 "id" : "1"
 "type" : "RESPONSE",
 "from" : "domain://msg-node.sp1/hyperty-address-allocation",
-"to" : "hyperty-runtime://sp1/runalice/registry",
+"to" : "hyperty-runtime://sp1/runalice/registry/allocation",
 "body" : { "hypertyURL" : "hyperty-instance://sp1/alice/hy123" }
 ```
 
