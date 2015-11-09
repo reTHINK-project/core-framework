@@ -27,7 +27,7 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 "type" : "RESPONSE",
 "from" : "domain://msg-node.sp1/hyperty-address-allocation",
 "to" : "hyperty-runtime://sp1/runalice/registry/allocation",
-"body" : { "hypertyURL" : "hyperty-instance://sp1/alice/hy123" }
+"body" : { "code": 200, "allocated": ["hyperty-instance://sp1/alice/hy123", ...] }
 ```
 
 Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
