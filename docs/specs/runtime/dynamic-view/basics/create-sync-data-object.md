@@ -11,8 +11,8 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty-instance://sp1/alicehy123",
-"to" : "hyperty-instance://sp2/bobhy123",
+"from" : "hyperty://sp1/alicehy123",
+"to" : "hyperty://sp2/bobhy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "resource" : "comm://sp1/alice/123456", "subscription" : "comm://sp1/alice/123456/subscription", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
@@ -30,8 +30,8 @@ Steps 6-9: optionally, and again, according to applicable policies, a new addres
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty-runtime://sp1/core/pep",
-"to" : "hyperty-instance://sp1/alicehy123",
+"from" : "hyperty://sp1/core/pep",
+"to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "308", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" } }
 ```
@@ -51,8 +51,8 @@ Steps 19-21: optionally, invited Observers may respond with provisional response
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty-instance://sp2/bobhy123",
-"to" : "hyperty-instance://sp1/alicehy123",
+"from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "1XX"  }
 ```
@@ -64,7 +64,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 ```
 "id" : "2"
 "type" : "UDATE",
-"from" : "hyperty-instance://sp2/bobhy123",
+"from" : "hyperty://sp2/bobhy123",
 "to" : "comm://sp1-msg-node/alice/123456",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "value" : "changed value"  }
@@ -77,7 +77,7 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 ```
 "id" : "1"
 "type" : "SUBSCRIPTION",
-"from" : "hyperty-instance://sp2/bobhy123",
+"from" : "hyperty://sp2/bobhy123",
 "to" : "comm://sp1-msg-node/alice/123456/subscription",
 "contextId" : "qwertyuiopasdfghjkl"
 ```
