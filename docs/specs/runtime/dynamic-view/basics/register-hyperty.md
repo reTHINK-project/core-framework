@@ -15,9 +15,9 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty-runtime://sp1/runalice/registry",
-"to" : "sp1/msg-node/address-allocation",
-"body" : { "hypertyUrl" : "hyperty://sp1/hy123" }
+"from" : "hyperty-runtime://sp1/runalice/registry/allocation",
+"to" : "domain://msg-node.sp1/hyperty-address-allocation",
+"body" : { "number" : 5 }
 ```
 
 **Response Message returning the requested Hyperty Instance address**
@@ -25,9 +25,10 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "sp1/msg-node/address-allocation",
-"to" : "hyperty-runtime://sp1/runalice/registry",
 "body" : { "hypertyInstanceURL" : "hyperty://sp1/alice/hy123" }
+"from" : "domain://msg-node.sp1/hyperty-address-allocation",
+"to" : "hyperty-runtime://sp1/runalice/registry/allocation",
+"body" : { "code": 200, "allocated": ["hyperty://sp1/alice/hy123", ...] }
 ```
 
 Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
@@ -39,6 +40,7 @@ Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
 "type" : "CREATE",
 "from" : "hyperty-runtime://sp1/runalice",
 "to" : "sp1/registry",
+"body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty://sp1/hy123,
 "body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty://sp1/hy123,
 "hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice,
 ...}

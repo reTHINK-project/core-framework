@@ -416,3 +416,101 @@ Sends Connectivity Statistics data to QoS Broker. To be completed.
 ```
 sendConnectivityStatisticsToBroker(  )
 ```
+
+
+### Graph Connector Interface
+
+#### generateGUID
+
+Returns list of words from which a public/private key pair is deterministically generated. With the public key, the GUID is generated. The implementation would be similar to how it is done in deterministic bitcoin wallets (https://github.com/spesmilo/electrum). The key files then would not have to be backed up anywhere, it suffices to note the list of words.
+
+```
+generateGUID( )
+```
+
+#### useGUID
+Uses the previously generated GUID, identified by the given list of words.
+
+```
+useGUID(List<String> wordList)
+```
+
+#### addContact
+
+Add a contact to Graph Connector.
+
+```
+addContact(GUID guid, String name)
+```
+
+#### getContact
+
+Get the GUID from contact from the Graph Connector.
+
+```
+getContact(String name)
+```
+
+#### removeContact
+
+Remove contact from Graph Connector.
+
+```
+removeContact(GUID guid)
+```
+
+#### addContactsBloomFilter2Hop
+
+In order to be able to realize a trust engine, and to build an actual graph, when adding contacts, some information about the contact's contacts are added. Here, not the GUIDs of those contacts are shared directly, but a Bloom filter that contains all contacts. (See https://en.wikipedia.org/wiki/Bloom_filter for more details on Bloom filters.) This way, privacy is not compromised. The only information that the receiving user has is the Bloom filter that makes it possible to check if a unknown GUID (e.g., when receiving a call from a unknown user) is (most likely) a contact of one of your contacts. This can be done for multiple hops as well, analogous additional functions are needed.
+
+```
+addContactsBloomFilter2Hop(GUID guid, BloomFilter bloomfilter)
+```
+
+#### createBloomFilter2Hop
+
+An internal method ORs all 2-Hop Bloom filters in order to speed up up the lookup process.
+
+```
+createBloomFilter2Hop()
+```
+
+#### getContactsBloomFilter
+
+Returns the Bloom filter containing all direct contacts.
+
+```
+getContactsBloomFilter()
+```
+
+#### checkGUID
+
+Checks, whether a GUID is in the Graph Connector and returns if it is a direct contact, 2-hops away, etc.
+
+```
+checkGUID(GUID guid)
+```
+
+#### setPrivate
+
+Mark contact as private in order for it to not be used in the contacts Bloom filter.
+
+```
+setPrivate(GUID)
+```
+
+#### exportGraphData
+
+Exports the graph data. Data format tbd.
+
+```
+exportGraphData(?)
+```
+
+#### importGraphData
+
+Imports the graph data. Data format tbd.
+
+```
+importGraphData(?)
+```
