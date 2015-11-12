@@ -9,7 +9,7 @@ This is the Quobis' proposal for  versioning and code management of the project.
 5. It is strongly recommended review the tests before pushing new code to the branch. The developer must make sure that the current tests are still valid and they make sense with the new code. New test must also be added when new code is pushed in the repository.
 6. Dev branches should be used just for development tasks or internal tests but they shouldn't be used by other partners if their are not involved in the development of that project.
 7. To refer exact point in the project code timeline, we can use tags in master branch. Tags are friendly labels for commits. For example, if you have susscesully tested that some new code implements a feature, after merging and commiting the changes in master branch you will create a label.
-8. We can use for label names the following scheme: *\<project name\>\-\<major version\>.\<medium version\>.\<Minor version\>*
+8. We can use for label names the following scheme: *\<major version\>.\<medium version\>.\<Minor version\>*
 increasing the numbers respect the version before depending on the changes included in the merge (see version numbering reference below).
 9. When you test your code with projects with other partners by default the code from master branch should be used, however you can be notified that a specific tag should be used. Any contribution to be deployed on the testbed has to be tested using the docker image that WP-6 will provide as a OS-baseline for all testbed deployments.
 10. Partners which are in charge of different projects can keep a coherent versioning numbering in the tags of their master branches.
