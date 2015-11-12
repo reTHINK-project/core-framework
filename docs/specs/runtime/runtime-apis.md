@@ -29,7 +29,7 @@ This is used to check for updates about components handled in the Catalogue incl
 checkForUpdate(CatalogueURL url)
 ```
 
-#### discoverHiperty
+#### discoverHyperty
 
 Accomodate interoperability in H2H and protocol on the fly for newly discovered devices in M2M
 
