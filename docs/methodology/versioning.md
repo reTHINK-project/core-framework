@@ -17,6 +17,13 @@ increasing the numbers respect the version before depending on the changes inclu
 12. This scheme is intented to be valid during the life of reTHINK project. Once the project is finished and the code is fully functional a branch can be created to keep the final code and master can be left for development.
 
 ##Version numbering reference. 
-* Major version: major changes applied to the structure of the code, general changes in the architecture.    
-* Medium version: new features added.
-* Minor version: just fixes added
+
+The versioning scheme is a way to let the other members of the team know what they can expect from the new version of a module.
+
+It is important to pay attention to it, specially when the code is going to be used by other repositories. The versions must be properly indicated as git labels.
+
+We propose for reTHINK project the convention below to increase the versioning number:
+
+* *Major version*: major changes applied to the code structure of the module, general changes in the architecture. *Normally a major version will break the compability with previous versions so a general revision of the code using the new version of the module must be done.*   
+* *Medium version*: addition/modification/removal of new methods/functions. Compability may be broken in the specific methods/fucntions which have been modified. *The changelog/commit lits must be checked in order to avoid compability issues with the code which uses a previos medium version of the module.* 
+* _Minor version_: just fixes for existing issues or code improvements which does not add/modify/remove any  feature. Several fixes can be added in each minor version. *Minor version should not break compability with previous minor versions, however the fixes must be checked to make sure they will not have an impact in the code which uses the module.* 
