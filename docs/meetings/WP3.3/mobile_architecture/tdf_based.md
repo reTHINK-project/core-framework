@@ -1,5 +1,7 @@
 The global architecture for mobile and fixed networks is as follows.
 
+![Global architecture - fix + mobile](././images/global_arch.png)
+
 For mobile networks there are two possibilities for providing specialized network services.
 
 1.	TURN-based solutions with TDF
