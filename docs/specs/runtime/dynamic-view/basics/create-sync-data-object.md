@@ -11,10 +11,10 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty-instance://sp1/alicehy123",
-"to" : "hyperty-instance://sp2/bobhy123",
+"from" : "hyperty://sp1/alicehy123",
+"to" : "hyperty://sp2/bobhy123",
 "contextId" : "qwertyuiopasdfghjkl",
-"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
+"body" : { "resource" : "comm://sp1/alice/123456", "subscription" : "comm://sp1/alice/123456/subscription", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
 
 Steps 3-4: The Core Police Engine applies policies to check whether Alice has permissions to create the data object.
@@ -30,8 +30,8 @@ Steps 6-9: optionally, and again, according to applicable policies, a new addres
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty-runtime://sp1/core/pep",
-"to" : "hyperty-instance://sp1/alicehy123",
+"from" : "hyperty://sp1/core/pep",
+"to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "308", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" } }
 ```
@@ -51,8 +51,8 @@ Steps 19-21: optionally, invited Observers may respond with provisional response
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty-instance://sp2/bobhy123",
-"to" : "hyperty-instance://sp1/alicehy123",
+"from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "1XX"  }
 ```
@@ -64,7 +64,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 ```
 "id" : "2"
 "type" : "UDATE",
-"from" : "hyperty-instance://sp2/bobhy123",
+"from" : "hyperty://sp2/bobhy123",
 "to" : "comm://sp1-msg-node/alice/123456",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "value" : "changed value"  }
@@ -77,10 +77,9 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 ```
 "id" : "1"
 "type" : "SUBSCRIPTION",
-"from" : "hyperty-instance://sp2/bobhy123",
-"to" : "hyperty-runtime://sp1/core/pep",
-"contextId" : "qwertyuiopasdfghjkl",
-"body" : { "listener" : "bobhy123.postMessage"  }
+"from" : "hyperty://sp2/bobhy123",
+"to" : "comm://sp1-msg-node/alice/123456/subscription",
+"contextId" : "qwertyuiopasdfghjkl"
 ```
 
 Steps 26-27: in case subscription requester has not been previously authorised, and according to applicable policies, the subscription request message can be forwarded to the Reporter Hyperty that will take the final decision.
@@ -97,5 +96,4 @@ Steps 33-34: the subscription requester is informed about the subscription autho
 
 **notes for changes**
 
--	subscription to data object has to reach the protostub in order to add listener at messaging node level. To check with address allocation to other entities like protostub and hyperties.
--
+-	subscription to data object has to reach the protostub in order to add listener at messaging node level. To check with address allocation to other entities like protostub and hyperties. -
