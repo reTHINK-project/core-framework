@@ -12,9 +12,9 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 "id" : "1"
 "type" : "CREATE",
 "from" : "hyperty://sp1/alicehy123",
-"to" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1/runalice>/sm",
 "contextId" : "qwertyuiopasdfghjkl",
-"body" : { "resource" : "comm://sp1/alice/123456", "subscription" : "comm://sp1/alice/123456/subscription", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
+"body" : { "resource" : "comm://sp1/alice/123456", "authorise" : "hyperty://sp2/bobhy123", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
 
 Steps 3-4: The Core Police Engine applies policies to check whether Alice has permissions to create the data object.
@@ -23,14 +23,14 @@ Step 5: optionally, and according to applicable policies, the new data object is
 
 Steps 6-9: optionally, and again, according to applicable policies, a new address might have to be allocated to the Data Object by the Messaging Node address allocation functionalities, to ensure the new data object is globally reachable. The new address allocated to the Data Object is informed back to the Reporter with a 3XX response message.
 
-**[Response Message by Core PEP to inform Hyperty Owner about new allocated Data Object URL](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
+**[Response Message by SM to inform Hyperty Owner about new allocated Data Object URL](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
 
 ***note:*** usually 3XX requires to send a new request message. In this case a new request message is not required.
 
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty://sp1/core/pep",
+"from" : "hyperty-runtime://<sp1/runalice>/sm",
 "to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "308", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" } }
@@ -64,7 +64,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 ```
 "id" : "2"
 "type" : "UDATE",
-"from" : "hyperty://sp2/bobhy123",
+"from" : "hyperty://sp1/alicehy123",
 "to" : "comm://sp1-msg-node/alice/123456",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "value" : "changed value"  }
@@ -72,7 +72,18 @@ Step 22: as soon as the Reporter receives the information that the data object s
 
 Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent to the Runtime Core component managing subscription authorisation, in this case it is assumed it is the Policy Engine. The Policy Engine applies message to decide on the received subscription request namely if subscription requester has been previously authorised in step 17.
 
-**[Subscription Message sent by inviter Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
+**[Subscription Message sent by invited Observer to its SM](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
+
+```
+"id" : "1"
+"type" : "SUBSCRIPTION",
+"from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1/runbob>/sm"
+"contextId" : "qwertyuiopasdfghjkl"
+"body" : { "resource" : "comm://sp1-msg-node/alice/123456/subscription"  }
+```
+
+**[Subscription Message sent by SM invited Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
 
 ```
 "id" : "1"
