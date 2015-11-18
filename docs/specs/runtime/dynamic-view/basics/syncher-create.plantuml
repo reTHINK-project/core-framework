@@ -9,6 +9,7 @@ autonumber
 !define SHOW_RuntimeA
 
 !define SHOW_CoreRuntimeA
+!define SHOW_SMAtRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
 !define SHOW_RegistryAtRuntimeA
 !define SHOW_AuthAtRuntimeA
@@ -19,13 +20,17 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
+SP1H@A -> Sync1@A : create( schema )
+
 create LocObj@A
 
-SP1H@A ->  LocObj@A : new
+Sync1@A ->  LocObj@A : new
 
-SP1H@A -> BUS@A : postMsg(Create MSG)
+Sync1@A -> BUS@A : postMsg(Create MSG)
 
-RunAuth@A <- BUS@A : authorise(Create Message)
+RunSM@A <- BUS@A : postMsg(Create MSG)
+
+RunAuth@A <- RunSM@A : authoriseObjCreation( hypertyOwner, obj )
 
 RunAuth@A -> RunAuth@A : apply authz Policies
 

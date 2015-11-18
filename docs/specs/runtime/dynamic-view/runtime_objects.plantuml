@@ -51,6 +51,10 @@
 				participant "Core PEP" as RunPEP@A
 			!endif
 
+			!ifdef SHOW_SMAtRuntimeA
+				participant "Sync Manager" as RunSM@A
+			!endif
+
 			!ifdef SHOW_MsgBUSAtRuntimeA
 				participant "Msg BUS" as BUS@A
 			!endif
