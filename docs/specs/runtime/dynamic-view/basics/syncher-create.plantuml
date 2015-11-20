@@ -100,6 +100,8 @@ opt Hyperty owner / reporter is set as listener of DataObjectObservers resource
 	end note
 end
 
+RunSM@A -> BUS@A : postMsg( Create Msg )
+
 BUS@A ->  : postMsg( Create Msg )
 
 RunSM@A -> RunSM@A : store \nauthorised readers
