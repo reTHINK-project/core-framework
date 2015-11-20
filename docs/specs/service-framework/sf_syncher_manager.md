@@ -5,6 +5,8 @@ Although some properties, methods and event handlers are subject to change. The 
 
 MiniBus is a core component that represents a view of the MessageBus, and it's inserted as a dependency. When an object (Reporter or Observed) is created, the SyncherManager will add a listener in the MiniBus to receive/send Messages of that object.
 
+[Sequence Diagram Doc](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/dynamic-view/basics/create-sync-data-object.md)
+
 ### SyncherManager
 The main class for the package. Should only be available one per Hyperty/URL. It's the owner of all kind of DataObjects.
 
