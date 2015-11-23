@@ -63,7 +63,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 
 ```
 "id" : "2"
-"type" : "UDATE",
+"type" : "UPDATE",
 "from" : "hyperty://sp1/alicehy123",
 "to" : "comm://sp1-msg-node/alice/123456",
 "contextId" : "qwertyuiopasdfghjkl",

@@ -92,7 +92,7 @@ opt Hyperty owner / reporter is set as listener of DataObjectObservers resource
 
 	RunSM@A <- RunReg@A : return\n hypertySandboxListener
 
-	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerSandboxListener, hypertyOwnerUrl)
+	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerSandboxListener )
 
 	note right
 		Hyperty owner will be updated when observers
@@ -135,7 +135,7 @@ BUS@A <-  : postMsg( \nSubscribe Msg )
 note right
 	create new diagram showing from observer side runtime
 	subscription message sent to its local SM
-	and how it adds observer listener to objURL
+	and how it adds observer listener to objURL/changes
 end note
 
 RunSM@A <- BUS@A : postMsg( \nSubscribe Msg )
@@ -164,7 +164,7 @@ opt Authorisation policies requires to check data object is registered
 
 end
 
-RunSM@A -> BUS@A : addListener(\nDataObj URL, listener, observerUrl)
+RunSM@A -> BUS@A : addListener(\nDataObjURL\changes URL, listener)
 
 note right
 	Listeners of new observers are added into message bus,
@@ -172,7 +172,7 @@ note right
 end note
 
 opt
-	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, listener, observerUrl)
+	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, listener)
 
 	RunSM@A -> BUS@A : postMessage(\n Update Message\nfor DataObjectObservers )
 
