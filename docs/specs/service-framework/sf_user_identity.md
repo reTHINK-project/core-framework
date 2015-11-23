@@ -62,6 +62,20 @@ createIdentityDataObject(UserProfile, IdentityType ,IdAssertionList)
 
 createIdAssertionDataObject(String jsonString,URL IdpUrl)
 
+####getIdentities
+Returns a list of registered identities
+
+``getIdentities()``
+
+#### getIdToken
+
+Request a token for identification with Identity identifier and scope (for instance domain)
+``getIdToken(Identifier, scope)``
+
+#### getAccessToken
+
+Request a token for acess control with Identity identifier and scope (for instance, domain login)
+``getAccessToken(Identifier, scope)``
 
 #### UserHypertyAccount
 Create an UserHypertyAccount data object binding an hyperty to an identity 
