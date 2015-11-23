@@ -70,11 +70,13 @@ Returns a list of registered identities
 #### getIdToken
 
 Request a token for identification with Identity identifier and scope (for instance domain)
+
 ``getIdToken(Identifier, scope)``
 
 #### getAccessToken
 
 Request a token for acess control with Identity identifier and scope (for instance, domain login)
+
 ``getAccessToken(Identifier, scope)``
 
 #### UserHypertyAccount
