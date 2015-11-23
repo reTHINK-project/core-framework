@@ -1,11 +1,14 @@
 ### UserIdentityFactory
 
-The Identity Data Model is used to model the reTHINK User entity according to the [User Identity Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/user-identity)
+The UserIdentityFactory creates communication objects according the [User Identity Data Model](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/user-identity)
 
 ####Identity Object
 The Identity Object has following class object attributes:
 * ```guid``` - a global unique identifier
 * ```identifiers``` -  identifiers of type UserURL
+
+####Identity Type (Enumeration)
+``var IdentityType = new enums.Enum("HUMAN", "ORGANISATION", "PHYSICAL SPACE","PHYSICAL OBJECT");``
 
 ####IdAssertion Object
 The IdAssertion  Object has following class object attributes:
@@ -29,19 +32,17 @@ IdValidation should be compliant with WebRTC RTCIdentityValidationResult.
 
 ####ServiceAddress Object
 The ServiceAddress Object has following class object attributes:
-* ```address``` -
+* ```address``` - URL
+* ```serviceType``` - Servise Type
 
-#####ServiceType Object
-The ServiceType can be : E164_TELEPHONY, VOIP_SIP, EMAIL, W3C_PUSH, TWITTER
+#####ServiceType Object (Enumeration)
+``var ServiceType = new enums.Enum("E164_TELEPHONY", "VOIP_SIP", "EMAIL SPACE","W3C_PUSH","TWITTER");``
 
 ####AuthenticationData Object
-
-#####IDToken
-
-#####JWT
-JSON Web Token
+Contains one or multiple ID Token 
 
 ####AuthorisationData Object
+Contains one or multiple Access Token (JSON WebToken) for access control
 
 ####UserProfile Object
 The UserProfile Object has following class object attributes:
@@ -53,26 +54,41 @@ The UserProfile Object has following class object attributes:
 -----------------------
 Define and specify functionalities from the [dynamic views](https://github.com/reTHINK-project/core-framework/tree/master/docs/specs/runtime/dynamic-view) that relate in creating and managing the Data Objects.
 
-Account creation ?
+####constructors
 
-User registration
+createUserProfileDataObject(String jsonString)
 
-- RegisterIdentity(IdP URL ,IDToken)
+createIdentityDataObject(UserProfile, IdentityType ,IdAssertionList)
 
-Discovery
+createIdAssertionDataObject(String jsonString,URL IdpUrl)
 
-???
 
-Domain login
+#### UserHypertyAccount
+Create an UserHypertyAccount data object binding an hyperty to an identity 
+``bindIdentitytoHyperty(URL hypertyURL, Identity id) ``
 
-???
+#### Verify Assertion
+Verify an incoming identity assertion.
+
+``Verify(IdAssertion,IdValidation)``
+
+####RegisterIdentity (to be defined here???)
+Register an new identity in the Hyperty Runtime
+
+``RegisterIdentity(Identity, URL IdpUrl)``
+
+####Discovery (to be defined here???)
+Search an identity
+
+``search(String jsonString)``
+
+####login (to be defined here???)
+
+``login()``
 
 User Identity assertion
 
-- Verify(IdAssertion)
 
-User to hyperty binding
 
-???
 
 
