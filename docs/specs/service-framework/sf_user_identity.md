@@ -65,6 +65,7 @@ createIdAssertionDataObject(String jsonString,URL IdpUrl)
 
 #### UserHypertyAccount
 Create an UserHypertyAccount data object binding an hyperty to an identity 
+
 ``bindIdentitytoHyperty(URL hypertyURL, Identity id) ``
 
 #### Verify Assertion
@@ -86,7 +87,6 @@ Search an identity
 
 ``login()``
 
-User Identity assertion
 
 
 
