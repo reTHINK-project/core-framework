@@ -38,11 +38,10 @@ Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty-runtime://sp1/runalice",
-"to" : "sp1/registry",
-"body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty://sp1/hy123,
-"body" : { "hypertyURL" : "hyperty://sp1/hy123", "hypertyInstanceURL" : "hyperty://sp1/hy123,
-"hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice,
+"from" : "hyperty-runtime://<sp1>/runalice",
+"to" : "registry.<sp1>",
+"body" : { "hypertyDescriptorURL" : "hyperty-catalogue://sp1/hy123", "hypertyURL" : "hyperty://sp1/alice/hy123",
+"hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice",
 ...}
 ```
 
