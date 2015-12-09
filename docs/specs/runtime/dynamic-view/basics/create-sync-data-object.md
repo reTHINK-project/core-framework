@@ -68,7 +68,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 
 Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent to the Runtime Core component managing subscription authorisation, in this case it is assumed it is the Policy Engine. The Policy Engine applies message to decide on the received subscription request namely if subscription requester has been previously authorised in step 17.
 
-**[Subscription Message sent by invited Observer to its SM](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
+**[Subscription Message sent by invited Observer to Reporter domain SM](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
 
 ```
 "id" : "1"
