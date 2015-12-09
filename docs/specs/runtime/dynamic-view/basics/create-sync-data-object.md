@@ -12,7 +12,7 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 "id" : "1"
 "type" : "CREATE",
 "from" : "hyperty://sp1/alicehy123",
-"to" : "hyperty-runtime://<sp1/runalice>/sm",
+"to" : "domain://sm.<sp1>",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "resource" : "comm://sp1/alice/123456", "authorise" : "hyperty://sp2/bobhy123", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
@@ -30,7 +30,7 @@ Steps 6-9: optionally, and again, according to applicable policies, a new addres
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"from" : "hyperty-runtime://<sp1/runalice>/sm",
+"from" : "domain://sm.<sp1>",
 "to" : "hyperty://sp1/alicehy123",
 "contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "308", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" } }
@@ -78,7 +78,7 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 "id" : "1"
 "type" : "SUBSCRIPTION",
 "from" : "hyperty://sp2/bobhy123",
-"to" : "hyperty-runtime://<sp1/runbob>/sm"
+"to" : "domain://sm.<sp1>",
 "contextId" : "qwertyuiopasdfghjkl"
 "body" : { "resource" : "comm://sp1-msg-node/alice/123456/subscription"  }
 ```
