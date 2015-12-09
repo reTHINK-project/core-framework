@@ -13,7 +13,6 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 "type" : "CREATE",
 "from" : "hyperty://sp1/alicehy123",
 "to" : "domain://sm.<sp1>",
-"contextId" : "qwertyuiopasdfghjkl",
 "body" : { "resource" : "comm://sp1/alice/123456", "authorise" : "hyperty://sp2/bobhy123", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
 
@@ -32,7 +31,6 @@ Steps 6-9: optionally, and again, according to applicable policies, a new addres
 "type" : "RESPONSE",
 "from" : "domain://sm.<sp1>",
 "to" : "hyperty://sp1/alicehy123",
-"contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "308", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" } }
 ```
 
@@ -53,7 +51,6 @@ Steps 19-21: optionally, invited Observers may respond with provisional response
 "type" : "RESPONSE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "hyperty://sp1/alicehy123",
-"contextId" : "qwertyuiopasdfghjkl",
 "body" : { "code" : "1XX"  }
 ```
 
@@ -64,9 +61,8 @@ Step 22: as soon as the Reporter receives the information that the data object s
 ```
 "id" : "2"
 "type" : "UPDATE",
-"from" : "hyperty://sp1/alicehy123",
-"to" : "comm://sp1-msg-node/alice/123456",
-"contextId" : "qwertyuiopasdfghjkl",
+"from" : "hyperty://<sp1>/<alicehy123>",
+"to" : "comm://<sp1>/<alice>/<123456>/changes",
 "body" : { "value" : "changed value"  }
 ```
 
@@ -77,10 +73,9 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 ```
 "id" : "1"
 "type" : "SUBSCRIPTION",
-"from" : "hyperty://sp2/bobhy123",
+"from" : "hyperty://<sp2>/<bobhy123>",
 "to" : "domain://sm.<sp1>",
-"contextId" : "qwertyuiopasdfghjkl"
-"body" : { "resource" : "comm://sp1-msg-node/alice/123456/subscription"  }
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>/subscription"  }
 ```
 
 **[Subscription Message sent by SM invited Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
@@ -89,8 +84,7 @@ Steps 23-25: to be an Observer of a Data Object, a Subscription message is sent 
 "id" : "1"
 "type" : "SUBSCRIPTION",
 "from" : "hyperty://sp2/bobhy123",
-"to" : "comm://sp1-msg-node/alice/123456/subscription",
-"contextId" : "qwertyuiopasdfghjkl"
+"to" : "comm://<sp1>/<alice>/<123456>/subscription",
 ```
 
 Steps 26-27: in case subscription requester has not been previously authorised, and according to applicable policies, the subscription request message can be forwarded to the Reporter Hyperty that will take the final decision.
