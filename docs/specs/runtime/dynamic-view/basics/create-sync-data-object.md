@@ -61,7 +61,7 @@ Step 22: as soon as the Reporter receives the information that the data object s
 ```
 "id" : "2"
 "type" : "UPDATE",
-"from" : "hyperty://<sp1>/<alicehy123>",
+"from" : "comm://<sp1>/<alice>/<123456>",
 "to" : "comm://<sp1>/<alice>/<123456>/changes",
 "body" : { "value" : "changed value"  }
 ```
