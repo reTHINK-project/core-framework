@@ -1,0 +1,75 @@
+
+
+@startuml "data-object-subscribe.png"
+
+autonumber
+
+!define SHOW_SP1
+!define SHOW_SMAtSP1
+
+!define SHOW_RuntimeA
+
+!define SHOW_CoreRuntimeA
+!define SHOW_SMAtRuntimeA
+!define SHOW_SP1SandboxAtRuntimeA
+!define SHOW_Syncher1AtRuntimeA
+
+!define SHOW_Runtime1B
+
+!define SHOW_CoreRuntime1B
+!define SHOW_SMAtRuntime1B
+!define SHOW_SP1SandboxAtRuntime1B
+!define SHOW_Syncher1AtRuntime1B
+
+!include ../runtime_objects.plantuml
+
+
+== Hyperty requests to be Observer of new Data Object ==
+
+
+Sync1@1B -> RunSM@A : Subscribe Msg
+
+RunSM@A <- RunSM@A :	check subscriber has been already authorised
+
+opt Authorisation policies requires to check data object is registered
+
+	RunSM@A -> RunSM@A : registry.discoverDataObject(\n DataObj URL )
+
+end
+
+RunSM@A -> RunSM@A : bus.addListener(\nDataObjURL\changes URL, listener)
+
+note right
+	Listeners of new observers are added into message bus,
+	 to receive updates about changes in the data object
+end note
+
+opt
+	RunSM@A -> RunSM@A : bus.postMessage(\n Update Message\nfor DataObjectObservers )
+
+	note right
+		the DataObjectObservers resource is updated
+		with information about the new Hyperty observer
+		thus, if Hyperty owner is listening on this resource
+		it will be informed about the new Observer.
+	end note
+
+end
+
+RunSM@A -> SM@SP1 : Subscription\nResponse Message
+
+SM@SP1 -> SM@SP1 : addListeners
+
+SM@SP1 -> RunSM@1B : Subscription\nResponse Message
+
+RunSM@1B -> RunSM@1B : bus.addListener(\nDataObjURL\changes URL, \nObserverSandboxListener)
+
+RunSM@1B -> Sync1@1B : Subscription\nResponse Message
+
+newpage
+
+== Object is Updated ==
+
+Sync1@A -> Sync1@1B : Update Message
+
+@enduml

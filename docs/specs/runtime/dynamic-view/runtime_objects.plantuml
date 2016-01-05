@@ -14,7 +14,7 @@
 	!endif
 
 	!ifdef SHOW_NativeAtRuntimeA
-		box "Alice's Device Native Runtime"
+		box "Alice's Device Native Runtime" #LightBlue
 			!ifdef SHOW_HTTPClientAtRuntimeA
 				participant "HTTP Client" as HTTP_UAC@A
 			!endif
@@ -30,7 +30,7 @@
 	!endif
 
 	!ifdef SHOW_CoreRuntimeA
-		box "Alice's Device\nCore Runtime"
+		box "Alice's Device\nCore Runtime" #LightBlue
 			!ifdef SHOW_CoreAgentAtRuntimeA
 				participant "RuntimeUA" as RunUA@A
 			!endif
@@ -62,7 +62,7 @@
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntimeA
-		box "Service Provider 1\nSandbox at Alice Device"
+		box "Service Provider 1\nSandbox at Alice Device" #LightBlue
 
 			!ifdef SHOW_ServiceProvider1SandboxManagerAtRuntimeA
 			participant "Service Provider1\nSandbox" as Sand1@A
@@ -108,7 +108,7 @@
 	!endif
 
 	!ifdef SHOW_SP2SandboxAtRuntimeA
-		box "Service Provider 2\n Sandbox at Alice Device"
+		box "Service Provider 2\n Sandbox at Alice Device" #LightBlue
 			!ifdef SHOW_Protostub2AtRuntimeA
 			participant "SP2\nprotoStub" as Proto2@A
 			!endif
@@ -145,6 +145,10 @@
 			participant "Msg Service" as Msg1
 		!endif
 
+		!ifdef SHOW_SMAtSP1
+			participant "Synch Manager" as SM@SP1
+		!endif
+
 		!ifdef SHOW_Cat1
 			participant "Catalogue\nSupport Service" as Cat1
 		!endif
@@ -164,7 +168,7 @@
 	!endif
 
 	!ifdef SHOW_NativeAtRuntime1B
-		box "Bob's Device Native Runtime"
+		box "Bob's Device Native Runtime"  #DarkSalmon
 			!ifdef SHOW_WebRTCAtRuntime1B
 				participant "WebRTC" as WRTC
 			!endif
@@ -176,10 +180,14 @@
 	!endif
 
 	!ifdef SHOW_CoreRuntime1B
-		box "Bob's Device Core Runtime"
+		box "Bob's Device Core Runtime" #DarkSalmon
 
 			!ifdef SHOW_RegistryAtRuntime1B
 				participant "Registry" as RunReg@1B
+			!endif
+
+			!ifdef SHOW_SMAtRuntime1B
+				participant "Sync Manager" as RunSM@1B
 			!endif
 
 			!ifdef SHOW_IdentitiesAtRuntime1B
@@ -196,7 +204,7 @@
 	!endif
 
 	!ifdef SHOW_SP1SandboxAtRuntime1B
-		box "Service Provider 1 Sandbox at Bob Device"
+		box "Service Provider 1 Sandbox at Bob Device" #DarkSalmon
 			!ifdef SHOW_Protostub1AtRuntime1B
 			participant "SP1\nprotoStub" as Proto1@1B
 			!endif
