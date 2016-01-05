@@ -422,17 +422,24 @@ sendConnectivityStatisticsToBroker(  )
 
 #### generateGUID
 
-Returns list of words from which a public/private key pair is deterministically generated. With the public key, the GUID is generated. The implementation would be similar to how it is done in deterministic bitcoin wallets (https://github.com/spesmilo/electrum). The key files then would not have to be backed up anywhere, it suffices to note the list of words.
+Returns a string of 16 words from which a public/private key pair is deterministically generated. With the public key, the GUID is generated. The implementation uses the key pair generation from Bitcoin BIP39. The key files do not have to be backed up anywhere, it suffices to note the list of words.
 
 ```
 generateGUID( )
 ```
 
 #### useGUID
-Uses the previously generated GUID, identified by the given list of words.
+Uses the previously generated GUID, identified by the given string containing 16 words.
 
 ```
-useGUID(List<String> wordList)
+useGUID(String mnemonicAndSalt)
+```
+
+#### signGlobalRegistryRecord
+Signs the record that is stored in the Global Registry; returns a signed JWT.
+
+```
+signGlobalRegistryRecord( )
 ```
 
 #### addContact
@@ -440,7 +447,7 @@ useGUID(List<String> wordList)
 Add a contact to Graph Connector.
 
 ```
-addContact(GUID guid, String firstName, String lastName)
+addContact(String guid, String firstName, String lastName)
 ```
 
 #### getContact
@@ -456,7 +463,7 @@ getContact(String name)
 Remove contact from Graph Connector.
 
 ```
-removeContact(GUID guid)
+removeContact(String guid)
 ```
 
 #### addContactsBloomFilter1Hop
@@ -465,53 +472,22 @@ Adds a Bloom filter containing the hashed GUIDs of direct contacts for the given
 In order to be able to realize a trust engine, and to build an actual graph, when adding contacts, some information about the contact's contacts are added. Here, not the GUIDs of those contacts are shared directly, but a Bloom filter that contains all contacts. (See https://en.wikipedia.org/wiki/Bloom_filter for more details on Bloom filters.) This way, privacy is not compromised. The only information that the receiving user has is the Bloom filter that makes it possible to check if a unknown GUID (e.g., when receiving a call from a unknown user) is (most likely) a contact of one of your contacts. This can be done for multiple hops as well, analogous additional functions are needed.
 
 ```
-addContactsBloomFilter1Hop(GUID guid, BloomFilter bloomfilter)
-```
-
-#### addContactsBloomFilter2Hop
-
-Adds a Bloom filter containing the hashed GUIDs of contacts of contacts of the given GUID.
-
-```
-addContactsBloomFilter2Hop(GUID guid, BloomFilter bloomfilter)
-```
-
-#### getBloomFilter1Hop
-
-Returns a Bloom filter containing the hashed GUIDs of all the users direct contacts that are not set to private. Used to share with other contacts.
-
-```
-getBloomFilter1Hop()
+addContactsBloomFilter1Hop(String guid, BloomFilter bloomfilter)
 ```
 
 
-#### createBloomFilter2Hop
+#### calculateBloomFilter1Hop
 
-An internal method ORs all Bloom filters of direct contacts of the user's contacts, as long as not set to private. Used to share with contacts.
-
-```
-createBloomFilter2Hop()
-```
-
-#### createBloomFilter2HopLookup
-
-An internal method ORs all Bloom filters of direct contacts of the user's contacts, including private contacts, only used in order to speed up the lookup process.
+Calculates a Bloom filter containing the hashed GUIDs of all the users direct contacts that are not set to private. Used to share with other contacts.
 
 ```
-createBloomFilter2HopLookup()
+calculateBloomFilter1Hop()
 ```
 
-#### createBloomFilter3HopLookup
-
-An internal method ORs all Bloom filters of contacts of contacts of the user's contacts, including private contact, only used to speed up the lookup process.
-
-```
-createBloomFilter3Hop()
-```
 
 #### checkGUID
 
-Checks, whether a GUID is in the Graph Connector and returns if it is a direct contact, 2 hops away, 3 hops away, or unknown.
+Checks, whether a GUID is in the Graph Connector and returns if it is a direct contact, or 1 more hop away, or unknown.
 
 ```
 checkGUID(GUID guid)
