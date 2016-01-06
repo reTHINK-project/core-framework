@@ -58,20 +58,23 @@ end
 
 RunSM@A -> Sync1@1B : Subscription\nResponse Message
 
-== listeners added at Observer side to receive data object updates == 
+== listeners added at Observer side to receive data object updates ==
 
-Sync1@1B -> RunSM@1B : Create Listener Msg
+Sync1@1B -> RunSM@1B : Subscribe Msg
 
 RunSM@1B -> RunSM@1B : bus.addListener(\nDataObjURL\changes URL, \nObserverSandboxListener)
 
-RunSM@1B -> SM@SP1 : Create Listener Msg
+RunSM@1B -> SM@SP1 : Subscribe Msg
 
-SM@SP1 -> SM@SP1 : addListeners
+SM@SP1 -> SM@SP1 : add Listeners
 
 newpage
 
 == Object is Updated ==
 
+Sync1@A -> RunSM@A : Update Message
+
 Sync1@A -> Sync1@1B : Update Message
+
 
 @enduml

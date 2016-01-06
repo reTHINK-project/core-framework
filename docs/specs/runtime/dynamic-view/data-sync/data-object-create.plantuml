@@ -48,7 +48,13 @@ note right
 	Reporter SM set its listener to receive Object subscription requests from Observers
 end note
 
-opt Hyperty owner / reporter is be updated when object observers are added or removed
+opt Synch Manager keeps the most updated version of the data object, which will be returned to new Observers
+
+	RunSM@A -> RunSM@A : bus.addListener(\n<ObjectURL>/changes, \nSyncManagerListener )
+
+end
+
+opt Hyperty owner / reporter is updated when object observers are added or removed
 
 	RunSM@A -> RunSM@A : bus.addListener(\n<ObjectURL>/observers, \nhypertyOwnerSandboxListener )
 
