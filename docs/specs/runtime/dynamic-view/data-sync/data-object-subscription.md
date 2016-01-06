@@ -74,7 +74,3 @@ Step 22: as soon as the Reporter receives the information that the data object s
 "to" : "comm://<sp1>/<alice>/<123456>/changes",
 "body" : { "value" : "changed value"  }
 ```
-
-### Data Object Unsubscription
-
-### Data Object Delete
