@@ -63,7 +63,7 @@ Steps : the subscription requester is informed about the subscription authorisat
 
 Step 22: as soon as the Reporter receives the information that the data object synchronisation was authorised, it can request the Syncher to start reporting data object changes by posting UPDATE messages to the Data Object URL resource. It should be noted that, according to Hyperty Service logic, this step can be performed later, e.g. after the Reporter is notified an Observer has been added.
 
-![Figure @runtime-basic-create-sync2 Data Object synchronisation is authorised and Observers added ](syncher-create_001.png)
+![Figure @runtime-basic-create-sync2 Data Object synchronisation is authorised and Observers added ](data-object-subscribe_001.png)
 
 **[Data Synchronisation UPDATE Message sent by Reporter Syncher](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#updatenmessagebody)**
 
