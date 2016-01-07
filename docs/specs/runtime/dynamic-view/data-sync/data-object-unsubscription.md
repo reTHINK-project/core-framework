@@ -1,6 +1,6 @@
 #### Data Object Unsubscription by Observer
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-subscribe.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-unsubscribe.png)
 
 to be an Observer of a Data Object, a Subscription message is sent to the resource managing subscription for the data object (DataObjectURL/subscription) which is implemented by the Synch Manager of the Reporter.
 
