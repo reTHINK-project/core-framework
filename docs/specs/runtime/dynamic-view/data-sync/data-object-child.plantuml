@@ -39,6 +39,8 @@ end
 
 ...
 
+newpage
+
 == When object is subscribed, Observers will also listen for Data Object Child resources ==
 
 Sync1@1B -> RunSM@1B : Subscribe Msg
@@ -65,6 +67,8 @@ end
 
 ...
 
+newpage
+
 == Object Child is Created by Reporter ==
 
 Sync1@A -> RunSM@A : Create Message to <ObjectURL>/<path>/child
@@ -72,6 +76,8 @@ Sync1@A -> RunSM@A : Create Message to <ObjectURL>/<path>/child
 Sync1@A -> Sync1@1B : Create Message to <ObjectURL>/changes
 
 Sync1@A -> Sync1@A : Ignore received Create\n Message sent by himself
+
+newpage
 
 == Object Child is Created by Observer ==
 
@@ -81,6 +87,8 @@ Sync1@1B -> RunSM@A : Create Message to <ObjectURL>/changes
 
 Sync1@1B -> Sync1@1B : Ignore received Create\n Message sent by himself
 
+newpage
+
 == Object Child Created by Reporter is updated ==
 
 Sync1@A -> RunSM@A : Update Message to <ObjectURL>/<path>/child
@@ -88,6 +96,8 @@ Sync1@A -> RunSM@A : Update Message to <ObjectURL>/<path>/child
 Sync1@A -> Sync1@1B : Update Message to <ObjectURL>/changes
 
 Sync1@A -> Sync1@A : Ignore received Update\n Message sent by himself
+
+newpage
 
 == Object Child Created by Observer is updated==
 
@@ -97,6 +107,8 @@ Sync1@1B -> RunSM@A : Update Message to <ObjectURL>/changes
 
 Sync1@1B -> Sync1@1B : Ignore received Update\n Message sent by himself
 
+newpage
+
 == Object Child Created by Reporter is deleted ==
 
 Sync1@A -> RunSM@A : Delete Message to <ObjectURL>/<path>/child
@@ -104,6 +116,8 @@ Sync1@A -> RunSM@A : Delete Message to <ObjectURL>/<path>/child
 Sync1@A -> Sync1@1B : Delete Message to <ObjectURL>/changes
 
 Sync1@A -> Sync1@A : Ignore received Delete\n Message sent by himself
+
+newpage
 
 == Object Child Created by Observer is Deleted==
 
