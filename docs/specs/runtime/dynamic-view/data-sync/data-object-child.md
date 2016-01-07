@@ -6,31 +6,31 @@
 
 ##### Subscription of Data Object Parent
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-001.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_001.png)
 
 ##### Creation of Data Object Child by Reporter
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-002.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_002.png)
 
 ##### Creation of Data Object Child by Observer
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-003.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_003.png)
 
 ##### Update of Data Object Child created by Reporter
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-004.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_004.png)
 
 ##### Update of Data Object Child created by Observer
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-005.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_005.png)
 
 ##### Delete of Data Object Child created by Reporter
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-006.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_006.png)
 
 ##### Delete of Data Object Child created by Observer
 
-![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child-007.png)
+![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-child_007.png)
 
 to be an Observer of a Data Object, a Subscription message is sent to the resource managing subscription for the data object (DataObjectURL/subscription) which is implemented by the Synch Manager of the Reporter.
 
