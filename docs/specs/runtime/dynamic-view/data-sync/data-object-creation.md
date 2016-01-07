@@ -40,6 +40,16 @@ Steps 4: The new address allocated to the Data Object is informed back to the Re
 
 Steps : In case the data object creation is authorised, the Message BUS forwards the data object creation message to invited Observers and the Core Policy Engine takes the Hyperty Instance URLs set in the `to` header field, to set as the list of addresses that are previously authorised to be Observer for the new data object.
 
+**[Create Message forwarded to invited Observers](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty://<sp1>/alicehy123",
+"to" : "hyperty://sp2/bobhy123",
+"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
+```
+
 Steps : optionally, invited Observers may respond with provisional responses e.g. to aknowledge the reception of the invitation and to accept or not the invitation to be an Observer.
 
 **[Provisional Response Message sent by inviter Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
