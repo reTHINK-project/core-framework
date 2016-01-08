@@ -9,3 +9,7 @@
 ### [Delete Hyperty Data Object](data-object-delete.md)
 
 ### [Management of Hyperty Data Object Child](data-object-child.md)
+
+### [Hyperty Data Object Reporter delegation](data-object-reporter-delegation.md)
+
+*probably only in phase 2*
