@@ -8,3 +8,4 @@
 
 ### [Delete Hyperty Data Object](data-object-delete.md)
 
+### [Management of Hyperty Data Object Child](data-object-child.md)
