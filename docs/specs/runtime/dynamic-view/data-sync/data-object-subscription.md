@@ -8,7 +8,7 @@ to be an Observer of a Data Object, a Subscription message is sent to the resour
 
 ```
 "id" : "1"
-"type" : "SUBSCRIPTION",
+"type" : "SUBSCRIBE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "comm://<sp1>/<alice>/<123456>/subscription"
 ```
@@ -39,24 +39,24 @@ Steps : the subscription requester is informed about the subscription authorisat
 
 **note**: Subscription response message body may contain the most update data object, which implies the reporter sync-manager is also an observer of the data object.
 
-**[Subscription Message sent to observer sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
+**[Subscription Message sent to observer sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
 
 ```
 "id" : "1"
-"type" : "SUBSCRIPTION",
+"type" : "SUBSCRIBE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>/subscription" }
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>" }
 ```
 
-**[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
+**[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
 
 ```
 "id" : "1"
-"type" : "SUBSCRIPTION",
+"type" : "SUBSCRIBE",
 "from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
 "to" : "domain://msg-node.<sp1>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>/subscription" }
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>"}
 ```
 
 ### Data Object Update

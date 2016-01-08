@@ -56,7 +56,7 @@ opt
 
 end
 
-RunSM@A -> Sync1@1B : Subscription\nResponse Message
+RunSM@A -> Sync1@1B : Subscribe\nResponse Message
 
 == listeners added at Observer side to receive data object updates ==
 

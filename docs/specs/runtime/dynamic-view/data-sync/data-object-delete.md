@@ -43,7 +43,7 @@ Each Observer asks its Sync Manager to remove its listeners from the Bus through
 
 The Sync Manager removes all authorised observerListeners that were added in the Msg BUS to receive the Data object updates (<ObjectURL>/changes resource).
 
-Step : the data object is unregistered in the Registry.
+Step : the data object is unregistered from the Registry.
 
 Steps 4: The new address allocated to the Data Object is informed back to the Reporter with a response message.
 
