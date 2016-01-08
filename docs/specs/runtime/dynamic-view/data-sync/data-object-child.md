@@ -2,7 +2,7 @@
 
 A Data Object Child belongs to a Data Object Parent resource and can be created by any Observer of the Data Object Parent as well as by its Reporter. The Reporter - Observer rules still applies to Data Object Child ie there is only one Reporter that can update the Data Object Child, which can be an Observer of the Data Object Parent, as mentioned earlier. However, the procedures to manage Data Object Child are different from the ones used to manage Data Object Parents. At this point, Data Object Child can't also be a Data Object Parent of another object. Ie Hyperty Data Object composition is limited to one level.
 
-**A complete definition of Hyperty Data Objects, Parents and Child relationships and the Reporter - Observer pattern will be provided elsewhere to be reported in D3.2**
+*A complete definition of Hyperty Data Objects, Parents and Child relationships and the Reporter - Observer pattern will be provided elsewhere to be reported in D3.2*
 
 ##### Creation of Data Object Parent
 
@@ -14,7 +14,7 @@ In the Data Object creation procedure, the Data Object Schema is parsed to check
 
 In the Data Object Parent subscription procedure, the Data Object Schema is parsed by the Observer Sync-Managers (at Runtime and Msg Node level), to extract resources that can contain Data Object Child. For each Data Child Resource URL (<ObjectURL>/<resource>/child) the Hyperty Observer listener is added to the Bus .
 
-![Figure @data-object-parent-subscribe Request to subscribe a Data Object Parent](data-object-child-001.png)
+![Figure @data-object-parent-subscribe Request to subscribe a Data Object Parent](data-object-child_001.png)
 
 ##### Creation of Data Object Child
 
@@ -22,11 +22,11 @@ The creation of a Data Object Child is simply a Create Message that is sent by a
 
 Data Object Child created by Data Object Parent Reporter:
 
-![Figure @data-object-child-createby-reporter Data Object Child created by Data Object Parent Reporter](data-object-child-002.png)
+![Figure @data-object-child-createby-reporter Data Object Child created by Data Object Parent Reporter](data-object-child_002.png)
 
 Data Object Child created by Data Object Parent Observer:
 
-![Figure @data-object-child-createby-observer Data Object Child created by Data Object Parent Observer](data-object-child-003.png)
+![Figure @data-object-child-createby-observer Data Object Child created by Data Object Parent Observer](data-object-child_003.png)
 
 ```
 "id" : "1"
@@ -42,11 +42,11 @@ According to Reporter-Observer rules (to be enforced by the Policy Engine), the 
 
 Update of Data Object Child created by Data Object Parent Reporter:
 
-![Figure @data-object-child-update-createdby-reporter Data Object Child update that was created by Data Object Parent Reporter](data-object-child-004.png)
+![Figure @data-object-child-update-createdby-reporter Data Object Child update that was created by Data Object Parent Reporter](data-object-child_004.png)
 
 Update of Data Object Child created by Data Object Parent Observer:
 
-![Figure @data-object-child-update-createdby-observer Data Object Child update that was created by Data Object Parent Observer](data-object-child-005.png)
+![Figure @data-object-child-update-createdby-observer Data Object Child update that was created by Data Object Parent Observer](data-object-child_005.png)
 
 ```
 "id" : "2"
@@ -62,11 +62,11 @@ According to Reporter-Observer rules (to be enforced by the Policy Engine), the 
 
 Delete of Data Object Child created by Data Object Parent Reporter:
 
-![Figure @data-object-child-delete-createdby-reporter Delete of Data Object Child that was created by Data Object Parent Reporter](data-object-child-006.png)
+![Figure @data-object-child-delete-createdby-reporter Delete of Data Object Child that was created by Data Object Parent Reporter](data-object-child_006.png)
 
 Delete of Data Object Child created by Data Object Parent Observer:
 
-![Figure @data-object-child-delete-createdby-observer Delete of Data Object Child that was created by Data Object Parent Observer](data-object-child-007.png)
+![Figure @data-object-child-delete-createdby-observer Delete of Data Object Child that was created by Data Object Parent Observer](data-object-child_007.png)
 
 ```
 "id" : "3"
