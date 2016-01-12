@@ -127,6 +127,13 @@
 
 		end box
 	!endif
+
+	!ifdef SHOW_IDPSandboxAtRuntimeA
+		box "IDP Sandbox at Alice Device" #LightBlue
+			participant "IdP Proxy" as idpProxy@A
+
+		end box
+	!endif
 !endif
 
 !ifdef SHOW_CoreRuntimeProvider
@@ -255,12 +262,20 @@
 			!endif
 		end box
 	!endif
+
+
 !endif
 
 
 !ifdef SHOW_SP2
 	box "Service Provider 2"
 		participant "Backend Service" as SP2
+	end box
+!endif
+
+!ifdef SHOW_IDP
+	box "Identity Provider"
+		participant "Identity Management" as IDP
 	end box
 !endif
 
