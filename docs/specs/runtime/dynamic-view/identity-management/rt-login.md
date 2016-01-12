@@ -2,7 +2,7 @@
 
 This section describes the main procedures to generate an Id Token by performing a Relying Party Login.
 
-![Figure @runtime-ident-man-rt-login: Relying Party Login (Id Token generation)](rt-login.png)
+![Figure @runtime-ident-man-rp-login: Relying Party Login (Id Token generation)](rp-login.png)
 
 **Message to Create Id Token**
 
