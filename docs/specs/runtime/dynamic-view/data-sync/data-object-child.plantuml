@@ -23,17 +23,17 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
-== When object is Created, Reporter will also be an observer of Data Object Childs ==
+== When object is Created, Reporter will also be an observer of Data Object Children ==
 
 Sync1@A -> RunSM@A : Create MSG
 
 ...
 
-RunSM@A -> RunSM@A : look for data object child resources\n in data object schema
+RunSM@A -> RunSM@A : look for data object children resources\n in data object schema
 
-loop for each data object child resource add Reporter listener
+loop for each data object children resource add Reporter listener
 
-	RunSM@A -> RunSM@A : bus.addListener\n( ReporterListener, \n<ObjectURL>/<resource>/child )
+	RunSM@A -> RunSM@A : bus.addListener\n( ReporterListener, \n<ObjectURL>/<resource>/children )
 
 end
 
@@ -41,15 +41,15 @@ end
 
 newpage
 
-== When object is subscribed, Observers will also listen for Data Object Child resources ==
+== When object is subscribed, Observers will also listen for Data Object Children resources ==
 
 Sync1@1B -> RunSM@1B : Subscribe Msg
 
 ...
 
-loop for each data object child \nresource add Observer listener
+loop for each data object children \nresource add Observer listener
 
-	RunSM@1B -> RunSM@1B : bus.addListener\n( ObserverListener, \n<ObjectURL>/<resource>/child )
+	RunSM@1B -> RunSM@1B : bus.addListener\n( ObserverListener, \n<ObjectURL>/<resource>/children )
 
 end
 
@@ -59,9 +59,9 @@ RunSM@1B -> SM@SP1: Subscribe Msg
 
 ...
 
-loop for each data object child \nresource add Observer listener
+loop for each data object children \nresource add Observer listener
 
-	SM@SP1 -> SM@SP1 : add ObserverRuntimeListener\nto <ObjectURL>/<resource>/child )
+	SM@SP1 -> SM@SP1 : add ObserverRuntimeListener\nto <ObjectURL>/<resource>/children )
 
 end
 
@@ -71,7 +71,7 @@ newpage
 
 == Object Child is Created by Reporter ==
 
-Sync1@A -> Sync1@1B : Create Message to <ObjectURL>/changes
+Sync1@A -> Sync1@1B : Create Message to <ObjectURL>/<resource>/children
 
 opt
 	Sync1@A -> Sync1@1B  : Create Message Response.
@@ -79,7 +79,7 @@ end
 
 Sync1@A -> Sync1@A : Ignore received Create\n Message sent by himself
 
-Sync1@A -> RunSM@A : Create Message to <ObjectURL>/<path>/child
+Sync1@A -> RunSM@A : Create Message to <ObjectURL>/<resource>/children
 
 opt
 	Sync1@A <- RunSM@A : Create Message Response.
@@ -89,9 +89,9 @@ newpage
 
 == Object Child is Created by Observer ==
 
-Sync1@A <- Sync1@1B : Create Message to <ObjectURL>/changes
+Sync1@A <- Sync1@1B : Create Message to <ObjectURL>/<resource>/children
 
-Sync1@1B -> RunSM@A : Create Message to <ObjectURL>/changes
+Sync1@1B -> RunSM@A : Create Message to <ObjectURL>/<resource>/children
 
 Sync1@1B -> Sync1@1B : Ignore received Create\n Message sent by himself
 
@@ -99,9 +99,9 @@ newpage
 
 == Object Child Created by Reporter is updated ==
 
-Sync1@A -> RunSM@A : Update Message to <ObjectURL>/<path>/child
+Sync1@A -> RunSM@A : Update Message to <ObjectURL>/<resource>/children
 
-Sync1@A -> Sync1@1B : Update Message to <ObjectURL>/changes
+Sync1@A -> Sync1@1B : Update Message to <ObjectURL>/<resource>/children
 
 Sync1@A -> Sync1@A : Ignore received Update\n Message sent by himself
 
@@ -109,9 +109,9 @@ newpage
 
 == Object Child Created by Observer is updated==
 
-Sync1@A <- Sync1@1B : Update Message to <ObjectURL>/changes
+Sync1@A <- Sync1@1B : Update Message to <ObjectURL>/<resource>/children
 
-Sync1@1B -> RunSM@A : Update Message to <ObjectURL>/changes
+Sync1@1B -> RunSM@A : Update Message to <ObjectURL>/<resource>/children
 
 Sync1@1B -> Sync1@1B : Ignore received Update\n Message sent by himself
 
@@ -119,9 +119,9 @@ newpage
 
 == Object Child Created by Reporter is deleted ==
 
-Sync1@A -> RunSM@A : Delete Message to <ObjectURL>/<path>/child
+Sync1@A -> RunSM@A : Delete Message to <ObjectURL>/<resource>/children
 
-Sync1@A -> Sync1@1B : Delete Message to <ObjectURL>/changes
+Sync1@A -> Sync1@1B : Delete Message to <ObjectURL>/<resource>/children
 
 Sync1@A -> Sync1@A : Ignore received Delete\n Message sent by himself
 
@@ -129,9 +129,9 @@ newpage
 
 == Object Child Created by Observer is Deleted==
 
-Sync1@A <- Sync1@1B : Delete Message to <ObjectURL>/changes
+Sync1@A <- Sync1@1B : Delete Message to <ObjectURL>/<resource>/children
 
-Sync1@1B -> RunSM@A : Delete Message to <ObjectURL>/changes
+Sync1@1B -> RunSM@A : Delete Message to <ObjectURL>/<resource>/children
 
 Sync1@1B -> Sync1@1B : Ignore received Delete\n Message sent by himself
 

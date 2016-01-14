@@ -2,15 +2,40 @@
 
 ![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-subscribe.png)
 
-to be an Observer of a Data Object, a Subscription message is sent to the resource managing subscription for the data object (DataObjectURL/subscription) which is implemented by the Synch Manager of the Reporter.
+To be an Observer of a Data Object, a Subscription message is sent to the local Sync Manager.
+
+**[Subscription Message sent to observer sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
+
+```
+"id" : "1"
+"type" : "SUBSCRIBE",
+"from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>" }
+```
+
+The Local Sync Manager adds Observer side listeners and asks its Message Node to also add the required Listeners for the Data Object.
+
+**[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
+
+```
+"id" : "1"
+"type" : "SUBSCRIBE",
+"from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"to" : "domain://msg-node.<sp1>/sm",
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>"}
+```
+
+As soon as observer side listeners are added for the Data Object, the Subscription request is sent to the data object subscription URL (DataObjectURL/subscription), which is implemented by the Synch Manager of the Reporter.
 
 **[Subscription Message sent by invited Observer to Reporter domain SM](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscriptionmessagebody)**
 
 ```
 "id" : "1"
 "type" : "SUBSCRIBE",
-"from" : "hyperty://sp2/bobhy123",
-"to" : "comm://<sp1>/<alice>/<123456>/subscription"
+"from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"to" : "comm://<sp1>/<alice>/<123456>/subscription",
+"body" : { "subscriber" : "hyperty://sp2/bobhy123" }
 ```
 
 The Sync Manager checks if subscription requester has been previously authorised when the data object was created.
@@ -25,7 +50,7 @@ Step : optionally, the new Observer listener is added in the Message BUS to be n
 
 Steps : optionally, it is posted an UPDATE message into the DataObjectObserversURL with information about the new added Observer.
 
-Steps : the subscription requester is informed about the subscription authorisation with a RESPONSE message.
+Steps : as soon as the Subscription is accepted by the Reporter and all required listeners are added, an OK RESPONSE message is sent back with the most update data object.
 
 **[Subscription Response Message ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
 
@@ -33,30 +58,20 @@ Steps : the subscription requester is informed about the subscription authorisat
 "id" : "1"
 "type" : "RESPONSE",
 "from" : "comm://<sp1>/<alice>/<123456>/subscription",
-"to" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
 "body" : { "code" : "2XX", "value" : "<data object>"  }
 ```
 
-**note**: Subscription response message body may contain the most update data object, which implies the reporter sync-manager is also an observer of the data object.
+Steps : Subscription Response Confirmation is forwarded to the Observer, including the most update data object.
 
-**[Subscription Message sent to observer sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
-
-```
-"id" : "1"
-"type" : "SUBSCRIBE",
-"from" : "hyperty://sp2/bobhy123",
-"to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>" }
-```
-
-**[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
+**[Subscription Response Message ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
 
 ```
 "id" : "1"
-"type" : "SUBSCRIBE",
+"type" : "RESPONSE",
 "from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
-"to" : "domain://msg-node.<sp1>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>"}
+"to" : "hyperty://sp2/bobhy123",
+"body" : { "code" : "2XX", "value" : "<data object>"  }
 ```
 
 ### Data Object Update

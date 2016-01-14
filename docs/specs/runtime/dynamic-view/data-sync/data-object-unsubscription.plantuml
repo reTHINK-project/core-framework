@@ -26,8 +26,9 @@ autonumber
 
 == Hyperty requests to stop be Observer of Data Object ==
 
+Sync1@1B -> RunSM@1B : Unsubscribe Msg
 
-Sync1@1B -> RunSM@A : Unsubscribe Msg
+RunSM@1B -> RunSM@A : Unsubscribe Msg
 
 RunSM@A -> RunSM@A : listener.remove()
 
@@ -43,18 +44,18 @@ opt
 
 end
 
-RunSM@A -> Sync1@1B : Unsubscription\nResponse Message
+RunSM@A -> RunSM@1B : Unsubscription\nResponse Message
 
-== listeners removed at Observer side to receive data object updates ==
-
-Sync1@1B -> RunSM@1B : Unsubscribe Msg
+== listeners removed at Observer side to stop receiving data object updates ==
 
 RunSM@1B -> RunSM@1B : listener.remove()
 
-RunSM@1B -> SM@SP1 : Unsubscribe Msg
 
+RunSM@1B -> SM@SP1 : Unsubscribe Msg
 SM@SP1 -> SM@SP1 : removeListeners
 
+RunSM@1B <- SM@SP1 : OK Unsubscribe Response Msg
 
+RunSM@1B -> Sync1@B1 : OK Unsubscribe Response Msg
 
 @enduml
