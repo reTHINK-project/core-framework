@@ -435,6 +435,20 @@ Uses the previously generated GUID, identified by the given string containing 16
 useGUID(String mnemonicAndSalt)
 ```
 
+#### addUserID(String userID)
+Adds a UserID for the user.
+
+```
+addUserID(String userID)
+```
+
+#### removeUserID(String userID)
+Removes a UserID for the user.
+
+```
+removeUserID(String userID)
+```
+
 #### signGlobalRegistryRecord
 Signs the record that is stored in the Global Registry; returns a signed JWT.
 
@@ -464,15 +478,6 @@ Remove contact from Graph Connector.
 
 ```
 removeContact(String guid)
-```
-
-#### addContactsBloomFilter1Hop
-
-Adds a Bloom filter containing the hashed GUIDs of direct contacts for the given GUID.
-In order to be able to realize a trust engine, and to build an actual graph, when adding contacts, some information about the contact's contacts are added. Here, not the GUIDs of those contacts are shared directly, but a Bloom filter that contains all contacts. (See https://en.wikipedia.org/wiki/Bloom_filter for more details on Bloom filters.) This way, privacy is not compromised. The only information that the receiving user has is the Bloom filter that makes it possible to check if a unknown GUID (e.g., when receiving a call from a unknown user) is (most likely) a contact of one of your contacts. This can be done for multiple hops as well, analogous additional functions are needed.
-
-```
-addContactsBloomFilter1Hop(String guid, BloomFilter bloomfilter)
 ```
 
 
