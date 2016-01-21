@@ -27,13 +27,21 @@ Sync1@A -> RunSM@A : Create MSG
 
 RunSM@A <- RunSM@A : policyEngine.authorise()
 
-RunSM@A <- RunSM@A : registry.registerDataObject()
+  RunSM@A <- RunSM@A : registry.registerDataObject()
 
- note right
- 	DataObject URL is allocated
-	 and its URL is reachable in its domain
-	 (listeners added at event/msg bus)
- end note
+group Allocate Data Object URL
+  RunSM@A -> SP1 : Create Allocation Message
+
+  note right
+   Register Data Object
+ 	 and its URL is reachable in its domain
+ 	 (listeners added at event/msg bus)
+  end note
+
+
+  RunSM@A <- SP1 : Create Allocation Response Message
+end
+
 
 Sync1@A <- RunSM@A : Create Response MSG
 

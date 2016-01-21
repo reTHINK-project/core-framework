@@ -18,7 +18,29 @@ Steps 1-2: The Data Object reporter post a Create Message to initiate the setup 
 
 Steps : The Core Police Engine applies policies to check whether Alice has permissions to create the data object.
 
-Step : optionally, and according to applicable policies, the new data object is registered in the Registry. In Step 11, the Registry adds a listener in the MessageBUS to be notified about status change events of the new Data Object.
+Step : the new data object is registered in the Registry, which includes the allocation of the ObjectURL.
+
+**[Create Message sent by Registry to Allocate Address to new Object](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty-runtime://<sp1>/<runalice>/registry/allocation",
+"to" : "domain://msg-node.<sp1>/hyperty-address-allocation",
+"body" : { "number" : 5 , "urlScheme" : "connection" , "resourceChildren" : ["messages"]}
+```
+
+**Response Message returning the requested Data Object address**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "domain://msg-node.sp1/hyperty-address-allocation",
+"to" : "hyperty-runtime://sp1/runalice/registry/allocation",
+"body" : { "code": 200, "allocated": ["connection://sp1/alice/hy123", ...] }
+```
+
+the Registry may adds a listener in the MessageBUS to be notified about status change events of the new Data Object.
 
 Steps : optionally, and again, according to applicable policies, a new address might have to be allocated to the Data Object by the Messaging Node address allocation functionalities, to ensure the new data object is globally reachable.
 

@@ -25,7 +25,6 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 ```
 "id" : "1"
 "type" : "RESPONSE",
-"body" : { "hypertyInstanceURL" : "hyperty://sp1/alice/hy123" }
 "from" : "domain://msg-node.sp1/hyperty-address-allocation",
 "to" : "hyperty-runtime://sp1/runalice/registry/allocation",
 "body" : { "code": 200, "allocated": ["hyperty://sp1/alice/hy123", ...] }
