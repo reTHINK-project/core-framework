@@ -84,7 +84,7 @@ To unregister a previously registered Protocol Stub
 To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, the URL of the dataObject, other Hyperties instances that are authorised to read the data object and its schema. In addition it may be requested to allocate a new address for the data object (addressAllocationRequired) and to register it at the backend Registry (backendRegistryRequired). This function returns the URL allocated to the new Data Object in case addressAllocationRequired is true.
 
 ```
-URL.URL registerDataObject( URL.HypertyUrl owner, URL.URL dataObjectUrl (?), HypertyUrlList readers, HypertyCatalogueURL schema (?), boolean addressAllocationRequired (?), boolean backendRegistryRequired (?))
+URL.URL registerDataObject( URL.HypertyUrl owner, URL.URL dataObjectUrl (?), HypertyCatalogueURL schema, String urlScheme,  boolean backendRegistryRequired (?))
 ```
 
 #### unregisterDataObject
@@ -417,7 +417,6 @@ Sends Connectivity Statistics data to QoS Broker. To be completed.
 sendConnectivityStatisticsToBroker(  )
 ```
 
-
 ### Graph Connector Interface
 
 #### generateGUID
@@ -429,6 +428,7 @@ generateGUID( )
 ```
 
 #### useGUID
+
 Uses the previously generated GUID, identified by the given string containing 16 words.
 
 ```
@@ -436,6 +436,7 @@ useGUID(String mnemonicAndSalt)
 ```
 
 #### addUserID(String userID)
+
 Adds a UserID for the user.
 
 ```
@@ -443,6 +444,7 @@ addUserID(String userID)
 ```
 
 #### removeUserID(String userID)
+
 Removes a UserID for the user.
 
 ```
@@ -450,6 +452,7 @@ removeUserID(String userID)
 ```
 
 #### signGlobalRegistryRecord
+
 Signs the record that is stored in the Global Registry; returns a signed JWT.
 
 ```
@@ -480,7 +483,6 @@ Remove contact from Graph Connector.
 removeContact(String guid)
 ```
 
-
 #### calculateBloomFilter1Hop
 
 Calculates a Bloom filter containing the hashed GUIDs of all the users direct contacts that are not set to private. Used to share with other contacts.
@@ -488,7 +490,6 @@ Calculates a Bloom filter containing the hashed GUIDs of all the users direct co
 ```
 calculateBloomFilter1Hop()
 ```
-
 
 #### checkGUID
 
