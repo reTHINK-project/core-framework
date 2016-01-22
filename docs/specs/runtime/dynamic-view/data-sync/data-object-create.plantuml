@@ -75,14 +75,16 @@ RunSM@A -> SP1H@1B : Create Msg
 opt Invited Hyperties can send provisional responses eg to aknowledge the reception
 	...
 
-	Sync1@A <- SP1H@1B : provisional Response Msg
+  RunSM@A <- SP1H@1B : provisional Response Msg
+  Sync1@A <- RunSM@A : provisional Response Msg
 
 end
 
 opt Invited Hyperties can send responses accepting or not to be observer
 	...
 
-	Sync1@A <- SP1H@1B : final Response Msg
+  RunSM@A <- SP1H@1B : final Response Msg
+  Sync1@A <- RunSM@A : final Response Msg
 
 	...
 end

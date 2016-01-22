@@ -67,19 +67,29 @@ Steps : In case the data object creation is authorised, the Message BUS forwards
 ```
 "id" : "1"
 "type" : "CREATE",
-"from" : "hyperty://<sp1>/alicehy123",
+"from" : "hyperty-runtime://<sp1>/<alice-device>/sm",
 "to" : "hyperty://sp2/bobhy123",
 "body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123" }
 ```
 
 Steps : optionally, invited Observers may respond with provisional responses e.g. to aknowledge the reception of the invitation and to accept or not the invitation to be an Observer.
 
-**[Provisional Response Message sent by inviter Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
+**[Response Message sent by inviter Observer](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
 
 ```
 "id" : "1"
 "type" : "RESPONSE",
 "from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1>/<alice-device>/sm",
+"body" : { "code" : "1XX\2XX"  }
+```
+
+**[Response Message sent by inviter Observer forwarded to Reporter](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "hyperty-runtime://<sp1>/<alice-device>/sm",
 "to" : "hyperty://sp1/alicehy123",
-"body" : { "code" : "1XX"  }
+"body" : { "code" : "1XX\2XX" , "source" : "hyperty://sp2/bobhy123" }
 ```

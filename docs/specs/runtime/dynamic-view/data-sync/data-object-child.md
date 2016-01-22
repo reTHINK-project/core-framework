@@ -24,16 +24,48 @@ Data Object Child created by Data Object Parent Reporter:
 
 ![Figure @data-object-child-createby-reporter Data Object Child created by Data Object Parent Reporter](data-object-child_002.png)
 
+**CREATE Child Message**
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty://sp1/alicehy123",
+"to" : "comm://<sp1>/<alice>/children/<chat-messages>",
+"body" : { "value" : "{ "childId" : "<hyperty://sp1/alicehy123>#<1>", "<message>" : "Hello Bob" }  }
+```
+
+**Response to CREATE Child Message**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "comm://<sp1>/<alice>/children/<chat-messages>",
+"to" : "hyperty://sp1/alicehy123",
+"body" : { "code" : "2XX" , "source" : "hyperty://sp2/bobhy123" }  }
+```
+
 Data Object Child created by Data Object Parent Observer:
 
 ![Figure @data-object-child-createby-observer Data Object Child created by Data Object Parent Observer](data-object-child_003.png)
+
+**CREATE Child Message**
 
 ```
 "id" : "1"
 "type" : "CREATE",
 "from" : "hyperty://sp2/bobhy123",
-"to" : "comm://<sp1>/<alice>/<chat-messages>/child",
+"to" : "comm://<sp1>/<alice>/children/<chat-messages>",
 "body" : { "value" : "{ "childId" : "<hyperty://sp2/bobhy123>#<1>", "<message>" : "Hello Alie" }  }
+```
+
+**Response to CREATE Child Message**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "comm://<sp1>/<alice>/children/<chat-messages>",
+"to" : "hyperty://sp2/bobhy123",
+"body" : { "code" : "2XX" , "source" : "hyperty://sp1/alicehy123" }  }
 ```
 
 ##### Update of Data Object Child
