@@ -29,6 +29,8 @@ Sync1@A -> RunSM@A : Create MSG
 
 ...
 
+RunSM@A -> RunSM@A : runtimeCatalogue.getDataSchemaSource( CatalogueURL )
+
 RunSM@A -> RunSM@A : look for data object children resources\n in data object schema
 
 loop for each data object children resource add Reporter listener

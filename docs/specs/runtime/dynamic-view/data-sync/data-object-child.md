@@ -10,11 +10,51 @@ In the Data Object creation procedure, the Data Object Schema is parsed to check
 
 ![Figure @data-object-parent-create Request to create a Data Object Parent](data-object-child.png)
 
+**[Response Message by SM to inform Hyperty Owner that object creation was authorised including in the body the new allocated Data Object and associated Children resources URL](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "hyperty-runtime://<sp1>/<alice-device>/sm",
+"to" : "hyperty://sp1/alicehy123",
+"body" : { "code" : "200", "value" : "{ "resource" : "comm://sp1-msg-node/alice/123456" }, "childrenResources" : ["messages"] }
+```
+
+**[Create Message forwarded to invited Observers](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#createmessagebody)**
+
+```
+"id" : "1"
+"type" : "CREATE",
+"from" : "hyperty-runtime://<sp1>/<alice-device>/sm",
+"to" : "hyperty://sp2/bobhy123",
+"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123", "childrenResources" : ["messages"] }
+```
+
 ##### Subscription of Data Object Parent
 
 In the Data Object Parent subscription procedure, the Data Object Schema is parsed by the Observer Sync-Managers (at Runtime and Msg Node level), to extract resources that can contain Data Object Child. For each Data Child Resource URL (<ObjectURL>/<resource>/child) the Hyperty Observer listener is added to the Bus .
 
 ![Figure @data-object-parent-subscribe Request to subscribe a Data Object Parent](data-object-child_001.png)
+
+**[Subscription Message sent to observer sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
+
+```
+"id" : "1"
+"type" : "SUBSCRIBE",
+"from" : "hyperty://sp2/bobhy123",
+"to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>", "childrenResources" : ["messages"] }
+```
+
+**[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
+
+```
+"id" : "1"
+"type" : "SUBSCRIBE",
+"from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"to" : "domain://msg-node.<sp1>/sm",
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>", "childrenResources" : ["messages"]}
+```
 
 ##### Creation of Data Object Child
 
@@ -31,7 +71,7 @@ Data Object Child created by Data Object Parent Reporter:
 "type" : "CREATE",
 "from" : "hyperty://sp1/alicehy123",
 "to" : "comm://<sp1>/<alice>/children/<chat-messages>",
-"body" : { "value" : "{ "childId" : "<hyperty://sp1/alicehy123>#<1>", "<message>" : "Hello Bob" }  }
+"body" : { "resource" : "<hyperty://sp1/alicehy123>#<1>", "value" : "{  "<message>" : "Hello Bob" }  }
 ```
 
 **Response to CREATE Child Message**
@@ -55,7 +95,7 @@ Data Object Child created by Data Object Parent Observer:
 "type" : "CREATE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "comm://<sp1>/<alice>/children/<chat-messages>",
-"body" : { "value" : "{ "childId" : "<hyperty://sp2/bobhy123>#<1>", "<message>" : "Hello Alie" }  }
+"body" : { "resource" : "<hyperty://sp2/bobhy123>#<1>", "value" : "{  "<message>" : "Hello Alie" }  }
 ```
 
 **Response to CREATE Child Message**
@@ -85,7 +125,7 @@ Update of Data Object Child created by Data Object Parent Observer:
 "type" : "UPDATE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "comm://<sp1>/<alice>/<chat-messages>/child",
-"body" : { "value" : "{ "childId" : "<hyperty://sp2/bobhy123>#<1>", "<message>" : "Hello Alice" }  }
+"body" : { "resource" : "<hyperty://sp2/bobhy123>#<1>", "value" : "{ "<message>" : "Hello Alice" }  }
 ```
 
 ##### Delete of Data Object Child created by Reporter
@@ -104,6 +144,6 @@ Delete of Data Object Child created by Data Object Parent Observer:
 "id" : "3"
 "type" : "DELETE",
 "from" : "hyperty://sp2/bobhy123",
-"to" : "comm://<sp1>/<alice>/<chat-messages>/child",
-"body" : { "attribute" : "<hyperty://sp2/bobhy123>#<1>" }
+"to" : "comm://<sp1>/<alice>/<chat-messages>/children",
+"body" : { "resource" : "<hyperty://sp2/bobhy123>#<1>" }
 ```

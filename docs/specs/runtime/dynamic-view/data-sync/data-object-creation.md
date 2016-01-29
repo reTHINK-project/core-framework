@@ -27,7 +27,7 @@ Step : the new data object is registered in the Registry, which includes the all
 "type" : "CREATE",
 "from" : "hyperty-runtime://<sp1>/<runalice>/registry/allocation",
 "to" : "domain://msg-node.<sp1>/hyperty-address-allocation",
-"body" : { "number" : 5 , "urlScheme" : "connection" , "resourceChildren" : ["messages"]}
+"body" : { "value" : { "number" : 5 , "urlScheme" : "connection" , "resourceChildren" : ["messages"] } }
 ```
 
 **Response Message returning the requested Data Object address**
@@ -37,7 +37,7 @@ Step : the new data object is registered in the Registry, which includes the all
 "type" : "RESPONSE",
 "from" : "domain://msg-node.sp1/hyperty-address-allocation",
 "to" : "hyperty-runtime://sp1/runalice/registry/allocation",
-"body" : { "code": 200, "allocated": ["connection://sp1/alice/hy123", ...] }
+"body" : { "code": 200, "value": ["connection://sp1/alice/hy123", ...] }
 ```
 
 the Registry may adds a listener in the MessageBUS to be notified about status change events of the new Data Object.
