@@ -47,6 +47,10 @@ newpage
 
 Sync1@1B -> RunSM@1B : Subscribe Msg
 
+RunSM@1B -> RunSM@1B : runtimeCatalogue.getDataSchemaSource( CatalogueURL )
+
+RunSM@1B -> RunSM@1B : look for data object children resources\n in data object schema
+
 ...
 
 loop for each data object children \nresource add Observer listener

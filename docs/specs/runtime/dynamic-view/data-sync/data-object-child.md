@@ -27,7 +27,7 @@ In the Data Object creation procedure, the Data Object Schema is parsed to check
 "type" : "CREATE",
 "from" : "hyperty-runtime://<sp1>/<alice-device>/sm",
 "to" : "hyperty://sp2/bobhy123",
-"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123", "childrenResources" : ["messages"] }
+"body" : { "resource" : "comm://sp1/alice/123456", "value" : "<json object > , "schema" : "hyperty-catalogue://sp1/dataObjectSchema/schema123"  }
 ```
 
 ##### Subscription of Data Object Parent
@@ -43,7 +43,7 @@ In the Data Object Parent subscription procedure, the Data Object Schema is pars
 "type" : "SUBSCRIBE",
 "from" : "hyperty://sp2/bobhy123",
 "to" : "hyperty-runtime://<sp1>/<bob-device>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>", "childrenResources" : ["messages"] }
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>" }
 ```
 
 **[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
