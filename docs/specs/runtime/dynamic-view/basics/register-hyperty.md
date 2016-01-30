@@ -17,7 +17,7 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 "type" : "CREATE",
 "from" : "hyperty-runtime://<sp1>/<runalice>/registry/allocation",
 "to" : "domain://msg-node.<sp1>/hyperty-address-allocation",
-"body" : { "number" : 5 }
+"body" : { "value" : {"number" : 5} }
 ```
 
 **Response Message returning the requested Hyperty Instance address**
@@ -27,7 +27,7 @@ Steps 4 - 10: an Hyperty URL address is allocated in cooperation with the Msg No
 "type" : "RESPONSE",
 "from" : "domain://msg-node.sp1/hyperty-address-allocation",
 "to" : "hyperty-runtime://sp1/runalice/registry/allocation",
-"body" : { "code": 200, "allocated": ["hyperty://sp1/alice/hy123", ...] }
+"body" : { "code": 200, "value" : {"allocated": ["hyperty://sp1/alice/hy123", ...]} }
 ```
 
 Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
@@ -39,9 +39,9 @@ Steps 11 - 15: the Hyperty instance is registered in the back-end Registry
 "type" : "CREATE",
 "from" : "hyperty-runtime://<sp1>/runalice",
 "to" : "registry.<sp1>",
-"body" : { "hypertyDescriptorURL" : "hyperty-catalogue://sp1/hy123", "hypertyURL" : "hyperty://sp1/alice/hy123",
+"body" : { "value" : {"hypertyDescriptorURL" : "hyperty-catalogue://sp1/hy123", "hypertyURL" : "hyperty://sp1/alice/hy123",
 "hypertyRuntimeURL" : "hyperty-runtime://sp1/runalice",
-...}
+...} }
 ```
 
 Steps 16 - 17: The runtime Registry adds its listener to be notified about Hyperty instance status and returns the Hyperty URL to the runtime UA

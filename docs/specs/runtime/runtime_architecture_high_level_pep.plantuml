@@ -25,7 +25,7 @@ node "Runtime Device" as rt {
 
  }
 
-node "PEP1\nSandbox" as PEP1Sand {
+node "Hyperty\nInterceptor1\nSandbox" as PEP1Sand {
  }
 
 
@@ -37,7 +37,7 @@ node "Service Provider 2 Sandboxes" as SP2Sand {
  node "Hyperties\nSandbox" as H2Sand {
 	 }
 
- 
+
  node "ProtoStub2\nSandbox" as Proto2Sand {
 
   }
@@ -61,7 +61,7 @@ SP2I <-down-> Proto2Sand : protocol\nmessage
 
 node "Core Sandbox" as core {
 
- node "*            Message      BUS                *" as Bus 
+ node "*            Message      BUS                *" as Bus
 
 }
 
@@ -76,7 +76,7 @@ node "Core Sandbox" as core {
 
 
 node "++++++++++++++++++++++ Native    Runtime ++++++++++++++++++++++++++++++++++++++++++++++" as native {
-	
+
 	}
 
 }
