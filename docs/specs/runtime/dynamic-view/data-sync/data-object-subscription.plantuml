@@ -28,6 +28,8 @@ autonumber
 
 == Start adding listeners on Observer side ==
 
+Sync1@1B -> Sync1@1B : Minibus.Addlisteners(\nDataObjURL\changes,\nSyncherListener)
+
 Sync1@1B -> RunSM@1B : Subscribe Msg
 
 RunSM@1B -> RunSM@1B : bus.addListener(\nDataObjURL\changes URL, \nObserverSandboxListener)

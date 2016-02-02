@@ -1,5 +1,7 @@
 #### Synchronisation of Data Object Child
 
+*changes: - update diagram with response msg - add response to response to subscription to avoid adding listeners in advance and catalogue interaction in the observer. No possible because not ensured the subscription response will have the most updated version of the object*
+
 A Data Object Child belongs to a Data Object Parent resource and can be created by any Observer of the Data Object Parent as well as by its Reporter. The Reporter - Observer rules still applies to Data Object Child ie there is only one Reporter that can update the Data Object Child, which can be an Observer of the Data Object Parent, as mentioned earlier. However, the procedures to manage Data Object Child are different from the ones used to manage Data Object Parents. At this point, Data Object Child can't also be a Data Object Parent of another object. Ie Hyperty Data Object composition is limited to one level.
 
 *A complete definition of Hyperty Data Objects, Parents and Child relationships and the Reporter - Observer pattern will be provided elsewhere to be reported in D3.2*
@@ -46,6 +48,16 @@ In the Data Object Parent subscription procedure, the Data Object Schema is pars
 "body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>" }
 ```
 
+**[Provisional Response to Subscription Message sent to observer syncher with list of childrenResources ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#responsemessagebody)**
+
+```
+"id" : "1"
+"type" : "RESPONSE",
+"from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
+"to" : "hyperty://sp2/bobhy123",
+"body" : { "code" : "1XX", "childrenResources" : {["messages"]}  }
+```
+
 **[Subscription Message sent to observer domain sync-manager to add listeners to observer runtime and domain ](https://github.com/reTHINK-project/architecture/tree/master/docs/datamodel/message#subscribemessagebody)**
 
 ```
@@ -53,7 +65,7 @@ In the Data Object Parent subscription procedure, the Data Object Schema is pars
 "type" : "SUBSCRIBE",
 "from" : "hyperty-runtime://<sp1>/<bob-device>/sm",
 "to" : "domain://msg-node.<sp1>/sm",
-"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>", "childrenResources" : ["messages"]}
+"body" : { "resource" : "comm://<sp1>/<alice>/<123456>" , "schema" : "hyperty-catalogue://<sp1>/dataObjectSchema/<schema123>", "childrenResources" : {["messages"]} }
 ```
 
 ##### Creation of Data Object Child

@@ -51,6 +51,16 @@ RunSM@1B -> RunSM@1B : runtimeCatalogue.getDataSchemaSource( CatalogueURL )
 
 RunSM@1B -> RunSM@1B : look for data object children resources\n in data object schema
 
+== Provisional Response is sent back to Observer to let it add listener responses in advance ==
+
+Sync1@1B <- RunSM@1B : Provisional Response with\n children resources
+
+loop for each data object children \nresource add Observer listener
+
+	Sync1@1B -> Sync1@1B : Minibus.addListener\n( ObserverListener, \n<ObjectURL>/children/<resource> )
+
+end
+
 ...
 
 loop for each data object children \nresource add Observer listener
@@ -72,6 +82,23 @@ loop for each data object children \nresource add Observer listener
 end
 
 ...
+
+RunSM@1B <- SM@SP1: Response to Subscribe Msg
+
+RunSM@1B -> RunSM@A: Subscribe Msg
+
+...
+
+loop for each data object children \nresource add Observer listener
+
+	RunSM@A -> RunSM@A : add bus.addListener(\nObserverProtostubListener\nto <ObjectURL>/children/<resource> )
+
+end
+...
+
+RunSM@1B <- RunSM@A: Response to Subscribe Msg
+
+Sync1@1B <- RunSM@1B : Final Response with\n last Object version
 
 newpage
 
