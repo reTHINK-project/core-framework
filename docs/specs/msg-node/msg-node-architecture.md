@@ -3,7 +3,7 @@ Messaging Node Architecture
 
 The Messaging Node functional architecture is presented in the figure below and it comprises three main types of functionalities including the Core Functionalities, Connectors and Protocol Stubs.
 
-![Figure @msg-node-architecture-messaging-node-architecture: Messaging Node Architecture](msg_node_architecture.png)
+![Figure @msg-node-architecture-messaging-node-architecture: Messaging Node Architecture](msg-node-architecture.png)
 
 ### Core Functionalities
 
