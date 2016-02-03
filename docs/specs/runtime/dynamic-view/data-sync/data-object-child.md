@@ -1,7 +1,5 @@
 #### Synchronisation of Data Object Child
 
-*changes: - update diagram with response msg - add response to response to subscription to avoid adding listeners in advance and catalogue interaction in the observer. No possible because not ensured the subscription response will have the most updated version of the object*
-
 A Data Object Child belongs to a Data Object Parent resource and can be created by any Observer of the Data Object Parent as well as by its Reporter. The Reporter - Observer rules still applies to Data Object Child ie there is only one Reporter that can update the Data Object Child, which can be an Observer of the Data Object Parent, as mentioned earlier. However, the procedures to manage Data Object Child are different from the ones used to manage Data Object Parents. At this point, Data Object Child can't also be a Data Object Parent of another object. Ie Hyperty Data Object composition is limited to one level.
 
 *A complete definition of Hyperty Data Objects, Parents and Child relationships and the Reporter - Observer pattern will be provided elsewhere to be reported in D3.2*
