@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-runtime-core/tree/d3.2-working-docs/docs/specs)**
+============================================================================================================================================
+
 Runtime Architecture
 --------------------
 
