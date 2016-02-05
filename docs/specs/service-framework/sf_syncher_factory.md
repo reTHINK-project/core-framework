@@ -1,46 +1,50 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/tree/d3.2-working-docs/docs/specs/service-framework)**
+===================================================================================================================================================================
+
 ### SyncherManager
 
-The SyncherManager provides data object synchronisation for Local Data Object for reporting and Remote Data Objects for observing as described  by the [Reporter-Observer communication pattern](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/dynamic-view/basics/create-sync-data-object.md). 
+The SyncherManager provides data object synchronisation for Local Data Object for reporting and Remote Data Objects for observing as described by the [Reporter-Observer communication pattern](https://github.com/reTHINK-project/core-framework/blob/master/docs/specs/runtime/dynamic-view/basics/create-sync-data-object.md).
 
 ##### Constructor
+
 ```
 SyncherManager(url, postMessage)
 ```
+
 ##### postMessage
+
 ```
 postMessage(msg)
 ```
 
 ##### createReporter
-Ask for a DataObjectReport creation, a creation request should be sent to the Policy Enforcer, if accepted the Promise will return the object. The same message should be forward to the observers.
-```
+
+Ask for a DataObjectReport creation, a creation request should be sent to the Policy Enforcer, if accepted the Promise will return the object. The same message should be forward to the observers.`
 Promise<DataObjectReport> createReporter(Object schema, URL[] observers, (?) Object initData)
-```
+`
 
 ##### on
+
 ```
 on(String msgType, callback)
 ```
-Registration point for some types of events, like for example a **creation** event that can be processed like:
-```
-on('create', (evt) => {
- //decide what to do. Creation is an automatic invitation
- 
- //evt.obj is of type DataObjectObservation
- evt.obj.accept() or evt.obj.reject()
-});
-```
-It's useful to delegate some decisions to the Hyperty, User or other external system to the SyncherManager.
+
+Registration point for some types of events, like for example a **creation** event that can be processed like:\`\`\` on('create', (evt) => { //decide what to do. Creation is an automatic invitation
+
+//evt.obj is of type DataObjectObservation evt.obj.accept() or evt.obj.reject() });\`\`\` It's useful to delegate some decisions to the Hyperty, User or other external system to the SyncherManager.
 
 #### DataObjectReport (or DataObjectReporting?)
-- Question: Has this been defined anywhere in the Model? 
+
+-	Question: Has this been defined anywhere in the Model?
 
 ##### Constructor
+
 Reporter creates a data object report passing as input parameters invited observers, the data object schema and, optionaly, the handler that will process events from observers (e.g. observer added, observer removed, observation request by a non invited observer). An initialisation data object may also be passed.
 
 ```
  DataObjectReport(schema, URL[] observers, (?) handler, (?) Object initialisation)
 ```
+
 Question: Do not quite understand how this ties to Promise Object
 
 ##### addObserver
@@ -59,7 +63,7 @@ addObserver( URL.Hyperty hyperty )
 
 ##### removeObserver
 
-Unbinds observers from a data object reporting passing the User URL. 
+Unbinds observers from a data object reporting passing the User URL.
 
 ```
 removeObserver( URL.User user )
@@ -80,8 +84,8 @@ stop()
 ```
 
 #### DataObjectObservation
-- Question: Has this been defined anywhere in the Model?  
 
+-	Question: Has this been defined anywhere in the Model?  
 
 ##### Constructor
 
@@ -130,4 +134,3 @@ reject( String reason )
 *to provide examples here showing that as soon as the promised data object is returned, the reporter can start updating the object and the syncher will update observers with data object changes. The same on the observation side*
 
 ...
-
