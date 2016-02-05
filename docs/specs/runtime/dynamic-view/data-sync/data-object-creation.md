@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/data-object-creation.md)**
+================================================================================================================================================================================================
+
 #### Data Object Creation by Reporter
 
 This MSC diagrams shows the most relevant steps to support the setup of data object synchronisation.

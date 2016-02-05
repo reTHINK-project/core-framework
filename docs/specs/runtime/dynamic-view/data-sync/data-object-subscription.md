@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/data-object-subscription.md)**
+====================================================================================================================================================================================================
+
 #### Data Object Subscription by Observer
 
 ![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-subscribe.png)

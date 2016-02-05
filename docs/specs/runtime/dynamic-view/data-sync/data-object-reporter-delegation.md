@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/data-object-reporter-delegation.md)**
+===========================================================================================================================================================================================================
+
 #### Data Object Reporter Delegation
 
 ![Figure @data-sync-subscription Request to subscribe a Sync Data Object](data-object-reporter-delegation.png)

@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/data-object-delete.md)**
+==============================================================================================================================================================================================
+
 #### Data Object Delete by Reporter
 
 ![Figure @data-object-delete Request to delete a Sync Data Object](data-object-delete.png)
