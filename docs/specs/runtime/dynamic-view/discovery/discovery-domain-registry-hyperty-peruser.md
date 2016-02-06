@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/discovery)**
+========================================================================================================================================================================
+
 #### Discover Hyperty per User URL
 
 The Runtime procedures to Discover available Hyperties for a user.
