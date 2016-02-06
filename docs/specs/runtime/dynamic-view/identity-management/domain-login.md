@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/identity-management)**
+==================================================================================================================================================================================
+
 #### Domain Login
 
 This section describes the main procedures to support domain login.
