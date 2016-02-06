@@ -1,4 +1,8 @@
-## Procedures to Manage Hyperty Data Objects
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/readme.md)**
+==================================================================================================================================================================================
+
+Procedures to Manage Hyperty Data Objects
+-----------------------------------------
 
 ### [Create Hyperty Data Object](data-object-creation.md)
 

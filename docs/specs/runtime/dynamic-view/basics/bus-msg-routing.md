@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/bus-msg-rounting.md)**
+=========================================================================================================================================================================================
+
 #### Message Routing in Message BUS
 
 The Runtime procedures to route a message by the Runtime BUS are described in this section.

@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/deploy-hyperty.md)**
+=======================================================================================================================================================================================
+
 #### Deploy Hyperty
 
 The Runtime procedures to deploy a new Hyperty are described in this section.

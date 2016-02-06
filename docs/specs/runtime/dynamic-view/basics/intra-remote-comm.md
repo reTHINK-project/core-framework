@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/intra-remote-comm.md)**
+==========================================================================================================================================================================================
+
 #### Intra-domain Remote Communication
 
 The routing of messages between two Hyperties running in different Runtime instance but from the same domain, is described below.
@@ -47,4 +50,3 @@ SP1H@1B <- BUS@1B : postMessage( message )
 -->
 
 ![Figure @runtime-intra-remote-comm: Intra-domain Remote Communication](intradomain-remote-communication.png)
-

@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/data-sync/readme.md)**
+==================================================================================================================================================================================
+
 #### Setup of Data Object Synchronisation with Reporter-Observer communication pattern
 
 This MSC diagrams shows the most relevant steps to support the setup of data object synchronisation.

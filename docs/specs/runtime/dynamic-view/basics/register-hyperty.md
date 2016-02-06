@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/register-hyperty.md)**
+=========================================================================================================================================================================================
+
 #### Register Hyperty
 
 The Runtime procedures to register a new Hyperty are described in this section.
