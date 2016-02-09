@@ -20,7 +20,6 @@ specs\messages.md ^
 ..\..\..\..\dev-service-framework\docs\specs\messages\registration-messages.md ^
 ..\..\..\..\dev-service-framework\docs\specs\messages\data-sync-messages.md
 
-conclusions\readme.md
 
 
 pushd ..\..\..\..\dev-service-framework\docs\manuals
