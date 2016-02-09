@@ -9,9 +9,6 @@ node "WebRTC Device" {
   [Device WebRTC API] as WebRTCDevice
 }
 
-node "Auth" {
-  [Auth Server] as Auth
-}
 
 node "Messaging Node" {
   [Messaging Node] as MNode
@@ -20,33 +17,34 @@ node "Messaging Node" {
 rectangle "host | app.domain" {
 
     component [video] as GUIVideo
-    component [app.js] as App
+    component [App] as App
+    component [RuntimeUAStub] as RunUAStub
 
     component [HypertyAPIStub] as PeerLocal
     component [WebRTC API] as WebRTCApiLocal
 
     rectangle rething.js {
 
-        component [API Stub] as APIStub
+        component [HypertyStub] as APIStub
 
-        rectangle "iframe | reThink.domain" {
+        node "AppSandbox \nOut iFrame" as AppSandboxO {
+        component MiniBUS_O
+      }
 
-            component [ReThink WebRTC] as PeerRemote
-            component [WebRTC API] as WebRTCApiRemote
+        node "iframe | reThink.domain" {
+
+          node "AppSandbox \nIn iFrame" as AppSandboxI {
+          component MiniBUS_I
+        }
+
+          component [ReThink WebRTC] as PeerRemote
+          component [WebRTC API] as WebRTCApiRemote
 
             component [Service Worker] as ServiceWorker
-            note bottom
+            note right
                 Cache all
                 application
                 files
-            endnote
-
-            component [RunTime\nUser Agent] as Agent
-            note bottom
-                Install all
-                components
-                needed, after
-                auth
             endnote
 
             node "Web Worker\nwith ProtoStub" as WPS {
@@ -65,11 +63,10 @@ rectangle "host | app.domain" {
 
             node "Core Sandbox" as Core {
 
-                component [Registry] as Registry
-                component [Identities\nContainer] as IContainer
-                component [Msg BUS\nPEP] as Policy
-                component [Policy Decision (PDP)\n(incl Authorisation)\n+Policies Repository )] as PDP
+            component [RunTime\nUser Agent] as Agent
 
+                component [Registry] as Registry
+                component [Msg BUS\nPEP] as Policy
 
                 rectangle "Message Bus Events" as MsgBusEvent {
                     component [* Message BUS *] as MsgBus
@@ -80,11 +77,24 @@ rectangle "host | app.domain" {
     }
 }
 
-Auth <-[hidden]up-> WebRTCDevice
+App <-right-> MiniBUS_O
+
+MiniBUS_O <-right-> MiniBUS_I
+
+MiniBUS_I <-right-> MsgBus
+
+App -down-> RunUAStub : requireHyperty
+
+RunUAStub -down-> Agent : loadHyperty
+
+Agent -> AppSandboxI : deploy Hyperty
+
 WebRTCApiRemote <-[hidden]down-> Core
 
-App -down-> APIStub
-APIStub -down-> MsgBus
+App -right-> APIStub
+APIStub -> MiniBUS_O
+
+App -[hidden]right- PeerLocal
 
 GUIVideo -left-> PeerLocal
 PeerLocal <-left-> WebRTCApiLocal
@@ -94,17 +104,16 @@ PeerRemote <-down-> HWRTCA  : only postMessage\nare allowed
 WebRTCApiRemote <-up-> WebRTCDevice : WebRTC API\nConnection with\nexternal device
 
 Registry -right-> MsgBusEvent
-IContainer -left- Registry
+
+Registry -[hidden]left- Agent
 
 MsgBus <-down-> Policy
-PDP -right-> Policy
 
 PS <-right-> MNode
 
 Policy <-right-> W3 : only postMessage\nare allowed
 Policy <-left-> W2 : only postMessage\nare allowed
 
-Agent <-right-> Auth : Verify\ncredentials
 
 @enduml
 -->

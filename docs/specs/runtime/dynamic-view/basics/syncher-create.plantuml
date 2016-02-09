@@ -9,6 +9,7 @@ autonumber
 !define SHOW_RuntimeA
 
 !define SHOW_CoreRuntimeA
+!define SHOW_SMAtRuntimeA
 !define SHOW_MsgBUSAtRuntimeA
 !define SHOW_RegistryAtRuntimeA
 !define SHOW_AuthAtRuntimeA
@@ -19,19 +20,25 @@ autonumber
 
 !include ../runtime_objects.plantuml
 
+SP1H@A -> Sync1@A : create( schema )
+
 create LocObj@A
 
-SP1H@A ->  LocObj@A : new
+Sync1@A ->  LocObj@A : new
 
-SP1H@A -> BUS@A : postMsg(Create MSG)
+Sync1@A -> BUS@A : postMsg(Create MSG)
 
-RunAuth@A <- BUS@A : authorise(Create Message)
+RunSM@A <- BUS@A : postMsg(Create MSG)
+
+RunAuth@A <- RunSM@A : authoriseObjCreation( hypertyOwner, obj )
 
 RunAuth@A -> RunAuth@A : apply authz Policies
 
+RunAuth@A -> RunSM@A : Object Creation Authorised
+
 opt Policies for Data Object creation enforce its registration
 
-	RunAuth@A -> RunReg@A : registerDataObject(\n hyperty, readers , descriptor,\n addressAllocationRequired,\nBackendRegistryRequired)
+	RunSM@A -> RunReg@A : registerDataObject(\n hyperty, readers , descriptor,\n addressAllocationRequired,\nBackendRegistryRequired)
 
 	opt addressAllocationRequired = TRUE
 		RunReg@A -> SP1 : allocate address
@@ -41,9 +48,9 @@ opt Policies for Data Object creation enforce its registration
 		end note
 		...
 
-		RunAuth@A <- RunReg@A : return new\n DataObjectURL
+		RunSM@A <- RunReg@A : return new\n DataObjectURL
 
-		RunAuth@A -> BUS@A : postMsg(\nResponse Msg )
+		RunSM@A -> BUS@A : postMsg(\nResponse Msg )
 
 		SP1H@A <- BUS@A : postMsg(\nResponse Msg )
 
@@ -74,26 +81,32 @@ opt Policies for Data Object creation enforce its registration
 
 end
 
+RunSM@A -> BUS@A : addListener( SMListener, <ObjectURL>/subscription )
+
+note right
+	Reporter SM set its listener to receive Object subscription requests from Observers
+end note
+
 opt Hyperty owner / reporter is set as listener of DataObjectObservers resource
-	RunAuth@A -> RunReg@A : getHypertyListener(\n hypertyOwner )
+	RunSM@A -> RunReg@A : getSandbox(\n hypertyOwner )
 
-	RunAuth@A <- RunReg@A : return\n hypertyOwnerListener
+	RunSM@A <- RunReg@A : return\n hypertySandboxListener
 
-	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerListener, hypertyOwnerUrl)
+	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, \nhypertyOwnerSandboxListener )
 
 	note right
-		Hyperty onwer will be updated when observers
+		Hyperty owner will be updated when observers
 		are added or removed
 	end note
 end
 
-newpage
-
-RunAuth@A -> BUS@A : authorised( Message + URL )
+RunSM@A -> BUS@A : postMsg( Create Msg )
 
 BUS@A ->  : postMsg( Create Msg )
 
-RunAuth@A -> RunAuth@A : store \nauthorised readers
+RunSM@A -> RunSM@A : store \nauthorised readers
+
+newpage
 
 opt Invited Hyperties can send provisional responses eg to aknowledge the reception
 	...
@@ -114,21 +127,26 @@ opt Invited Hyperties can send responses accepting or not to be observer
 	...
 end
 
-SP1H@A -> Sync1@A : createAsReporter( \nDataObject, resourceURL)
-
 == Hyperty requests to be Observer of new Data Object ==
+
 
 BUS@A <-  : postMsg( \nSubscribe Msg )
 
-RunAuth@A <- BUS@A : authoriseSubscription(\nSubscribe Message)
-
-RunAuth@A <- RunAuth@A : apply authz Policies
-
 note right
-	check subscriber has been already authorised
+	create new diagram showing from observer side runtime
+	subscription message sent to its local SM
+	and how it adds observer listener to objURL/changes
 end note
 
+RunSM@A <- BUS@A : postMsg( \nSubscribe Msg )
+
+RunSM@A <- RunSM@A :	check subscriber has been already authorised
+
 opt subscriber has not been already authorised
+	RunAuth@A <- RunSM@A : authoriseSubscription(\nSubscribe Message)
+
+	RunAuth@A <- RunAuth@A : apply authz Policies
+
 	RunAuth@A -> BUS@A : postMsg( \nSubscribe Msg )
 
 	BUS@A -> SP1H@A : postMsg( \nSubscribe Msg )
@@ -142,11 +160,11 @@ end
 
 opt Authorisation policies requires to check data object is registered
 
-	RunAuth@A -> RunReg@A : discoverDataObject(\n DataObj URL )
+	RunSM@A -> RunReg@A : discoverDataObject(\n DataObj URL )
 
 end
 
-RunAuth@A -> BUS@A : addListener(\nDataObj URL, listener, observerUrl)
+RunSM@A -> BUS@A : addListener(\nDataObjURL\changes URL, listener)
 
 note right
 	Listeners of new observers are added into message bus,
@@ -154,9 +172,9 @@ note right
 end note
 
 opt
-	RunAuth@A -> BUS@A : addListener(\nDataObjectObserversURL, listener, observerUrl)
+	RunSM@A -> BUS@A : addListener(\nDataObjectObserversURL, listener)
 
-	RunAuth@A -> BUS@A : postMessage(\n Update Message\nfor DataObjectObservers )
+	RunSM@A -> BUS@A : postMessage(\n Update Message\nfor DataObjectObservers )
 
 	BUS@A -> SP1H@A : postMsg(\n Update Message\nfor DataObjectObservers )
 
@@ -169,12 +187,7 @@ opt
 
 end
 
-note right
-	addListener to be performed by registry or pdp after registry returns pre-authorised hyperties?
-	Subscribe should be forwarded to Hyperty Reporter?
-end note
-
-RunAuth@A -> BUS@A : return authorisation\nResponse Message
+RunSM@A -> BUS@A : return authorisation\nResponse Message
 
 BUS@A ->  : postMessage( Authorisation Response Message)
 

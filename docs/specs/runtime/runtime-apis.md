@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-runtime-core/tree/d3.2-working-docs/docs/jsdoc)**
+============================================================================================================================================
+
 Runtime APIs
 ------------
 
@@ -29,7 +32,7 @@ This is used to check for updates about components handled in the Catalogue incl
 checkForUpdate(CatalogueURL url)
 ```
 
-#### discoverHiperty
+#### discoverHyperty
 
 Accomodate interoperability in H2H and protocol on the fly for newly discovered devices in M2M
 
@@ -49,10 +52,10 @@ Registry( Object msgbus, HypertyRuntimeURL runtimeURL, Sandbox app, DomainURL re
 
 #### registerHyperty
 
-To register a new Hyperty in the runtime passing as input parameters the postMessage function to be called to post a message to the hyperty and its descriptor. This function returns the HypertyURL allocated to the new Hyperty.
+To register a new Hyperty in the runtime passing as input parameters the sandbox instance where the Hyperty is deployed and its descriptor URL. This function returns the HypertyURL allocated to the new Hyperty.
 
 ```
-HypertyURL registerHyperty( postMessage, HypertyCatalogueURL descriptor)
+HypertyURL registerHyperty( Sandbox sandbox, HypertyCatalogueURL descriptorURL)
 ```
 
 #### unregisterHyperty
@@ -65,10 +68,10 @@ To unregister a previously registered Hyperty
 
 #### registerStub
 
-To register a new Protocol Stub in the runtime including as input parameters the function to postMessage, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
+To register a new Protocol Stub in the runtime including as input parameters the sandbox where ProtocolStub is deployed, the DomainURL that is connected with the stub, which returns the RuntimeURL allocated to the new ProtocolStub.
 
 ```
-HypertyRuntimeURL registerStub( postMessage, DomainURL )
+HypertyRuntimeURL registerStub( sandbox, DomainURL )
 ```
 
 #### unregisterStub
@@ -81,10 +84,10 @@ To unregister a previously registered Protocol Stub
 
 #### registerDataObject
 
-To register a new Data Object in the runtime passing as input parameters the Hyperty instance URL owning the data object, the URL of the dataObject, other Hyperties instances that are authorised to read the data object and its schema. In addition it may be requested to allocate a new address for the data object (addressAllocationRequired) and to register it at the backend Registry (backendRegistryRequired). This function returns the URL allocated to the new Data Object in case addressAllocationRequired is true.
+To register a new Data Object in the runtime, passing as input parameters the Hyperty instance URL owning the data object, the Data Object schema CatalogueURL, the Data Object URL Scheme to be used in the URL and the list childrenResources list in case they exist. Optionaly, it will also pass a previously allocated URL for the dataObject and boolean to register the Data Object at the back-end Domain Registry (backendRegistryRequired). This function returns the URL allocated to the new Data Object.
 
 ```
-URL.URL registerDataObject( URL.HypertyUrl owner, URL.URL dataObjectUrl (?), HypertyUrlList readers, HypertyCatalogueURL schema (?), boolean addressAllocationRequired (?), boolean backendRegistryRequired (?))
+URL.URL registerDataObject( URL.HypertyUrl owner, HypertyCatalogueURL schema, String urlScheme, String List ? childrenResources,  boolean ? backendRegistryRequired, URL.URL ? dataObjectUrl )
 ```
 
 #### unregisterDataObject
@@ -95,20 +98,20 @@ To unregister a previously registered Data Object
  unregisterDataObject( URL.URL url )
 ```
 
-#### registerPEP
+#### registerInterceptor
 
-To register a new Policy Enforcer in the Hyperty Runtime including as input parameters the function to postMessage, the HypertyURL associated with the PEP, which returns the RuntimeURL allocated to the new Policy Enforcer component.
+To register a new Interceptor in the Hyperty Runtime including as input parameters the sandbox where the Interceptor is deployed, the URL associated with the intercepted component, which returns the RuntimeURL allocated to the new Interceptor component.
 
 ```
-HypertyRuntimeURL registerPEP( postMessage, HypertyURL hyperty )
+HypertyRuntimeURL registerInterceptor( sandbox, HypertyURL hyperty )
 ```
 
-#### unregisterPEP
+#### unregisterInterceptor
 
 To unregister a previously registered Protocol Stub
 
 ```
- unregisterPEP( HypertyRuntimeURL )
+ unregisterInterceptor( HypertyRuntimeURL )
 ```
 
 #### onEvent
@@ -127,20 +130,12 @@ This function is used to discover protocol stubs available in the runtime for a 
 RuntimeURL discoverProtostub( DomainURL url)
 ```
 
-#### registerSandbox
-
-This function is used to register a new runtime sandboxes passing as input the sandbox instance and the domain URL associated to the sandbox instance.
-
-```
-RuntimeSandbox registerSandbox( Sandbox sandbox, DomainURL url )
-```
-
 #### getSandbox
 
-This function is used to discover sandboxes available in the runtime for a certain domain. It is required by the runtime UA to avoid more than one sandbox for the same domain.
+This function is used to discover sandboxes available in the runtime for a certain HypertyCatalogueURL. It is required by the runtime UA to avoid the creation of more than one protocol stub sandbox, to discover the sandbox where an component identified by the "url" is executing or to discover the sandbox where a component described with the url descriptor should be deployed.
 
 ```
-RuntimeSandbox getSandbox( DomainURL url )
+Sandbox getSandbox( URL.HypertyCatalogueURL url )
 ```
 
 #### getAppSandbox
@@ -148,9 +143,8 @@ RuntimeSandbox getSandbox( DomainURL url )
 This function is used to return the sandbox instance where the Application is executing. It is assumed there is just one App per Runtime instance.
 
 ```
-RuntimeSandbox getSandbox( DomainURL url )
+Sandbox getAppSandbox( )
 ```
-
 
 #### resolve
 
@@ -172,64 +166,42 @@ postMessage( Message.Message message )
 
 #### addListener
 
-To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. Messages are routed to input parameter "redirectTo" in case listener is not in the Core Runtime. This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object.
+To add "listener" functions to be called when routing messages published on a certain "resource" or send to a certain url. This function is only accessible by internal Core Components. To remove the listener just call remove() function from returned object. In case `url = "*"` the listener is called in case there is no other listener registered for the `Message.to`.
 
 ```
-MsgListener addListener( URL.URL url, listener, URL.URL redirectTo )
-```
-
-#### addInterceptor
-
-To add an interceptor (eg a Policy Enforcer) which "listener" function is called when routing messages published on "interceptedURL" or send to the "interceptedURL". To avoid infinite cycles messages originated with from "interceptorURL" are not intercepted. To remove the interceptor just call remove() function from returned object. This function is only accessible by internal Core Components.
-
-```
-Interceptor addInterceptor( URL.URL interceptedURL, listener, URL.URL interceptorURL, )
+MsgListener addListener( URL.URL url, Object listenerFunction )
 ```
 
 ### Hyperty Interface
 
-#### init
+#### Constructor
 
 To initialise the Hyperty instance including as input parameters its allocated Hyperty url, the runtime BUS postMessage function to be invoked to send messages and required configuration retrieved from Hyperty descriptor.
 
 ```
-init( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+Hyperty( HypertyURL url, postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 ```
 
-#### postMessage
+### Interceptor Interface
 
-To post messages to be received by the Hyperty instance
+*probably this interface won't be need and all the procedures will be handled by the sandbox.deployInterceptor(). to be further studied*
 
-```
-postMessage(Message.Message message)
-```
+#### Constructor
 
-### Policy Enforcer Interface
-
-#### init
-
-To initialise the Policy Enforcer including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked to send messages and the url of the Hyperty associated to the Policy Enforcer (it will forward received and processed messages to this address).
+To create an Interceptor it is required as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked to send messages and the url of the Hyperty associated to the Policy Enforcer (it will forward received and processed messages to this address).
 
 ```
-init( URL.RuntimeURL pepURL, bus.postMessage , HypertyURL hyperty)
-```
-
-#### postMessage
-
-To receive messages from the message BUS
-
-```
-postMessage(Message.Message message)
+Interceptor( URL.RuntimeURL pepURL, postMessageFunction , HypertyURL hyperty)
 ```
 
 ### protoStub Interface
 
-#### init
+#### Construtor
 
 To initialise the Protocol Stub including as input parameters its allocated component runtime url, the runtime BUS postMessage function to be invoked on messages received by the Protocol Stub and required configuration retrieved from protocolStub descriptor.
 
 ```
-init( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
+protostub( URL.RuntimeURL runtimeProtoSubURL, bus.postMessage, ProtoStubDescriptor.ConfigurationDataList configuration )
 ```
 
 #### connect
@@ -310,10 +282,38 @@ removeComponent( URL.URL componentURL )
 
 #### deployInterceptor
 
-To download and deploy a new interceptor in the sandbox passing as input parameters the url from where the interceptor is downloaded, the interceptorURL address previously allocated to the interceptor, its configuration and the intercepted sandbox.
+To download and deploy a new interceptor in the sandbox passing as input parameters the interceptor source code, the interceptorURL address previously allocated to the interceptor, its configuration, the intercepted sandbox, the intercepted component URL (eg Hyperty URL), the listener registered in the MsgBUS for the intercepted component and the listener registered in the intercepted component sandbox for the MessageBUS.
 
 ```
-deployInterceptor( URL.URL interceptorDownloadURL, URL.URL interceptorURL, RuntimeSandbox intercepted, Object configuration )
+deployInterceptor( Object interceptorSource, URL.URL interceptorURL, Object configuration, RuntimeSandbox interceptedSandbox, URL.URL interceptedUrl, MsgListener interceptedMsgBusListener, MsgListener interceptedSandboxListener )
+```
+
+The following steps should be performed:
+
+Replace in the MessageBUS the intercepted sandbox listener by the interceptor sandbox listener:
+
+```
+ MessageBUS.addListener( interceptedUrl, this.postMessage )
+ interceptedMsgBusListener.remove()
+```
+
+Replace in the intercepted sandbox the "\*" listener by the interceptor sandbox listener:
+
+```
+ interceptedSandbox.addListener( "\*", this.postMessage )
+ interceptedSandboxListener.remove()
+```
+
+Adds the interceptor component listener (inMiniBUS listener inside the sandbox) to the Sandbox Minibus:
+
+```
+this.addListener( interceptedUrl, mini.postMessage )
+```
+
+Adds the intercepted sandbox listener to the minibus listener inside the sandbox:
+
+```
+mini.addListener( interceptedUrl, interceptedSandbox.postMessage )
 ```
 
 #### removeComponent
@@ -418,4 +418,110 @@ Sends Connectivity Statistics data to QoS Broker. To be completed.
 
 ```
 sendConnectivityStatisticsToBroker(  )
+```
+
+### Graph Connector Interface
+
+#### generateGUID
+
+Returns a string of 16 words from which a public/private key pair is deterministically generated. With the public key, the GUID is generated. The implementation uses the key pair generation from Bitcoin BIP39. The key files do not have to be backed up anywhere, it suffices to note the list of words.
+
+```
+generateGUID( )
+```
+
+#### useGUID
+
+Uses the previously generated GUID, identified by the given string containing 16 words.
+
+```
+useGUID(String mnemonicAndSalt)
+```
+
+#### addUserID(String userID)
+
+Adds a UserID for the user.
+
+```
+addUserID(String userID)
+```
+
+#### removeUserID(String userID)
+
+Removes a UserID for the user.
+
+```
+removeUserID(String userID)
+```
+
+#### signGlobalRegistryRecord
+
+Signs the record that is stored in the Global Registry; returns a signed JWT.
+
+```
+signGlobalRegistryRecord( )
+```
+
+#### addContact
+
+Add a contact to Graph Connector.
+
+```
+addContact(String guid, String firstName, String lastName)
+```
+
+#### getContact
+
+Get the GUID from contact from the Graph Connector.
+
+```
+getContact(String name)
+```
+
+#### removeContact
+
+Remove contact from Graph Connector.
+
+```
+removeContact(String guid)
+```
+
+#### calculateBloomFilter1Hop
+
+Calculates a Bloom filter containing the hashed GUIDs of all the users direct contacts that are not set to private. Used to share with other contacts.
+
+```
+calculateBloomFilter1Hop()
+```
+
+#### checkGUID
+
+Checks, whether a GUID is in the Graph Connector and returns if it is a direct contact, or 1 more hop away, or unknown.
+
+```
+checkGUID(GUID guid)
+```
+
+#### setPrivate
+
+Mark contact as private in order for it to not be used in the contacts Bloom filter.
+
+```
+setPrivate(GUID)
+```
+
+#### exportGraphData
+
+Exports the graph data. Data format tbd.
+
+```
+exportGraphData(?)
+```
+
+#### importGraphData
+
+Imports the graph data. Data format tbd.
+
+```
+importGraphData(?)
 ```

@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/identity-management)**
+==================================================================================================================================================================================
+
 #### Associate User Identity to Hyperty Instance
 
 ![Figure @runtime-ident-man-user-to-hyperty-binding-scheme: Associate User Identity to Hyperty Instance](user-to-hyperty-binding-scheme.png)

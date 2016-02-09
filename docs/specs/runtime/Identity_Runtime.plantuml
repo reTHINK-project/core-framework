@@ -1,0 +1,36 @@
+@startuml "Identity_Runtime.png"
+
+node "Identity Service Provider" as SP {
+}
+
+
+
+node "Runtime Device" as rt {
+
+node "IdP Sandbox" as SPSand {
+
+node "IdP Proxy" as proto
+
+}
+
+node "Core Sandbox" as core {
+
+ node "*            Message      BUS                *" as Bus
+
+
+ node "Identity\nModule" as ID
+
+ }
+
+ ID -up-> Bus: post message
+
+ proto <-> Bus : post Message
+
+ 	}
+
+proto -up-> SP : IdP Protocol message
+
+rt -[hidden]up- SP
+
+
+@enduml

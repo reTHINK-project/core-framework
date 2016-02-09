@@ -1,6 +1,9 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/intra-local-comm.md)**
+=========================================================================================================================================================================================
+
 #### Intra-domain Local Communication
 
-Communication between two Hyperties running in the same Runtime instance can be performed locally by using some non-standard function or through the Runtime BUS using postMessage standard function. 
+Communication between two Hyperties running in the same Runtime instance can be performed locally by using some non-standard function or through the Runtime BUS using postMessage standard function.
 
 <!--
 @startuml "intradomain-local-communication.png"
@@ -21,7 +24,7 @@ autonumber
 
 alt
 
-SP1H@A -> SP1H2@A :  message 
+SP1H@A -> SP1H2@A :  message
 
 else
 
@@ -33,6 +36,4 @@ end
 @enduml
 -->
 
-
 ![Figure @runtime-intra-local-comm: Intra-domain Local Communication](intradomain-local-communication.png)
-

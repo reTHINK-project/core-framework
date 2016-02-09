@@ -1,7 +1,9 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/inter-remote-comm.md)**
+==========================================================================================================================================================================================
+
 #### Inter-domain Remote Communication
 
 The routing of messages between two Hyperties running in different Runtime instance and from different domains, is described below.
-
 
 <!--
 @startuml "interdomain-remote-communication.png"
@@ -49,6 +51,4 @@ SP2H@B <- BUS@B : postMessage( message )
 @enduml
 -->
 
-
 ![Figure @runtime-inter-remote-comm: Inter-domain Remote Communication](interdomain-remote-communication.png)
-

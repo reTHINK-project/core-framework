@@ -18,21 +18,31 @@ node "Core Sandbox" as core {
 node "" as core1 {
  node "*            Message      BUS                *" as Bus
 
+ node "Sync\nManager" as Sync
 
- node "Registry" as Reg
+ node "Runtime\nRegistry" as Reg
 
- node "Identities\nModule" as ID
+ node "Identity\nModule" as ID
 
- node "Policy Engine (PDP/PEP)\n(incl Authorisation)\n+Policies Repository )" as PDP
+ node "Policy Engine" as PDP
 
  node "QoS\nUser Agent" as QoS
 
  node "Graph\nConnector" as Graph
 }
 
+node "Pesistence\nManager" as Storage {
+}
+
  node "Runtime\nUser Agent" as RunUA {
-	node "CatalogueProtoStub" as RepUA
+	node "Catalogue Runtime" as RepUA
  }
+
+
+
+ SPSand -[hidden]down-> Storage : store
+
+ Sync -[hidden]up-> Storage
 
  RunUA -> Reg : Register Hyperties\nand protostubs
  }
@@ -48,6 +58,8 @@ node "" as core1 {
  PDP -down-> Graph : is Trustful?
 
  Reg <-up- Bus: resolve\nmessage
+
+ Sync <-down- Bus: manage\nsync
 
  RunUA -> Bus : add listener
 

@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/identity-management)**
+==================================================================================================================================================================================
+
 #### User Identity Registration
 
 This section, describes the main procedures for the registration of a new Identity in the Hyperty Runtime. It is assumed that an account was already created by the user on the IdP through an out of scope mechanism.

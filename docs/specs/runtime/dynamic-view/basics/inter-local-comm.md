@@ -1,3 +1,6 @@
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/specs/dynamic-view/basics/inter-local-comm.md)**
+=========================================================================================================================================================================================
+
 #### Inter-domain Local Communication
 
 The routing of messages between two Hyperties running in the same Runtime instance but in different sandboxes (e.g. they are from different domains) is described below.
@@ -34,4 +37,3 @@ BUS@A -> SP2H@A : postMessage( message )
 -->
 
 ![Figure @runtime-inter-local-comm: Inter-domain Local Communication](interdomain-local-communication.png)
-
