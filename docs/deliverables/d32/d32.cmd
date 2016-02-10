@@ -1,7 +1,7 @@
 pandoc -o readme.md ^
 introduction\readme.md ^
 manuals\readme.md ^
-..\..\..\..\dev-service-framework\docs\manuals\start.md ^
+..\..\..\..\dev-service-framework\README.md ^
 ..\..\..\..\dev-service-framework\docs\manuals\hyperty.md ^
 ..\..\..\..\dev-service-framework\docs\manuals\hyperty-messaging-framework.md ^
 ..\..\..\..\dev-service-framework\docs\manuals\p2p-data-sync.md ^
