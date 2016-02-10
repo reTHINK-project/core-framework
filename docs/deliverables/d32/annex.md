@@ -1,3 +1,297 @@
+Hyperty Runtime Core
+--------------------
+
+-   [Overview](#overview)
+-   [User View: How to include the Hyperty Runtime Core in other
+    Projects](#user-view)
+-   [Developer View](#developer-view)
+-   [Example](#example)
+-   [Tasks](#tasks)
+-   [Notes](#notes)
+
+### Overview
+
+This repository contains the source code and associated documentation of
+the core components required to support the deployment and execution of
+Hyperties in user devices or in network servers. More information about
+the Hyperty concept and the reTHINK framework in general is provided
+[here](https://github.com/reTHINK-project/dev-service-framework/blob/master/README.md).
+
+The Hyperty Runtime architecture follows a security by design approach
+since it was highly influenced by a careful [security
+analysis](docs/specs/securityanalysis.md) where different types of
+components are executed in isolated sandboxes. Thus, components
+downloaded from a specific Service Provider are executed in sandboxes
+that are different from the sandboxes used to execute components
+downloaded from another service provider. Communication between
+components running in different sandboxes is only possible through
+messages exchanged through a Message Bus functionality provided by the
+Hyperty Runtime Core Sandbox. On the other hand, and according to the
+[ProtoOFly
+concept](https://github.com/reTHINK-project/dev-service-framework/blob/master/docs/manuals/hyperty-messaging-framework.md#protocol-on-the-fly-protofly-and-protostubs),
+the protocol stub is executed in isolated sandbox and provides the
+bridge for the Hperty Runtime to communicate with associated Service
+Provider. The detailed specification of the Hyperty Runtime Core is
+provided [here](docs/specs/readme.md).
+
+Hyperty Core Runtime components are platform agnostic and are to be
+included in platform specific Hyperty Runtimes, like Web Browsers and
+Nodejs based platforms.
+
+### User View
+
+**How to include the Hyperty Runtime Core in other Projects**
+
+How to include this repository in other runtime platforms, like
+[dev-runtime-browser](https://github.com/reTHINK-project/dev-runtime-browser)
+or
+[dev-runtime-node](https://github.com/reTHINK-project/dev-runtime-node);
+
+#### [Browser Runtime](https://github.com/reTHINK-project/dev-runtime-browser)
+
+Verify these use cases:
+
+1.  if you will create a new repository, you can use this template, and
+    can configure your development environment;
+2.  if you already have an respository cloned;
+
+for both cases you just have to run the command:
+
+    jspm install runtime-core=github:rethink-project/dev-runtime-core@dev-0.2
+
+and on javascript code you just need to import the script like other
+modules;
+
+    import RuntimeUA from 'runtime-core/dist/runtimeUA';
+    import {Sandbox, SandboxRegistry} from 'runtime-core/dist/sandbox'
+    import MiniBus from 'runtime-core/dist/minibus';
+
+    console.log('Runtime: ', RuntimeUA);
+    console.log('Sandbox: ', Sandbox, SandboxRegistry);
+    console.log('MiniBus: ', MiniBus);
+
+#### [Nodejs Runtime](https://github.com/reTHINK-project/dev-runtime-node)
+
+\[dev-runtime-node
+
+    npm install github:rethink-project/dev-runtime-core#dev-0.2 --save
+
+after this you can require the runtime-core like other modules on node;
+
+    var RuntimeUA = require('runtime-core').runtimeUA;
+
+    var runtime = new RuntimeUA();
+
+if you found some issues, please submit them into the respective
+repository;
+
+------------------------------------------------------------------------
+
+### Developer view
+
+#### Setup Environment
+
+On the first time you are cloning this repository, you need to run the
+command:`npm run init-setup`
+
+After running successfully this command you will have 2 folders
+(node\_modules and vendor), these folders are excluded from the commit
+process, and are only for development.
+
+if you already have the project configured on your machine, you only
+need run the next command to add new
+dependencies:`npm install jspm install`
+
+------------------------------------------------------------------------
+
+**Private Repository Note**
+
+if you have problems with the `npm install` command, like "access was
+forbidden", "404 not found", and have the service framework module
+reference, it is an authentication problem;
+
+you may need following the steps present on [Github
+Help](https://help.github.com/articles/generating-ssh-keys/). and select
+operation system you are using.
+
+This could happen because it is a private module and need your GitHub
+authentication to allow cloning the repository.
+
+If you have some troubles with authentication on windows using the Git
+Shell, you can try [caching your GitHub
+password](https://help.github.com/articles/caching-your-github-password-in-git/#platform-windows).
+This should avoid the constant prompt for username and password;
+
+**Instalation through jspm**
+
+We need configure jspm config using github tokens, for that, following
+this (based on issue
+[3](https://github.com/reTHINK-project/dev-runtime-browser/issues/3)):
+
+1.  [Here](https://github.com/settings/tokens), generate token with
+    public\_repo permission enabled
+2.  Save the token generated;
+3.  Execute the command `jspm registry config github` and you'll be
+    asked for the credentials;
+4.  Now you can execute command `jspm install -y and the runtime-core`
+    or
+    `jspm install runtime-core=github:reTHINK-project/dev-runtime-core`
+    or only `jspm install`;
+
+------------------------------------------------------------------------
+
+**Issues**
+
+if you have some trouble with the environment, you can open an issue;
+
+#### Javascript Environment
+
+JavaScript code should be written in ES6. There are direct dependencies
+from nodejs and npm, these can be installed separately or in conjunction
+with [nvm](https://github.com/creationix/nvm)
+
+##### Dependencies
+
+-   nodejs
+-   npm
+-   karma - Make the communication between unit test tool and jenkins.
+    See more on [karma](http://karma-runner.github.io/0.13/index.html)
+-   mocha - Unit test tool. See more on
+    [http://mochajs.org](http://mochajs.org/)
+-   jspm - Don't need compile the code, it uses babel (or traucer
+    or typescript) to run ES6 code on browser. Know more in
+    [jspm.io](http://jspm.io/)
+-   gulp - Automate and enhance your workflow. See more about gulp on
+    [gulp](http://gulpjs.com/)
+
+##### Code Style and Hinting
+
+On the root directory you will find **.jshintrc** and **.jscsrc**, these
+files are helpers to maintain syntax consistency, it signals syntax
+mistakes and makes the code equal for all developers.
+
+-   [jscs](http://jscs.info/) - Maintain JavaScript Code Style
+-   [jshint](http://jshint.com/) - Detect errors and potential problems
+    in JavaScript code.
+
+All IDE's and Text Editors can handle these tools.
+
+##### Documentation
+
+To generates api documentation you can run `gulp doc`
+
+#### Unit Testing
+
+Unit testing can be launched manually with **karma start**.
+
+~~It's advisable to use
+[expect.js](https://github.com/Automattic/expect.js) instead of
+assert.~~
+
+After investigate and testing the
+[expect.js](https://github.com/Automattic/expect.js) it don't support
+some features for ES6, because this tool hasn't activity at some time,
+that is why, it is recomended use the [chaijs](http://chaijs.com/) it is
+more versatile and have expect.js (but updated) and others tools that
+can be useful;
+
+------------------------------------------------------------------------
+
+#### Karma
+
+if you have some problems starting the karma tests, try running this
+commands for the following order:
+
+1.  `npm uninstall karma karma-browserify karma-mocha karma-mocha-reporter karma-chrome-launcher -g`
+2.  `npm install karma-cli -g`
+3.  `npm install`
+4.  `jspm update`
+
+##### Note
+
+This repository is ready to start working on development of
+runtime-core. The code will go to the **src** folder. The unit tests
+will be on **test** folder, following the name standard
+<component>.spec.js
+
+To run karma tests is mandatory to run **live-server** because of the
+mock-up's dependencies:\`\`\` live-server --port=4000
+
+\`\`\`
+------
+
+#### <a id="Tasks">Gulp Tasks</a>
+
+-   [Documentation](#documentation)
+-   [Dist](#dist)
+-   [Build](#build)
+-   [Encode](#encode)
+
+##### Documentation
+
+Generate all documentation associated to runtime core;
+
+-   if you run **gulp doc** the documentation based on jsdoc3 will be
+    generated on folder docs/jsdoc and you can interact;`gulp doc`
+
+-   if you run **gulp api** the documentation is generate based on
+    docs/jsdoc/\*.html files, and converted to markdown;`gulp api`
+
+-   if you run **gulp docx** should be generated an .docx file, but
+    **this process should be optimized**, is not working very
+    well;`gulp docx`
+
+##### Dist
+
+To distribute the runtime-core, you can make a distribution file.
+
+Run the command:`// compact true | false; gulp dist --compact=false`
+
+##### Build
+
+To distribute the runtime-core, but with the source code maps, and to
+detect where is some error.
+
+Run the command:`gulp build`
+
+##### Encode
+
+In this repository, we have some tasks which can help you. If you need
+change some resource file, like an Hyperty or ProtoStub, and load it to
+the Hyperties.json or ProtoStubs.json, run the following command, and
+answer to the questions;
+
+    gulp compile --file=path/to/file;
+
+------------------------------------------------------------------------
+
+### <a id="example">Example</a>
+
+*to be moved to dev-service-framework*
+
+This repository have a folder with an working example of Hyperty
+Connector and we can send message and make a WebRTC call between remote
+hyperties through the vertx;
+
+To run the demo on example folder: - this example have a dependecy from
+[dev-msg-node-vertx](https://github.com/reTHINK-project/dev-msg-node-vertx/tree/dev-0.2#unit-testing)
+and
+[dev-registry-domain](https://github.com/reTHINK-project/dev-registry-domain#dev-registry-domain)
+for communication between hyperties in two distinct browsers or tabs.
+**At this moment you need run locally
+[dev-msg-node-vertx](https://github.com/reTHINK-project/dev-msg-node-vertx/tree/dev-0.2#unit-testing)
+and
+[dev-registry-domain](https://github.com/reTHINK-project/dev-registry-domain#dev-registry-domain)**
+- you need, in the root folder, run command: `npm start` - in your
+browser, access to https://127.0.0.1:8080/example
+
+------------------------------------------------------------------------
+
+### <a ide="notes">Notes</a>
+
+It was done an version of RuntimeCatalogue for local instances, based on
+the RuntimeCatalogue, and is activated by default;
+
 dev-runtime-browser
 ===================
 
@@ -86,8 +380,8 @@ with [nvm](https://github.com/creationix/nvm)
     See more on [karma](http://karma-runner.github.io/0.13/index.html)
 -   mocha - Unit test tool. See more on
     [http://mochajs.org](http://mochajs.org/)
--   jspm - Don't need compile the code, it uses babel (or traucer or
-    typescript) to run ES6 code on browser. Know more in
+-   jspm - Don't need compile the code, it uses babel (or traucer
+    or typescript) to run ES6 code on browser. Know more in
     [jspm.io](http://jspm.io/)
 -   gulp - Automate and enhance your workflow. See more about gulp on
     [gulp](http://gulpjs.com/)
@@ -232,8 +526,8 @@ The general steps to build the application are included below:
 
 1.  Launch eclipse
 2.  Import xwalk-core-library project (3rdparty/xwalk\_core\_library/)
-3.  Import Cordova project
-    (3rdparty/crosswalk-cordova-android/framework/)
+3.  Import Cordova
+    project (3rdparty/crosswalk-cordova-android/framework/)
 4.  Import standalone-ios project
 5.  Set the URL of the web application using reTHINK framework to be
     executed in the runtime application.
@@ -262,8 +556,8 @@ Building reTHINK iOS standalone application
 ### Requirements
 
 1.  OSX with XCode 5.
-2.  A valid Apple ID must be used (load associated certificates and
-    profiles).
+2.  A valid Apple ID must be used (load associated certificates
+    and profiles).
 
 ### Build process
 
@@ -271,7 +565,7 @@ Building reTHINK iOS standalone application
     repository has not been yet created at the time of this writing) .
 2.  Open application project with XCode: sippo-ios/app/Sippo.xcodeproj.
 3.  Set the target location: change default values defined at Root.plist
-    file (Settings.bundle-\>Root.plist in XCode project explorer).
+    file (Settings.bundle-&gt;Root.plist in XCode project explorer).
 4.  Build application.
 
 dev-msg-node-vertx
@@ -298,7 +592,7 @@ If you have some trouble with the environment, you can open an issue;
 Follow the link to [Install
 Maven](https://maven.apache.org/install.html). \* Build the project
 with: mvn package \* Verify if the configs are OK in node.config.json
-file \* Run vertx node with: mvn exec:java -Dexec.args="\<port\>"
+file \* Run vertx node with: mvn exec:java -Dexec.args="&lt;port&gt;"
 
 ### Use of VertxProtoStub
 
@@ -332,7 +626,7 @@ These are implementations of the interface
 `IComponent extends Handler<PipeContext>`, and are added to the
 MessageNode with the method
 `PipeRegistry.install(IComponent component)`. The only difference on the
-interface (between IComponent and Handler\<PipeContext\>) is an
+interface (between IComponent and Handler&lt;PipeContext&gt;) is an
 additional method to get the component address name, used for EventBus
 registration.
 
@@ -364,23 +658,236 @@ underlying resource channel to disconnect.
 
 **DO NOT SUBMIT CODE WITHOUT ALL UNIT TESTS ARE OK** \* Run 2 instances
 of the message-node: **mvn exec:java -Dexec.args="9090"** and **mvn
-exec:java -Dexec.args="9091"** \* Run **karma start**
+exec:java -Dexec.args="9091"** \* Add "msg-node.ua.pt 127.0.0.1" config
+to your OS host file \* Verify connectivity with the browser at
+https://msg-node.ua.pt:9090/ should return **Hello**. Accept
+certificate. \* Run **karma start**
 
-### Matrix.org based Messging Node
+Matrix.org based Message Node (MatrixMN)
+----------------------------------------
 
-The repository for the Matrix.org based message node. The MN code does
-not modify any Matrix.org specific code. It only adds componentes
-"around" an untouched Matrix Homeserver (HS).
+### Overview
+
+#### Functional location in the reTHINK Architecture
+
+The Matrix.org based Message Node is one of the reference
+implementations of the Message Node component in the reTHINK
+Architecture. The overall role of Message Nodes in the reTHINK
+Architecture is described in detail in [Hyperty Messaging
+Framework](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/hyperty-messaging-framework.md).
+
+A general documentation and guideline for the development of Message
+nodes is given in [Message Nodes and Protostubs
+Development](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/development-of-protostubs-and-msg-nodes.md).
+
+#### Dependencies
+
+One of the responsibilities of Message Nodes in the reTHINK architecture
+is to perform the interactions with the Domain registry. Runtimes send
+special messages to the Message Nodes to register or query hyperties or
+data objects at the domain registry. The Message Nodes have to perform
+the interactions with the registry component and return the results back
+to the Runtime.
+
+For that reason the Matrix Message Node has a dependency from the domain
+registry component. That means, before a MatrixMN can be used
+successfully, an instance of the domain registry must be running. The
+procedures to achieve this are described in the following section.
+
+### User View
+
+This chapter provides instructions for the setup, configuration and
+operation of the Matrix Message Node as a docker container. Assuming you
+are running a standard Debian 8 Jessie the following steps can be used
+to setup the environment. Other distributions my need a different setup.
+
+#### 1. Installation of NodeJS and Docker
+
+You need to set up the following requirements. - [nodejs
+5.x](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+- nodejs-legacy for Debian (Ubuntu might not need this) -
+[docker](https://docs.docker.com/engine/installation/debian/) - If the
+docker daemon cannot be reached you need to run
+`sudo usermod -aG docker $USER`. After that logout and back in or use
+this command `su - $USER`. - If the test `sudo docker run hello-world`
+fails you may need a different kernel. Some kernels like those provided
+by OVH are not working with docker.
+
+#### 2. Installation of repository-tools and cloning the repository
+
+Execute these commands to install the needed tools and dependencies.
+
+    sudo npm install -g gulp
+    git clone https://github.com/reTHINK-project/dev-msg-node-matrix.git
+    cd dev-msg-node-matrix
+    npm install
+
+#### 3. Building the MatrixMN
+
+Afterwards you can build the MatrixMN distribution. Please make sure you
+are located in the `dev-msg-node-matrix` directory. Simply type `pwd` to
+check that. Then run the following commands.
+
+    rm -rf dist && gulp build && gulp dist
+    cd dist/docker
+    ./build-docker-image.sh matrix1.rethink
+
+The last parameter `matrix1.rethink` specifies the domain name for
+MatrixMN.
+
+When errors occur while building MatrixMN which relate to 404 errors you
+might want to check your Docker DNS settings. Try editing
+`/etc/default/docker` and uncomment the line
+`#DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"`. You can also add the DNS
+servers of your company. The resulting line may look like this one
+`DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --dns 10.1.100.252 --dns 10.1.100.246"`.
+
+Build the image again and if the errors continue to show up you can
+check the `/etc/resolv.conf` file. It should have a line or lines
+containing something similar to `search company.tld lan lan.` or
+`nameserver 10.1.100.252`.
+
+#### 4. Building the Registry
+
+As described in the Overview section, the MatrixMN has a dependency to a
+domain registry, because it needs to interact with this Registry to
+register and read hyperties and data objects for user-ids.
+
+Therefore the domain registry must be built and started before the
+MatrixMN can be used. Please change to the `dev-registry-domain/server`
+directory after cloning it from
+https://github.com/reTHINK-project/dev-registry-domain.git in a place of
+your choice. Then run:
+
+    docker build -t dev-registry-domain .
+    docker images
+
+Now you should see the 2 docker images which were built.
+
+#### 5. Starting the Registry
+
+The first image to be started is the registry.
+
+    #cd to dev-msg-node-matrix/dist/docker
+    ./startregistry.sh
+
+#### 6. Starting the MatrixMN
+
+Open another terminal and execute the following.
+
+    #cd to dev-msg-node-matrix/dist/docker
+    ./start.sh
+
+The MatrixMN will now start which might take a while. You can check
+whether it is finished by executing &gt;
+`docker logs dev-msg-node-matrix`
+
+and looking for the last line being similar to: &gt;
+`synapse.storage.TIME - 212 - INFO - - Total database time: 0.000% {get_all_pushers(0): 0.000%,`
+
+##### 7. Testing
+
+Finally you can test the correctness of the setup.
+
+    #cd to dev-msg-node-matrix or a subdirectory
+    gulp test
+
+The test will attempt to open the google chrome browser. If none of the
+test are executed you might need to install it with
+`sudo apt-get install chromium-browser`.
+
+### Developer view
+
+The MatrixMN code does not modify any Matrix.org specific code. It only
+implements additional components that can be attached to an untouched
+Matrix Homeserver (HS). This additional code is written in JavaScript,
+which is executed in a nodejs runtime.
+
+#### Suggested documentation
+
+Detailed information about the main concepts of the Matrix.org
+infrastructure can be found in this high-level
+**[Matrix-Overview](./Matrix-Overview.md)**.
+
+In order to understand the internal architecture of the MatrixMN the
+documentation at
+**[MatrixMN-internal-architecture](./MatrixMN-internal-architecture.md)**
+is suggested.
+
+#### Structure of the GitHub repository
+
+The "dev-msg-node-matrix" GitHub repository is structured as follows:
+
+-   **./src/mn** ... The node.js sources for the MatrixMN
+-   **./src/stub** ... The sources for the Protocol stub
+-   **./src/docker** ... Scripts and additional files required for the
+    setup of a dockerized version of the Matrix Message Node
+-   **./test** ... Test cases for the Matrix Message Node
+
+#### Development setup
+
+To setup the repository for developments on the MatrixMN, follow first
+the steps described in the "User View" chapter before. With the
+resulting setup the MatrixMN code will be executed inside of the docker
+container. That means that for each change on the MN code the docker
+container must be restarted. Otherwise the changes take no effect. This
+is of course not very comfortable for coding and testing in short
+cycles.
+
+To improve this situation, the MatrixMN can also be operated as a
+stand-alone NodeJS process outside of the docker container. However,
+this requires some manipulations on the setup of the container.
+
+Since the MatrixMN operates as an Application Service (AS) for the
+Matrix HomeServer, the HomeServer must be able to address the AS for
+sending requests. If the AS is in the same container this address is
+always *localhost*. If we run it outside this does not work anymore.
+
+Following steps must be performed to make it work:
+
+1.  Identify the hosts address on the docker bridge. Execute:
+
+        ip a
+
+    and search for the ip address corresponding to the "docker0" bridge
+    interface (may be named similar)
+
+2.  Edit `./src/mn/rethink-mn-registration.yaml`. Replace localhost with
+    this ip-address.
+
+3.  Execute step 3 (Building the MN) of the installation instructions
+
+4.  Start the Matrix docker container without the MatrixMN code
+
+        #cd to dist/docker
+        ./startdevelopment.sh
+
+5.  execute the MatrixMN stand-alone
+
+        gulp startmn
+
+Now you can perform changes and extension on the Matrix MN
+implementation (below directory ./src/mn) and do a
+
+    gulp build && gulp dist && gulp startmn
+
+whenever you want to test your changes without the need to restart the
+full docker container.
+
+If your development is done, change the configuration in
+rethink-mn-registration.yaml back to "localhost", stop the docker
+container, perform step 3 again and start the container with the
+built-in MatrixMN code.
 
 #### Matrix.org - Overview and core concepts
 
 The Matrix mission statement (from [matrix.org
-spec](https://matrix.org/speculator/spec/head/intro.html)): \> *The end
-goal of Matrix is to be a ubiquitous messaging layer for synchronising
-arbitrary data between sets of people, devices and services - be that
-for instant messages, VoIP call setups, or any other objects that need
-to be reliably and persistently pushed from A to B in an interoperable
-and federated manner.*
+spec](https://matrix.org/speculator/spec/head/intro.html)): &gt; *The
+end goal of Matrix is to be a ubiquitous messaging layer for
+synchronising arbitrary data between sets of people, devices and
+services - be that for instant messages, VoIP call setups, or any other
+objects that need to be reliably and persistently pushed from A to B in
+an interoperable and federated manner.*
 
 ##### Homeservers
 
@@ -412,7 +919,7 @@ Following picture shows the main data flow in a federated matrix
 architecture.
 
 ![Figure @sota-messaging-matrix-dataflows: Main data flow in a matrix
-architecture](documentation/matrix-dataflows.png)
+architecture](matrix-dataflows.png)
 
 As this Figure shows, clients just connect to their own HS, but due to
 the built-in federation between the Homeservers they can communicate
@@ -451,7 +958,7 @@ It must be noted that Application services do (until now) only play a
 passive role. They can listen to messages, but they can (by-design) not
 block or modify them.
 
-#### Messaging Node architecture
+#### MatrixMN internal architecture
 
 ##### General considerations, requirements and decisions
 
@@ -468,11 +975,11 @@ translated to the Matrix.org concepts, it seems like the Stubs map well
 to Matrix clients and the Messaging Nodes to Matrix Homeservers.
 
 As described before, a Matrix client communicates to a Homeserver via a
-REST protocol. Several available SDKs encapsulate this protocol, so
-that - at the end - it is not obvious for the implementor of a client,
-when and how much traffic is generated between client and HS.
-Furthermore the SDKs come with a set of dependencies that potentially
-blow up the size of a Stub and make its deployment more complicated.
+REST protocol. Several available SDKs encapsulate this protocol, so that
+- at the end - it is not obvious for the implementor of a client, when
+and how much traffic is generated between client and HS. Furthermore the
+SDKs come with a set of dependencies that potentially blow up the size
+of a Stub and make its deployment more complicated.
 
 For these reasons it was decided that: - The stub should be kept as
 small and simple as possible to ensure easy deployment. - The real
@@ -516,8 +1023,7 @@ Stub-/Runtime-connection. This includes the instantiation and also the
 re-assignment of Matrix Clients to stubs, in case of re-connections, for
 instance after a network interruption.
 
-![Figure
-@matrix-address-allocation](documentation/MatrixMN-Architecture.png)
+![Figure @matrix-address-allocation](MatrixMN-Architecture.png)
 
 Due to the trust-relationship of the Application Service, the Matrix
 Client Manager is allowed to create and auto-provision Matrix Clients
@@ -543,29 +1049,28 @@ The following sequence chart shows the processes for the connection of a
 Protocol Stub at the Messaging Node, the allocation of a hyperty address
 and the registratio of this address at the domain registry.
 
-![Figure
-@matrix-address-allocation](documentation/MatrixMN-Allocation.png) -
-1-2: The Stub is initialized and connected by the Runtime (simplified)
-and the Runtime sends a CREATE message to the address-allocation module
-of the Messaging Node.
+![Figure @matrix-address-allocation](MatrixMN-Allocation.png) - 1-2: The
+Stub is initialized and connected by the Runtime (simplified) and the
+Runtime sends a CREATE message to the address-allocation module of the
+Messaging Node.
 
 -   3: The Stub connects with the WS-Server for the first time and
     provides the RuntimeID as identifier.
 -   4: The WS-Server assigns the given RuntimeID to the Websocket.
 -   5-6: The Client Manager creates and inititializes a Matrix Client
     for the given RuntimeID.
--   7-8: The Matrix Client inititializes (connects to the HS, syncs
-    etc.) and creates its individual room.
+-   7-8: The Matrix Client inititializes (connects to the HS,
+    syncs etc.) and creates its individual room.
 -   10: In case of a re-connection, the Client Manager only updates the
     relation between the existing client and the new Websocket
 -   11: The WS-Server receives the address allocation request from the
     Stub
 -   12 -15: The Address Allocation Manager is invoked to create a new
     address, which is returned to the Runtime via the Protocol Stub
--   16-21: These steps show the flow for a message to create a hyperty
-    registration. It invokes the Registry Connector that interacts with
-    the domain registry to perform the registration. The response will
-    be returned via the corresponding stub to the Runtime
+-   16-21: These steps show the flow for a message to create a
+    hyperty registration. It invokes the Registry Connector that
+    interacts with the domain registry to perform the registration. The
+    response will be returned via the corresponding stub to the Runtime
 
 In order to avoid expensive creation of bi-lateral room relationships
 and to allow to block messages depending on policies, it was decided
@@ -585,7 +1090,7 @@ receivers Runtime via the connected Stub.
 
 The following sequence chart illustrates this routing principle.
 
-![Figure @matrix-message-routing](documentation/MatrixMN-routing.png)
+![Figure @matrix-message-routing](MatrixMN-routing.png)
 
 This sequence starts with the precondition that both sides (Runtimes A
 and B) have connected a stub with the Matrix Messaging Node, that
@@ -627,109 +1132,6 @@ will be routed there to the correct receiver.
 Furthermore the Stub uses the Bus to publish events about its internal
 status, especially on changes of its connection state.
 
-### Configuration and Operation
-
-#### Structure of the "dev-msg-node-matrix" GitHub repository
-
--   **./src/mn** ... The node.js sources for the MatrixMN
--   **./src/stub** ... The sources for the Protocol stub
--   **./src/docker** ... Scripts and additional files required for the
-    setup of a dockerized version of the Matrix Messaging Node
--   **./test** ... Test cases for the Matrix Messaging Node
-
-#### Setup and operation of the MatrixMN as a Docker container
-
-Assuming you are running a standard Debian 8 Jessie the following steps
-can be used to setup the environment. Other distributions my need a
-different setup.
-
-##### 1. Installation of NodeJS and Docker
-
-You need to set up the following requirements. - [nodejs
-5.x](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions) -
-nodejs-legacy for Debian (Ubuntu might not need this) -
-[docker](https://docs.docker.com/engine/installation/debian/) - If the
-docker daemon cannot be reached you need to run
-`sudo usermod -aG docker $USER`. After that logout and back in or use
-this command `su - $USER`. - If the test `sudo docker run hello-world`
-fails you may need a different kernel. Some kernels like those provided
-by OVH are not working with docker.
-
-##### 2. Installation of repository-tools and cloning the repository
-
-Execute these commands to install the needed tools and dependencies.
-
-    sudo npm install -g gulp
-    git clone https://github.com/reTHINK-project/dev-msg-node-matrix.git
-    cd dev-msg-node-matrix 
-    npm install
-
-##### 3. Building MatrixMN
-
-Afterwards you can build the MatrixMN distribution. Please make sure you
-are located in the `dev-msg-node-matrix` directory. Simply type `pwd` to
-check that. Then run the following commands.
-
-    rm -rf dist && gulp build && gulp dist
-    cd dist/docker
-    ./build-docker-image.sh matrix1.rethink
-
-The last parameter `matrix1.rethink` specifies the domain name for
-MatrixMN.
-
-When errors occur while building MatrixMN which relate to 404 errors you
-might want to check your Docker DNS settings. Try editing
-`/etc/default/docker` and uncomment the line
-`#DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4"`. You can also add the DNS
-servers of your company. The resulting line may look like this one
-`DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --dns 10.1.100.252 --dns 10.1.100.246"`.
-
-Build the image again and if the errors continue to show up you can
-check the `/etc/resolv.conf` file. It should have a line or lines
-containing something similar to `search company.tld lan lan.` or
-`nameserver 10.1.100.252`.
-
-##### 4. Building the Registry
-
-In order to reach the domain registry it has to be built too. Please
-change to the `dev-registry-domain/server` directory after cloning it in
-a place of your choice. Then run:
-
-    docker build -t dev-registry-domain .
-    docker images
-    #cd to dev-msg-node-matrix/dist/docker
-
-Now you should see the 2 docker images which were built.
-
-##### 5. Starting the Registry
-
-The first image to be started is the registry.
-
-    ./startregistry.sh
-
-##### 6. Starting MatrixMN
-
-Open another terminal and execute the following.
-
-    #cd to dev-msg-node-matrix/dist/docker
-    ./start.sh
-
-The MatrixMN will now start which might take a while. You can check
-whether it is finished by looking for the last line being similar to: \>
-`synapse.storage.TIME - 212 - INFO - - Total database time: 0.000% {get_all_pushers(0): 0.000%,`
-
-after executing \> `docker logs dev-msg-node-matrix`
-
-##### 7. Testing
-
-Finally you can test the correctness of the setup.
-
-    #cd to dev-msg-node-matrix or a subdirectory
-    gulp test
-
-If none of the test are executed you need to install the chrome browser.
-Run `sudo apt-get install chromium-browser`.
-
 dev-msg-node-nodejs
 ===================
 
@@ -757,8 +1159,8 @@ This include the npm manager for node modules.
     [karma](http://karma-runner.github.io/0.13/index.html)
 -   mocha - Unit test tool. See more on
     [http://mochajs.org](http://mochajs.org/)
--   jspm - Don't need compile the code, it uses babel (or traucer or
-    typescript) to run ES6 code on browser. Know more in
+-   jspm - Don't need compile the code, it uses babel (or traucer
+    or typescript) to run ES6 code on browser. Know more in
     [jspm.io](http://jspm.io/)
 -   gulp - Automate and enhance your workflow. See more about gulp on
     [gulp](http://gulpjs.com/)
@@ -780,7 +1182,7 @@ Now start server with command :\
 \$ **node src/main/server.js**;
 
 You should see a notice like that :\
-[Date] [INFO] server - [S] HTTP & WS server listening on 9090
+\[Date\] \[INFO\] server - \[S\] HTTP & WS server listening on 9090
 
 if you already have the project configured on your machine, you only
 need run the command `npm install` to update package & new dependencies.
@@ -901,11 +1303,11 @@ The graphic below describe message event processing with components.
 ### Entry point
 
 Msg node start with server.js script that read configuration from
-config.js and instanciate \<<MsgNode>\> class.
+config.js and instanciate &lt;<MsgNode>&gt; class.
 
 This unique class initialize main components and start listening for
 incoming websocket client. On each new protostub connection, socket.io
-events are bind to \<<Client>\> instance associated with socket
+events are bind to &lt;<Client>&gt; instance associated with socket
 ressource.
 
 ### Registry
