@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 DataObjectSchema {#dataobjectschema data-ice="name"}
 ================
 
@@ -50,6 +53,7 @@ data-ice="instanceDoc"><span>[dataObjectSchema](../../../variable/index.html#sta
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 PolicyEnforcerDescriptor {#policyenforcerdescriptor data-ice="name"}
 ========================
 
@@ -22,6 +25,7 @@ data-ice="instanceDoc"><span>[policyEnforcerDescriptor](../../../variable/index.
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

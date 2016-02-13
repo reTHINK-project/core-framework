@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 HypertyDescriptor {#hypertydescriptor data-ice="name"}
 =================
 
@@ -22,6 +25,7 @@ data-ice="instanceDoc"><span>[hypertyDescriptor](../../../variable/index.html#st
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

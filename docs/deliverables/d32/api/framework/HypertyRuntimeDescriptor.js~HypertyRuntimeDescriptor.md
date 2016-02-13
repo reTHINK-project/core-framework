@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 HypertyRuntimeDescriptor {#hypertyruntimedescriptor data-ice="name"}
 ========================
 
@@ -22,6 +25,7 @@ data-ice="instanceDoc"><span>[hypertyRuntimeDescriptor](../../../variable/index.
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

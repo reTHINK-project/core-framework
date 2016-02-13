@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 DataObjectObserver {#dataobjectobserver data-ice="name"}
 ==================
 
@@ -21,6 +24,7 @@ data-ice="instanceDoc"><span>[dataObjectObserver](../../../variable/index.html#s
 </div>
 
 </div>
+
 <div data-ice="methodSummary">
 
 Method Summary

@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 RethinkObject {#rethinkobject data-ice="name"}
 =============
 
@@ -14,6 +17,7 @@ RethinkObject {#rethinkobject data-ice="name"}
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

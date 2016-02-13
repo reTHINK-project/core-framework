@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 CatalogueDataObject {#cataloguedataobject data-ice="name"}
 ===================
 
@@ -9,6 +12,7 @@ data-ice="instanceDoc"><span>[catalogueDataObject](../../../variable/index.html#
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 ProtocolStubDescriptor {#protocolstubdescriptor data-ice="name"}
 ======================
 
@@ -22,6 +25,7 @@ data-ice="instanceDoc"><span>[protocolStubDescriptor](../../../variable/index.ht
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

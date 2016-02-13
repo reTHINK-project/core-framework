@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 DataObjectReporter {#dataobjectreporter data-ice="name"}
 ==================
 
@@ -21,6 +24,7 @@ data-ice="instanceDoc"><span>[dataObjectReporter](../../../variable/index.html#s
 </div>
 
 </div>
+
 <div data-ice="memberSummary">
 
 Member Summary

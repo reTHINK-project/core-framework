@@ -2,23 +2,10 @@ pandoc -o readme.md ^
 specs\readme.md ^
 ..\..\..\..\dev-runtime-core\docs\specs\readme.md ^
 ..\..\..\..\dev-runtime-core\docs\specs\securityanalysis.md ^
-..\..\..\..\dev-service-framework\docs\specs\msg-node\readme.md ^
-specs\messages.md ^
-..\..\..\..\dev-service-framework\docs\specs\messages\address-allocation-messages.md ^
-..\..\..\..\dev-service-framework\docs\specs\messages\registration-messages.md ^
-..\..\..\..\dev-service-framework\docs\specs\messages\data-sync-messages.md
-
-pushd introduction
-  for /r %%a in (*.png) do (
-     COPY "%%a" ".."
-  )
-
-  for /r %%a in (*.jpg) do (
-     COPY "%%a" "..\..\..\core-framework\docs\deliverables\d32\%%~nxa"
-  )
+..\..\..\..\dev-service-framework\docs\specs\msg-node\readme.md
 
 
-pushd ..\..\..\..\..\dev-service-framework\docs\manuals
+pushd ..\..\..\..\dev-service-framework\docs\manuals
   for /r %%a in (*.png) do (
      COPY "%%a" "..\..\..\core-framework\docs\deliverables\d32\%%~nxa"
   )

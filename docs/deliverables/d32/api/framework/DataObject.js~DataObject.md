@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 DataObject {#dataobject data-ice="name"}
 ==========
 
@@ -9,6 +12,7 @@ data-ice="instanceDoc"><span>[dataObject](../../../variable/index.html#static-va
 </div>
 
 </div>
+
 <div data-ice="memberSummary">
 
 Member Summary

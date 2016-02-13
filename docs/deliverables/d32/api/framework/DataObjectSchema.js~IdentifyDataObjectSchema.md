@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 IdentifyDataObjectSchema {#identifydataobjectschema data-ice="name"}
 ========================
 
@@ -19,6 +22,7 @@ IdentifyDataObjectSchema {#identifydataobjectschema data-ice="name"}
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

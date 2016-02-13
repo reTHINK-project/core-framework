@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 Peer {#peer data-ice="name"}
 ====
 
@@ -9,6 +12,7 @@ data-ice="instanceDoc"><span>[peer](../../../variable/index.html#static-variable
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

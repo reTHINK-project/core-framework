@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 EventEmitter {#eventemitter data-ice="name"}
 ============
 
@@ -16,6 +19,7 @@ and trigger events;
 </div>
 
 </div>
+
 <div data-ice="methodSummary">
 
 Method Summary

@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 HypertyDiscovery {#hypertydiscovery data-ice="name"}
 ================
 
@@ -17,6 +20,7 @@ registry\* for a given user
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

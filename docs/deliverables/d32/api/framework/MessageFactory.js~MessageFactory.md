@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 MessageFactory {#messagefactory data-ice="name"}
 ==============
 
@@ -22,6 +25,7 @@ data-ice="instanceDoc"><span>[messageFactory](../../../variable/index.html#stati
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

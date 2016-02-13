@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 SourcePackage {#sourcepackage data-ice="name"}
 =============
 
@@ -15,6 +18,7 @@ Created by amo on 14/11/2015.
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

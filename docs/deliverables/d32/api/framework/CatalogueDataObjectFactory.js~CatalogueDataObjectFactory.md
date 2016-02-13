@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 CatalogueDataObjectFactory {#cataloguedataobjectfactory data-ice="name"}
 ==========================
 
@@ -22,6 +25,7 @@ CatalogueDataObjectFactory
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

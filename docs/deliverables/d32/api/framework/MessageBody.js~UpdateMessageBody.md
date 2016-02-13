@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 UpdateMessageBody {#updatemessagebody data-ice="name"}
 =================
 
@@ -21,6 +24,7 @@ Class representation of the UpdateMessageBody data object
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

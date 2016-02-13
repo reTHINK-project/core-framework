@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 HypertyDataObjectSchema {#hypertydataobjectschema data-ice="name"}
 =======================
 
@@ -32,6 +35,7 @@ HypertyDataObjectSchema {#hypertydataobjectschema data-ice="name"}
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

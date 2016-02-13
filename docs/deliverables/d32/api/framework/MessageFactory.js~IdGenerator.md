@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 IdGenerator {#idgenerator data-ice="name"}
 ===========
 
@@ -9,6 +12,7 @@ message transactions
 </div>
 
 </div>
+
 <div data-ice="methodSummary">
 
 Method Summary

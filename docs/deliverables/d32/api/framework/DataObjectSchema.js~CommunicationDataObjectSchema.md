@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 CommunicationDataObjectSchema {#communicationdataobjectschema data-ice="name"}
 =============================
 
@@ -19,6 +22,7 @@ CommunicationDataObjectSchema {#communicationdataobjectschema data-ice="name"}
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary

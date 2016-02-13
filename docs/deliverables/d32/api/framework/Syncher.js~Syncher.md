@@ -1,3 +1,6 @@
+</div>
+<div class="self-detail detail">
+
 Syncher {#syncher data-ice="name"}
 =======
 
@@ -9,6 +12,7 @@ data-ice="instanceDoc"><span>[syncher](../../../variable/index.html#static-varia
 </div>
 
 </div>
+
 <div data-ice="constructorSummary">
 
 Constructor Summary
