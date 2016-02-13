@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 SyncherManager {#synchermanager data-ice="name"}

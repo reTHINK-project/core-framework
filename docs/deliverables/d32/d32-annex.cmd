@@ -8,4 +8,4 @@ pandoc -o annex.md ^
 ..\..\..\..\dev-msg-node-matrix\MatrixMN-internal-architecture.md ^
 ..\..\..\..\dev-msg-node-nodejs\readme.md
 
-pandoc --filter pandoc-citeproc -f markdown -t docx --data-dir=. annex.md -o D3.2-annex.docx
+pandoc -s -S annex.md --reference-docx annex-reference.docx -o D3.2-annex.docx

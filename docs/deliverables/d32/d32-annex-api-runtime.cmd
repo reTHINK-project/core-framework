@@ -14,6 +14,6 @@ pushd ..\..\..\..\dev-runtime-core\docs\api\class
 
   copy /b *.md api.md
 
-  pandoc -s -S api.md --reference-docx ..\..\D3.2-body.docx -o api.docx
+  pandoc -s -S api.md --reference-docx ..\..\annex-api-reference.docx -o api.docx
 
   pushd ..\..

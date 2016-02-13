@@ -1,14 +1,4 @@
 pandoc -o readme.md ^
-introduction\readme.md ^
-manuals\readme.md ^
-..\..\..\..\dev-service-framework\docs\manuals\start.md ^
-..\..\..\..\dev-service-framework\docs\manuals\hyperty.md ^
-..\..\..\..\dev-service-framework\docs\manuals\hyperty-messaging-framework.md ^
-..\..\..\..\dev-service-framework\docs\manuals\p2p-data-sync.md ^
-..\..\..\..\dev-service-framework\docs\manuals\hyperty-trust.md ^
-..\..\..\..\dev-service-framework\docs\manuals\development-of-hyperties.md ^
-..\..\..\..\dev-service-framework\docs\manuals\development-of-apps.md ^
-..\..\..\..\dev-service-framework\docs\manuals\development-of-protostubs-and-msg-nodes.md ^
 specs\readme.md ^
 ..\..\..\..\dev-runtime-core\docs\specs\readme.md ^
 ..\..\..\..\dev-runtime-core\docs\specs\securityanalysis.md ^

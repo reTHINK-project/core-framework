@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 EventEmitter {#eventemitter data-ice="name"}

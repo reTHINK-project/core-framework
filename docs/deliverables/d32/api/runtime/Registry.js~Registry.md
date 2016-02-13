@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 Registry {#registry data-ice="name"}

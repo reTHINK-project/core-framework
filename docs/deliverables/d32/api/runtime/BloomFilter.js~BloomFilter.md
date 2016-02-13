@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 BloomFilter {#bloomfilter data-ice="name"}

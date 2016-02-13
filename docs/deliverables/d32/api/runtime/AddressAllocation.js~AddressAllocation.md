@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 AddressAllocation {#addressallocation data-ice="name"}

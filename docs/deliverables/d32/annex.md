@@ -1067,11 +1067,13 @@ produce a lot of persistent room relationships in the Matrix Homeservers
 which might never be re-used again.
 
 Therefore following requirements for the design of the Matrix based
-Messaging Node were identified: - The Messaging node must support an
-automatic provisioning of Matrix users on-the-fly. - The message routing
-must not depend on fully established room relationships between the
-matrix users that correspond with the "from" and "to" addresses of a
-retHINK message.
+Messaging Node were identified:
+
+-   The Messaging node must support an automatic provisioning of Matrix
+    users on-the-fly.
+-   The message routing must not depend on fully established room
+    relationships between the matrix users that correspond with the
+    "from" and "to" addresses of a retHINK message.
 
 These 5 decisions guided the architecture approach that is described in
 the following section.

@@ -1,3 +1,4 @@
+</div>
 <div class="self-detail detail">
 
 RuntimeCatalogue {#runtimecatalogue data-ice="name"}
@@ -222,7 +223,7 @@ Public Constructors {#public-constructors data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber7)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber6)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -239,7 +240,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">runtimeURL</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber45)</span></span> </span> {#instance-set-runtimeURL data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">runtimeURL</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber44)</span></span> </span> {#instance-set-runtimeURL data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -249,7 +250,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">runtimeURL</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber55)</span></span> </span> {#instance-get-runtimeURL data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">runtimeURL</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber54)</span></span> </span> {#instance-get-runtimeURL data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -266,7 +267,7 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getDataSchemaDescriptor</span><span data-ice="signature">(dataSchemaURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber344)</span></span> </span> {#instance-method-getDataSchemaDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getDataSchemaDescriptor</span><span data-ice="signature">(dataSchemaURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber339)</span></span> </span> {#instance-method-getDataSchemaDescriptor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -305,7 +306,7 @@ mydomain.com/.well-known/dataschema/MyDataSchema
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getHypertyDescriptor</span><span data-ice="signature">(hypertyURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber183)</span></span> </span> {#instance-method-getHypertyDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getHypertyDescriptor</span><span data-ice="signature">(hypertyURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber182)</span></span> </span> {#instance-method-getHypertyDescriptor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -344,7 +345,7 @@ mydomain.com/.well-known/hyperty/MyHyperty
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getHypertyRuntimeURL</span><span data-ice="signature">(): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber63)</span></span> </span> {#instance-method-getHypertyRuntimeURL data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getHypertyRuntimeURL</span><span data-ice="signature">(): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber62)</span></span> </span> {#instance-method-getHypertyRuntimeURL data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -374,7 +375,7 @@ Get hypertyRuntimeURL
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getSourcePackageFromURL</span><span data-ice="signature">(sourcePackageURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber244)</span></span> </span> {#instance-method-getSourcePackageFromURL data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getSourcePackageFromURL</span><span data-ice="signature">(sourcePackageURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber241)</span></span> </span> {#instance-method-getSourcePackageFromURL data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -413,7 +414,7 @@ mydomain.com/.well-known/hyperty/MyHyperty/sourcePackage
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getStubDescriptor</span><span data-ice="signature">(stubURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber284)</span></span> </span> {#instance-method-getStubDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getStubDescriptor</span><span data-ice="signature">(stubURL: <span>\*</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber281)</span></span> </span> {#instance-method-getStubDescriptor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -452,7 +453,7 @@ mydomain.com/.well-known/protostub/MyProtostub
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupDataSchemaDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber35)</span></span> </span> {#instance-method-mockupDataSchemaDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupDataSchemaDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber34)</span></span> </span> {#instance-method-mockupDataSchemaDescriptor data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -462,7 +463,7 @@ mydomain.com/.well-known/protostub/MyProtostub
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupHypertyDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber14)</span></span> </span> {#instance-method-mockupHypertyDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupHypertyDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber13)</span></span> </span> {#instance-method-mockupHypertyDescriptor data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -472,7 +473,7 @@ mydomain.com/.well-known/protostub/MyProtostub
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupStubDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber25)</span></span> </span> {#instance-method-mockupStubDescriptor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">mockupStubDescriptor</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/runtime/RuntimeCatalogue-Local.js.html#lineNumber24)</span></span> </span> {#instance-method-mockupStubDescriptor data-ice="anchor"}
 
 <div data-ice="properties">
 
