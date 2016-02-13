@@ -215,10 +215,9 @@ will be on **test** folder, following the name standard
 <component>.spec.js
 
 To run karma tests is mandatory to run **live-server** because of the
-mock-up's dependencies:\`\`\` live-server --port=4000
+mock-up's dependencies: `live-server --port=4000`
 
-\`\`\`
-------
+------------------------------------------------------------------------
 
 #### <a id="Tasks">Gulp Tasks</a>
 
@@ -232,27 +231,35 @@ mock-up's dependencies:\`\`\` live-server --port=4000
 Generate all documentation associated to runtime core;
 
 -   if you run **gulp doc** the documentation based on jsdoc3 will be
-    generated on folder docs/jsdoc and you can interact;`gulp doc`
+    generated on folder docs/jsdoc and you can interact;
+
+`gulp doc`
 
 -   if you run **gulp api** the documentation is generate based on
-    docs/jsdoc/\*.html files, and converted to markdown;`gulp api`
+    docs/api/ html files, and converted to markdown;
+
+`gulp api`
 
 -   if you run **gulp docx** should be generated an .docx file, but
-    **this process should be optimized**, is not working very
-    well;`gulp docx`
+    **this process should be optimized**, is not working very well;
+
+`gulp docx`
 
 ##### Dist
 
 To distribute the runtime-core, you can make a distribution file.
 
-Run the command:`// compact true | false; gulp dist --compact=false`
+Run the command:
+
+    // compact true | false;
+    gulp dist --compact=false
 
 ##### Build
 
 To distribute the runtime-core, but with the source code maps, and to
 detect where is some error.
 
-Run the command:`gulp build`
+Run the command: `gulp build`
 
 ##### Encode
 
@@ -293,10 +300,9 @@ It was done an version of RuntimeCatalogue for local instances, based on
 the RuntimeCatalogue, and is activated by default;
 
 dev-runtime-browser
-===================
+-------------------
 
-Introduction
-------------
+### Overview
 
 This repository contain the code necessary to execute the reTHINK
 runtime core in a browser. reTHINK runtime core can also be executed in
@@ -315,8 +321,49 @@ class from the dev-core-runtime repository). This way we keep Hyperties
 and protoStub runtimes not directly accessible from the core runtime but
 using also the postMessage() mechanism.
 
-How does it work?
------------------
+### User view
+
+#### Setup Environment
+
+##### Configure jspm access to runtime-core repo
+
+1.  generate token with public\_repo permission enabled
+2.  Then execute the command below and you'll be asked for the
+    credentials:
+
+        jspm registry config github
+
+##### Configure dependencies
+
+        npm install -g jspm karma-cli gulp-cli
+        npm install
+        jspm install
+
+or
+
+        npm run init-setup
+
+#### Example of use
+
+This repository have a folder with an use example of rethink.js. It
+initializes runtime and then you can use the console to invoke:
+
+-   rethink.requireHyperty(hypertyDescriptor);
+-   rethink.requireProtostub(domain);
+
+To run the demo on example folder: - you need **live-server** running in
+the root folder. `live-server --port=4000` - in your browser access to
+http://localhost:4000/example.
+
+#### Distributable files
+
+-   rethink.js
+-   context-core.js
+-   context-service.js
+
+### Developer view
+
+#### How does it work?
 
 ![Runtime Browser](runtime-browser.png)
 
@@ -339,40 +386,17 @@ How does it work?
 
 1.  Manage all the communication from and to internal components.
 
-Setup Environment
------------------
-
-### Configure jspm access to runtime-core repo
-
-1.  generate token with public\_repo permission enabled
-2.  Then execute the command below and you'll be asked for the
-    credentials:
-
-        jspm registry config github
-
-### Configure dependencies
-
-        npm install -g jspm karma-cli gulp-cli
-        npm install
-        jspm install
-
-or
-
-        npm run init-setup
-
-Unit Testing
-------------
+#### Unit Testing
 
 Unit testing can be launched manually with **npm test**.
 
-Javascript Environment
-----------------------
+#### Javascript Environment
 
 JavaScript code should be written in ES6. There are direct dependencies
 from nodejs and npm, these can be installed separately or in conjunction
 with [nvm](https://github.com/creationix/nvm)
 
-### Dependencies
+#### Dependencies
 
 -   nodejs
 -   npm
@@ -386,7 +410,7 @@ with [nvm](https://github.com/creationix/nvm)
 -   gulp - Automate and enhance your workflow. See more about gulp on
     [gulp](http://gulpjs.com/)
 
-### Code Style and Hinting
+#### Code Style and Hinting
 
 On the root directory you will find **.jshintrc**, this file is a helper
 to maintain syntax consistency, it signals syntax mistakes and makes the
@@ -397,27 +421,10 @@ code equal for all developers.
 
 All IDE's and Text Editors can handle these tools.
 
-Example
--------
-
-This repository have a folder with an use example of rethink.js. It
-initializes runtime and then you can use the console to invoke:
-
--   rethink.requireHyperty(hypertyDescriptor);
--   rethink.requireProtostub(domain);
-
-To run the demo on example folder: - you need **live-server** running in
-the root folder. `live-server --port=4000` - in your browser access to
-http://localhost:4000/example.
-
-Distributable file - rethink.js, context-core.js, context-service.js
---------------------------------------------------------------------
-
 Standalone runtime application
-==============================
+------------------------------
 
-Introduction
-------------
+### Introduction
 
 The client side of the reTHINK architecture has been designed to be
 executed in a device which can execute a Javascript runtime, typically a
@@ -446,8 +453,7 @@ there are projects which allows to create native apps for both iOS and
 Android. For reTHINK the Crosswalk Project has been chosen to implement
 the native apps.
 
-Crosswalk Project
------------------
+### Crosswalk Project
 
 reTHINk standalone application allows to execute reTHINK runtime in
 Android and iOS devices without the need of having installed a browser
@@ -469,8 +475,7 @@ WebRTC APIs are available in Crosswalk 5 or later on ARM; and Crosswalk
 7.36.154.6 or later for x86. Web workers (also required for the browser
 runtime) is also supported by Crosswalk since previous versions.
 
-Android standalone application
-------------------------------
+### Android standalone application
 
 The diagram below shows the architecture of the appplication. The hybrid
 application is created with Cordova which allows to access different
@@ -482,10 +487,9 @@ guarantee that the reTHINK runtime will be executed correctly.
 
 ![Standalone Android App](MobileAppAndroidDiagram.png)
 
-Building the reTHINK Android application
-----------------------------------------
+### Building the reTHINK Android application
 
-### Installing prerequisites
+#### Installing prerequisites
 
 **openjdk-7:**
 
@@ -507,7 +511,7 @@ http://dl.google.com/android/android-sdk\_r22.6.2-linux.tgz</code>
 This last command will install the default list of packages. This
 process may take quite a while.
 
-### Building the application
+#### Building the application
 
 It is necessary to indicate the public URL of the Web App which is going
 to be loaded in the hybrid App. In next releases it may be possible to
@@ -519,7 +523,7 @@ load the HTML5/CSS/JS files in the own App.
 
 <code>make </code>
 
-### Build the standalone application with Eclipse
+#### Build the standalone application with Eclipse
 
 It is also possible to build the standalone application using Eclipse.
 The general steps to build the application are included below:
@@ -533,8 +537,7 @@ The general steps to build the application are included below:
     executed in the runtime application.
 6.  Build standalon-ios project as an Android application
 
-iOS standalone application
---------------------------
+### iOS standalone application
 
 In iOS the architecture is slightly different from the Android
 architecture. Cordova is also use to build the application but the
@@ -550,16 +553,15 @@ to execute the reTHINK runtime will be provided by Cordova.
 
 ![Standalone iOS App](MobileAppiOSDiagram.png)
 
-Building reTHINK iOS standalone application
--------------------------------------------
+#### Building reTHINK iOS standalone application
 
-### Requirements
+##### Requirements
 
 1.  OSX with XCode 5.
 2.  A valid Apple ID must be used (load associated certificates
     and profiles).
 
-### Build process
+##### Build process
 
 1.  It is necessary to clone ios-rethink-standalone repository (this
     repository has not been yet created at the time of this writing) .
@@ -568,39 +570,93 @@ Building reTHINK iOS standalone application
     file (Settings.bundle-&gt;Root.plist in XCode project explorer).
 4.  Build application.
 
-dev-msg-node-vertx
-------------------
+vertx.io based Message Node (VertxMN)
+-------------------------------------
 
-### Setup Environment
+### Overview
 
-#### JavaScript
+#### Functional location in the reTHINK Architecture
 
-On the first time you are cloning this repository, you need to run the
-command `npm run init-setup`;
+The vertx.io based Message Node is one of the reference implementations
+of the Message Node component in the reTHINK Architecture. The overall
+role of Message Nodes in the reTHINK Architecture is described in detail
+in [Hyperty Messaging
+Framework](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/hyperty-messaging-framework.md).
 
-After running successfully this command you will have 2 folders
-(node\_modules and vendor), these folders are excluded from the commit
-process, and are only for development.
+A general documentation and guideline for the development of Message
+nodes is given in [Message Nodes and Protostubs
+Development](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/development-of-protostubs-and-msg-nodes.md).
 
-If you already have the project configured on your machine, you only
-need run the command `npm install` to add new dependencies;
+#### Dependencies
 
-If you have some trouble with the environment, you can open an issue;
+One of the responsibilities of Message Nodes in the reTHINK architecture
+is to perform the interactions with the Domain registry. Runtimes send
+special messages to the Message Nodes to register or query hyperties or
+data objects at the domain registry. The Message Nodes have to perform
+the interactions with the registry component and return the results back
+to the Runtime.
 
-#### Java
+There is a need to have the domain registry running and configured.
+However, there is no specific initiation sequence. The procedures to
+achieve this are described in the following section.
 
-Follow the link to [Install
-Maven](https://maven.apache.org/install.html). \* Build the project
-with: mvn package \* Verify if the configs are OK in node.config.json
-file \* Run vertx node with: mvn exec:java -Dexec.args="&lt;port&gt;"
+### User View
 
-### Use of VertxProtoStub
+This chapter provides instructions for the setup, configuration and
+operation of the Vertx Message Node as a docker container. The Docker
+file is already available in the repository.
 
-Once the MessageNode is active, we are able to connect with the
-ProtoStub. The best example of how this is done is in the
-test/VertxProtoStub.js in "runtime connectivity" test. It's important to
-send the "runtimeURL" in the config parameter, because it will be used
-to link the connection channel to the runtime.
+#### 1. Installation of Git and Docker
+
+You need to set up the following requirements. -
+[docker](https://docs.docker.com/) - [git client
+tool](https://git-scm.com/downloads) This is already a Docker
+dependency. If already installed you may skip it. - Test Docker setup.
+Fire the Docker shell and run `docker run hello-world`
+
+#### 2. Cloning the repository and running Docker image
+
+    git clone https://github.com/reTHINK-project/dev-msg-node-vertx.git
+    cd dev-msg-node-vertx
+
+#### 3. Config VertxMN domain
+
+The VertxMN is pointing at default domain `ua.pt`, but if other domain
+is needed it can be configured in `node.config.json`. Change an already
+entry, like `dev`, or create a new one. Config entry is selected with an
+environment variable `MSG_NODE_CONFIG`.
+
+#### 4. Build and run Docker
+
+    docker build -t vertx-msg-node .
+    docker run -it -e "MSG_NODE_CONFIG=dev" -p 9090:9090 vertx-msg-node
+
+**Verify** if the VertxMN is running at docker host port map
+`https://192.168.99.100:9090/`, should return **Hello**. It's ok at
+first to have an invalid certificate. The pre-configured self-signed
+certificate is pointing at host `msg-node.ua.pt` You can config your
+host OS file and add a new line for `192.168.99.100   msg-node.ua.pt`.
+
+#### 5. Testing
+
+To fire the test suite you need **NPM** and all installed dependencies.
+- [NodeJS](https://nodejs.org/en/) will install NPM.`npm install` - Run
+2 instances of the VertxMN to test cluster modes. You can run 2 dockers
+with diferent port maps `-p 9090:9090` and `-p 9091:9090`. - For unit
+test it's required to have the correct **host OS file** configured to
+`msg-node.ua.pt` and domain at **ua.pt** in the selected entry for
+`node.config.json`. - Run **karma start**
+
+**create user** and **read user** will fail if there is no domain
+registry running.
+
+### Developer view
+
+Once the VertxMN is active, we are able to connect with the ProtoStub.
+The best example of how this is done is in the test/VertxProtoStub.js in
+"runtime connectivity" test. It's important to send the "runtimeURL" in
+the config parameter, because it will be used to link the connection
+channel to the runtime.
 
 With this it's possible to send messages between runtimes, but Hyperty
 registration is something that should be done externally.
@@ -610,58 +666,71 @@ The connection is auto managed. It means, there is no need to call
 until "disconnect()" is called. Status messages are sent to
 "runtimeProtoStubURL/status".
 
-### Component Integration
+#### 1. Development dependencies
 
-There are 2 types of components that can integrate in the Vertx Message
-Node implementation. \* Addressable, based in one destination address.
-Messages are deliver based on the "header.to" field of the message. \*
-Interceptors that can intercept and verify every message that enters the
-Message Node, whatever the destination address.
+If the development is made without Docker, aditional dependencies are
+needed. - [Maven](https://maven.apache.org/install.html). - [Java 8
+SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- JAVA\_HOME environment variable pointing to java path
+
+#### 2. Structure of the project
+
+The "dev-msg-node-vertx" GitHub repository is structured as follows:
+
+-   ./Dockerfile ... Docker file to build image.
+-   ./src/main/java/\*\* ... The VertxMN source code
+-   ./src/js/client/\*\* ... The sources for the Protocol stub
+-   ./test/\*\* ... Test cases for the VertxMN
+-   ./target/ ... Output for distribution files
+
+#### 3. Distribution files
+
+Build a VertxMN distribution jar, executing `mvn package`. Build a
+VertxProtoStub distribution file, executing `gulp build`.
+
+#### 4. Internal Architecture and components
 
 ![](vertx_impl_arch.png)
 
-#### Addressable Components
+There are 2 types of components that can integrate in the VertxMN
+implementation.\* Addressable, based in one destination address.
+Messages are deliver based on the "msg.to" field of the message.\*
+Interceptors that can intercept and verify every message that enters the
+Message Node, whatever the destination address.
+
+##### Addressable Components
 
 These are implementations of the interface
 `IComponent extends Handler<PipeContext>`, and are added to the
 MessageNode with the method
-`PipeRegistry.install(IComponent component)`. The only difference on the
-interface (between IComponent and Handler&lt;PipeContext&gt;) is an
-additional method to get the component address name, used for EventBus
-registration.
+`PipeRegistry.installComponent(IComponent component)`. The only
+difference on the interface (between IComponent and
+Handler&lt;PipeContext&gt;) is an additional method to get the component
+address name, used for EventBus registration.
 
-#### Interceptor Components
+##### Interceptor Components
 
-Implementations of `Handler<PipeContext>`, and are added to the pipeline
-with `Pipeline.addHandler(Handler<PipeContext> handler)`.
+These are implementations of `Handler<PipeContext>`, and are added to
+the pipeline with `Pipeline.addHandler(Handler<PipeContext> handler)`.
 
 #### Use of PipeContext
 
 Both types receive a `PipeContext` in the **handle** method when a
 message should be processed by the component. PipeContext gives access
 to the message with the `getMessage()` method, but also provides other
-useful methods like: \* `next()` method used in Interceptors that order
+useful methods like:\* `next()` method used in Interceptors that order
 the pipeline to execute the next interceptor. If no other interceptor
-exits, a delivery is proceed. \* `deliver()` used internally by the
+exits, a delivery is proceeded.\* `deliver()` used internally by the
 pipeline, but can be also used to ignore all other pipeline handlers and
 deliver the message directly to the component that has the address of
-"header.to". \* `fail(String from, String error)` interrupts the
-pipeline flow and sends an error message back to the original
-"header.from". The "header.from" of the reply is configured with the
-first parameter. \* `reply(PipeMessage reply)` does nothing to the
-pipeline flow and sends a reply back. Other similar and useful methods
-exists: `replyOK(String from)` and
-`replyError(String from, String error)` \* `disconnect()` order the
+"msg.to".\* `fail(String from, String error)` interrupts the pipeline
+flow and sends an error message back to the original "msg.from". The
+"msg.from" of the reply is configured with the first parameter.\*
+`reply(PipeMessage reply)` does nothing to the pipeline flow and sends a
+reply back to original resource channel. Other similar and useful
+methods exists: `replyOK(String from)` and
+`replyError(String from, String error)`\* `disconnect()` order the
 underlying resource channel to disconnect.
-
-### Unit testing
-
-**DO NOT SUBMIT CODE WITHOUT ALL UNIT TESTS ARE OK** \* Run 2 instances
-of the message-node: **mvn exec:java -Dexec.args="9090"** and **mvn
-exec:java -Dexec.args="9091"** \* Add "msg-node.ua.pt 127.0.0.1" config
-to your OS host file \* Verify connectivity with the browser at
-https://msg-node.ua.pt:9090/ should return **Hello**. Accept
-certificate. \* Run **karma start**
 
 Matrix.org based Message Node (MatrixMN)
 ----------------------------------------
@@ -879,7 +948,7 @@ rethink-mn-registration.yaml back to "localhost", stop the docker
 container, perform step 3 again and start the container with the
 built-in MatrixMN code.
 
-#### Matrix.org - Overview and core concepts
+### Matrix.org - Overview and core concepts
 
 The Matrix mission statement (from [matrix.org
 spec](https://matrix.org/speculator/spec/head/intro.html)): &gt; *The
@@ -1133,15 +1202,34 @@ Furthermore the Stub uses the Bus to publish events about its internal
 status, especially on changes of its connection state.
 
 dev-msg-node-nodejs
-===================
+-------------------
 
-The repository provide NodeJS implementation for WebSocket messaging
-using socket.io library for the
+### Overview
 
-Setup Environment
------------------
+The NodeJS based Message Node is one of the reference implementations of
+the Message Node component in the reTHINK Architecture.
 
-### Javascript Environment
+Like other Message Nodes, it has responsibilities to perform messages
+delivering between different hyperties. And by design, it interact with
+other Rethink components like the domain registry or runtime.
+
+So, that implies to have an running instance of the domain registry to
+get the nodejs message node running correctly.
+
+You will find a general documentation and guideline Message nodes
+Development in [Message Nodes and Protostubs
+Development](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/development-of-protostubs-and-msg-nodes.md).
+
+### User View
+
+#### Setup Environment
+
+This documentation does not provide a OS dependant instructions : NodeJS
+message node can be used on any OS compatible with redis & nodejs tools.
+A dockerfile is provided, so it can be integrated in a docker instance
+as well.
+
+##### Javascript Environment
 
 JavaScript code should be written in ES6.
 
@@ -1150,7 +1238,7 @@ documentation](https://nodejs.org/en/download/package-manager/) to setup
 the NodeJS environnement.\
 This include the npm manager for node modules.
 
-#### dependencies:
+##### dependencies:
 
 -   nodejs
 -   npm
@@ -1159,17 +1247,14 @@ This include the npm manager for node modules.
     [karma](http://karma-runner.github.io/0.13/index.html)
 -   mocha - Unit test tool. See more on
     [http://mochajs.org](http://mochajs.org/)
--   jspm - Don't need compile the code, it uses babel (or traucer
-    or typescript) to run ES6 code on browser. Know more in
-    [jspm.io](http://jspm.io/)
 -   gulp - Automate and enhance your workflow. See more about gulp on
     [gulp](http://gulpjs.com/)
 
-### Quick start
+##### Quick start
 
 On the first time you are cloning this repository, you need to run the
 command\
-\$ **npm run init-setup && jspm install**;
+\$ **npm run init-setup**;
 
 After running successfully this command you will have 2 folders
 (node\_modules and vendor), these folders are excluded from the commit
@@ -1187,87 +1272,7 @@ You should see a notice like that :\
 if you already have the project configured on your machine, you only
 need run the command `npm install` to update package & new dependencies.
 
-### Code Style and Hinting
-
-On the root directory you will find **.jshintrc** and **.jscsrc**, these
-files are helpers to maintain syntax consistency, it signals syntax
-mistakes and makes the code equal for all developers.
-
--   [jscs](http://jscs.info/) - Maintain JavaScript Code Style
--   [jshint](http://jshint.com/) - Detect errors and potential problems
-    in JavaScript code.
-
-Most IDEs and Text Editors can handle these tools.
-
-### Documentation
-
-To generates api documentation you can run :\
-\$ **gulp doc**\
-This will generate HTML documentation in docs/ folder.
-
-### Repository structure
-
-This repository is ready to start working on development.\
-The code will go to the **src** folder, it contains also the main server
-script in src/main/ folder.
-
-The unit tests will be on **test** folder, following the name standard
-<component>.spec.js
-
-Server (config.js) & tools (gulp, karma, etc...) configuration is
-located in root folder.
-
-### Unit Testing
-
-We use Karma test runner to execute mocha test.
-
-To run unit test, you need first to lauch a server node with command :\
-\$ **node src/main/server.js**\
-... then start karma test runner (from main directory) :\
-\$ **karma start**
-
-Karma will launch the browser (chromium in this case) to execute all
-tests in test/ folder and show result in console. Tests are
-automatically redone when code is modified.
-
-NodeJS Messaging architecture
------------------------------
-
-### Server components
-
-#### NodeJS
-
-##### Socket.io
-
-Socket.io is a well-known library that provide real-time bidirectionnal
-event-based communication.\
-It able to handle the connection transparently for developpers :
-
--   the protocol negociation (long-polling, websocket,etc...) with
-    client depending of network capabilities
--   connection always on with heartbeat packets
--   message broadcasting
--   session datas
--   clustering consideration with multiple data storage drivers
-
-##### ExpressJS
-
-Express.js is a minimalist web framework commonly used in front of
-socket.io server.\
-It provide a robust set of features for web and mobile applications,
-like request routing, and a solid stack for third-party middleware.
-
-#### Redis
-
-Redis is an in-memory data structure store, used as database, cache and
-message broker. It supports various type of data structures such as
-string, hashes, lists... It have a persistent mode, but it's mainly used
-to store temporary datas like session or connection information.
-
-Redis has built-in replication, and provides high availability via Redis
-Sentinel and automatic partitioning with Redis Cluster.
-
-### Service architecture
+#### Service architecture
 
 The figure below illustrates the service architecture of the NodeJS
 Messaging Node.
@@ -1291,8 +1296,92 @@ another good one).
 
 ![Web proxy in front of node instances](web-proxy-node.png)
 
-Core components
----------------
+#### Hyperty development
+
+To use the message nodes in client side, please refer to [Hyperty
+development
+tutorial](https://github.com/reTHINK-project/dev-service-framework/blob/d3.2-working-docs/docs/manuals/development-of-hyperties.md)
+
+### Developer View
+
+#### Repository structure
+
+This repository is ready to start working on development.\
+The code will go to the **src** folder, it contains also the main server
+script in src/main/ folder.
+
+The unit tests will be on **test** folder, following the name standard
+<component>.spec.js
+
+Server (config.js) & tools (gulp, karma, etc...) configuration is
+located in root folder.
+
+#### Code Style and Hinting
+
+On the root directory you will find **.jshintrc** and **.jscsrc**, these
+files are helpers to maintain syntax consistency, it signals syntax
+mistakes and makes the code equal for all developers.
+
+-   [jscs](http://jscs.info/) - Maintain JavaScript Code Style
+-   [jshint](http://jshint.com/) - Detect errors and potential problems
+    in JavaScript code.
+
+Most IDEs and Text Editors can handle these tools.
+
+#### Documentation
+
+To generates api documentation you can run :\
+\$ **gulp doc**\
+This will generate HTML documentation in docs/ folder.
+
+#### Unit Testing
+
+We use Karma test runner to execute mocha test.
+
+To run unit test, you need first to lauch a server node with command :\
+\$ **node src/main/server.js**\
+... then start karma test runner (from main directory) :\
+\$ **karma start**
+
+Karma will launch the browser (chromium in this case) to execute all
+tests in test/ folder and show result in console. Tests are
+automatically redone when code is modified.
+
+#### Server components
+
+##### NodeJS
+
+###### Socket.io
+
+Socket.io is a well-known library that provide real-time bidirectionnal
+event-based communication.\
+It able to handle the connection transparently for developpers :
+
+-   the protocol negociation (long-polling, websocket,etc...) with
+    client depending of network capabilities
+-   connection always on with heartbeat packets
+-   message broadcasting
+-   session datas
+-   clustering consideration with multiple data storage drivers
+
+###### ExpressJS
+
+Express.js is a minimalist web framework commonly used in front of
+socket.io server.\
+It provide a robust set of features for web and mobile applications,
+like request routing, and a solid stack for third-party middleware.
+
+##### Redis
+
+Redis is an in-memory data structure store, used as database, cache and
+message broker. It supports various type of data structures such as
+string, hashes, lists... It have a persistent mode, but it's mainly used
+to store temporary datas like session or connection information.
+
+Redis has built-in replication, and provides high availability via Redis
+Sentinel and automatic partitioning with Redis Cluster.
+
+#### Core components
 
 This section describe the functional blocks of the Messaging Node
 architecture.
@@ -1300,7 +1389,7 @@ architecture.
 The graphic below describe message event processing with components.
 ![MsgNode event message](event-mgmt.png)
 
-### Entry point
+##### Entry point
 
 Msg node start with server.js script that read configuration from
 config.js and instanciate &lt;<MsgNode>&gt; class.
@@ -1310,39 +1399,39 @@ incoming websocket client. On each new protostub connection, socket.io
 events are bind to &lt;<Client>&gt; instance associated with socket
 ressource.
 
-### Registry
+##### Registry
 
 A global Registry class is used by MsgNode to manage internal components
 and configuration. It allow internal component to share reference to
 configuration and others components.
 
-### SessionManager
+##### SessionManager
 
-The SessionManager class handle client connection state change. \#\#\#\#
-Note Link with identity service ?
+The SessionManager class handle client connection state change.
+\#\#\#\#\#\# Note Link with identity service ?
 
-### Message bus
+##### Message bus
 
 MessageBus class provide a message system that publish information to
 all components.
 
-#### Note
+###### Note
 
 /! Redis bus manager is not implemented yet, so message cannot be
 broadcast in a msg node cluster : code in place allow only to publish
 message through current node instance.
 
-### Address allocation management
+##### Address allocation management
 
 The class AddressAllocationManager handle hyperty URLs allocation once
 client ask for registration.
 
-#### Note
+###### Note
 
 /! For the moment, foreign hyperty instance pool are not managed. Link
 with global domain registry ?
 
-### Message
+##### Message
 
 On each message received from protostub, MsgNode built a ClientMessage
 instance containing Message, and dispatch to Client instance. It's also
