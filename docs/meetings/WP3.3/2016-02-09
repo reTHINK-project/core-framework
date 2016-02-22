@@ -1,0 +1,41 @@
+###Participants
+* Kay Hänsge (DT)
+* Marc Emmelmann (Fokus)
+* Ewa Janczukowicz (Orange)
+
+###Agenda
+* LHCB - Marc
+* Boker implementation - Ewa
+* Broker algorithm - Kay
+
+###Minutes
+####Deliveries and release phase
+- WP3.3 release should be pushed to the next pahes as it is as sub aspect of WP3 - it can be pushed to phase 2
+
+####LHCB - Marc
+- Slides presentation on LHCB - slides to be uploaded on github
+      - Two components : broker and client
+          - northbound interface - broker provides info about inerfaces to clients
+          - southbound interface - client is considered as providing resources
+      - Opent issues
+          - RO vs RW
+          - Info per device or per user
+              - it is important since data models have impact on the logic of the system
+              - note that security and privacy are out of scope, we assume that LHCB is a trusted part
+              - Decision: knowledge about device is sufficient since easier to implement at first
+              
+####Ewa - broker implementation slides
+
+####TURN selection - Kay
+
+###Next Meeting - 23rd February - 10h30
+- Discuss open issues of broker
+- Decide on methodology to merge both solutions
+- LHCB opent issues
+
+
+####Action points
+* AP1: What information a broker should process - All
+* AP3: LHCP update - put slides on github - Marc
+
+
