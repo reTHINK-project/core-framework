@@ -1,4 +1,4 @@
-**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-runtime-core/tree/d3.2-working-docs/docs/jsdoc)**
+**This is OUTDATED!! Most updated version is [here](https://github.com/reTHINK-project/dev-runtime-core/tree/master/docs/api)**
 ============================================================================================================================================
 
 Runtime APIs
