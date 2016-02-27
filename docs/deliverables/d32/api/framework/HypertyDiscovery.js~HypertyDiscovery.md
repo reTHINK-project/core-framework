@@ -1,21 +1,12 @@
-</div>
 <div class="self-detail detail">
 
 HypertyDiscovery {#hypertydiscovery data-ice="name"}
 ================
 
-<div class="instance-docs" data-ice="instanceDocs">
-
-<span>You can directly use instance of this class.</span> <span
-data-ice="instanceDoc"><span>[hypertyDiscovery](../../../variable/index.html#static-variable-hypertyDiscovery)</span></span>
-
-</div>
-
 <div class="description" data-ice="description">
 
-Core HypertyDiscovery interface Hyperty Discovery class provides the
-functionality to query hyperties instances registered in Domain
-registry\* for a given user
+Core HypertyDiscovery interface Class to allow applications to search
+for hyperties using the message bus
 
 </div>
 
@@ -32,8 +23,8 @@ Public Constructor <span class="access" data-ice="access">public</span>
 
 <span
 data-ice="name"><span>[constructor](../../../class/src/hyperty-discovery/HypertyDiscovery.js~HypertyDiscovery.html#instance-constructor-constructor)</span></span><span
-data-ice="signature">(runtimeURL: <span>RuntimeURL</span>, msgBus:
-<span>MessageBus</span>)</span>
+data-ice="signature">(msgbus: <span>MessageBus</span>, runtimeURL:
+<span>RuntimeURL</span>)</span>
 
 </div>
 
@@ -61,7 +52,7 @@ Public Methods <span class="access" data-ice="access">public</span>
 
 <span
 data-ice="name"><span>[discoverHypertyPerUser](../../../class/src/hyperty-discovery/HypertyDiscovery.js~HypertyDiscovery.html#instance-method-discoverHypertyPerUser)</span></span><span
-data-ice="signature">(userIdentifier: <span>Identity.Identity</span>):
+data-ice="signature">(email: <span>email</span>):
 <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span>
 
 </div>
@@ -70,7 +61,7 @@ data-ice="signature">(userIdentifier: <span>Identity.Identity</span>):
 
 <div data-ice="description">
 
-Function to request about users registered in domain registry, and
+function to request about users registered in domain registry, and
 return the hyperty instance if found.
 
 </div>
@@ -86,7 +77,7 @@ Public Constructors {#public-constructors data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(runtimeURL: <span>RuntimeURL</span>, msgBus: <span>MessageBus</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/hyperty-discovery/HypertyDiscovery.js.html#lineNumber14)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(msgbus: <span>MessageBus</span>, runtimeURL: <span>RuntimeURL</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/hyperty-discovery/HypertyDiscovery.js.html#lineNumber13)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -101,10 +92,9 @@ hyperties to query users registered in outside the internal core.
 
 #### Params: {#params data-ice="title"}
 
-Name Type Attribute Description runtimeURL <span>RuntimeURL</span>
-runtimeURL
+Name Type Attribute Description msgbus <span>MessageBus</span> msgbus
 
-msgBus <span>MessageBus</span> msgBus
+runtimeURL <span>RuntimeURL</span> runtimeURL
 
 </div>
 
@@ -121,11 +111,11 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">discoverHypertyPerUser</span><span data-ice="signature">(userIdentifier: <span>Identity.Identity</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/hyperty-discovery/HypertyDiscovery.js.html#lineNumber28)</span></span> </span> {#instance-method-discoverHypertyPerUser data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">discoverHypertyPerUser</span><span data-ice="signature">(email: <span>email</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/hyperty-discovery/HypertyDiscovery.js.html#lineNumber27)</span></span> </span> {#instance-method-discoverHypertyPerUser data-ice="anchor"}
 
 <div data-ice="description">
 
-Function to request about users registered in domain registry, and
+function to request about users registered in domain registry, and
 return the hyperty instance if found.
 
 </div>
@@ -136,8 +126,7 @@ return the hyperty instance if found.
 
 #### Params: {#params-1 data-ice="title"}
 
-Name Type Attribute Description userIdentifier
-<span>Identity.Identity</span>
+Name Type Attribute Description email <span>email</span>
 
 </div>
 
@@ -167,4 +156,4 @@ Name Type Attribute Description userIdentifier
 
 </div>
 Generated by [ESDoc<span
-data-ice="esdocVersion">(0.4.3)</span>](https://esdoc.org)
+data-ice="esdocVersion">(0.4.4)</span>](https://esdoc.org)

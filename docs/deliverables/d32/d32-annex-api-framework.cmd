@@ -3,7 +3,8 @@ pushd ..\..\..\..\dev-service-framework\docs\api\class
   for /r %%a in (*.html) do (
      pandoc  "%%a" -o "%%~na.md"
 
-     more +228 "%%~na.md" > "%%~na.md.new"
+     more +207 "%%~na.md" > "%%~na.md.new"
+     echo. >> "%%~na.md.new" 
      move /y "%%~na.md.new" "%%~na.md"
      pandoc  "%%~na.md" -o ..\..\..\..\core-framework\docs\deliverables\d32\api\framework\%%~na.md"
 

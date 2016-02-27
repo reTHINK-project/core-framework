@@ -1,4 +1,3 @@
-</div>
 <div class="self-detail detail">
 
 Message {#message data-ice="name"}
@@ -44,200 +43,72 @@ Member Summary
 --------------
 
 Public Members <span class="access" data-ice="access">public</span>
-<span class="kind" data-ice="kind">get</span> <span class="override"
-data-ice="override"></span>
+<span class="override" data-ice="override"></span>
 <div>
 
 <span
-data-ice="name"><span>[body](../../../class/src/message-factory/Message.js~Message.html#instance-get-body)</span></span><span
-data-ice="signature">:
-<span>[MessageBody](../../../class/src/message-factory/MessageBody.js~MessageBody.html)</span></span>
+data-ice="name"><span>[body](../../../class/src/message-factory/Message.js~Message.html#instance-member-body)</span></span><span
+data-ice="signature">: <span>\*</span></span>
 
 </div>
 
 <div>
 
-<div data-ice="description">
-
-The Message body
-
 </div>
 
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">set</span> <span class="override"
-data-ice="override"></span>
+<span class="access" data-ice="access">public</span> <span
+class="override" data-ice="override"></span>
 <div>
 
 <span
-data-ice="name"><span>[body](../../../class/src/message-factory/Message.js~Message.html#instance-set-body)</span></span><span
-data-ice="signature">(msgBody:
-<span>[MessageBody](../../../class/src/message-factory/MessageBody.js~MessageBody.html)</span>):
-<span>\*</span></span>
+data-ice="name"><span>[from](../../../class/src/message-factory/Message.js~Message.html#instance-member-from)</span></span><span
+data-ice="signature">: <span>\*</span></span>
 
 </div>
 
 <div>
 
-<div data-ice="description">
-
-set the message body
-
 </div>
 
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">get</span> <span class="override"
-data-ice="override"></span>
+<span class="access" data-ice="access">public</span> <span
+class="override" data-ice="override"></span>
 <div>
 
 <span
-data-ice="name"><span>[from](../../../class/src/message-factory/Message.js~Message.html#instance-get-from)</span></span><span
-data-ice="signature">: <span>URL.URL</span></span>
+data-ice="name"><span>[id](../../../class/src/message-factory/Message.js~Message.html#instance-member-id)</span></span><span
+data-ice="signature">: <span>\*</span></span>
 
 </div>
 
 <div>
 
-<div data-ice="description">
-
-The sender of the Message.
-
 </div>
 
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">set</span> <span class="override"
-data-ice="override"></span>
+<span class="access" data-ice="access">public</span> <span
+class="override" data-ice="override"></span>
 <div>
 
 <span
-data-ice="name"><span>[from](../../../class/src/message-factory/Message.js~Message.html#instance-set-from)</span></span><span
-data-ice="signature">(sender: <span>URL.URL</span>):
-<span>\*</span></span>
+data-ice="name"><span>[to](../../../class/src/message-factory/Message.js~Message.html#instance-member-to)</span></span><span
+data-ice="signature">: <span>\*</span></span>
 
 </div>
 
 <div>
 
-<div data-ice="description">
-
-set the sender of the Message
-
 </div>
 
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">get</span> <span class="override"
-data-ice="override"></span>
+<span class="access" data-ice="access">public</span> <span
+class="override" data-ice="override"></span>
 <div>
 
 <span
-data-ice="name"><span>[id](../../../class/src/message-factory/Message.js~Message.html#instance-get-id)</span></span><span
-data-ice="signature">:
-<span>[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span></span>
+data-ice="name"><span>[type](../../../class/src/message-factory/Message.js~Message.html#instance-member-type)</span></span><span
+data-ice="signature">: <span>\*</span></span>
 
 </div>
 
 <div>
-
-<div data-ice="description">
-
-The Message identifier.
-
-</div>
-
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">get</span> <span class="override"
-data-ice="override"></span>
-<div>
-
-<span
-data-ice="name"><span>[to](../../../class/src/message-factory/Message.js~Message.html#instance-get-to)</span></span><span
-data-ice="signature">: <span>URL.URLList</span></span>
-
-</div>
-
-<div>
-
-<div data-ice="description">
-
-The recipient of the Message.
-
-</div>
-
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">set</span> <span class="override"
-data-ice="override"></span>
-<div>
-
-<span
-data-ice="name"><span>[to](../../../class/src/message-factory/Message.js~Message.html#instance-set-to)</span></span><span
-data-ice="signature">(recipientList: <span>URL.URLList</span>):
-<span>\*</span></span>
-
-</div>
-
-<div>
-
-<div data-ice="description">
-
-set the list of recipients
-
-</div>
-
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">get</span> <span class="override"
-data-ice="override"></span>
-<div>
-
-<span
-data-ice="name"><span>[type](../../../class/src/message-factory/Message.js~Message.html#instance-get-type)</span></span><span
-data-ice="signature">:
-<span>[MessageType](../../../variable/index.html#static-variable-MessageType)</span></span>
-
-</div>
-
-<div>
-
-<div data-ice="description">
-
-The Message type.
-
-</div>
-
-</div>
-
-<span class="access" data-ice="access">public</span> <span class="kind"
-data-ice="kind">set</span> <span class="override"
-data-ice="override"></span>
-<div>
-
-<span
-data-ice="name"><span>[type](../../../class/src/message-factory/Message.js~Message.html#instance-set-type)</span></span><span
-data-ice="signature">(msgType:
-<span>[MessageType](../../../variable/index.html#static-variable-MessageType)</span>):
-<span>\*</span></span>
-
-</div>
-
-<div>
-
-<div data-ice="description">
-
-set the message type
-
-</div>
 
 </div>
 
@@ -373,13 +244,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">body</span><span data-ice="signature">: <span>[MessageBody](../../../class/src/message-factory/MessageBody.js~MessageBody.html)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber60)</span></span> </span> {#instance-get-body data-ice="anchor"}
-
-<div data-ice="description">
-
-The Message body
-
-</div>
+### <span class="access" data-ice="access">public</span> <span data-ice="name">body</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber29)</span></span> </span> {#instance-member-body data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -389,13 +254,7 @@ The Message body
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">body</span><span data-ice="signature">(msgBody: <span>[MessageBody](../../../class/src/message-factory/MessageBody.js~MessageBody.html)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber84)</span></span> </span> {#instance-set-body data-ice="anchor"}
-
-<div data-ice="description">
-
-set the message body
-
-</div>
+### <span class="access" data-ice="access">public</span> <span data-ice="name">from</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber26)</span></span> </span> {#instance-member-from data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -405,13 +264,7 @@ set the message body
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">from</span><span data-ice="signature">: <span>URL.URL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber42)</span></span> </span> {#instance-get-from data-ice="anchor"}
-
-<div data-ice="description">
-
-The sender of the Message.
-
-</div>
+### <span class="access" data-ice="access">public</span> <span data-ice="name">id</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber25)</span></span> </span> {#instance-member-id data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -421,13 +274,7 @@ The sender of the Message.
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">from</span><span data-ice="signature">(sender: <span>URL.URL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber66)</span></span> </span> {#instance-set-from data-ice="anchor"}
-
-<div data-ice="description">
-
-set the sender of the Message
-
-</div>
+### <span class="access" data-ice="access">public</span> <span data-ice="name">to</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber27)</span></span> </span> {#instance-member-to data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -437,77 +284,7 @@ set the sender of the Message
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">id</span><span data-ice="signature">: <span>[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber36)</span></span> </span> {#instance-get-id data-ice="anchor"}
-
-<div data-ice="description">
-
-The Message identifier.
-
-</div>
-
-<div data-ice="properties">
-
-</div>
-
-</div>
-
-<div class="detail" data-ice="detail">
-
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">to</span><span data-ice="signature">: <span>URL.URLList</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber48)</span></span> </span> {#instance-get-to data-ice="anchor"}
-
-<div data-ice="description">
-
-The recipient of the Message.
-
-</div>
-
-<div data-ice="properties">
-
-</div>
-
-</div>
-
-<div class="detail" data-ice="detail">
-
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">to</span><span data-ice="signature">(recipientList: <span>URL.URLList</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber93)</span></span> </span> {#instance-set-to data-ice="anchor"}
-
-<div data-ice="description">
-
-set the list of recipients
-
-</div>
-
-<div data-ice="properties">
-
-</div>
-
-</div>
-
-<div class="detail" data-ice="detail">
-
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">type</span><span data-ice="signature">: <span>[MessageType](../../../variable/index.html#static-variable-MessageType)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber54)</span></span> </span> {#instance-get-type data-ice="anchor"}
-
-<div data-ice="description">
-
-The Message type.
-
-</div>
-
-<div data-ice="properties">
-
-</div>
-
-</div>
-
-<div class="detail" data-ice="detail">
-
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">type</span><span data-ice="signature">(msgType: <span>[MessageType](../../../variable/index.html#static-variable-MessageType)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber75)</span></span> </span> {#instance-set-type data-ice="anchor"}
-
-<div data-ice="description">
-
-set the message type
-
-</div>
+### <span class="access" data-ice="access">public</span> <span data-ice="name">type</span><span data-ice="signature">: <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber28)</span></span> </span> {#instance-member-type data-ice="anchor"}
 
 <div data-ice="properties">
 
@@ -524,7 +301,7 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">addAccessToken</span><span data-ice="signature">(token: <span>Identity.JWT</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber136)</span></span> </span> {#instance-method-addAccessToken data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">addAccessToken</span><span data-ice="signature">(token: <span>Identity.JWT</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber71)</span></span> </span> {#instance-method-addAccessToken data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -563,7 +340,7 @@ be added to the given message
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">addIdToken</span><span data-ice="signature">(token: <span>Identity.JWT</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber122)</span></span> </span> {#instance-method-addIdToken data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">addIdToken</span><span data-ice="signature">(token: <span>Identity.JWT</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber57)</span></span> </span> {#instance-method-addIdToken data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -602,7 +379,7 @@ token to include in the message
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">assertIdentity</span><span data-ice="signature">(token: <span>Identity.JWT</span>, identity: <span>Identity.Identity</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber104)</span></span> </span> {#instance-method-assertIdentity data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">assertIdentity</span><span data-ice="signature">(token: <span>Identity.JWT</span>, identity: <span>Identity.Identity</span>): <span>Message.Message</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/message-factory/Message.js.html#lineNumber39)</span></span> </span> {#instance-method-assertIdentity data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -646,4 +423,4 @@ identity <span>Identity.Identity</span> asserted identity to include
 
 </div>
 Generated by [ESDoc<span
-data-ice="esdocVersion">(0.4.3)</span>](https://esdoc.org)
+data-ice="esdocVersion">(0.4.4)</span>](https://esdoc.org)

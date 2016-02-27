@@ -1,13 +1,14 @@
-</div>
 <div class="self-detail detail">
 
 Syncher {#syncher data-ice="name"}
 =======
 
-<div class="instance-docs" data-ice="instanceDocs">
+<div class="description" data-ice="description">
 
-<span>You can directly use instance of this class.</span> <span
-data-ice="instanceDoc"><span>[syncher](../../../variable/index.html#static-variable-syncher)</span></span>
+The main class for the syncher package. The Syncher is a singleton class
+per Hyperty/URL and it is the owner of all created Data Sync Objects
+according to the Reporter - Observer pattern. Main functionality is to
+create reporters and to subscribe to existing ones.
 
 </div>
 
@@ -198,7 +199,7 @@ Public Constructors {#public-constructors data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(owner: <span>HypertyURL</span>, bus: <span>MiniBus</span>, config: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber30)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(owner: <span>HypertyURL</span>, bus: <span>MiniBus</span>, config: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber31)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -213,14 +214,17 @@ Constructor that should be used by the Hyperty owner
 #### Params: {#params data-ice="title"}
 
 Name Type Attribute Description owner <span>HypertyURL</span> Hyperty
-URL owner
+URL owner. An URL allocated by the runtime that uniquely identifies the
+Hyperty.
 
-bus <span>MiniBus</span> The internal sandbox MiniBus used by the
-Hyperty
+bus <span>MiniBus</span> An instance of the MiniBus provided in the
+sandbox. When an object (Reporter or Observed) is created, the
+SyncherManager will add a listener in the MiniBus to receive/send
+Messages of that object.
 
 config
 <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>
-The only required field for now is runtimeURL
+Configuration data. The only required field for now is the runtimeURL.
 
 </div>
 
@@ -237,7 +241,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">observers</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>URL</span>, <span>[DataObjectObserver](../../../class/src/syncher/DataObjectObserver.js~DataObjectObserver.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber67)</span></span> </span> {#instance-get-observers data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">observers</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>URL</span>, <span>[DataObjectObserver](../../../class/src/syncher/DataObjectObserver.js~DataObjectObserver.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber68)</span></span> </span> {#instance-get-observers data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -253,7 +257,7 @@ All owned observers, the ones that were created by a local subscription
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">owner</span><span data-ice="signature">: <span>HypertyURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber55)</span></span> </span> {#instance-get-owner data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">owner</span><span data-ice="signature">: <span>HypertyURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber56)</span></span> </span> {#instance-get-owner data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -269,7 +273,7 @@ The owner of the Syncher and all created reporters.
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">reporters</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>URL</span>, <span>[DataObjectReporter](../../../class/src/syncher/DataObjectReporter.js~DataObjectReporter.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber61)</span></span> </span> {#instance-get-reporters data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">reporters</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>URL</span>, <span>[DataObjectReporter](../../../class/src/syncher/DataObjectReporter.js~DataObjectReporter.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber62)</span></span> </span> {#instance-get-reporters data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -292,7 +296,7 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">create</span><span data-ice="signature">(schema: <span>SchemaURL</span>, observers: <span><span>HypertyURL</span><span>\[\]</span></span>, initialData: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectReporter](../../../class/src/syncher/DataObjectReporter.js~DataObjectReporter.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber76)</span></span> </span> {#instance-method-create data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">create</span><span data-ice="signature">(schema: <span>SchemaURL</span>, observers: <span><span>HypertyURL</span><span>\[\]</span></span>, initialData: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectReporter](../../../class/src/syncher/DataObjectReporter.js~DataObjectReporter.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber77)</span></span> </span> {#instance-method-create data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -347,7 +351,7 @@ Initial data of the reporter
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">onNotification</span><span data-ice="signature">(callback: <span><span>[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)</span><span>(event: <span>MsgEvent</span>)</span></span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber147)</span></span> </span> {#instance-method-onNotification data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">onNotification</span><span data-ice="signature">(callback: <span><span>[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)</span><span>(event: <span>MsgEvent</span>)</span></span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber148)</span></span> </span> {#instance-method-onNotification data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -375,7 +379,7 @@ Name Type Attribute Description callback
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">subscribe</span><span data-ice="signature">(schema: <span>SchemaURL</span>, objURL: <span>ObjectURL</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectObserver](../../../class/src/syncher/DataObjectObserver.js~DataObjectObserver.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber110)</span></span> </span> {#instance-method-subscribe data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">subscribe</span><span data-ice="signature">(schema: <span>SchemaURL</span>, objURL: <span>ObjectURL</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectObserver](../../../class/src/syncher/DataObjectObserver.js~DataObjectObserver.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/Syncher.js.html#lineNumber111)</span></span> </span> {#instance-method-subscribe data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -426,4 +430,4 @@ objURL <span>ObjectURL</span> Address of the existent reporter object
 
 </div>
 Generated by [ESDoc<span
-data-ice="esdocVersion">(0.4.3)</span>](https://esdoc.org)
+data-ice="esdocVersion">(0.4.4)</span>](https://esdoc.org)

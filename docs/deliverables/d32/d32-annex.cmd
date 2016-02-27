@@ -8,4 +8,43 @@ pandoc -o annex.md ^
 ..\..\..\..\dev-msg-node-matrix\MatrixMN-internal-architecture.md ^
 ..\..\..\..\dev-msg-node-nodejs\readme.md
 
+
+    pushd ..\..\..\..\dev-runtime-browser
+
+      for /r %%a in (*.png) do (
+         COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+      )
+      for /r %%a in (*.jpg) do (
+         COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+      )
+
+      pushd ..\dev-msg-node-vertx
+
+        for /r %%a in (*.png) do (
+           COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+        )
+        for /r %%a in (*.jpg) do (
+           COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+        )
+
+        pushd ..\dev-msg-node-matrix
+
+        for /r %%a in (*.png) do (
+        COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+        )
+        for /r %%a in (*.jpg) do (
+        COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+        )
+
+        pushd ..\dev-msg-node-nodejs
+
+          for /r %%a in (*.png) do (
+             COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+          )
+          for /r %%a in (*.jpg) do (
+             COPY "%%a" "..\core-framework\docs\deliverables\d32\%%~nxa"
+          )
+
+pushd ..\core-framework\docs\deliverables\d32
+
 pandoc -s -S annex.md --reference-docx annex-reference.docx -o D3.2-annex.docx

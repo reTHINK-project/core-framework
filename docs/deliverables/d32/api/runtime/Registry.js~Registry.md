@@ -1,3 +1,5 @@
+<span>[source](../../../file/src/registry/Registry.js.html#lineNumber12)</span></span>
+
 </div>
 <div class="self-detail detail">
 
@@ -444,7 +446,7 @@ Public Constructors {#public-constructors data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(msgbus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>, runtimeURL: <span>HypertyRuntimeURL</span>, appSandbox: <span>AppSandbox</span>, remoteRegistry: <span>DomainURL</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber20)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">constructor</span><span data-ice="signature">(msgbus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>, runtimeURL: <span>HypertyRuntimeURL</span>, appSandbox: <span>AppSandbox</span>, remoteRegistry: <span>DomainURL</span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber21)</span></span> </span> {#instance-constructor-constructor data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -487,7 +489,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">messageBus</span><span data-ice="signature">(messageBus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber56)</span></span> </span> {#instance-get-messageBus data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">messageBus</span><span data-ice="signature">(messageBus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber59)</span></span> </span> {#instance-get-messageBus data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -503,7 +505,7 @@ return the messageBus in this Registry
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">messageBus</span><span data-ice="signature">(messageBus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber65)</span></span> </span> {#instance-set-messageBus data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">set</span> <span data-ice="name">messageBus</span><span data-ice="signature">(messageBus: <span>[MessageBus](../../../class/src/bus/MessageBus.js~MessageBus.html)</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber68)</span></span> </span> {#instance-set-messageBus data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -526,7 +528,7 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">discoverProtostub</span><span data-ice="signature">(DomainURL: <span>DomainURL</span>): <span>RuntimeURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber224)</span></span> </span> {#instance-method-discoverProtostub data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">discoverProtostub</span><span data-ice="signature">(DomainURL: <span>DomainURL</span>): <span>RuntimeURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber262)</span></span> </span> {#instance-method-discoverProtostub data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -568,7 +570,7 @@ Name Type Attribute Description DomainURL <span>DomainURL</span> url
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getAppSandbox</span><span data-ice="signature">(): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber77)</span></span> </span> {#instance-method-getAppSandbox data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getAppSandbox</span><span data-ice="signature">(): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber83)</span></span> </span> {#instance-method-getAppSandbox data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -600,7 +602,7 @@ Runtime instance.
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getSandbox</span><span data-ice="signature">(DomainURL: <span>DomainURL</span>): <span>RuntimeSandbox</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber356)</span></span> </span> {#instance-method-getSandbox data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getSandbox</span><span data-ice="signature">(DomainURL: <span>DomainURL</span>): <span>RuntimeSandbox</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber394)</span></span> </span> {#instance-method-getSandbox data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -640,7 +642,7 @@ Name Type Attribute Description DomainURL <span>DomainURL</span> url
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">getUserHyperty</span><span data-ice="signature">(email: <span>\*</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber85)</span></span> </span> {#instance-method-getUserHyperty data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">getUserHyperty</span><span data-ice="signature">(email: <span>\*</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber91)</span></span> </span> {#instance-method-getUserHyperty data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -678,7 +680,7 @@ Name Type Attribute Description email <span>\*</span>
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">onEvent</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber347)</span></span> </span> {#instance-method-onEvent data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">onEvent</span><span data-ice="signature">()</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber385)</span></span> </span> {#instance-method-onEvent data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -703,7 +705,7 @@ Name Type Attribute Description Message.Message
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">registerHyperty</span><span data-ice="signature">(sandbox: <span>[Sandbox](../../../class/src/sandbox/Sandbox.js~Sandbox.html)</span>, HypertyCatalogueURL: <span>HypertyCatalogueURL</span>): <span>HypertyURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber121)</span></span> </span> {#instance-method-registerHyperty data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">registerHyperty</span><span data-ice="signature">(sandbox: <span>[Sandbox](../../../class/src/sandbox/Sandbox.js~Sandbox.html)</span>, HypertyCatalogueURL: <span>HypertyCatalogueURL</span>): <span>HypertyURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber148)</span></span> </span> {#instance-method-registerHyperty data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -746,7 +748,7 @@ HypertyCatalogueURL <span>HypertyCatalogueURL</span> descriptor
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">registerPEP</span><span data-ice="signature">(postMessage: <span>Message.Message</span>, HypertyURL: <span>HypertyURL</span>): <span>HypertyRuntimeURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber312)</span></span> </span> {#instance-method-registerPEP data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">registerPEP</span><span data-ice="signature">(postMessage: <span>Message.Message</span>, HypertyURL: <span>HypertyURL</span>): <span>HypertyRuntimeURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber350)</span></span> </span> {#instance-method-registerPEP data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -790,7 +792,7 @@ HypertyURL <span>HypertyURL</span> hyperty
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">registerStub</span><span data-ice="signature">(Sandbox: <span>[Sandbox](../../../class/src/sandbox/Sandbox.js~Sandbox.html)</span>, DomainURL: <span>DomainURL</span>): <span>RuntimeProtoStubURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber247)</span></span> </span> {#instance-method-registerStub data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">registerStub</span><span data-ice="signature">(Sandbox: <span>[Sandbox](../../../class/src/sandbox/Sandbox.js~Sandbox.html)</span>, DomainURL: <span>DomainURL</span>): <span>RuntimeProtoStubURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber285)</span></span> </span> {#instance-method-registerStub data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -833,7 +835,7 @@ DomainURL <span>DomainURL</span> service provider domain
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">resolve</span><span data-ice="signature">(url: <span>URL.URL</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>URL.URL</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber401)</span></span> </span> {#instance-method-resolve data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">resolve</span><span data-ice="signature">(url: <span>URL.URL</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>URL.URL</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber439)</span></span> </span> {#instance-method-resolve data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -877,7 +879,7 @@ Name Type Attribute Description url <span>URL.URL</span> url
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterHyperty</span><span data-ice="signature">(HypertyURL: <span>HypertyURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber191)</span></span> </span> {#instance-method-unregisterHyperty data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterHyperty</span><span data-ice="signature">(HypertyURL: <span>HypertyURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber229)</span></span> </span> {#instance-method-unregisterHyperty data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -916,7 +918,7 @@ url
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterPEP</span><span data-ice="signature">(HypertyRuntimeURL: <span>HypertyRuntimeURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber327)</span></span> </span> {#instance-method-unregisterPEP data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterPEP</span><span data-ice="signature">(HypertyRuntimeURL: <span>HypertyRuntimeURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber365)</span></span> </span> {#instance-method-unregisterPEP data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -955,7 +957,7 @@ Name Type Attribute Description HypertyRuntimeURL
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterStub</span><span data-ice="signature">(HypertyRuntimeURL: <span>HypertyRuntimeURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber288)</span></span> </span> {#instance-method-unregisterStub data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">unregisterStub</span><span data-ice="signature">(HypertyRuntimeURL: <span>HypertyRuntimeURL</span>): <span>\*</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/registry/Registry.js.html#lineNumber326)</span></span> </span> {#instance-method-unregisterStub data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -996,4 +998,4 @@ Name Type Attribute Description HypertyRuntimeURL
 
 </div>
 Generated by [ESDoc<span
-data-ice="esdocVersion">(0.4.4)</span>](https://esdoc.org)
+data-ice="esdocVersion">(0.4.5)</span>](https://esdoc.org)

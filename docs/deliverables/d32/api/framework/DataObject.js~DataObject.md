@@ -1,13 +1,25 @@
-</div>
 <div class="self-detail detail">
 
 DataObject {#dataobject data-ice="name"}
 ==========
 
-<div class="instance-docs" data-ice="instanceDocs">
+<div class="flat-list" data-ice="directSubclass">
 
-<span>You can directly use instance of this class.</span> <span
-data-ice="instanceDoc"><span>[dataObject](../../../variable/index.html#static-variable-dataObject)</span></span>
+#### Direct Subclass:
+
+<div>
+
+<span>[DataObjectObserver](../../../class/src/syncher/DataObjectObserver.js~DataObjectObserver.html)</span>,
+<span>[DataObjectReporter](../../../class/src/syncher/DataObjectReporter.js~DataObjectReporter.html)</span>
+
+</div>
+
+</div>
+
+<div class="description" data-ice="description">
+
+Main extension class for observers and reporters, with common properties
+and methods. Children management is common for observers and reporters.
 
 </div>
 
@@ -191,7 +203,7 @@ Public Members {#public-members data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">children</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>ChildId</span>, <span>[DataObjectChild](../../../class/src/syncher/DataObjectChild.js~DataObjectChild.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber88)</span></span> </span> {#instance-get-children data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">children</span><span data-ice="signature">: <span>[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)</span>&lt;<span>ChildId</span>, <span>[DataObjectChild](../../../class/src/syncher/DataObjectChild.js~DataObjectChild.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber93)</span></span> </span> {#instance-get-children data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -208,7 +220,7 @@ children's since reporter creation.
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">data</span><span data-ice="signature">: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber82)</span></span> </span> {#instance-get-data data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">data</span><span data-ice="signature">: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber87)</span></span> </span> {#instance-get-data data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -224,7 +236,7 @@ Data structure to be synchronized.
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">schema</span><span data-ice="signature">: <span>SchemaURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber70)</span></span> </span> {#instance-get-schema data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">schema</span><span data-ice="signature">: <span>SchemaURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber75)</span></span> </span> {#instance-get-schema data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -241,7 +253,7 @@ change)
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">status</span><span data-ice="signature">: <span>Status</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber76)</span></span> </span> {#instance-get-status data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">status</span><span data-ice="signature">: <span>Status</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber81)</span></span> </span> {#instance-get-status data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -258,7 +270,7 @@ stable, and is subsject to change)
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">url</span><span data-ice="signature">: <span>ObjectURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber64)</span></span> </span> {#instance-get-url data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span class="kind" data-ice="kind">get</span> <span data-ice="name">url</span><span data-ice="signature">: <span>ObjectURL</span></span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber69)</span></span> </span> {#instance-get-url data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -281,7 +293,7 @@ Public Methods {#public-methods data-ice="title"}
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">addChildren</span><span data-ice="signature">(resource: <span>[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span>, initialData: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectChild](../../../class/src/syncher/DataObjectChild.js~DataObjectChild.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber127)</span></span> </span> {#instance-method-addChildren data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">addChildren</span><span data-ice="signature">(resource: <span>[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span>, initialData: <span>[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)</span>): <span>[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)</span>&lt;<span>[DataObjectChild](../../../class/src/syncher/DataObjectChild.js~DataObjectChild.html)</span>&gt;</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber132)</span></span> </span> {#instance-method-addChildren data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -334,7 +346,7 @@ Initial data of the child
 
 <div class="detail" data-ice="detail">
 
-### <span class="access" data-ice="access">public</span> <span data-ice="name">onAddChildren</span><span data-ice="signature">(callback: <span><span>[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)</span><span>(event: <span>MsgEvent</span>)</span></span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber160)</span></span> </span> {#instance-method-onAddChildren data-ice="anchor"}
+### <span class="access" data-ice="access">public</span> <span data-ice="name">onAddChildren</span><span data-ice="signature">(callback: <span><span>[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)</span><span>(event: <span>MsgEvent</span>)</span></span>)</span> <span class="right-info"> <span data-ice="source"><span>[source](../../../file/src/syncher/DataObject.js.html#lineNumber165)</span></span> </span> {#instance-method-onAddChildren data-ice="anchor"}
 
 <div data-ice="description">
 
@@ -362,4 +374,4 @@ Name Type Attribute Description callback
 
 </div>
 Generated by [ESDoc<span
-data-ice="esdocVersion">(0.4.3)</span>](https://esdoc.org)
+data-ice="esdocVersion">(0.4.4)</span>](https://esdoc.org)
