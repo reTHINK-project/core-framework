@@ -1,6 +1,6 @@
 #Versioning
 
-This is the Quobis' proposal for  versioning and code management of the project. The goal was to keep a very simple scheme given some freedom to each partner.
+These are the rules for  versioning and code management of the project. The goal was to keep a very simple scheme given some freedom to each partner.
 
 1. For each project there is a master branch where only Repo Administrators can push code and make releases. 
 2. The code in this master branch will be stable and tested code, which will include the unit tests associated to it. During the first weeks/months the code in master may not be usable, but after this brief period the code there should be usable. 
