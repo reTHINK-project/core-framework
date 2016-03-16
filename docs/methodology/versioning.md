@@ -1,11 +1,11 @@
-#Versioning proposal.
+#Versioning
 
-This is the Quobis' proposal for  versioning and code management of the project. The goal was to keep a very simple scheme given some freedom to each partner.
+These are the rules for  versioning and code management of the project. The goal was to keep a very simple scheme given some freedom to each partner.
 
-1. For each project wthere will be a master branch as usual.
-2. The code in this master branch will stable and tested code, which will include the unit tests associated to it. During the first weeks/months the code in master may not be usable, but after this brief period the code there should be usable. 
+1. For each project there is a master branch where only Repo Administrators can push code and make releases. 
+2. The code in this master branch will be stable and tested code, which will include the unit tests associated to it. During the first weeks/months the code in master may not be usable, but after this brief period the code there should be usable. 
 3. To add new features, development branches should be created. 
-4. A proposal for the dev branch names could be: *dev-\<milestone\>*
+4. dev branch names are: *dev-\<milestone\>* or just *develop*
 5. It is strongly recommended review the tests before pushing new code to the branch. The developer must make sure that the current tests are still valid and they make sense with the new code. New test must also be added when new code is pushed in the repository.
 6. Dev branches should be used just for development tasks or internal tests but they shouldn't be used by other partners if their are not involved in the development of that project.
 7. To refer exact point in the project code timeline, we can use tags in master branch. Tags are friendly labels for commits. For example, if you have susscesully tested that some new code implements a feature, after merging and commiting the changes in master branch you will create a label.
