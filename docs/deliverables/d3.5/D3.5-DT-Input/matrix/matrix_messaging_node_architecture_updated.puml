@@ -1,0 +1,73 @@
+@startuml "matrix_messaging_node_architecture.png"
+
+
+node "Management Services" as Man1 {
+    node "Global\nRegistry" as GReg
+    node "Identity Management" as IdM
+    node "Registry" as DomReg
+}
+
+node "Service Provider 2\n(ProtOFly-Server)" as SP2 {
+    node "Messaging\nNode" as Msg2
+    node "Repository\nServer" as Repo2
+}
+
+node "End-User Device 1" as User1 {
+    node "Hyperty" as H1
+}
+
+node "Network Server" as Net {
+    node "Hyperty" as H3
+}
+
+
+node "Matrix based Messaging Node" as msg {
+
+  node "JS-Wrapping Layer" as JSLayer {
+    node "IdM\nConnector" as ConnIdM
+    node "Registry\nConnector" as ConnReg
+    node "Global Registry\nConnector" as ConnGReg
+    node "Stub-endpoint-server" as ConnServer
+    node "Address Allocation\nManagement" as AllocMan
+    node "Access Control\nPEP" as BusPEP
+  }
+
+  node "Application Services" as AppServices {
+    node "ProtOFly-client" as Proto1Sand {
+      node "SP2 ProtoStub" as Proto1
+    }
+  }
+
+  node "Matrix Homeserver" as core {
+   node "*            Message      Bus                *" as Bus
+   node "Session Management" as SessMan
+  }
+
+  Repo2 -up-> Proto1: provide
+  Msg2 <--> Proto1 : communicate
+  Bus <-right-> Proto1
+
+  core .up. JSLayer
+
+  ConnIdM -left-> BusPEP : authorise
+
+  BusPEP -down-> SessMan
+
+  AllocMan .down.> SessMan
+
+  SessMan <..> Bus
+
+  ConnIdM <-up-> IdM : authorise
+
+  Bus <-up-> ConnServer : communicate
+  ConnServer <-up-> H1 : communicate
+
+  ConnServer <-up-> H3 : communicate
+
+  Bus <--> ConnReg : communicate
+  Bus <--> ConnGReg : communicate
+  ConnReg <-up-> DomReg : communicate
+  ConnGReg <-up-> GReg : communicate
+}
+
+@enduml
