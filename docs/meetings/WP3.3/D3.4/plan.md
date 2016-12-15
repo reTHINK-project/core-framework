@@ -3,11 +3,12 @@
 
 ## Introduction
 
-1 - 2 pages intro.  basically stating 
-
-a) which problem to we want to solve (in reThink) with our specialized network services
+###Quality of service in real time services
+Describe which problem to we want to solve (in reThink) with our specialized network services
 Description of the first benchmarks -with best effort approach- proving that the congestion control of WebRTC is not enough even with the best algorithms.  
-b) why is this problem commercially relevant
+
+###Business value of the Specialized network services
+why is this problem commercially relevant
 
 ## Architecture and Interfaces
 
