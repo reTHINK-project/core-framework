@@ -6,7 +6,7 @@
 1 - 2 pages intro.  basically stating 
 
 a) which problem to we want to solve (in reThink) with our specialized network services
-Description of the first benchmarks -with best effort approach- proving that the congestion control of WebRTC is not enough even with the best algorithms.
+Description of the first benchmarks -with best effort approach- proving that the congestion control of WebRTC is not enough even with the best algorithms.  
 b) why is this problem commercially relevant
 
 ## Architecture and Interfaces
