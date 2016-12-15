@@ -38,8 +38,10 @@ Just name the components / blocks and name the interfaces.  Refer to one of the 
 
 ### Implementation of Router based approach
 
-Details on Broker/TURN service implementation
-Details on Broswer Enterprise Policy approach (Chromium tuning).
+####Details on Broker/TURN service implementation
+Phase 1 implementations and results
+####Details on Broswer Enterprise Policy approach (Chromium tuning).
+Phase 2 implementations and results.
 
 ### Implementation of LHCB
 
