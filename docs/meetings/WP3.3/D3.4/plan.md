@@ -6,22 +6,24 @@
 1 - 2 pages intro.  basically stating 
 
 a) which problem to we want to solve (in reThink) with our specialized network services
+Description of the first benchmarks -with best effort approach- proving that the congestion control of WebRTC is not enough even with the best algorithms.
 b) why is this problem commercially relevant
 
 ## Architecture and Interfaces
 
 ### Overview
 
-Picture of “big blocks” / components and interfaces between them.  Basically put the LHCB and TURN architecture components in one picture
+Picture of “big blocks” / components and interfaces between them.  Basically put the LHCB and router based architecture components in one picture
 
 Just name the components / blocks and name the interfaces.  Refer to one of the two following subsections which should then provide details on each block and specify the interface
 
-### TURN Service
+### Router based approach
 
-  * Go into details / break down of architecture components and interfaces for TURN
+  * Go into details / break down of architecture components and interfaces for the two pocs that have been done by Orange: Broker/TURN approach, Broswer Enterprise Policy approach.
   * Specify interface
 
 **Note: we might want to only give a verbal / abstract specification of the interface, like saying in general which services are offered, and then refer to a section in the Annex that provides the formal specification of the interface.**
+** SBE: as the interface is quite simple, it may not be usefull to put it in annex- I propose to state this during edition-**
 
 ### LHCB
 
@@ -32,9 +34,10 @@ Just name the components / blocks and name the interfaces.  Refer to one of the 
 
 ## Proof-of-concept demonstrator implementation
 
-### Implementation of TURN services
+### Implementation of Router based approach
 
-Details on TURN service implementation
+Details on Broker/TURN service implementation
+Details on Broswer Enterprise Policy approach (Chromium tuning).
 
 ### Implementation of LHCB
 
