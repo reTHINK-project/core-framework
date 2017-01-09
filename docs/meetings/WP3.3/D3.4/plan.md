@@ -29,7 +29,7 @@ Just name the components / blocks and name the interfaces.  Refer to one of the 
 
 First approach with broker/router for OTT
 
-Second approach for enterprises
+Second approach for enterprises (client is marking the flow).
 
 Third approach (all real time with better latency)
 
