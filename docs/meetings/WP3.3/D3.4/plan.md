@@ -18,7 +18,7 @@ Picture of “big blocks” / components and interfaces between them.  Basically
 
 Just name the components / blocks and name the interfaces.  Refer to one of the two following subsections which should then provide details on each block and specify the interface
 
-### Router based approach
+### Router based approaches
 
   * Go into details / break down of architecture components and interfaces for the two pocs that have been done by Orange: Broker/TURN approach, Broswer Enterprise Policy approach.
   * Specify interface
@@ -26,6 +26,12 @@ Just name the components / blocks and name the interfaces.  Refer to one of the 
 **Note: we might want to only give a verbal / abstract specification of the interface, like saying in general which services are offered, and then refer to a section in the Annex that provides the formal specification of the interface.**  
 
 **SBE: as the interface is quite simple, it may not be usefull to put it in annex- I propose to state this during edition-**
+
+First approach with broker/router for OTT
+
+Second approach for enterprises
+
+Third approach (all real time with better latency)
 
 ### LHCB
 
