@@ -1,5 +1,10 @@
 ## W3C Community Group: Decentralized Communications
 
+The mission of this group is to specify and build a reference implementation of Decentralized Communications. Decentralized Communications enables natively inter-operable communication services that are able to trustfully use peer to peer connections without having to use central authorities or services. Decentralized Comms are inherently inter-operable without without standards protocols by using the Protocol on-the-fly concept, where the most appropriate protocol stack to be used, is selected and instantiated at run-time.
+
+
+*text below should be adapted and go for the charter*
+
 The impressive fast innovation track of the Web is fostered by Global Web Players. The Web benefits to consumers are countless and should be protected but consumers should also be protected from the [abuse of dominant market position](http://ec.europa.eu/competition/consumers/abuse_en.html).
 
 Decentralized Communications enables a good balance between Innovation and freedom of choice and protection to consumers. A Decentralized Communications will enable a Web of natively inter-operable services running in Browsers that are able to securely communicate in a peer to peer mode without having to use central web servers.
