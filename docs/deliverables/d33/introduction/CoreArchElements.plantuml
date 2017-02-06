@@ -1,0 +1,126 @@
+@startuml
+!pragma horizontalLineBetweenDifferentPackageAllowed
+
+!ifdef SHOW_Management
+
+node "Service Provider Support Services" as Man {
+
+!ifdef SHOW_Governance
+	node "Governance" as Gov {
+	}
+
+	Gov -[hidden]down- IdM
+!endif
+
+
+!ifdef SHOW_IdentityManagement
+	node "Identity\nManagement" as IdM {
+	}
+!endif
+
+
+!ifdef SHOW_Repository
+	 node "Catalogue" as Rep{
+
+	 }
+!endif
+
+!ifdef SHOW_Registry
+	 node Registry as Reg{
+
+	 }
+!endif
+
+!ifdef SHOW_Discovery
+	 node Discovery as Dis{
+
+	 }
+!endif
+
+}
+!endif
+
+interface "Hyperty Management Interface" as ManI
+
+component "Core Framework" as wp3 {
+
+
+interface "Message Service Interface" as MsgI
+
+interface "Stream Interface" as StreamI
+
+
+node "Messaging Node" {
+!ifdef SHOW_MsgServer
+component "Messaging Services" as Bus {
+
+ !ifdef SHOW_MsgServerInt
+
+	node "Communication Setup" as CommMsg {
+
+	}
+
+	node "Session Management" as SessionMng {
+
+	}
+
+	node "Message Routing" as Router {
+
+	}
+
+	node "Access Control" as AccessControl {
+
+	}
+
+
+	CommMsg -[hidden]down- SessionMng
+	CommMsg -[hidden]down- AccessControl
+
+
+  !endif
+
+ }
+!endif
+}
+
+node "Network Platform" {
+!ifdef SHOW_NQC
+	component "Specialised Network Services" as NQC {
+	}
+!endif
+}
+
+!ifdef SHOW_UA_A
+	node "User Device\nRuntime\n eg Smartphone,\n IoT Device, etc " as UA_A {
+
+	!ifdef SHOW_EndUserA
+		component "User Hyperties" as Alice {
+		}
+	!endif
+	}
+!endif
+
+!ifdef SHOW_UA_B
+	node "User Device\nRuntime\n eg Smartphone,\n IoT Device, etc " as UAB {
+
+	!ifdef SHOW_EndUserB
+		component "User Hyperties" as Bob {
+		}
+	!endif
+	}
+!endif
+
+!ifdef SHOW_NetServ
+	node "Application Server\nRuntime" as NetServ {
+
+	!ifdef SHOW_NetDevice
+		component "Network Side Hyperties" as Net {
+		}
+	!endif
+	}
+!endif
+
+}
+
+
+@enduml
