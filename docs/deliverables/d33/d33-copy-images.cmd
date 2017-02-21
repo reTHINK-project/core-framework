@@ -1,52 +1,39 @@
 
-pushd ..\..\..\..\dev-service-framework\docs\manuals
+pushd C:\Projectos\reTHINK\WP3\git\specs\messaging-framework
   for /r %%a in (*.png) do (
-     COPY "%%a" "..\..\..\core-framework\docs\deliverables\d33\%%~nxa"
+     COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
   )
 
   for /r %%a in (*.jpg) do (
-     COPY "%%a" "..\..\..\core-framework\docs\deliverables\d33\%%~nxa"
+     COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
   )
 
 
+  pushd C:\Projectos\reTHINK\WP3\git\specs\tutorials
+    for /r %%a in (*.png) do (
+       COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
+    )
 
+    for /r %%a in (*.jpg) do (
+       COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
+    )
 
-    pushd ..\..\..\dev-runtime-browser
-
+    pushd C:\Projectos\reTHINK\WP3\git\specs\trust-management
       for /r %%a in (*.png) do (
-         COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
+         COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
       )
+
       for /r %%a in (*.jpg) do (
-         COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
+         COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
       )
 
-      pushd ..\dev-msg-node-vertx
-
+      pushd C:\Projectos\reTHINK\WP3\git\specs\legacy-interworking
         for /r %%a in (*.png) do (
-           COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
+           COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
         )
+
         for /r %%a in (*.jpg) do (
-           COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
+           COPY "%%a" "C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33\%%~nxa"
         )
 
-        pushd ..\dev-msg-node-matrix
-
-        for /r %%a in (*.png) do (
-        COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
-        )
-        for /r %%a in (*.jpg) do (
-        COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
-        )
-
-        pushd ..\dev-msg-node-nodejs
-
-          for /r %%a in (*.png) do (
-             COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
-          )
-          for /r %%a in (*.jpg) do (
-             COPY "%%a" "..\core-framework\docs\deliverables\d33\%%~nxa"
-          )
-
-GOTO resume1
-
-:resume1
+  pushd C:\Projectos\reTHINK\WP3\git\core-framework\docs\deliverables\d33
