@@ -2,8 +2,20 @@
 
 The mission of this group is to specify and build a reference implementation of Decentralized Communications. Decentralized Communications enables natively inter-operable communication services that are able to trustfully use peer to peer connections without having to use central authorities or services. Decentralized Comms are inherently inter-operable without standard protocols by using the Protocol on-the-fly concept, where the most appropriate protocol stack to be used, is selected and instantiated at run-time.
 
+### Group Charter
 
-*text below should be adapted and go for the charter*
+This Charter is work in progress. To submit feedback, please use *GitHub repository URL* Issues where Charter is being developed.
+
+This Charter: {TBD: URI}
+Previous Charter: {TBD: URI}
+Start Date: {TBD: date the charter takes effect, estimate if not known. Update this if the charter is revised and include a link to the previous version of the charter.}
+Last Modifed: {TBD: If the system does not automatically provide information about the date of the last modification, it can be useful to include that in the charter.}
+
+#### Goals
+
+*describe the mission and goals of the Community Group. This should be a brief description describing the reason the group has been formed*
+
+#### Motivation
 
 The impressive fast innovation track of the Web is fostered by Global Web Players. The Web benefits to consumers are countless and should be protected but consumers should also be protected from the [abuse of dominant market position](http://ec.europa.eu/competition/consumers/abuse_en.html).
 
@@ -43,13 +55,28 @@ Hyperties are inherently inter-operable by using the Protocol On-the-fly concept
 
 Hyperties follow emerging [Edge](https://en.wikipedia.org/wiki/Edge_computing) and [Fog](https://en.wikipedia.org/wiki/Fog_computing) computing paradigms as opposed to more popular Cloud Computing. Hyperties can also be executed in Network Servers for specific Business Capabilities (e.g. Media Servers) or when End-user devices don't have enough capabilities in terms of computing resources and/or power.
 
-
 In addition, a few emerging technologies are used in order acomplish such compelling vision:
 
 * Peer-to-peer technology and computing edge principles are used to get services running closer to users,
 * micro-services architectural patterns
 * code on-demand
 
-*todo: summary of what is the standardisation target*
+#### Scope of the Work
 
-*to be completed*
+*Describe topics that are in scope. For specifications that the CLA patent section applies to, it is helpful to describe the scope in a way that it is clear what types of technologies will be defined in specifications, as opposed to adoption by reference or underlying technology not defined in the proposed spec. Key use cases are often helpful in describing scope. If no specifications will be defined in the group that the CLA patent section applies to, the charter should clearly state that. A clear scope is particularly important where patent licensing obligations may apply*
+
+#### Deliverables
+
+##### specifications
+
+*Provide a brief description of each specification the group plans to produce. Where an estimate is possible, it can be useful to provide an estimated schedule for key deliverables. As described below, the group may later modify the charter deliverables. if no specifications, include: "No Specifications will be produced under the current charter."*
+
+##### reference implementation
+
+
+
+##### Test Suits
+
+The group MAY produce test suites to support the Specifications. Please see the GitHub LICENSE file for test suite contribution licensing information.
+
+### Community and Business Group Process
